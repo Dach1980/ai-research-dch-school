@@ -4,6 +4,6 @@
  * NEVER put the service_role key in this file or any public repository.
  */
 window.DCH_SUPABASE_CONFIG = {
-  url: "https://YOUR_PROJECT_REF.supabase.co",
-  anonKey: "YOUR_SUPABASE_PUBLISHABLE_OR_ANON_KEY"
+  url: "https://cwzhzmicfipfjxkfbwqa.supabase.co",
+  anonKey: "sb_publishable_K3Jo4vERczk6zGIXzyevew_ktrRARPP"
 };

@@ -26,8 +26,8 @@ Keep all other lessons unpublished or marked `free_account` / `paid` as appropri
 ## 3. Configure email authentication
 
 In Authentication → URL Configuration:
-- Site URL: the production school URL (prefer a custom domain when ready).
-- Redirect URL allow-list: exact production callback URL `https://YOUR_DOMAIN/auth/callback.html`.
+- Site URL: `https://dach1980.github.io/ai-research-dch-school/` for the current GitHub Pages deployment (replace it when a production custom domain is configured).
+- Redirect URL allow-list: `https://dach1980.github.io/ai-research-dch-school/auth/callback.html` for the current GitHub Pages deployment; add the exact custom-domain callback URL after domain setup.
 - Add the GitHub Pages callback URL only if it is deliberately used for production testing.
 
 In Authentication → Sign In / Providers:
@@ -73,3 +73,8 @@ Until this migration is complete, the two public chapters are the only materials
 - Client cannot create or modify entitlements.
 - Paid content is denied without an active entitlement and after revocation/expiry.
 - RU, EN, ZH and both themes work throughout the flow.
+
+
+## 7. Legal publication gate
+
+The registration checkbox links to `docs/legal/TERMS_DRAFT.md` and `docs/legal/PRIVACY_POLICY_DRAFT.md`. These are checklists, not final legal documents. Before enabling public sign-up, replace them with approved user-facing pages containing the operator identity, contact details, applicable jurisdiction, processing purposes/legal bases, retention, user rights, Supabase region/subprocessors, account deletion procedure, and other required disclosures. Registration must not be promoted publicly while these documents remain drafts.

@@ -41,6 +41,14 @@
   $("lesson-module").textContent=(lesson.module[language]||lesson.module.ru).toLocaleUpperCase(language==="zh"?"zh-CN":language);
   $("lesson-duration").textContent=lesson.duration[language]||lesson.duration.ru;
   $("page-title").textContent=title(p);$("page-content").innerHTML=html;
+  if(lesson.id==="xai-01-what-and-why"&&current===lesson.pages.length-1){
+   const messages={ru:{title:"Продолжайте обучение в DCH School",body:"Эта глава завершает открытую вводную часть. Создайте аккаунт, чтобы открыть следующие бесплатные материалы и отслеживать обучение.",cta:"Создать бесплатный аккаунт →"},en:{title:"Continue learning at DCH School",body:"This chapter completes the open introduction. Create an account to unlock the next free lessons and keep track of your learning.",cta:"Create a free account →"},zh:{title:"继续在 DCH School 学习",body:"本章结束了公开入门部分。创建账户即可解锁后续免费课程并跟踪学习进度。",cta:"创建免费账户 →"}};
+   const m=messages[language]||messages.ru,box=document.createElement("section");box.className="registration-invitation";
+   const h=document.createElement("h2");h.textContent=m.title;const pText=document.createElement("p");pText.textContent=m.body;
+   const a=document.createElement("a");a.className="page-button primary";a.textContent=m.cta;
+   const target=new URL("../../auth/index.html",location.href);target.searchParams.set("mode","register");target.searchParams.set("next",new URL("../index.html",location.href).pathname);a.href=target.href;
+   box.append(h,pText,a);$("page-content").append(box);
+  }
   $("translation-notice").hidden=!!html;$("translation-notice").textContent=t("unavailable");
   $("page-counter").textContent=(current+1)+" / "+lesson.pages.length;
   $("prev-page").disabled=current===0;$("next-page").disabled=current===lesson.pages.length-1;

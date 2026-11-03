@@ -79,3 +79,32 @@
 @media(max-width:760px){:root{--reader-header:62px}.reader-header{gap:10px;padding:0 12px}.reader-brand{flex:0 0 auto}.reader-brand img{width:33px;height:33px}.reader-brand strong{font-size:13px}.reader-brand small{font-size:8px}.toc-trigger{display:block;padding:7px 9px;font-size:10px}.lesson-progress{width:auto;min-width:75px;flex:1}.progress-copy{font-size:9px}.reader-tools{gap:0}.reader-home{display:none}.language-switch button{min-width:32px;height:28px;padding:0 5px;font-size:10px}.reader-layout{display:block}.reader-sidebar{position:fixed;z-index:50;top:var(--reader-header);left:0;bottom:0;width:min(320px,86vw);height:auto;transform:translateX(-105%);transition:transform .22s ease;box-shadow:15px 0 45px #0007}.reader-sidebar.is-open{transform:translateX(0)}.toc-backdrop.is-visible{display:block;position:fixed;z-index:45;inset:var(--reader-header) 0 0;background:#020611aa}.close-toc{display:block}.lesson-article{width:calc(100% - 36px);padding:30px 0 42px}.lesson-article h1{font-size:30px}.lesson-content{font-size:14px}.lesson-content h2{font-size:22px}.reader-footer{padding:16px 18px}.reader-footer>span{display:none}}
 @media(max-width:390px){.reader-brand span{display:none}.reader-header{gap:9px}.lesson-progress{min-width:70px}.progress-copy span{max-width:58px;overflow:hidden;white-space:nowrap}.page-navigation{gap:6px}.page-button{padding:0 9px;font-size:11px}.page-counter{font-size:10px}}
 @media(prefers-reduced-motion:reduce){.reader-sidebar,.progress-track span{transition:none}}
+
+/* Introductory module: diagrams, curriculum cards and interactive knowledge checks */
+.track-diagram{display:grid;grid-template-columns:1fr;gap:9px;margin:24px 0}
+.track-node{padding:17px 20px;border:1px solid #4b9ce955;border-radius:13px;background:linear-gradient(110deg,#1b4a7733,#1a2a4933);display:grid;gap:5px}
+.track-node.violet{border-color:#9b7bff55;background:linear-gradient(110deg,#47307833,#1a2a4933)}
+.track-node>span{font-size:9px;letter-spacing:.18em;color:#70c8ff;font-weight:800}
+.track-node.violet>span{color:#c3a6ff}
+.track-node strong{font:750 17px Manrope,sans-serif;color:#f3f6ff}
+.track-node small{font-size:12px;color:#9eafca}
+.track-overlap{text-align:center;padding:7px 12px;color:#9eabc5;font-size:11px;border-left:1px dashed #7d91b6;border-right:1px dashed #7d91b6;margin:0 14px}
+.curriculum-list{display:grid;gap:8px;margin:20px 0}
+.curriculum-list>div{display:grid;grid-template-columns:70px minmax(0,1fr);gap:13px;padding:13px 15px;border:1px solid var(--line);border-radius:10px;background:#ffffff05}
+.curriculum-list>div>b{color:var(--teal);font:700 11px 'DM Sans',sans-serif;padding-top:2px}
+.curriculum-list strong{display:block;color:#eef3ff;font:700 13px/1.45 Manrope,sans-serif}
+.curriculum-list small{display:block;color:#9eacc4;font-size:12px;line-height:1.55;margin-top:4px}
+.source-note{color:#8192ad;font-size:11px;line-height:1.6;border-left:2px solid #7187aa;padding-left:12px;margin:22px 0}
+.formula-block{padding:15px;margin:12px 0 16px;background:#060b16;border:1px solid var(--line);border-radius:9px;color:#a9d4ff;font:600 14px/1.6 ui-monospace,monospace;overflow-x:auto}
+.knowledge-check{display:grid;gap:14px;margin:20px 0}
+.knowledge-check fieldset{min-width:0;margin:0;padding:16px;border:1px solid var(--line);border-radius:12px;background:#ffffff04}
+.knowledge-check legend{padding:0 7px;color:#f0f4ff;font:700 14px/1.5 Manrope,sans-serif}
+.knowledge-check fieldset>label{display:flex;gap:10px;align-items:flex-start;padding:9px 10px;border-radius:8px;color:#b9c7dc;font-size:13px;line-height:1.5;cursor:pointer}
+.knowledge-check fieldset>label:hover{background:#ffffff08}
+.knowledge-check input[type=radio]{accent-color:#7c83ff;margin-top:4px;flex:0 0 auto}
+.numeric-answer{display:grid!important;gap:8px!important}
+.numeric-answer input{width:min(260px,100%);padding:11px 12px;border:1px solid var(--line);border-radius:8px;background:#080f20;color:var(--text);font:inherit}
+.quiz-submit{justify-self:start;padding:11px 17px;border:0;border-radius:9px;background:linear-gradient(100deg,#2878d6,#7455d9);color:white;font:700 12px 'DM Sans',sans-serif;cursor:pointer}
+.quiz-feedback{display:none;margin:0;padding:12px 14px;border:1px solid #5eead455;border-radius:9px;background:#5eead40d;color:#a8f5df;font-size:13px}
+.quiz-feedback.is-visible{display:block}
+@media(max-width:600px){.curriculum-list>div{grid-template-columns:54px minmax(0,1fr);padding:11px}.track-node{padding:14px}.knowledge-check fieldset{padding:12px}.knowledge-check fieldset>label{font-size:12px}}

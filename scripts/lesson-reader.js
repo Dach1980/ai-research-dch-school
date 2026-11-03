@@ -62,7 +62,9 @@
   });
  }
  function setLanguage(next){
-  if(!i18n[next])return;language=next;try{localStorage.setItem("dch-language",language);}catch(_){}
+  if(!i18n[next])return;
+  if(next!==language){state.positions[language+":"+lesson.pages[current].id]=window.scrollY;save();}
+  language=next;try{localStorage.setItem("dch-language",language);}catch(_){}
   document.documentElement.lang=language==="zh"?"zh-CN":language;
   document.querySelectorAll("[data-i18n]").forEach(el=>{const key=el.dataset.i18n;if(t(key))el.textContent=t(key);});
   buttons.forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.lang===language)));

@@ -145,3 +145,5 @@ html[data-theme="light"] .progress-track{background:#e2e9f3;border-color:#d5deeb
 html[data-theme="light"] .page-navigation{border-color:#dce4f0}
 html[data-theme="light"] .reader-icon-button{background:#f7f9fd;color:#273b5e}
 @media(max-width:760px){html[data-theme="light"] .reader-sidebar{background:#fff;box-shadow:15px 0 45px #26385822}}
+
+@media(max-width:760px){.theme-toggle{width:32px;min-width:32px;height:32px;padding:0;font-size:0;display:grid;place-items:center}.theme-toggle::before{content:"☼";font-size:16px;line-height:1}html[data-theme="light"] .theme-toggle::before{content:"☾"}}

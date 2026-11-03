@@ -70,7 +70,7 @@
   document.documentElement.lang=language==="zh"?"zh-CN":language;
   document.querySelectorAll("[data-i18n]").forEach(el=>{const key=el.dataset.i18n;if(t(key))el.textContent=t(key);});
   buttons.forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.lang===language)));
-  renderPage(true);
+  applyTheme();renderPage(true);
  }
  function openToc(){$("reader-sidebar").classList.add("is-open");$("toc-backdrop").classList.add("is-visible");$("toc-open").setAttribute("aria-expanded","true");$("toc-close").focus();}
  function closeToc(){$("reader-sidebar").classList.remove("is-open");$("toc-backdrop").classList.remove("is-visible");$("toc-open").setAttribute("aria-expanded","false");}

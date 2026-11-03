@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#080d1b"><title>Аккаунт — AI Research DCH School</title>
+<link rel="icon" href="../assets/logo.svg"><link rel="stylesheet" href="../styles/main.css"><link rel="stylesheet" href="../styles/auth.css">
+</head>
+<body class="auth-page">
+<header class="auth-header"><a class="brand" href="../index.html"><img src="../assets/logo.svg" alt="DCH"><span><strong>AI Research</strong><small>DCH SCHOOL</small></span></a><div class="auth-header-tools"><div class="auth-languages" role="group" aria-label="Language"><button data-lang="ru" aria-pressed="true">RU</button><button data-lang="en" aria-pressed="false">EN</button><button data-lang="zh" aria-pressed="false">中文</button></div><button id="auth-theme" class="auth-theme" type="button" aria-label="Переключить тему">☼</button></div></header>
+<main class="auth-main"><section class="auth-card" aria-labelledby="auth-title">
+<div class="auth-mark"><img src="../assets/logo.svg" alt=""></div>
+<p class="eyebrow" data-i18n="eyebrow">DCH SCHOOL ACCOUNT</p><h1 id="auth-title">Вход</h1>
+<p id="auth-intro" class="auth-intro">Войдите, чтобы продолжить обучение и сохранять доступ к своим материалам.</p>
+<div id="auth-notice" class="auth-notice" role="status" aria-live="polite" hidden></div>
+<form id="auth-form" novalidate>
+<label id="name-field" hidden><span data-i18n="name">Имя</span><input id="display-name" name="name" autocomplete="name"></label>
+<label><span data-i18n="email">Email</span><input id="email" name="email" type="email" autocomplete="email" required></label>
+<label id="password-field"><span data-i18n="password">Пароль</span><input id="password" name="password" type="password" autocomplete="current-password" minlength="8"></label>
+<label id="confirm-field" hidden><span data-i18n="confirmPassword">Повторите пароль</span><input id="password-confirm" name="password-confirm" type="password" autocomplete="new-password"></label>
+<label id="terms-field" class="auth-terms" hidden><input id="terms" type="checkbox"><span data-i18n="terms">Я принимаю условия использования и политику конфиденциальности.</span></label>
+<button id="submit-button" class="auth-submit" type="submit">Войти</button>
+</form>
+<div class="auth-links"><button id="switch-mode" type="button">Нет аккаунта? Зарегистрироваться</button><button id="forgot-link" type="button">Забыли пароль?</button><button id="resend-link" type="button" hidden>Отправить ссылку повторно</button></div>
+<p class="auth-back"><a href="../lessons/index.html" data-i18n="back">← Вернуться к библиотеке</a></p>
+</section></main>
+<footer class="auth-footer"><span>© 2026 AI Research DCH School</span><span><a href="../index.html">DCH School</a></span></footer>
+<script src="../scripts/supabase-config.js"></script><script type="module" src="../scripts/auth.js"></script>
+</body></html>

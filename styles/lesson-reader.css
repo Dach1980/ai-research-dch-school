@@ -108,3 +108,5 @@
 .quiz-feedback{display:none;margin:0;padding:12px 14px;border:1px solid #5eead455;border-radius:9px;background:#5eead40d;color:#a8f5df;font-size:13px}
 .quiz-feedback.is-visible{display:block}
 @media(max-width:600px){.curriculum-list>div{grid-template-columns:54px minmax(0,1fr);padding:11px}.track-node{padding:14px}.knowledge-check fieldset{padding:12px}.knowledge-check fieldset>label{font-size:12px}}
+
+.quiz-summary{margin:18px 0 24px;padding:15px 17px;border:1px solid #6b8cff55;border-radius:11px;background:linear-gradient(100deg,#286fca18,#7455d918);color:#e2eaff;font:700 14px Manrope,sans-serif}

@@ -99,7 +99,9 @@ alter table public.lesson_catalog enable row level security;
 alter table public.lesson_content enable row level security;
 alter table public.lesson_entitlements enable row level security;
 
-grant select,insert,update on public.profiles to authenticated;
+revoke all on public.profiles from anon,authenticated;
+grant select on public.profiles to authenticated;
+grant update(display_name,preferred_locale) on public.profiles to authenticated;
 grant select on public.lesson_catalog to anon,authenticated;
 grant select on public.lesson_content to anon,authenticated;
 grant select on public.lesson_entitlements to authenticated;
@@ -107,9 +109,6 @@ grant select on public.lesson_entitlements to authenticated;
 drop policy if exists "Users read own profile" on public.profiles;
 create policy "Users read own profile" on public.profiles for select to authenticated
 using (id = (select auth.uid()));
-drop policy if exists "Users create own profile" on public.profiles;
-create policy "Users create own profile" on public.profiles for insert to authenticated
-with check (id = (select auth.uid()));
 drop policy if exists "Users update own profile" on public.profiles;
 create policy "Users update own profile" on public.profiles for update to authenticated
 using (id = (select auth.uid())) with check (id = (select auth.uid()));

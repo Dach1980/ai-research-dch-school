@@ -78,7 +78,7 @@
    if(feedback&&saved.submitted){const result=scoreQuiz(id,saved);feedback.textContent=result.text;feedback.classList.add("is-visible");}
   });
   const summary=document.getElementById("quiz-summary");
-  if(summary){const groups=[state.quiz["1"],state.quiz["2"]].filter(Boolean);let correct=0,answered=0;groups.forEach(group=>Object.entries(group).forEach(([key,value])=>{if(!/^q\\d+$/.test(key)||value==="")return;answered++;if(key==="q10"?Math.abs(Number(value)-2)<1e-9:String(value)===answers[key])correct++;}));const labels={ru:"Общий результат самопроверки",en:"Overall self-check result",zh:"自测总成绩"};summary.textContent=groups.length===2?labels[language]+": "+correct+" / 10":(language==="ru"?"Выполнено частей: "+groups.length+" из 2 · ответов: "+answered+" из 10":language==="en"?"Parts completed: "+groups.length+" of 2 · answers: "+answered+" of 10":"已完成部分："+groups.length+" / 2 · 已答题目："+answered+" / 10");}
+  if(summary){const groups=[state.quiz["1"],state.quiz["2"]].filter(Boolean);let correct=0,answered=0;groups.forEach(group=>Object.entries(group).forEach(([key,value])=>{if(!/^q\d+$/.test(key)||value==="")return;answered++;if(key==="q10"?Math.abs(Number(value)-2)<1e-9:String(value)===answers[key])correct++;}));const labels={ru:"Общий результат самопроверки",en:"Overall self-check result",zh:"自测总成绩"};summary.textContent=groups.length===2?labels[language]+": "+correct+" / 10":(language==="ru"?"Выполнено частей: "+groups.length+" из 2 · ответов: "+answered+" из 10":language==="en"?"Parts completed: "+groups.length+" of 2 · answers: "+answered+" of 10":"已完成部分："+groups.length+" / 2 · 已答题目："+answered+" / 10");}
  }
  function scoreQuiz(id,saved){
   const fields=id==="1"?["q1","q2","q3","q4","q5"]:["q6","q7","q8","q9","q10"];

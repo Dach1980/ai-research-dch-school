@@ -1,9 +1,9 @@
 # Authentication and learning access control
 
 **Project:** AI Research DCH School  
-**Status:** Architecture proposal — provider project and protected-content backend are not configured yet.  
+**Status:** Supabase approved by the project owner. Frontend scaffold and initial RLS migration are committed; provider project, SMTP, legal approval, and protected-content migration remain pending.  
 **Current hosting:** GitHub Pages (static).  
-**Recommended identity provider:** Supabase Auth (email + password with mandatory email confirmation).
+**Selected identity provider:** Supabase Auth (email + password with mandatory email confirmation).
 
 ## 1. Product decision
 
@@ -193,3 +193,27 @@ The existing static reader may remain the presentation layer, but it must load p
 The current website is GitHub Pages only. It cannot itself send verification emails, validate identity securely, keep secrets, or protect static files. This document describes the required target architecture; no production authentication is active yet.
 
 **Recommended next implementation decision:** approve Supabase as the identity and database provider, then configure the project and sender domain. The provider project URL, public key, SMTP sender configuration, production domain, and payment provider are not present in this repository and must not be fabricated.
+
+
+## 12. Implementation status (2026-11-03)
+
+Owner decision: **Supabase approved**.
+
+Committed implementation scaffold:
+- `auth/index.html` — localized RU / EN / ZH sign-up, sign-in, resend confirmation, and password-reset request UI.
+- `auth/callback.html` — email confirmation callback and password recovery completion.
+- `scripts/auth.js`, `scripts/auth-callback.js` — Supabase JS v2 client flows.
+- `scripts/supabase-config.js` — public URL/key placeholders only.
+- `supabase/migrations/001_learning_access.sql` — profiles, lesson catalogue/content, entitlements and RLS policies.
+- Localized registration CTA after the final page of the second open XAI chapter.
+- Supabase project setup checklist: `docs/setup/SUPABASE_SETUP.md`.
+
+Not yet active / not yet verified:
+- A Supabase project has not been created or connected.
+- Confirmation email delivery has not been tested; SMTP and sender DNS are not configured.
+- SQL migration has not been applied to a live database.
+- Terms and Privacy Policy are drafts/checklists and require completion and appropriate legal review before collecting accounts.
+- Current lesson files are still present in the public repository and Git history. Therefore this scaffold does not yet enforce confidentiality for any lesson file stored in GitHub Pages.
+- The frontend does not yet fetch lesson payloads from Supabase. Protected content delivery must be implemented and tested before account-only or paid lessons are published.
+
+Do not describe registration, email confirmation, or paid access as production-ready until the external provider is configured and end-to-end tests pass.

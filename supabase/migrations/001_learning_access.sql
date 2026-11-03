@@ -13,6 +13,7 @@ create table if not exists public.lesson_catalog (
   id text primary key,
   title jsonb not null default '{}'::jsonb,
   visibility text not null check (visibility in ('public','free_account','paid')),
+  product_id text,
   is_published boolean not null default false,
   sort_order integer not null default 0,
   created_at timestamptz not null default now(),
@@ -64,7 +65,7 @@ as $$
     where e.user_id = (select auth.uid())
       and e.status = 'active'
       and (e.expires_at is null or e.expires_at > now())
-      and e.lesson_id = target_lesson_id
+      and (e.lesson_id = target_lesson_id or e.product_id = (select l.product_id from public.lesson_catalog l where l.id = target_lesson_id))
   );
 $$;
 

@@ -18,13 +18,12 @@
   try {
     const savedLanguage = localStorage.getItem("dch-language");
     if (savedLanguage && translations[savedLanguage]) language = savedLanguage;
-    const savedState = JSON.parse(localStorage.getItem(storageKey) || "null");
-    if (savedState && Array.isArray(savedState.read)) state = { read:savedState.read, positions:savedState.positions || {} };
+    loadState();
   } catch (_) { /* Storage may be unavailable; the reader remains usable. */ }
 
   const t = (key) => translations[language][key] || translations.ru[key] || key;
   const save = () => {
-    try { localStorage.setItem(storageKey, JSON.stringify(state)); } catch (_) { /* Ignore storage restrictions. */ }
+    try { localStorage.setItem(storageKey(), JSON.stringify(state)); } catch (_) { /* Ignore storage restrictions. */ }
   };
   const pageTitle = (page) => page.title[language] || page.title.ru || "";
   const isRead = (id) => state.read.includes(id);
@@ -66,6 +65,7 @@
   function setLanguage(nextLanguage) {
     if (!translations[nextLanguage]) return;
     language = nextLanguage;
+    loadState();
     try { localStorage.setItem("dch-language", language); } catch (_) {}
     document.documentElement.lang = language === "zh" ? "zh-CN" : language;
     document.querySelectorAll("[data-i18n]").forEach((element) => {

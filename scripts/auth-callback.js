@@ -1,4 +1,3 @@
-import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 const lang=new URLSearchParams(location.search).get("lang")||localStorage.getItem("dch-language")||"ru";
 const words={
 ru:{checking:"Проверяем ссылку…",wait:"Пожалуйста, подождите.",ok:"Email подтверждён",success:"Ваш адрес электронной почты успешно подтверждён. Теперь можно перейти к учебным материалам.",go:"Перейти к урокам",bad:"Не удалось подтвердить email",error:"Ссылка недействительна или срок её действия истёк. Вернитесь на страницу входа и запросите новую ссылку.",signin:"Перейти ко входу",newPassword:"Новый пароль",confirmPassword:"Повторите пароль",save:"Сохранить пароль",mismatch:"Пароли не совпадают или содержат менее 8 символов.",updated:"Пароль успешно изменён. Теперь можно войти в аккаунт.",updateError:"Не удалось изменить пароль. Запросите новую ссылку восстановления."},
@@ -10,6 +9,7 @@ const title=document.getElementById("callback-title"),message=document.getElemen
 const cfg=window.DCH_SUPABASE_CONFIG||{};
 if(!cfg.url?.startsWith("https://")||cfg.url.includes("YOUR_PROJECT_REF")||!cfg.anonKey||cfg.anonKey.includes("YOUR_SUPABASE")){title.textContent=w.bad;message.textContent=w.error;link.hidden=false;link.href="index.html";link.textContent=w.signin}
 else{
+ const {createClient}=await import("https://esm.sh/@supabase/supabase-js@2");
  const sb=createClient(cfg.url,cfg.anonKey,{auth:{autoRefreshToken:true,persistSession:true,detectSessionInUrl:true}});
  try{
   const params=new URLSearchParams(location.search),tokenHash=params.get("token_hash"),type=params.get("type"),recovery=params.get("mode")==="recovery"||type==="recovery";

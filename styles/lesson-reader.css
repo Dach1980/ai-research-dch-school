@@ -188,3 +188,9 @@ html[data-theme="light"] .lesson-content table.xai-compare caption{background:#e
 html[data-theme="light"] .lesson-content table.xai-compare th{background:#e5edfb}
 @media(max-width:760px){.xai-flow{flex-wrap:wrap}.xai-flow-node{flex:1 1 28%;min-height:94px}.xai-flow-arrow{display:none}.xai-scope-grid{grid-template-columns:1fr}.xai-scope-connector{max-width:none}.xai-axis-map{grid-template-columns:1fr}}
 @media(max-width:420px){.xai-visual{padding:12px}.xai-flow-node{flex-basis:42%}.xai-flow-node strong{font-size:11px}}
+
+.registration-invitation{margin:34px 0 12px;padding:24px;border:1px solid #6f9fff55;border-radius:15px;background:linear-gradient(120deg,#1d4b7930,#7455d930)}
+.registration-invitation h2{margin:0 0 9px!important;font:750 21px/1.3 Manrope,sans-serif!important;color:var(--text)}
+.registration-invitation p{margin:0 0 18px;color:var(--muted);font-size:13px}
+.registration-invitation .page-button{display:inline-flex;text-decoration:none}
+html[data-theme="light"] .registration-invitation{background:linear-gradient(120deg,#e8f3ff,#f1eaff);border-color:#b8c9ed}

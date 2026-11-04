@@ -192,6 +192,20 @@
         "Обязательное ядро и факультативы являются рекомендацией к согласованию, а не утверждённой заменой curriculum.",
         "Не назначен номер планеты или официальный module_id DCH."
       ]
+    },
+    {
+      "date": "2026-11-04",
+      "type": "recovery",
+      "id": "AUD-006",
+      "title": "Поиск первичного CURRICULUM_SCHOOL_MAP.md и комплекта ai_research_dch_school_plan.zip",
+      "result": "Проверены файлы и история коммитов репозитория main, доступные файлы диалогов/личной библиотеки и история предыдущих обсуждений. Найдено упоминание ZIP из 9 документов от 2026-11-02, но сам ZIP и текст CURRICULUM_SCHOOL_MAP.md не обнаружены. PDF 01 introduction.pdf и Module 04 PDF относятся к AI Interpretability School, а не к утверждённой программе DCH. Фиктивная реконструкция не создавалась; RM-02 остаётся in_progress.",
+      "evidence": [
+        "docs/management/CURRICULUM_MAP_RECOVERY.md",
+        "docs/management/RM-02_CURRICULUM_AUDIT.md",
+        "docs/management/RM-02_MODULE-04_CURRICULUM_CROSSWALK.md",
+        "GitHub main: search по CURRICULUM_SCHOOL_MAP.md, CURRICULUM_SCHOOL_MAP, ai_research_dch_school_plan.zip и истории коммитов",
+        "Доступный контекст предыдущего обсуждения от 2026-11-02: упоминание ZIP из 9 файлов без содержимого"
+      ]
     }
   ],
   "notes": [

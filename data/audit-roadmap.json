@@ -195,16 +195,38 @@
     },
     {
       "date": "2026-11-04",
-      "type": "recovery",
+      "type": "correction",
       "id": "AUD-006",
-      "title": "Поиск первичного CURRICULUM_SCHOOL_MAP.md и комплекта ai_research_dch_school_plan.zip",
-      "result": "Проверены файлы и история коммитов репозитория main, доступные файлы диалогов/личной библиотеки и история предыдущих обсуждений. Найдено упоминание ZIP из 9 документов от 2026-11-02, но сам ZIP и текст CURRICULUM_SCHOOL_MAP.md не обнаружены. PDF 01 introduction.pdf и Module 04 PDF относятся к AI Interpretability School, а не к утверждённой программе DCH. Фиктивная реконструкция не создавалась; RM-02 остаётся in_progress.",
+      "title": "Исправление ошибочного предположения о существовании CURRICULUM_SCHOOL_MAP.md",
+      "result": "Пользователь уточнил, что CURRICULUM_SCHOOL_MAP.md и ZIP ai_research_dch_school_plan.zip никогда не существовали. Предыдущее предположение об их существовании отозвано. Выполнена сверка записей аудита и истории согласования от 2026-11-02: обнаружены ранняя схема 0–19 Foundation+XAI / 20–26 Deep Nets+Transformer / 27–39 MI+AI Safety (04:19) и последующее уточнение (04:25): 00–10 общая база / 11–26 Track A / 27–39 Track B; Track C — отдельная LLM-программа. AUD-006 больше не следует трактовать как подтверждение существования исходного ZIP или файла.",
       "evidence": [
-        "docs/management/CURRICULUM_MAP_RECOVERY.md",
-        "docs/management/RM-02_CURRICULUM_AUDIT.md",
-        "docs/management/RM-02_MODULE-04_CURRICULUM_CROSSWALK.md",
-        "GitHub main: search по CURRICULUM_SCHOOL_MAP.md, CURRICULUM_SCHOOL_MAP, ai_research_dch_school_plan.zip и истории коммитов",
-        "Доступный контекст предыдущего обсуждения от 2026-11-02: упоминание ZIP из 9 файлов без содержимого"
+        "Пользовательское уточнение от 2026-11-04: отдельного CURRICULUM_SCHOOL_MAP.md и ZIP не было",
+        "История согласования 2026-11-02 04:19",
+        "История согласования 2026-11-02 04:25",
+        "docs/management/CURRICULUM_DECISIONS_FROM_AUDIT.md"
+      ],
+      "limitations": [
+        "Полные названия всех 40 модулей, полный состав уроков и точные prerequisite edges в найденных записях не содержатся."
+      ]
+    },
+    {
+      "date": "2026-11-04",
+      "type": "curriculum_reconstruction",
+      "id": "AUD-007",
+      "title": "Восстановлены подтверждённые решения о структуре программы из истории аудита",
+      "result": "Подтверждена более поздняя редакция структуры основной программы: 00–10 — общая фундаментальная база; 11–26 — Track A / Understanding AI; 27–39 — Track B / Inside AI. Track C / Building with AI — отдельная программа по LLM. PY.1 — отдельная траектория Python. Также восстановлены первые пять названий уроков Track A: A.1 Что такое искусственный интеллект?; A.2 AI, Machine Learning и Deep Learning; A.3 Как машина учится на данных; A.4 Что такое модель машинного обучения; A.5 Как проверяют качество модели. Более ранняя схема от 04:19 superseded решением от 04:25.",
+      "evidence": [
+        "История согласования 2026-11-02 04:19",
+        "История согласования 2026-11-02 04:25",
+        "История согласования 2026-11-03 03:55",
+        "История согласования 2026-11-03 04:21",
+        "docs/management/CURRICULUM_DECISIONS_FROM_AUDIT.md",
+        "Коммит A.1: 83b0b39623a0e1132a90098291f0dcc0bbc11dc5"
+      ],
+      "limitations": [
+        "Полный список названий 40 модулей и их уроков не восстановлен из найденных записей.",
+        "Полная матрица prerequisites/dependencies не подтверждена.",
+        "Точная привязка AIS Module 04 к номеру DCH остаётся открытой."
       ]
     }
   ],

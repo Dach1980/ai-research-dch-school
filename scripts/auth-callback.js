@@ -22,3 +22,13 @@ else{
   }else{title.textContent=w.ok;message.textContent=w.success;link.hidden=false;link.textContent=w.go;link.href="../lessons/index.html"}
  }catch(e){title.textContent=w.bad;message.textContent=w.error;link.hidden=false;link.href="index.html";link.textContent=w.signin}
 }
+
+function installRecoveryPasswordToggles(){
+ document.querySelectorAll('#recovery-form input[type="password"]').forEach(input=>{
+  const wrap=document.createElement("span");wrap.className="password-field-wrap";input.parentNode.insertBefore(wrap,input);wrap.append(input);
+  const button=document.createElement("button");button.type="button";button.className="password-toggle";button.textContent="◉";button.setAttribute("aria-label",lang==="ru"?"Показать пароль":lang==="en"?"Show password":"显示密码");
+  button.addEventListener("click",()=>{const visible=input.type==="password";input.type=visible?"text":"password";button.textContent=visible?"◎":"◉";button.setAttribute("aria-label",visible?(lang==="ru"?"Скрыть пароль":lang==="en"?"Hide password":"隐藏密码"):(lang==="ru"?"Показать пароль":lang==="en"?"Show password":"显示密码"));input.focus();});wrap.append(button);
+ });
+}
+const recoveryObserver=new MutationObserver(()=>{if(!form.hidden){installRecoveryPasswordToggles();recoveryObserver.disconnect();}});
+recoveryObserver.observe(form,{attributes:true,attributeFilter:["hidden"]});

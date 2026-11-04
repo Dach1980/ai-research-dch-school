@@ -39,7 +39,7 @@
         "Неизвестные поля отмечены как требующие решения, а не заполняются предположениями.",
         "Отдельная траектория Python сохраняет собственный ID и не смешивается с A/B/C."
       ],
-      "source": "docs/education/LESSON_STANDARD.md; docs/education/COURSE_CURRICULUM_40_MODULES.md (путь требует проверки в репозитории)"
+      "source": "Утверждённая последовательность из 40 модулей; reference/ai-interpretability-school/planetary-learning-map.md; docs/education/LESSON_STANDARD.md"
     },
     {
       "id": "RM-03",

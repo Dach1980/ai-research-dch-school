@@ -1,1 +1,83 @@
-<!doctype html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>Панель администратора — прототип</title><link rel="stylesheet" href="../styles/main.css"><style>.admin-shell{display:grid;grid-template-columns:230px 1fr;min-height:calc(100vh - 82px)}.sidebar{border-right:1px solid var(--line);padding:28px 18px}.sidebar a{display:block;padding:11px 13px;border-radius:9px;color:var(--muted);font-size:13px}.sidebar a.active{background:#ffffff0d;color:var(--text)}.admin-main{padding:35px;max-width:1100px}.admin-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}.admin-stat,.admin-panel{padding:20px;border:1px solid var(--line);background:#ffffff06;border-radius:14px}.admin-stat strong{display:block;font:700 28px Manrope;color:var(--blue)}.admin-stat span,.admin-panel p{color:var(--muted);font-size:12px}.admin-panel{margin-top:18px}.admin-panel h2{font:700 20px Manrope}.warning{border-left:3px solid #e6b85c;background:#e6b85c12;padding:15px 18px;color:#ead6a8;font-size:13px;margin:20px 0}.admin-table{width:100%;border-collapse:collapse;font-size:13px}.admin-table td,.admin-table th{padding:12px;border-bottom:1px solid var(--line);text-align:left}.admin-table td{color:var(--muted)}@media(max-width:750px){.admin-shell{grid-template-columns:1fr}.sidebar{display:flex;overflow:auto;border-right:0;border-bottom:1px solid var(--line)}.sidebar a{white-space:nowrap}.admin-main{padding:22px 16px}.admin-grid{grid-template-columns:1fr}}</style></head><body><header class="site-header"><a class="brand" href="../index.html"><img src="../assets/logo.svg" alt="DCH"><span><strong>AI Research</strong><small>ADMIN · PROTOTYPE</small></span></a><a class="text-link" href="../index.html">← На публичный сайт</a></header><div class="admin-shell"><aside class="sidebar"><a class="active" href="#overview">Обзор</a><a href="#content">Материалы</a><a href="#news">Новости</a><a href="#programs">Программы</a><a href="#settings">Настройки</a></aside><main class="admin-main"><p class="eyebrow">CONTENT MANAGEMENT · PREVIEW</p><h1 style="font:750 36px Manrope;margin:0">Панель администратора</h1><div class="warning"><strong>Демонстрационный прототип.</strong> Эта страница публично доступна и не имеет авторизации, серверной части или сохранения изменений. Не вводите здесь пароли, персональные данные или конфиденциальную информацию. Это визуальная модель будущей CMS, а не рабочая административная система.</div><div class="admin-grid"><div class="admin-stat"><strong>3</strong><span>Направления обучения</span></div><div class="admin-stat"><strong>1</strong><span>Опубликованная лекция</span></div><div class="admin-stat"><strong>1</strong><span>Публикация в журнале</span></div></div><section class="admin-panel" id="content"><h2>Последние материалы</h2><table class="admin-table"><thead><tr><th>Материал</th><th>Тип</th><th>Статус</th></tr></thead><tbody><tr><td>A.1 — Что такое искусственный интеллект?</td><td>Лекция</td><td>Опубликована</td></tr><tr><td>Начинаем открытое знакомство с DCH School</td><td>Новость</td><td>Опубликована</td></tr><tr><td>A.2 — AI, ML и DL</td><td>Лекция</td><td>В разработке</td></tr></tbody></table></section><section class="admin-panel" id="news"><h2>Публикации</h2><p>В будущей версии здесь появится редактор новостей с датой публикации, иллюстрацией, анонсом, основным текстом и статусом черновика/публикации.</p></section><section class="admin-panel" id="programs"><h2>Учебные программы</h2><p>Управление направлениями, модулями, порядком уроков и доступностью материалов.</p></section><section class="admin-panel" id="settings"><h2>Следующий этап</h2><p>Для реальной админ-панели потребуются backend API, база данных, аутентификация, роли и права доступа, безопасная загрузка изображений и механизм публикации. GitHub Pages будет обслуживать только публичную статическую часть сайта.</p></section></main></div></body></html>
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Панель администратора — AI Research DCH School</title>
+<link rel="stylesheet" href="../styles/main.css">
+<style>
+.admin-shell{max-width:1440px;margin:auto;padding:24px 28px 60px}
+.admin-heading{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;margin:16px 0 24px}
+.admin-heading h1{font:750 34px Manrope;margin:0}
+.admin-tabs{display:flex;gap:8px;flex-wrap:wrap;border-bottom:1px solid var(--line);margin-bottom:24px}
+.admin-tab{appearance:none;border:1px solid var(--line);border-bottom:0;background:#ffffff06;color:var(--muted);padding:12px 17px;border-radius:10px 10px 0 0;font:600 13px inherit;cursor:pointer}
+.admin-tab[aria-selected=true]{background:#3988ff18;color:var(--text);border-color:#3988ff80}
+.admin-panel{padding:20px;border:1px solid var(--line);background:#ffffff06;border-radius:14px;margin:18px 0}
+.admin-panel h2{font:700 20px Manrope;margin:0 0 14px}
+.admin-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.admin-stat{padding:18px;border:1px solid var(--line);background:#ffffff06;border-radius:13px}
+.admin-stat strong{display:block;font:750 28px Manrope;color:var(--blue)}
+.admin-stat span,.muted,.roadmap-meta{color:var(--muted);font-size:12px}
+.warning{border-left:3px solid #e6b85c;background:#e6b85c12;padding:15px 18px;color:#ead6a8;font-size:13px;margin:18px 0}
+.admin-table{width:100%;border-collapse:collapse;font-size:13px}.admin-table td,.admin-table th{padding:12px;border-bottom:1px solid var(--line);text-align:left}.admin-table td{color:var(--muted)}
+.roadmap-list,.audit-list{display:grid;gap:12px}
+.roadmap-item,.audit-entry{padding:17px;border:1px solid var(--line);border-radius:12px;background:#ffffff04}
+.roadmap-item h3,.audit-entry h3{font:700 16px Manrope;margin:10px 0 7px}
+.roadmap-item p,.audit-entry p{font-size:13px;line-height:1.65;color:var(--muted)}
+.roadmap-item-head{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.roadmap-id{font:700 12px monospace;color:var(--blue)}
+.roadmap-date{font:12px monospace;color:var(--muted)}
+.roadmap-status,.audit-type{font-size:11px;padding:4px 8px;border:1px solid var(--line);border-radius:20px}
+.roadmap-status.approved{color:#7dd3a5;border-color:#7dd3a566}.roadmap-status.progress{color:#78baff;border-color:#78baff66}.roadmap-status.planned{color:#c4b5fd;border-color:#c4b5fd66}.roadmap-status.done{color:#7dd3a5}.roadmap-status.blocked{color:#fca5a5}
+.roadmap-item ul,.admin-panel ul{padding-left:20px;color:var(--muted);font-size:13px;line-height:1.7}
+details{margin-top:12px;font-size:13px}summary{cursor:pointer;color:var(--blue)}
+code{font-size:12px;color:var(--blue)}
+[hidden]{display:none!important}
+@media(max-width:760px){.admin-shell{padding:18px 14px 40px}.admin-grid{grid-template-columns:1fr}.admin-heading h1{font-size:27px}.admin-tab{padding:10px 12px}}
+</style>
+</head>
+<body>
+<header class="site-header">
+<a class="brand" href="../index.html"><img src="../assets/logo.svg" alt="DCH"><span><strong>AI Research</strong><small>ADMINISTRATION</small></span></a>
+<a class="text-link" href="../index.html">← На публичный сайт</a>
+</header>
+<main class="admin-shell">
+<p class="eyebrow">CONTENT MANAGEMENT · PROJECT CONTROL</p>
+<div class="admin-heading"><h1>Панель администратора</h1><span class="muted">AI Research DCH School</span></div>
+<div class="warning"><strong>Важно:</strong> административная страница пока является статическим интерфейсом GitHub Pages. Она не защищена авторизацией и не предназначена для хранения секретов или персональных данных. Вкладка «Аудит и roadmap» загружает журнал из репозитория в режиме просмотра; изменения записей вносятся через Git-коммиты.</div>
+<nav class="admin-tabs" role="tablist" aria-label="Разделы панели администратора">
+<button class="admin-tab" id="tab-overview" role="tab" aria-selected="true" aria-controls="panel-overview">Обзор</button>
+<button class="admin-tab" id="tab-audit" role="tab" aria-selected="false" aria-controls="panel-audit">Аудит и roadmap</button>
+<button class="admin-tab" id="tab-content" role="tab" aria-selected="false" aria-controls="panel-content">Материалы</button>
+</nav>
+<section id="panel-overview" role="tabpanel" aria-labelledby="tab-overview">
+<div class="admin-grid">
+<div class="admin-stat"><strong>3</strong><span>Направления обучения</span></div>
+<div class="admin-stat"><strong>40</strong><span>Модулей в утверждённой основе курса</span></div>
+<div class="admin-stat"><strong>1</strong><span>Опубликованная вводная лекция</span></div>
+</div>
+<section class="admin-panel"><h2>Текущие приоритеты</h2><ol class="muted"><li>Аудит учебной программы и соответствия каждой планеты реальному модулю.</li><li>Утверждение содержательной модели планеты и зависимостей.</li><li>Единый каталог данных планет.</li><li>Реализация карты на главной странице с сохранением обычного каталога.</li></ol></section>
+</section>
+<section id="panel-audit" role="tabpanel" aria-labelledby="tab-audit" hidden>
+<div id="audit-roadmap-content"><p class="muted">Загружаем журнал аудита и roadmap…</p></div>
+</section>
+<section id="panel-content" role="tabpanel" aria-labelledby="tab-content" hidden>
+<section class="admin-panel"><h2>Материалы школы</h2>
+<table class="admin-table"><thead><tr><th>Материал</th><th>Тип</th><th>Статус</th></tr></thead><tbody>
+<tr><td>A.1 — Что такое искусственный интеллект?</td><td>Лекция</td><td>Опубликована</td></tr>
+<tr><td>Учебная программа A/B/C</td><td>Каталог</td><td>Требует аудита связей с планетами</td></tr>
+</tbody></table></section>
+</section>
+</main>
+<script>
+(() => {
+ const tabs=[...document.querySelectorAll('[role="tab"]')];
+ const activate=(tab)=>{tabs.forEach(item=>{const active=item===tab;item.setAttribute('aria-selected',String(active));document.getElementById(item.getAttribute('aria-controls')).hidden=!active;});};
+ tabs.forEach(tab=>tab.addEventListener('click',()=>activate(tab)));
+ tabs.forEach((tab,index)=>tab.addEventListener('keydown',event=>{if(event.key==='ArrowRight'||event.key==='ArrowLeft'){event.preventDefault();const next=(index+(event.key==='ArrowRight'?1:tabs.length-1))%tabs.length;tabs[next].focus();activate(tabs[next]);}}));
+})();
+</script>
+<script src="../scripts/admin-roadmap.js"></script>
+</body>
+</html>

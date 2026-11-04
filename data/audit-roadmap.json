@@ -32,7 +32,7 @@
       "title": "Провести аудит утверждённой учебной программы и состава планет",
       "status": "in_progress",
       "priority": "high",
-      "decision": "Выполнена реконструкция полного 40-позиционного реестра: подтверждены диапазоны 00–10 (общая база), 11–26 (Track A), 27–39 (Track B); Track C — отдельная LLM-программа, PY.1 — отдельная траектория Python. Все 40 позиций перечислены, но названия большинства модулей и индивидуальные зависимости оставлены unresolved. A.1–A.5 подтверждены как материалы Track A, однако их crosswalk к позициям 11–26 не установлен. AIS Module 04 остаётся тематическим кандидатом Track A без назначенного DCH module_id. Анализ AIS Module 07 добавлен как кандидатный тематический блок Track A с 24 предложенными короткими уроками; точный слот 11–26 не назначен.",
+      "decision": "Выполнена реконструкция полного 40-позиционного реестра: подтверждены диапазоны 00–10 (общая база), 11–26 (Track A), 27–39 (Track B); Track C — отдельная LLM-программа, PY.1 — отдельная траектория Python. Все 40 позиций перечислены, но названия большинства модулей и индивидуальные зависимости оставлены unresolved. A.1–A.5 подтверждены как материалы Track A, однако их crosswalk к позициям 11–26 не установлен. AIS Module 04 остаётся тематическим кандидатом Track A без назначенного DCH module_id. Анализ AIS Module 07 добавлен как кандидатный тематический блок Track A с 24 предложенными короткими уроками; точный слот 11–26 не назначен. Проведена сводная ревизия доступных материалов AIS 00, 01, 04 и 07; обнаружено, что отдельный PDF AIS Module 02 отсутствует среди доступных файлов, поэтому его аудит заблокирован до получения источника. Межмодульные пересечения 04/07 с темами 06, 08, 17, 21, 23 и 24 зафиксированы; подготовлен сводный отчёт. RM-02 остаётся in_progress.",
       "acceptance": [
         "Проверены доступные документы репозитория, концепция карты и методический стандарт.",
         "Подтверждена общая структура 00–10 / 11–26 / 27–39; точные названия 40 модулей пока не подтверждены.",
@@ -48,9 +48,13 @@
         "Создана полная 40-позиционная матрица с отдельными статусами подтверждения; неизвестные названия и зависимости не заполнены предположениями.",
         "Разделены идентификаторы материалов A.1–A.5 и 40-позиционная нумерация; crosswalk отмечен unresolved.",
         "AIS Module 04 оставлен кандидатом Track A без назначения номера до завершения тематической сверки.",
-        "Внешний AIS Module 07 проанализирован; авторская декомпозиция и методологические ограничения сохранены в docs/education/track-a/classical-xai/."
+        "Внешний AIS Module 07 проанализирован; авторская декомпозиция и методологические ограничения сохранены в docs/education/track-a/classical-xai/.",
+        "Проведена сводная ревизия PDF AIS Module 00 (01 introduction.pdf) и Module 01 (02 what and why.pdf); их содержание и педагогические рекомендации отделены от предложений DCH.",
+        "Проверена комплектность источников: отдельный PDF AIS Module 02 «Линейные интерпретируемые модели» не обнаружен; аудит Module 02 не считается выполненным.",
+        "Сведены межмодульные пересечения AIS 04 и 07 с темами 02, 06, 08, 17, 21, 23 и 24; сформулированы рекомендации по границам обязательного ядра и углублений.",
+        "Создан сводный отчёт docs/management/AIS_00_01_02_04_07_CONSOLIDATED_REVIEW.md."
       ],
-      "source": "docs/management/CURRICULUM_40_MODULE_RECONSTRUCTION.md; docs/management/CURRICULUM_DECISIONS_FROM_AUDIT.md; docs/management/RM-02_CURRICULUM_AUDIT.md; docs/management/RM-02_MODULE-04_CURRICULUM_CROSSWALK.md"
+      "source": "docs/management/CURRICULUM_40_MODULE_RECONSTRUCTION.md; docs/management/CURRICULUM_DECISIONS_FROM_AUDIT.md; docs/management/RM-02_CURRICULUM_AUDIT.md; docs/management/RM-02_MODULE-04_CURRICULUM_CROSSWALK.md; docs/management/AIS_00_01_02_04_07_CONSOLIDATED_REVIEW.md"
     },
     {
       "id": "RM-03",
@@ -273,6 +277,28 @@
         "Предложенный блок и 24 урока требуют согласования.",
         "Точный module_id в основной 40-позиционной сетке не назначен.",
         "Публичное размещение оригинального PDF требует проверки лицензии."
+      ]
+    },
+    {
+      "date": "2026-11-04",
+      "type": "consolidated_source_review",
+      "id": "AUD-010",
+      "title": "Сводная ревизия AIS Modules 00, 01, 02, 04 и 07 для проектирования Track A DCH",
+      "result": "Проверены доступные исходные PDF: Module 00 (01 introduction.pdf, 8 страниц) и Module 01 (02 what and why.pdf, 14 страниц), ранее подготовленные анализы Module 04 (191 страница, 23 урока) и Module 07 (111 страниц, 12 уроков). Установлено, что отдельный PDF Module 02 «Линейные интерпретируемые модели» среди доступных файлов отсутствует; его содержательная ревизия остаётся заблокированной. Составлен межмодульный анализ и рекомендации по разделению тем: встроенная интерпретируемость и модели (04), post-hoc feature attribution (07), PDP/ICE/ALE (06), interactions (08), evaluation (17), perturbation (21), SHAP deep dive (23), counterfactual deep dive (24). Создан сводный отчёт.",
+      "evidence": [
+        "User-provided: 01 introduction.pdf (AIS Module 00)",
+        "User-provided: 02 what and why.pdf (AIS Module 01)",
+        "User-provided: 04 AI_Interpretability_School_module_4_ru.pdf (AIS Module 04)",
+        "User-provided: AI_Interpretability_School_module_7_ru.pdf (AIS Module 07)",
+        "docs/management/AIS_00_01_02_04_07_CONSOLIDATED_REVIEW.md",
+        "docs/reference/ai-interpretability-school/module-04/DCH_MODULE_04_PEDAGOGICAL_ANALYSIS.md",
+        "docs/education/track-a/classical-xai/PEDAGOGICAL_ANALYSIS.md"
+      ],
+      "limitations": [
+        "Не найден отдельный PDF AIS Module 02; его содержание нельзя оценить по названию модуля в оглавлении.",
+        "Рекомендации и предлагаемое распределение тем не являются утверждённой программой DCH.",
+        "Правовые утверждения из AIS Module 01 требуют проверки по актуальным первичным источникам перед публикацией.",
+        "Точные DCH module_id для внешних модулей AIS не назначены."
       ]
     }
   ],

@@ -11,6 +11,17 @@ const configured=config.url?.startsWith("https://")&&!config.url.includes("YOUR_
 const {createClient}=configured?await import("https://esm.sh/@supabase/supabase-js@2"):{createClient:null};
 const supabase=configured?createClient(config.url,config.anonKey,{auth:{autoRefreshToken:true,persistSession:true,detectSessionInUrl:true}}):null;
 function t(k){return copy[lang][k]||copy.ru[k]||k}
+function installPasswordToggles(){
+ document.querySelectorAll('input[type="password"]').forEach(input=>{
+  if(input.dataset.visibilityReady)return;input.dataset.visibilityReady="true";
+  const wrap=document.createElement("span");wrap.className="password-field-wrap";
+  input.parentNode.insertBefore(wrap,input);wrap.append(input);
+  const button=document.createElement("button");button.type="button";button.className="password-toggle";button.textContent="◉";button.setAttribute("aria-label",lang==="ru"?"Показать пароль":lang==="en"?"Show password":"显示密码");button.setAttribute("aria-pressed","false");
+  button.addEventListener("click",()=>{const visible=input.type==="password";input.type=visible?"text":"password";button.setAttribute("aria-pressed",String(visible));button.setAttribute("aria-label",visible?(lang==="ru"?"Скрыть пароль":lang==="en"?"Hide password":"隐藏密码"):(lang==="ru"?"Показать пароль":lang==="en"?"Show password":"显示密码"));button.textContent=visible?"◎":"◉";input.focus();});
+  wrap.append(button);
+ });
+}
+
 function notice(message,kind="info"){const el=$("auth-notice");el.textContent=message;el.dataset.kind=kind;el.hidden=false}
 function clearNotice(){$("auth-notice").hidden=true}
 function setMode(next){mode=next;clearNotice();$("auth-title").textContent=t(next==="login"?"login":next==="register"?"register":"reset");$("auth-intro").textContent=t(next==="login"?"introLogin":next==="register"?"introRegister":"introReset");$("name-field").hidden=next!=="register";$("confirm-field").hidden=next!=="register";$("terms-field").hidden=next!=="register";$("password-field").hidden=next==="reset";$("password").required=next!=="reset";$("password-confirm").required=next==="register";$("terms").required=next==="register";$("submit-button").textContent=t(next==="login"?"submitLogin":next==="register"?"submitRegister":"submitReset");$("switch-mode").hidden=next==="reset";$("switch-mode").textContent=t(next==="login"?"switchRegister":"switchLogin");$("forgot-link").hidden=next!=="login";$("resend-link").hidden=true;document.title=t(next==="login"?"login":next==="register"?"register":"reset")+" — DCH School"}
@@ -27,4 +38,4 @@ $("switch-mode").addEventListener("click",()=>setMode(mode==="login"?"register":
 $("resend-link").addEventListener("click",async()=>{if(!supabase){notice(t("badConfig"),"error");return}const email=$("email").value.trim();if(!email){notice(t("invalidEmail"),"error");return}const {error}=await supabase.auth.resend({type:"signup",email,options:{emailRedirectTo:emailRedirect()}});if(error)notice(error.message,"error");else notice(t("sent"),"success")});
 document.querySelectorAll("[data-lang]").forEach(b=>b.addEventListener("click",()=>setLanguage(b.dataset.lang)));
 let theme=localStorage.getItem("dch-theme")||"dark";document.documentElement.dataset.theme=theme;$("auth-theme").textContent=theme==="light"?"☾":"☼";$("auth-theme").addEventListener("click",()=>{theme=theme==="light"?"dark":"light";localStorage.setItem("dch-theme",theme);document.documentElement.dataset.theme=theme;$("auth-theme").textContent=theme==="light"?"☾":"☼"});
-setLanguage(lang);if(new URLSearchParams(location.search).get("mode")==="recovery")notice("Use the password reset email link to return here and complete password recovery.","info");
+setLanguage(lang);installPasswordToggles();if(new URLSearchParams(location.search).get("mode")==="recovery")notice("Use the password reset email link to return here and complete password recovery.","info");

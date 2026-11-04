@@ -32,7 +32,7 @@
       "title": "Провести аудит утверждённой учебной программы и состава планет",
       "status": "in_progress",
       "priority": "high",
-      "decision": "Выполнена сверка истории согласования: подтверждена действующая структура 00–10 (общая база), 11–26 (Track A / Understanding AI), 27–39 (Track B / Inside AI); Track C / Building with AI — отдельная LLM-программа; PY.1 — отдельная траектория Python. Отдельного CURRICULUM_SCHOOL_MAP.md и ZIP не существовало. Полный список названий 40 модулей и индивидуальные зависимости пока не подтверждены. AIS Module 04 тематически относится к XAI/Track A, но точный DCH module_id не назначен.",
+      "decision": "Выполнена реконструкция полного 40-позиционного реестра: подтверждены диапазоны 00–10 (общая база), 11–26 (Track A), 27–39 (Track B); Track C — отдельная LLM-программа, PY.1 — отдельная траектория Python. Все 40 позиций перечислены, но названия большинства модулей и индивидуальные зависимости оставлены unresolved. A.1–A.5 подтверждены как материалы Track A, однако их crosswalk к позициям 11–26 не установлен. AIS Module 04 остаётся тематическим кандидатом Track A без назначенного DCH module_id.",
       "acceptance": [
         "Проверены доступные документы репозитория, концепция карты и методический стандарт.",
         "Подтверждена общая структура 00–10 / 11–26 / 27–39; точные названия 40 модулей пока не подтверждены.",
@@ -44,9 +44,12 @@
         "Зафиксировано, что точный DCH module_id и соответствие 40-модульной программе не назначаются до восстановления первичного curriculum map.",
         "Зафиксирована хронология: ранняя схема от 2026-11-02 04:19 заменена уточнённой схемой от 04:25.",
         "Восстановлены первые пять названий уроков Track A из истории 2026-11-03.",
-        "Полные названия 40 модулей и индивидуальные prerequisite edges остаются предметом последующей реконструкции и согласования."
+        "Полные названия 40 модулей и индивидуальные prerequisite edges остаются предметом последующей реконструкции и согласования.",
+        "Создана полная 40-позиционная матрица с отдельными статусами подтверждения; неизвестные названия и зависимости не заполнены предположениями.",
+        "Разделены идентификаторы материалов A.1–A.5 и 40-позиционная нумерация; crosswalk отмечен unresolved.",
+        "AIS Module 04 оставлен кандидатом Track A без назначения номера до завершения тематической сверки."
       ],
-      "source": "docs/management/RM-02_CURRICULUM_AUDIT.md; docs/education/LESSON_STANDARD.md; reference/ai-interpretability-school/planetary-learning-map.md; пользовательские PDF 01 introduction.pdf и 02 what and why.pdf (AIS reference only); docs/management/RM-02_MODULE-04_CURRICULUM_CROSSWALK.md"
+      "source": "docs/management/CURRICULUM_40_MODULE_RECONSTRUCTION.md; docs/management/CURRICULUM_DECISIONS_FROM_AUDIT.md; docs/management/RM-02_CURRICULUM_AUDIT.md; docs/management/RM-02_MODULE-04_CURRICULUM_CROSSWALK.md"
     },
     {
       "id": "RM-03",
@@ -230,6 +233,27 @@
         "Полный список названий 40 модулей и их уроков не восстановлен из найденных записей.",
         "Полная матрица prerequisites/dependencies не подтверждена.",
         "Точная привязка AIS Module 04 к номеру DCH остаётся открытой."
+      ]
+    },
+    {
+      "date": "2026-11-04",
+      "type": "curriculum_reconstruction",
+      "id": "AUD-008",
+      "title": "Создан полный 40-позиционный реестр с маркировкой подтверждённых и неизвестных данных",
+      "result": "Составлена таблица позиций 00–39. Подтверждены только диапазоны 00–10 (общая база), 11–26 (Track A), 27–39 (Track B); Track C и PY.1 отделены. Зафиксированы названия A.1–A.5 как материалов Track A без неподтверждённой привязки к основной нумерации. Неизвестные названия и prerequisite edges оставлены unresolved. AIS Module 04 остаётся кандидатом Track A без конкретного DCH module_id.",
+      "evidence": [
+        "docs/management/CURRICULUM_40_MODULE_RECONSTRUCTION.md",
+        "docs/management/CURRICULUM_DECISIONS_FROM_AUDIT.md",
+        "docs/management/RM-02_CURRICULUM_AUDIT.md",
+        "docs/management/RM-02_MODULE-04_CURRICULUM_CROSSWALK.md",
+        "История согласования 2026-11-02 04:19 и 04:25",
+        "История согласования 2026-11-03 03:55 и 04:21"
+      ],
+      "limitations": [
+        "Большинство точных названий 40 позиций не подтверждено.",
+        "Связь A.1–A.5 с позициями 11–26 не установлена.",
+        "Индивидуальные prerequisites/dependencies не восстановлены.",
+        "Точное размещение AIS Module 04 не назначено."
       ]
     }
   ],

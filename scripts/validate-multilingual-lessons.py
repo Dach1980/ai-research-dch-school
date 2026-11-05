@@ -121,8 +121,8 @@ def main() -> int:
                 page = re.sub(r"<style\b[\s\S]*?</style>", " ", page, flags=re.I)
                 return re.sub(r"<[^>]+>", " ", page)
 
-            ru_words = len(re.findall(r"[\\w]+", visible_text(pages["ru"]), flags=re.UNICODE))
-            en_words = len(re.findall(r"[\\w]+", visible_text(pages["en"]), flags=re.UNICODE))
+            ru_words = len(re.findall(r"[\w]+", visible_text(pages["ru"]), flags=re.UNICODE))
+            en_words = len(re.findall(r"[\w]+", visible_text(pages["en"]), flags=re.UNICODE))
             zh_characters = len(re.findall(r"[\u3400-\u9fff]", visible_text(pages["zh"])))
             if ru_words and en_words < ru_words * 0.65:
                 fail(errors, f"{lesson_id}: English text volume is too short ({en_words}/{ru_words} words; minimum 65%)")

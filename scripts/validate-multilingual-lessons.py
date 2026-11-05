@@ -94,10 +94,10 @@ def main() -> int:
             ]
             if locale != "ru":
                 svg_accessible_text = []
-                for svg_match in re.finditer(r"<svg\\b[\\s\\S]*?</svg>", page, flags=re.I):
+                for svg_match in re.finditer(r"<svg\b[\s\S]*?</svg>", page, flags=re.I):
                     svg = svg_match.group(0)
-                    svg_accessible_text.extend(re.findall(r"<(?:text|title|desc)\\b[^>]*>([\\s\\S]*?)</(?:text|title|desc)>", svg, flags=re.I))
-                    svg_accessible_text.extend(re.findall(r"aria-label=['\\\"]([^'\\\"]+)", svg, flags=re.I))
+                    svg_accessible_text.extend(re.findall(r"<(?:text|title|desc)\b[^>]*>([\s\S]*?)</(?:text|title|desc)>", svg, flags=re.I))
+                    svg_accessible_text.extend(re.findall(r"""aria-label=["']([^"']+)""", svg, flags=re.I))
                 if any(re.search(r"[А-Яа-яЁё]", re.sub(r"<[^>]+>", "", value)) for value in svg_accessible_text):
                     fail(errors, f"{lesson_id}/{locale}: Russian text remains in localized diagram labels")
                 if lesson_id == "A.5":
@@ -108,7 +108,7 @@ def main() -> int:
 
             parent = Path(relative).parent
             filename = Path(relative).name
-            base = re.sub(r"-(en|zh)(?=\\.html$)", "", filename)
+            base = re.sub(r"-(en|zh)(?=\.html$)", "", filename)
             for target_locale in LOCALES:
                 suffix = "" if target_locale == "ru" else f"-{target_locale}"
                 target = (parent / (base[:-5] + suffix + ".html")).as_posix()
@@ -117,13 +117,13 @@ def main() -> int:
 
         if all(pages.get(locale) for locale in LOCALES):
             def visible_text(page: str) -> str:
-                page = re.sub(r"<script\\b[\\s\\S]*?</script>", " ", page, flags=re.I)
-                page = re.sub(r"<style\\b[\\s\\S]*?</style>", " ", page, flags=re.I)
+                page = re.sub(r"<script\b[\s\S]*?</script>", " ", page, flags=re.I)
+                page = re.sub(r"<style\b[\s\S]*?</style>", " ", page, flags=re.I)
                 return re.sub(r"<[^>]+>", " ", page)
 
             ru_words = len(re.findall(r"[\\w]+", visible_text(pages["ru"]), flags=re.UNICODE))
             en_words = len(re.findall(r"[\\w]+", visible_text(pages["en"]), flags=re.UNICODE))
-            zh_characters = len(re.findall(r"[\\u3400-\\u9fff]", visible_text(pages["zh"])))
+            zh_characters = len(re.findall(r"[\u3400-\u9fff]", visible_text(pages["zh"])))
             if ru_words and en_words < ru_words * 0.65:
                 fail(errors, f"{lesson_id}: English text volume is too short ({en_words}/{ru_words} words; minimum 65%)")
             if zh_characters < 1000:

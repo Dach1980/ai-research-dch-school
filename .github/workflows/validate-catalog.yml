@@ -6,6 +6,7 @@ on:
     paths:
       - "data/catalog/**"
       - "scripts/validate-catalog.py"
+      - "tests/**"
       - "requirements-catalog.txt"
       - ".github/workflows/validate-catalog.yml"
   pull_request:

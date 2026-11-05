@@ -8,6 +8,7 @@
 <link rel="stylesheet" href="../styles/main.css">
 <style>
 .admin-shell{max-width:1440px;margin:auto;padding:24px 28px 60px}
+.admin-gate{max-width:680px;margin:70px auto;padding:26px;border:1px solid var(--line);border-radius:16px;background:#ffffff08;color:var(--text);line-height:1.7}.admin-gate p{color:var(--muted)}.admin-gate [data-kind=error]{color:#ffb4b4}
 .admin-heading{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;margin:16px 0 24px}
 .admin-heading h1{font:750 34px Manrope;margin:0}
 .admin-tabs{display:flex;gap:8px;flex-wrap:wrap;border-bottom:1px solid var(--line);margin-bottom:24px}
@@ -40,9 +41,10 @@ code{font-size:12px;color:var(--blue)}
 <body>
 <header class="site-header">
 <a class="brand" href="../index.html"><img src="../assets/logo.svg" alt="DCH"><span><strong>AI Research</strong><small>ADMINISTRATION</small></span></a>
-<a class="text-link" href="../index.html">← На публичный сайт</a>
+<div style="display:flex;gap:16px;align-items:center"><span id="admin-role" class="muted"></span><a class="text-link" href="../index.html">← На публичный сайт</a></div>
 </header>
-<main class="admin-shell">
+<section id="admin-gate" class="admin-gate" role="status" aria-live="polite"><h1>Проверка доступа</h1><p id="admin-gate-message">Проверяем учётную запись и административные разрешения…</p></section>
+<main class="admin-shell" hidden>
 <p class="eyebrow">CONTENT MANAGEMENT · PROJECT CONTROL</p>
 <div class="admin-heading"><h1>Панель администратора</h1><span class="muted">AI Research DCH School</span></div>
 <div class="warning"><strong>Важно:</strong> административная страница пока является статическим интерфейсом GitHub Pages. Она не защищена авторизацией и не предназначена для хранения секретов или персональных данных. Вкладка «Аудит и roadmap» загружает журнал из репозитория в режиме просмотра; изменения записей вносятся через Git-коммиты.</div>
@@ -80,6 +82,7 @@ code{font-size:12px;color:var(--blue)}
  tabs.forEach((tab,index)=>tab.addEventListener('keydown',event=>{if(event.key==='ArrowRight'||event.key==='ArrowLeft'){event.preventDefault();const next=(index+(event.key==='ArrowRight'?1:tabs.length-1))%tabs.length;tabs[next].focus();activate(tabs[next]);}}));
 })();
 </script>
-<script src="../scripts/admin-roadmap.js"></script>
+<script src="../scripts/supabase-config.js"></script>
+<script type="module" src="../scripts/admin-auth.js"></script>
 </body>
 </html>

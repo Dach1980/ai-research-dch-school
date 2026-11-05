@@ -1,4 +1,5 @@
 import importlib.util
+import json
 import unittest
 from pathlib import Path
 
@@ -81,3 +82,42 @@ class CatalogRelationshipTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class PublishedSiteIntegrityTests(unittest.TestCase):
+    def test_every_published_lesson_has_page_and_planet(self):
+        catalog_dir = ROOT / "data" / "catalog"
+        lessons = json.loads((catalog_dir / "lessons.json").read_text(encoding="utf-8"))["lessons"]
+        planets = json.loads((catalog_dir / "planets.json").read_text(encoding="utf-8"))["planets"]
+        planet_ids = {item["lesson_id"] for item in planets}
+        published = [item for item in lessons if item["status"] == "published"]
+        for lesson in published:
+            with self.subTest(lesson=lesson["id"]):
+                self.assertTrue((ROOT / lesson["url"]).is_file())
+                self.assertIn(lesson["id"], planet_ids)
+
+    def test_a3_has_accessible_original_diagrams(self):
+        page = (ROOT / "lessons" / "a-3-how-machines-learn-from-data.html").read_text(encoding="utf-8")
+        self.assertGreaterEqual(page.count("<svg"), 4)
+        self.assertIn('aria-labelledby="dataset-caption"', page)
+        self.assertIn('aria-labelledby="pipeline-caption"', page)
+        self.assertIn('aria-labelledby="generalization-caption"', page)
+        self.assertIn("Проверка понимания", page)
+
+    def test_map_uses_catalog_and_has_no_stale_planet_a1_binding(self):
+        page = (ROOT / "learning-map" / "index.html").read_text(encoding="utf-8")
+        script = (ROOT / "scripts" / "planet-map-catalog.js").read_text(encoding="utf-8")
+        self.assertNotIn("getElementById('planetA1')", page)
+        self.assertIn('data-planets-root', page)
+        self.assertIn('data/catalog/lessons.json', script)
+        self.assertIn('data/catalog/planets.json', script)
+        self.assertIn('data-generated-planet', script)
+        self.assertIn('data-select-lesson', script)
+
+    def test_a4_and_a5_are_editorial_drafts_not_published_pages(self):
+        catalog = json.loads((ROOT / "data" / "catalog" / "lessons.json").read_text(encoding="utf-8"))
+        ids = {item["id"] for item in catalog["lessons"]}
+        self.assertNotIn("A.4", ids)
+        self.assertNotIn("A.5", ids)
+        self.assertTrue((ROOT / "docs" / "education" / "drafts" / "A4-MACHINE-LEARNING-MODEL.md").is_file())
+        self.assertTrue((ROOT / "docs" / "education" / "drafts" / "A5-MODEL-EVALUATION.md").is_file())

@@ -50,6 +50,7 @@
         const button=document.createElement("button");
         button.type="button";
         button.className="planet-button";
+        if(lesson.id==="A.2")button.classList.add("planet-a2");
         if(planet.accent_id==="teal")button.classList.add("planet-a3");
         if(planet.accent_id==="teal")button.classList.add("planet-teal");
         if(planet.accent_id==="blue")button.classList.add("planet-blue");

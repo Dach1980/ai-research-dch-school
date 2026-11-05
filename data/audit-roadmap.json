@@ -591,6 +591,28 @@
         "Существующие SVG-схемы A.5 помимо нового общего ROC/PR/CV рисунка требуют полной сверки.",
         "Полнота EN/ZH переводов A.1–A.4 остаётся незавершённой."
       ]
+    },
+    {
+      "id": "AUD-023",
+      "date": "2026-11-05",
+      "type": "admin_roadmap_ui",
+      "title": "В административной панели создана отдельная вкладка Roadmap с датированными отчётами",
+      "result": "Существующая защищённая страница admin/index.html сохранена как единая точка администрирования. Вкладка «Аудит и roadmap» разделена на отдельные вкладки Roadmap и «Аудит». Roadmap отображает этапы, статусы, критерии приёмки и датированные отчёты из version-controlled data/audit-roadmap.json с результатами, ограничениями и ссылками на доказательства. Административный журнал операций Supabase оставлен отдельно. Создан документ состояния панели и условий приёмки.",
+      "evidence": [
+        "admin/index.html",
+        "scripts/admin-auth.js",
+        "scripts/admin-roadmap.js",
+        "scripts/admin-management.js",
+        "data/audit-roadmap.json",
+        "docs/management/ADMIN_PANEL_STATUS_2026-11-05.md"
+      ],
+      "limitations": [
+        "Supabase migrations и Edge Function не проверены на live project.",
+        "Первичный owner grant и работа email lifecycle не подтверждены.",
+        "Owner/editor live integration tests не выполнены.",
+        "GitHub Pages deployment и browser acceptance не подтверждены.",
+        "Публичная регистрация остаётся выключенной."
+      ]
     }
   ],
   "notes": [

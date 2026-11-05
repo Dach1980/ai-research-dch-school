@@ -34,6 +34,20 @@
       });
       universe.querySelectorAll("[data-generated-planet]").forEach(node => node.remove());
       planetNodes.forEach(node => { node.dataset.generatedPlanet = "true"; universe.appendChild(node); });
+      const first = lessons.get(planets[0].lesson_id);
+      const details = document.querySelector("#planetDetails");
+      if (details && first) {
+        const prerequisiteText = (first.prerequisites || []).length
+          ? "Перед этим уроком рекомендуется пройти: " + first.prerequisites.join(", ") + "."
+          : "Предварительная подготовка не требуется.";
+        details.innerHTML = '<div class="side-top"><span class="side-tag">PLANET ' + esc(first.id) + '</span><span class="level">' +
+          esc(first.level === "beginner" ? "Начальный уровень" : first.level) + '</span></div>' +
+          '<h2>' + esc(first.title) + '</h2><p class="side-desc">Опубликованный учебный материал направления Track A.</p>' +
+          '<p class="side-desc">' + esc(prerequisiteText) + '</p><div class="meta-grid">' +
+          '<div class="meta-item"><small>Длительность</small><strong>' + esc(first.duration_min + "–" + first.duration_max + " минут") + '</strong></div>' +
+          '<div class="meta-item"><small>Доступ</small><strong>' + esc(first.access === "open" ? "Открытый урок" : first.access) + '</strong></div></div>' +
+          '<div class="side-actions"><a class="button primary" href="../' + esc(first.url) + '">Начать урок ↗</a><a class="button secondary" href="../tracks/understanding-ai.html">О Track A</a></div>';
+      }
       list.innerHTML = '<div class="side-top"><strong>Track A · Understanding AI</strong><span class="level">' + planets.length + ' опубликовано</span></div>' +
         planets.map(planet => {
           const lesson = lessons.get(planet.lesson_id);

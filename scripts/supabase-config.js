@@ -5,5 +5,7 @@
  */
 window.DCH_SUPABASE_CONFIG = {
   url: "https://cwzhzmicfipfjxkfbwqa.supabase.co",
-  anonKey: "sb_publishable_K3Jo4vERczk6zGIXzyevew_ktrRARPP"
+  anonKey: "sb_publishable_K3Jo4vERczk6zGIXzyevew_ktrRARPP",
+  // Keep public sign-up disabled until approved Terms/Privacy pages and SMTP are live.
+  registrationEnabled: false
 };

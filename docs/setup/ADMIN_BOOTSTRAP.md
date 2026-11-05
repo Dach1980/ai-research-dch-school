@@ -5,7 +5,7 @@
 ## Deployment order
 
 1. Configure the Supabase project URL and publishable key in `scripts/supabase-config.js`.
-2. Apply migrations `001_learning_access.sql` through `004_school_admin_roles.sql` in order.
+2. Apply migrations 001_learning_access.sql, 002_seed_lesson_catalog.sql, 003_reconcile_public_lessons.sql, 004_school_admin_roles.sql, 005_align_public_a1_a3_catalog.sql and 006_multilingual_catalog_and_admin_audit.sql in order. The duplicate 003_publish_a3_lesson.sql file has been consolidated into 003 to avoid duplicate migration versions.
 3. Create the intended owner account through the normal email sign-up flow.
 4. Confirm the email address and sign in once.
 5. In Supabase Dashboard → SQL Editor, identify the exact UUID for that verified account:
@@ -34,7 +34,7 @@ set role = 'owner', is_active = true;
 - ordinary authenticated user: no access to administrative writes.
 - anonymous user: no access to the administrator role table or administrative operations.
 
-The migration intentionally creates no initial owner. The first grant must be performed by the Supabase project owner in the trusted Dashboard SQL Editor. Never add a self-service role-grant endpoint.
+The migration intentionally creates no initial owner. The first grant must be performed by the Supabase project owner in the trusted Dashboard SQL Editor. Subsequent owner-only role changes are handled by the authenticated school-admin-management Edge Function; never expose the service-role key to the browser.
 
 ## Production gates still required
 
@@ -43,3 +43,8 @@ The migration intentionally creates no initial owner. The first grant must be pe
 - Move any account-only or paid lesson bodies out of the public GitHub Pages repository.
 - Test anonymous, ordinary-user, editor and owner access directly against the Supabase REST API.
 - Add an audit trail for administrative changes and test role revocation.
+
+
+## Administrative Edge Function
+
+After the first owner is bootstrapped, deploy supabase/functions/school-admin-management/index.ts and set its server secrets as described in ADMIN_EDGE_FUNCTION.md. The function verifies the caller's JWT, email confirmation and active owner role before it can list, suspend or activate accounts, grant editor/owner roles or revoke an administrative role.

@@ -1,0 +1,35 @@
+name: Validate learning catalog
+
+on:
+  push:
+    branches: ["main"]
+    paths:
+      - "data/catalog/**"
+      - "scripts/validate-catalog.py"
+      - "requirements-catalog.txt"
+      - ".github/workflows/validate-catalog.yml"
+  pull_request:
+    paths:
+      - "data/catalog/**"
+      - "scripts/validate-catalog.py"
+      - "requirements-catalog.txt"
+      - ".github/workflows/validate-catalog.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install catalog validator
+        run: python -m pip install -r requirements-catalog.txt
+      - name: Validate catalog
+        run: python scripts/validate-catalog.py

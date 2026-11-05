@@ -27,7 +27,9 @@ as $$
   select exists (
     select 1
     from public.school_admins a
+    join auth.users u on u.id = a.user_id
     where a.user_id = (select auth.uid())
+      and u.email_confirmed_at is not null
       and a.is_active = true
       and a.role in ('owner','editor')
   );
@@ -43,7 +45,9 @@ as $$
   select exists (
     select 1
     from public.school_admins a
+    join auth.users u on u.id = a.user_id
     where a.user_id = (select auth.uid())
+      and u.email_confirmed_at is not null
       and a.is_active = true
       and a.role = 'owner'
   );

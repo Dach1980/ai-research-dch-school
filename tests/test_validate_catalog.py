@@ -145,7 +145,9 @@ class PublishedSiteIntegrityTests(unittest.TestCase):
         for relative in ["index-en.html", "index-zh.html", "lessons/index-en.html",
                          "lessons/index-zh.html", "learning-map/index-en.html",
                          "learning-map/index-zh.html", "tracks/understanding-ai-en.html",
-                         "tracks/understanding-ai-zh.html"]:
+                         "tracks/understanding-ai-zh.html", "tracks/inside-ai-en.html",
+                         "tracks/inside-ai-zh.html", "tracks/building-with-ai-en.html",
+                         "tracks/building-with-ai-zh.html"]:
             self.assertTrue((ROOT / relative).is_file(), relative)
 
     def test_a1_and_a2_have_original_explanatory_diagrams(self):
@@ -197,6 +199,8 @@ class PublishedSiteIntegrityTests(unittest.TestCase):
             "lessons/index-en.html", "lessons/index-zh.html",
             "learning-map/index-en.html", "learning-map/index-zh.html",
             "tracks/understanding-ai-en.html", "tracks/understanding-ai-zh.html",
+            "tracks/inside-ai-en.html", "tracks/inside-ai-zh.html",
+            "tracks/building-with-ai-en.html", "tracks/building-with-ai-zh.html",
             "lessons/a-1-what-is-artificial-intelligence-en.html",
             "lessons/a-1-what-is-artificial-intelligence-zh.html",
             "lessons/a-2-ai-ml-deep-learning-en.html",

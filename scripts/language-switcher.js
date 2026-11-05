@@ -5,9 +5,12 @@
  const file=path.split("/").pop() || "index.html";
  const base=file.replace(/-(en|zh)(?=\.html$)/,"");
  const folder=path.slice(0,path.lastIndexOf("/")+1);
- const known=/^(index|understanding-ai|a-[1-5]-.*)\.html$/.test(base);
- const target=(locale)=>{
-  if(!known) return folder.includes("/lessons/") ? folder+"index"+(locale==="ru"?"":"-"+locale)+".html" : "/ai-research-dch-school/index"+(locale==="ru"?"":"-"+locale)+".html";
+ const lessonPage=folder.includes("/lessons/") && /^a-[1-5]-.*\.html$/.test(base);
+ const indexPage=base==="index.html" && (folder.endsWith("/lessons/") || folder.endsWith("/learning-map/") || path.endsWith("/ai-research-dch-school/") || path.endsWith("/ai-research-dch-school/index.html"));
+ const trackPage=base==="understanding-ai.html" && folder.includes("/tracks/");
+ const known=lessonPage || indexPage || trackPage;
+ const target=locale=>{
+  if(!known)return "/ai-research-dch-school/index"+(locale==="ru"?"":"-"+locale)+".html";
   return folder+base.replace(/\.html$/,"")+(locale==="ru"?"":"-"+locale)+".html";
  };
  const active=file.endsWith("-en.html")?"en":file.endsWith("-zh.html")?"zh":"ru";

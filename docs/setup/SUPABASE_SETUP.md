@@ -15,9 +15,9 @@ The browser key is not an access-control mechanism. Security depends on the RLS 
 
 ## 2. Apply the database migration
 
-Run `supabase/migrations/001_learning_access.sql`, `supabase/migrations/002_seed_lesson_catalog.sql`, `supabase/migrations/003_publish_a3_lesson.sql`, `supabase/migrations/004_school_admin_roles.sql`, and `supabase/migrations/005_align_public_a1_a3_catalog.sql` in the Supabase SQL Editor, in that order. Inspect the result and verify that RLS is enabled on all five tables.
+Run the migrations in order: 001_learning_access.sql, 002_seed_lesson_catalog.sql, 003_reconcile_public_lessons.sql, 004_school_admin_roles.sql, 005_align_public_a1_a3_catalog.sql, and 006_multilingual_catalog_and_admin_audit.sql. The duplicate 003_publish_a3_lesson.sql was consolidated into migration 003 and removed so the migration version is unique. Apply each file once in the Supabase SQL Editor (or use the CLI after reconciling migration history). Inspect the result and verify RLS on profiles, lesson_catalog, lesson_content, lesson_entitlements, school_admins and school_admin_audit.
 
-Migration 005 aligns the Supabase metadata for public A.1, A.2 and A.3 with the current website catalogue. This is metadata only: all three lesson bodies remain in the public GitHub repository and are NOT protected by this database policy. Do not treat the access gate as production-secure until its lesson payload and assets have been moved out of the public repository and the old public copies/history have been addressed.
+Migration 006 synchronizes public multilingual metadata for A.1–A.5, creates the database audit log and owner-only profile metadata policy. Migrations 003/005 are retained for compatibility and reconciliation. This is metadata only: all lesson HTML bodies remain in the public GitHub repository and are NOT protected by database policies. Do not treat the access gate as production-secure until its lesson payload and assets have been moved out of the public repository and the old public copies/history have been addressed.
 
 ## 3. Configure email authentication
 
@@ -78,4 +78,11 @@ The registration checkbox links to `docs/legal/TERMS_DRAFT.md` and `docs/legal/P
 
 ## 8. Initial administrator
 
-After applying migration 004, follow [ADMIN_BOOTSTRAP.md](ADMIN_BOOTSTRAP.md) to grant the first owner role from the trusted Supabase SQL Editor. The migration deliberately creates no administrator and the public website cannot grant roles. The `/admin/` page stays hidden until a verified user session has an active `owner` or `editor` row in `public.school_admins`.
+After applying migrations 004 and 006, follow [ADMIN_BOOTSTRAP.md](ADMIN_BOOTSTRAP.md) to grant the first owner role from the trusted Supabase SQL Editor. Then deploy the school-admin-management Edge Function using ADMIN_EDGE_FUNCTION.md. The migration deliberately creates no administrator. The /admin/ page stays hidden until a verified user session has an active owner or editor row in public.school_admins.
+
+
+## 9. Administrative management
+
+The repository contains a protected management interface for lesson catalogue metadata, JSON lesson payloads, learner account status, administrator roles, learning entitlements and the PostgreSQL audit log. User/role actions call a trusted Edge Function; the browser never receives the service-role key. See ADMIN_EDGE_FUNCTION.md.
+
+This is not yet a production-ready content publishing pipeline. The website is static GitHub Pages: changing Supabase catalogue metadata or a JSON payload does not rebuild the public HTML page. Protected lesson delivery remains blocked until restricted bodies/assets are moved out of the public repository and direct-access tests pass. Keep registration disabled until SMTP, legal documents, email lifecycle and privacy requirements are approved.

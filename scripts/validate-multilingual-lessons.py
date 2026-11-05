@@ -92,6 +92,28 @@ def main() -> int:
                 normalized_svg(match.group(0))
                 for match in re.finditer(r"<svg\b[\s\S]*?</svg>", page, flags=re.I)
             ]
+            if locale != "ru":
+                svg_accessible_text = []
+                for svg_match in re.finditer(r"<svg\\b[\\s\\S]*?</svg>", page, flags=re.I):
+                    svg = svg_match.group(0)
+                    svg_accessible_text.extend(re.findall(r"<(?:text|title|desc)\\b[^>]*>([\\s\\S]*?)</(?:text|title|desc)>", svg, flags=re.I))
+                    svg_accessible_text.extend(re.findall(r"aria-label=['\\\"]([^'\\\"]+)", svg, flags=re.I))
+                if any(re.search(r"[А-Яа-яЁё]", re.sub(r"<[^>]+>", "", value)) for value in svg_accessible_text):
+                    fail(errors, f"{lesson_id}/{locale}: Russian text remains in localized diagram labels")
+                if lesson_id == "A.5":
+                    required = ("ROC-AUC", "Average Precision", "StratifiedKFold", "DummyClassifier", "LogisticRegression")
+                    missing = [term for term in required if term not in page]
+                    if missing:
+                        fail(errors, f"A.5/{locale}: missing expanded evaluation content: {', '.join(missing)}")
+
+            parent = Path(relative).parent
+            filename = Path(relative).name
+            base = re.sub(r"-(en|zh)(?=\\.html$)", "", filename)
+            for target_locale in LOCALES:
+                suffix = "" if target_locale == "ru" else f"-{target_locale}"
+                target = (parent / (base[:-5] + suffix + ".html")).as_posix()
+                if not (ROOT / target).is_file():
+                    fail(errors, f"{lesson_id}/{locale}: language switcher target missing: {target_locale} -> {target}")
 
         if all(locale in diagrams for locale in LOCALES):
             counts = {locale: len(diagrams[locale]) for locale in LOCALES}

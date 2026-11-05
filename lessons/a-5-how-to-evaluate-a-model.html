@@ -9,7 +9,7 @@ model = LinearRegression().fit(X_train, y_train)
 pred = model.predict(X_test)
 print("MAE:", mean_absolute_error(y_test, pred))
 print("RMSE:", mean_squared_error(y_test, pred) ** 0.5)
-print("R2:", r2_score(y_test, pred))</code></pre><p>Важно: все преобразования данных должны обучаться только на тренировочной выборке.</p></section><section><h2>分类实践：baseline 与逻辑回归</h2><p>下面的实验使用合成数据，演示分层划分、基азовый классификатор、Pipeline и несколько метрик. В реальном проекте замените генератор на подготовленные признаки и заранее определите цену ложных тревог и пропусков.</p><pre><code>from sklearn.datasets import make_classification
+print("R2:", r2_score(y_test, pred))</code></pre><p>Важно: все преобразования данных должны обучаться только на тренировочной выборке.</p></section><section><h2>Практикум по классификации: baseline и логистическая регрессия</h2><p>Эксперимент на синтетических данных демонстрирует стратифицированное разбиение, базовый классификатор, конвейер предобработки Pipeline и несколько метрик. В реальном проекте замените генератор на подготовленные признаки и заранее определите цену ложных тревог и пропусков.</p><pre><code>from sklearn.datasets import make_classification
 from sklearn.model_selection import train_test_split, StratifiedKFold, cross_val_score
 from sklearn.dummy import DummyClassifier
 from sklearn.pipeline import make_pipeline

@@ -28,6 +28,8 @@ jobs:
         run: python scripts/validate-catalog.py
       - name: Validate multilingual lessons and diagram parity
         run: python scripts/validate-multilingual-lessons.py
+      - name: Validate A.6 lesson and shared illustrations
+        run: python scripts/validate-a6.py
   validate-supabase-migrations:
     runs-on: ubuntu-latest
     services:

@@ -12,7 +12,13 @@
       "duration_min": 40,
       "duration_max": 50,
       "prerequisites": [],
-      "url": "lessons/a-1-what-is-artificial-intelligence.html"
+      "url": "lessons/a-1-what-is-artificial-intelligence.html",
+      "learning_outcomes": [
+        "Объяснять понятие Artificial Intelligence и его основные трактовки",
+        "Различать интеллект, интеллектуальное поведение и сознание",
+        "Описывать общую схему AI-системы и основные подходы к её созданию",
+        "Приводить примеры задач AI и объяснять ограничения таких систем"
+      ]
     },
     {
       "id": "A.2",
@@ -27,7 +33,13 @@
       "prerequisites": [
         "A.1"
       ],
-      "url": "lessons/a-2-ai-ml-deep-learning.html"
+      "url": "lessons/a-2-ai-ml-deep-learning.html",
+      "learning_outcomes": [
+        "Различать AI, Machine Learning и Deep Learning",
+        "Объяснять отношения между AI, ML и DL",
+        "Приводить примеры AI-систем без машинного обучения",
+        "Классифицировать прикладные системы по используемому подходу"
+      ]
     },
     {
       "id": "A.3",

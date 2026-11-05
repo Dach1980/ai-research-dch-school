@@ -95,9 +95,9 @@ class PublishedSiteIntegrityTests(unittest.TestCase):
     def test_a3_has_accessible_original_diagrams(self):
         page = (ROOT / "lessons" / "a-3-how-machines-learn-from-data.html").read_text(encoding="utf-8")
         self.assertGreaterEqual(page.count("<svg"), 4)
-        self.assertIn('aria-labelledby="dataset-caption"', page)
-        self.assertIn('aria-labelledby="pipeline-caption"', page)
-        self.assertIn('aria-labelledby="generalization-caption"', page)
+        self.assertIn('aria-labelledby="dataset-title dataset-desc"', page)
+        self.assertIn('aria-labelledby="pipeline-title pipeline-desc"', page)
+        self.assertIn('aria-labelledby="generalization-title generalization-desc"', page)
         self.assertIn("Проверка понимания", page)
 
     def test_map_uses_catalog_and_has_no_stale_planet_a1_binding(self):

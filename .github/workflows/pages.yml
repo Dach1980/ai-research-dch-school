@@ -63,7 +63,7 @@ jobs:
             echo "Applying $migration"
             psql -h 127.0.0.1 -U postgres -d dch_school_test -v ON_ERROR_STOP=1 -f "$migration"
           done
-      - name: Assert RLS, helper functions and public A.1-A.5 metadata
+      - name: Assert RLS, helper functions and public A.1-A.6 metadata
         env:
           PGPASSWORD: postgres
         run: psql -h 127.0.0.1 -U postgres -d dch_school_test -v ON_ERROR_STOP=1 -f supabase/tests/ci_assertions.sql

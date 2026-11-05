@@ -15,7 +15,7 @@ The browser key is not an access-control mechanism. Security depends on the RLS 
 
 ## 2. Apply the database migration
 
-Run `supabase/migrations/001_learning_access.sql`, `supabase/migrations/002_seed_lesson_catalog.sql`, and `supabase/migrations/003_publish_a3_lesson.sql` in the Supabase SQL Editor, in that order. Inspect the result and verify that RLS is enabled on all four tables.
+Run `supabase/migrations/001_learning_access.sql`, `supabase/migrations/002_seed_lesson_catalog.sql`, `supabase/migrations/003_publish_a3_lesson.sql`, and `supabase/migrations/004_school_admin_roles.sql` in the Supabase SQL Editor, in that order. Inspect the result and verify that RLS is enabled on all four tables.
 
 The initial catalogue seed sets two lessons to `public` and A.1 to `free_account`. This is metadata only: the A.1 lesson body is still in the public GitHub repository and is NOT protected by this database policy. Do not treat the access gate as production-secure until its lesson payload and assets have been moved out of the public repository and the old public copies/history have been addressed.
 
@@ -74,3 +74,8 @@ Until this migration is complete, the two public chapters are the only materials
 ## 7. Legal publication gate
 
 The registration checkbox links to `docs/legal/TERMS_DRAFT.md` and `docs/legal/PRIVACY_POLICY_DRAFT.md`. These are checklists, not final legal documents. Before enabling public sign-up, replace them with approved user-facing pages containing the operator identity, contact details, applicable jurisdiction, processing purposes/legal bases, retention, user rights, Supabase region/subprocessors, account deletion procedure, and other required disclosures. Registration must not be promoted publicly while these documents remain drafts.
+
+
+## 8. Initial administrator
+
+After applying migration 004, follow [ADMIN_BOOTSTRAP.md](ADMIN_BOOTSTRAP.md) to grant the first owner role from the trusted Supabase SQL Editor. The migration deliberately creates no administrator and the public website cannot grant roles. The `/admin/` page stays hidden until a verified user session has an active `owner` or `editor` row in `public.school_admins`.

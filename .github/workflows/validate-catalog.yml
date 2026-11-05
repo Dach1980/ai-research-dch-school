@@ -36,3 +36,5 @@ jobs:
         run: python -m unittest discover -s tests -p 'test_validate_catalog.py' -v
       - name: Validate catalog
         run: python scripts/validate-catalog.py
+      - name: Validate multilingual lesson pages and diagrams
+        run: python scripts/validate-multilingual-lessons.py

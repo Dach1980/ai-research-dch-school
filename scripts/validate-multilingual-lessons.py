@@ -29,6 +29,7 @@ def read_page(relative: str, errors: list[str]) -> str:
 def normalized_svg(svg: str) -> str:
     svg = re.sub(r"<text\b[^>]*>[\s\S]*?</text>", "<text/>", svg, flags=re.I)
     svg = re.sub(r"<title\b[^>]*>[\s\S]*?</title>", "<title/>", svg, flags=re.I)
+    svg = re.sub(r"<desc\b[^>]*>[\s\S]*?</desc>", "<desc/>", svg, flags=re.I)
     svg = re.sub(r"\s+(?:aria-label|aria-labelledby|role)=(['\"]).*?\1", "", svg, flags=re.I)
     return re.sub(r">\s+<", "><", svg).strip()
 

@@ -118,7 +118,7 @@
       "title": "Проверить карту и провести приёмочный аудит",
       "status": "in_progress",
       "priority": "medium",
-      "decision": "Проверить соответствие учебной программе, UX, доступность, адаптивность и работоспособность ссылок до публикации. 2026-11-05: исправлена гонка инициализации карты, добавлен выбор планеты с обновлением карточки, мобильная прокрутка к деталям, список как альтернативная навигация, menu toggle на основных страницах и automated site-integrity tests. Визуальная проверка реального deployed Pages и viewport ещё не подтверждена.",
+      "decision": "Проверить соответствие учебной программе, UX, доступность, адаптивность и работоспособность ссылок до публикации. 2026-11-05: исправлена гонка инициализации карты, добавлен выбор планеты с обновлением карточки, мобильная прокрутка к деталям, список как альтернативная навигация, menu toggle на основных страницах и automated site-integrity tests. Визуальная проверка реального deployed Pages и viewport ещё не подтверждена. 2026-11-05: source-level checks catalog, five planet bindings, language navigation, all local A.1–A.5 links and SVG parity implemented. Browser-level interaction and visual acceptance of the deployed knowledge map remain pending.",
       "acceptance": [
         "Проверены desktop/tablet/mobile.",
         "Проверены все ID, подписи и URL.",
@@ -149,7 +149,7 @@
       "title": "Подготовить безопасную регистрацию и административные роли",
       "status": "in_progress",
       "priority": "high",
-      "decision": "Созданы защищённые интерфейсы каталога и JSON-содержимого, управления пользователями, административными ролями, entitlements и аудитом; добавлена Edge Function с owner-only проверкой и JWT verification. Миграции 006 и Edge Function ещё не применены/развёрнуты в реальном Supabase; SMTP, legal gate и registration остаются незавершёнными.",
+      "decision": "Созданы защищённые интерфейсы каталога и JSON-содержимого, управления пользователями, административными ролями, entitlements и аудитом; добавлена Edge Function с owner-only проверкой и JWT verification. Миграции 006 и Edge Function ещё не применены/развёрнуты в реальном Supabase; SMTP, legal gate и registration остаются незавершёнными. 2026-11-05: admin-auth.js now calls supabase.auth.getUser() to validate the identity with Auth before role lookup; migration 003 SQL syntax defect fixed; clean PostgreSQL 16 CI smoke test applies migrations 001–006 and verifies RLS, helper functions and A.1–A.5 public metadata. Live Supabase migration state, owner bootstrap, Edge Function deployment and role integration tests remain unverified.",
       "acceptance": [
         "RLS ограничивает чтение и запись административных таблиц и контента.",
         "Роли не могут выдаваться из браузера или самим пользователем.",
@@ -174,9 +174,14 @@
         "Определена единая стратегия локализации и переключения языка",
         "Основные страницы доступны на русском, английском и китайском",
         "Для каждой опубликованной лекции существуют три согласованные языковые версии",
-        "Каталоги, карта знаний, навигация и SEO-метаданные учитывают язык"
+        "Каталоги, карта знаний, навигация и SEO-метаданные учитывают язык",
+        "Для A.1–A.5 существуют RU / EN / 中文 версии с сопоставимыми учебными результатами, ключевыми объяснениями, примерами и упражнениями.",
+        "EN-версия каждого A.1–A.5 содержит не менее 65% объёма видимого текста RU-версии как автоматический сигнал полноты; ZH — не менее 1000 иероглифов CJK.",
+        "Количество и геометрия SVG-схем совпадают между RU / EN / 中文; видимые подписи, figcaption и accessibility labels локализованы.",
+        "Переключатель языка для каждого урока ведёт на существующую страницу; локальные HTML-ссылки проверяются автоматически.",
+        "GitHub Actions выполняет catalog tests, url_i18n validation, multilingual content/link/diagram parity validation до публикации."
       ],
-      "decision": "Локализованы главная страница, каталог, карта знаний, Track A, обзорные страницы Tracks B/C и уроки A.1–A.5 на RU/EN/ZH; реализован единый переключатель. Второстепенные страницы новостей, аккаунта, legal и admin ещё требуют локализации и редакторской вычитки. Аудит A.1–A.5 от 2026-11-05 подтвердил наличие EN/ZH HTML-файлов, но выявил существенное сокращение переводов относительно RU (A.1: 3413/710/179 слов; A.2: 2134/671/173; A.3: 2831/880/244; A.4: 2377/765/270; A.5: 855/956/352; китайский word count ориентировочный). В A.1 количество SVG различается (RU 2, EN/ZH 3); для A.2–A.5 одинаковое количество SVG не доказывает идентичность содержания. Требуется канонический общий набор схем и полное восстановление локализаций."
+      "decision": "Локализованы главная страница, каталог, карта знаний, Track A, обзорные страницы Tracks B/C и уроки A.1–A.5 на RU/EN/ZH; реализован единый переключатель. Второстепенные страницы новостей, аккаунта, legal и admin ещё требуют локализации и редакторской вычитки. Аудит A.1–A.5 от 2026-11-05 подтвердил наличие EN/ZH HTML-файлов, но выявил существенное сокращение переводов относительно RU (A.1: 3413/710/179 слов; A.2: 2134/671/173; A.3: 2831/880/244; A.4: 2377/765/270; A.5: 855/956/352; китайский word count ориентировочный). В A.1 количество SVG различается (RU 2, EN/ZH 3); для A.2–A.5 одинаковое количество SVG не доказывает идентичность содержания. Требуется канонический общий набор схем и полное восстановление локализаций. 2026-11-05: A.1–A.4 EN/ZH версии содержательно расширены; A.5 сохраняет расширенную трёхъязычную редакцию. Итоговые ориентиры объёма RU/EN/ZH: A.1 3413/2511/4256 CJK; A.2 2134/1876/3147 CJK; A.3 2831/2344/3774 CJK; A.4 2377/2038/3340 CJK; A.5 1514/1665/1933 CJK. Во всех языках унифицирована геометрия SVG: A.1 — 2, A.2 — 3, A.3 — 4, A.4 — 6, A.5 — 6 схем; текстовые подписи и accessibility labels локализованы. Добавлены scripts/validate-multilingual-lessons.py и проверки каталога url_i18n; исправлены битые RU-навигационные ссылки A.5. Python unit tests, каталог и multilingual/diagram parity validation проходят в GitHub Actions. Остаётся редакторская вычитка носителями языка и визуальная проверка в реальном браузере."
     }
   ],
   "audit_log": [
@@ -612,6 +617,72 @@
         "Owner/editor live integration tests не выполнены.",
         "GitHub Pages deployment и browser acceptance не подтверждены.",
         "Публичная регистрация остаётся выключенной."
+      ]
+    },
+    {
+      "id": "AUD-024",
+      "date": "2026-11-05",
+      "type": "multilingual_localization_and_diagram_unification",
+      "title": "Расширены A.1–A.4 EN/ZH и унифицированы иллюстрации A.1–A.5",
+      "result": "A.1–A.4 EN/ZH дополнены полным учебным покрытием ключевых тем, инженерных примеров, практики и self-check; A.5 содержит расширение ROC-AUC, PR-AUC/AP, cross-validation и классификационный Python-практикум. Объём видимого текста RU/EN и CJK: A.1 3413/2511/4256; A.2 2134/1876/3147; A.3 2831/2344/3774; A.4 2377/2038/3340; A.5 1514/1665/1933. Для каждой языковой версии теперь совпадают структура и геометрия SVG; подписи, figcaption и accessibility labels локализованы. Количество схем: 2/3/4/6/6 для A.1–A.5 соответственно.",
+      "evidence": [
+        "lessons/a-1-what-is-artificial-intelligence-en.html",
+        "lessons/a-1-what-is-artificial-intelligence-zh.html",
+        "lessons/a-2-ai-ml-deep-learning-en.html",
+        "lessons/a-2-ai-ml-deep-learning-zh.html",
+        "lessons/a-3-how-machines-learn-from-data-en.html",
+        "lessons/a-3-how-machines-learn-from-data-zh.html",
+        "lessons/a-4-what-is-machine-learning-model-en.html",
+        "lessons/a-4-what-is-machine-learning-model-zh.html",
+        "lessons/a-5-how-to-evaluate-a-model-en.html",
+        "lessons/a-5-how-to-evaluate-a-model-zh.html",
+        "docs/audits/A1-A5_MULTILINGUAL_COMPLETION_2026-11-05.md"
+      ],
+      "limitations": [
+        "Объём текста — индикатор, а не редакторская оценка качества перевода.",
+        "Требуется вычитка носителями языка и браузерная визуальная приёмка desktop/mobile."
+      ]
+    },
+    {
+      "id": "AUD-025",
+      "date": "2026-11-05",
+      "type": "catalog_language_navigation_ci",
+      "title": "Каталог, языковая навигация и диаграммы A.1–A.5 покрыты автоматическими проверками",
+      "result": "scripts/validate-catalog.py теперь проверяет все url_i18n ru/en/zh и языковой список. Новый scripts/validate-multilingual-lessons.py проверяет наличие 15 страниц, html lang, локальные HTML-ссылки, цели языкового переключателя, отсутствие placeholder captions и русских подписей в EN/ZH, объём перевода, одинаковое количество и геометрию SVG. Найдены и исправлены четыре ошибочные ссылки index-.html в RU A.5. В GitHub Actions прошли 19 unit tests, catalog validation и multilingual/diagram parity validation. Pages workflow теперь блокирует deploy до прохождения этих проверок.",
+      "evidence": [
+        "scripts/validate-catalog.py",
+        "scripts/validate-multilingual-lessons.py",
+        ".github/workflows/pages.yml",
+        ".github/workflows/validate-catalog.yml",
+        "tests/test_validate_catalog.py",
+        "data/catalog/lessons.json",
+        "data/catalog/planets.json",
+        "lessons/a-5-how-to-evaluate-a-model.html",
+        "docs/audits/A1-A5_MULTILINGUAL_COMPLETION_2026-11-05.md"
+      ],
+      "limitations": [
+        "Визуальная проверка опубликованного сайта в браузере не выполнялась из текущей среды."
+      ]
+    },
+    {
+      "id": "AUD-026",
+      "date": "2026-11-05",
+      "type": "supabase_migration_and_admin_security_audit",
+      "title": "Исправлена миграция Supabase 003 и добавлен PostgreSQL 16 smoke test",
+      "result": "Статический аудит миграций 001–006 выявил отсутствующую закрывающую скобку в VALUES tuple урока A.2 в migration 003; синтаксис исправлен. Добавлены тестовые Supabase Auth stubs и SQL assertions в supabase/tests. GitHub Actions job validate-supabase-migrations применил все миграции 001–006 на чистом PostgreSQL 16; проверки RLS на шести защищённых таблицах, функций is_school_admin/is_school_owner, отсутствия anonymous write policies и пяти публичных A.1–A.5 записей прошли успешно (run 42043791053). Admin auth дополнительно переведён на серверную проверку supabase.auth.getUser() перед чтением роли. Публичная регистрация остаётся выключенной.",
+      "evidence": [
+        "supabase/migrations/003_reconcile_public_lessons.sql",
+        "supabase/tests/ci_bootstrap.sql",
+        "supabase/tests/ci_assertions.sql",
+        ".github/workflows/pages.yml",
+        "scripts/admin-auth.js",
+        "scripts/supabase-config.js",
+        "supabase/functions/school-admin-management/index.ts",
+        "docs/management/SUPABASE_ADMIN_ACCEPTANCE_2026-11-05.md"
+      ],
+      "limitations": [
+        "Тест использует изолированную PostgreSQL 16 базу и минимальные Auth stubs; он не доказывает состояние live Supabase проекта.",
+        "Live migration status, Edge Function deployment/secrets, first owner bootstrap and real role-boundary tests remain pending."
       ]
     }
   ],

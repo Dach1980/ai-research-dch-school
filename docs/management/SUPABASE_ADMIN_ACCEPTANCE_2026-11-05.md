@@ -39,7 +39,7 @@ Added test-only files:
 - `supabase/tests/ci_bootstrap.sql` — creates minimal `auth.users`, `auth.uid()`, and Supabase roles in an isolated CI database.
 - `supabase/tests/ci_assertions.sql` — verifies RLS on protected tables, administrator helper functions, absence of anonymous write policies, and five published public A.1–A.5 metadata records.
 
-The GitHub Pages workflow includes a separate `validate-supabase-migrations` job. It applies migrations 001–006 to a clean PostgreSQL 16 service and runs the assertions. The test bootstrap is for CI only and must not be applied to the live Supabase project.
+The GitHub Pages workflow includes a separate `validate-supabase-migrations` job. It applies migrations 001–006 to a clean PostgreSQL 16 service and runs the assertions. The test bootstrap is for CI only and must not be applied to the live Supabase project.\n\nThe complete CI workflow passed on 2026-11-05 in run `42044025429`: the catalog/multilingual validation job, the PostgreSQL 16 migration/RLS smoke-test job, and the GitHub Pages deployment job all completed successfully. This proves the repository migrations apply cleanly to the isolated test schema; it does not prove that the live Supabase project has those migrations applied.
 
 ## 5. Live Supabase tasks that remain blocked
 

@@ -30,12 +30,11 @@
 <section class="map-intro"><p class="map-kicker">DCH KNOWLEDGE UNIVERSE · TRACK A</p><h1>Карта знаний <span style="color:var(--blue)">Track A</span></h1><p class="lead">Каждый опубликованный урок — отдельная планета. Выберите A.1 или A.2: обе планеты содержат полноценные лекции и практические задания.</p></section>
 <div class="map-toolbar"><p>Опубликованные уроки отмечены как доступные планеты · новые планеты добавляются после полной подготовки урока</p><div class="view-switch" role="group" aria-label="Способ отображения"><button type="button" id="mapMode" aria-pressed="true">Карта</button><button type="button" id="listMode" aria-pressed="false">Список</button></div></div>
 <section class="map-shell" id="mapView">
-<div class="universe" aria-label="Космическая карта направления Track A">
+<div class="universe" data-planets-root aria-label="Космическая карта направления Track A">
 <div class="sector-label"><strong>SECTOR A</strong><span>UNDERSTANDING AI</span></div>
 <div class="orbit o1"></div><div class="orbit o2"></div><div class="orbit o3"></div>
 <div class="sun" aria-hidden="true"><span>DCH</span></div>
 <span class="moon m1" aria-hidden="true"></span><span class="moon m2" aria-hidden="true"></span><span class="moon m3" aria-hidden="true"></span>
-<button class="planet-button" id="planetA1" type="button" aria-label="Выбрать планету A.1: Что такое искусственный интеллект?" aria-pressed="true"><span class="planet-core"><span style="font:800 14px Manrope">A.1</span></span><span class="planet-code">A.1 · ПЕРВЫЙ ШАГ</span><span class="planet-name">Что такое искусственный интеллект?</span></button>\n<a class="planet-button planet-a2" href="../lessons/a-2-ai-ml-deep-learning.html" aria-label="Открыть планету A.2: AI, Machine Learning и Deep Learning"><span class="planet-core"><span style="font:800 13px Manrope">A.2</span></span><span class="planet-code">A.2 · ML / DL</span><span class="planet-name">AI, ML и Deep Learning</span></a>
 <div class="map-legend"><span><i class="legend-dot"></i>Доступный урок</span><span>Орбиты — визуальная навигация</span></div>
 </div>
 <aside class="map-side" id="planetDetails" aria-live="polite">
@@ -48,16 +47,17 @@
 <div class="side-actions"><a class="button primary" href="../lessons/a-1-what-is-artificial-intelligence.html">Начать урок ↗</a><a class="button secondary" href="../tracks/understanding-ai.html">О Track A</a></div>
 </aside>
 </section>
-<section class="list-view" id="listView" aria-label="Список опубликованных планет Track A"><div class="side-top"><strong>Track A · Understanding AI</strong><span class="level">2 опубликованные планеты</span></div><div class="list-entry"><div><strong>A.1 — Что такое искусственный интеллект?</strong><small>Начальный уровень · 40–50 минут · без предварительных требований</small></div><button type="button" id="selectFromList">Показать на карте</button></div><div class="list-entry"><div><strong>A.2 — AI, Machine Learning и Deep Learning</strong><small>Начальный уровень · 50–60 минут · после A.1</small></div><a class="button secondary" href="../lessons/a-2-ai-ml-deep-learning.html">Открыть урок ↗</a></div><p style="color:var(--muted);font-size:11px;margin:14px 0 0">Следующие уроки появятся на карте после подготовки полного учебного материала и публикации страницы.</p></section>
+<section class="list-view" id="listView" aria-label="Список опубликованных планет Track A"><div data-planets-list><p class="muted">Загружаем единый каталог планет…</p></div><p style="color:var(--muted);font-size:11px;margin:14px 0 0">Следующие уроки появятся на карте после подготовки полного учебного материала и публикации.</p></section>
 <div class="map-note"><strong>Правило карты:</strong> планетой становится только опубликованный урок с полноценной страницей, результатами обучения, содержанием и практической частью. Декоративные орбиты не обозначают несуществующие уроки. Каталог доступен как альтернативный способ навигации.</div>
 </main>
 <footer class="footer"><a class="brand" href="../index.html"><img src="../assets/logo.svg" alt="DCH"><span><strong>AI Research</strong><small>DCH SCHOOL</small></span></a><p>Understand AI. Build AI. Research AI.</p><span>© 2026 AI Research DCH School</span></footer>
+<script src="../scripts/planet-map-catalog.js"></script>
 <script>
 const mapView=document.getElementById('mapView'),listView=document.getElementById('listView');
 const mapMode=document.getElementById('mapMode'),listMode=document.getElementById('listMode');
 function setMode(mode){const isMap=mode==='map';mapView.style.display=isMap?'grid':'none';listView.classList.toggle('active',!isMap);mapMode.setAttribute('aria-pressed',String(isMap));listMode.setAttribute('aria-pressed',String(!isMap));}
 mapMode.addEventListener('click',()=>setMode('map'));listMode.addEventListener('click',()=>setMode('list'));
-document.getElementById('selectFromList').addEventListener('click',()=>setMode('map'));
+
 document.getElementById('planetA1').addEventListener('click',()=>{document.getElementById('planetA1').setAttribute('aria-pressed','true');document.getElementById('planetDetails').scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'nearest'});});
 </script>
 <script src="../scripts/main.js"></script>

@@ -26,9 +26,12 @@ if(!config.url||!config.anonKey){
         setMessage("У этой учётной записи нет административных разрешений.","error");
       }else{
         shell.hidden=false;gate.hidden=true;
+        window.DCH_SUPABASE_CLIENT=supabase;
+        window.DCH_ADMIN_ROLE=role.role;
         const label=document.getElementById("admin-role");
         if(label)label.textContent=role.role==="owner"?"Владелец школы":"Редактор";
         await import("./admin-roadmap.js");
+        await import("./admin-management.js");
       }
     }
   }catch(error){

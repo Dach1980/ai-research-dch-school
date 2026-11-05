@@ -648,7 +648,7 @@
       "date": "2026-11-05",
       "type": "catalog_language_navigation_ci",
       "title": "Каталог, языковая навигация и диаграммы A.1–A.5 покрыты автоматическими проверками",
-      "result": "scripts/validate-catalog.py теперь проверяет все url_i18n ru/en/zh и языковой список. Новый scripts/validate-multilingual-lessons.py проверяет наличие 15 страниц, html lang, локальные HTML-ссылки, цели языкового переключателя, отсутствие placeholder captions и русских подписей в EN/ZH, объём перевода, одинаковое количество и геометрию SVG. Найдены и исправлены четыре ошибочные ссылки index-.html в RU A.5. В GitHub Actions прошли 19 unit tests, catalog validation и multilingual/diagram parity validation. Pages workflow теперь блокирует deploy до прохождения этих проверок.",
+      "result": "scripts/validate-catalog.py теперь проверяет все url_i18n ru/en/zh и языковой список. Новый scripts/validate-multilingual-lessons.py проверяет наличие 15 страниц, html lang, локальные HTML-ссылки, цели языкового переключателя, отсутствие placeholder captions и русских подписей в EN/ZH, объём перевода, одинаковое количество и геометрию SVG. Найдены и исправлены четыре ошибочные ссылки index-.html в RU A.5. В GitHub Actions прошли 19 unit tests, catalog validation и multilingual/diagram parity validation. Pages workflow теперь блокирует deploy до прохождения этих проверок. Полный Pages workflow run 42044025429 (commit db8746e8c9deb9a780aff311f7390badbd2647e5) завершился success: validate, validate-supabase-migrations и deploy — все три job успешны.",
       "evidence": [
         "scripts/validate-catalog.py",
         "scripts/validate-multilingual-lessons.py",
@@ -669,7 +669,7 @@
       "date": "2026-11-05",
       "type": "supabase_migration_and_admin_security_audit",
       "title": "Исправлена миграция Supabase 003 и добавлен PostgreSQL 16 smoke test",
-      "result": "Статический аудит миграций 001–006 выявил отсутствующую закрывающую скобку в VALUES tuple урока A.2 в migration 003; синтаксис исправлен. Добавлены тестовые Supabase Auth stubs и SQL assertions в supabase/tests. GitHub Actions job validate-supabase-migrations применил все миграции 001–006 на чистом PostgreSQL 16; проверки RLS на шести защищённых таблицах, функций is_school_admin/is_school_owner, отсутствия anonymous write policies и пяти публичных A.1–A.5 записей прошли успешно (run 42043791053). Admin auth дополнительно переведён на серверную проверку supabase.auth.getUser() перед чтением роли. Публичная регистрация остаётся выключенной.",
+      "result": "Статический аудит миграций 001–006 выявил отсутствующую закрывающую скобку в VALUES tuple урока A.2 в migration 003; синтаксис исправлен. Добавлены тестовые Supabase Auth stubs и SQL assertions в supabase/tests. GitHub Actions job validate-supabase-migrations применил все миграции 001–006 на чистом PostgreSQL 16; проверки RLS на шести защищённых таблицах, функций is_school_admin/is_school_owner, отсутствия anonymous write policies и пяти публичных A.1–A.5 записей прошли успешно в завершённом run 42044025429 (job validate-supabase-migrations: success; все миграции применены на чистой PostgreSQL 16 и assertions завершились success). Admin auth дополнительно переведён на серверную проверку supabase.auth.getUser() перед чтением роли. Публичная регистрация остаётся выключенной.",
       "evidence": [
         "supabase/migrations/003_reconcile_public_lessons.sql",
         "supabase/tests/ci_bootstrap.sql",
@@ -683,6 +683,24 @@
       "limitations": [
         "Тест использует изолированную PostgreSQL 16 базу и минимальные Auth stubs; он не доказывает состояние live Supabase проекта.",
         "Live migration status, Edge Function deployment/secrets, first owner bootstrap and real role-boundary tests remain pending."
+      ]
+    },
+    {
+      "id": "AUD-027",
+      "date": "2026-11-05",
+      "type": "pages_release_and_admin_auth_hardening",
+      "title": "Успешно опубликована версия с трёхъязычными A.1–A.5 и серверной проверкой admin identity",
+      "result": "GitHub Actions Pages workflow завершился success на commit db8746e8c9deb9a780aff311f7390badbd2647e5: catalog unit tests, catalog validation, multilingual lesson/diagram parity, PostgreSQL 16 migration/RLS smoke test и Pages deploy прошли успешно (run 42044025429). В admin-auth.js используется supabase.auth.getUser() для проверки личности через Auth перед проверкой active school_admins role. Публичная регистрация остаётся выключенной. Следующая проверка — реальная browser acceptance и live Supabase owner/editor integration.",
+      "evidence": [
+        ".github/workflows/pages.yml",
+        "scripts/admin-auth.js",
+        "admin/index.html",
+        "docs/audits/A1-A5_MULTILINGUAL_COMPLETION_2026-11-05.md",
+        "docs/management/SUPABASE_ADMIN_ACCEPTANCE_2026-11-05.md"
+      ],
+      "limitations": [
+        "GitHub Pages deployment подтверждён workflow, но визуальная проверка сайта в браузере из текущей среды недоступна.",
+        "Live Supabase dashboard, deployed Edge Function, owner bootstrap и реальные role-boundary tests не проверены."
       ]
     }
   ],

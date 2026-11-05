@@ -47,7 +47,7 @@ code{font-size:12px;color:var(--blue)}
 <main class="admin-shell" hidden>
 <p class="eyebrow">CONTENT MANAGEMENT · PROJECT CONTROL</p>
 <div class="admin-heading"><h1>Панель администратора</h1><span class="muted">AI Research DCH School</span></div>
-<div class="warning"><strong>Важно:</strong> административная страница пока является статическим интерфейсом GitHub Pages. Она не защищена авторизацией и не предназначена для хранения секретов или персональных данных. Вкладка «Аудит и roadmap» загружает журнал из репозитория в режиме просмотра; изменения записей вносятся через Git-коммиты.</div>
+<div class="warning"><strong>Важно:</strong> страница размещается на GitHub Pages, но её содержимое показывается только после проверки подтверждённой Supabase-сессии и активной роли school_admins. Запись дополнительно ограничивается PostgreSQL RLS. Вкладка «Аудит и roadmap» пока работает только на чтение; изменения учебных материалов пока вносятся через Git-коммиты. Не размещайте секреты и персональные данные в публичном репозитории.</div>
 <nav class="admin-tabs" role="tablist" aria-label="Разделы панели администратора">
 <button class="admin-tab" id="tab-overview" role="tab" aria-selected="true" aria-controls="panel-overview">Обзор</button>
 <button class="admin-tab" id="tab-audit" role="tab" aria-selected="false" aria-controls="panel-audit">Аудит и roadmap</button>

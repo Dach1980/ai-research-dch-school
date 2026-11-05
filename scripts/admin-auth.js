@@ -12,15 +12,15 @@ if(!config.url||!config.anonKey){
   try{
     const {createClient}=await import("https://esm.sh/@supabase/supabase-js@2");
     const supabase=createClient(config.url,config.anonKey,{auth:{autoRefreshToken:true,persistSession:true,detectSessionInUrl:true}});
-    const {data:{session},error:sessionError}=await supabase.auth.getSession();
-    if(sessionError)throw sessionError;
-    if(!session?.user){
+    const {data:{user},error:userError}=await supabase.auth.getUser();
+    if(userError)throw userError;
+    if(!user){
       setMessage("Для доступа к административной панели необходимо войти в подтверждённый аккаунт.");
       const link=document.createElement("a");link.className="button primary";link.href="../auth/index.html";link.textContent="Войти в аккаунт";gate.append(link);
-    }else if(!session.user.email_confirmed_at){
+    }else if(!user.email_confirmed_at){
       setMessage("Email аккаунта не подтверждён. Подтвердите адрес и войдите повторно.","error");
     }else{
-      const {data:role,error:roleError}=await supabase.from("school_admins").select("role").eq("user_id",session.user.id).eq("is_active",true).maybeSingle();
+      const {data:role,error:roleError}=await supabase.from("school_admins").select("role").eq("user_id",user.id).eq("is_active",true).maybeSingle();
       if(roleError)throw roleError;
       if(!role){
         setMessage("У этой учётной записи нет административных разрешений.","error");

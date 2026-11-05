@@ -173,6 +173,61 @@
           },
           "url": {
             "$ref": "#/$defs/relativeHtmlPath"
+          },
+          "title_i18n": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "ru",
+              "en",
+              "zh"
+            ],
+            "properties": {
+              "ru": {
+                "type": "string",
+                "minLength": 1
+              },
+              "en": {
+                "type": "string",
+                "minLength": 1
+              },
+              "zh": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          },
+          "url_i18n": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "ru",
+              "en",
+              "zh"
+            ],
+            "properties": {
+              "ru": {
+                "$ref": "#/$defs/relativeHtmlPath"
+              },
+              "en": {
+                "$ref": "#/$defs/relativeHtmlPath"
+              },
+              "zh": {
+                "$ref": "#/$defs/relativeHtmlPath"
+              }
+            }
+          },
+          "languages": {
+            "type": "array",
+            "uniqueItems": true,
+            "items": {
+              "enum": [
+                "ru",
+                "en",
+                "zh"
+              ]
+            },
+            "minItems": 3
           }
         }
       }

@@ -52,6 +52,9 @@ code{font-size:12px;color:var(--blue)}
 <button class="admin-tab" id="tab-overview" role="tab" aria-selected="true" aria-controls="panel-overview">Обзор</button>
 <button class="admin-tab" id="tab-audit" role="tab" aria-selected="false" aria-controls="panel-audit">Аудит и roadmap</button>
 <button class="admin-tab" id="tab-content" role="tab" aria-selected="false" aria-controls="panel-content">Материалы</button>
+<button class="admin-tab" id="tab-users" role="tab" aria-selected="false" aria-controls="panel-users">Пользователи</button>
+<button class="admin-tab" id="tab-permissions" role="tab" aria-selected="false" aria-controls="panel-permissions">Права</button>
+<button class="admin-tab" id="tab-entitlements" role="tab" aria-selected="false" aria-controls="panel-entitlements">Доступ к урокам</button>
 </nav>
 <section id="panel-overview" role="tabpanel" aria-labelledby="tab-overview">
 <div class="admin-grid">
@@ -63,16 +66,20 @@ code{font-size:12px;color:var(--blue)}
 </section>
 <section id="panel-audit" role="tabpanel" aria-labelledby="tab-audit" hidden>
 <div id="audit-roadmap-content"><p class="muted">Загружаем журнал аудита и roadmap…</p></div>
+<section class="admin-panel"><h2>Журнал административных операций</h2><p class="muted">Изменения каталога, содержимого, прав и разрешений фиксируются в PostgreSQL.</p><div id="admin-db-audit">Журнал БД доступен после применения миграции 006.</div></section>
 </section>
 <section id="panel-content" role="tabpanel" aria-labelledby="tab-content" hidden>
-<section class="admin-panel"><h2>Материалы школы</h2>
-<table class="admin-table"><thead><tr><th>Материал</th><th>Тип</th><th>Статус</th></tr></thead><tbody>
-<tr><td>A.1 — Что такое искусственный интеллект?</td><td>Лекция</td><td>Опубликована</td></tr>
-<tr><td>A.2 — AI, Machine Learning и Deep Learning</td><td>Лекция</td><td>Опубликована</td></tr>
-<tr><td>A.3 — Как машина учится на данных</td><td>Лекция</td><td>Опубликована</td></tr>
-<tr><td>Учебная программа A/B/C</td><td>Каталог</td><td>Требует аудита связей с планетами</td></tr>
-</tbody></table></section>
+<section class="admin-panel"><h2>Каталог учебных материалов</h2><p class="muted">Редактируется metadata в Supabase. Публикация статических HTML-страниц и их переводов по-прежнему проходит через проверенный GitHub Pages deployment.</p>
+<div id="admin-content-list">Загрузка каталога…</div><p id="content-message" class="muted" aria-live="polite"></p></section>
+<section class="admin-panel"><h2>Создать или обновить запись каталога</h2>
+<div class="admin-grid"><label>ID<input id="catalog-id" placeholder="a-6-example"></label><label>Порядок<input id="catalog-order" type="number" value="100"></label><label>Видимость<select id="catalog-visibility"><option value="public">public</option><option value="free_account">free_account</option><option value="paid">paid</option></select></label></div>
+<div class="admin-grid"><label>Название RU<input id="catalog-ru"></label><label>Title EN<input id="catalog-en"></label><label>标题 ZH<input id="catalog-zh"></label></div><label><input id="catalog-published" type="checkbox"> Опубликовано в metadata</label><p><button class="admin-tab" id="catalog-create">Сохранить запись</button></p>
+<p class="muted">Изменение is_published в metadata само по себе не скрывает статическую страницу GitHub Pages. Защищённый контент нельзя публиковать как открытый HTML.</p></section>
+<section class="admin-panel"><h2>JSON-содержимое урока</h2><label>lesson_id<input id="payload-lesson-id" placeholder="a-1-what-is-artificial-intelligence"></label><textarea id="payload-json" rows="12" style="width:100%;background:#0b1425;color:#eef3ff;border:1px solid var(--line);border-radius:10px;padding:12px;font:12px monospace">{}</textarea><p><button class="admin-tab" id="payload-save">Сохранить JSON</button></p><p id="payload-message" class="muted" aria-live="polite"></p></section>
 </section>
+<section id="panel-users" role="tabpanel" aria-labelledby="tab-users" hidden><section class="admin-panel"><h2>Учётные записи</h2><p class="muted">Список пользователей и блокировка доступны владельцу через защищённую Edge Function. Пароли и секреты не отображаются.</p><p id="users-message" class="muted" aria-live="polite"></p><div id="admin-users-list">Загрузка…</div></section></section>
+<section id="panel-permissions" role="tabpanel" aria-labelledby="tab-permissions" hidden><section class="admin-panel"><h2>Административные роли</h2><p>Выдача ролей owner/editor и отзыв прав доступны только владельцу школы. Укажите UUID подтверждённой учётной записи.</p><label>User UUID<input id="admin-user-id" placeholder="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"></label><label>Роль<select id="admin-user-role"><option value="editor">editor</option><option value="owner">owner</option></select></label><p><button class="admin-tab" id="grant-admin">Выдать / обновить роль</button> <button class="admin-tab" id="revoke-admin">Отозвать роль</button></p><p id="permissions-message" class="muted" aria-live="polite"></p></section></section>
+<section id="panel-entitlements" role="tabpanel" aria-labelledby="tab-entitlements" hidden><section class="admin-panel"><h2>Выдача доступа к урокам</h2><p class="muted">Только владелец может создавать разрешения. Пользователь должен существовать в Supabase Auth.</p><label>User UUID<input id="entitlement-user-id"></label><div class="admin-grid"><label>Lesson ID<input id="entitlement-lesson-id"></label><label>Product ID<input id="entitlement-product-id"></label><label>Статус<select id="entitlement-status"><option value="active">active</option><option value="revoked">revoked</option><option value="expired">expired</option></select></label></div><label>Дата окончания (необязательно)<input id="entitlement-expiry" type="datetime-local"></label><p><button class="admin-tab" id="grant-entitlement">Сохранить разрешение</button></p><p id="entitlement-message" class="muted" aria-live="polite"></p></section></section>
 </main>
 <script>
 (() => {

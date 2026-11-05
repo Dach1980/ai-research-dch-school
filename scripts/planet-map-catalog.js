@@ -59,7 +59,7 @@
         button.dataset.lessonId=lesson.id;button.dataset.generatedPlanet="true";
         button.setAttribute("aria-label","Выбрать планету "+lesson.id+": "+lesson.title);
         button.innerHTML='<span class="planet-core"><span style="font:800 14px Manrope">'+esc(lesson.id)+'</span></span><span class="planet-code">'+esc(lesson.id)+'</span><span class="planet-name">'+esc(lesson.title)+'</span>';
-        button.addEventListener("click",()=>renderDetails(lesson,lesson.id));
+        button.addEventListener("click",()=>{renderDetails(lesson,lesson.id);if(matchMedia("(max-width:900px)").matches){document.querySelector("#planetDetails")?.scrollIntoView({behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth",block:"start"});}});
         universe.appendChild(button);
       });
       list.innerHTML='<div class="side-top"><strong>Track A · Understanding AI</strong><span class="level">'+planets.length+' опубликовано</span></div>'+

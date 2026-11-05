@@ -2,7 +2,7 @@
   "schema_version": 1,
   "project": "AI Research DCH School",
   "section": "Аудит и roadmap",
-  "updated_at": "2026-11-05",
+  "updated_at": "2026-11-06",
   "timezone": "Asia/Singapore",
   "principles": [
     "Планетная карта дополняет обычный каталог и не заменяет его.",
@@ -149,7 +149,7 @@
       "title": "Подготовить безопасную регистрацию и административные роли",
       "status": "in_progress",
       "priority": "high",
-      "decision": "Созданы защищённые интерфейсы каталога и JSON-содержимого, управления пользователями, административными ролями, entitlements и аудитом; добавлена Edge Function с owner-only проверкой и JWT verification. Миграции 006 и Edge Function ещё не применены/развёрнуты в реальном Supabase; SMTP, legal gate и registration остаются незавершёнными. 2026-11-05: admin-auth.js now calls supabase.auth.getUser() to validate the identity with Auth before role lookup; migration 003 SQL syntax defect fixed; clean PostgreSQL 16 CI smoke test applies migrations 001–006 and verifies RLS, helper functions and A.1–A.5 public metadata. Live Supabase migration state, owner bootstrap, Edge Function deployment and role integration tests remain unverified.",
+      "decision": "Созданы защищённые интерфейсы каталога и JSON-содержимого, управления пользователями, административными ролями, entitlements и аудитом; добавлена Edge Function с owner-only проверкой и JWT verification. Миграции 006 и Edge Function ещё не применены/развёрнуты в реальном Supabase; SMTP, legal gate и registration остаются незавершёнными. 2026-11-05: admin-auth.js now calls supabase.auth.getUser() to validate the identity with Auth before role lookup; migration 003 SQL syntax defect fixed; clean PostgreSQL 16 CI smoke test applies migrations 001–006 and verifies RLS, helper functions and A.1–A.5 public metadata. Live Supabase migration state, owner bootstrap, Edge Function deployment and role integration tests remain unverified. 2026-11-06: migration 007 adds A.6 public metadata; CI assertion set now expects six published public lessons A.1–A.6. This remains an isolated PostgreSQL 16 smoke test, not live Supabase acceptance. Live migration history, Auth confirmation email, Edge Function deployment/secrets and owner/editor tests remain pending.",
       "acceptance": [
         "RLS ограничивает чтение и запись административных таблиц и контента.",
         "Роли не могут выдаваться из браузера или самим пользователем.",
@@ -179,9 +179,10 @@
         "EN-версия каждого A.1–A.5 содержит не менее 65% объёма видимого текста RU-версии как автоматический сигнал полноты; ZH — не менее 1000 иероглифов CJK.",
         "Количество и геометрия SVG-схем совпадают между RU / EN / 中文; видимые подписи, figcaption и accessibility labels локализованы.",
         "Переключатель языка для каждого урока ведёт на существующую страницу; локальные HTML-ссылки проверяются автоматически.",
-        "GitHub Actions выполняет catalog tests, url_i18n validation, multilingual content/link/diagram parity validation до публикации."
+        "GitHub Actions выполняет catalog tests, url_i18n validation, multilingual content/link/diagram parity validation до публикации.",
+        "Для A.6 опубликованы RU / EN / 中文 версии с шестью SVG-схемами одинаковой геометрии и локализованными подписями."
       ],
-      "decision": "Локализованы главная страница, каталог, карта знаний, Track A, обзорные страницы Tracks B/C и уроки A.1–A.5 на RU/EN/ZH; реализован единый переключатель. Второстепенные страницы новостей, аккаунта, legal и admin ещё требуют локализации и редакторской вычитки. Аудит A.1–A.5 от 2026-11-05 подтвердил наличие EN/ZH HTML-файлов, но выявил существенное сокращение переводов относительно RU (A.1: 3413/710/179 слов; A.2: 2134/671/173; A.3: 2831/880/244; A.4: 2377/765/270; A.5: 855/956/352; китайский word count ориентировочный). В A.1 количество SVG различается (RU 2, EN/ZH 3); для A.2–A.5 одинаковое количество SVG не доказывает идентичность содержания. Требуется канонический общий набор схем и полное восстановление локализаций. 2026-11-05: A.1–A.4 EN/ZH версии содержательно расширены; A.5 сохраняет расширенную трёхъязычную редакцию. Итоговые ориентиры объёма RU/EN/ZH: A.1 3413/2511/4256 CJK; A.2 2134/1876/3147 CJK; A.3 2831/2344/3774 CJK; A.4 2377/2038/3340 CJK; A.5 1514/1665/1933 CJK. Во всех языках унифицирована геометрия SVG: A.1 — 2, A.2 — 3, A.3 — 4, A.4 — 6, A.5 — 6 схем; текстовые подписи и accessibility labels локализованы. Добавлены scripts/validate-multilingual-lessons.py и проверки каталога url_i18n; исправлены битые RU-навигационные ссылки A.5. Python unit tests, каталог и multilingual/diagram parity validation проходят в GitHub Actions. Остаётся редакторская вычитка носителями языка и визуальная проверка в реальном браузере."
+      "decision": "Локализованы главная страница, каталог, карта знаний, Track A, обзорные страницы Tracks B/C и уроки A.1–A.5 на RU/EN/ZH; реализован единый переключатель. Второстепенные страницы новостей, аккаунта, legal и admin ещё требуют локализации и редакторской вычитки. Аудит A.1–A.5 от 2026-11-05 подтвердил наличие EN/ZH HTML-файлов, но выявил существенное сокращение переводов относительно RU (A.1: 3413/710/179 слов; A.2: 2134/671/173; A.3: 2831/880/244; A.4: 2377/765/270; A.5: 855/956/352; китайский word count ориентировочный). В A.1 количество SVG различается (RU 2, EN/ZH 3); для A.2–A.5 одинаковое количество SVG не доказывает идентичность содержания. Требуется канонический общий набор схем и полное восстановление локализаций. 2026-11-05: A.1–A.4 EN/ZH версии содержательно расширены; A.5 сохраняет расширенную трёхъязычную редакцию. Итоговые ориентиры объёма RU/EN/ZH: A.1 3413/2511/4256 CJK; A.2 2134/1876/3147 CJK; A.3 2831/2344/3774 CJK; A.4 2377/2038/3340 CJK; A.5 1514/1665/1933 CJK. Во всех языках унифицирована геометрия SVG: A.1 — 2, A.2 — 3, A.3 — 4, A.4 — 6, A.5 — 6 схем; текстовые подписи и accessibility labels локализованы. Добавлены scripts/validate-multilingual-lessons.py и проверки каталога url_i18n; исправлены битые RU-навигационные ссылки A.5. Python unit tests, каталог и multilingual/diagram parity validation проходят в GitHub Actions. Остаётся редакторская вычитка носителями языка и визуальная проверка в реальном браузере. 2026-11-06: A.6 «Почему модель ошибается на новых данных?» is implemented in RU/EN/ZH with six shared-geometry localized SVG diagrams, learning outcomes, diagnostic workflow, exercises and glossary. A.6 is included in lesson catalog, planet catalog and language navigation; native-speaker editorial and browser acceptance remain pending."
     }
   ],
   "audit_log": [
@@ -701,6 +702,30 @@
       "limitations": [
         "GitHub Pages deployment подтверждён workflow, но визуальная проверка сайта в браузере из текущей среды недоступна.",
         "Live Supabase dashboard, deployed Edge Function, owner bootstrap и реальные role-boundary tests не проверены."
+      ]
+    },
+    {
+      "id": "AUD-028",
+      "date": "2026-11-06",
+      "type": "a6_lesson_and_release_acceptance",
+      "title": "Подготовлен и опубликован трёхъязычный урок A.6; добавлена миграция Supabase 007",
+      "result": "Созданы RU/EN/ZH страницы A.6 о generalization, underfitting, overfitting и bias–variance; добавлены шесть SVG-схем на язык, учебные цели, инженерный пример, диагностика, self-check и glossary. Обновлены каталог, планетная карта, языковая навигация, Supabase migration 007 и PostgreSQL CI assertions до шести публичных уроков. Добавлен validate-a6.py в Pages workflow. Live Supabase и browser visual acceptance остаются непроверенными; не считаются завершёнными.",
+      "evidence": [
+        "lessons/a-6-generalization-and-overfitting.html",
+        "lessons/a-6-generalization-and-overfitting-en.html",
+        "lessons/a-6-generalization-and-overfitting-zh.html",
+        "data/catalog/lessons.json",
+        "data/catalog/planets.json",
+        "supabase/migrations/007_publish_a6_generalization.sql",
+        "scripts/validate-a6.py",
+        ".github/workflows/pages.yml",
+        "docs/audits/A6_GENERALIZATION_LESSON_2026-11-06.md",
+        "docs/management/SUPABASE_AND_BROWSER_ACCEPTANCE_2026-11-06.md"
+      ],
+      "limitations": [
+        "CI workflow for this commit must pass before release acceptance.",
+        "Live Supabase migrations, Auth/email confirmation, Edge Function deployment and owner/editor role tests not verified.",
+        "Browser desktop/mobile visual acceptance and native-speaker editorial review remain pending."
       ]
     }
   ],

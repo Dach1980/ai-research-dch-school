@@ -34,11 +34,12 @@ begin
     'a-2-ai-ml-deep-learning',
     'a-3-how-machines-learn-from-data',
     'a-4-what-is-machine-learning-model',
-    'a-5-how-to-evaluate-a-model'
+    'a-5-how-to-evaluate-a-model',
+    'a-6-generalization-and-overfitting'
   ) and visibility = 'public' and is_published = true;
 
-  if public_lesson_count <> 5 then
-    raise exception 'Expected 5 published public A.1-A.5 metadata rows, got %', public_lesson_count;
+  if public_lesson_count <> 6 then
+    raise exception 'Expected 6 published public A.1-A.6 metadata rows, got %', public_lesson_count;
   end if;
 
   if exists (

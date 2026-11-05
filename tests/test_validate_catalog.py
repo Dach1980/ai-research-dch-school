@@ -110,13 +110,25 @@ class PublishedSiteIntegrityTests(unittest.TestCase):
         self.assertIn('generatedPlanet', script)
         self.assertIn('data-select-lesson', script)
 
-    def test_a4_and_a5_are_editorial_drafts_not_published_pages(self):
+    def test_a4_is_published_and_a5_remains_an_editorial_draft(self):
         catalog = json.loads((ROOT / "data" / "catalog" / "lessons.json").read_text(encoding="utf-8"))
-        ids = {item["id"] for item in catalog["lessons"]}
-        self.assertNotIn("A.4", ids)
-        self.assertNotIn("A.5", ids)
-        self.assertTrue((ROOT / "docs" / "education" / "drafts" / "A4-MACHINE-LEARNING-MODEL.md").is_file())
+        lessons = {item["id"]: item for item in catalog["lessons"]}
+        self.assertEqual(lessons["A.4"]["status"], "published")
+        self.assertEqual(lessons["A.4"]["url"], "lessons/a-4-what-is-machine-learning-model.html")
+        self.assertNotIn("A.5", lessons)
+        a4_page = (ROOT / lessons["A.4"]["url"]).read_text(encoding="utf-8")
+        self.assertGreaterEqual(a4_page.count("<svg"), 5)
+        self.assertIn("Training", a4_page)
+        self.assertIn("Inference", a4_page)
         self.assertTrue((ROOT / "docs" / "education" / "drafts" / "A5-MODEL-EVALUATION.md").is_file())
+
+    def test_a1_and_a2_have_original_explanatory_diagrams(self):
+        a1 = (ROOT / "lessons" / "a-1-what-is-artificial-intelligence.html").read_text(encoding="utf-8")
+        a2 = (ROOT / "lessons" / "a-2-ai-ml-deep-learning.html").read_text(encoding="utf-8")
+        self.assertGreaterEqual(a1.count("<svg"), 2)
+        self.assertGreaterEqual(a2.count("<svg"), 3)
+        self.assertIn("семейство подходов", a1)
+        self.assertIn("Вложенность AI, ML и DL", a2)
 
 
     def test_every_published_lesson_has_learning_outcomes(self):

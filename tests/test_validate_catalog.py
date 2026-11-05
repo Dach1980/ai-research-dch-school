@@ -164,6 +164,21 @@ class PublishedSiteIntegrityTests(unittest.TestCase):
                 with self.subTest(lesson=lesson["id"]):
                     self.assertTrue(lesson.get("learning_outcomes"))
 
+    def test_admin_security_scaffold_and_unique_migration_versions(self):
+        migration_dir = ROOT / "supabase" / "migrations"
+        migrations = sorted(migration_dir.glob("*.sql"))
+        versions = [path.name.split("_", 1)[0] for path in migrations]
+        self.assertEqual(len(versions), len(set(versions)))
+        self.assertTrue((ROOT / "supabase" / "functions" / "school-admin-management" / "index.ts").is_file())
+        edge = (ROOT / "supabase" / "functions" / "school-admin-management" / "index.ts").read_text(encoding="utf-8")
+        self.assertIn('role.role !== "owner"', edge)
+        self.assertIn("SUPABASE_SERVICE_ROLE_KEY", edge)
+        browser_code = (ROOT / "scripts" / "admin-management.js").read_text(encoding="utf-8")
+        self.assertNotIn("SUPABASE_SERVICE_ROLE_KEY", browser_code)
+        config = (ROOT / "scripts" / "supabase-config.js").read_text(encoding="utf-8")
+        self.assertIn("registrationEnabled: false", config)
+        self.assertTrue((migration_dir / "006_multilingual_catalog_and_admin_audit.sql").is_file())
+
     def test_primary_pages_have_mobile_navigation_toggle(self):
         pages = [
             "index.html",

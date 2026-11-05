@@ -17,6 +17,13 @@ values
   'public',
   true,
   3
+,
+(
+  'a-3-how-machines-learn-from-data',
+  '{"ru":"A.3 · Как машина учится на данных","en":"A.3 · How Machines Learn from Data","zh":"A.3 · 机器如何从数据中学习"}'::jsonb,
+  'public',
+  true,
+  4
 )
 on conflict (id) do update set
   title = excluded.title,

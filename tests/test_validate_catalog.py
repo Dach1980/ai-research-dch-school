@@ -178,6 +178,21 @@ class PublishedSiteIntegrityTests(unittest.TestCase):
             "news/index.html",
             "news/001-school-launch.html",
             "account/index.html",
+            "index-en.html", "index-zh.html",
+            "lessons/index-en.html", "lessons/index-zh.html",
+            "learning-map/index-en.html", "learning-map/index-zh.html",
+            "tracks/understanding-ai-en.html", "tracks/understanding-ai-zh.html",
+            "lessons/a-1-what-is-artificial-intelligence-en.html",
+            "lessons/a-1-what-is-artificial-intelligence-zh.html",
+            "lessons/a-2-ai-ml-deep-learning-en.html",
+            "lessons/a-2-ai-ml-deep-learning-zh.html",
+            "lessons/a-3-how-machines-learn-from-data-en.html",
+            "lessons/a-3-how-machines-learn-from-data-zh.html",
+            "lessons/a-4-what-is-machine-learning-model-en.html",
+            "lessons/a-4-what-is-machine-learning-model-zh.html",
+            "lessons/a-5-how-to-evaluate-a-model.html",
+            "lessons/a-5-how-to-evaluate-a-model-en.html",
+            "lessons/a-5-how-to-evaluate-a-model-zh.html",
         ]
         for relative in pages:
             page = (ROOT / relative).read_text(encoding="utf-8")

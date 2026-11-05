@@ -68,7 +68,7 @@ declare
 begin
  -- Service-role operations are audited explicitly by the trusted Edge Function,
  -- which can attach the verified human actor. Avoid duplicate null-actor trigger rows.
- if (select auth.uid()) is null then
+ if auth.uid() is null then
    if tg_op = 'DELETE' then return old; else return new; end if;
  end if;
  if tg_op <> 'INSERT' then old_json := to_jsonb(old); end if;

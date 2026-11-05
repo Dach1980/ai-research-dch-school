@@ -47,7 +47,7 @@ code{font-size:12px;color:var(--blue)}
 <main class="admin-shell" hidden>
 <p class="eyebrow">CONTENT MANAGEMENT · PROJECT CONTROL</p>
 <div class="admin-heading"><h1>Панель администратора</h1><span class="muted">AI Research DCH School</span></div>
-<div class="warning"><strong>Важно:</strong> страница размещается на GitHub Pages, но её содержимое показывается только после проверки подтверждённой Supabase-сессии и активной роли school_admins. Запись дополнительно ограничивается PostgreSQL RLS. Вкладка «Аудит и roadmap» пока работает только на чтение; изменения учебных материалов пока вносятся через Git-коммиты. Не размещайте секреты и персональные данные в публичном репозитории.</div>
+<div class="warning"><strong>Важно:</strong> страница размещается на GitHub Pages, но её содержимое показывается только после проверки подтверждённой Supabase-сессии и активной роли school_admins. Запись дополнительно ограничивается PostgreSQL RLS. Аудит и roadmap доступны для чтения; защищённое редактирование каталога и выдача разрешений требуют завершения серверного API и применения миграций. Не размещайте секреты и персональные данные в публичном репозитории.</div>
 <nav class="admin-tabs" role="tablist" aria-label="Разделы панели администратора">
 <button class="admin-tab" id="tab-overview" role="tab" aria-selected="true" aria-controls="panel-overview">Обзор</button>
 <button class="admin-tab" id="tab-audit" role="tab" aria-selected="false" aria-controls="panel-audit">Аудит и roadmap</button>
@@ -57,7 +57,7 @@ code{font-size:12px;color:var(--blue)}
 <div class="admin-grid">
 <div class="admin-stat"><strong>3</strong><span>Направления обучения</span></div>
 <div class="admin-stat"><strong>40</strong><span>Модулей в утверждённой основе курса</span></div>
-<div class="admin-stat"><strong>3</strong><span>Опубликованные урока</span></div>
+<div class="admin-stat"><strong>5</strong><span>Опубликованные урока</span></div>
 </div>
 <section class="admin-panel"><h2>Текущие приоритеты</h2><ol class="muted"><li>Аудит учебной программы и соответствия каждой планеты реальному модулю.</li><li>Утверждение содержательной модели планеты и зависимостей.</li><li>Единый каталог данных планет.</li><li>Реализация карты на главной странице с сохранением обычного каталога.</li></ol></section>
 </section>

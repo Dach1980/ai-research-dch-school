@@ -2,30 +2,48 @@
   "schema_version": 1,
   "lessons": [
     {
-      "id":"A.1",
-      "module_id":"module-11",
-      "track_id":"track-a",
-      "title":"Что такое искусственный интеллект?",
-      "status":"published",
-      "access":"open",
-      "level":"beginner",
-      "duration_min":40,
-      "duration_max":50,
-      "prerequisites":[],
-      "url":"lessons/a-1-what-is-artificial-intelligence.html"
+      "id": "A.1",
+      "module_id": "module-11",
+      "track_id": "track-a",
+      "title": "Что такое искусственный интеллект?",
+      "status": "published",
+      "access": "open",
+      "level": "beginner",
+      "duration_min": 40,
+      "duration_max": 50,
+      "prerequisites": [],
+      "url": "lessons/a-1-what-is-artificial-intelligence.html"
     },
     {
-      "id":"A.2",
-      "module_id":"module-11",
-      "track_id":"track-a",
-      "title":"AI, Machine Learning и Deep Learning",
-      "status":"published",
-      "access":"open",
-      "level":"beginner",
-      "duration_min":50,
-      "duration_max":60,
-      "prerequisites":["A.1"],
-      "url":"lessons/a-2-ai-ml-deep-learning.html"
+      "id": "A.2",
+      "module_id": "module-11",
+      "track_id": "track-a",
+      "title": "AI, Machine Learning и Deep Learning",
+      "status": "published",
+      "access": "open",
+      "level": "beginner",
+      "duration_min": 50,
+      "duration_max": 60,
+      "prerequisites": [
+        "A.1"
+      ],
+      "url": "lessons/a-2-ai-ml-deep-learning.html"
+    },
+    {
+      "id": "A.3",
+      "module_id": "module-11",
+      "track_id": "track-a",
+      "title": "Как машина учится на данных",
+      "status": "published",
+      "access": "open",
+      "level": "beginner",
+      "duration_min": 55,
+      "duration_max": 65,
+      "prerequisites": [
+        "A.1",
+        "A.2"
+      ],
+      "url": "lessons/a-3-how-machines-learn-from-data.html"
     }
   ]
 }

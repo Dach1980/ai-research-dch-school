@@ -28,8 +28,45 @@ jobs:
         run: python scripts/validate-catalog.py
       - name: Validate multilingual lessons and diagram parity
         run: python scripts/validate-multilingual-lessons.py
+  validate-supabase-migrations:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: dch_school_test
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U postgres -d dch_school_test"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Install PostgreSQL client
+        run: sudo apt-get update && sudo apt-get install -y postgresql-client
+      - name: Bootstrap isolated Supabase Auth schema
+        env:
+          PGPASSWORD: postgres
+        run: psql -h 127.0.0.1 -U postgres -d dch_school_test -v ON_ERROR_STOP=1 -f supabase/tests/ci_bootstrap.sql
+      - name: Apply all Supabase migrations on clean PostgreSQL 16
+        env:
+          PGPASSWORD: postgres
+        run: |
+          set -euo pipefail
+          for migration in supabase/migrations/*.sql; do
+            echo "Applying $migration"
+            psql -h 127.0.0.1 -U postgres -d dch_school_test -v ON_ERROR_STOP=1 -f "$migration"
+          done
+      - name: Assert RLS, helper functions and public A.1-A.5 metadata
+        env:
+          PGPASSWORD: postgres
+        run: psql -h 127.0.0.1 -U postgres -d dch_school_test -v ON_ERROR_STOP=1 -f supabase/tests/ci_assertions.sql
   deploy:
-    needs: validate
+    needs: [validate, validate-supabase-migrations]
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}

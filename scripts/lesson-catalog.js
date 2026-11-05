@@ -2,6 +2,7 @@
   const root = document.querySelector("[data-lesson-catalog]");
   if (!root) return;
   const base = root.dataset.base || "../";
+  const locale = document.documentElement.lang || "ru";
   const trackId = root.dataset.trackId || "";
   const duration = lesson => lesson.duration_min === lesson.duration_max
     ? `${lesson.duration_min} мин.`
@@ -20,13 +21,14 @@
         return;
       }
       root.innerHTML = lessons.map(lesson => {
-        const href = base + lesson.url;
+        const href = base + ((lesson.url_i18n && lesson.url_i18n[locale]) || lesson.url);
+        const title = (lesson.title_i18n && lesson.title_i18n[locale]) || lesson.title;
         const level = lesson.level === "beginner" ? "Начальный уровень" :
           lesson.level === "intermediate" ? "Средний уровень" : "Продвинутый уровень";
         const access = lesson.access === "open" ? "Открытый урок" :
           lesson.access === "registered" ? "После регистрации" : "Платный урок";
         return `<a class="module" href="${escapeHtml(href)}">
-          <strong>Планета ${escapeHtml(lesson.id)} · ${escapeHtml(lesson.title)}</strong>
+          <strong>Планета ${escapeHtml(lesson.id)} · ${escapeHtml(title)}</strong>
           <span>${escapeHtml(duration(lesson))} · ${escapeHtml(level)} · ${escapeHtml(access)}</span>
         </a>`;
       }).join("");

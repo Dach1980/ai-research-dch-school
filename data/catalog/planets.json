@@ -20,6 +20,11 @@
       "id": "planet-A-4",
       "lesson_id": "A.4",
       "accent_id": "blue"
+    },
+    {
+      "id": "planet-A-5",
+      "lesson_id": "A.5",
+      "accent_id": "violet"
     }
   ]
 }

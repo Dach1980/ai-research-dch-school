@@ -7,7 +7,7 @@
  const folder=path.slice(0,path.lastIndexOf("/")+1);
  const lessonPage=folder.includes("/lessons/") && /^a-[1-5]-.*\.html$/.test(base);
  const indexPage=base==="index.html" && (folder.endsWith("/lessons/") || folder.endsWith("/learning-map/") || path.endsWith("/ai-research-dch-school/") || path.endsWith("/ai-research-dch-school/index.html"));
- const trackPage=/^(understanding-ai|inside-ai|building-with-ai)\\.html$/.test(base) && folder.includes("/tracks/");
+ const trackPage=/^(understanding-ai|inside-ai|building-with-ai)\.html$/.test(base) && folder.includes("/tracks/");
  const known=lessonPage || indexPage || trackPage;
  const target=locale=>{
   if(!known)return "/ai-research-dch-school/index"+(locale==="ru"?"":"-"+locale)+".html";

@@ -573,6 +573,24 @@
         "Первичный утверждённый исходник A.5 не найден в проверенных путях, поэтому буквальное восстановление исходного текста не заявляется.",
         "GitHub Pages browser acceptance и live Supabase не проверялись."
       ]
+    },
+    {
+      "id": "AUD-022",
+      "date": "2026-11-05",
+      "type": "lesson_content_expansion",
+      "title": "Расширен A.5: ROC-AUC, PR-AUC, cross-validation и классификационный Python-практикум",
+      "result": "Во все три версии A.5 добавлены объяснения ROC curve/ROC-AUC и Precision–Recall/AP, ограничения метрик при дисбалансе, выбор схемы валидации K-fold/StratifiedKFold/GroupKFold/TimeSeriesSplit, единая SVG-схема ROC/PR/CV, классификационный практикум на scikit-learn с DummyClassifier baseline, Pipeline + StandardScaler + LogisticRegression, confusion matrix, precision, recall, F1, ROC-AUC, Average Precision и StratifiedKFold cross-validation. Расширен словарь терминов. Это методическое расширение; буквальное восстановление неизвестного первичного исходника не заявляется.",
+      "evidence": [
+        "docs/audits/A5_EXPANSION_2026-11-05.md",
+        "lessons/a-5-how-to-evaluate-a-model.html",
+        "lessons/a-5-how-to-evaluate-a-model-en.html",
+        "lessons/a-5-how-to-evaluate-a-model-zh.html"
+      ],
+      "limitations": [
+        "Автоматическое выполнение Python-примера, CI и браузерная приёмка ещё не подтверждены.",
+        "Существующие SVG-схемы A.5 помимо нового общего ROC/PR/CV рисунка требуют полной сверки.",
+        "Полнота EN/ZH переводов A.1–A.4 остаётся незавершённой."
+      ]
     }
   ],
   "notes": [

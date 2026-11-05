@@ -10,10 +10,7 @@ values
  'public',true,1),
 ('a-1-what-is-artificial-intelligence',
  '{"ru":"A.1 · Что такое искусственный интеллект?","en":"A.1 · What is artificial intelligence?","zh":"A.1 · 什么是人工智能？"}'::jsonb,
- 'public',true,2),
-('a-2-ai-ml-deep-learning',
- '{"ru":"A.2 · AI, Machine Learning и Deep Learning","en":"A.2 · AI, Machine Learning and Deep Learning","zh":"A.2 · 人工智能、机器学习与深度学习"}'::jsonb,
- 'public',true,3)
+ 'free_account',true,2)
 on conflict (id) do update set
  title=excluded.title,
  visibility=excluded.visibility,

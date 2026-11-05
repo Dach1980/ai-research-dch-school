@@ -110,18 +110,43 @@ class PublishedSiteIntegrityTests(unittest.TestCase):
         self.assertIn('generatedPlanet', script)
         self.assertIn('data-select-lesson', script)
 
-    def test_a4_is_published_and_a5_remains_an_editorial_draft(self):
+    def test_a4_and_a5_are_published_in_three_languages(self):
         catalog = json.loads((ROOT / "data" / "catalog" / "lessons.json").read_text(encoding="utf-8"))
         lessons = {item["id"]: item for item in catalog["lessons"]}
-        self.assertEqual(lessons["A.4"]["status"], "published")
-        self.assertEqual(lessons["A.4"]["url"], "lessons/a-4-what-is-machine-learning-model.html")
-        self.assertNotIn("A.5", lessons)
-        a4_page = (ROOT / lessons["A.4"]["url"]).read_text(encoding="utf-8")
-        self.assertGreaterEqual(a4_page.count("<svg"), 5)
-        self.assertIn("Training", a4_page)
-        self.assertIn("Inference", a4_page)
-        self.assertNotIn("\\hat", a4_page)
-        self.assertTrue((ROOT / "docs" / "education" / "drafts" / "A5-MODEL-EVALUATION.md").is_file())
+        for lesson_id, base in [
+            ("A.1", "a-1-what-is-artificial-intelligence"),
+            ("A.2", "a-2-ai-ml-deep-learning"),
+            ("A.3", "a-3-how-machines-learn-from-data"),
+            ("A.4", "a-4-what-is-machine-learning-model"),
+            ("A.5", "a-5-how-to-evaluate-a-model"),
+        ]:
+            lesson = lessons[lesson_id]
+            self.assertEqual(lesson["status"], "published")
+            self.assertEqual(lesson.get("languages"), ["ru", "en", "zh"])
+            self.assertEqual(set(lesson.get("url_i18n", {})), {"ru", "en", "zh"})
+            for locale in ("ru", "en", "zh"):
+                with self.subTest(lesson=lesson_id, locale=locale):
+                    self.assertTrue((ROOT / lesson["url_i18n"][locale]).is_file())
+        a4 = (ROOT / lessons["A.4"]["url"]).read_text(encoding="utf-8")
+        a5 = (ROOT / lessons["A.5"]["url"]).read_text(encoding="utf-8")
+        self.assertGreaterEqual(a4.count("<svg"), 6)
+        self.assertGreaterEqual(a5.count("<svg"), 5)
+        self.assertIn("Training", a4)
+        self.assertIn("Inference", a4)
+        self.assertIn("Проверка понимания", a5)
+        self.assertNotIn("\\hat", a4)
+
+    def test_language_switcher_and_homepage_knowledge_map(self):
+        switcher = (ROOT / "scripts" / "language-switcher.js").read_text(encoding="utf-8")
+        home = (ROOT / "index.html").read_text(encoding="utf-8")
+        self.assertIn("language-switcher", switcher)
+        self.assertIn('id="knowledge-universe"', home)
+        self.assertIn("A.5", home)
+        for relative in ["index-en.html", "index-zh.html", "lessons/index-en.html",
+                         "lessons/index-zh.html", "learning-map/index-en.html",
+                         "learning-map/index-zh.html", "tracks/understanding-ai-en.html",
+                         "tracks/understanding-ai-zh.html"]:
+            self.assertTrue((ROOT / relative).is_file(), relative)
 
     def test_a1_and_a2_have_original_explanatory_diagrams(self):
         a1 = (ROOT / "lessons" / "a-1-what-is-artificial-intelligence.html").read_text(encoding="utf-8")

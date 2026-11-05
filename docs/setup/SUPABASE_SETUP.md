@@ -15,9 +15,9 @@ The browser key is not an access-control mechanism. Security depends on the RLS 
 
 ## 2. Apply the database migration
 
-Run `supabase/migrations/001_learning_access.sql`, `supabase/migrations/002_seed_lesson_catalog.sql`, `supabase/migrations/003_publish_a3_lesson.sql`, and `supabase/migrations/004_school_admin_roles.sql` in the Supabase SQL Editor, in that order. Inspect the result and verify that RLS is enabled on all five tables.
+Run `supabase/migrations/001_learning_access.sql`, `supabase/migrations/002_seed_lesson_catalog.sql`, `supabase/migrations/003_publish_a3_lesson.sql`, `supabase/migrations/004_school_admin_roles.sql`, and `supabase/migrations/005_align_public_a1_a3_catalog.sql` in the Supabase SQL Editor, in that order. Inspect the result and verify that RLS is enabled on all five tables.
 
-The initial catalogue seed sets two lessons to `public` and A.1 to `free_account`. This is metadata only: the A.1 lesson body is still in the public GitHub repository and is NOT protected by this database policy. Do not treat the access gate as production-secure until its lesson payload and assets have been moved out of the public repository and the old public copies/history have been addressed.
+Migration 005 aligns the Supabase metadata for public A.1, A.2 and A.3 with the current website catalogue. This is metadata only: all three lesson bodies remain in the public GitHub repository and are NOT protected by this database policy. Do not treat the access gate as production-secure until its lesson payload and assets have been moved out of the public repository and the old public copies/history have been addressed.
 
 ## 3. Configure email authentication
 

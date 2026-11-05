@@ -18,6 +18,21 @@
         "Различать интеллект, интеллектуальное поведение и сознание",
         "Описывать общую схему AI-системы и основные подходы к её созданию",
         "Приводить примеры задач AI и объяснять ограничения таких систем"
+      ],
+      "title_i18n": {
+        "ru": "Что такое искусственный интеллект?",
+        "en": "What Is Artificial Intelligence?",
+        "zh": "什么是人工智能？"
+      },
+      "url_i18n": {
+        "ru": "lessons/a-1-what-is-artificial-intelligence.html",
+        "en": "lessons/a-1-what-is-artificial-intelligence-en.html",
+        "zh": "lessons/a-1-what-is-artificial-intelligence-zh.html"
+      },
+      "languages": [
+        "ru",
+        "en",
+        "zh"
       ]
     },
     {
@@ -39,6 +54,21 @@
         "Объяснять отношения между AI, ML и DL",
         "Приводить примеры AI-систем без машинного обучения",
         "Классифицировать прикладные системы по используемому подходу"
+      ],
+      "title_i18n": {
+        "ru": "AI, Machine Learning и Deep Learning",
+        "en": "AI, Machine Learning and Deep Learning",
+        "zh": "AI、机器学习与深度学习"
+      },
+      "url_i18n": {
+        "ru": "lessons/a-2-ai-ml-deep-learning.html",
+        "en": "lessons/a-2-ai-ml-deep-learning-en.html",
+        "zh": "lessons/a-2-ai-ml-deep-learning-zh.html"
+      },
+      "languages": [
+        "ru",
+        "en",
+        "zh"
       ]
     },
     {
@@ -62,6 +92,21 @@
         "Описывать обучение с учителем и без учителя на простых примерах",
         "Объяснять обобщение, недообучение и переобучение",
         "Распознавать утечку данных в учебной постановке"
+      ],
+      "title_i18n": {
+        "ru": "Как машина учится на данных",
+        "en": "How Machines Learn from Data",
+        "zh": "机器如何从数据中学习"
+      },
+      "url_i18n": {
+        "ru": "lessons/a-3-how-machines-learn-from-data.html",
+        "en": "lessons/a-3-how-machines-learn-from-data-en.html",
+        "zh": "lessons/a-3-how-machines-learn-from-data-zh.html"
+      },
+      "languages": [
+        "ru",
+        "en",
+        "zh"
       ]
     },
     {
@@ -86,6 +131,61 @@
         "Объяснять этапы training и inference",
         "Сравнивать линейные модели, деревья решений и нейронные сети на концептуальном уровне",
         "Описывать место модели в полной AI-системе"
+      ],
+      "title_i18n": {
+        "ru": "Что такое модель машинного обучения?",
+        "en": "What Is a Machine Learning Model?",
+        "zh": "什么是机器学习模型？"
+      },
+      "url_i18n": {
+        "ru": "lessons/a-4-what-is-machine-learning-model.html",
+        "en": "lessons/a-4-what-is-machine-learning-model-en.html",
+        "zh": "lessons/a-4-what-is-machine-learning-model-zh.html"
+      },
+      "languages": [
+        "ru",
+        "en",
+        "zh"
+      ]
+    },
+    {
+      "id": "A.5",
+      "module_id": "module-11",
+      "track_id": "track-a",
+      "title": "Как проверяют качество модели",
+      "status": "published",
+      "access": "open",
+      "level": "beginner",
+      "duration_min": 60,
+      "duration_max": 70,
+      "prerequisites": [
+        "A.1",
+        "A.2",
+        "A.3",
+        "A.4"
+      ],
+      "url": "lessons/a-5-how-to-evaluate-a-model.html",
+      "learning_outcomes": [
+        "Различать обучающую, валидационную и тестовую выборки",
+        "Выбирать метрики регрессии и классификации",
+        "Интерпретировать confusion matrix, precision, recall и F1",
+        "Распознавать дисбаланс классов, переобучение и утечку данных",
+        "Объяснять ограничения и область применимости оценки"
+      ],
+      "title_i18n": {
+        "ru": "Как проверяют качество модели",
+        "en": "How to Evaluate a Machine Learning Model",
+        "zh": "如何评估机器学习模型？"
+      },
+      "url_i18n": {
+        "ru": "lessons/a-5-how-to-evaluate-a-model.html",
+        "en": "lessons/a-5-how-to-evaluate-a-model-en.html",
+        "zh": "lessons/a-5-how-to-evaluate-a-model-zh.html"
+      },
+      "languages": [
+        "ru",
+        "en",
+        "zh"
       ]
     }
   ]

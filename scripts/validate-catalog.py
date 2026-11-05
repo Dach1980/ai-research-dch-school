@@ -161,7 +161,19 @@ def validate_cross_references(data: dict[str, Any]) -> list[str]:
     for track in tracks:
         validate_relative_html_path(track.get("url"), f"Направление {track.get('id')}", errors)
     for lesson in lessons:
-        validate_relative_html_path(lesson.get("url"), f"Урок {lesson.get('id')}", errors)
+        lesson_id = lesson.get("id")
+        validate_relative_html_path(lesson.get("url"), f"Урок {lesson_id}", errors)
+        localized_urls = lesson.get("url_i18n")
+        if localized_urls is not None:
+            if not isinstance(localized_urls, dict) or set(localized_urls) != {"ru", "en", "zh"}:
+                errors.append(f"Урок {lesson_id}: url_i18n должен содержать ровно ru, en и zh")
+            else:
+                for locale in ("ru", "en", "zh"):
+                    validate_relative_html_path(
+                        localized_urls.get(locale), f"Урок {lesson_id} ({locale})", errors
+                    )
+            if lesson.get("languages") != ["ru", "en", "zh"]:
+                errors.append(f"Урок {lesson_id}: languages должен быть [ru, en, zh]")
 
     return errors
 

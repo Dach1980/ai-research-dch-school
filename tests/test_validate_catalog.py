@@ -80,10 +80,6 @@ class CatalogRelationshipTests(unittest.TestCase):
                             for e in validator.validate_cross_references(data)))
 
 
-if __name__ == "__main__":
-    unittest.main()
-
-
 class PublishedSiteIntegrityTests(unittest.TestCase):
     def test_every_published_lesson_has_page_and_planet(self):
         catalog_dir = ROOT / "data" / "catalog"
@@ -121,3 +117,36 @@ class PublishedSiteIntegrityTests(unittest.TestCase):
         self.assertNotIn("A.5", ids)
         self.assertTrue((ROOT / "docs" / "education" / "drafts" / "A4-MACHINE-LEARNING-MODEL.md").is_file())
         self.assertTrue((ROOT / "docs" / "education" / "drafts" / "A5-MODEL-EVALUATION.md").is_file())
+
+
+    def test_every_published_lesson_has_learning_outcomes(self):
+        catalog = json.loads((ROOT / "data" / "catalog" / "lessons.json").read_text(encoding="utf-8"))
+        for lesson in catalog["lessons"]:
+            if lesson["status"] == "published":
+                with self.subTest(lesson=lesson["id"]):
+                    self.assertTrue(lesson.get("learning_outcomes"))
+
+    def test_primary_pages_have_mobile_navigation_toggle(self):
+        pages = [
+            "index.html",
+            "lessons/index.html",
+            "lessons/a-1-what-is-artificial-intelligence.html",
+            "lessons/a-2-ai-ml-deep-learning.html",
+            "lessons/a-3-how-machines-learn-from-data.html",
+            "learning-map/index.html",
+            "tracks/understanding-ai.html",
+            "tracks/inside-ai.html",
+            "tracks/building-with-ai.html",
+            "news/index.html",
+            "news/001-school-launch.html",
+            "account/index.html",
+        ]
+        for relative in pages:
+            page = (ROOT / relative).read_text(encoding="utf-8")
+            with self.subTest(page=relative):
+                self.assertIn('class="menu-toggle"', page)
+                self.assertIn("scripts/main.js", page)
+
+
+if __name__ == "__main__":
+    unittest.main()

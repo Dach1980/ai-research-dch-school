@@ -187,6 +187,46 @@
         "en",
         "zh"
       ]
+    },
+    {
+      "id": "A.6",
+      "module_id": "module-11",
+      "track_id": "track-a",
+      "title": "Почему модель ошибается на новых данных?",
+      "status": "published",
+      "access": "open",
+      "level": "beginner",
+      "duration_min": 60,
+      "duration_max": 75,
+      "prerequisites": [
+        "A.1",
+        "A.2",
+        "A.3",
+        "A.4",
+        "A.5"
+      ],
+      "learning_outcomes": [
+        "Объяснять обобщение и отличие запоминания от обучения закономерности",
+        "Различать недообучение, хорошее обобщение и переобучение по train и validation error",
+        "Интерпретировать кривые ошибок в зависимости от сложности модели и объёма данных",
+        "Выбирать способы улучшения модели: регуляризацию, early stopping, дополнительные данные и корректную валидацию"
+      ],
+      "url": "lessons/a-6-generalization-and-overfitting.html",
+      "title_i18n": {
+        "ru": "Почему модель ошибается на новых данных?",
+        "en": "Why Does a Model Fail on New Data?",
+        "zh": "为什么模型在新数据上会出错？"
+      },
+      "url_i18n": {
+        "ru": "lessons/a-6-generalization-and-overfitting.html",
+        "en": "lessons/a-6-generalization-and-overfitting-en.html",
+        "zh": "lessons/a-6-generalization-and-overfitting-zh.html"
+      },
+      "languages": [
+        "ru",
+        "en",
+        "zh"
+      ]
     }
   ]
 }

@@ -76,4 +76,4 @@ Deployment is blocked unless the validation jobs succeed.
 - The live site could not be independently inspected in a browser from this execution environment. A successful GitHub Pages deployment confirms the deployment workflow, not pixel-level browser acceptance on desktop and mobile.
 - Catalog and map integrity are source-tested; a final visual interaction pass on the live map is still recommended.
 
-**Status:** content, catalog-source checks and diagram parity implemented; automated CI acceptance is the final gate. Browser-level visual acceptance remains separate.
+**Status:** content expansion, catalog-source checks, multilingual/diagram parity validation and GitHub Pages deployment passed in Actions run `42044025429` (commit `db8746e8c9deb9a780aff311f7390badbd2647e5`). Browser-level visual acceptance on desktop/mobile and native-speaker editorial proofreading remain separate final checks.

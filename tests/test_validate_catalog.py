@@ -120,6 +120,7 @@ class PublishedSiteIntegrityTests(unittest.TestCase):
         self.assertGreaterEqual(a4_page.count("<svg"), 5)
         self.assertIn("Training", a4_page)
         self.assertIn("Inference", a4_page)
+        self.assertNotIn("\\hat", a4_page)
         self.assertTrue((ROOT / "docs" / "education" / "drafts" / "A5-MODEL-EVALUATION.md").is_file())
 
     def test_a1_and_a2_have_original_explanatory_diagrams(self):

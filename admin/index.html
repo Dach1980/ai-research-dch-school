@@ -47,7 +47,7 @@ code{font-size:12px;color:var(--blue)}
 <main class="admin-shell" hidden>
 <p class="eyebrow">CONTENT MANAGEMENT · PROJECT CONTROL</p>
 <div class="admin-heading"><h1>Панель администратора</h1><span class="muted">AI Research DCH School</span></div>
-<div class="warning"><strong>Важно:</strong> страница размещается на GitHub Pages, но её содержимое показывается только после проверки подтверждённой Supabase-сессии и активной роли school_admins. Запись дополнительно ограничивается PostgreSQL RLS. Аудит и roadmap доступны для чтения; защищённое редактирование каталога и выдача разрешений требуют завершения серверного API и применения миграций. Не размещайте секреты и персональные данные в публичном репозитории.</div>
+<div class="warning"><strong>Важно:</strong> страница размещается на GitHub Pages, но её содержимое показывается только после проверки подтверждённой Supabase-сессии и активной роли school_admins. Запись дополнительно ограничивается PostgreSQL RLS. Roadmap хранится в Git и доступен для чтения; серверный API защищённого управления реализован через Edge Function, но его live-деплой, применение миграций и проверка RLS должны быть подтверждены до использования административных операций. Не размещайте секреты и персональные данные в публичном репозитории.</div>
 <nav class="admin-tabs" role="tablist" aria-label="Разделы панели администратора">
 <button class="admin-tab" id="tab-overview" role="tab" aria-selected="true" aria-controls="panel-overview">Обзор</button>
 <button class="admin-tab" id="tab-roadmap" role="tab" aria-selected="false" aria-controls="panel-roadmap">Roadmap</button>

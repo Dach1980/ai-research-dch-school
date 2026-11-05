@@ -66,6 +66,11 @@ declare
  new_json jsonb;
  key_value text;
 begin
+ -- Service-role operations are audited explicitly by the trusted Edge Function,
+ -- which can attach the verified human actor. Avoid duplicate null-actor trigger rows.
+ if (select auth.uid()) is null then
+   if tg_op = 'DELETE' then return old; else return new; end if;
+ end if;
  if tg_op <> 'INSERT' then old_json := to_jsonb(old); end if;
  if tg_op <> 'DELETE' then new_json := to_jsonb(new); end if;
  key_value := coalesce(new_json->>'id',new_json->>'lesson_id',new_json->>'user_id',
@@ -87,6 +92,9 @@ create trigger audit_lesson_entitlement_changes after insert or update or delete
  for each row execute function public.audit_school_admin_change();
 drop trigger if exists audit_school_admin_role_changes on public.school_admins;
 create trigger audit_school_admin_role_changes after insert or update or delete on public.school_admins
+ for each row execute function public.audit_school_admin_change();
+drop trigger if exists audit_profile_changes on public.profiles;
+create trigger audit_profile_changes after update on public.profiles
  for each row execute function public.audit_school_admin_change();
 
 -- Auth user bans and role grants are intentionally handled by the trusted Edge Function,

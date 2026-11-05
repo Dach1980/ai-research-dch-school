@@ -15,6 +15,11 @@
       "id": "planet-A-3",
       "lesson_id": "A.3",
       "accent_id": "teal"
+    },
+    {
+      "id": "planet-A-4",
+      "lesson_id": "A.4",
+      "accent_id": "blue"
     }
   ]
 }

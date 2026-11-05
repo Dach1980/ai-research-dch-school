@@ -1,7 +1,20 @@
 {
   "schema_version": 1,
   "planets": [
-    {"id":"planet-A-1","lesson_id":"A.1","accent_id":"blue"},
-    {"id":"planet-A-2","lesson_id":"A.2","accent_id":"teal"}
+    {
+      "id": "planet-A-1",
+      "lesson_id": "A.1",
+      "accent_id": "blue"
+    },
+    {
+      "id": "planet-A-2",
+      "lesson_id": "A.2",
+      "accent_id": "teal"
+    },
+    {
+      "id": "planet-A-3",
+      "lesson_id": "A.3",
+      "accent_id": "teal"
+    }
   ]
 }

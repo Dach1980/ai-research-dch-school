@@ -107,7 +107,7 @@ class PublishedSiteIntegrityTests(unittest.TestCase):
         self.assertIn('data-planets-root', page)
         self.assertIn('data/catalog/lessons.json', script)
         self.assertIn('data/catalog/planets.json', script)
-        self.assertIn('data-generated-planet', script)
+        self.assertIn('generatedPlanet', script)
         self.assertIn('data-select-lesson', script)
 
     def test_a4_and_a5_are_editorial_drafts_not_published_pages(self):

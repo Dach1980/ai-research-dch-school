@@ -115,6 +115,20 @@ def main() -> int:
                 if not (ROOT / target).is_file():
                     fail(errors, f"{lesson_id}/{locale}: language switcher target missing: {target_locale} -> {target}")
 
+        if all(pages.get(locale) for locale in LOCALES):
+            def visible_text(page: str) -> str:
+                page = re.sub(r"<script\\b[\\s\\S]*?</script>", " ", page, flags=re.I)
+                page = re.sub(r"<style\\b[\\s\\S]*?</style>", " ", page, flags=re.I)
+                return re.sub(r"<[^>]+>", " ", page)
+
+            ru_words = len(re.findall(r"[\\w]+", visible_text(pages["ru"]), flags=re.UNICODE))
+            en_words = len(re.findall(r"[\\w]+", visible_text(pages["en"]), flags=re.UNICODE))
+            zh_characters = len(re.findall(r"[\\u3400-\\u9fff]", visible_text(pages["zh"])))
+            if ru_words and en_words < ru_words * 0.65:
+                fail(errors, f"{lesson_id}: English text volume is too short ({en_words}/{ru_words} words; minimum 65%)")
+            if zh_characters < 1000:
+                fail(errors, f"{lesson_id}: Chinese translation appears incomplete ({zh_characters} CJK characters; minimum 1000)")
+
         if all(locale in diagrams for locale in LOCALES):
             counts = {locale: len(diagrams[locale]) for locale in LOCALES}
             if len(set(counts.values())) != 1:

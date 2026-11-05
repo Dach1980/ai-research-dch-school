@@ -9,7 +9,7 @@ model = LinearRegression().fit(X_train, y_train)
 pred = model.predict(X_test)
 print("MAE:", mean_absolute_error(y_test, pred))
 print("RMSE:", mean_squared_error(y_test, pred) ** 0.5)
-print("R2:", r2_score(y_test, pred))</code></pre><p>Важно: все преобразования данных должны обучаться только на тренировочной выборке。</p></section><section><h2>分类实践：基线模型与逻辑回归</h2><p>本实验使用合成数据，演示分层抽样、基线分类器、预处理Pipeline和多种指标。实际项目中应替换为真实特征，并提前明确误报与漏报的代价。</p><pre><code>from sklearn.datasets import make_classification
+print("R2:", r2_score(y_test, pred))</code></pre><p>注意：所有数据转换步骤都必须只在训练集上拟合。</p></section><section><h2>分类实践：基线模型与逻辑回归</h2><p>本实验使用合成数据，演示分层抽样、基线分类器、预处理Pipeline和多种指标。实际项目中应替换为真实特征，并提前明确误报与漏报的代价。</p><pre><code>from sklearn.datasets import make_classification
 from sklearn.model_selection import train_test_split, StratifiedKFold, cross_val_score
 from sklearn.dummy import DummyClassifier
 from sklearn.pipeline import make_pipeline

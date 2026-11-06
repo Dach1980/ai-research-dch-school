@@ -35,6 +35,14 @@ if(!config.url||!config.anonKey){
       }
     }
   }catch(error){
-    setMessage("Не удалось проверить административные права. Проверьте миграцию 004 и политики RLS. "+(error?.message||""),"error");
+    const code=error?.code||"";
+    const messageText=error?.message||"";
+    if(code==="PGRST205" || /Could not find the table ['"]public\.school_admins['"] in the schema cache/i.test(messageText)){
+      setMessage("Supabase не видит таблицу public.school_admins. Обычно это означает, что миграция 004_school_admin_roles.sql не применена к этому проекту, либо PostgREST ещё не обновил схему. Проверьте таблицу в Database → Tables и историю миграций. Если таблица существует, выполните NOTIFY pgrst, 'reload schema' в SQL Editor и обновите страницу. Техническая ошибка: "+messageText,"error");
+    }else if(code==="42501" || /permission denied|row-level security/i.test(messageText)){
+      setMessage("Таблица административных ролей доступна, но запрос запрещён правами PostgreSQL/RLS. Проверьте GRANT SELECT для authenticated и политику Admins read own role из миграции 004. "+messageText,"error");
+    }else{
+      setMessage("Не удалось проверить административные права. Проверьте доступность Supabase, миграцию 004 и политики RLS. "+messageText,"error");
+    }
   }
 }

@@ -1,0 +1,35 @@
+(function(){
+  "use strict";
+  var KEY="dch-school-theme";
+  var labels={light:"☀ Светлая",dark:"☾ Тёмная",system:"◐ Системная"};
+  var media=window.matchMedia?window.matchMedia("(prefers-color-scheme: dark)"):null;
+  function preference(){try{return localStorage.getItem(KEY)||"system"}catch(_){return "system"}}
+  function apply(){
+    var pref=preference();
+    var resolved=pref==="system"?(media&&media.matches?"dark":"light"):pref;
+    document.documentElement.dataset.theme=resolved;
+    document.documentElement.dataset.themePreference=pref;
+    document.querySelectorAll("[data-dch-theme-control]").forEach(function(button){
+      button.textContent=labels[pref];
+      button.setAttribute("aria-label","Тема оформления: "+labels[pref]+". Нажмите, чтобы изменить");
+      button.setAttribute("aria-pressed",pref!=="system"?"true":"false");
+      button.title="Текущий режим: "+labels[pref]+"; нажмите для следующего режима";
+    });
+    var meta=document.querySelector('meta[name="theme-color"]');
+    if(meta)meta.content=resolved==="dark"?"#080d1b":"#f4f7fc";
+  }
+  function cycle(){var order=["system","light","dark"];var current=preference();var next=order[(order.indexOf(current)+1)%order.length];try{localStorage.setItem(KEY,next)}catch(_){}apply();}
+  function ensureControl(){
+    var controls=document.querySelectorAll(".theme-toggle,[data-dch-theme-control]");
+    if(!controls.length){
+      var header=document.querySelector(".site-header");
+      if(header){var button=document.createElement("button");button.type="button";button.className="theme-switcher";button.dataset.dchThemeControl="";button.textContent=labels[preference()];button.addEventListener("click",cycle);header.appendChild(button);}
+    }
+    document.querySelectorAll(".theme-toggle").forEach(function(button){button.dataset.dchThemeControl="";button.addEventListener("click",cycle);});
+    document.querySelectorAll("[data-dch-theme-control]").forEach(function(button){if(!button.dataset.dchBound){button.dataset.dchBound="1";button.addEventListener("click",cycle);}});
+    apply();
+  }
+  ensureControl();
+  if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",ensureControl,{once:true});
+  if(media){var onChange=function(){if(preference()==="system")apply();};if(media.addEventListener)media.addEventListener("change",onChange);else if(media.addListener)media.addListener(onChange);}
+})();

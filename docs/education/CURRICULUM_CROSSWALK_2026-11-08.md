@@ -1,7 +1,7 @@
 # Curriculum Crosswalk — фактические материалы → утверждённая программа Track A
 
 **Дата аудита:** 2026-11-08  
-**Статус:** инвентаризация и редакторская декомпозиция A.3 / A.6 / A.1.2.1 выполнены; остальные соответствия остаются предметом точечной редакторской сверки; production IDs и URL не менялись  
+**Статус:** редакторская декомпозиция A.3 / A.6 / A.1.2.1 и сверка A.4/A.5 выполнены; A.1/A.2 остаются candidate mappings; production IDs и URL не менялись  
 **Целевая программа:** [TRACK_A_CURRICULUM.md](TRACK_A_CURRICULUM.md) — 5 тем, 27 модулей  
 **Рабочая ветка:** main
 
@@ -60,8 +60,8 @@
 | A.1 — a-1-what-is-artificial-intelligence | Что такое искусственный интеллект? / published | **1.1.1** «Что такое искусственный интеллект»; фрагменты **1.1.5** о возможностях и ограничениях AI | Сохранить как базовый материал. При переработке проверить границы между определением AI, историей, символическим AI и ML; не считать автоматически полным покрытием Module 1. |
 | A.2 — a-2-ai-ml-deep-learning | AI, Machine Learning и Deep Learning / published | **1.1.4** «AI, Machine Learning и Deep Learning»; частично **1.1.3** «Символический AI и машинное обучение» | Высокая тематическая близость к 1.1.4. Сверить содержание и outcomes; при необходимости разделить исторический/символический контекст и современную иерархию AI–ML–DL. |
 | A.3 — a-3-how-machines-learn-from-data | Как машина учится на данных / published | **1.2.1–1.2.2; 1.3.1–1.3.2 и 1.3.6; 1.4.1–1.4.4; фрагменты 1.2.5–1.2.6** | **Декомпозиция выполнена.** Разделы распределены по целевым урокам; no-code и Python experiments остаются lab resources. Подробная карта — [TRACK_A_LEGACY_CONTENT_DECOMPOSITION_2026-11-08.md](TRACK_A_LEGACY_CONTENT_DECOMPOSITION_2026-11-08.md). |
-| A.4 — a-4-what-is-machine-learning-model | Что такое модель машинного обучения? / published | **1.4.1** «Понятие модели и параметров»; **1.4.5** «Гиперпараметры и настройка модели»; отдельные основы семейств моделей из **3.1** | Основное соответствие Theme 1 / Module 4. Не переносить весь обзор архитектур в этот модуль, если он дублирует будущие модули Theme 3. Черновик A4 следует сверить и объединить с текущей страницей, а не считать отдельным уроком. |
-| A.5 — a-5-how-to-evaluate-a-model | Как проверяют качество модели / published | **1.5.1–1.5.6** — оценка качества, confusion matrix, метрики, дисбаланс, кросс-валидация | Основное соответствие Theme 1 / Module 5. Черновик A5 — расширение/редакционный источник для существующего урока; требуется сверка полноты метрик, leakage, разбиения данных и устойчивости. Не создавать дубликат. |
+| A.4 — a-4-what-is-machine-learning-model | Что такое модель машинного обучения? / published | **1.4.1, 1.4.2, 1.4.5, 3.1.6** | **Сверка выполнена.** Модель/параметры → 1.4.1; training/inference → 1.4.2; гиперпараметры → 1.4.5; обзор семейств → 3.1.6. Python practice и quiz остаются переносимыми ресурсами. |
+| A.5 — a-5-how-to-evaluate-a-model | Как проверяют качество модели / published | **1.2.4, 1.2.6, 1.4.3, 1.5.1–1.5.7** | **Сверка выполнена.** Разделение данных → 1.2.4; leakage → 1.2.6; under/overfitting reminder → 1.4.3; evaluation, classification, regression metrics and CV → 1.5.1–1.5.7. |
 | A.6 — a-6-generalization-and-overfitting | Почему модель ошибается на новых данных? / published | **1.4.3–1.4.4; 1.5.6; 1.2.6** | **Декомпозиция выполнена.** Under/overfitting и bias–variance → 1.4.3; generalization → 1.4.4; cross-validation/split protocol → 1.5.6; leakage → 1.2.6. Подробная карта — [TRACK_A_LEGACY_CONTENT_DECOMPOSITION_2026-11-08.md](TRACK_A_LEGACY_CONTENT_DECOMPOSITION_2026-11-08.md). |
 
 Текущие legacy URL для всех шести уроков и их локализаций перечислены в data/catalog/catalog-v2.json и data/catalog/lessons.json. Они не менялись.
@@ -136,3 +136,10 @@
 После первоначального Crosswalk additive staging schema/catalog v3 реализован. Независимые UID, 5 тем / 27 модулей Track A, предварительные lesson outline UIDs и 12 fragment-level mappings записаны в `data/catalog/catalog-v3.json` и `data/catalog/migration-manifest-v3.json`. См. [CATALOG_V3_ARCHITECTURE.md](../architecture/CATALOG_V3_ARCHITECTURE.md) и [CATALOG_V3_CONSUMER_INVENTORY.md](../architecture/CATALOG_V3_CONSUMER_INVENTORY.md).
 
 Это не production migration: опубликованные страницы и все v1/v2 потребители остаются на текущих контрактах. A.4/A.5 остаются в editorial review; Supabase slug identifiers, entitlements и внешние пользовательские состояния не мигрировались. Статус CI и браузерной приёмки для v3 не подтверждён.
+
+
+## 8. Завершение сверки A.4/A.5 и alias mapping
+
+Сверка опубликованных страниц A.4/A.5 в RU/EN/中文 с редакционными исходниками завершена. Статус «не опубликован» в заголовках исходников исправлен: страницы уже существуют и Supabase migration 006 помечает их public/published. Добавлена новая позиция 1.5.7 для регрессионных метрик. Подробности: [A4_A5_EDITORIAL_RECONCILIATION_2026-11-08.md](A4_A5_EDITORIAL_RECONCILIATION_2026-11-08.md).
+
+Manifest содержит aliases для v2 IDs, старых legacy IDs, RU/EN/中文 URLs и Supabase lesson_catalog slugs. Migration 008 создаёт staging registry, alias table и fragment mapping tables; все aliases имеют resolve_only. Existing entitlements не переносятся и не наследуются новыми уроками. Production cutover не выполнялся.

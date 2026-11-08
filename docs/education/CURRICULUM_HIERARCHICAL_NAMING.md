@@ -29,6 +29,8 @@ Track A
 | Track | A | track-a |
 | Theme | A.1 | theme-a1-foundations |
 | Module | A.1.1 | module-11 |
+| Module | A.1.2 | new XAI foundations module |
 | Lessons | A.1.1.1–A.1.1.6 | A.1–A.6 |
+| Lesson | A.1.2.1 | existing XAI introduction; status review |
 
 Production catalogue, Track A lesson list and Knowledge Map now read catalog v2 through the compatibility adapter. The v1 split JSON files remain in the repository as a legacy source and fallback for older consumers; their URLs are unchanged. Lesson A.1.2.1 is in review and is not shown as a published planet.

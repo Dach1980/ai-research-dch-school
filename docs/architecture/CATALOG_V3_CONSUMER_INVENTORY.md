@@ -47,6 +47,6 @@ Repository files inspected include:
 - `scripts/catalog-compat.js`
 - `scripts/catalog_compat.py`
 - `scripts/admin-management.js`
-- `supabase/migrations/001_learning_access.sql` through `007_publish_a6_generalization.sql`
+- `supabase/migrations/001_learning_access.sql` through `008_catalog_v3_alias_registry.sql`
 
 The three migrated static consumers use a legacy-preserving projection: their existing IDs, statuses, URLs, localized titles, prerequisites and planet associations are retained, while target UID arrays are added. Other consumers remain on legacy contracts until individually migrated. v3 still does not replace the existing Supabase lesson payloads or entitlement model.

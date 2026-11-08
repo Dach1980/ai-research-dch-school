@@ -23,11 +23,13 @@
     const legacy = lesson.legacy_id || lesson.id;
     const displayCode = lesson.v3_target_codes && lesson.v3_target_codes.length === 1 ? lesson.v3_target_codes[0] : lesson.id;
     const info = descriptions[legacy] || "Опубликованный учебный материал Track A.";
+    const prerequisiteLabels = {"A.1.1.1":"1.1.1","lesson-history-of-ai":"1.1.2"};
+    const prerequisiteText = (lesson.prerequisites || []).map(id=>prerequisiteLabels[id]||id).join(", ");
     const prerequisites = (lesson.prerequisites || []).length
-      ? "Рекомендуется предварительно пройти: " + lesson.prerequisites.join(", ") + "."
+      ? "Рекомендуется предварительно пройти: " + prerequisiteText + "."
       : "Предварительная подготовка не требуется.";
     details.innerHTML =
-      '<div class="side-top"><span class="side-tag">TRACK '+esc(track.code)+' · THEME '+esc(theme.id)+' · MODULE '+esc(module.id)+'</span><span class="level">'+esc(lesson.level === "beginner" ? "Начальный уровень" : lesson.level)+'</span></div>'+
+      '<div class="side-top"><span class="side-tag">TRACK '+esc(track.code)+' · THEME '+esc(theme.id.split('.').pop())+' · MODULE '+esc(module.id.split('.').pop())+'</span><span class="level">'+esc(lesson.level === "beginner" ? "Начальный уровень" : lesson.level)+'</span></div>'+
       '<p class="side-tag">УРОК '+esc(displayCode)+'</p><h2>'+esc(lesson.title_i18n?.ru || lesson.title)+'</h2><p class="side-desc">'+esc(info)+'</p>'+
       '<div class="side-divider"></div><span class="side-heading">После урока вы сможете</span>'+
       '<ul class="outcomes">'+(lesson.learning_outcomes||[]).map(x=>'<li>'+esc(x)+'</li>').join("")+'</ul>'+
@@ -56,6 +58,7 @@
         const theme=themes.get(module.theme_id);
         const track=tracks.get(theme.track_id);
         const legacy=lesson.legacy_id||lesson.id;
+        const displayCode=lesson.v3_target_codes&&lesson.v3_target_codes.length===1?lesson.v3_target_codes[0]:lesson.id;
         const position=positions[legacy]||[[50,49],[72,31],[28,30]][index%3];
         const button=document.createElement("button");
         button.type="button";button.className="planet-button";

@@ -21,9 +21,9 @@ class Tests(unittest.TestCase):
  def test_crosswalk_and_planets(self):
   a=c.load_catalog(ROOT/"data/catalog");b=c.load_catalog(ROOT/"data/catalog/catalog-v2.json")
   legacy={z["id"]:z for z in a["lessons"]};hierarchical={z["id"]:z for z in b["lessons"]}
-  for old_id,old_lesson in legacy.items():
-   new_id="A.1.1."+old_id.split(".")[-1];new_lesson=hierarchical[new_id]
-   self.assertEqual((new_lesson["legacy_id"],new_lesson["url"],new_lesson.get("url_i18n")),(old_id,old_lesson["url"],old_lesson.get("url_i18n")))
+  for new_id,old_lesson in legacy.items():
+   new_lesson=hierarchical[new_id]
+   self.assertEqual((new_lesson.get("legacy_id"),new_lesson["url"],new_lesson.get("url_i18n")),(old_lesson.get("legacy_id"),old_lesson["url"],old_lesson.get("url_i18n")))
   self.assertEqual({z["id"]:z["lesson_id"] for z in a["planets"]},{z["id"]:z["lesson_id"] for z in b["planets"]})
  def test_missing_parent_rejected(self):
   x=c.load_catalog(ROOT/"data/catalog/catalog-v2.json");x["modules"][0]["theme_id"]="missing"

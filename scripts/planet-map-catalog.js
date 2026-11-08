@@ -25,7 +25,7 @@
     const legacy = lesson.legacy_id || lesson.id;
     const displayCode = lesson.v3_target_codes && lesson.v3_target_codes.length === 1 ? lesson.v3_target_codes[0] : lesson.id;
     const info = descriptions[legacy] || "Опубликованный учебный материал Track A.";
-    const prerequisiteLabels = {"A.1.1.1":"1.1.1","A.7":"1.1.2"};
+    const prerequisiteLabels = {"A.1.1.1":"1.1.1","A.1.1.7":"1.1.2","A.7":"1.1.2"};
     const prerequisiteText = (lesson.prerequisites || []).map(id=>prerequisiteLabels[id]||id).join(", ");
     const prerequisites = (lesson.prerequisites || []).length
       ? "Рекомендуется предварительно пройти: " + prerequisiteText + "."

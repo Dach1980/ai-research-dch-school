@@ -229,7 +229,7 @@ html[data-theme="light"] .quiz-feedback li{color:#40516b}
 .lesson-content .lesson-diagram .svg-box2,.lesson-content .lesson-figure .svg-box2{fill:#302b55;stroke:#b09aff;stroke-width:1.5}
 .lesson-content .lesson-diagram .svg-box3,.lesson-content .lesson-figure .svg-box3{fill:#174846;stroke:#65d8c6;stroke-width:1.5}
 html[data-theme="light"] .reader-brand img{
-  background:linear-gradient(145deg,#e5efff,#f4edff);border-color:#c5d5ef
+  background:#f4f7ff;border-color:#dce6f5
 }
 html[data-theme="light"] .lesson-content figure.lesson-diagram,
 html[data-theme="light"] .lesson-content figure.lesson-figure{

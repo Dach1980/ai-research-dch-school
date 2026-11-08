@@ -27,7 +27,7 @@ class HierarchicalCatalogUITests(unittest.TestCase):
         script = (ROOT / "scripts/home-knowledge-map.js").read_text(encoding="utf-8")
         self.assertIn("schemaVersion:2", script)
         self.assertIn('baseUrl:"data/catalog"', script)
-        for relative in ["index.html", "learning-map/index-en.html", "learning-map/index-zh.html"]:
+        for relative in ["index.html", "index-en.html", "index-zh.html", "learning-map/index-en.html", "learning-map/index-zh.html"]:
             page = (ROOT / relative).read_text(encoding="utf-8")
             self.assertIn("data-home-knowledge-map", page)
             self.assertLess(page.index("catalog-compat.js"), page.index("home-knowledge-map.js"))

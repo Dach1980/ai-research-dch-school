@@ -10,3 +10,6 @@
 .lesson-nav{display:flex;gap:12px;flex-wrap:wrap;margin:42px 0 70px}.article-body .lesson-nav a{text-decoration:none}.article-body .lesson-nav .button{color:var(--text)}.article-body .lesson-nav .primary{color:#fff}
 
 .language-switcher{display:flex;align-items:center;gap:5px;flex-shrink:0}.language-switcher a{font-size:10px;font-weight:800;letter-spacing:.04em;color:#9eacc5;padding:6px 7px;border:1px solid transparent;border-radius:7px}.language-switcher a[aria-current=page]{color:#eef3ff;background:#2878d633;border-color:#58a6ff77}.language-switcher a:hover{color:#fff;border-color:#58a6ff88}@media(max-width:760px){.site-header{gap:10px}.language-switcher{margin-left:auto}.language-switcher a{padding:5px 6px}}
+
+/* Hierarchical curriculum catalogue (Track → Theme → Module → Lesson). */
+.catalog-module{margin:20px 0;padding:18px;border:1px solid var(--line);border-radius:16px;background:#101a2d}.catalog-module h3{margin:5px 0 14px}.catalog-module-heading{display:flex;gap:12px;align-items:baseline;flex-wrap:wrap;margin:12px 0}.catalog-module-heading span{font-size:10px;letter-spacing:.12em;color:var(--blue);font-weight:800}.catalog-module-heading strong{font-size:14px}.catalog-lesson-list{display:grid;gap:9px}

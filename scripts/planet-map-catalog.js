@@ -46,7 +46,7 @@
       const themes = new Map(data.themes.map(x=>[x.id,x]));
       const modules = new Map(data.modules.map(x=>[x.id,x]));
       const lessons = new Map(data.lessons.filter(x=>x.status==="published").map(x=>[x.id,x]));
-      const planets = data.planets.filter(p=>lessons.has(p.lesson_id));
+      const planets = data.planets.filter(p=>lessons.has(p.lesson_id) && lessons.get(p.lesson_id).track_id==="track-a");
       if (!planets.length) { list.innerHTML='<p class="map-note">Опубликованных планет пока нет.</p>'; return; }
       universe.querySelectorAll("[data-generated-planet]").forEach(node=>node.remove());
       const entries = planets.map((planet,index)=>{

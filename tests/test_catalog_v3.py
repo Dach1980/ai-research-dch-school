@@ -46,7 +46,7 @@ class CatalogV3Tests(unittest.TestCase):
         states = {x["legacy_id"]: x["mapping_state"] for x in self.manifest["legacy_entities"]}
         self.assertEqual(states["A.4"], "editorial_approved")
         self.assertEqual(states["A.5"], "editorial_approved")
-        self.assertNotIn("A.4", {x["legacy_id"] for x in self.manifest["unresolved"]})
+        self.assertNotIn("A.4", {x["legacy_id"] for x in self.manifest["unresolved_legacy_mappings"]})
         self.assertNotIn("A.5", {x["legacy_id"] for x in self.manifest["unresolved_legacy_mappings"]})
         self.assertIn("1.5.7", {x["code"] for x in self.catalog["lessons"]})
         self.assertIn("3.1.6", {x["code"] for x in self.catalog["lessons"]})

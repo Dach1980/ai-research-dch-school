@@ -43,6 +43,8 @@ jobs:
         run: node tests/test_catalog_compat_js.cjs
       - name: Test hierarchical catalog UI migration
         run: python -m unittest discover -s tests -p 'test_catalog_ui_v2.py' -v
+      - name: Check browser catalogue scripts syntax
+        run: node --check scripts/catalog-compat.js && node --check scripts/lesson-catalog.js && node --check scripts/planet-map-catalog.js && node --check scripts/home-knowledge-map.js
       - name: Validate production hierarchical catalog v2
         run: python scripts/validate-catalog-v2.py
       - name: Validate multilingual lesson pages and diagrams

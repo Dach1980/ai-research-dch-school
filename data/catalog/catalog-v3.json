@@ -929,6 +929,51 @@
       "prerequisite_uids": [],
       "learning_outcomes": [],
       "content_state": "outline_only"
+    },
+    {
+      "uid": "les-a-0048",
+      "track_uid": "trk-a",
+      "theme_uid": "thm-a-01",
+      "module_uid": "mod-a-01-05",
+      "code": "1.5.7",
+      "title": "Метрики регрессии: MAE, MSE, RMSE и R²",
+      "status": "planned",
+      "access": "open",
+      "level": "beginner",
+      "prerequisite_uids": [],
+      "learning_outcomes": [],
+      "content_state": "outline_only"
+    },
+    {
+      "uid": "les-a-0049",
+      "track_uid": "trk-a",
+      "theme_uid": "thm-a-03",
+      "module_uid": "mod-a-03-01",
+      "code": "3.1.6",
+      "title": "Сравнение моделей и базовые алгоритмы",
+      "status": "planned",
+      "access": "open",
+      "level": "beginner",
+      "prerequisite_uids": [
+        "les-a-0010",
+        "les-a-0011"
+      ],
+      "learning_outcomes": [],
+      "content_state": "outline_only"
+    },
+    {
+      "uid": "les-a-0050",
+      "track_uid": "trk-a",
+      "theme_uid": "thm-a-01",
+      "module_uid": "mod-a-01-02",
+      "code": "1.2.4",
+      "title": "Обучающие, проверочные и тестовые данные",
+      "status": "planned",
+      "access": "open",
+      "level": "beginner",
+      "prerequisite_uids": [],
+      "learning_outcomes": [],
+      "content_state": "outline_only"
     }
   ],
   "resources": [],

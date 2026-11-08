@@ -161,7 +161,7 @@ Track → Theme → Module → Lesson
 
 Реализованы additive v3-артефакты:
 - `data/catalog/schema-v3.json` — JSON Schema с UID для Track / Theme / Module / Lesson / Resource / Planet; display code отделён от технической идентичности.
-- `data/catalog/catalog-v3.json` — staging catalog: 3 tracks, 5 тем Track A, 27 модулей Track A и 42 предварительных lesson outline records. Уроки имеют статус planned / outline_only и не публикуются.
+- `data/catalog/catalog-v3.json` — staging catalog: 3 tracks, 5 тем Track A, 27 модулей Track A и 47 предварительных lesson outline records. Уроки имеют статус planned / outline_only и не публикуются.
 - `data/catalog/migration-manifest-v3.json` — семь legacy lesson records и 12 content-fragment topic mappings; A.3, A.6 и A.1.2.1 представлены как many-to-many / fragment mappings.
 - Python и browser adapters получили native v3 readers; v1/v2 readers сохранены.
 - Добавлены validator, Python/JS tests и CI steps для schema, relationships и manifest.

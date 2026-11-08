@@ -13,7 +13,7 @@ class BrandAssetTests(unittest.TestCase):
         self.assertIn("<text", logo)
         self.assertIn("DCH", logo)
         self.assertNotIn("<image", logo)
-        self.assertIsNone(re.search(r'href=["\\'](?!#|data:)', logo))
+        self.assertIsNone(re.search(r"""href=["'](?!#|data:)""", logo))
 
     def test_supplied_brand_icon_is_present_and_used_in_headers_and_footers(self):
         icon = ROOT / "assets/site-brand-icon.jpg"

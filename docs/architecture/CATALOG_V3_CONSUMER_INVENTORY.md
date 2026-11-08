@@ -28,6 +28,8 @@ These IDs currently use content slugs such as `a-1-what-is-artificial-intelligen
 
 The migrations inspected define profiles, lesson metadata/content, entitlements, admin roles and audit records. No dedicated progress, bookmark, or quiz-attempt tables were found in the checked-in migrations. Before cutover, inspect the live Supabase schema and any external persistence/analytics integrations; do not infer that learner state is absent merely because it is not represented in these migrations.
 
+Migration 008 now implements the additive UID registry, alias table, fragment mapping group/target tables, and a service-role-only alias resolver. It seeds 50 v3 lesson UIDs and 342 alias rows from the manifest. All aliases are resolve-only; no entitlement is inherited. The migration does not update any row in lesson_catalog, lesson_content, or lesson_entitlements.
+
 ## Required additive data model before cutover
 
 1. Add a legacy alias relation keyed by `source_system + legacy_id`, pointing to a v3 UID. A URL is also an alias, but must not be assumed unique across locales.

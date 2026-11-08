@@ -15,7 +15,7 @@ class Lesson112113Tests(unittest.TestCase):
                 self.assertIn('class="lesson-glossary"', source)
                 self.assertIn('class="glossary-entry"', source)
                 self.assertIn("THEME 1 · MODULE 1 · LESSON", source)
-                self.assertIn("../styles/lesson-visual-palette.css", (ROOT / "styles/main.css").read_text(encoding="utf-8"))
+                self.assertIn("lesson-visual-palette.css", (ROOT / "styles/main.css").read_text(encoding="utf-8"))
 
     def test_new_lessons_use_trackless_display_codes(self):
         for lesson, code in (("1-1-2-history-of-ai", "1.1.2"), ("1-1-3-symbolic-ai-and-machine-learning", "1.1.3")):

@@ -67,6 +67,12 @@ jobs:
         run: python -m unittest discover -s tests -p 'test_catalog_compat.py' -v
       - name: Test browser catalog compatibility adapter
         run: node tests/test_catalog_compat_js.cjs
+      - name: Test native v3 catalog compatibility reader
+        run: node tests/test_catalog_v3_js.cjs
+      - name: Test v3 catalog and migration manifest
+        run: python -m unittest discover -s tests -p 'test_catalog_v3.py' -v
+      - name: Validate staging catalog v3
+        run: python scripts/validate-catalog-v3.py
       - name: Test hierarchical catalog UI migration
         run: python -m unittest discover -s tests -p 'test_catalog_ui_v2.py' -v
       - name: Test DCH presentation standards

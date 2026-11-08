@@ -212,7 +212,7 @@
       "title": "Реализовать schema v2 и адаптер совместимости каталога",
       "status": "in_progress",
       "priority": "high",
-      "decision": "Параллельный каталог v2 реализован как отдельный bundle с явными сущностями Track → Theme → Module → Lesson. Production v1 остаётся источником сайта до прохождения dual-read, схемы, parent-chain, URL/ID parity и визуальной приёмки. Для текущих A.1–A.6 создан crosswalk Track A → Theme A1 → M11; новые уроки не создаются.",
+      "decision": "Параллельный каталог v2 реализован как отдельный bundle с явными сущностями Track → Theme → Module → Lesson. Production v1 остаётся источником сайта до прохождения dual-read, схемы, parent-chain, URL/ID parity и визуальной приёмки. Для текущих A.1–A.6 создан crosswalk Track A → Theme A1 → M11; новые уроки не создаются. Добавлен также browser-side adapter scripts/catalog-compat.js; production renderer пока не переключён.",
       "acceptance": [
         "Определена JSON Schema Draft 2020-12 для v2 с отдельными tracks/themes/modules/lessons/planets.",
         "Создан параллельный catalog-v2.json для A.1–A.6 без изменения production v1.",
@@ -221,7 +221,8 @@
         "Добавлены проверки parent chain и отсутствующих родителей.",
         "CI запускает тесты адаптера и валидатор schema v2.",
         "Production renderer не переключается до отдельного этапа миграции и browser acceptance.",
-        "Новые уроки не создаются."
+        "Новые уроки не создаются.",
+        "Browser-side adapter нормализует v1/v2; Node tests проходят в CI."
       ],
       "source": "data/catalog/schema-v2.json; data/catalog/catalog-v2.json; scripts/catalog_compat.py; scripts/validate-catalog-v2.py"
     }
@@ -795,14 +796,16 @@
       "date": "2026-11-08",
       "type": "catalog_schema_v2_and_compatibility_adapter",
       "title": "Реализован параллельный каталог v2 и адаптер совместимости",
-      "result": "Добавлены JSON Schema v2 и bundle каталога с отдельными сущностями Track, Theme, Module и Lesson. A.1–A.6 перенесены в параллельный v2 bundle по цепочке Track A → Theme A1 → Module 11 → Lessons A.1–A.6. Добавлен read-only adapter для legacy split v1 и hierarchical v2, который нормализует parent metadata и сохраняет legacy track_id для потребителей старого интерфейса. Добавлены тесты parity ID/URL/planet и валидатор v2; CI расширен тестами и запуском валидатора. Production v1 и Pages renderer не переключались.",
+      "result": "Добавлены JSON Schema v2 и bundle каталога с отдельными сущностями Track, Theme, Module и Lesson. A.1–A.6 перенесены в параллельный v2 bundle по цепочке Track A → Theme A1 → Module 11 → Lessons A.1–A.6. Добавлен read-only adapter для legacy split v1 и hierarchical v2, который нормализует parent metadata и сохраняет legacy track_id для потребителей старого интерфейса. Добавлены тесты parity ID/URL/planet и валидатор v2; CI расширен тестами и запуском валидатора. Production v1 и Pages renderer не переключались. Дополнительно реализован browser-side adapter scripts/catalog-compat.js с normalizeV1/normalizeV2/load; Node-тесты включены в CI. Runtime renderer остаётся на v1 до отдельного переключения.",
       "evidence": [
         "data/catalog/schema-v2.json",
         "data/catalog/catalog-v2.json",
         "scripts/catalog_compat.py",
         "scripts/validate-catalog-v2.py",
         "tests/test_catalog_compat.py",
-        ".github/workflows/validate-catalog.yml"
+        ".github/workflows/validate-catalog.yml",
+        "scripts/catalog-compat.js",
+        "tests/test_catalog_compat_js.cjs"
       ],
       "limitations": [
         "Workflow CI для текущего коммита должен завершиться успешно; локальный runtime здесь не запускался.",

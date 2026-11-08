@@ -28,7 +28,7 @@
       "id": "A.1",
       "track_id": "track-a",
       "code": "A.1",
-      "title": "Основы AI и машинного обучения",
+      "title": "Основы искусственного интеллекта и объяснимости",
       "status": "in_progress"
     }
   ],
@@ -37,6 +37,12 @@
       "id": "A.1.1",
       "theme_id": "A.1",
       "title": "Основы AI и машинного обучения",
+      "status": "in_progress"
+    },
+    {
+      "id": "A.1.2",
+      "theme_id": "A.1",
+      "title": "Введение в Explainable AI (XAI)",
       "status": "in_progress"
     }
   ],
@@ -267,6 +273,42 @@
         "zh"
       ],
       "legacy_id": "A.6"
+    },
+    {
+      "id": "A.1.2.1",
+      "module_id": "A.1.2",
+      "title": "Что такое XAI и зачем нужно объяснять модели?",
+      "status": "review",
+      "access": "open",
+      "level": "beginner",
+      "duration_min": 45,
+      "duration_max": 60,
+      "prerequisites": [
+        "A.1.1.6"
+      ],
+      "learning_outcomes": [
+        "Объяснять, зачем исследовать поведение модели помимо просмотра её прогноза",
+        "Различать прогноз модели, post-hoc объяснение поведения и исследование внутренних механизмов",
+        "Различать основные задачи и уровни анализа XAI и Mechanistic Interpretability",
+        "Описывать области применения XAI и ограничения объяснений",
+        "Различать прозрачность модели, объяснение отдельного решения и проверку качества объяснения"
+      ],
+      "url": "lessons/xai/01-what-and-why.html",
+      "title_i18n": {
+        "ru": "Что такое XAI и зачем нужно объяснять модели?",
+        "en": "What Is XAI and Why Explain Models?",
+        "zh": "什么是 XAI？为什么需要解释模型？"
+      },
+      "url_i18n": {
+        "ru": "lessons/xai/01-what-and-why.html",
+        "en": "lessons/xai/01-what-and-why.html",
+        "zh": "lessons/xai/01-what-and-why.html"
+      },
+      "languages": [
+        "ru",
+        "en",
+        "zh"
+      ]
     }
   ],
   "planets": [

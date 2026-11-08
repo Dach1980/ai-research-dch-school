@@ -7,7 +7,7 @@
   })[c]);
   const positions = {
     "A.1":[50,49],"A.2":[72,31],"A.3":[28,30],
-    "A.4":[72,68],"A.5":[28,68],"A.6":[50,87]
+    "A.4":[72,68],"A.5":[28,68],"A.6":[50,87],"lesson-history-of-ai":[50,20],"lesson-symbolic-ai-ml":[50,38]
   };
   const descriptions = {
     "A.1": "Первая остановка в изучении AI: определение искусственного интеллекта, устройство AI-систем, основные подходы и границы возможностей.",
@@ -21,17 +21,18 @@
     const details = document.querySelector("#planetDetails");
     if (!details) return;
     const legacy = lesson.legacy_id || lesson.id;
+    const displayCode = lesson.v3_target_codes && lesson.v3_target_codes.length === 1 ? lesson.v3_target_codes[0] : lesson.id;
     const info = descriptions[legacy] || "Опубликованный учебный материал Track A.";
     const prerequisites = (lesson.prerequisites || []).length
       ? "Рекомендуется предварительно пройти: " + lesson.prerequisites.join(", ") + "."
       : "Предварительная подготовка не требуется.";
     details.innerHTML =
       '<div class="side-top"><span class="side-tag">TRACK '+esc(track.code)+' · THEME '+esc(theme.id)+' · MODULE '+esc(module.id)+'</span><span class="level">'+esc(lesson.level === "beginner" ? "Начальный уровень" : lesson.level)+'</span></div>'+
-      '<h2>'+esc(lesson.title_i18n?.ru || lesson.title)+'</h2><p class="side-desc">'+esc(info)+'</p>'+
+      '<p class="side-tag">УРОК '+esc(displayCode)+'</p><h2>'+esc(lesson.title_i18n?.ru || lesson.title)+'</h2><p class="side-desc">'+esc(info)+'</p>'+
       '<div class="side-divider"></div><span class="side-heading">После урока вы сможете</span>'+
       '<ul class="outcomes">'+(lesson.learning_outcomes||[]).map(x=>'<li>'+esc(x)+'</li>').join("")+'</ul>'+
       '<p class="side-desc">'+esc(prerequisites)+'</p><div class="meta-grid">'+
-      '<div class="meta-item"><small>Идентификатор урока</small><strong>'+esc(lesson.id)+'</strong></div>'+
+      '<div class="meta-item"><small>Код урока</small><strong>'+esc(displayCode)+'</strong></div>'+
       '<div class="meta-item"><small>Длительность</small><strong>'+esc(lesson.duration_min+"–"+lesson.duration_max+" минут")+'</strong></div>'+
       '<div class="meta-item"><small>Предыдущий ID</small><strong>'+esc(lesson.legacy_id||"—")+'</strong></div>'+
       '<div class="meta-item"><small>Доступ</small><strong>'+esc(lesson.access==="open"?"Открытый урок":lesson.access)+'</strong></div></div>'+
@@ -66,15 +67,16 @@
         if(planet.accent_id==="violet")button.classList.add("planet-violet");
         button.style.left=position[0]+"%";button.style.top=position[1]+"%";
         button.dataset.lessonId=lesson.id;button.dataset.generatedPlanet="true";
-        button.setAttribute("aria-label","Выбрать урок "+lesson.id+": "+lesson.title);
-        button.innerHTML='<span class="planet-core"><span style="font:800 11px Manrope">'+esc(lesson.id)+'</span></span><span class="planet-code">'+esc(lesson.id)+'</span><span class="planet-name">'+esc(lesson.title)+'</span>';
+        button.setAttribute("aria-label","Выбрать урок "+displayCode+": "+lesson.title);
+        button.innerHTML='<span class="planet-core"><span style="font:800 11px Manrope">'+esc(displayCode)+'</span></span><span class="planet-code">'+esc(displayCode)+'</span><span class="planet-name">'+esc(lesson.title)+'</span>';
         button.addEventListener("click",()=>{renderDetails(lesson,lesson.id,theme,module,track);if(matchMedia("(max-width:900px)").matches){document.querySelector("#planetDetails")?.scrollIntoView({behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth",block:"start"});}});
         universe.appendChild(button);
         return {planet,lesson,module,theme,track};
       });
       list.innerHTML='<div class="side-top"><strong>Track A · Understanding AI</strong><span class="level">'+entries.length+' опубликовано</span></div>'+
         entries.map(({lesson,module,theme})=>{
-          return '<div class="list-entry"><div><strong>'+esc(lesson.id)+' — '+esc(lesson.title)+'</strong><small>Theme '+esc(theme.id)+' · Module '+esc(module.id)+' · '+esc(lesson.duration_min+"–"+lesson.duration_max+" минут")+'</small></div><div class="list-actions"><button type="button" data-select-lesson="'+esc(lesson.id)+'">Показать на карте</button><a class="button secondary" href="../'+esc(lesson.url)+'">Открыть урок ↗</a></div></div>';
+          const displayCode=lesson.v3_target_codes&&lesson.v3_target_codes.length===1?lesson.v3_target_codes[0]:lesson.id;
+          return '<div class="list-entry"><div><strong>'+esc(displayCode)+' — '+esc(lesson.title)+'</strong><small>Theme '+esc(theme.id.split('.').pop())+' · Module '+esc(module.id.split('.').pop())+' · '+esc(lesson.duration_min+"–"+lesson.duration_max+" минут")+'</small></div><div class="list-actions"><button type="button" data-select-lesson="'+esc(lesson.id)+'">Показать на карте</button><a class="button secondary" href="../'+esc(lesson.url)+'">Открыть урок ↗</a></div></div>';
         }).join("");
       list.querySelectorAll("[data-select-lesson]").forEach(button=>button.addEventListener("click",()=>{
         const entry=entries.find(x=>x.lesson.id===button.dataset.selectLesson);

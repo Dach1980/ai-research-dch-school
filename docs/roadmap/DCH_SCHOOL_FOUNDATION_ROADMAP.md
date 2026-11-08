@@ -171,13 +171,16 @@ Track → Theme → Module → Lesson
 
 Первый CI запуск выявил две страницы A.3 без `theme-system.js` (RU и ZH); подключение исправлено. Затем workflow `Validate learning catalog` для commit `91660ce37de10320d45ac0f29724eca97d64c146` завершился `success` (run [42452639748](https://github.com/Dach1980/ai-research-dch-school/actions/runs/42452639748)): прошли legacy v1/v2 tests, новые v3 reader tests, v3 schema/manifest validation, UI migration tests, presentation standards, syntax checks и multilingual lesson checks. GitHub Pages build/deployment для того же commit на момент последней проверки ещё выполнялся; ручная браузерная проверка не выполнялась.
 
-**Следующий блокирующий этап:** закончить A.4/A.5 сверены и approved; staging UID registry, 342 resolve-only aliases и fragment mapping tables добавлены миграцией 008. Остаются live Supabase migration smoke test, runtime alias integration, progress/entitlement audit и поэтапная миграция consumers. Production switch запрещён до этих gates.
+**Следующий блокирующий этап:** подключить alias resolver к доверенной серверной операции, проверить live Supabase schema и внешние хранилища пользовательского состояния, затем перевести Supabase admin/editor и lesson-reader по отдельности. A.1/A.2 остаются кандидатными crosswalk-связями. Production switch запрещён до этих gates.
 
 
 ## 11. A.4/A.5 reconciliation and Supabase aliases (2026-11-08)
 
 A.4/A.5 drafts сверены с RU/EN/中文 published pages. A.4 распределён в 1.4.1, 1.4.2, 1.4.5 и 3.1.6. A.5 распределён в 1.2.4, 1.2.6, 1.4.3, 1.5.1–1.5.7. В curriculum добавлен урок 1.5.7 для MAE/MSE/RMSE/R². См. [A4_A5_EDITORIAL_RECONCILIATION_2026-11-08.md](../education/A4_A5_EDITORIAL_RECONCILIATION_2026-11-08.md).
 
-Supabase migration 008 adds a 50-row staging UID registry, 342 resolve-only aliases (including Supabase lesson slugs and localized URLs), 29 fragment groups and 58 target relations. Existing lesson_catalog IDs, lesson_content, lesson_entitlements, RLS access logic and public pages remain unchanged. New v3 entries are all unpublished. A new PostgreSQL 16 CI workflow applies all migrations from scratch and runs RLS/alias assertions; its first result is pending.
+Supabase migration 008 adds a 50-row staging UID registry, 342 resolve-only aliases (including Supabase lesson slugs and localized URLs), 29 fragment groups and 58 target relations. Existing lesson_catalog IDs, lesson_content, lesson_entitlements, RLS access logic and public pages remain unchanged. New v3 entries are all unpublished. A new PostgreSQL 16 CI workflow applies all migrations from scratch and runs RLS/alias assertions; run [42453118981](https://github.com/Dach1980/ai-research-dch-school/actions/runs/42453118981) passed.
 
-Production consumers remain on v2. The alias resolver is restricted to service_role and is not yet wired into the admin/browser UI. Live Supabase schema/state inspection and browser acceptance remain required before consumer cutover.
+Three static consumers (lesson-catalog, home knowledge map, Planet Map) now use loadLegacyProjection(): v2 IDs, URLs, statuses and planet associations are retained while v3 UID target arrays are added. Supabase admin/editor and lesson-reader remain on legacy contracts. The alias resolver is restricted to service_role and is not yet wired into the admin/browser UI. Live Supabase schema/state inspection and browser acceptance remain required before consumer cutover.
+
+
+Compatibility projection реализован в browser/Python adapters; добавлены parity tests на сохранность legacy IDs, статусов, localized URLs и planet associations. Визуальная браузерная приёмка трёх переключённых потребителей пока не выполнена.

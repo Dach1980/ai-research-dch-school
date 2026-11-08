@@ -77,8 +77,8 @@ class CatalogV3Tests(unittest.TestCase):
         self.assertEqual(len(by_legacy["A.5"]["v3_target_uids"]), 10)
         self.assertEqual(by_legacy["A.4"]["id"], "A.1.1.4")
         by_new = {x["id"]: x for x in projected["lessons"]}
-        self.assertEqual(by_new["A.7"]["v3_target_codes"], ["1.1.2"])
-        self.assertEqual(by_new["A.8"]["v3_target_codes"], ["1.1.3"])
+        self.assertEqual(by_new["A.1.1.7"]["v3_target_codes"], ["1.1.2"])
+        self.assertEqual(by_new["A.1.1.8"]["v3_target_codes"], ["1.1.3"])
 
     def test_python_native_v3_reader_and_relationships(self):
         loaded = compat.load_catalog_v3(ROOT / "data/catalog/catalog-v3.json")

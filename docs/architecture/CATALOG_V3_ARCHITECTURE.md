@@ -25,7 +25,7 @@ The catalog hierarchy is Track → Theme → Module → Lesson. Theme and Module
 - one legacy lesson can map to many target lessons and one target lesson can receive content from multiple legacy lessons;
 - mappings describe editorial topics, not assumed HTML DOM IDs. Exact source selectors must be verified during content extraction.
 
-A.3, A.6 and XAI A.1.2.1 have fragment-level mapping records. A.4/A.5 and the remaining partially reviewed sources are explicitly unresolved rather than assigned speculative target UIDs. The XAI legacy page remains review-only. The old XAI toy score lab is not relabelled as SHAP.
+A.3, A.6 and XAI A.1.2.1 have fragment-level mapping records. A.4/A.5 are editorially reconciled against their drafts and published RU/EN/ZH pages. A.1/A.2 remain candidate mappings pending a final section-level review. The XAI legacy page remains review-only. The old XAI toy score lab is not relabelled as SHAP.
 
 ## Compatibility contract
 
@@ -34,6 +34,10 @@ A.3, A.6 and XAI A.1.2.1 have fragment-level mapping records. A.4/A.5 and the re
 - v3 is read natively by the Python and browser adapters without collapsing UID into display code.
 - v1/v2 production consumers remain on v2 until their required legacy presentation view and user-data migration are verified. The new native v3 reader is additive; it does not silently change the existing UI payload contract.
 - A future consumer migration must resolve legacy IDs and URLs through the manifest/alias layer and use v3 UIDs internally.
+
+## Supabase alias layer
+
+Migration 008 adds a staging UID registry, legacy alias table, source-fragment mapping groups and target rows. It registers the current v3 lesson UIDs, catalog-v2 IDs, static localized URLs and Supabase lesson_catalog slugs. Alias resolution is deliberately resolve-only: the resolver does not modify or inherit lesson entitlements. Existing lesson_catalog IDs, lesson_content foreign keys and lesson_entitlements remain unchanged. The SQL resolver is restricted to service_role; the browser/admin UI has not yet been switched to it.
 
 ## Data preservation gates
 
@@ -67,3 +71,6 @@ Progress must be migrated by an explicit, audited alias mapping. A split legacy 
 - many-to-many mappings are represented at fragment level;
 - v1/v2 compatibility tests continue to pass;
 - no production catalog, user progress, bookmarks, quiz attempts or published URL changes before the final cutover gate.
+
+
+The A.4/A.5 reconciliation and Supabase alias implementation are detailed in [A4_A5_EDITORIAL_RECONCILIATION_2026-11-08.md](../education/A4_A5_EDITORIAL_RECONCILIATION_2026-11-08.md).

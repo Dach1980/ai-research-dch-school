@@ -191,7 +191,7 @@
       "title": "Зафиксировать и внедрить иерархическую архитектуру учебной программы Track → Theme → Module → Lesson",
       "status": "in_progress",
       "priority": "critical",
-      "decision": "Зафиксирована целевая иерархия Track → Theme → Module → Lesson и проектная карта 00–39 в docs/management/DCH_SCHOOL_CURRICULUM_ARCHITECTURE_V2.md. Диапазоны 00–10 (общая база), 11–26 (Track A), 27–39 (Track B) сохраняются; Track C (LLM Engineering) и PY.1 остаются отдельными программами. M11 содержит существующие A.1–A.6. Архитектура Track A M11–M26 основана на ранее принятых решениях; группировка в темы A1–A5 предложена в новой редакции. Названия M00–M10 и M27–M39 помечены proposed и требуют согласования. Production catalog v1 пока не мигрирован: изменение схемы отложено до реализации schema v2, compatibility adapter и CI.",
+      "decision": "Зафиксирована целевая иерархия Track → Theme → Module → Lesson и проектная карта 00–39 в docs/management/DCH_SCHOOL_CURRICULUM_ARCHITECTURE_V2.md. Диапазоны 00–10 (общая база), 11–26 (Track A), 27–39 (Track B) сохраняются; Track C (LLM Engineering) и PY.1 остаются отдельными программами. M11 содержит существующие A.1–A.6. Архитектура Track A M11–M26 основана на ранее принятых решениях; группировка в темы A1–A5 предложена в новой редакции. Названия M00–M10 и M27–M39 помечены proposed и требуют согласования. Production catalog v1 пока не мигрирован: изменение схемы отложено до реализации schema v2, compatibility adapter и CI. 2026-11-08: правило уточнено — 00–39 являются историческими/планировочными позициями, а не текущими IDs. Каталог v2 и renderer используют Theme/Module/Lesson IDs; полная карта Track A/B ещё требует межмодульного согласования.",
       "acceptance": [
         "Иерархия Track → Theme → Module → Lesson документирована; сущности и parent IDs определены.",
         "Сохранены идентификаторы A/B/C, номера M00–M39, lesson IDs A.1–A.6, опубликованные URL, локализации и planet IDs.",
@@ -210,9 +210,9 @@
       "id": "RM-11",
       "date": "2026-11-08",
       "title": "Ввести устойчивую иерархическую нумерацию Theme / Module / Lesson",
-      "status": "in_progress",
+      "status": "completed",
       "priority": "high",
-      "decision": "Принята нумерация, независимая от позиции треков: Track A → Theme A.1 → Module A.1.1 → Lessons A.1.1.1–A.1.1.6. Старые lesson IDs сохраняются в legacy_id; опубликованные URL не меняются.",
+      "decision": "Принята устойчивая иерархия Track A → Theme A.1 → Module A.1.1 → Lessons A.1.1.1–A.1.1.6; в Theme A.1 добавлен Module A.1.2 (XAI) с Lesson A.1.2.1 в статусе review. Старые A.1–A.6 сохранены как legacy_id, опубликованные URL не изменены. Production catalogue, lesson lists and knowledge map now read catalog-v2.json through the compatibility adapter.",
       "acceptance": [
         "Определена JSON Schema Draft 2020-12 для v2 с отдельными tracks/themes/modules/lessons/planets.",
         "Создан параллельный catalog-v2.json для A.1–A.6 без изменения production v1.",
@@ -220,13 +220,33 @@
         "Сохранены lesson IDs, RU/EN/ZH URL и planet IDs; parity проверяется тестом.",
         "Добавлены проверки parent chain и отсутствующих родителей.",
         "CI запускает тесты адаптера и валидатор schema v2.",
-        "Production renderer не переключается до отдельного этапа миграции и browser acceptance.",
-        "Новые уроки не создаются.",
+        "Production renderer и карты знаний переключены на v2 после CI; опубликованные URL и legacy IDs сохранены.",
         "Browser-side adapter нормализует v1/v2; Node tests проходят в CI.",
         "Идентификаторы темы, модуля и урока отражают вложенность, а не глобальный номер или сортировку треков.",
-        "Legacy lesson IDs сохранены в legacy_id; URL RU/EN/ZH остаются прежними."
+        "Legacy lesson IDs сохранены в legacy_id; URL RU/EN/ZH остаются прежними.",
+        "Главная страница, Track A и Lessons catalogue используют v2 во всех версиях RU/EN/中文.",
+        "Theme/Module titles имеют RU/EN/中文 локализации через title_i18n.",
+        "A.1.2.1 остаётся review и не появляется среди опубликованных планет до прохождения quality gate."
       ],
-      "source": "data/catalog/schema-v2.json; data/catalog/catalog-v2.json; scripts/catalog_compat.py; scripts/validate-catalog-v2.py; docs/education/CURRICULUM_HIERARCHICAL_NAMING.md"
+      "source": "data/catalog/schema-v2.json; data/catalog/catalog-v2.json; scripts/catalog_compat.py; scripts/validate-catalog-v2.py; docs/education/CURRICULUM_HIERARCHICAL_NAMING.md; scripts/lesson-catalog.js; scripts/planet-map-catalog.js; scripts/home-knowledge-map.js; tests/test_catalog_ui_v2.py"
+    },
+    {
+      "id": "RM-12",
+      "date": "2026-11-08",
+      "title": "Последовательно наполнить треки авторскими уроками с опорой на AI Interpretability School",
+      "status": "in_progress",
+      "priority": "critical",
+      "decision": "AIS используется как исследовательский и педагогический ориентир: DCH Track A сопоставляется с AIS Track A (XAI Practitioner), DCH Track B — с AIS Track B (Math of LLMs / mechanistic interpretability). Track C требует отдельной карты первичных источников. Не копировать чужие тексты и графику; создавать собственные объяснения, примеры, лаборатории и оценки. Первый элемент — A.1.2.1 «Что такое XAI и зачем нужно объяснять модели?», зарегистрированный в review.",
+      "acceptance": [
+        "Для каждого Theme/Module подготовлена source map с первичными публикациями и prerequisites.",
+        "Уроки создаются последовательно: outcomes → RU draft → scientific review → practice → assessment → EN/ZH localization → quality gate.",
+        "Каждый научный и правовой тезис имеет проверяемый источник; правовые положения сверяются по официальным редакциям и датам действия.",
+        "A.1.2.1 проходит постраничную проверку всех восьми частей RU/EN/中文, терминологии, regulation, sources, self-check и локализационного parity.",
+        "Практические лаборатории воспроизводимы и содержат фиксированные данные, среду, baseline и ожидаемые результаты.",
+        "Статус published присваивается только после оценки по 14 критериям и прохождения всех quality gates.",
+        "Новые уроки добавляются по одному и получают иерархические IDs; незавершённые материалы не отображаются как опубликованные."
+      ],
+      "source": "docs/education/AIS_SOURCE_INTEGRATION_POLICY.md; docs/education/track-a/xai-foundations/A1_2_1_REVIEW.md; https://ai-interpretability.school/"
     }
   ],
   "audit_log": [
@@ -797,8 +817,8 @@
       "id": "AUD-030",
       "date": "2026-11-08",
       "type": "catalog_schema_v2_and_compatibility_adapter",
-      "title": "Зафиксирована иерархическая нумерация A.1 → A.1.1 → A.1.1.1–A.1.1.6",
-      "result": "Добавлены JSON Schema v2 и bundle каталога с отдельными сущностями Track, Theme, Module и Lesson. A.1–A.6 перенесены в параллельный v2 bundle по цепочке Track A → Theme A1 → Module 11 → Lessons A.1–A.6. Добавлен read-only adapter для legacy split v1 и hierarchical v2, который нормализует parent metadata и сохраняет legacy track_id для потребителей старого интерфейса. Добавлены тесты parity ID/URL/planet и валидатор v2; CI расширен тестами и запуском валидатора. Production v1 и Pages renderer не переключались. Дополнительно реализован browser-side adapter scripts/catalog-compat.js с normalizeV1/normalizeV2/load; Node-тесты включены в CI. Runtime renderer остаётся на v1 до отдельного переключения. По уточнению владельца школы введена вложенная нумерация: Theme A.1, Module A.1.1, Lesson A.1.1.1–A.1.1.6. Legacy IDs A.1–A.6 сохраняются, опубликованные URL остаются неизменными.",
+      "title": "Реализованы иерархический каталог v2 и переключение production UI",
+      "result": "Созданы JSON Schema v2 и catalog-v2.json с Track/Theme/Module/Lesson hierarchy. A.1–A.6 мигрированы в A.1.1.1–A.1.1.6 с legacy_id и неизменными URL. Добавлен Module A.1.2 и Lesson A.1.2.1 в статусе review. Production Track A catalogue, RU/EN/ZH lesson catalogues, RU knowledge map, EN/ZH map lists и homepage knowledge maps switched to v2. Theme/Module titles localized. CI run 42440726307 completed successfully; Pages build/deployment run 42440726024 succeeded for the UI migration commit.",
       "evidence": [
         "data/catalog/schema-v2.json",
         "data/catalog/catalog-v2.json",
@@ -808,13 +828,35 @@
         ".github/workflows/validate-catalog.yml",
         "scripts/catalog-compat.js",
         "tests/test_catalog_compat_js.cjs",
-        "docs/education/CURRICULUM_HIERARCHICAL_NAMING.md"
+        "scripts/lesson-catalog.js",
+        "scripts/planet-map-catalog.js",
+        "scripts/home-knowledge-map.js",
+        "tests/test_catalog_ui_v2.py",
+        "docs/education/CURRICULUM_HIERARCHICAL_NAMING.md",
+        "docs/education/CATALOG_V2_UI_MIGRATION_2026-11-08.md"
       ],
       "limitations": [
-        "Workflow CI для текущего коммита должен завершиться успешно; локальный runtime здесь не запускался.",
-        "Production renderer продолжает читать v1; переключение и визуальная приёмка относятся к следующему этапу.",
-        "V2 пока содержит текущую фактическую тему и M11; полный каталог 00–39 не выдумывается и не создаётся на этом этапе.",
-        "A.6 остаётся без languages в исходном каталоге, поэтому parity сохранена как есть; локализационный audit остаётся отдельной задачей."
+        "Визуальная приёмка в реальном desktop/mobile browser ещё не проведена вручную.",
+        "A.1.2.1 остаётся review; direct URL доступен, но урок не включён в каталог published lessons и planet map.",
+        "Полный crosswalk всех тем и модулей Track A/B ещё не утверждён; исторические 00–39 не считаются стабильными IDs."
+      ]
+    },
+    {
+      "id": "AUD-031",
+      "date": "2026-11-08",
+      "type": "sequential_lesson_authoring",
+      "title": "Подготовлен первый XAI урок к содержательной проверке и зафиксирована методика работы с AIS",
+      "result": "Сопоставлены DCH Track A/B с публичной программой AIS; создана методика источниковой проверки и производства авторских уроков. Lesson A.1.2.1 содержит восемь частей и RU/EN/中文 версии; уточнены правовые формулировки по EU AI Act Article 13, GDPR Articles 13–15/22 and Recital 71, добавлены ссылки на Rosstandart GOST R 59276-2020 и научные работы Lipton, Doshi-Velez & Kim, Guidotti et al., Olah et al. Материал остаётся review.",
+      "evidence": [
+        "docs/education/AIS_SOURCE_INTEGRATION_POLICY.md",
+        "docs/education/track-a/xai-foundations/A1_2_1_REVIEW.md",
+        "lessons/data/xai-01-what-and-why.js",
+        "data/catalog/catalog-v2.json"
+      ],
+      "limitations": [
+        "Полная постраничная научная и мультиязычная вычитка ещё не завершена.",
+        "Нужно проверить актуальный консолидированный текст EU AI Act и применимость норм на дату публикации.",
+        "Урок не прошёл финальный 14-критериальный quality gate и не опубликован как lesson/planet."
       ]
     }
   ],

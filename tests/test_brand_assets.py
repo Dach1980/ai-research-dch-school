@@ -37,21 +37,23 @@ class BrandAssetTests(unittest.TestCase):
             (ROOT / "styles/lesson-reader.css").read_text(encoding="utf-8"),
         ]
         for source in sources:
-            self.assertIn("#f4f7ff", source)
             self.assertIn("border-radius:", source)
             self.assertIn("box-shadow:", source)
+        palette = (ROOT / "styles/theme-system.css").read_text(encoding="utf-8")
+        self.assertIn("--diagram-surface:", palette)
+        self.assertIn("--diagram-text:", palette)
+        self.assertIn("#f4f7ff", sources[0] + sources[1] + sources[2])
+
 
     def test_lesson_diagrams_have_explicit_svg_palette(self):
-        sources = [
-            (ROOT / "styles/account.css").read_text(encoding="utf-8"),
-            (ROOT / "styles/lesson-reader.css").read_text(encoding="utf-8"),
-        ]
-        for source in sources:
-            self.assertIn(".lesson-diagram", source)
-            self.assertIn(".svg-box", source)
-            self.assertIn(".svg-label", source)
-            self.assertIn("#e3edff", source)
-            self.assertIn("#172f50", source)
+        theme = (ROOT / "styles/theme-system.css").read_text(encoding="utf-8")
+        palette = (ROOT / "styles/lesson-visual-palette.css").read_text(encoding="utf-8")
+        for token in ("#e3edff", "#172f50", "#f1f6ff", "#24364e", "#e8f1ff"):
+            self.assertIn(token, theme)
+        for selector in (".lesson-figure", ".lesson-diagram", ".svg-label", ".svg-title", ".svg-box"):
+            self.assertIn(selector, palette)
+        self.assertIn("var(--diagram-text)", palette)
+
 
 
 if __name__ == "__main__":

@@ -105,8 +105,12 @@ class PublishedSiteIntegrityTests(unittest.TestCase):
         script = (ROOT / "scripts" / "planet-map-catalog.js").read_text(encoding="utf-8")
         self.assertNotIn("getElementById('planetA1')", page)
         self.assertIn('data-planets-root', page)
-        self.assertIn('data/catalog/lessons.json', script)
-        self.assertIn('data/catalog/planets.json', script)
+        self.assertIn('DCHCatalogCompat.load', script)
+        self.assertIn('schemaVersion:2', script)
+        self.assertNotIn('data/catalog/lessons.json', script)
+        self.assertNotIn('data/catalog/planets.json', script)
+        self.assertIn('catalog-v2.json', (ROOT / 'scripts' / 'catalog-compat.js').read_text(encoding='utf-8'))
+        self.assertIn('catalog-compat.js', page)
         self.assertIn('generatedPlanet', script)
         self.assertIn('data-select-lesson', script)
 
@@ -141,7 +145,7 @@ class PublishedSiteIntegrityTests(unittest.TestCase):
         home = (ROOT / "index.html").read_text(encoding="utf-8")
         self.assertIn("language-switcher", switcher)
         self.assertIn('id="knowledge-universe"', home)
-        self.assertIn("A.5", home)
+        self.assertIn("A.1.1.5", home)
         for relative in ["index-en.html", "index-zh.html", "lessons/index-en.html",
                          "lessons/index-zh.html", "learning-map/index-en.html",
                          "learning-map/index-zh.html", "tracks/understanding-ai-en.html",

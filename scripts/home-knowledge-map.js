@@ -5,6 +5,8 @@
     "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
   })[c]);
   const locale = document.documentElement.lang || "ru";
+  const cardClass = root.dataset.cardClass || "home-planet";
+  const openLabel = ({ru:"Открыть урок ↗",en:"Open lesson ↗",zh:"打开课程 ↗"})[locale] || "Open lesson ↗";
   if (!window.DCHCatalogCompat) {
     root.innerHTML = '<p class="muted">Каталог знаний временно недоступен.</p>';
     return;
@@ -21,7 +23,7 @@
       root.innerHTML = lessons.map(lesson => {
         const title = lesson.title_i18n?.[locale] || lesson.title;
         const href = (lesson.url_i18n && lesson.url_i18n[locale]) || lesson.url;
-        return `<a class="home-planet" href="${esc(href)}"><b>${esc(lesson.id)}</b><strong>${esc(title)}</strong><span>Открыть урок ↗</span></a>`;
+        return `<a class="${esc(cardClass)}" href="${esc(href)}"><b>${esc(lesson.id)}</b><strong>${esc(title)}</strong><span>${esc(openLabel)}</span></a>`;
       }).join("");
     })
     .catch(() => {

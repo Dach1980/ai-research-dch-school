@@ -29,7 +29,7 @@ class HierarchicalCatalogUITests(unittest.TestCase):
             self.assertIn("data-home-knowledge-map", page)
         script = (ROOT / "scripts/home-knowledge-map.js").read_text(encoding="utf-8")
         self.assertIn("schemaVersion:2", script)
-        self.assertIn("data.catalog", script)
+        self.assertIn('baseUrl:"data/catalog"', script)
 
 
 if __name__ == "__main__":

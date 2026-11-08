@@ -6,10 +6,14 @@
   })[c]);
   const locale = document.documentElement.lang || "ru";
   const cardClass = root.dataset.cardClass || "home-planet";
-  const messages = {ru:{open:"Открыть урок ↗",empty:"${esc(ui.empty)}",error:"${esc(ui.error)}",missing:"${esc(ui.missing)}"},en:{open:"Open lesson ↗",empty:"Published lessons will appear here after review.",error:"The knowledge catalogue could not be loaded.",missing:"The knowledge catalogue is temporarily unavailable."},zh:{open:"打开课程 ↗",empty:"课程通过审核后将在此显示。",error:"无法加载知识目录。",missing:"知识目录暂时不可用。"}};
+  const messages = {
+    ru:{open:"Открыть урок ↗",empty:"Опубликованные уроки появятся здесь после проверки.",error:"Не удалось загрузить каталог знаний.",missing:"Каталог знаний временно недоступен."},
+    en:{open:"Open lesson ↗",empty:"Published lessons will appear here after review.",error:"The knowledge catalogue could not be loaded.",missing:"The knowledge catalogue is temporarily unavailable."},
+    zh:{open:"打开课程 ↗",empty:"课程通过审核后将在此显示。",error:"无法加载知识目录。",missing:"知识目录暂时不可用。"}
+  };
   const ui = messages[locale] || messages.en;
   if (!window.DCHCatalogCompat) {
-    root.innerHTML = '<p class="muted">Каталог знаний временно недоступен.</p>';
+    root.innerHTML = `<p class="muted">${esc(ui.missing)}</p>`;
     return;
   }
   window.DCHCatalogCompat.load({baseUrl:"data/catalog",schemaVersion:2})
@@ -18,7 +22,7 @@
         .filter(item => item.status === "published" && item.track_id === "track-a")
         .sort((a,b) => a.id.localeCompare(b.id, "en", {numeric:true}));
       if (!lessons.length) {
-        root.innerHTML = '<p class="muted">Опубликованные уроки появятся здесь после проверки.</p>';
+        root.innerHTML = `<p class="muted">${esc(ui.empty)}</p>`;
         return;
       }
       root.innerHTML = lessons.map(lesson => {
@@ -28,6 +32,6 @@
       }).join("");
     })
     .catch(() => {
-      root.innerHTML = '<p class="muted">Не удалось загрузить каталог знаний.</p>';
+      root.innerHTML = `<p class="muted">${esc(ui.error)}</p>`;
     });
 })();

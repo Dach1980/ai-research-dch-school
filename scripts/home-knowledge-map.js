@@ -6,6 +6,7 @@
   })[c]);
   const locale = document.documentElement.lang || "ru";
   const cardClass = root.dataset.cardClass || "home-planet";
+  const catalogBase = root.dataset.catalogBase || "data/catalog";
   const messages = {
     ru:{open:"Открыть урок ↗",empty:"Опубликованные уроки появятся здесь после проверки.",error:"Не удалось загрузить каталог знаний.",missing:"Каталог знаний временно недоступен."},
     en:{open:"Open lesson ↗",empty:"Published lessons will appear here after review.",error:"The knowledge catalogue could not be loaded.",missing:"The knowledge catalogue is temporarily unavailable."},
@@ -16,7 +17,7 @@
     root.innerHTML = `<p class="muted">${esc(ui.missing)}</p>`;
     return;
   }
-  window.DCHCatalogCompat.load({baseUrl:"data/catalog",schemaVersion:2})
+  window.DCHCatalogCompat.load({baseUrl:catalogBase,schemaVersion:2})
     .then(data => {
       const lessons = data.lessons
         .filter(item => item.status === "published" && item.track_id === "track-a")

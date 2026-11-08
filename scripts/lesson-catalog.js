@@ -49,7 +49,7 @@
           <div class="catalog-lesson-list">${items.map(lesson => {
             const href = base + ((lesson.url_i18n && lesson.url_i18n[locale]) || lesson.url);
             const title = (lesson.title_i18n && lesson.title_i18n[locale]) || lesson.title;
-            const displayCode = lesson.v3_target_codes && lesson.v3_target_codes.length === 1 ? lesson.v3_target_codes[0] : lesson.id;
+            const displayCode = lesson.v3_target_codes && lesson.v3_target_codes.length === 1 ? lesson.v3_target_codes[0] : "Legacy";
             const level = ui[lesson.level] || lesson.level;
             const access = ui[lesson.access] || lesson.access;
             return `<a class="module" href="${esc(href)}">

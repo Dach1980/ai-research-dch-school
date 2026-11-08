@@ -879,6 +879,34 @@
       "limitations": [
         "Ручная проверка фактического отображения logo и favicon в desktop/mobile браузерах остаётся частью визуальной приёмки."
       ]
+    },
+    {
+      "id": "AUD-033",
+      "date": "2026-11-08",
+      "type": "curriculum_design_theme_and_code_foundation",
+      "title": "Зафиксирован roadmap DCH School и внедрена базовая система тем и кодовых блоков",
+      "result": "Созданы roadmap и стандарты иерархии каталога, дизайн-системы, представления кода, объяснения программного кода, иллюстраций и quality gate. Выполнен аудит catalog-v2, schema-v2, compatibility adapter, Track A и XAI reader. Добавлены общие Light/Dark/System theme tokens и persistent theme controller; подключены homepage, Track pages, learning map, lesson index, news index и страницы уроков из catalog-v2. Добавлены CSS/JS основы Python syntax highlighting, line numbers и copy control; введены CI tests и Node syntax checks. Полная миграция production catalog от четырёхкомпонентных display IDs к стабильным technical UIDs и коротким lesson codes не выполнена: v1/v2 consumers ещё зависят от старых ID; безопасная реализация требует schema/catalog v3 и crosswalk.",
+      "evidence": [
+        "docs/roadmap/DCH_SCHOOL_FOUNDATION_ROADMAP.md",
+        "docs/architecture/COURSE_HIERARCHY.md",
+        "docs/architecture/FOUNDATION_IMPLEMENTATION_STATUS_2026-11-08.md",
+        "docs/design/DESIGN_SYSTEM.md",
+        "docs/standards/CODE_PRESENTATION_STANDARD.md",
+        "docs/standards/CODE_TEACHING_STANDARD.md",
+        "docs/standards/ILLUSTRATION_STANDARD.md",
+        "docs/standards/LESSON_QUALITY_GATE.md",
+        "styles/theme-system.css",
+        "scripts/theme-system.js",
+        "styles/code-blocks.css",
+        "scripts/code-blocks.js",
+        "tests/test_dch_presentation_standards.py"
+      ],
+      "limitations": [
+        "Production catalog still uses schema-v2 IDs such as A.1.1.1 and A.1.2.1; no production renumbering performed.",
+        "CI status for the latest commit has not been confirmed by the available GitHub status endpoint.",
+        "Manual desktop/mobile visual QA, screen-reader QA and full SVG contrast audit remain pending.",
+        "Only explicitly labelled Python code blocks are syntax-highlighted; existing lesson code needs editorial tagging and explanation."
+      ]
     }
   ],
   "notes": [

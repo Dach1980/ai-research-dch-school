@@ -17,7 +17,7 @@
     root.innerHTML = `<p class="muted">${esc(ui.missing)}</p>`;
     return;
   }
-  window.DCHCatalogCompat.load({baseUrl:catalogBase,schemaVersion:2})
+  window.DCHCatalogCompat.loadLegacyProjection({baseUrl:catalogBase})
     .then(data => {
       const lessons = data.lessons
         .filter(item => item.status === "published" && item.track_id === "track-a")

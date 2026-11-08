@@ -191,18 +191,18 @@
       "title": "Зафиксировать и внедрить иерархическую архитектуру учебной программы Track → Theme → Module → Lesson",
       "status": "in_progress",
       "priority": "critical",
-      "decision": "Зафиксирована целевая иерархия Track → Theme → Module → Lesson и проектная карта 00–39 в docs/management/DCH_SCHOOL_CURRICULUM_ARCHITECTURE_V2.md. Диапазоны 00–10 (общая база), 11–26 (Track A), 27–39 (Track B) сохраняются; Track C (LLM Engineering) и PY.1 остаются отдельными программами. M11 содержит существующие A.1–A.6. Архитектура Track A M11–M26 основана на ранее принятых решениях; группировка в темы A1–A5 предложена в новой редакции. Названия M00–M10 и M27–M39 помечены proposed и требуют согласования. Production catalog v1 пока не мигрирован: изменение схемы отложено до реализации schema v2, compatibility adapter и CI. 2026-11-08: правило уточнено — 00–39 являются историческими/планировочными позициями, а не текущими IDs. Каталог v2 и renderer используют Theme/Module/Lesson IDs; полная карта Track A/B ещё требует межмодульного согласования.",
+      "decision": "Зафиксирована целевая иерархия Track → Theme → Module → Lesson. Исторические диапазоны 00–10, 11–26 и 27–39 сохраняются как планировочные позиции, но не используются как стабильные IDs каталога; Track C (LLM Engineering) и PY.1 остаются отдельными программами. Текущая реализованная часть: Track A → Theme A.1 → Module A.1.1 → Lessons A.1.1.1–A.1.1.6 и Module A.1.2 → Lesson A.1.2.1 (review). Schema v2, compatibility adapters, production renderer и карты знаний переключены на hierarchical catalog v2. Полная тематическая карта Track A/B и crosswalk всех исторических позиций ещё требуют межмодульного согласования.",
       "acceptance": [
         "Иерархия Track → Theme → Module → Lesson документирована; сущности и parent IDs определены.",
-        "Сохранены идентификаторы A/B/C, номера M00–M39, lesson IDs A.1–A.6, опубликованные URL, локализации и planet IDs.",
+        "Сохранены коды Track A/B/C, опубликованные URL, локализации и planet IDs; позиции M00–M39 не считаются стабильными IDs.",
         "Для всех 40 позиций определены статус подтверждения названия, принадлежность диапазону и место в тематической структуре; proposed названия не выдаются за утверждённые.",
         "Track C и PY.1 остаются вне основной нумерации 00–39.",
-        "Подготовлена schema v2 с themes.json и явными parent links; v1 остаётся рабочей до безопасного переключения.",
+        "Schema v2 с отдельными tracks/themes/modules/lessons/planets и явными parent links внедрена в production UI; legacy v1 split files сохранены для совместимости.",
         "Compatibility adapter и валидаторы проверяют parent chain, track consistency, prerequisites, циклы и локальные URL.",
         "Миграция A.1–A.6 подтверждена тестами; lesson IDs, URL, языковые версии, prerequisites и планеты не изменены.",
         "Содержательная сверка RU/EN/ZH A.1–A.6 завершена; шесть scorecards по 14 критериям опубликованы после проверки.",
         "Python-практики A.3–A.5 выполняются в чистой зафиксированной среде и запускаются в CI.",
-        "Pages CI и визуальная проверка каталога/карты проходят до переключения production renderer."
+        "Catalog CI и GitHub Pages build/deployment проходят; ручная визуальная проверка desktop/mobile остаётся отдельной задачей."
       ],
       "source": "docs/management/DCH_SCHOOL_CURRICULUM_ARCHITECTURE_V2.md; docs/management/TRACK_A_ARCHITECTURE_PROPOSAL.md; docs/management/CURRICULUM_40_MODULE_RECONSTRUCTION.md"
     },

@@ -67,3 +67,80 @@ def validate_relationships(c:dict[str,Any])->list[str]:
     for p in c["planets"]:
         if p["lesson_id"] not in lessons:e.append("Planet "+p["id"]+" references missing lesson")
     return e
+
+
+def load_catalog_v3(source: str | Path | None = None) -> dict[str, Any]:
+    """Load native v3 without collapsing UID identity into display codes."""
+    target = Path(source) if source is not None else CATALOG_DIR / "catalog-v3.json"
+    if target.is_dir():
+        target = target / "catalog-v3.json"
+    doc = _read(target)
+    if doc.get("schema_version") != 3:
+        raise CatalogCompatibilityError("Expected v3 catalog")
+    errors = validate_v3_relationships(doc)
+    if errors:
+        raise CatalogCompatibilityError("; ".join(errors))
+    return doc
+
+
+def validate_v3_relationships(c: dict[str, Any]) -> list[str]:
+    errors: list[str] = []
+    collections = {
+        "tracks": "uid", "themes": "uid", "modules": "uid",
+        "lessons": "uid", "resources": "uid", "planets": "uid",
+    }
+    indexes: dict[str, dict[str, dict[str, Any]]] = {}
+    for name, key in collections.items():
+        rows = c.get(name, [])
+        index: dict[str, dict[str, Any]] = {}
+        for row in rows:
+            uid = row.get(key)
+            if not uid or uid in index:
+                errors.append(f"{name}: missing or duplicate UID {uid!r}")
+            else:
+                index[uid] = row
+        indexes[name] = index
+
+    tracks, themes, modules, lessons = (
+        indexes["tracks"], indexes["themes"], indexes["modules"], indexes["lessons"]
+    )
+    theme_codes: set[tuple[str, str]] = set()
+    module_codes: set[tuple[str, int]] = set()
+    lesson_codes: set[tuple[str, str]] = set()
+    for theme in c.get("themes", []):
+        if theme.get("track_uid") not in tracks:
+            errors.append(f"Theme {theme.get('uid')} references missing track")
+        key = (theme.get("track_uid"), str(theme.get("number")))
+        if key in theme_codes:
+            errors.append(f"Duplicate theme number {key}")
+        theme_codes.add(key)
+    for module in c.get("modules", []):
+        theme = themes.get(module.get("theme_uid"))
+        if not theme:
+            errors.append(f"Module {module.get('uid')} references missing theme")
+            continue
+        key = (module.get("theme_uid"), module.get("number"))
+        if key in module_codes:
+            errors.append(f"Duplicate module number {key}")
+        module_codes.add(key)
+    for lesson in c.get("lessons", []):
+        theme = themes.get(lesson.get("theme_uid"))
+        module = modules.get(lesson.get("module_uid"))
+        if not theme or not module:
+            errors.append(f"Lesson {lesson.get('uid')} references missing theme/module")
+            continue
+        if module.get("theme_uid") != theme.get("uid"):
+            errors.append(f"Lesson {lesson.get('uid')} theme/module mismatch")
+        if theme.get("track_uid") != lesson.get("track_uid"):
+            errors.append(f"Lesson {lesson.get('uid')} track/theme mismatch")
+        key = (lesson.get("module_uid"), lesson.get("code"))
+        if key in lesson_codes:
+            errors.append(f"Duplicate lesson code {key}")
+        lesson_codes.add(key)
+        for prerequisite in lesson.get("prerequisite_uids", []):
+            if prerequisite not in lessons:
+                errors.append(f"Lesson {lesson.get('uid')} missing prerequisite {prerequisite}")
+    for planet in c.get("planets", []):
+        if planet.get("lesson_uid") not in lessons:
+            errors.append(f"Planet {planet.get('uid')} references missing lesson")
+    return errors

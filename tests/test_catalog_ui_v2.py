@@ -44,5 +44,23 @@ class HierarchicalCatalogUITests(unittest.TestCase):
         schema = (ROOT / "data/catalog/schema-v2.json").read_text(encoding="utf-8")
         self.assertIn('"title_i18n"', schema)
 
+    def test_xai_review_lesson_has_multilingual_content_and_primary_sources(self):
+        source = (ROOT / "lessons/data/xai-01-what-and-why.js").read_text(encoding="utf-8")
+        for page_id in ["why", "xai-mi", "applications", "regulation", "terms", "taxonomy", "methods-passport", "summary"]:
+            self.assertIn('"id": "' + page_id + '"', source)
+        for locale in ["ru", "en", "zh"]:
+            self.assertGreaterEqual(source.count('"' + locale + '":'), 8)
+        for reference in [
+            "arxiv.org/abs/1606.03490", "arxiv.org/abs/1702.08608",
+            "doi.org/10.23915/distill.00024.001",
+            "eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32024R1689",
+            "protect.gost.ru/gost/details/"
+        ]:
+            self.assertIn(reference, source)
+        catalog = __import__("json").loads((ROOT / "data/catalog/catalog-v2.json").read_text(encoding="utf-8"))
+        draft = next(item for item in catalog["lessons"] if item["id"] == "A.1.2.1")
+        self.assertEqual(draft["status"], "review")
+        self.assertNotIn("A.1.2.1", {item["lesson_id"] for item in catalog["planets"]})
+
 if __name__ == "__main__":
     unittest.main()

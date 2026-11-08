@@ -2,7 +2,7 @@
   "use strict";
   var KEY="dch-school-theme";
   var locale=(document.documentElement.lang||"ru").toLowerCase();
-  var labels=locale.indexOf("zh")===0?{light:"☀ 浅色",dark:"☾ 深色",system:"◐ 跟随系统"}:locale.indexOf("en")===0?{light:"☀ Light",dark:"☾ Dark",system:"◐ System"}:{light:"☀ Светлая",dark:"☾ Тёмная",system:"◐ Системная"};
+  function labels(){var lang=(document.documentElement.lang||"ru").toLowerCase();return lang.indexOf("zh")===0?{light:"☀ 浅色",dark:"☾ 深色",system:"◐ 跟随系统"}:lang.indexOf("en")===0?{light:"☀ Light",dark:"☾ Dark",system:"◐ System"}:{light:"☀ Светлая",dark:"☾ Тёмная",system:"◐ Системная"};}
   var media=window.matchMedia?window.matchMedia("(prefers-color-scheme: dark)"):null;
   function preference(){try{return localStorage.getItem(KEY)||localStorage.getItem("dch-theme")||"system"}catch(_){return "system"}}
   function apply(){
@@ -11,10 +11,10 @@
     document.documentElement.dataset.theme=resolved;
     document.documentElement.dataset.themePreference=pref;
     document.querySelectorAll("[data-dch-theme-control]").forEach(function(button){
-      button.textContent=labels[pref];
-      button.setAttribute("aria-label","Тема оформления: "+labels[pref]+". Нажмите, чтобы изменить");
+      button.textContent=words[pref];
+      button.setAttribute("aria-label",(document.documentElement.lang||"ru").startsWith("zh")?"主题："+words[pref]+"。点击切换":(document.documentElement.lang||"ru").startsWith("en")?"Theme: "+words[pref]+". Activate to change.":"Тема оформления: "+words[pref]+". Нажмите, чтобы изменить");
       button.setAttribute("aria-pressed",pref!=="system"?"true":"false");
-      button.title="Текущий режим: "+labels[pref]+"; нажмите для следующего режима";
+      button.title=words[pref];
     });
     var meta=document.querySelector('meta[name="theme-color"]');
     if(meta)meta.content=resolved==="dark"?"#080d1b":"#f4f7fc";
@@ -24,7 +24,7 @@
     var controls=document.querySelectorAll(".theme-toggle,[data-dch-theme-control]");
     if(!controls.length){
       var header=document.querySelector(".site-header");
-      if(header){var button=document.createElement("button");button.type="button";button.className="theme-switcher";button.dataset.dchThemeControl="";button.textContent=labels[preference()];header.appendChild(button);}
+      if(header){var button=document.createElement("button");button.type="button";button.className="theme-switcher";button.dataset.dchThemeControl="";button.textContent=labels()[preference()];header.appendChild(button);}
     }
     document.querySelectorAll(".theme-toggle").forEach(function(button){button.dataset.dchThemeControl="";});
     document.querySelectorAll("[data-dch-theme-control]").forEach(function(button){if(!button.dataset.dchBound){button.dataset.dchBound="1";button.addEventListener("click",cycle);}});

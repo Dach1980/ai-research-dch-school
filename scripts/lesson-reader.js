@@ -53,8 +53,7 @@
  try{const saved=localStorage.getItem("dch-language");if(i18n[saved])language=saved;}catch(_){}
  loadState();
  const t=key=>i18n[language][key]||i18n.ru[key]||key;
- let theme="dark";try{const savedTheme=localStorage.getItem("dch-theme");if(savedTheme==="light"||savedTheme==="dark")theme=savedTheme;}catch(_){}
- function applyTheme(){document.documentElement.dataset.theme=theme;const b=$("theme-toggle");if(b){b.textContent=t(theme==="dark"?"themeDark":"themeLight");b.setAttribute("aria-label",t(theme==="dark"?"themeDark":"themeLight"));b.setAttribute("aria-pressed",String(theme==="light"));}}
+ function applyTheme(){if(window.DCHTheme)window.DCHTheme.apply();}
  const title=p=>p.title[language]||p.title.ru;
  const done=id=>state.read.includes(id);
  const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
@@ -160,7 +159,6 @@
   renderQuizFeedback(feedback,result);
   const btn=form.querySelector(".quiz-submit");btn.textContent=language==="ru"?"Ответы сохранены":language==="en"?"Answers saved":"答案已保存";
  });
- $("theme-toggle")?.addEventListener("click",()=>{theme=theme==="dark"?"light":"dark";try{localStorage.setItem("dch-theme",theme);}catch(_){}applyTheme();});
  $("prev-page").addEventListener("click",()=>go(current-1));$("next-page").addEventListener("click",()=>go(current+1));
  $("toc-open").addEventListener("click",openToc);$("toc-close").addEventListener("click",closeToc);$("toc-backdrop").addEventListener("click",closeToc);
  buttons.forEach(b=>b.addEventListener("click",()=>setLanguage(b.dataset.lang)));

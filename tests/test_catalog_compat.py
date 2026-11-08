@@ -11,13 +11,19 @@ class Tests(unittest.TestCase):
   self.assertEqual(a["A.1.1.6"]["url_i18n"]["zh"],"lessons/a-6-generalization-and-overfitting-zh.html")
   self.assertEqual(a["A.1.1.2"]["prerequisites"],["A.1.1.1"]);self.assertEqual(c.validate_relationships(x),[])
  def test_v2_tree(self):
-  x=c.load_catalog(ROOT/"data/catalog/catalog-v2.json")
-  self.assertEqual(x["themes"][0]["id"],"A.1");self.assertEqual(x["modules"][0]["id"],"A.1.1")
-  self.assertEqual({z["id"] for z in x["lessons"]},{f"A.1.1.{i}" for i in range(1,7)})
+  x=c.load_catalog(ROOT/"data/catalog/catalog-v2.json");a={z["id"]:z for z in x["lessons"]}
+  self.assertEqual(x["themes"][0]["id"],"A.1");self.assertEqual({z["id"] for z in x["modules"]},{"A.1.1","A.1.2"})
+  self.assertEqual({z["id"] for z in x["lessons"]},{f"A.1.1.{i}" for i in range(1,7)}|{"A.1.2.1"})
+  self.assertEqual(a["A.1.2.1"]["status"],"review")
+  self.assertEqual(a["A.1.2.1"]["prerequisites"],["A.1.1.6"])
+  self.assertNotIn("A.1.2.1",{z["lesson_id"] for z in x["planets"]})
   self.assertEqual(c.validate_relationships(x),[])
  def test_crosswalk_and_planets(self):
   a=c.load_catalog(ROOT/"data/catalog");b=c.load_catalog(ROOT/"data/catalog/catalog-v2.json")
-  self.assertEqual({z["id"]:(z["legacy_id"],z["url"],z.get("url_i18n")) for z in a["lessons"]},{z["id"]:(z["legacy_id"],z["url"],z.get("url_i18n")) for z in b["lessons"]})
+  legacy={z["id"]:z for z in a["lessons"]};hierarchical={z["id"]:z for z in b["lessons"]}
+  for old_id,old_lesson in legacy.items():
+   new_id="A.1.1."+old_id.split(".")[-1];new_lesson=hierarchical[new_id]
+   self.assertEqual((new_lesson["legacy_id"],new_lesson["url"],new_lesson.get("url_i18n")),(old_id,old_lesson["url"],old_lesson.get("url_i18n")))
   self.assertEqual({z["id"]:z["lesson_id"] for z in a["planets"]},{z["id"]:z["lesson_id"] for z in b["planets"]})
  def test_missing_parent_rejected(self):
   x=c.load_catalog(ROOT/"data/catalog/catalog-v2.json");x["modules"][0]["theme_id"]="missing"

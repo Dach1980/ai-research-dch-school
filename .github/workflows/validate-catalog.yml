@@ -26,6 +26,15 @@ on:
   pull_request:
     paths:
       - "data/catalog/**"
+      - "scripts/theme-system.js"
+      - "scripts/code-blocks.js"
+      - "styles/main.css"
+      - "styles/theme-system.css"
+      - "styles/code-blocks.css"
+      - "docs/roadmap/**"
+      - "docs/architecture/**"
+      - "docs/design/**"
+      - "docs/standards/**"
       - "lessons/data/**"
       - "lessons/practice/**"
       - "scripts/lesson-reader.js"

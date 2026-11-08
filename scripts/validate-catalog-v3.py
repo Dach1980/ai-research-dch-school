@@ -24,6 +24,9 @@ def main() -> int:
         lesson_index = {x["uid"]: x for x in catalog["lessons"]}
         legacy_ids = {x["legacy_id"] for x in manifest["legacy_entities"]}
         for entity in manifest["legacy_entities"]:
+            for uid in entity.get("target_lesson_uids", []):
+                if uid not in lesson_index:
+                    errors.append(f"Legacy entity {entity['legacy_id']} references missing target UID {uid}")
             for locale, path in entity.get("localized_urls", {}).items():
                 if not (ROOT / path).is_file():
                     errors.append(f"Missing legacy URL ({locale}): {path}")

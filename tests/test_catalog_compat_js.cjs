@@ -1,0 +1,17 @@
+const assert = require("node:assert/strict");
+const compat = require("../scripts/catalog-compat.js");
+const track = {id:"track-a",code:"A",title:"Understanding AI",status:"active",url:"tracks/understanding-ai.html"};
+const lesson = {id:"A.1",module_id:"module-11",title:"Lesson",status:"published",access:"open",level:"beginner",duration_min:1,duration_max:2,prerequisites:[],learning_outcomes:["Outcome"],url:"lessons/a-1-what-is-artificial-intelligence.html"};
+const planet = {id:"planet-A-1",lesson_id:"A.1",accent_id:"blue"};
+const v1 = {tracks:{tracks:[track]},modules:{modules:[{id:"module-11",number:11,track_id:"track-a",title:"Foundations",status:"in_progress"}]},lessons:{lessons:[{...lesson,track_id:"track-a"}]},planets:{planets:[planet]}};
+const oldView=compat.normalizeV1(v1);
+assert.equal(oldView.themes[0].id,"theme-a1-foundations");
+assert.equal(oldView.modules[0].theme_id,"theme-a1-foundations");
+const v2={schema_version:2,tracks:[track],themes:[{id:"theme-a1-foundations",track_id:"track-a",code:"A1",title:"Foundations",status:"in_progress"}],modules:[{id:"module-11",number:11,theme_id:"theme-a1-foundations",title:"Foundations",status:"in_progress"}],lessons:[lesson],planets:[planet]};
+const newView=compat.normalizeV2(v2);
+assert.equal(newView.lessons[0].track_id,"track-a");
+assert.equal(newView.modules[0].track_id,"track-a");
+assert.equal(newView.lessons[0].url,oldView.lessons[0].url);
+assert.equal(newView.planets[0].id,oldView.planets[0].id);
+assert.throws(()=>compat.normalizeV2({...v2,modules:[{...v2.modules[0],theme_id:"missing"}]}),/unknown theme/);
+console.log("Browser catalog adapter tests passed.");

@@ -29,7 +29,12 @@
       "track_id": "track-a",
       "code": "A.1",
       "title": "Основы искусственного интеллекта и объяснимости",
-      "status": "in_progress"
+      "status": "in_progress",
+      "title_i18n": {
+        "ru": "Основы искусственного интеллекта и объяснимости",
+        "en": "AI Foundations and Explainability",
+        "zh": "人工智能基础与可解释性"
+      }
     }
   ],
   "modules": [
@@ -37,13 +42,23 @@
       "id": "A.1.1",
       "theme_id": "A.1",
       "title": "Основы AI и машинного обучения",
-      "status": "in_progress"
+      "status": "in_progress",
+      "title_i18n": {
+        "ru": "Основы AI и машинного обучения",
+        "en": "AI and Machine Learning Foundations",
+        "zh": "AI 与机器学习基础"
+      }
     },
     {
       "id": "A.1.2",
       "theme_id": "A.1",
       "title": "Введение в Explainable AI (XAI)",
-      "status": "in_progress"
+      "status": "in_progress",
+      "title_i18n": {
+        "ru": "Введение в Explainable AI (XAI)",
+        "en": "Introduction to Explainable AI (XAI)",
+        "zh": "可解释人工智能（XAI）导论"
+      }
     }
   ],
   "lessons": [

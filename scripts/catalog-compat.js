@@ -22,6 +22,29 @@ function normalizeV3(input){
  o.planets.forEach(x=>{if(!maps.lessons.has(x.lesson_uid))throw Error("Unknown planet lesson UID "+x.uid);});
  o.source_schema_version=3;return o;
 }
+
+function projectV3ToLegacy(v3Input,legacyInput,manifest){
+ const v3=normalizeV3(v3Input),legacy=normalizeV2(legacyInput),aliases=(manifest&&manifest.external_aliases)||[];
+ const index=new Map();
+ aliases.filter(a=>a.source_system==="catalog_v2"&&(a.alias_kind==="v2_id"||a.alias_kind==="legacy_id")).forEach(a=>{
+  const old=index.get(a.alias_value)||{uids:[],states:[]};
+  old.uids.push(...a.target_lesson_uids);old.states.push(a.mapping_state);index.set(a.alias_value,old);
+ });
+ const lessons=legacy.lessons.map(item=>{
+  const hit=index.get(item.id)||(item.legacy_id&&index.get(item.legacy_id));
+  const uids=[...new Set(hit?hit.uids:[])];
+  const targets=uids.map(uid=>v3.lessons.find(x=>x.uid===uid)).filter(Boolean);
+  return {...item,v3_target_uids:targets.map(x=>x.uid),v3_target_codes:targets.map(x=>x.code),v3_mapping_state:hit?[...new Set(hit.states)]:["unmapped"]};
+ });
+ return {...legacy,lessons,compatibility:{source_schema_version:2,target_schema_version:3,projection:"legacy_preserving",v3_lesson_count:v3.lessons.length}};
+}
+async function loadLegacyProjection(options){
+ const x=options||{},base=(x.baseUrl||"").replace(/\/$/,""),f=x.fetchImpl||root.fetch.bind(root);
+ async function get(p){const r=await f(base+"/"+p);if(!r.ok)throw Error("Catalog request failed "+r.status+" for "+p);return r.json();}
+ const [legacy,v3,manifest]=await Promise.all([get("catalog-v2.json"),get("catalog-v3.json"),get("migration-manifest-v3.json")]);
+ return projectV3ToLegacy(v3,legacy,manifest);
+}
+
 async function load(options){const x=options||{},base=(x.baseUrl||"").replace(/\/$/,""),f=x.fetchImpl||root.fetch.bind(root);async function get(p){const r=await f(base+"/"+p);if(!r.ok)throw Error("Catalog request failed "+r.status);return r.json();}if(x.schemaVersion===3)return normalizeV3(await get("catalog-v3.json"));if(x.schemaVersion===2)return normalizeV2(await get("catalog-v2.json"));const n=["tracks","modules","lessons","planets"],d=await Promise.all(n.map(k=>get(k+".json")));return normalizeV1({tracks:d[0],modules:d[1],lessons:d[2],planets:d[3]});}
-const api={normalizeV1,normalizeV2,normalizeV3,load};root.DCHCatalogCompat=api;if(typeof module!=="undefined"&&module.exports)module.exports=api;
+const api={normalizeV1,normalizeV2,normalizeV3,projectV3ToLegacy,loadLegacyProjection,load};root.DCHCatalogCompat=api;if(typeof module!=="undefined"&&module.exports)module.exports=api;
 })(typeof window!=="undefined"?window:globalThis);

@@ -1,7 +1,7 @@
 # Catalog v3 consumer inventory and migration gates
 
 **Date:** 8 November 2026  
-**Status:** three static consumers migrated to the legacy-preserving v3 projection; Supabase admin/editor and lesson-reader remain on legacy contracts.
+**Status:** three static consumers migrated to the legacy-preserving v3 projection; CI passed; Supabase admin/editor and lesson-reader remain on legacy contracts.
 
 ## Static site consumers
 

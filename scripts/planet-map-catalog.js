@@ -7,11 +7,11 @@
   })[c]);
   const positions = {
     "A.1":[50,49],"A.2":[72,31],"A.3":[28,30],
-    "A.4":[72,68],"A.5":[28,68],"A.6":[50,87],"lesson-history-of-ai":[50,20],"lesson-symbolic-ai-ml":[50,38]
+    "A.4":[72,68],"A.5":[28,68],"A.6":[50,87],"A.7":[50,20],"A.8":[50,38]
   };
   const descriptions = {
-    "lesson-history-of-ai": "История развития AI: от математических предпосылок и Дартмутского семинара до глубокого обучения и генеративных моделей.",
-    "lesson-symbolic-ai-ml": "Сравниваем явные правила, логический вывод, машинное обучение и гибридные AI-системы.",
+    "A.7": "История развития AI: от математических предпосылок и Дартмутского семинара до глубокого обучения и генеративных моделей.",
+    "A.8": "Сравниваем явные правила, логический вывод, машинное обучение и гибридные AI-системы.",
     "A.1": "Первая остановка в изучении AI: определение искусственного интеллекта, устройство AI-систем, основные подходы и границы возможностей.",
     "A.2": "Разбираем различия Artificial Intelligence, Machine Learning и Deep Learning, их взаимосвязь и примеры систем.",
     "A.3": "Исследуем, как алгоритм обучения использует примеры, настраивает параметры модели и почему важно обобщение на новые данные.",
@@ -25,7 +25,7 @@
     const legacy = lesson.legacy_id || lesson.id;
     const displayCode = lesson.v3_target_codes && lesson.v3_target_codes.length === 1 ? lesson.v3_target_codes[0] : lesson.id;
     const info = descriptions[legacy] || "Опубликованный учебный материал Track A.";
-    const prerequisiteLabels = {"A.1.1.1":"1.1.1","lesson-history-of-ai":"1.1.2"};
+    const prerequisiteLabels = {"A.1.1.1":"1.1.1","A.7":"1.1.2"};
     const prerequisiteText = (lesson.prerequisites || []).map(id=>prerequisiteLabels[id]||id).join(", ");
     const prerequisites = (lesson.prerequisites || []).length
       ? "Рекомендуется предварительно пройти: " + prerequisiteText + "."

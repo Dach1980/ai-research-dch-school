@@ -23,14 +23,26 @@ class HierarchicalCatalogUITests(unittest.TestCase):
         self.assertNotIn('fetch("../data/catalog/lessons.json"', script)
         self.assertLess(page.index("catalog-compat.js"), page.index("planet-map-catalog.js"))
 
-    def test_homepage_displays_hierarchical_lesson_ids(self):
-        page = (ROOT / "index.html").read_text(encoding="utf-8")
-        for number in range(1, 7):
-            self.assertIn("data-home-knowledge-map", page)
+    def test_homepage_and_localized_maps_read_v2(self):
         script = (ROOT / "scripts/home-knowledge-map.js").read_text(encoding="utf-8")
         self.assertIn("schemaVersion:2", script)
         self.assertIn('baseUrl:"data/catalog"', script)
+        for relative in ["index.html", "learning-map/index-en.html", "learning-map/index-zh.html"]:
+            page = (ROOT / relative).read_text(encoding="utf-8")
+            self.assertIn("data-home-knowledge-map", page)
+            self.assertLess(page.index("catalog-compat.js"), page.index("home-knowledge-map.js"))
 
+    def test_all_track_and_lesson_catalogues_use_v2(self):
+        for relative in [
+            "tracks/understanding-ai.html", "tracks/understanding-ai-en.html",
+            "tracks/understanding-ai-zh.html", "lessons/index.html",
+            "lessons/index-en.html", "lessons/index-zh.html"
+        ]:
+            page = (ROOT / relative).read_text(encoding="utf-8")
+            self.assertIn("data-lesson-catalog", page, relative)
+            self.assertLess(page.index("catalog-compat.js"), page.index("lesson-catalog.js"), relative)
+        schema = (ROOT / "data/catalog/schema-v2.json").read_text(encoding="utf-8")
+        self.assertIn('"title_i18n"', schema)
 
 if __name__ == "__main__":
     unittest.main()

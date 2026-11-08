@@ -4,7 +4,7 @@
 .reader-page{min-height:100vh;background:radial-gradient(ellipse at 72% 8%,rgba(77,84,180,.12),transparent 34%),var(--bg)}
 .reader-header{height:var(--reader-header);position:sticky;top:0;z-index:30;display:flex;align-items:center;gap:28px;padding:0 24px;background:rgba(8,13,27,.94);backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
 .reader-brand{display:flex;align-items:center;gap:10px;flex:0 0 250px;min-width:0}
-.reader-brand img{width:38px;height:38px;object-fit:contain}
+.reader-brand img{width:42px;height:42px;object-fit:contain;padding:3px;background:#f4f7ff;border:1px solid #dce6f5;border-radius:11px;box-shadow:0 3px 12px #0003}
 .reader-brand strong,.reader-brand small{display:block;line-height:1.15}
 .reader-brand strong{font:700 15px Manrope,sans-serif}
 .reader-brand small{font-size:9px;letter-spacing:.2em;color:var(--blue);margin-top:4px}
@@ -71,7 +71,7 @@
 .page-counter{color:var(--muted);font-size:11px;font-variant-numeric:tabular-nums}
 .reader-footer{display:flex;justify-content:space-between;align-items:center;gap:20px;padding:17px max(32px,calc((100% - 820px)/2));border-top:1px solid var(--line);color:#71829f;font-size:10px}
 .reader-footer .reader-brand{flex:0 0 auto}
-.reader-footer .reader-brand img{width:30px;height:30px}
+.reader-footer .reader-brand img{width:36px;height:36px}
 .reader-footer .reader-brand strong{font-size:12px}
 .reader-footer .reader-brand small{font-size:8px}
 .toc-backdrop{display:none}

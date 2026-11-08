@@ -1602,6 +1602,116 @@
       ],
       "mapping_state": "fragment_mapped",
       "access_behavior": "resolve_only"
+    },
+    {
+      "source_system": "catalog_v2",
+      "alias_kind": "v2_id",
+      "alias_value": "lesson-history-of-ai",
+      "locale": null,
+      "target_lesson_uids": [
+        "les-a-0051"
+      ],
+      "mapping_state": "direct_candidate",
+      "access_behavior": "resolve_only"
+    },
+    {
+      "source_system": "catalog_v2",
+      "alias_kind": "legacy_id",
+      "alias_value": "lesson-history-of-ai",
+      "locale": null,
+      "target_lesson_uids": [
+        "les-a-0051"
+      ],
+      "mapping_state": "direct_candidate",
+      "access_behavior": "resolve_only"
+    },
+    {
+      "source_system": "static_site",
+      "alias_kind": "localized_url",
+      "alias_value": "lessons/1-1-2-history-of-ai.html",
+      "locale": "ru",
+      "target_lesson_uids": [
+        "les-a-0051"
+      ],
+      "mapping_state": "direct_candidate",
+      "access_behavior": "resolve_only"
+    },
+    {
+      "source_system": "static_site",
+      "alias_kind": "localized_url",
+      "alias_value": "lessons/1-1-2-history-of-ai-en.html",
+      "locale": "en",
+      "target_lesson_uids": [
+        "les-a-0051"
+      ],
+      "mapping_state": "direct_candidate",
+      "access_behavior": "resolve_only"
+    },
+    {
+      "source_system": "static_site",
+      "alias_kind": "localized_url",
+      "alias_value": "lessons/1-1-2-history-of-ai-zh.html",
+      "locale": "zh",
+      "target_lesson_uids": [
+        "les-a-0051"
+      ],
+      "mapping_state": "direct_candidate",
+      "access_behavior": "resolve_only"
+    },
+    {
+      "source_system": "catalog_v2",
+      "alias_kind": "v2_id",
+      "alias_value": "lesson-symbolic-ai-ml",
+      "locale": null,
+      "target_lesson_uids": [
+        "les-a-0052"
+      ],
+      "mapping_state": "direct_candidate",
+      "access_behavior": "resolve_only"
+    },
+    {
+      "source_system": "catalog_v2",
+      "alias_kind": "legacy_id",
+      "alias_value": "lesson-symbolic-ai-ml",
+      "locale": null,
+      "target_lesson_uids": [
+        "les-a-0052"
+      ],
+      "mapping_state": "direct_candidate",
+      "access_behavior": "resolve_only"
+    },
+    {
+      "source_system": "static_site",
+      "alias_kind": "localized_url",
+      "alias_value": "lessons/1-1-3-symbolic-ai-and-machine-learning.html",
+      "locale": "ru",
+      "target_lesson_uids": [
+        "les-a-0052"
+      ],
+      "mapping_state": "direct_candidate",
+      "access_behavior": "resolve_only"
+    },
+    {
+      "source_system": "static_site",
+      "alias_kind": "localized_url",
+      "alias_value": "lessons/1-1-3-symbolic-ai-and-machine-learning-en.html",
+      "locale": "en",
+      "target_lesson_uids": [
+        "les-a-0052"
+      ],
+      "mapping_state": "direct_candidate",
+      "access_behavior": "resolve_only"
+    },
+    {
+      "source_system": "static_site",
+      "alias_kind": "localized_url",
+      "alias_value": "lessons/1-1-3-symbolic-ai-and-machine-learning-zh.html",
+      "locale": "zh",
+      "target_lesson_uids": [
+        "les-a-0052"
+      ],
+      "mapping_state": "direct_candidate",
+      "access_behavior": "resolve_only"
     }
   ]
 }

@@ -41,7 +41,7 @@ class Lesson112113Tests(unittest.TestCase):
         for lesson, locales in expected.items():
             for suffix, labels in locales.items():
                 source = (ROOT / f"lessons/{lesson}{suffix}.html").read_text(encoding="utf-8")
-                svg = re.search(r"<svg\\b[\\s\\S]*?</svg>", source)
+                svg = re.search(r"<svg\b[\s\S]*?</svg>", source)
                 self.assertIsNotNone(svg, f"{lesson}{suffix}")
                 for label in labels:
                     self.assertIn(label, svg.group(0), f"{lesson}{suffix}: {label}")
@@ -50,7 +50,7 @@ class Lesson112113Tests(unittest.TestCase):
         for lesson in ("1-1-2-history-of-ai", "1-1-3-symbolic-ai-and-machine-learning"):
             for suffix in ("", "-en", "-zh"):
                 source = (ROOT / f"lessons/{lesson}{suffix}.html").read_text(encoding="utf-8")
-                header = re.search(r'<div class="lesson-meta">([\\s\\S]*?)</div>', source)
+                header = re.search(r'<div class="lesson-meta">([\s\S]*?)</div>', source)
                 self.assertIsNotNone(header)
                 self.assertNotRegex(header.group(1), r"minutes?|минут|分钟")
 
@@ -67,7 +67,7 @@ class Lesson112113Tests(unittest.TestCase):
             self.assertEqual(source.count('class="quiz-item"'), 8)
             self.assertIn("15.", source)
             self.assertIn("16.", source)
-            self.assertNotRegex(source, r"60\\s*[–-]\\s*75\\s*(?:minutes?|минут|分钟)")
+            self.assertNotRegex(source, r"60\s*[–-]\s*75\s*(?:minutes?|минут|分钟)")
 
     def test_illustration_palette_is_semantic_and_theme_aware(self):
         palette = (ROOT / "styles/lesson-visual-palette.css").read_text(encoding="utf-8")

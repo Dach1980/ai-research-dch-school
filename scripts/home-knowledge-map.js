@@ -29,7 +29,8 @@
       root.innerHTML = lessons.map(lesson => {
         const title = lesson.title_i18n?.[locale] || lesson.title;
         const href = (lesson.url_i18n && lesson.url_i18n[locale]) || lesson.url;
-        return `<a class="${esc(cardClass)}" href="${esc(href)}"><b>${esc(lesson.id)}</b><strong>${esc(title)}</strong><span>${esc(ui.open)}</span></a>`;
+        const displayCode = lesson.v3_target_codes && lesson.v3_target_codes.length === 1 ? lesson.v3_target_codes[0] : lesson.id;
+        return `<a class="${esc(cardClass)}" href="${esc(href)}"><b>${esc(displayCode)}</b><strong>${esc(title)}</strong><span>${esc(ui.open)}</span></a>`;
       }).join("");
     })
     .catch(() => {

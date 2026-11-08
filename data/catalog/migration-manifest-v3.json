@@ -30,7 +30,10 @@
         "zh": "lessons/a-1-what-is-artificial-intelligence-zh.html"
       },
       "status": "published",
-      "mapping_state": "direct_candidate"
+      "mapping_state": "direct_candidate",
+      "target_lesson_uids": [
+        "les-a-0001"
+      ]
     },
     {
       "legacy_id": "A.2",
@@ -47,7 +50,10 @@
         "zh": "lessons/a-2-ai-ml-deep-learning-zh.html"
       },
       "status": "published",
-      "mapping_state": "direct_candidate"
+      "mapping_state": "direct_candidate",
+      "target_lesson_uids": [
+        "les-a-0002"
+      ]
     },
     {
       "legacy_id": "A.3",
@@ -64,7 +70,19 @@
         "zh": "lessons/a-3-how-machines-learn-from-data-zh.html"
       },
       "status": "published",
-      "mapping_state": "fragment_mapped"
+      "mapping_state": "fragment_mapped",
+      "target_lesson_uids": [
+        "les-a-0003",
+        "les-a-0004",
+        "les-a-0007",
+        "les-a-0008",
+        "les-a-0009",
+        "les-a-0010",
+        "les-a-0011",
+        "les-a-0013",
+        "les-a-0005",
+        "les-a-0006"
+      ]
     },
     {
       "legacy_id": "A.4",
@@ -81,7 +99,11 @@
         "zh": "lessons/a-4-what-is-machine-learning-model-zh.html"
       },
       "status": "published",
-      "mapping_state": "editorial_review"
+      "mapping_state": "editorial_review",
+      "target_lesson_uids": [
+        "les-a-0010",
+        "les-a-0014"
+      ]
     },
     {
       "legacy_id": "A.5",
@@ -98,7 +120,14 @@
         "zh": "lessons/a-5-how-to-evaluate-a-model-zh.html"
       },
       "status": "published",
-      "mapping_state": "editorial_review"
+      "mapping_state": "editorial_review",
+      "target_lesson_uids": [
+        "les-a-0043",
+        "les-a-0044",
+        "les-a-0045",
+        "les-a-0046",
+        "les-a-0047"
+      ]
     },
     {
       "legacy_id": "A.6",
@@ -115,7 +144,13 @@
         "zh": "lessons/a-6-generalization-and-overfitting-zh.html"
       },
       "status": "published",
-      "mapping_state": "fragment_mapped"
+      "mapping_state": "fragment_mapped",
+      "target_lesson_uids": [
+        "les-a-0012",
+        "les-a-0013",
+        "les-a-0015",
+        "les-a-0006"
+      ]
     },
     {
       "legacy_id": "A.1.2.1",
@@ -131,7 +166,35 @@
         "zh": "lessons/xai/01-what-and-why.html"
       },
       "status": "review",
-      "mapping_state": "fragment_mapped"
+      "mapping_state": "fragment_mapped",
+      "target_lesson_uids": [
+        "les-a-0018",
+        "les-a-0019",
+        "les-a-0020",
+        "les-a-0021",
+        "les-a-0022",
+        "les-a-0023",
+        "les-a-0016",
+        "les-a-0017",
+        "les-a-0024",
+        "les-a-0025",
+        "les-a-0026",
+        "les-a-0027",
+        "les-a-0028",
+        "les-a-0029",
+        "les-a-0030",
+        "les-a-0031",
+        "les-a-0032",
+        "les-a-0033",
+        "les-a-0034",
+        "les-a-0035",
+        "les-a-0036",
+        "les-a-0037",
+        "les-a-0038",
+        "les-a-0039",
+        "les-a-0041",
+        "les-a-0042"
+      ]
     }
   ],
   "content_mappings": [
@@ -405,6 +468,92 @@
       "mapping_type": "many_to_many",
       "confidence": "editorial_approved",
       "notes": "Anchors 4.7.2 отсутствует в legacy material и создаётся отдельно. Mini-lab не маркировать как SHAP."
+    },
+    {
+      "mapping_id": "map-a1-core",
+      "source_legacy_id": "A.1",
+      "source_url": "lessons/a-1-what-is-artificial-intelligence.html",
+      "source_fragment_topics": [
+        "core-definition-of-ai"
+      ],
+      "target_lesson_uids": [
+        "les-a-0001"
+      ],
+      "target_codes": [
+        "1.1.1"
+      ],
+      "mapping_type": "direct_candidate",
+      "confidence": "high",
+      "notes": "Отдельные ограничения и возможности дополнительно требуют проверки на 1.1.5."
+    },
+    {
+      "mapping_id": "map-a2-core",
+      "source_legacy_id": "A.2",
+      "source_url": "lessons/a-2-ai-ml-deep-learning.html",
+      "source_fragment_topics": [
+        "ai-ml-dl-taxonomy"
+      ],
+      "target_lesson_uids": [
+        "les-a-0002"
+      ],
+      "target_codes": [
+        "1.1.4"
+      ],
+      "mapping_type": "direct_candidate",
+      "confidence": "high",
+      "notes": "Часть исторического/символического контекста может перейти в 1.1.3."
+    },
+    {
+      "mapping_id": "map-a4-candidate",
+      "source_legacy_id": "A.4",
+      "source_url": "lessons/a-4-what-is-machine-learning-model.html",
+      "source_fragment_topics": [
+        "model-definition",
+        "parameters",
+        "hyperparameters"
+      ],
+      "target_lesson_uids": [
+        "les-a-0010",
+        "les-a-0014"
+      ],
+      "target_codes": [
+        "1.4.1",
+        "1.4.5"
+      ],
+      "mapping_type": "many_to_many",
+      "confidence": "needs_editorial_review",
+      "notes": "Кандидатное соответствие; сверить с draft A4 и материалами Theme 3 до фиксации."
+    },
+    {
+      "mapping_id": "map-a5-candidate",
+      "source_legacy_id": "A.5",
+      "source_url": "lessons/a-5-how-to-evaluate-a-model.html",
+      "source_fragment_topics": [
+        "evaluation-protocol",
+        "confusion-matrix",
+        "classification-metrics",
+        "roc-pr",
+        "class-imbalance"
+      ],
+      "target_lesson_uids": [
+        "les-a-0043",
+        "les-a-0044",
+        "les-a-0045",
+        "les-a-0046",
+        "les-a-0047",
+        "les-a-0015"
+      ],
+      "target_codes": [
+        "1.5.1",
+        "1.5.2",
+        "1.5.3",
+        "1.5.4",
+        "1.5.5",
+        "1.5.6"
+      ],
+      "mapping_type": "many_to_many",
+      "confidence": "needs_editorial_review",
+      "notes": "Кандидатное соответствие; сверить с draft A5, не считать редакторски закрытым."
     }
   ],
   "unresolved_legacy_mappings": [

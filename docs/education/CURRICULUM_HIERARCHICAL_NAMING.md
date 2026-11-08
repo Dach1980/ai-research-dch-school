@@ -5,14 +5,11 @@
 ## Структура
 
 Track A
-└── Theme A.1 — Основы AI и машинного обучения
-    └── Module A.1.1 — Основы AI и машинного обучения
-        ├── Lesson A.1.1.1 (legacy A.1)
-        ├── Lesson A.1.1.2 (legacy A.2)
-        ├── Lesson A.1.1.3 (legacy A.3)
-        ├── Lesson A.1.1.4 (legacy A.4)
-        ├── Lesson A.1.1.5 (legacy A.5)
-        └── Lesson A.1.1.6 (legacy A.6)
+└── Theme A.1 — Основы искусственного интеллекта и объяснимости
+    ├── Module A.1.1 — Основы AI и машинного обучения
+    │   └── Lessons A.1.1.1–A.1.1.6 (legacy A.1–A.6)
+    └── Module A.1.2 — Введение в Explainable AI (XAI)
+        └── Lesson A.1.2.1 (review; existing multilingual XAI introduction)
 
 ## Правила
 
@@ -34,4 +31,4 @@ Track A
 | Module | A.1.1 | module-11 |
 | Lessons | A.1.1.1–A.1.1.6 | A.1–A.6 |
 
-Production renderer пока использует v1. Schema v2 и адаптеры обеспечивают переходный слой; переключение сайта выполняется отдельно после визуальной приёмки.
+Production catalogue, Track A lesson list and Knowledge Map now read catalog v2 through the compatibility adapter. The v1 split JSON files remain in the repository as a legacy source and fallback for older consumers; their URLs are unchanged. Lesson A.1.2.1 is in review and is not shown as a published planet.

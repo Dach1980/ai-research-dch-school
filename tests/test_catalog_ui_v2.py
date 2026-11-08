@@ -26,7 +26,10 @@ class HierarchicalCatalogUITests(unittest.TestCase):
     def test_homepage_displays_hierarchical_lesson_ids(self):
         page = (ROOT / "index.html").read_text(encoding="utf-8")
         for number in range(1, 7):
-            self.assertIn(f"A.1.1.{number}", page)
+            self.assertIn("data-home-knowledge-map", page)
+        script = (ROOT / "scripts/home-knowledge-map.js").read_text(encoding="utf-8")
+        self.assertIn("schemaVersion:2", script)
+        self.assertIn("data.catalog", script)
 
 
 if __name__ == "__main__":

@@ -8,6 +8,15 @@ on:
       - "lessons/data/**"
       - "lessons/practice/**"
       - "scripts/lesson-reader.js"
+      - "scripts/theme-system.js"
+      - "scripts/code-blocks.js"
+      - "styles/main.css"
+      - "styles/theme-system.css"
+      - "styles/code-blocks.css"
+      - "docs/roadmap/**"
+      - "docs/architecture/**"
+      - "docs/design/**"
+      - "docs/standards/**"
       - "styles/lesson-reader.css"
       - "scripts/validate-catalog.py"
       - "scripts/validate-multilingual-lessons.py"
@@ -51,6 +60,10 @@ jobs:
         run: node tests/test_catalog_compat_js.cjs
       - name: Test hierarchical catalog UI migration
         run: python -m unittest discover -s tests -p 'test_catalog_ui_v2.py' -v
+      - name: Test DCH presentation standards
+        run: python -m unittest discover -s tests -p 'test_dch_presentation_standards.py' -v
+      - name: Check theme and code scripts syntax
+        run: node --check scripts/theme-system.js && node --check scripts/code-blocks.js
       - name: Check browser catalogue scripts syntax
         run: node --check scripts/catalog-compat.js && node --check scripts/lesson-catalog.js && node --check scripts/planet-map-catalog.js && node --check scripts/home-knowledge-map.js && node --check scripts/lesson-reader.js && node --check lessons/data/xai-01-what-and-why.js
       - name: Validate production hierarchical catalog v2

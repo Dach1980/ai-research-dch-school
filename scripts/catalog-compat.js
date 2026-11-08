@@ -11,6 +11,17 @@ function normalizeV1(input){
  return {schema_version:2,source_schema_version:1,tracks,themes,modules,lessons,planets};
 }
 function normalizeV2(input){if(!input||input.schema_version!==2)throw Error("Expected catalog schema_version 2");const o=clone(input),tracks=idx(o.tracks,"track"),themes=idx(o.themes,"theme"),modules=idx(o.modules,"module");idx(o.lessons,"lesson");idx(o.planets,"planet");o.themes.forEach(t=>{if(!tracks.has(t.track_id))throw Error("Unknown track "+t.id);});o.modules.forEach(m=>{const t=themes.get(m.theme_id);if(!t)throw Error("Unknown theme "+m.id);m.track_id=t.track_id;});o.lessons.forEach(l=>{const m=modules.get(l.module_id);if(!m)throw Error("Unknown module "+l.id);l.track_id=m.track_id;});o.source_schema_version=2;return o;}
-async function load(options){const x=options||{},base=(x.baseUrl||"").replace(/\/$/,""),f=x.fetchImpl||root.fetch.bind(root);async function get(p){const r=await f(base+"/"+p);if(!r.ok)throw Error("Catalog request failed "+r.status);return r.json();}if(x.schemaVersion===2)return normalizeV2(await get("catalog-v2.json"));const n=["tracks","modules","lessons","planets"],d=await Promise.all(n.map(k=>get(k+".json")));return normalizeV1({tracks:d[0],modules:d[1],lessons:d[2],planets:d[3]});}
-const api={normalizeV1,normalizeV2,load};root.DCHCatalogCompat=api;if(typeof module!=="undefined"&&module.exports)module.exports=api;
+
+function normalizeV3(input){
+ if(!input||input.schema_version!==3)throw Error("Expected catalog schema_version 3");
+ const o=clone(input),groups=["tracks","themes","modules","lessons","resources","planets"],maps={};
+ groups.forEach(k=>{maps[k]=new Map();(o[k]||[]).forEach(x=>{if(!x||!x.uid||maps[k].has(x.uid))throw Error("Invalid/duplicate "+k+" UID");maps[k].set(x.uid,x);});});
+ o.themes.forEach(x=>{if(!maps.tracks.has(x.track_uid))throw Error("Unknown track UID "+x.uid);});
+ o.modules.forEach(x=>{if(!maps.themes.has(x.theme_uid))throw Error("Unknown theme UID "+x.uid);});
+ o.lessons.forEach(x=>{const m=maps.modules.get(x.module_uid),t=maps.themes.get(x.theme_uid);if(!m||!t)throw Error("Unknown lesson parent UID "+x.uid);if(m.theme_uid!==t.uid||t.track_uid!==x.track_uid)throw Error("Lesson hierarchy mismatch "+x.uid);(x.prerequisite_uids||[]).forEach(p=>{if(!maps.lessons.has(p))throw Error("Unknown prerequisite UID "+p);});});
+ o.planets.forEach(x=>{if(!maps.lessons.has(x.lesson_uid))throw Error("Unknown planet lesson UID "+x.uid);});
+ o.source_schema_version=3;return o;
+}
+async function load(options){const x=options||{},base=(x.baseUrl||"").replace(/\/$/,""),f=x.fetchImpl||root.fetch.bind(root);async function get(p){const r=await f(base+"/"+p);if(!r.ok)throw Error("Catalog request failed "+r.status);return r.json();}if(x.schemaVersion===3)return normalizeV3(await get("catalog-v3.json"));if(x.schemaVersion===2)return normalizeV2(await get("catalog-v2.json"));const n=["tracks","modules","lessons","planets"],d=await Promise.all(n.map(k=>get(k+".json")));return normalizeV1({tracks:d[0],modules:d[1],lessons:d[2],planets:d[3]});}
+const api={normalizeV1,normalizeV2,normalizeV3,load};root.DCHCatalogCompat=api;if(typeof module!=="undefined"&&module.exports)module.exports=api;
 })(typeof window!=="undefined"?window:globalThis);

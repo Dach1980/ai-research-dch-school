@@ -22,7 +22,7 @@ def test_python_examples_are_explicitly_labelled():
         code_blocks = re.findall(r"<pre\b[^>]*>([\s\S]*?)</pre>", source, re.I)
         assert code_blocks, f"No code blocks found in {relative_path}"
         for block in code_blocks:
-            assert "<code" in block and "language-python" in block f"Unlabelled Python code block in {relative_path}"
+            assert "<code" in block and "language-python" in block, f"Unlabelled Python code block in {relative_path}"
 
 
 def test_code_block_runtime_is_loaded_by_python_lessons():

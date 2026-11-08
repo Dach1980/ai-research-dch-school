@@ -30,6 +30,14 @@ def main() -> int:
             for locale, path in entity.get("localized_urls", {}).items():
                 if not (ROOT / path).is_file():
                     errors.append(f"Missing legacy URL ({locale}): {path}")
+        for alias in manifest.get("external_aliases", []):
+            if alias.get("access_behavior") != "resolve_only":
+                errors.append(f"Alias {alias.get('alias_value')} has unsafe access behavior")
+            if not alias.get("target_lesson_uids"):
+                errors.append(f"Alias {alias.get('alias_value')} has no target UID")
+            for uid in alias.get("target_lesson_uids", []):
+                if uid not in lesson_index:
+                    errors.append(f"Alias {alias.get('alias_value')} references missing target UID {uid}")
         for mapping in manifest["content_mappings"]:
             if mapping["source_legacy_id"] not in legacy_ids:
                 errors.append(f"Unknown legacy source: {mapping['source_legacy_id']}")

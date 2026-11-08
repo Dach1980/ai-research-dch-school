@@ -41,7 +41,7 @@
   const load = async () => {
     try {
       if (!window.DCHCatalogCompat) throw new Error("Не загружен адаптер каталога");
-      const data = await window.DCHCatalogCompat.load({baseUrl:"../data/catalog",schemaVersion:2});
+      const data = await window.DCHCatalogCompat.loadLegacyProjection({baseUrl:"../data/catalog"});
       const tracks = new Map(data.tracks.map(x=>[x.id,x]));
       const themes = new Map(data.themes.map(x=>[x.id,x]));
       const modules = new Map(data.modules.map(x=>[x.id,x]));

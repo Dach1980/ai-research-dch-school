@@ -46,7 +46,7 @@ Do not treat the current schema-v2 lesson id as a stable opaque ID: it currently
 
 ## Migration mapping to prepare
 
-The current first module is the six-lesson AI foundations module. Its user-facing lesson codes should become A.1.1–A.1.6. The existing XAI module is a subsequent module inside Theme A.1; its first lesson should therefore become A.1.7 (not A.1.2.1). This is a display-code mapping only; stable UIDs and all references must remain intact.
+Theme A.1 title is approved as «Основы AI и машинного обучения». The first module title is «Что такое AI» (without a numeric module code); its six lessons become A.1.1–A.1.6. The next module is «Введение в Explainable AI (XAI)»; its first lesson becomes A.1.7 (not A.1.2.1). The first lesson of the next theme, A.2, will be A.2.1. This is a display-code mapping only; stable UIDs and all references must remain intact.
 
 ## Migration acceptance criteria
 

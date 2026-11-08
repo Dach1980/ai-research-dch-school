@@ -41,7 +41,9 @@ jobs:
         run: python -m unittest discover -s tests -p 'test_catalog_compat.py' -v
       - name: Test browser catalog compatibility adapter
         run: node tests/test_catalog_compat_js.cjs
-      - name: Validate parallel hierarchical catalog v2
+      - name: Test hierarchical catalog UI migration
+        run: python -m unittest discover -s tests -p 'test_catalog_ui_v2.py' -v
+      - name: Validate production hierarchical catalog v2
         run: python scripts/validate-catalog-v2.py
       - name: Validate multilingual lesson pages and diagrams
         run: python scripts/validate-multilingual-lessons.py

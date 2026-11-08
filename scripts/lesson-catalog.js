@@ -43,9 +43,9 @@
         const themeTitle = theme?.title_i18n?.[locale] || theme?.title || "";
         const moduleTitle = module.title_i18n?.[locale] || module.title || "";
         return `<section class="catalog-module" aria-labelledby="module-${esc(module.id)}">
-          <p class="eyebrow">${esc(tracks.get(module.track_id)?.code || "")} · ${esc(ui.theme)} ${esc(theme?.id || "")}</p>
+          <p class="eyebrow">${esc(tracks.get(module.track_id)?.code || "")} · ${esc(ui.theme)} ${esc((theme?.id || "").split(".").pop())}</p>
           <h3>${esc(themeTitle)}</h3>
-          <div class="catalog-module-heading"><span>${esc(ui.module)} ${esc(module.id)}</span><strong id="module-${esc(module.id)}">${esc(moduleTitle)}</strong></div>
+          <div class="catalog-module-heading"><span>${esc(ui.module)} ${esc(module.id.split(".").pop())}</span><strong id="module-${esc(module.id)}">${esc(moduleTitle)}</strong></div>
           <div class="catalog-lesson-list">${items.map(lesson => {
             const href = base + ((lesson.url_i18n && lesson.url_i18n[locale]) || lesson.url);
             const title = (lesson.title_i18n && lesson.title_i18n[locale]) || lesson.title;

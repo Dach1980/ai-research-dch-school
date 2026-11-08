@@ -129,3 +129,10 @@
 ## 9. Результат редакторской декомпозиции
 
 Декомпозиция legacy A.3, A.6 и A.1.2.1 выполнена на уровне разделов, целевых lesson codes, learning outcomes, лабораторных работ и проверочных вопросов. Полная матрица и требования к schema/catalog v3 вынесены в [TRACK_A_LEGACY_CONTENT_DECOMPOSITION_2026-11-08.md](TRACK_A_LEGACY_CONTENT_DECOMPOSITION_2026-11-08.md). Эта карта заменяет предварительные формулировки о необходимости декомпозиции этих трёх уроков. Она не означает production migration: старые IDs, URL, локализации, prerequisites, статусы и planet IDs не изменялись.
+
+
+## 10. Обновление статуса schema/catalog v3 (2026-11-08)
+
+После первоначального Crosswalk additive staging schema/catalog v3 реализован. Независимые UID, 5 тем / 27 модулей Track A, предварительные lesson outline UIDs и 12 fragment-level mappings записаны в `data/catalog/catalog-v3.json` и `data/catalog/migration-manifest-v3.json`. См. [CATALOG_V3_ARCHITECTURE.md](../architecture/CATALOG_V3_ARCHITECTURE.md) и [CATALOG_V3_CONSUMER_INVENTORY.md](../architecture/CATALOG_V3_CONSUMER_INVENTORY.md).
+
+Это не production migration: опубликованные страницы и все v1/v2 потребители остаются на текущих контрактах. A.4/A.5 остаются в editorial review; Supabase slug identifiers, entitlements и внешние пользовательские состояния не мигрировались. Статус CI и браузерной приёмки для v3 не подтверждён.

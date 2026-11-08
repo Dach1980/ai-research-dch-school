@@ -1,7 +1,7 @@
 import importlib.util, unittest
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
-SPEC=importlib.util.spec_from_file_location("catalog_compat",ROOT/"scripts"/"catalog-compat.py")
+SPEC=importlib.util.spec_from_file_location("catalog_compat",ROOT/"scripts"/"catalog_compat.py")
 compat=importlib.util.module_from_spec(SPEC); SPEC.loader.exec_module(compat)
 class CatalogCompatibilityTests(unittest.TestCase):
  def test_v1_is_readable_and_urls_are_retained(self):

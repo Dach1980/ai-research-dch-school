@@ -13,7 +13,7 @@ class Tests(unittest.TestCase):
  def test_v2_tree(self):
   x=c.load_catalog(ROOT/"data/catalog/catalog-v2.json");a={z["id"]:z for z in x["lessons"]}
   self.assertEqual(x["themes"][0]["id"],"A.1");self.assertEqual({z["id"] for z in x["modules"]},{"A.1.1","A.1.2"})
-  self.assertEqual({z["id"] for z in x["lessons"]},{f"A.1.1.{i}" for i in range(1,7)}|{"A.1.2.1","lesson-history-of-ai","lesson-symbolic-ai-ml"})
+  self.assertEqual({z["id"] for z in x["lessons"]},{f"A.1.1.{i}" for i in range(1,7)}|{"A.1.2.1","A.1.1.7","A.1.1.8"})
   self.assertEqual(a["A.1.2.1"]["status"],"review")
   self.assertEqual(a["A.1.2.1"]["prerequisites"],["A.1.1.6"])
   self.assertNotIn("A.1.2.1",{z["lesson_id"] for z in x["planets"]})
@@ -27,8 +27,8 @@ class Tests(unittest.TestCase):
   old_planets={z["id"]:z["lesson_id"] for z in a["planets"]}
   new_planets={z["id"]:z["lesson_id"] for z in b["planets"]}
   self.assertTrue(all(new_planets.get(k)==v for k,v in old_planets.items()))
-  self.assertEqual(new_planets["planet-1-1-2"],"lesson-history-of-ai")
-  self.assertEqual(new_planets["planet-1-1-3"],"lesson-symbolic-ai-ml")
+  self.assertEqual(new_planets["planet-A-7"],"A.1.1.7")
+  self.assertEqual(new_planets["planet-A-8"],"A.1.1.8")
  def test_missing_parent_rejected(self):
   x=c.load_catalog(ROOT/"data/catalog/catalog-v2.json");x["modules"][0]["theme_id"]="missing"
   self.assertTrue(any("missing theme" in z for z in c.validate_relationships(x)))

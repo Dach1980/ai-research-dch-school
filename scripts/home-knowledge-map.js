@@ -6,7 +6,8 @@
   })[c]);
   const locale = document.documentElement.lang || "ru";
   const cardClass = root.dataset.cardClass || "home-planet";
-  const openLabel = ({ru:"Открыть урок ↗",en:"Open lesson ↗",zh:"打开课程 ↗"})[locale] || "Open lesson ↗";
+  const messages = {ru:{open:"Открыть урок ↗",empty:"${esc(ui.empty)}",error:"${esc(ui.error)}",missing:"${esc(ui.missing)}"},en:{open:"Open lesson ↗",empty:"Published lessons will appear here after review.",error:"The knowledge catalogue could not be loaded.",missing:"The knowledge catalogue is temporarily unavailable."},zh:{open:"打开课程 ↗",empty:"课程通过审核后将在此显示。",error:"无法加载知识目录。",missing:"知识目录暂时不可用。"}};
+  const ui = messages[locale] || messages.en;
   if (!window.DCHCatalogCompat) {
     root.innerHTML = '<p class="muted">Каталог знаний временно недоступен.</p>';
     return;
@@ -23,7 +24,7 @@
       root.innerHTML = lessons.map(lesson => {
         const title = lesson.title_i18n?.[locale] || lesson.title;
         const href = (lesson.url_i18n && lesson.url_i18n[locale]) || lesson.url;
-        return `<a class="${esc(cardClass)}" href="${esc(href)}"><b>${esc(lesson.id)}</b><strong>${esc(title)}</strong><span>${esc(openLabel)}</span></a>`;
+        return `<a class="${esc(cardClass)}" href="${esc(href)}"><b>${esc(lesson.id)}</b><strong>${esc(title)}</strong><span>${esc(ui.open)}</span></a>`;
       }).join("");
     })
     .catch(() => {

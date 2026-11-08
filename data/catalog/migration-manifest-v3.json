@@ -81,7 +81,8 @@
         "les-a-0011",
         "les-a-0013",
         "les-a-0005",
-        "les-a-0006"
+        "les-a-0006",
+        "les-a-0012"
       ]
     },
     {
@@ -554,6 +555,23 @@
       "mapping_type": "many_to_many",
       "confidence": "needs_editorial_review",
       "notes": "Кандидатное соответствие; сверить с draft A5, не считать редакторски закрытым."
+    },
+    {
+      "mapping_id": "map-a3-generalization-diagnostics",
+      "source_legacy_id": "A.3",
+      "source_url": "lessons/a-3-how-machines-learn-from-data.html",
+      "source_fragment_topics": [
+        "underfitting-overfitting-introduction"
+      ],
+      "target_lesson_uids": [
+        "les-a-0012"
+      ],
+      "target_codes": [
+        "1.4.3"
+      ],
+      "mapping_type": "many_to_one",
+      "confidence": "editorial_approved",
+      "notes": "Вводные определения; диагностическая проработка и методы предотвращения развиваются в A.6."
     }
   ],
   "unresolved_legacy_mappings": [

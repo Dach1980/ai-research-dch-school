@@ -1,27 +1,33 @@
+import unittest
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 
 
-def test_track_lesson_catalog_reads_hierarchical_v2():
-    script = (ROOT / "scripts/lesson-catalog.js").read_text(encoding="utf-8")
-    page = (ROOT / "tracks/understanding-ai.html").read_text(encoding="utf-8")
-    assert "schemaVersion: 2" in script
-    assert "data.themes" in script and "data.modules" in script
-    assert "lessons.json" not in script
-    assert page.index("catalog-compat.js") < page.index("lesson-catalog.js")
+class HierarchicalCatalogUITests(unittest.TestCase):
+    def test_track_lesson_catalog_reads_hierarchical_v2(self):
+        script = (ROOT / "scripts/lesson-catalog.js").read_text(encoding="utf-8")
+        page = (ROOT / "tracks/understanding-ai.html").read_text(encoding="utf-8")
+        self.assertIn("schemaVersion: 2", script)
+        self.assertIn("data.themes", script)
+        self.assertIn("data.modules", script)
+        self.assertNotIn("lessons.json", script)
+        self.assertLess(page.index("catalog-compat.js"), page.index("lesson-catalog.js"))
+
+    def test_knowledge_map_reads_hierarchical_v2(self):
+        script = (ROOT / "scripts/planet-map-catalog.js").read_text(encoding="utf-8")
+        page = (ROOT / "learning-map/index.html").read_text(encoding="utf-8")
+        self.assertIn("schemaVersion:2", script)
+        self.assertIn("data.themes", script)
+        self.assertIn("data.modules", script)
+        self.assertNotIn('fetch("../data/catalog/lessons.json"', script)
+        self.assertLess(page.index("catalog-compat.js"), page.index("planet-map-catalog.js"))
+
+    def test_homepage_displays_hierarchical_lesson_ids(self):
+        page = (ROOT / "index.html").read_text(encoding="utf-8")
+        for number in range(1, 7):
+            self.assertIn(f"A.1.1.{number}", page)
 
 
-def test_knowledge_map_reads_hierarchical_v2():
-    script = (ROOT / "scripts/planet-map-catalog.js").read_text(encoding="utf-8")
-    page = (ROOT / "learning-map/index.html").read_text(encoding="utf-8")
-    assert "schemaVersion:2" in script
-    assert "data.themes" in script and "data.modules" in script
-    assert 'fetch("../data/catalog/lessons.json"' not in script
-    assert page.index("catalog-compat.js") < page.index("planet-map-catalog.js")
-
-
-def test_homepage_displays_hierarchical_lesson_ids():
-    page = (ROOT / "index.html").read_text(encoding="utf-8")
-    for number in range(1, 7):
-        assert f"A.1.1.{number}" in page
+if __name__ == "__main__":
+    unittest.main()

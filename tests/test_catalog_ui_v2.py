@@ -97,7 +97,9 @@ class HierarchicalCatalogUITests(unittest.TestCase):
 
     def test_uploaded_logo_and_favicon_resolve_on_every_html_page(self):
         logo_wrapper = (ROOT / "assets/logo.svg").read_text(encoding="utf-8")
-        self.assertIn('href="logo.png"', logo_wrapper)
+        self.assertIn("<svg", logo_wrapper)
+        self.assertIn('viewBox=', logo_wrapper)
+        self.assertNotIn('<image', logo_wrapper)
         self.assertTrue((ROOT / "assets/logo.png").is_file())
         self.assertTrue((ROOT / "assets/favicon.png").is_file())
         for page in ROOT.rglob("*.html"):

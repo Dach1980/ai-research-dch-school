@@ -19,11 +19,11 @@ PYTHON_LESSONS = [
 def test_python_examples_are_explicitly_labelled():
     for relative_path in PYTHON_LESSONS:
         source = (ROOT / relative_path).read_text(encoding="utf-8")
-        code_blocks = re.findall(r"<pre\b[^>]*>([\s\\S]*?)</pre>", source, re.I)
+        code_blocks = re.findall(r"<pre\b[^>]*>([\s\S]*?)</pre>", source, re.I)
         assert code_blocks, f"No code blocks found in {relative_path}"
         for block in code_blocks:
             assert re.search(
-                r"<code\b[^>]*class=[\"'][^\"']*language-python",
+                r"<code\b[^>]*class=["'][^"']*language-python",
                 block,
                 re.I,
             ), f"Unlabelled Python code block in {relative_path}"

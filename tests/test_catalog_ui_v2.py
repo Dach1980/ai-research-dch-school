@@ -57,7 +57,7 @@ class HierarchicalCatalogUITests(unittest.TestCase):
         for reference in [
             "arxiv.org/abs/1606.03490", "arxiv.org/abs/1702.08608",
             "doi.org/10.23915/distill.00024.001",
-            "eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32024R1689",
+            "eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:02024R1689-20260727",
             "protect.gost.ru/gost/details/"
         ]:
             self.assertIn(reference, source)

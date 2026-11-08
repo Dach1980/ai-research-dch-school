@@ -2,7 +2,7 @@
 
 **Дата:** 8 ноября 2026 года  
 **Ветка:** `main`  
-**Статус:** implementation complete; awaiting final CI and Pages deployment verification.
+**Статус:** implementation complete; catalog CI passed and GitHub Pages build/deployment succeeded for commit `216fde8445b8869250e9cbeab5c43308488f05c9`.
 
 ## 1. Целевая модель
 
@@ -18,9 +18,9 @@
 
 ## 2. Что переключено
 
-- Track A lesson catalogue загружает `catalog-v2.json` через `DCHCatalogCompat` и группирует опубликованные уроки по Theme и Module.
-- Knowledge Map загружает тот же v2 source, отображает иерархические IDs, использует новые prerequisites и фильтрует планеты Track A.
-- Главная страница показывает новые lesson IDs A.1.1.1–A.1.1.6.
+- Каталоги Track A и Lessons во всех версиях RU / EN / 中文 загружают `catalog-v2.json` через `DCHCatalogCompat` и группируют опубликованные уроки по Theme и Module.
+- Knowledge Map RU использует интерактивную карту из v2; EN / 中文 и главные страницы всех языков используют динамический список планет из того же каталога.
+- Заголовки Theme и Module локализованы через `title_i18n`; интерфейс каталога выводит соответствующие переводы.
 - Опубликованные URL RU/EN/中文 не менялись.
 - Старые split-файлы `lessons.json`, `modules.json`, `planets.json` сохранены для legacy consumers; они больше не являются источником данных для production Track A catalogue и Knowledge Map.
 - Compatibility adapter сохраняет преобразование старых ID в новые и поле `legacy_id`.
@@ -36,7 +36,7 @@
 - UI migration: script loading order, v2 data source, grouping by theme/module, homepage hierarchical IDs;
 - existing site integrity tests now expect v2 map adapter.
 
-Полный результат GitHub Actions и Pages deployment фиксируется после завершения текущих запусков.
+Проверка `Validate learning catalog` run `42440726307` завершилась со статусом `success`: прошли legacy validator, Python/JS compatibility tests, UI migration tests, Node syntax checks, JSON Schema v2, relationship validation и multilingual lesson checks. GitHub Pages build/deployment run `42440726024` для того же commit завершился со статусом `success`.
 
 ## 5. Сохранённая совместимость
 

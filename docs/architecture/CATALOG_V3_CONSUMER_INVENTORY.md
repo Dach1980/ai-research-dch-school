@@ -13,7 +13,7 @@
 | `tracks/understanding-ai*.html`, `lessons/index*.html`, `learning-map/*`, homepage RU/EN/ZH | Load compatibility script before catalogue consumers | Keep v2 loading until parity tests pass; then migrate as a coordinated UI release | Not switched |
 | `scripts/catalog-compat.js` | Browser v1→v2 and v2 normalizers | Native v3 read, relationship validation, and v2-preserving projection added; v1/v2 paths retained | Active |
 | `scripts/catalog_compat.py` | Python v1 split catalog and v2 file loader | Native v3 reader, UID relationship validation, and Python legacy projection added | Active |
-| `scripts/lesson-reader.js` and lesson HTML | Existing page slugs and lesson content payloads | Retain old URLs; add alias resolution only after reader contract audit | Not switched |
+| `scripts/lesson-reader.js` and lesson HTML | Static `window.DCH_DEMO_LESSON`; browser-local progress/scroll/quiz state keyed by legacy lesson ID | Preserve current reader. A many-to-many legacy lesson cannot safely become one UID; migrate only after a state policy and content-delivery design | Not switched; explicit blocker documented |
 
 ## Supabase-backed consumers and identifiers
 
@@ -33,7 +33,7 @@ Migration 008 implements the additive UID registry, alias table, fragment mappin
 ## Remaining consumer and data gates before cutover
 
 1. Migrate the Supabase admin/editor workflow to read and write v3 UIDs while preserving its current legacy slug rows and audit history.
-2. Connect the service-role alias resolver to a trusted server-side operation; do not expose service_role credentials to the browser.
+2. Deploy and validate the trusted `resolve-lesson-alias` Edge Function; do not expose service_role credentials to the browser.
 3. Preserve existing entitlement IDs or provide an explicit alias resolution path; entitlement grants must not silently broaden to every child lesson after a legacy lesson is split.
 4. If progress/bookmark/quiz persistence is introduced or found in the live system, migrate each record with an idempotent script and an auditable source→target decision. A legacy completion must not automatically mark every child lesson complete.
 5. Preserve localized URL routes and titles independently of UID. Redirects are a separate later decision.

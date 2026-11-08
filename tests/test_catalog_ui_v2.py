@@ -1,4 +1,6 @@
 import unittest
+import subprocess
+import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -61,6 +63,32 @@ class HierarchicalCatalogUITests(unittest.TestCase):
         draft = next(item for item in catalog["lessons"] if item["id"] == "A.1.2.1")
         self.assertEqual(draft["status"], "review")
         self.assertNotIn("A.1.2.1", {item["lesson_id"] for item in catalog["planets"]})
+
+    def test_xai_lesson_has_live_multilingual_quizzes_and_explanations(self):
+        source = (ROOT / "lessons/data/xai-01-what-and-why.js").read_text(encoding="utf-8")
+        reader = (ROOT / "scripts/lesson-reader.js").read_text(encoding="utf-8")
+        for locale in ["ru", "en", "zh"]:
+            self.assertIn('data-quiz="1"', source)
+            self.assertIn('data-quiz="2"', source)
+            self.assertIn("Проверить ответы" if locale == "ru" else "Check answers" if locale == "en" else "检查答案", source)
+        self.assertIn("renderQuizFeedback", reader)
+        self.assertIn("explanations[language]", reader)
+        self.assertIn('id="quiz-summary"', source)
+
+    def test_xai_mini_lab_runs_without_external_dependencies(self):
+        script = ROOT / "lessons/practice/xai-a1-2-1-passport.py"
+        result = subprocess.run(
+            [sys.executable, str(script)],
+            cwd=ROOT,
+            text=True,
+            capture_output=True,
+            check=False,
+        )
+        self.assertEqual(result.returncode, 0, result.stderr)
+        self.assertIn("Baseline score: 0.5917", result.stdout)
+        self.assertIn("Instance A score: 0.6500", result.stdout)
+        self.assertIn("delta=+0.0300", result.stdout)
+        self.assertIn("not SHAP values", result.stdout)
 
 if __name__ == "__main__":
     unittest.main()

@@ -1,0 +1,27 @@
+/* DCH School — shared illustration palette.
+   All SVG labels use the text colour assigned to their own surface.
+   Do not hard-code dark text on dark diagram panels or vice versa. */
+.lesson-diagram,.lesson-figure,.diagram{
+  color:var(--diagram-text);
+  background:var(--diagram-surface);
+  border:1px solid var(--diagram-border);
+  border-radius:16px;
+}
+.lesson-diagram svg,.lesson-figure svg,.diagram svg{display:block;width:100%;height:auto}
+.lesson-diagram svg text,.lesson-figure svg text,.diagram svg text{fill:var(--diagram-text)}
+.lesson-diagram .svg-title,.lesson-figure .svg-title,.diagram .svg-title{fill:var(--diagram-title);color:var(--diagram-title)}
+.lesson-diagram .svg-label,.lesson-figure .svg-label,.diagram .svg-label{fill:var(--diagram-text);color:var(--diagram-text)}
+.lesson-diagram .svg-small,.lesson-figure .svg-small,.diagram .svg-small{fill:var(--diagram-muted);color:var(--diagram-muted)}
+.lesson-diagram .svg-box,.lesson-figure .svg-box,.diagram .svg-box{fill:var(--diagram-box);stroke:var(--diagram-box-stroke)}
+.lesson-diagram .svg-box2,.lesson-figure .svg-box2,.diagram .svg-box2{fill:var(--diagram-box2);stroke:var(--diagram-box2-stroke)}
+.lesson-diagram .svg-box3,.lesson-figure .svg-box3,.diagram .svg-box3{fill:var(--diagram-box3);stroke:var(--diagram-box3-stroke)}
+.lesson-diagram .svg-box4,.lesson-figure .svg-box4,.diagram .svg-box4{fill:var(--diagram-box4);stroke:var(--diagram-box4-stroke)}
+.lesson-diagram svg rect[class^="svg-box"],.lesson-figure svg rect[class^="svg-box"],.diagram svg rect[class^="svg-box"]{stroke-width:1.6}
+.lesson-glossary{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:22px 0}
+.glossary-entry{position:relative;padding:16px 17px 15px 20px;border:1px solid var(--line);border-radius:13px;background:var(--panel);overflow:hidden}
+.glossary-entry:before{content:"";position:absolute;inset:0 auto 0 0;width:4px;background:linear-gradient(180deg,var(--blue),var(--violet),var(--teal))}
+.glossary-entry .term{display:block;color:var(--text);font-weight:800;font-family:Manrope,Arial,sans-serif}
+.glossary-entry .term-en{display:block;margin-top:3px;color:var(--blue);font-size:11px;font-weight:700;letter-spacing:.04em}
+.glossary-entry p{margin:9px 0 0;color:var(--muted);font-size:13px;line-height:1.6}
+.glossary-entry .term-index{float:right;color:var(--muted);font:700 10px ui-monospace,monospace;opacity:.8}
+@media(max-width:560px){.lesson-glossary{grid-template-columns:1fr}}

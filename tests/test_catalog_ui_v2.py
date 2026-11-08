@@ -1,6 +1,8 @@
 import unittest
 import subprocess
 import sys
+import json
+import re
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -67,13 +69,16 @@ class HierarchicalCatalogUITests(unittest.TestCase):
     def test_xai_lesson_has_live_multilingual_quizzes_and_explanations(self):
         source = (ROOT / "lessons/data/xai-01-what-and-why.js").read_text(encoding="utf-8")
         reader = (ROOT / "scripts/lesson-reader.js").read_text(encoding="utf-8")
+        payload = source.split("window.DCH_DEMO_LESSON = ", 1)[1].rsplit(";", 1)[0]
+        lesson = json.loads(payload)
+        summary = next(page for page in lesson["pages"] if page["id"] == "summary")
         for locale in ["ru", "en", "zh"]:
-            self.assertIn('data-quiz="1"', source)
-            self.assertIn('data-quiz="2"', source)
-            self.assertIn("Проверить ответы" if locale == "ru" else "Check answers" if locale == "en" else "检查答案", source)
+            self.assertIn('data-quiz="1"', summary["content"][locale])
+            self.assertIn('data-quiz="2"', summary["content"][locale])
+            self.assertIn("Проверить ответы" if locale == "ru" else "Check answers" if locale == "en" else "检查答案", summary["content"][locale])
+            self.assertIn('id="quiz-summary"', summary["content"][locale])
         self.assertIn("renderQuizFeedback", reader)
         self.assertIn("explanations[language]", reader)
-        self.assertIn('id="quiz-summary"', source)
 
     def test_xai_mini_lab_runs_without_external_dependencies(self):
         script = ROOT / "lessons/practice/xai-a1-2-1-passport.py"
@@ -89,6 +94,22 @@ class HierarchicalCatalogUITests(unittest.TestCase):
         self.assertIn("Instance A score: 0.6500", result.stdout)
         self.assertIn("delta=+0.0300", result.stdout)
         self.assertIn("not SHAP values", result.stdout)
+
+    def test_uploaded_logo_and_favicon_resolve_on_every_html_page(self):
+        logo_wrapper = (ROOT / "assets/logo.svg").read_text(encoding="utf-8")
+        self.assertIn('href="logo.png"', logo_wrapper)
+        self.assertTrue((ROOT / "assets/logo.png").is_file())
+        self.assertTrue((ROOT / "assets/favicon.png").is_file())
+        for page in ROOT.rglob("*.html"):
+            relative = page.relative_to(ROOT)
+            content = page.read_text(encoding="utf-8")
+            match = re.search(r'<link\\s+rel="icon"[^>]*href="([^"]+)"', content)
+            self.assertIsNotNone(match, str(relative))
+            icon_path = (page.parent / match.group(1)).resolve()
+            self.assertTrue(icon_path.is_file(), f"{relative}: {match.group(1)}")
+            for image in re.findall(r'<img[^>]+src="([^"]*assets/logo\\.svg)"', content):
+                logo_path = (page.parent / image).resolve()
+                self.assertTrue(logo_path.is_file(), f"{relative}: {image}")
 
 if __name__ == "__main__":
     unittest.main()

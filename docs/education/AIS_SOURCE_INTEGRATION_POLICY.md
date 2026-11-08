@@ -40,7 +40,31 @@ AIS используется как **исследовательский и пе
 
 Этот crosswalk — рабочая карта соответствия, а не утверждение, что один внешний модуль должен стать одним модулем DCH. Окончательные Theme/Module IDs назначаются после содержательного согласования.
 
-## 4. Последовательность производства одного урока
+## 4. Предварительный crosswalk Track B
+
+Внешний AIS Track B называется *Math of LLMs*. Он даёт основу по математике трансформеров и mechanistic interpretability. В DCH это соответствует Track B (Inside AI), но темы необходимо декомпозировать под собственные prerequisites и лабораторные работы:
+
+| Референс AIS | Содержание | Рабочая область DCH Track B |
+|---|---|---|
+| 26 | Введение в mechanistic interpretability, curve detectors, induction heads, IOI, обзор методов | Вводная тема B.1 |
+| 27 | Математические prerequisites: линейная алгебра, SVD, градиенты, вероятность, энтропия, KL, Fisher, оптимизация | Математическая база B.2 |
+| 28 | Transformer internals: attention, QK/OV, LayerNorm, FFN, residual stream, MLP key-value memory, GPT-2 small | Архитектура трансформеров B.3 |
+| 29 | Features, superposition, circuits, induction heads, IOI, ACDC/EAP, circuit faithfulness | Features and circuits B.4 |
+| 30 | Sparse autoencoders, dictionary learning, transcoders, crosscoders, SAE evaluation | Sparse representations B.5 |
+| 31 | Safety through directions in activations, refusal direction, lie detectors, unlearning, alignment audit | Safety and interventions B.6 |
+| 32 | Faithfulness, necessity/sufficiency, CoT faithfulness, probing pitfalls | Scientific evaluation B.7 |
+| 33 | Developmental interpretability, singular learning theory, phase transitions, grokking | Training dynamics B.8 |
+| 34 | Causal interventions, activation/path patching, causal tracing, ROME, steering, VLA | Causal interventions B.9 |
+| 35 | Representation geometry, manifolds, CKA, linearity and nonlinear features | Representation geometry B.10 |
+| 36 | Probes, amnesic probing, Logit Lens, Tuned Lens, J-lens, Patchscopes, stitching | Reading representations B.11 |
+
+Номера и порядок блоков на странице AIS не всегда идут по возрастанию. DCH использует тематическое соответствие, а не копирует порядок или нумерацию. Точные Theme/Module/Lesson IDs Track B будут закреплены после ревизии утверждённой архитектуры DCH.
+
+## 5. Track C
+
+У DCH Track C (Building with AI) нет прямого аналога среди двух направлений AIS. Для него будет сформирован отдельный source map по первичным источникам: официальной документации LLM runtimes и API, RAG и retrieval, базам данных, безопасности, MCP, evaluation и reproducible engineering. Материалы AIS могут использоваться как дополнительный референс только там, где есть содержательное пересечение.
+
+## 6. Последовательность производства одного урока
 
 1. **Инвентаризация источника:** определить соответствующий блок AIS, дополнительные первоисточники и ограничения лицензирования.
 2. **Педагогическая декомпозиция:** сформулировать один центральный вопрос, prerequisites и измеримые outcomes.
@@ -51,7 +75,7 @@ AIS используется как **исследовательский и пе
 7. **Локализация:** создать EN и ZH той же глубины, не сокращая практику и ответы.
 8. **Quality gate:** оценка по стандарту DCH; только после прохождения — published и planet.
 
-## 5. Первый элемент следующей производственной последовательности
+## 7. Первый элемент следующей производственной последовательности
 
 **A.1.2.1 — «Что такое XAI и зачем нужно объяснять модели?»**
 
@@ -60,7 +84,7 @@ AIS используется как **исследовательский и пе
 - Текущий статус каталога: `review`; урок не отображается среди опубликованных планет.
 - Следующая работа: постраничный аудит RU/EN/中文, сверка с AIS Module 01, проверка юридических и нормативных утверждений, научных источников, вопросов и ответов; затем исправление RU и синхронная вычитка локализаций.
 
-## 6. Внешний источник
+## 8. Внешний источник
 
 - AI Interpretability School: https://ai-interpretability.school/
 - Внешние материалы используются для анализа программы. Публичные материалы DCH должны быть самостоятельной авторской работой с корректными ссылками и без переноса чужих текстов/графики.

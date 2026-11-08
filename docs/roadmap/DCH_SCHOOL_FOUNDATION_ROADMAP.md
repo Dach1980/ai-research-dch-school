@@ -1,7 +1,7 @@
 # DCH School — Roadmap модернизации платформы и учебной программы
 
 **Дата обновления:** 2026-11-08  
-**Статус:** программа Track A утверждена; Curriculum Crosswalk и редакторская декомпозиция A.3 / A.6 / A.1.2.1 выполнены; schema/catalog v3 ещё не реализован  
+**Статус:** программа Track A утверждена; Curriculum Crosswalk и редакторская декомпозиция A.3 / A.6 / A.1.2.1 выполнены; schema/catalog v3 staging реализован; production migration pending  
 **Рабочая ветка:** main
 
 ## 1. Утверждённая программа Track A
@@ -155,3 +155,20 @@ Track → Theme → Module → Lesson
 ## 9. Документ редакторской декомпозиции
 
 - [TRACK_A_LEGACY_CONTENT_DECOMPOSITION_2026-11-08.md](../education/TRACK_A_LEGACY_CONTENT_DECOMPOSITION_2026-11-08.md) — подробная декомпозиция A.3, A.6 и A.1.2.1, целевые уроки, судьба практик и требования к v3.
+
+
+## 10. Schema/catalog v3 — staging implementation (2026-11-08)
+
+Реализованы additive v3-артефакты:
+- `data/catalog/schema-v3.json` — JSON Schema с UID для Track / Theme / Module / Lesson / Resource / Planet; display code отделён от технической идентичности.
+- `data/catalog/catalog-v3.json` — staging catalog: 3 tracks, 5 тем Track A, 27 модулей Track A и 42 предварительных lesson outline records. Уроки имеют статус planned / outline_only и не публикуются.
+- `data/catalog/migration-manifest-v3.json` — семь legacy lesson records и 12 content-fragment topic mappings; A.3, A.6 и A.1.2.1 представлены как many-to-many / fragment mappings.
+- Python и browser adapters получили native v3 readers; v1/v2 readers сохранены.
+- Добавлены validator, Python/JS tests и CI steps для schema, relationships и manifest.
+- Добавлены [CATALOG_V3_ARCHITECTURE.md](../architecture/CATALOG_V3_ARCHITECTURE.md) и [CATALOG_V3_CONSUMER_INVENTORY.md](../architecture/CATALOG_V3_CONSUMER_INVENTORY.md).
+
+**Граница этапа:** production consumers остаются на v2. В v3 ещё не выполнен compatibility presentation projection для старых страниц и Supabase slug IDs. Supabase использует текстовые ключи `lesson_catalog.id`, `lesson_content.lesson_id` и `lesson_entitlements.lesson_id`; миграция этих ключей не выполнялась. В просмотренных миграциях не обнаружены отдельные таблицы progress/bookmarks/quiz attempts, поэтому требуется проверка live Supabase schema и подключённых систем.
+
+CI для commit `7ffedc93b934d80a3d86bf83fc1accd855986763` на момент проверки не вернул ни статусов, ни workflow runs. Поэтому прохождение CI не заявляется. Ручная браузерная проверка не выполнялась.
+
+**Следующий блокирующий этап:** закончить A.4/A.5 и source-fragment selectors, реализовать legacy projection/aliases, проверить Supabase identifiers and entitlements, затем мигрировать consumers по одному с parity tests. Production switch запрещён до этих gates.

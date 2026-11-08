@@ -1,7 +1,8 @@
 (function(){
   "use strict";
   var KEY="dch-school-theme";
-  var locale=(document.documentElement.lang||"ru").toLowerCase();\n  var labels=locale.indexOf("zh")===0?{light:"☀ 浅色",dark:"☾ 深色",system:"◐ 跟随系统"}:locale.indexOf("en")===0?{light:"☀ Light",dark:"☾ Dark",system:"◐ System"}:{light:"☀ Светлая",dark:"☾ Тёмная",system:"◐ Системная"};
+  var locale=(document.documentElement.lang||"ru").toLowerCase();
+  var labels=locale.indexOf("zh")===0?{light:"☀ 浅色",dark:"☾ 深色",system:"◐ 跟随系统"}:locale.indexOf("en")===0?{light:"☀ Light",dark:"☾ Dark",system:"◐ System"}:{light:"☀ Светлая",dark:"☾ Тёмная",system:"◐ Системная"};
   var media=window.matchMedia?window.matchMedia("(prefers-color-scheme: dark)"):null;
   function preference(){try{return localStorage.getItem(KEY)||localStorage.getItem("dch-theme")||"system"}catch(_){return "system"}}
   function apply(){

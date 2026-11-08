@@ -204,3 +204,48 @@ html[data-theme="light"] .registration-invitation{background:linear-gradient(120
 .quiz-feedback li{font-size:12px;line-height:1.55;color:var(--text)}
 html[data-theme="light"] .quiz-feedback{background:#effaf7;color:#17634f;border-color:#8bd8c3}
 html[data-theme="light"] .quiz-feedback li{color:#40516b}
+
+/* Reader logo tile and consistent styling for diagrams embedded in lesson payloads. */
+.reader-brand img{
+  display:block;padding:4px;border:1px solid rgba(116,165,235,.34);
+  border-radius:11px;background:linear-gradient(145deg,#172c4c,#0d172b);
+  box-shadow:0 4px 14px rgba(35,91,170,.2)
+}
+.lesson-content figure.lesson-diagram,.lesson-content figure.lesson-figure{
+  margin:26px 0;padding:18px;border:1px solid rgba(120,160,230,.28);
+  border-radius:16px;background:linear-gradient(135deg,#142744,#0d192d);
+  overflow:hidden;color:#e6eefc
+}
+.lesson-content .lesson-diagram svg,.lesson-content .lesson-figure svg{
+  display:block;width:100%;height:auto;overflow:visible
+}
+.lesson-content .lesson-diagram figcaption,.lesson-content .lesson-figure figcaption{
+  margin-top:12px;color:#b8c8df;font-size:13px;line-height:1.6
+}
+.lesson-content .lesson-diagram .svg-title,.lesson-content .lesson-figure .svg-title{fill:#f1f6ff;color:#f1f6ff}
+.lesson-content .lesson-diagram .svg-label,.lesson-content .lesson-figure .svg-label{fill:#e3edff;color:#e3edff}
+.lesson-content .lesson-diagram .svg-small,.lesson-content .lesson-figure .svg-small{fill:#b8c8df;color:#b8c8df}
+.lesson-content .lesson-diagram .svg-box,.lesson-content .lesson-figure .svg-box{fill:#172f50;stroke:#79a9ed;stroke-width:1.5}
+.lesson-content .lesson-diagram .svg-box2,.lesson-content .lesson-figure .svg-box2{fill:#302b55;stroke:#b09aff;stroke-width:1.5}
+.lesson-content .lesson-diagram .svg-box3,.lesson-content .lesson-figure .svg-box3{fill:#174846;stroke:#65d8c6;stroke-width:1.5}
+html[data-theme="light"] .reader-brand img{
+  background:linear-gradient(145deg,#e5efff,#f4edff);border-color:#c5d5ef
+}
+html[data-theme="light"] .lesson-content figure.lesson-diagram,
+html[data-theme="light"] .lesson-content figure.lesson-figure{
+  background:linear-gradient(145deg,#f1f6ff,#f8f5ff);border-color:#cbd9ed;color:#24364e
+}
+html[data-theme="light"] .lesson-content .lesson-diagram figcaption,
+html[data-theme="light"] .lesson-content .lesson-figure figcaption{color:#52627a}
+html[data-theme="light"] .lesson-content .lesson-diagram .svg-title,
+html[data-theme="light"] .lesson-content .lesson-figure .svg-title{fill:#24364e;color:#24364e}
+html[data-theme="light"] .lesson-content .lesson-diagram .svg-label,
+html[data-theme="light"] .lesson-content .lesson-figure .svg-label{fill:#304765;color:#304765}
+html[data-theme="light"] .lesson-content .lesson-diagram .svg-small,
+html[data-theme="light"] .lesson-content .lesson-figure .svg-small{fill:#52627a;color:#52627a}
+html[data-theme="light"] .lesson-content .lesson-diagram .svg-box,
+html[data-theme="light"] .lesson-content .lesson-figure .svg-box{fill:#e3efff;stroke:#7da5d7}
+html[data-theme="light"] .lesson-content .lesson-diagram .svg-box2,
+html[data-theme="light"] .lesson-content .lesson-figure .svg-box2{fill:#eee9ff;stroke:#a18bd5}
+html[data-theme="light"] .lesson-content .lesson-diagram .svg-box3,
+html[data-theme="light"] .lesson-content .lesson-figure .svg-box3{fill:#e0f4ef;stroke:#69b9a7}

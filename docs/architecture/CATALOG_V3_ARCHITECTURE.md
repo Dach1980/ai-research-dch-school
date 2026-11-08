@@ -41,7 +41,9 @@ The browser and Python adapters expose a projection that combines the existing v
 
 ## Supabase alias layer
 
-Migration 008 adds a staging UID registry, legacy alias table, source-fragment mapping groups and target rows. It registers the current v3 lesson UIDs, catalog-v2 IDs, static localized URLs and Supabase lesson_catalog slugs. Alias resolution is deliberately resolve-only: the resolver does not modify or inherit lesson entitlements. Existing lesson_catalog IDs, lesson_content foreign keys and lesson_entitlements remain unchanged. The SQL resolver is restricted to service_role; the browser/admin UI has not yet been switched to it.
+Migration 008 adds a staging UID registry, legacy alias table, source-fragment mapping groups and target rows. It registers the current v3 lesson UIDs, catalog-v2 IDs, static localized URLs and Supabase lesson_catalog slugs. Alias resolution is deliberately resolve-only: the resolver does not modify or inherit lesson entitlements. Existing lesson_catalog IDs, lesson_content foreign keys and lesson_entitlements remain unchanged.
+
+A trusted Edge Function, `resolve-lesson-alias`, now wraps the service-role-only SQL resolver. It requires a verified user with an active owner/editor role, validates alias parameters, and returns metadata only. The admin content tab has a read-only alias diagnostic; its existing CRUD and publish actions still use legacy slugs. The function has not yet been deployed to the live project, and migration 008 has not been applied there. See [the Supabase cutover record](SUPABASE_CATALOG_V3_CUTOVER_2026-11-08.md).
 
 ## Data preservation gates
 

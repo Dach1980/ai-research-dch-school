@@ -184,3 +184,5 @@ Three static consumers (lesson-catalog, home knowledge map, Planet Map) now use 
 
 
 Compatibility projection реализован в browser/Python adapters; добавлены parity tests на сохранность legacy IDs, статусов, localized URLs и planet associations. Визуальная браузерная приёмка трёх переключённых потребителей пока не выполнена.
+
+**Проверки после миграции consumers:** workflow `Validate learning catalog` для commit `1cef10e652338b7ce4031595ffeec44a53c856ce` завершился `success` ([run 42453416312](https://github.com/Dach1980/ai-research-dch-school/actions/runs/42453416312)). Все шаги прошли, включая legacy production catalog, Python/browser adapters, v3 schema/manifest, legacy projection tests, UI migration tests и syntax checks. PostgreSQL 16 миграционный workflow также завершился `success` ([run 42453118981](https://github.com/Dach1980/ai-research-dch-school/actions/runs/42453118981)). GitHub Pages deploy для commit `1cef10e` на момент фиксации roadmap ещё выполнялся; ручная браузерная проверка не заявляется.

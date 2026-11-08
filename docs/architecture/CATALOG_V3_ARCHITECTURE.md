@@ -37,7 +37,7 @@ A.3, A.6 and XAI A.1.2.1 have fragment-level mapping records. A.4/A.5 are editor
 
 ## Legacy-preserving consumer projection
 
-The browser and Python adapters expose a projection that combines the existing v2 presentation catalogue with v3 target mappings. It deliberately retains every legacy lesson ID, status, localized URL, prerequisite and planet association. It adds v3 target UIDs/codes as metadata arrays; a split legacy lesson is never coerced into one target UID. The first three static consumers use this projection. They still filter on legacy publication state, so planned v3 outlines cannot appear as published pages.
+The browser and Python adapters expose a projection that combines the existing v2 presentation catalogue with v3 target mappings. It deliberately retains every legacy lesson ID, status, localized URL, prerequisite and planet association. It adds v3 target UIDs/codes as metadata arrays; a split legacy lesson is never coerced into one target UID. The first three static consumers use this projection. They still filter on legacy publication state, so planned v3 outlines cannot appear as published pages. Python/browser projection tests and the full catalog CI passed on 8 November 2026.
 
 ## Supabase alias layer
 

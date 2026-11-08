@@ -74,7 +74,7 @@
   "$defs": {
     "uid": {
       "type": "string",
-      "pattern": "^(trk|thm|mod|les|res|pln)_[a-z0-9][a-z0-9_-]{2,80}$"
+      "pattern": "^(trk|thm|mod|les|res|pln)[_-][a-z0-9][a-z0-9_-]{2,80}$"
     },
     "path": {
       "type": "string",

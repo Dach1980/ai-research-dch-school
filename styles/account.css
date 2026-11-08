@@ -36,6 +36,6 @@
 .brand img{
   display:block;width:43px;height:43px;object-fit:contain;padding:5px;
   border:1px solid rgba(116,165,235,.34);border-radius:12px;
-  background:linear-gradient(145deg,#172c4c,#0d172b);
+  background:#f4f7ff;
   box-shadow:0 5px 18px rgba(35,91,170,.18)
 }

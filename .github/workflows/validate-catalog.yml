@@ -7,6 +7,8 @@ on:
       - "data/catalog/**"
       - "lessons/data/**"
       - "lessons/practice/**"
+      - "lessons/*.html"
+      - "lessons/**/*.html"
       - "scripts/lesson-reader.js"
       - "scripts/theme-system.js"
       - "scripts/code-blocks.js"

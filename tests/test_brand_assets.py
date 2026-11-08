@@ -10,16 +10,34 @@ def test_brand_logo_is_self_contained_svg():
     assert "viewBox=" in logo
     assert "<text" in logo and "DCH" in logo
     assert "<image" not in logo
-    assert not re.search(r'href=["\'](?!#|data:)', logo)
+    assert not re.search(r'href=["\\'](?!#|data:)', logo)
 
 
-def test_logo_has_contrast_tiles_in_all_site_headers():
+def test_supplied_brand_icon_is_present_and_used_in_headers_and_footers():
+    icon = ROOT / "assets/site-brand-icon.jpg"
+    assert icon.is_file()
+    assert icon.stat().st_size > 1000
+
+    pages_with_brand = [
+        "index.html", "index-en.html", "index-zh.html",
+        "lessons/a-3-how-machines-learn-from-data.html",
+        "lessons/reader.html", "tracks/understanding-ai.html",
+        "learning-map/index.html",
+    ]
+    for relative in pages_with_brand:
+        page = (ROOT / relative).read_text(encoding="utf-8")
+        assert "site-brand-icon.jpg" in page, relative
+        assert "assets/favicon.png" in page, relative
+
+
+def test_brand_icon_has_consistent_contrast_backing():
     main_css = (ROOT / "styles/main.css").read_text(encoding="utf-8")
     account_css = (ROOT / "styles/account.css").read_text(encoding="utf-8")
     reader_css = (ROOT / "styles/lesson-reader.css").read_text(encoding="utf-8")
     for source in (main_css, account_css, reader_css):
-        assert ".brand img" in source or ".reader-brand img" in source
-        assert "linear-gradient(145deg,#172c4c,#0d172b)" in source
+        assert "#f4f7ff" in source
+        assert "border-radius:" in source
+        assert "box-shadow:" in source
 
 
 def test_lesson_diagrams_have_explicit_svg_palette():

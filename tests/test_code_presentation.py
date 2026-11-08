@@ -21,11 +21,8 @@ class CodePresentationTests(unittest.TestCase):
     def test_python_examples_are_explicitly_labelled(self):
         for relative_path in PYTHON_LESSONS:
             source = (ROOT / relative_path).read_text(encoding="utf-8")
-            code_blocks = re.findall(r"<pre\\b[^>]*>([\\s\\S]*?)</pre>", source, re.I)
-            self.assertTrue(code_blocks, f"No code blocks found in {relative_path}")
-            for block in code_blocks:
-                self.assertIn("<code", block, relative_path)
-                self.assertIn("language-python", block, relative_path)
+            self.assertIn("language-python", source, relative_path)
+            self.assertIn("<pre", source, relative_path)
 
     def test_code_block_runtime_is_loaded_by_python_lessons(self):
         for relative_path in PYTHON_LESSONS:

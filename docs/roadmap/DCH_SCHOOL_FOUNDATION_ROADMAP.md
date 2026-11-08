@@ -186,3 +186,15 @@ Three static consumers (lesson-catalog, home knowledge map, Planet Map) now use 
 Compatibility projection реализован в browser/Python adapters; добавлены parity tests на сохранность legacy IDs, статусов, localized URLs и planet associations. Визуальная браузерная приёмка трёх переключённых потребителей пока не выполнена.
 
 **Проверки после миграции consumers:** workflow `Validate learning catalog` для commit `1cef10e652338b7ce4031595ffeec44a53c856ce` завершился `success` ([run 42453416312](https://github.com/Dach1980/ai-research-dch-school/actions/runs/42453416312)). Все шаги прошли, включая legacy production catalog, Python/browser adapters, v3 schema/manifest, legacy projection tests, UI migration tests и syntax checks. PostgreSQL 16 миграционный workflow также завершился `success` ([run 42453118981](https://github.com/Dach1980/ai-research-dch-school/actions/runs/42453118981)). GitHub Pages deploy для commit `1cef10e` на момент фиксации roadmap ещё выполнялся; ручная браузерная проверка не заявляется.
+
+
+## 12. Trusted resolver and Supabase consumer gate (2026-11-08)
+
+- Добавлена Edge Function `resolve-lesson-alias`: JWT + подтверждённый email + активная роль owner/editor; service-role используется только на сервере; входные alias параметры ограничены allowlist.
+- В административной панели добавлена read-only диагностика legacy alias → v3 UID. CRUD каталога, редактирование JSON payload, публикация и entitlements по-прежнему используют старые slug IDs.
+- Добавлены статические тесты security boundary и wiring, а также read-only SQL script для проверки live Supabase: `supabase/ops/inspect_live_catalog_v3.sql`.
+- Live Supabase не проверен: доступ к SQL Editor / management credentials из этой среды отсутствует. Migration 008 не применялась, Edge Function не развёрнута. Это не считается live acceptance.
+- Lesson reader намеренно не переключён. Он рендерит статический `window.DCH_DEMO_LESSON`, хранит прогресс/позиции/quiz в localStorage под legacy lesson ID. Перевод на UID сейчас способен потерять локальные записи, а старые уроки имеют many-to-many mappings. Нужна отдельная политика переноса исторического прогресса.
+- Полная процедура и порядок запуска: [SUPABASE_CATALOG_V3_CUTOVER_2026-11-08.md](../architecture/SUPABASE_CATALOG_V3_CUTOVER_2026-11-08.md).
+
+**Следующий cutover gate:** получить read-only диагностику live проекта, сверить миграции и реальные learner-state stores, затем применить 008 и deploy resolver. Только после этого можно проектировать UID-aware editor и отдельный reader/content delivery migration без изменения старых entitlements и URLs.

@@ -145,7 +145,8 @@ class PublishedSiteIntegrityTests(unittest.TestCase):
         home = (ROOT / "index.html").read_text(encoding="utf-8")
         self.assertIn("language-switcher", switcher)
         self.assertIn('id="knowledge-universe"', home)
-        self.assertIn("A.1.1.5", home)
+        self.assertIn("data-home-knowledge-map", home)
+        self.assertIn("home-knowledge-map.js", home)
         for relative in ["index-en.html", "index-zh.html", "lessons/index-en.html",
                          "lessons/index-zh.html", "learning-map/index-en.html",
                          "learning-map/index-zh.html", "tracks/understanding-ai-en.html",

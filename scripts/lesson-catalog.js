@@ -24,7 +24,7 @@
     root.innerHTML = '<p class="notice">Catalog adapter not loaded.</p>';
     return;
   }
-  catalog.load({ baseUrl: base + "data/catalog", schemaVersion: 2 })
+  catalog.loadLegacyProjection({ baseUrl: base + "data/catalog" })
     .then(data => {
       const tracks = new Map(data.tracks.map(item => [item.id, item]));
       const themes = new Map(data.themes.map(item => [item.id, item]));

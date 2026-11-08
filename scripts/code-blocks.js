@@ -35,7 +35,7 @@
     copy.addEventListener("click",function(){var done=function(){copy.textContent=words.done;window.setTimeout(function(){copy.textContent=words.copy},1400)};if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(original).then(done).catch(function(){copy.textContent=words.fail})}else{var area=document.createElement("textarea");area.value=original;document.body.appendChild(area);area.select();try{document.execCommand("copy");done()}catch(_){copy.textContent="Не удалось скопировать"}area.remove();}});
     toolbar.append(label,copy);var parent=pre.parentNode;parent.insertBefore(wrap,pre);wrap.append(toolbar,pre);pre.dataset.codeEnhanced="1";
   }
-  function scan(root){(root||document).querySelectorAll('pre[data-language="python"],pre.language-python,pre.lang-python,pre code.language-python,pre code.lang-python').forEach(function(node){enhance(node.tagName==="PRE"?node:node.closest("pre"));});}
+  function scan(root){var selector='pre[data-language="python"],pre.language-python,pre.lang-python,pre code.language-python,pre code.lang-python';var scope=root||document;if(scope.matches&&scope.matches(selector))enhance(scope.tagName==="PRE"?scope:scope.closest("pre"));scope.querySelectorAll(selector).forEach(function(node){enhance(node.tagName==="PRE"?node:node.closest("pre"));});}
   scan(document);
   if(window.MutationObserver){new MutationObserver(function(records){records.forEach(function(record){record.addedNodes.forEach(function(node){if(node.nodeType===1)scan(node);});});}).observe(document.body,{childList:true,subtree:true});}
 })();

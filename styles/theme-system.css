@@ -27,3 +27,11 @@ html[data-theme="light"] .theme-switcher{background:#fff;color:#26364a;border-co
 .site-header .theme-switcher{margin-left:8px}
 @media(max-width:760px){.site-header .theme-switcher{margin-left:auto;padding:7px 9px;font-size:10px}.site-header .nav.open+.theme-switcher{margin-left:0}}
 @media(prefers-reduced-motion:reduce){.theme-switcher{transition:none!important}}
+
+/* Brand mark contrast in the light theme. */
+html[data-theme="light"] .brand img,
+html[data-theme="light"] .reader-brand img{
+  background:linear-gradient(145deg,#e5efff,#f4edff);
+  border:1px solid #c5d5ef;
+  box-shadow:0 4px 14px rgba(54,91,150,.12)
+}

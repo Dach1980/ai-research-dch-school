@@ -76,6 +76,9 @@ class CatalogV3Tests(unittest.TestCase):
         self.assertEqual(len(by_legacy["A.4"]["v3_target_uids"]), 4)
         self.assertEqual(len(by_legacy["A.5"]["v3_target_uids"]), 10)
         self.assertEqual(by_legacy["A.4"]["id"], "A.1.1.4")
+        by_new = {x["id"]: x for x in projected["lessons"]}
+        self.assertEqual(by_new["lesson-history-of-ai"]["v3_target_codes"], ["1.1.2"])
+        self.assertEqual(by_new["lesson-symbolic-ai-ml"]["v3_target_codes"], ["1.1.3"])
 
     def test_python_native_v3_reader_and_relationships(self):
         loaded = compat.load_catalog_v3(ROOT / "data/catalog/catalog-v3.json")
@@ -88,7 +91,7 @@ class CatalogV3Tests(unittest.TestCase):
         self.assertEqual(v1["schema_version"], 2)
         self.assertEqual(v2["schema_version"], 2)
         self.assertEqual(len(v1["lessons"]), 6)
-        self.assertEqual(len(v2["lessons"]), 7)
+        self.assertEqual(len(v2["lessons"]), 9)
 
 if __name__ == "__main__":
     unittest.main()

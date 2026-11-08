@@ -326,7 +326,7 @@
       ]
     },
     {
-      "id": "lesson-history-of-ai",
+      "id": "A.1.1.7",
       "module_id": "A.1.1",
       "title": "История развития искусственного интеллекта",
       "status": "published",
@@ -359,10 +359,10 @@
         "en",
         "zh"
       ],
-      "legacy_id": "lesson-history-of-ai"
+      "legacy_id": "A.7"
     },
     {
-      "id": "lesson-symbolic-ai-ml",
+      "id": "A.1.1.8",
       "module_id": "A.1.1",
       "title": "Символический AI и машинное обучение",
       "status": "published",
@@ -371,7 +371,7 @@
       "duration_min": 60,
       "duration_max": 75,
       "prerequisites": [
-        "lesson-history-of-ai"
+        "A.1.1.7"
       ],
       "url": "lessons/1-1-3-symbolic-ai-and-machine-learning.html",
       "learning_outcomes": [
@@ -395,7 +395,7 @@
         "en",
         "zh"
       ],
-      "legacy_id": "lesson-symbolic-ai-ml"
+      "legacy_id": "A.8"
     }
   ],
   "planets": [
@@ -430,13 +430,13 @@
       "accent_id": "violet"
     },
     {
-      "id": "planet-1-1-2",
-      "lesson_id": "lesson-history-of-ai",
+      "id": "planet-A-7",
+      "lesson_id": "A.1.1.7",
       "accent_id": "blue"
     },
     {
-      "id": "planet-1-1-3",
-      "lesson_id": "lesson-symbolic-ai-ml",
+      "id": "planet-A-8",
+      "lesson_id": "A.1.1.8",
       "accent_id": "blue"
     }
   ]

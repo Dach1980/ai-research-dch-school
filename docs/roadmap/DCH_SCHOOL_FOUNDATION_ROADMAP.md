@@ -160,18 +160,18 @@ Track → Theme → Module → Lesson
 ## 10. Schema/catalog v3 — staging implementation (2026-11-08)
 
 Реализованы additive v3-артефакты:
-- `data/catalog/schema-v3.json` — JSON Schema с UID для Track / Theme / Module / Lesson / Resource / Planet; display code отделён от технической идентичности.
-- `data/catalog/catalog-v3.json` — staging catalog: 3 tracks, 5 тем Track A, 27 модулей Track A и 50 предварительных lesson outline records. Уроки имеют статус planned / outline_only и не публикуются.
-- `data/catalog/migration-manifest-v3.json` — семь legacy lesson records и 12 content-fragment topic mappings; A.3, A.6 и A.1.2.1 представлены как many-to-many / fragment mappings.
-- Python и browser adapters получили native v3 readers; v1/v2 readers сохранены.
-- Добавлены validator, Python/JS tests и CI steps для schema, relationships и manifest.
-- Добавлены [CATALOG_V3_ARCHITECTURE.md](../architecture/CATALOG_V3_ARCHITECTURE.md) и [CATALOG_V3_CONSUMER_INVENTORY.md](../architecture/CATALOG_V3_CONSUMER_INVENTORY.md).
+- schema-v3.json — независимые UID для Track / Theme / Module / Lesson / Resource / Planet.
+- catalog-v3.json — 3 tracks, 5 тем Track A, 27 модулей и 50 outline-only lesson records.
+- migration-manifest-v3.json — 7 legacy lesson records, 29 fragment mapping groups / 58 target relations, 42 alias groups / 342 resolved alias rows.
+- A.4/A.5 сверены с опубликованными RU/EN/中文 страницами; в curriculum добавлены 1.2.4, 1.5.7 и staging outline 3.1.6. Подробности — [A4_A5_EDITORIAL_RECONCILIATION_2026-11-08.md](../education/A4_A5_EDITORIAL_RECONCILIATION_2026-11-08.md).
+- Python/browser adapters поддерживают native v3 read и legacy-preserving projection.
+- Три статических consumer используют projection: lesson-catalog.js, home-knowledge-map.js и planet-map-catalog.js. Старые IDs, статусы, URL, prerequisites и planet associations сохранены; v3 target UID добавлены как метаданные.
+- Supabase migration 008 создаёт staging UID registry, resolve-only aliases, fragment mapping groups/targets и service-role-only resolver. Она не меняет lesson_catalog, lesson_content или lesson_entitlements.
+- Добавлены тесты projection, SQL assertions и PostgreSQL 16 migration CI.
 
-**Граница этапа:** production consumers остаются на v2. В v3 ещё не выполнен compatibility presentation projection для старых страниц и Supabase slug IDs. Supabase использует текстовые ключи `lesson_catalog.id`, `lesson_content.lesson_id` и `lesson_entitlements.lesson_id`; миграция этих ключей не выполнялась. В просмотренных миграциях не обнаружены отдельные таблицы progress/bookmarks/quiz attempts, поэтому требуется проверка live Supabase schema и подключённых систем.
+**Граница этапа:** Supabase admin/editor и lesson-reader остаются на прежнем контракте. Alias resolver ещё не подключён к доверенной серверной операции. Migration 008 не применялась к live Supabase project; она прошла проверку на чистой PostgreSQL 16 в CI. Live schema и внешние хранилища progress/bookmarks/quiz attempts нужно проверить отдельно.
 
-Первый CI запуск выявил две страницы A.3 без `theme-system.js` (RU и ZH); подключение исправлено. Затем workflow `Validate learning catalog` для commit `91660ce37de10320d45ac0f29724eca97d64c146` завершился `success` (run [42452639748](https://github.com/Dach1980/ai-research-dch-school/actions/runs/42452639748)): прошли legacy v1/v2 tests, новые v3 reader tests, v3 schema/manifest validation, UI migration tests, presentation standards, syntax checks и multilingual lesson checks. GitHub Pages build/deployment для того же commit на момент последней проверки ещё выполнялся; ручная браузерная проверка не выполнялась.
-
-**Следующий блокирующий этап:** подключить alias resolver к доверенной серверной операции, проверить live Supabase schema и внешние хранилища пользовательского состояния, затем перевести Supabase admin/editor и lesson-reader по отдельности. A.1/A.2 остаются кандидатными crosswalk-связями. Production switch запрещён до этих gates.
+Полный catalog CI для commit 1cef10e завершился success ([run 42453416312](https://github.com/Dach1980/ai-research-dch-school/actions/runs/42453416312)). PostgreSQL 16 migration CI прошёл ([run 42453118981](https://github.com/Dach1980/ai-research-dch-school/actions/runs/42453118981)). Визуальная браузерная приёмка не выполнялась.
 
 
 ## 11. A.4/A.5 reconciliation and Supabase aliases (2026-11-08)

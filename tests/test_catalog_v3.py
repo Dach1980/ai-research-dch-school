@@ -42,6 +42,27 @@ class CatalogV3Tests(unittest.TestCase):
                 self.assertTrue((ROOT / path).is_file(), path)
         self.assertEqual(self.manifest["migration_status"], "staging_not_applied")
 
+    def test_a4_a5_are_editorially_reconciled(self):
+        states = {x["legacy_id"]: x["mapping_state"] for x in self.manifest["legacy_entities"]}
+        self.assertEqual(states["A.4"], "editorial_approved")
+        self.assertEqual(states["A.5"], "editorial_approved")
+        self.assertNotIn("A.4", {x["legacy_id"] for x in self.manifest["unresolved_legacy_mappings"]})
+        self.assertNotIn("A.5", {x["legacy_id"] for x in self.manifest["unresolved_legacy_mappings"]})
+        self.assertIn("1.5.7", {x["code"] for x in self.catalog["lessons"]})
+        self.assertIn("3.1.6", {x["code"] for x in self.catalog["lessons"]})
+        self.assertIn("1.2.4", {x["code"] for x in self.catalog["lessons"]})
+
+    def test_supabase_aliases_are_resolve_only_and_many_to_many(self):
+        aliases = self.manifest["external_aliases"]
+        self.assertTrue(aliases)
+        self.assertTrue(all(x["access_behavior"] == "resolve_only" for x in aliases))
+        a3 = next(x for x in aliases if x["source_system"] == "supabase.lesson_catalog" and x["alias_value"] == "a-3-how-machines-learn-from-data")
+        self.assertGreater(len(a3["target_lesson_uids"]), 1)
+        a4 = next(x for x in aliases if x["source_system"] == "supabase.lesson_catalog" and x["alias_value"] == "a-4-what-is-machine-learning-model")
+        self.assertEqual(len(a4["target_lesson_uids"]), 4)
+        a5 = next(x for x in aliases if x["source_system"] == "supabase.lesson_catalog" and x["alias_value"] == "a-5-how-to-evaluate-a-model")
+        self.assertEqual(len(a5["target_lesson_uids"]), 10)
+
     def test_python_native_v3_reader_and_relationships(self):
         loaded = compat.load_catalog_v3(ROOT / "data/catalog/catalog-v3.json")
         self.assertEqual(loaded["schema_version"], 3)

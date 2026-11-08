@@ -223,7 +223,7 @@
         "Production renderer не переключается до отдельного этапа миграции и browser acceptance.",
         "Новые уроки не создаются."
       ],
-      "source": "data/catalog/schema-v2.json; data/catalog/catalog-v2.json; scripts/catalog-compat.py; scripts/validate-catalog-v2.py"
+      "source": "data/catalog/schema-v2.json; data/catalog/catalog-v2.json; scripts/catalog_compat.py; scripts/validate-catalog-v2.py"
     }
   ],
   "audit_log": [
@@ -799,7 +799,7 @@
       "evidence": [
         "data/catalog/schema-v2.json",
         "data/catalog/catalog-v2.json",
-        "scripts/catalog-compat.py",
+        "scripts/catalog_compat.py",
         "scripts/validate-catalog-v2.py",
         "tests/test_catalog_compat.py",
         ".github/workflows/validate-catalog.yml"

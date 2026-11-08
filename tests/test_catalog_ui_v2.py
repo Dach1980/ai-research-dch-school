@@ -103,11 +103,11 @@ class HierarchicalCatalogUITests(unittest.TestCase):
         for page in ROOT.rglob("*.html"):
             relative = page.relative_to(ROOT)
             content = page.read_text(encoding="utf-8")
-            match = re.search(r'<link\\s+rel="icon"[^>]*href="([^"]+)"', content)
+            match = re.search(r'<link\s+rel="icon"[^>]*href="([^"]+)"', content)
             self.assertIsNotNone(match, str(relative))
             icon_path = (page.parent / match.group(1)).resolve()
             self.assertTrue(icon_path.is_file(), f"{relative}: {match.group(1)}")
-            for image in re.findall(r'<img[^>]+src="([^"]*assets/logo\\.svg)"', content):
+            for image in re.findall(r'<img[^>]+src="([^"]*assets/logo\.svg)"', content):
                 logo_path = (page.parent / image).resolve()
                 self.assertTrue(logo_path.is_file(), f"{relative}: {image}")
 

@@ -5,81 +5,84 @@
   const esc = value => String(value ?? "").replace(/[&<>"']/g, c => ({
     "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
   })[c]);
-  const positions = {"A.1":[50,49],"A.2":[72,31],"A.3":[28,30],"A.4":[72,68],"A.5":[28,68],"A.6":[50,87]};
-  const descriptions = {
-    "A.1": {text:"Первая остановка в изучении AI: определение искусственного интеллекта, устройство AI-систем, основные подходы и границы возможностей.", outcomes:["Объяснять понятие Artificial Intelligence","Различать интеллект и интеллектуальное поведение","Описывать основные подходы и ограничения AI"]},
-    "A.2": {text:"Разбираем различия Artificial Intelligence, Machine Learning и Deep Learning, их взаимосвязь и примеры систем.", outcomes:["Различать AI, ML и DL","Объяснять вложенность этих понятий","Классифицировать системы по их механизму"]},
-    "A.3": {text:"Исследуем, как алгоритм обучения использует примеры, настраивает параметры модели и почему важно обобщение на новые данные.", outcomes:["Различать данные, признаки и целевую переменную","Объяснять роль алгоритма обучения и функции потерь","Различать обучение и применение модели","Распознавать переобучение и утечку данных"]},
-    "A.4": {text:"Изучаем архитектуру модели, параметры и гиперпараметры, различия training и inference, а также место модели в AI-системе.", outcomes:["Различать алгоритм обучения и модель","Различать параметры и гиперпараметры","Объяснять training и inference","Сравнивать основные семейства моделей"]},
-    "A.5": {text:"Учимся честно оценивать качество: разделять данные, выбирать метрики, анализировать ошибки, дисбаланс классов и утечку данных.", outcomes:["Разделять train, validation и test","Выбирать метрики регрессии и классификации","Интерпретировать precision, recall и F1","Распознавать leakage и overfitting"]},
-    "A.6": {text:"Изучаем обобщающую способность, недообучение и переобучение; читаем learning curves и выбираем способы улучшения модели.", outcomes:["Объяснять generalization","Различать underfitting и overfitting","Интерпретировать bias–variance trade-off","Выбирать регуляризацию и корректную схему validation"]}
+  const positions = {
+    "A.1":[50,49],"A.2":[72,31],"A.3":[28,30],
+    "A.4":[72,68],"A.5":[28,68],"A.6":[50,87]
   };
-  const renderDetails = (lesson, selectedId) => {
+  const descriptions = {
+    "A.1": "Первая остановка в изучении AI: определение искусственного интеллекта, устройство AI-систем, основные подходы и границы возможностей.",
+    "A.2": "Разбираем различия Artificial Intelligence, Machine Learning и Deep Learning, их взаимосвязь и примеры систем.",
+    "A.3": "Исследуем, как алгоритм обучения использует примеры, настраивает параметры модели и почему важно обобщение на новые данные.",
+    "A.4": "Изучаем архитектуру модели, параметры и гиперпараметры, различия training и inference, а также место модели в AI-системе.",
+    "A.5": "Учимся честно оценивать качество: разделять данные, выбирать метрики, анализировать ошибки, дисбаланс классов и утечку данных.",
+    "A.6": "Изучаем обобщающую способность, недообучение и переобучение; читаем learning curves и выбираем способы улучшения модели."
+  };
+  const renderDetails = (lesson, selectedId, theme, module, track) => {
     const details = document.querySelector("#planetDetails");
     if (!details) return;
-    const info = descriptions[lesson.id] || {text:"Опубликованный учебный материал Track A.",outcomes:[]};
+    const legacy = lesson.legacy_id || lesson.id;
+    const info = descriptions[legacy] || "Опубликованный учебный материал Track A.";
     const prerequisites = (lesson.prerequisites || []).length
       ? "Рекомендуется предварительно пройти: " + lesson.prerequisites.join(", ") + "."
       : "Предварительная подготовка не требуется.";
     details.innerHTML =
-      '<div class="side-top"><span class="side-tag">PLANET '+esc(lesson.id)+'</span><span class="level">'+esc(lesson.level === "beginner" ? "Начальный уровень" : lesson.level)+'</span></div>'+
-      '<h2>'+esc(lesson.title)+'</h2><p class="side-desc">'+esc(info.text)+'</p>'+
+      '<div class="side-top"><span class="side-tag">TRACK '+esc(track.code)+' · THEME '+esc(theme.id)+' · MODULE '+esc(module.id)+'</span><span class="level">'+esc(lesson.level === "beginner" ? "Начальный уровень" : lesson.level)+'</span></div>'+
+      '<h2>'+esc(lesson.title_i18n?.ru || lesson.title)+'</h2><p class="side-desc">'+esc(info)+'</p>'+
       '<div class="side-divider"></div><span class="side-heading">После урока вы сможете</span>'+
-      '<ul class="outcomes">'+info.outcomes.map(x=>'<li>'+esc(x)+'</li>').join("")+'</ul>'+
+      '<ul class="outcomes">'+(lesson.learning_outcomes||[]).map(x=>'<li>'+esc(x)+'</li>').join("")+'</ul>'+
       '<p class="side-desc">'+esc(prerequisites)+'</p><div class="meta-grid">'+
+      '<div class="meta-item"><small>Идентификатор урока</small><strong>'+esc(lesson.id)+'</strong></div>'+
       '<div class="meta-item"><small>Длительность</small><strong>'+esc(lesson.duration_min+"–"+lesson.duration_max+" минут")+'</strong></div>'+
-      '<div class="meta-item"><small>Подготовка</small><strong>'+esc((lesson.prerequisites||[]).join(", ")||"Не требуется")+'</strong></div>'+
-      '<div class="meta-item"><small>Формат</small><strong>Подробная лекция</strong></div>'+
+      '<div class="meta-item"><small>Предыдущий ID</small><strong>'+esc(lesson.legacy_id||"—")+'</strong></div>'+
       '<div class="meta-item"><small>Доступ</small><strong>'+esc(lesson.access==="open"?"Открытый урок":lesson.access)+'</strong></div></div>'+
       '<div class="side-actions"><a class="button primary" href="../'+esc(lesson.url)+'">Начать урок ↗</a><a class="button secondary" href="../tracks/understanding-ai.html">О Track A</a></div>';
     universe.querySelectorAll("[data-lesson-id]").forEach(node=>node.setAttribute("aria-pressed",String(node.dataset.lessonId===selectedId)));
   };
   const load = async () => {
     try {
-      const responses = await Promise.all([
-        fetch("../data/catalog/lessons.json",{cache:"no-store"}),
-        fetch("../data/catalog/planets.json",{cache:"no-store"})
-      ]);
-      if (!responses[0].ok || !responses[1].ok) throw new Error("Не удалось загрузить JSON-каталог");
-      const lessonData = await responses[0].json();
-      const planetData = await responses[1].json();
-      const lessons = new Map((lessonData.lessons||[]).filter(x=>x.status==="published").map(x=>[x.id,x]));
-      const planets = (planetData.planets||[]).filter(p=>lessons.has(p.lesson_id));
+      if (!window.DCHCatalogCompat) throw new Error("Не загружен адаптер каталога");
+      const data = await window.DCHCatalogCompat.load({baseUrl:"../data/catalog",schemaVersion:2});
+      const tracks = new Map(data.tracks.map(x=>[x.id,x]));
+      const themes = new Map(data.themes.map(x=>[x.id,x]));
+      const modules = new Map(data.modules.map(x=>[x.id,x]));
+      const lessons = new Map(data.lessons.filter(x=>x.status==="published").map(x=>[x.id,x]));
+      const planets = data.planets.filter(p=>lessons.has(p.lesson_id));
       if (!planets.length) { list.innerHTML='<p class="map-note">Опубликованных планет пока нет.</p>'; return; }
       universe.querySelectorAll("[data-generated-planet]").forEach(node=>node.remove());
-      planets.forEach((planet,index)=>{
+      const entries = planets.map((planet,index)=>{
         const lesson=lessons.get(planet.lesson_id);
-        const position=positions[lesson.id]||[[50,49],[72,31],[28,30]][index%3];
+        const module=modules.get(lesson.module_id);
+        const theme=themes.get(module.theme_id);
+        const track=tracks.get(theme.track_id);
+        const legacy=lesson.legacy_id||lesson.id;
+        const position=positions[legacy]||[[50,49],[72,31],[28,30]][index%3];
         const button=document.createElement("button");
-        button.type="button";
-        button.className="planet-button";
-        if(lesson.id==="A.2")button.classList.add("planet-a2");
-        if(lesson.id==="A.4")button.classList.add("planet-a4");
-        if(lesson.id==="A.5")button.classList.add("planet-a5");
-        if(planet.accent_id==="teal")button.classList.add("planet-a3");
-        if(planet.accent_id==="teal")button.classList.add("planet-teal");
+        button.type="button";button.className="planet-button";
+        if(legacy==="A.2")button.classList.add("planet-a2");
+        if(legacy==="A.4")button.classList.add("planet-a4");
+        if(legacy==="A.5")button.classList.add("planet-a5");
+        if(planet.accent_id==="teal")button.classList.add("planet-a3","planet-teal");
         if(planet.accent_id==="blue")button.classList.add("planet-blue");
         if(planet.accent_id==="violet")button.classList.add("planet-violet");
         button.style.left=position[0]+"%";button.style.top=position[1]+"%";
         button.dataset.lessonId=lesson.id;button.dataset.generatedPlanet="true";
-        button.setAttribute("aria-label","Выбрать планету "+lesson.id+": "+lesson.title);
-        button.innerHTML='<span class="planet-core"><span style="font:800 14px Manrope">'+esc(lesson.id)+'</span></span><span class="planet-code">'+esc(lesson.id)+'</span><span class="planet-name">'+esc(lesson.title)+'</span>';
-        button.addEventListener("click",()=>{renderDetails(lesson,lesson.id);if(matchMedia("(max-width:900px)").matches){document.querySelector("#planetDetails")?.scrollIntoView({behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth",block:"start"});}});
+        button.setAttribute("aria-label","Выбрать урок "+lesson.id+": "+lesson.title);
+        button.innerHTML='<span class="planet-core"><span style="font:800 11px Manrope">'+esc(lesson.id)+'</span></span><span class="planet-code">'+esc(lesson.id)+'</span><span class="planet-name">'+esc(lesson.title)+'</span>';
+        button.addEventListener("click",()=>{renderDetails(lesson,lesson.id,theme,module,track);if(matchMedia("(max-width:900px)").matches){document.querySelector("#planetDetails")?.scrollIntoView({behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth",block:"start"});}});
         universe.appendChild(button);
+        return {planet,lesson,module,theme,track};
       });
-      list.innerHTML='<div class="side-top"><strong>Track A · Understanding AI</strong><span class="level">'+planets.length+' опубликовано</span></div>'+
-        planets.map(planet=>{
-          const lesson=lessons.get(planet.lesson_id);
-          return '<div class="list-entry"><div><strong>'+esc(lesson.id)+' — '+esc(lesson.title)+'</strong><small>'+esc(lesson.level==="beginner"?"Начальный уровень":lesson.level)+' · '+esc(lesson.duration_min+"–"+lesson.duration_max+" минут")+'</small></div><div class="list-actions"><button type="button" data-select-lesson="'+esc(lesson.id)+'">Показать на карте</button><a class="button secondary" href="../'+esc(lesson.url)+'">Открыть урок ↗</a></div></div>';
+      list.innerHTML='<div class="side-top"><strong>Track A · Understanding AI</strong><span class="level">'+entries.length+' опубликовано</span></div>'+
+        entries.map(({lesson,module,theme})=>{
+          return '<div class="list-entry"><div><strong>'+esc(lesson.id)+' — '+esc(lesson.title)+'</strong><small>Theme '+esc(theme.id)+' · Module '+esc(module.id)+' · '+esc(lesson.duration_min+"–"+lesson.duration_max+" минут")+'</small></div><div class="list-actions"><button type="button" data-select-lesson="'+esc(lesson.id)+'">Показать на карте</button><a class="button secondary" href="../'+esc(lesson.url)+'">Открыть урок ↗</a></div></div>';
         }).join("");
       list.querySelectorAll("[data-select-lesson]").forEach(button=>button.addEventListener("click",()=>{
-        const lesson=lessons.get(button.dataset.selectLesson);
-        if(lesson)renderDetails(lesson,lesson.id);
-        const mapButton=document.getElementById("mapMode");
-        if(mapButton)mapButton.click();
+        const entry=entries.find(x=>x.lesson.id===button.dataset.selectLesson);
+        if(entry)renderDetails(entry.lesson,entry.lesson.id,entry.theme,entry.module,entry.track);
+        document.getElementById("mapMode")?.click();
         universe.scrollIntoView({behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth",block:"nearest"});
       }));
-      renderDetails(lessons.get(planets[0].lesson_id),planets[0].lesson_id);
+      const first=entries[0];renderDetails(first.lesson,first.lesson.id,first.theme,first.module,first.track);
     } catch(error) {
       list.innerHTML='<p class="map-note">Не удалось загрузить каталог планет: '+esc(error.message)+'.</p>';
     }

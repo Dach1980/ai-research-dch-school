@@ -58,7 +58,7 @@
         const theme=themes.get(module.theme_id);
         const track=tracks.get(theme.track_id);
         const legacy=lesson.legacy_id||lesson.id;
-        const displayCode=lesson.v3_target_codes&&lesson.v3_target_codes.length===1?lesson.v3_target_codes[0]:lesson.id;
+        const displayCode=lesson.v3_target_codes&&lesson.v3_target_codes.length===1?lesson.v3_target_codes[0]:"Legacy";
         const position=positions[legacy]||[[50,49],[72,31],[28,30]][index%3];
         const button=document.createElement("button");
         button.type="button";button.className="planet-button";

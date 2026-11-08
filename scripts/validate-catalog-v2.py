@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Validate parallel hierarchical catalog v2; production Pages still uses v1."""
+"""Validate the production hierarchical catalog v2."""
 import json,sys
 from pathlib import Path
 from catalog_compat import load_catalog,validate_relationships,CatalogCompatibilityError

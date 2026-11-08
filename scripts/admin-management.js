@@ -11,6 +11,27 @@
   const root=$("admin-content-list");if(!root)return;
   const r=await db.from("lesson_catalog").select("id,title,visibility,is_published,sort_order").order("sort_order");
   if(r.error){root.textContent=r.error.message;return;}
+  const aliasPanel=document.createElement("section");
+  aliasPanel.className="roadmap-item";
+  aliasPanel.innerHTML='<strong>Проверка legacy alias → v3 UID</strong><p>Диагностический режим: только чтение. Результат не меняет lesson_catalog, содержимое или права доступа.</p><div class="admin-alias-controls"><select id="alias-source"><option value="supabase.lesson_catalog">Supabase lesson_id</option><option value="catalog_v2">Catalog v2 legacy_id</option><option value="static_site">URL статической страницы</option></select><select id="alias-kind"><option value="lesson_id">lesson_id</option><option value="legacy_id">legacy_id</option><option value="v2_id">v2_id</option><option value="localized_url">localized_url</option></select><input id="alias-value" type="text" maxlength="512" placeholder="Старый slug / ID / путь" style="max-width:32rem"><select id="alias-locale"><option value="">Без локали</option><option value="ru">RU</option><option value="en">EN</option><option value="zh">中文</option></select><button class="admin-tab" id="alias-resolve" type="button">Найти UID</button></div><pre id="alias-result" aria-live="polite">Результат появится здесь.</pre>';
+  root.prepend(aliasPanel);
+  const aliasSource=aliasPanel.querySelector("#alias-source");
+  const aliasKind=aliasPanel.querySelector("#alias-kind");
+  aliasSource.addEventListener("change",()=>{
+   const kinds={"supabase.lesson_catalog":["lesson_id"],"catalog_v2":["legacy_id","v2_id"],"static_site":["localized_url"]};
+   aliasKind.replaceChildren(...kinds[aliasSource.value].map(value=>{const option=document.createElement("option");option.value=value;option.textContent=value;return option;}));
+  });
+  aliasPanel.querySelector("#alias-resolve").addEventListener("click",async()=>{
+   const output=aliasPanel.querySelector("#alias-result");
+   output.textContent="Проверка…";
+   const result=await db.functions.invoke("resolve-lesson-alias",{body:{
+    source_system:aliasSource.value,alias_kind:aliasKind.value,
+    alias_value:aliasPanel.querySelector("#alias-value").value.trim(),
+    locale:aliasPanel.querySelector("#alias-locale").value||null
+   }});
+   if(result.error){output.textContent="Ошибка resolver: "+result.error.message;return;}
+   output.textContent=JSON.stringify(result.data,null,2);
+  });
   root.innerHTML=(r.data||[]).map(x=>'<article class="roadmap-item"><strong>'+esc(x.id)+'</strong> · '+esc(x.title&&x.title.ru||x.id)+' · '+(x.is_published?"Опубликован":"Черновик")+' · '+esc(x.visibility)+' <button class="admin-tab" data-toggle="'+esc(x.id)+'">'+(x.is_published?"Снять с публикации":"Опубликовать")+'</button><button class="admin-tab" data-payload="'+esc(x.id)+'">JSON-содержимое</button></article>').join("");
   root.querySelectorAll("[data-toggle]").forEach(b=>b.addEventListener("click",async()=>{
    const item=r.data.find(x=>x.id===b.dataset.toggle);

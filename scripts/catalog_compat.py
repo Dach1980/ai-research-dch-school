@@ -144,3 +144,48 @@ def validate_v3_relationships(c: dict[str, Any]) -> list[str]:
         if planet.get("lesson_uid") not in lessons:
             errors.append(f"Planet {planet.get('uid')} references missing lesson")
     return errors
+
+
+def project_v3_legacy_catalog(
+    v3: dict[str, Any], legacy_v2: dict[str, Any], manifest: dict[str, Any]
+) -> dict[str, Any]:
+    """Enrich the v2 presentation contract with v3 UID targets without changing legacy identity."""
+    errors = validate_v3_relationships(v3)
+    if errors:
+        raise CatalogCompatibilityError("; ".join(errors))
+    legacy = json.loads(json.dumps(legacy_v2))
+    if legacy.get("schema_version") != 2:
+        raise CatalogCompatibilityError("Legacy projection requires v2 catalog")
+    target_index = {item["uid"]: item for item in v3.get("lessons", [])}
+    aliases: dict[str, dict[str, list[str]]] = {}
+    for alias in manifest.get("external_aliases", []):
+        if alias.get("source_system") != "catalog_v2" or alias.get("alias_kind") not in {"v2_id", "legacy_id"}:
+            continue
+        entry = aliases.setdefault(alias["alias_value"], {"uids": [], "states": []})
+        entry["uids"].extend(alias.get("target_lesson_uids", []))
+        entry["states"].append(alias.get("mapping_state", "unknown"))
+    for lesson in legacy.get("lessons", []):
+        hit = aliases.get(lesson["id"]) or aliases.get(lesson.get("legacy_id", ""))
+        uids = list(dict.fromkeys(hit["uids"])) if hit else []
+        targets = [target_index[uid] for uid in uids if uid in target_index]
+        lesson["v3_target_uids"] = [item["uid"] for item in targets]
+        lesson["v3_target_codes"] = [item["code"] for item in targets]
+        lesson["v3_mapping_state"] = sorted(set(hit["states"])) if hit else ["unmapped"]
+    legacy["compatibility"] = {
+        "source_schema_version": 2,
+        "target_schema_version": 3,
+        "projection": "legacy_preserving",
+        "v3_lesson_count": len(v3.get("lessons", [])),
+    }
+    return legacy
+
+
+def load_legacy_projection(
+    catalog_dir: str | Path | None = None,
+) -> dict[str, Any]:
+    """Load v2 + v3 + manifest and return the v2-compatible projection."""
+    base = Path(catalog_dir) if catalog_dir is not None else CATALOG_DIR
+    legacy = load_catalog(base / "catalog-v2.json")
+    v3 = load_catalog_v3(base / "catalog-v3.json")
+    manifest = _read(base / "migration-manifest-v3.json")
+    return project_v3_legacy_catalog(v3, legacy, manifest)

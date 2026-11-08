@@ -139,7 +139,7 @@
       "mapping_id": "map-a3-data",
       "source_legacy_id": "A.3",
       "source_url": "lessons/a-3-how-machines-learn-from-data.html",
-      "source_fragment_ids": [
+      "source_fragment_topics": [
         "dataset-and-features"
       ],
       "target_lesson_uids": [
@@ -158,7 +158,7 @@
       "mapping_id": "map-a3-learning-types",
       "source_legacy_id": "A.3",
       "source_url": "lessons/a-3-how-machines-learn-from-data.html",
-      "source_fragment_ids": [
+      "source_fragment_topics": [
         "supervised-learning",
         "unsupervised-learning",
         "self-supervised-learning"
@@ -181,7 +181,7 @@
       "mapping_id": "map-a3-training",
       "source_legacy_id": "A.3",
       "source_url": "lessons/a-3-how-machines-learn-from-data.html",
-      "source_fragment_ids": [
+      "source_fragment_topics": [
         "model-parameters",
         "training-process",
         "generalization"
@@ -204,7 +204,7 @@
       "mapping_id": "map-a3-data-quality",
       "source_legacy_id": "A.3",
       "source_url": "lessons/a-3-how-machines-learn-from-data.html",
-      "source_fragment_ids": [
+      "source_fragment_topics": [
         "data-quality",
         "data-leakage"
       ],
@@ -223,7 +223,7 @@
       "mapping_id": "map-a6-generalization",
       "source_legacy_id": "A.6",
       "source_url": "lessons/a-6-generalization-and-overfitting.html",
-      "source_fragment_ids": [
+      "source_fragment_topics": [
         "underfitting",
         "overfitting",
         "bias-variance",
@@ -243,7 +243,7 @@
       "mapping_id": "map-a6-generalization-capacity",
       "source_legacy_id": "A.6",
       "source_url": "lessons/a-6-generalization-and-overfitting.html",
-      "source_fragment_ids": [
+      "source_fragment_topics": [
         "generalization"
       ],
       "target_lesson_uids": [
@@ -259,7 +259,7 @@
       "mapping_id": "map-a6-validation",
       "source_legacy_id": "A.6",
       "source_url": "lessons/a-6-generalization-and-overfitting.html",
-      "source_fragment_ids": [
+      "source_fragment_topics": [
         "cross-validation",
         "split-protocol"
       ],
@@ -276,7 +276,7 @@
       "mapping_id": "map-a6-leakage",
       "source_legacy_id": "A.6",
       "source_url": "lessons/a-6-generalization-and-overfitting.html",
-      "source_fragment_ids": [
+      "source_fragment_topics": [
         "leakage",
         "duplicates"
       ],
@@ -293,7 +293,7 @@
       "mapping_id": "map-xai-intro",
       "source_legacy_id": "A.1.2.1",
       "source_url": "lessons/xai/01-what-and-why.html",
-      "source_fragment_ids": [
+      "source_fragment_topics": [
         "why-xai",
         "local-global",
         "intrinsic-posthoc",
@@ -324,7 +324,7 @@
       "mapping_id": "map-xai-models",
       "source_legacy_id": "A.1.2.1",
       "source_url": "lessons/xai/01-what-and-why.html",
-      "source_fragment_ids": [
+      "source_fragment_topics": [
         "linear-models",
         "decision-trees"
       ],
@@ -343,7 +343,7 @@
       "mapping_id": "map-xai-pdp",
       "source_legacy_id": "A.1.2.1",
       "source_url": "lessons/xai/01-what-and-why.html",
-      "source_fragment_ids": [
+      "source_fragment_topics": [
         "pdp-ice-ale"
       ],
       "target_lesson_uids": [
@@ -367,7 +367,7 @@
       "mapping_id": "map-xai-lime-shap-counterfactual",
       "source_legacy_id": "A.1.2.1",
       "source_url": "lessons/xai/01-what-and-why.html",
-      "source_fragment_ids": [
+      "source_fragment_topics": [
         "lime",
         "shap",
         "counterfactuals"

@@ -22,7 +22,7 @@ class Lesson112113Tests(unittest.TestCase):
             for suffix in ("", "-en", "-zh"):
                 source = (ROOT / f"lessons/{lesson}{suffix}.html").read_text(encoding="utf-8")
                 self.assertIn(code, source)
-                self.assertNotRegex(source, r"LESSON A\\.1\\.1\\.[23]")
+                self.assertNotRegex(source, r"LESSON A\.1\.1\.[23]")
 
     def test_illustration_palette_is_semantic_and_theme_aware(self):
         palette = (ROOT / "styles/lesson-visual-palette.css").read_text(encoding="utf-8")

@@ -205,6 +205,25 @@
         "Pages CI и визуальная проверка каталога/карты проходят до переключения production renderer."
       ],
       "source": "docs/management/DCH_SCHOOL_CURRICULUM_ARCHITECTURE_V2.md; docs/management/TRACK_A_ARCHITECTURE_PROPOSAL.md; docs/management/CURRICULUM_40_MODULE_RECONSTRUCTION.md"
+    },
+    {
+      "id": "RM-11",
+      "date": "2026-11-08",
+      "title": "Реализовать schema v2 и адаптер совместимости каталога",
+      "status": "in_progress",
+      "priority": "high",
+      "decision": "Параллельный каталог v2 реализован как отдельный bundle с явными сущностями Track → Theme → Module → Lesson. Production v1 остаётся источником сайта до прохождения dual-read, схемы, parent-chain, URL/ID parity и визуальной приёмки. Для текущих A.1–A.6 создан crosswalk Track A → Theme A1 → M11; новые уроки не создаются.",
+      "acceptance": [
+        "Определена JSON Schema Draft 2020-12 для v2 с отдельными tracks/themes/modules/lessons/planets.",
+        "Создан параллельный catalog-v2.json для A.1–A.6 без изменения production v1.",
+        "Создан адаптер чтения v1 и v2 с единым нормализованным представлением.",
+        "Сохранены lesson IDs, RU/EN/ZH URL и planet IDs; parity проверяется тестом.",
+        "Добавлены проверки parent chain и отсутствующих родителей.",
+        "CI запускает тесты адаптера и валидатор schema v2.",
+        "Production renderer не переключается до отдельного этапа миграции и browser acceptance.",
+        "Новые уроки не создаются."
+      ],
+      "source": "data/catalog/schema-v2.json; data/catalog/catalog-v2.json; scripts/catalog-compat.py; scripts/validate-catalog-v2.py"
     }
   ],
   "audit_log": [
@@ -769,6 +788,27 @@
         "Названия M00–M10 и M27–M39 — редакционные предложения, ожидают утверждения.",
         "Содержательная сверка трёх языков, выполнение Python-практик, источники и окончательные scorecards не выполнены в рамках этого этапа.",
         "Не создавались новые уроки и не менялись опубликованные HTML/URL."
+      ]
+    },
+    {
+      "id": "AUD-030",
+      "date": "2026-11-08",
+      "type": "catalog_schema_v2_and_compatibility_adapter",
+      "title": "Реализован параллельный каталог v2 и адаптер совместимости",
+      "result": "Добавлены JSON Schema v2 и bundle каталога с отдельными сущностями Track, Theme, Module и Lesson. A.1–A.6 перенесены в параллельный v2 bundle по цепочке Track A → Theme A1 → Module 11 → Lessons A.1–A.6. Добавлен read-only adapter для legacy split v1 и hierarchical v2, который нормализует parent metadata и сохраняет legacy track_id для потребителей старого интерфейса. Добавлены тесты parity ID/URL/planet и валидатор v2; CI расширен тестами и запуском валидатора. Production v1 и Pages renderer не переключались.",
+      "evidence": [
+        "data/catalog/schema-v2.json",
+        "data/catalog/catalog-v2.json",
+        "scripts/catalog-compat.py",
+        "scripts/validate-catalog-v2.py",
+        "tests/test_catalog_compat.py",
+        ".github/workflows/validate-catalog.yml"
+      ],
+      "limitations": [
+        "Workflow CI для текущего коммита должен завершиться успешно; локальный runtime здесь не запускался.",
+        "Production renderer продолжает читать v1; переключение и визуальная приёмка относятся к следующему этапу.",
+        "V2 пока содержит текущую фактическую тему и M11; полный каталог 00–39 не выдумывается и не создаётся на этом этапе.",
+        "A.6 остаётся без languages в исходном каталоге, поэтому parity сохранена как есть; локализационный audit остаётся отдельной задачей."
       ]
     }
   ],

@@ -1,5 +1,20 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1920" role="img" aria-labelledby="title desc">
-<title id="title">AI Research DCH School</title>
-<desc id="desc">Космический логотип AI Research DCH School с выделенными буквами DCH.</desc>
-<image href="logo.png" width="1920" height="1920" preserveAspectRatio="xMidYMid meet"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192" role="img" aria-labelledby="title desc">
+  <title id="title">AI Research DCH School</title>
+  <desc id="desc">DCH monogram with an orbital mark in blue and violet.</desc>
+  <defs>
+    <linearGradient id="dch-gradient" x1="18" y1="22" x2="174" y2="170" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#58b5ff"/>
+      <stop offset=".56" stop-color="#7188ff"/>
+      <stop offset="1" stop-color="#b08aff"/>
+    </linearGradient>
+    <linearGradient id="dch-stroke" x1="20" y1="35" x2="174" y2="157" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#68c5ff"/>
+      <stop offset="1" stop-color="#a78bfa"/>
+    </linearGradient>
+  </defs>
+  <circle cx="96" cy="96" r="79" fill="none" stroke="url(#dch-stroke)" stroke-width="2.5" opacity=".38"/>
+  <ellipse cx="96" cy="96" rx="86" ry="35" fill="none" stroke="url(#dch-stroke)" stroke-width="2" opacity=".42" transform="rotate(-32 96 96)"/>
+  <path d="M96 9a87 87 0 0 1 84 64" fill="none" stroke="url(#dch-gradient)" stroke-width="5" stroke-linecap="round"/>
+  <circle cx="174" cy="72" r="5" fill="#70baff"/>
+  <text x="96" y="117" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="54" font-weight="800" letter-spacing="-5" fill="url(#dch-gradient)">DCH</text>
 </svg>

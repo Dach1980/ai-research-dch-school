@@ -4,7 +4,7 @@ declare
   relation_name text;
   expected text[] := array[
     'profiles','lesson_catalog','lesson_content','lesson_entitlements',
-    'school_admins','school_admin_audit'
+    'school_admins','school_admin_audit','course_lesson_uid_registry','lesson_legacy_aliases','lesson_content_mapping_groups','lesson_content_mapping_targets'
   ];
   item text;
   public_lesson_count integer;
@@ -40,6 +40,31 @@ begin
 
   if public_lesson_count <> 6 then
     raise exception 'Expected 6 published public A.1-A.6 metadata rows, got %', public_lesson_count;
+  end if;
+
+  if (select count(*) from public.course_lesson_uid_registry) <> 50 then
+    raise exception 'Expected 50 staging v3 lesson UIDs';
+  end if;
+
+  if exists (
+    select 1 from public.lesson_legacy_aliases where access_behavior <> 'resolve_only'
+  ) then
+    raise exception 'Legacy aliases must never inherit access';
+  end if;
+
+  if (select count(*) from public.lesson_legacy_aliases
+      where source_system='supabase.lesson_catalog'
+        and alias_kind='lesson_id'
+        and alias_value='a-3-how-machines-learn-from-data') <= 1 then
+    raise exception 'A.3 Supabase slug must resolve to multiple v3 lessons';
+  end if;
+
+  if (select count(*) from public.lesson_legacy_aliases
+      where source_system='supabase.lesson_catalog'
+        and alias_kind='lesson_id'
+        and alias_value='a-5-how-to-evaluate-a-model'
+        and mapping_state='editorial_approved') <> 10 then
+    raise exception 'A.5 Supabase slug must map to ten reviewed targets';
   end if;
 
   if exists (

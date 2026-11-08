@@ -39,6 +39,8 @@ on:
       - "docs/standards/**"
       - "lessons/data/**"
       - "lessons/practice/**"
+      - "lessons/*.html"
+      - "lessons/**/*.html"
       - "scripts/lesson-reader.js"
       - "styles/lesson-reader.css"
       - "scripts/validate-catalog.py"

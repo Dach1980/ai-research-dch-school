@@ -24,6 +24,51 @@ class Lesson112113Tests(unittest.TestCase):
                 self.assertIn(code, source)
                 self.assertNotRegex(source, r"LESSON A\.1\.1\.[23]")
 
+
+    def test_diagrams_are_localized_for_each_lesson_language(self):
+        expected = {
+            "1-1-2-history-of-ai": {
+                "": ("Пять крупных этапов истории AI", "Предпосылки", "Символический AI"),
+                "-en": ("AI history: five broad periods", "Foundations", "Symbolic AI"),
+                "-zh": ("人工智能发展的五个主要阶段", "基础研究", "符号主义 AI"),
+            },
+            "1-1-3-symbolic-ai-and-machine-learning": {
+                "": ("Два источника поведения системы", "Явное программирование", "Машинное обучение"),
+                "-en": ("Two sources of system behaviour", "Explicit programming", "Machine learning"),
+                "-zh": ("系统行为的两个来源", "显式编程", "机器学习"),
+            },
+        }
+        for lesson, locales in expected.items():
+            for suffix, labels in locales.items():
+                source = (ROOT / f"lessons/{lesson}{suffix}.html").read_text(encoding="utf-8")
+                svg = re.search(r"<svg\\b[\\s\\S]*?</svg>", source)
+                self.assertIsNotNone(svg, f"{lesson}{suffix}")
+                for label in labels:
+                    self.assertIn(label, svg.group(0), f"{lesson}{suffix}: {label}")
+
+    def test_new_112_113_headers_do_not_claim_reading_duration(self):
+        for lesson in ("1-1-2-history-of-ai", "1-1-3-symbolic-ai-and-machine-learning"):
+            for suffix in ("", "-en", "-zh"):
+                source = (ROOT / f"lessons/{lesson}{suffix}.html").read_text(encoding="utf-8")
+                header = re.search(r'<div class="lesson-meta">([\\s\\S]*?)</div>', source)
+                self.assertIsNotNone(header)
+                self.assertNotRegex(header.group(1), r"minutes?|минут|分钟")
+
+    def test_lesson_113_has_expanded_case_study_and_source_aligned_quiz(self):
+        expected = {
+            "": ("Разбор предметной задачи", "Оценивать результат", "8. Почему нельзя автоматически"),
+            "-en": ("Case study: monitoring a pump bearing", "Evaluating a model", "8. Why should a model prediction"),
+            "-zh": ("案例分析：水泵轴承温度监测", "如何评估模型", "8. 为什么不能自动"),
+        }
+        for suffix, phrases in expected.items():
+            source = (ROOT / f"lessons/1-1-3-symbolic-ai-and-machine-learning{suffix}.html").read_text(encoding="utf-8")
+            for phrase in phrases:
+                self.assertIn(phrase, source)
+            self.assertEqual(source.count('class="quiz-item"'), 8)
+            self.assertIn("15.", source)
+            self.assertIn("16.", source)
+            self.assertNotRegex(source, r"60\\s*[–-]\\s*75\\s*(?:minutes?|минут|分钟)")
+
     def test_illustration_palette_is_semantic_and_theme_aware(self):
         palette = (ROOT / "styles/lesson-visual-palette.css").read_text(encoding="utf-8")
         theme = (ROOT / "styles/theme-system.css").read_text(encoding="utf-8")

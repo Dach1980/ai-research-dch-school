@@ -44,7 +44,7 @@ jobs:
       - name: Test hierarchical catalog UI migration
         run: python -m unittest discover -s tests -p 'test_catalog_ui_v2.py' -v
       - name: Check browser catalogue scripts syntax
-        run: node --check scripts/catalog-compat.js && node --check scripts/lesson-catalog.js && node --check scripts/planet-map-catalog.js && node --check scripts/home-knowledge-map.js
+        run: node --check scripts/catalog-compat.js && node --check scripts/lesson-catalog.js && node --check scripts/planet-map-catalog.js && node --check scripts/home-knowledge-map.js && node --check lessons/data/xai-01-what-and-why.js
       - name: Validate production hierarchical catalog v2
         run: python scripts/validate-catalog-v2.py
       - name: Validate multilingual lesson pages and diagrams

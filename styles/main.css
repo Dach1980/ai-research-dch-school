@@ -1,4 +1,5 @@
 @import url('./theme-system.css');
+@import url('./lesson-visual-palette.css');
 @import url('./code-blocks.css');
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap');
 :root{color-scheme:dark;--bg:#080d1b;--panel:#101a2d;--panel2:#121f35;--text:#eef3ff;--muted:#9eacc5;--blue:#58a6ff;--violet:#a78bfa;--teal:#5eead4;--line:rgba(160,185,230,.14);--max:1160px}

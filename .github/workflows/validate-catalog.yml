@@ -79,6 +79,8 @@ jobs:
         run: python scripts/validate-catalog-v3.py
       - name: Test hierarchical catalog UI migration
         run: python -m unittest discover -s tests -p 'test_catalog_ui_v2.py' -v
+      - name: Test lesson content, localized diagrams, and source-aligned quizzes
+        run: python -m unittest discover -s tests -p 'test_lessons_112_113.py' -v
       - name: Test DCH presentation standards
         run: python -m unittest discover -s tests -p 'test_dch_presentation_standards.py' -v
       - name: Test Python code block presentation

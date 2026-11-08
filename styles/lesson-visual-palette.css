@@ -25,3 +25,16 @@
 .glossary-entry p{margin:9px 0 0;color:var(--muted);font-size:13px;line-height:1.6}
 .glossary-entry .term-index{float:right;color:var(--muted);font:700 10px ui-monospace,monospace;opacity:.8}
 @media(max-width:560px){.lesson-glossary{grid-template-columns:1fr}}
+
+/* Legacy lesson 1.1.4 components now follow the same semantic palette. */
+.nesting{background:var(--diagram-surface)!important;border-color:var(--diagram-border)!important;color:var(--diagram-title)!important}
+.nesting .ai{background:var(--diagram-box)!important;border-color:var(--diagram-box-stroke)!important;color:var(--diagram-text)!important}
+.nesting .ml{background:var(--diagram-box2)!important;border-color:var(--diagram-box2-stroke)!important;color:var(--diagram-text)!important}
+.nesting .dl{background:var(--diagram-box3)!important;border-color:var(--diagram-box3-stroke)!important;color:var(--diagram-text)!important}
+.nesting small{color:var(--diagram-muted)!important}
+.pipeline div{background:var(--diagram-box)!important;border-color:var(--diagram-box-stroke)!important;color:var(--diagram-text)!important}
+.pipeline span{color:var(--diagram-muted)!important}
+.planet{background:var(--panel)!important;border-color:var(--line)!important;color:var(--text)!important}
+.callout,.problem,.experiment,.conclusion{background:var(--panel)!important;border-color:var(--line)!important;color:var(--text)!important}
+.problem strong{color:var(--teal)!important}
+.experiment h3{color:var(--violet)!important}

@@ -1606,7 +1606,7 @@
     {
       "source_system": "catalog_v2",
       "alias_kind": "v2_id",
-      "alias_value": "lesson-history-of-ai",
+      "alias_value": "A.1.1.7",
       "locale": null,
       "target_lesson_uids": [
         "les-a-0051"
@@ -1617,7 +1617,7 @@
     {
       "source_system": "catalog_v2",
       "alias_kind": "legacy_id",
-      "alias_value": "lesson-history-of-ai",
+      "alias_value": "A.7",
       "locale": null,
       "target_lesson_uids": [
         "les-a-0051"
@@ -1661,7 +1661,7 @@
     {
       "source_system": "catalog_v2",
       "alias_kind": "v2_id",
-      "alias_value": "lesson-symbolic-ai-ml",
+      "alias_value": "A.1.1.8",
       "locale": null,
       "target_lesson_uids": [
         "les-a-0052"
@@ -1672,7 +1672,7 @@
     {
       "source_system": "catalog_v2",
       "alias_kind": "legacy_id",
-      "alias_value": "lesson-symbolic-ai-ml",
+      "alias_value": "A.8",
       "locale": null,
       "target_lesson_uids": [
         "les-a-0052"

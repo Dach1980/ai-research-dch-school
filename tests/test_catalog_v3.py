@@ -63,6 +63,20 @@ class CatalogV3Tests(unittest.TestCase):
         a5 = next(x for x in aliases if x["source_system"] == "supabase.lesson_catalog" and x["alias_value"] == "a-5-how-to-evaluate-a-model")
         self.assertEqual(len(a5["target_lesson_uids"]), 10)
 
+    def test_legacy_projection_preserves_ids_urls_statuses_and_planets(self):
+        legacy = compat.load_catalog(ROOT / "data/catalog/catalog-v2.json")
+        projected = compat.load_legacy_projection(ROOT / "data/catalog")
+        self.assertEqual(projected["compatibility"]["projection"], "legacy_preserving")
+        self.assertEqual([x["id"] for x in projected["lessons"]], [x["id"] for x in legacy["lessons"]])
+        self.assertEqual([x["status"] for x in projected["lessons"]], [x["status"] for x in legacy["lessons"]])
+        self.assertEqual([x["url_i18n"] for x in projected["lessons"]], [x["url_i18n"] for x in legacy["lessons"]])
+        self.assertEqual(projected["planets"], legacy["planets"])
+        by_legacy = {x.get("legacy_id"): x for x in projected["lessons"]}
+        self.assertGreater(len(by_legacy["A.3"]["v3_target_uids"]), 1)
+        self.assertEqual(len(by_legacy["A.4"]["v3_target_uids"]), 4)
+        self.assertEqual(len(by_legacy["A.5"]["v3_target_uids"]), 10)
+        self.assertEqual(by_legacy["A.4"]["id"], "A.1.1.4")
+
     def test_python_native_v3_reader_and_relationships(self):
         loaded = compat.load_catalog_v3(ROOT / "data/catalog/catalog-v3.json")
         self.assertEqual(loaded["schema_version"], 3)

@@ -845,18 +845,39 @@
       "id": "AUD-031",
       "date": "2026-11-08",
       "type": "sequential_lesson_authoring",
-      "title": "Подготовлен первый XAI урок к содержательной проверке и зафиксирована методика работы с AIS",
-      "result": "Сопоставлены DCH Track A/B с публичной программой AIS; создана методика источниковой проверки и производства авторских уроков. Lesson A.1.2.1 содержит восемь частей и RU/EN/中文 версии; уточнены правовые формулировки по EU AI Act Article 13, GDPR Articles 13–15/22 and Recital 71, добавлены ссылки на Rosstandart GOST R 59276-2020 и научные работы Lipton, Doshi-Velez & Kim, Guidotti et al., Olah et al. Материал остаётся review.",
+      "title": "Завершена редактура первого XAI-урока и подготовлен комплект к приёмке",
+      "result": "Проведён полный редакционный аудит восьми частей A.1.2.1 в RU/EN/中文. Уточнены терминология intrinsic/ante-hoc, ограничения коэффициентов, permutation importance, PDP, SHAP, LIME, counterfactual explanations и Grad-CAM. Перепроверены формулировки EU AI Act Articles 13(1), 13(3)(b)(vii), 14 и GDPR Articles 13–15/22, Recital 71; ссылка на консолидированный AI Act EUR-Lex от 27.07.2026. Добавлены outcomes, словарь, первоисточники по методам, воспроизводимый Python mini-lab без внешних зависимостей, две интерактивные части самопроверки (10 вопросов) с локализованными объяснениями ответов. Каталог A.1.2.1 остаётся review. Предварительная оценка 26/28 по 14 критериям.",
       "evidence": [
-        "docs/education/AIS_SOURCE_INTEGRATION_POLICY.md",
         "docs/education/track-a/xai-foundations/A1_2_1_REVIEW.md",
         "lessons/data/xai-01-what-and-why.js",
-        "data/catalog/catalog-v2.json"
+        "lessons/practice/xai-a1-2-1-passport.py",
+        "lessons/practice/A1_2_1_XAI_LAB.md",
+        "scripts/lesson-reader.js",
+        "styles/lesson-reader.css",
+        "tests/test_catalog_ui_v2.py",
+        "data/catalog/catalog-v2.json",
+        ".github/workflows/validate-catalog.yml"
       ],
       "limitations": [
-        "Полная постраничная научная и мультиязычная вычитка ещё не завершена.",
-        "Нужно проверить актуальный консолидированный текст EU AI Act и применимость норм на дату публикации.",
-        "Урок не прошёл финальный 14-критериальный quality gate и не опубликован как lesson/planet."
+        "Ручная визуальная приёмка desktop/mobile и screen-reader ещё не выполнена.",
+        "Обратная связь объясняет верный ответ, но не диагностирует каждую ошибочную альтернативу отдельно.",
+        "Урок не переведён в published и не включён в опубликованные planet cards до ручной приёмки и прохождения CI."
+      ]
+    },
+    {
+      "id": "AUD-032",
+      "date": "2026-11-08",
+      "type": "uploaded_brand_asset_integration",
+      "title": "Загруженный логотип DCH интегрирован в сайт и favicon",
+      "result": "Оптимизированная версия загруженного artwork добавлена как assets/logo.png; assets/logo.svg использует этот файл как изображение для существующих логотипов в header/footer; assets/favicon.png создан из того же artwork. Обновлены favicon-ссылки на всех 45 HTML-страницах. Добавлен CI-тест разрешения путей к логотипу и favicon.",
+      "evidence": [
+        "assets/logo.png",
+        "assets/logo.svg",
+        "assets/favicon.png",
+        "tests/test_catalog_ui_v2.py"
+      ],
+      "limitations": [
+        "Ручная проверка фактического отображения logo и favicon в desktop/mobile браузерах остаётся частью визуальной приёмки."
       ]
     }
   ],

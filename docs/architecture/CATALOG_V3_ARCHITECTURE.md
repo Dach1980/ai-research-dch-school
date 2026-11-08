@@ -32,8 +32,12 @@ A.3, A.6 and XAI A.1.2.1 have fragment-level mapping records. A.4/A.5 are editor
 - v1 split files remain readable by the existing v1→v2 adapter.
 - v2 hierarchical catalog remains readable by the v2 adapter.
 - v3 is read natively by the Python and browser adapters without collapsing UID into display code.
-- v1/v2 production consumers remain on v2 until their required legacy presentation view and user-data migration are verified. The new native v3 reader is additive; it does not silently change the existing UI payload contract.
+- Three static consumers (lesson listing, homepage knowledge map and Planet Map) now call loadLegacyProjection(). This projection keeps the v2 presentation contract and adds v3 target UID/code arrays. Other consumers remain on legacy contracts. Native v3 reading remains additive.
 - A future consumer migration must resolve legacy IDs and URLs through the manifest/alias layer and use v3 UIDs internally.
+
+## Legacy-preserving consumer projection
+
+The browser and Python adapters expose a projection that combines the existing v2 presentation catalogue with v3 target mappings. It deliberately retains every legacy lesson ID, status, localized URL, prerequisite and planet association. It adds v3 target UIDs/codes as metadata arrays; a split legacy lesson is never coerced into one target UID. The first three static consumers use this projection. They still filter on legacy publication state, so planned v3 outlines cannot appear as published pages.
 
 ## Supabase alias layer
 
@@ -55,11 +59,11 @@ Progress must be migrated by an explicit, audited alias mapping. A split legacy 
 ## Rollout
 
 1. **Additive stage (current):** schema v3, staging catalog, manifest, native readers and validators. No public switch.
-2. Complete editorial reconciliation of A.4/A.5, confirm exact lesson outlines and source fragment selectors.
-3. Inventory every catalog consumer and define compatibility view/API contracts.
-4. Add user-data schema migration and idempotent backfill for progress, bookmarks, quiz attempts and planets.
-5. Dual-read / shadow validation while v2 remains the public source.
-6. Switch consumers individually only after parity tests, browser/mobile checks and CI.
+2. A.4/A.5 reconciliation is complete; A.1/A.2 still need final section-level review.
+3. Static consumer inventory is complete; three consumers have moved to the projection. Migrate remaining consumers individually.
+4. Inspect live Supabase schema and external state stores; implement idempotent progress/bookmark/quiz migration only where such state exists.
+5. Integrate the service-role alias resolver into trusted admin/server operations without exposing privileged credentials.
+6. Dual-read / shadow validation and consumer parity checks; then browser/mobile acceptance.
 7. Keep v1/v2 aliases and old URLs through a defined deprecation window; redirects only after inbound-link and analytics review.
 
 ## Acceptance criteria
@@ -74,3 +78,5 @@ Progress must be migrated by an explicit, audited alias mapping. A split legacy 
 
 
 The A.4/A.5 reconciliation and Supabase alias implementation are detailed in [A4_A5_EDITORIAL_RECONCILIATION_2026-11-08.md](../education/A4_A5_EDITORIAL_RECONCILIATION_2026-11-08.md).
+
+The PostgreSQL 16 migration workflow passed from a clean database: [run 42453118981](https://github.com/Dach1980/ai-research-dch-school/actions/runs/42453118981).

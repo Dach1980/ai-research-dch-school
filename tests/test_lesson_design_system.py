@@ -124,6 +124,26 @@ class LessonDesignSystemTests(unittest.TestCase):
                 locale_counts.append(source.count('class="glossary-entry"'))
             self.assertEqual(locale_counts, [expected_terms] * 3, code)
 
+    def test_lesson_114_uses_one_shared_layout_across_locales(self):
+        base = "a-2-ai-ml-deep-learning"
+        sources = []
+        for suffix in ("", "-en", "-zh"):
+            path = ROOT / "lessons" / f"{base}{suffix}.html"
+            source = path.read_text(encoding="utf-8")
+            self.assertIn("../styles/lesson-layout.css", source, str(path))
+            self.assertIn('<main class="container">', source, str(path))
+            self.assertIn('<section class="track-hero">', source, str(path))
+            self.assertIn('<article class="article-body">', source, str(path))
+            self.assertIn('<section class="lesson-outcomes">', source, str(path))
+            self.assertIn('class="header-languages"', source, str(path))
+            self.assertNotIn('<main class="lesson">', source, str(path))
+            sources.append(source)
+        css = (ROOT / "styles/lesson-layout.css").read_text(encoding="utf-8")
+        self.assertIn(".lesson-outcomes{", css)
+        self.assertIn("color:#f0f5ff", css)
+        self.assertIn("background:linear-gradient(120deg,#172f52,#142541)", css)
+        self.assertIn(".article-body{max-width:920px", css)
+
     def test_admin_exposes_design_system_tab_and_document(self):
         admin = (ROOT / "admin/index.html").read_text(encoding="utf-8")
         self.assertIn('id="tab-design"', admin)

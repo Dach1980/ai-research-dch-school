@@ -41,7 +41,10 @@ class LessonDesignSystemTests(unittest.TestCase):
                     self.assertEqual(source.count('class="lesson-check-button"'), expected, f"{base}{suffix}")
                     self.assertEqual(source.count('class="lesson-check-feedback"'), expected, f"{base}{suffix}")
                 self.assertIn('data-explanation="', source, str(path))
-                self.assertIn('type="checkbox"', source, str(path))
+                if base in ("a-1-what-is-artificial-intelligence", "a-2-ai-ml-deep-learning"):
+                    self.assertIn('type="radio"', source, str(path))
+                else:
+                    self.assertIn('type="checkbox"', source, str(path))
                 self.assertIn('data-mode="yesno"', source, str(path))
 
     def test_history_and_symbolic_lessons_keep_source_linked_questions(self):

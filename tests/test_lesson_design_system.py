@@ -31,9 +31,14 @@ class LessonDesignSystemTests(unittest.TestCase):
             for suffix in ("", "-en", "-zh"):
                 path = ROOT / "lessons" / f"{base}{suffix}.html"
                 source = path.read_text(encoding="utf-8")
-                self.assertEqual(source.count('class="lesson-check-question"'), expected, str(path))
-                self.assertEqual(source.count('class="lesson-check-button"'), expected, str(path))
-                self.assertEqual(source.count('class="lesson-check-feedback"'), expected, str(path))
+                if base == "a-4-what-is-machine-learning-model":
+                    self.assertEqual(source.count('class="interactive-quiz-item"'), expected, str(path))
+                    self.assertEqual(source.count('class="quiz-check-button"'), expected, str(path))
+                    self.assertEqual(source.count('class="quiz-feedback"'), expected, str(path))
+                else:
+                    self.assertEqual(source.count('class="lesson-check-question"'), expected, str(path))
+                    self.assertEqual(source.count('class="lesson-check-button"'), expected, str(path))
+                    self.assertEqual(source.count('class="lesson-check-feedback"'), expected, str(path))
                 self.assertIn('data-explanation="', source, str(path))
                 self.assertIn('type="checkbox"', source, str(path))
                 self.assertIn('data-mode="yesno"', source, str(path))

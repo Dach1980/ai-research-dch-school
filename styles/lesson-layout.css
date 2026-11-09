@@ -1,0 +1,26 @@
+/* Shared lesson page layout: identical geometry and accessible contrast across RU/EN/ZH. */
+.article-body{max-width:920px;margin:0 auto;padding:2rem 0 5rem;line-height:1.8}
+.article-body h2{margin:2.6rem 0 1rem;color:var(--blue);font:750 clamp(24px,3vw,30px)/1.2 Manrope,sans-serif}
+.article-body h3{margin:1.6rem 0 .7rem}
+.article-body p,.article-body li{line-height:1.8}
+.track-hero{max-width:850px}
+.track-hero h1{overflow-wrap:anywhere}
+.track-meta span{color:var(--muted)}
+.header-languages{display:flex;align-items:center;gap:10px;margin-left:18px;font-size:11px;font-weight:700;color:var(--muted)}
+.header-languages a{padding:7px 9px;border:1px solid transparent;border-radius:8px}
+.header-languages a[aria-current="page"]{color:var(--blue);background:rgba(88,166,255,.12);border-color:rgba(88,166,255,.35)}
+.planet{display:grid;grid-template-columns:minmax(0,1fr) 150px;align-items:center;gap:20px;padding:20px 24px;margin:25px 0;border:1px solid #789ee655;border-radius:18px;background:radial-gradient(circle at 85% 50%,#5879d533,transparent 28%),linear-gradient(120deg,#152847dd,#10182ddd);color:#eef3ff}
+.planet p{color:#c5d2e7;margin:.8rem 0}
+.planet-kicker{font-size:10px;letter-spacing:.18em;color:#83baff}
+.orb{width:76px;height:76px;margin:auto;border-radius:50%;display:grid;place-items:center;color:white;font-weight:800;background:radial-gradient(circle at 30% 25%,#e4edff,#8aa9e9 22%,#4566b3 55%,#1c2858 85%);box-shadow:0 0 32px #729cff99}
+.lesson-outcomes{margin:0 0 34px;padding:22px 24px;border:1px solid #789ee677;border-radius:16px;background:linear-gradient(120deg,#172f52,#142541);color:#f0f5ff}
+.lesson-outcomes h2{margin:0 0 12px!important;color:#fff!important;font:750 22px/1.25 Manrope,sans-serif}
+.lesson-outcomes p,.lesson-outcomes li{color:#e1eaff!important}
+.lesson-outcomes ul{margin:.5rem 0 0;padding-left:1.35rem}
+.lesson-diagram{margin:1.5rem 0;padding:18px;border:1px solid rgba(120,160,230,.24);border-radius:16px;background:linear-gradient(135deg,rgba(18,35,62,.94),rgba(10,17,32,.96));overflow:hidden;color:#eef4ff}
+.lesson-diagram svg{display:block;width:100%;height:auto;min-width:0}
+.lesson-diagram .svg-title{fill:#eef4ff;font:700 17px Manrope,Arial,sans-serif}
+.lesson-diagram .svg-label{fill:#e3edff;font:600 13px Manrope,Arial,sans-serif}
+.lesson-diagram .svg-small{fill:#aebed8;font:12px Manrope,Arial,sans-serif}
+@media(max-width:900px){.site-header{height:auto;min-height:76px;flex-wrap:wrap;padding:12px 0;gap:12px}.nav{gap:14px;flex-wrap:wrap}.header-languages{margin-left:auto}}
+@media(max-width:620px){.track-hero{padding:48px 0 28px}.article-body{padding:1rem 0 3rem}.planet{grid-template-columns:1fr}.orb{margin:8px 0 0}.lesson-outcomes{padding:17px}.header-languages{gap:4px}.header-languages a{padding:6px}}

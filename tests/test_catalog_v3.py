@@ -90,7 +90,7 @@ class CatalogV3Tests(unittest.TestCase):
         v2 = compat.load_catalog(ROOT / "data/catalog/catalog-v2.json")
         self.assertEqual(v1["schema_version"], 2)
         self.assertEqual(v2["schema_version"], 2)
-        self.assertEqual(len(v1["lessons"]), 6)
+        self.assertEqual(len(v1["lessons"]), 8)
         self.assertEqual(len(v2["lessons"]), 9)
 
 if __name__ == "__main__":

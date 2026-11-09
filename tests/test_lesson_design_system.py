@@ -4,8 +4,8 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 LESSONS = {
-    "a-1-what-is-artificial-intelligence": 3,
-    "a-2-ai-ml-deep-learning": 3,
+    "a-1-what-is-artificial-intelligence": 5,
+    "a-2-ai-ml-deep-learning": 5,
     "a-3-how-machines-learn-from-data": 4,
     "a-4-what-is-machine-learning-model": 6,
     "a-5-how-to-evaluate-a-model": 4,
@@ -92,10 +92,10 @@ class LessonDesignSystemTests(unittest.TestCase):
 
     def test_published_lessons_111_to_114_have_valid_assessment_and_glossary_parity(self):
         lessons = {
-            "1.1.1": ("a-1-what-is-artificial-intelligence", 3, 8),
+            "1.1.1": ("a-1-what-is-artificial-intelligence", 5, 8),
             "1.1.2": ("1-1-2-history-of-ai", 4, 11),
             "1.1.3": ("1-1-3-symbolic-ai-and-machine-learning", 8, 12),
-            "1.1.4": ("a-2-ai-ml-deep-learning", 3, 8),
+            "1.1.4": ("a-2-ai-ml-deep-learning", 5, 8),
         }
         for code, (base, expected_questions, expected_terms) in lessons.items():
             locale_counts = []

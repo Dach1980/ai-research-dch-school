@@ -7,7 +7,7 @@ document.querySelectorAll("main dl, .lesson dl, .lesson-page dl").forEach(functi
 }
 function enhanceExplicitChecks(){
 document.querySelectorAll(".lesson-check-question[data-correct]").forEach(function(card){
-if(card.dataset.enhanced==="1")return;var boxes=Array.from(card.querySelectorAll('input[type="checkbox"]'));var button=card.querySelector(".lesson-check-button");var feedback=card.querySelector(".lesson-check-feedback");if(!boxes.length||!button||!feedback)return;
+if(card.dataset.enhanced==="1")return;var boxes=Array.from(card.querySelectorAll('input[type="checkbox"], input[type="radio"]'));var button=card.querySelector(".lesson-check-button");var feedback=card.querySelector(".lesson-check-feedback");if(!boxes.length||!button||!feedback)return;
 if(card.dataset.mode==="single"||card.dataset.mode==="yesno")boxes.forEach(function(box){box.addEventListener("change",function(){if(box.checked)boxes.forEach(function(other){if(other!==box)other.checked=false;});});});
 button.addEventListener("click",function(){var selected=boxes.filter(function(box){return box.checked;}).map(function(box){return box.value;}).sort();var expected=card.dataset.correct.split(",").sort();feedback.hidden=false;feedback.classList.remove("is-correct","is-wrong");if(!selected.length){feedback.textContent=words.empty;return;}var ok=selected.length===expected.length&&selected.every(function(value,index){return value===expected[index];});feedback.classList.add(ok?"is-correct":"is-wrong");feedback.textContent=(ok?words.correct:words.wrong)+" "+(card.dataset.explanation||"");});
 card.dataset.enhanced="1";

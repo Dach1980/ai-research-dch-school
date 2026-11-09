@@ -849,7 +849,7 @@
       "target_lesson_uids": [
         "les-a-0001"
       ],
-      "mapping_state": "direct_candidate",
+      "mapping_state": "editorial_approved",
       "access_behavior": "resolve_only"
     },
     {
@@ -860,7 +860,7 @@
       "target_lesson_uids": [
         "les-a-0001"
       ],
-      "mapping_state": "direct_candidate",
+      "mapping_state": "editorial_approved",
       "access_behavior": "resolve_only"
     },
     {
@@ -871,7 +871,7 @@
       "target_lesson_uids": [
         "les-a-0001"
       ],
-      "mapping_state": "direct_candidate",
+      "mapping_state": "editorial_approved",
       "access_behavior": "resolve_only"
     },
     {
@@ -882,7 +882,7 @@
       "target_lesson_uids": [
         "les-a-0001"
       ],
-      "mapping_state": "direct_candidate",
+      "mapping_state": "editorial_approved",
       "access_behavior": "resolve_only"
     },
     {
@@ -893,7 +893,7 @@
       "target_lesson_uids": [
         "les-a-0001"
       ],
-      "mapping_state": "direct_candidate",
+      "mapping_state": "editorial_approved",
       "access_behavior": "resolve_only"
     },
     {
@@ -904,7 +904,7 @@
       "target_lesson_uids": [
         "les-a-0001"
       ],
-      "mapping_state": "direct_candidate",
+      "mapping_state": "editorial_approved",
       "access_behavior": "resolve_only"
     },
     {
@@ -915,7 +915,7 @@
       "target_lesson_uids": [
         "les-a-0002"
       ],
-      "mapping_state": "direct_candidate",
+      "mapping_state": "editorial_approved",
       "access_behavior": "resolve_only"
     },
     {
@@ -926,7 +926,7 @@
       "target_lesson_uids": [
         "les-a-0002"
       ],
-      "mapping_state": "direct_candidate",
+      "mapping_state": "editorial_approved",
       "access_behavior": "resolve_only"
     },
     {
@@ -937,7 +937,7 @@
       "target_lesson_uids": [
         "les-a-0002"
       ],
-      "mapping_state": "direct_candidate",
+      "mapping_state": "editorial_approved",
       "access_behavior": "resolve_only"
     },
     {
@@ -948,7 +948,7 @@
       "target_lesson_uids": [
         "les-a-0002"
       ],
-      "mapping_state": "direct_candidate",
+      "mapping_state": "editorial_approved",
       "access_behavior": "resolve_only"
     },
     {
@@ -959,7 +959,7 @@
       "target_lesson_uids": [
         "les-a-0002"
       ],
-      "mapping_state": "direct_candidate",
+      "mapping_state": "editorial_approved",
       "access_behavior": "resolve_only"
     },
     {
@@ -970,7 +970,7 @@
       "target_lesson_uids": [
         "les-a-0002"
       ],
-      "mapping_state": "direct_candidate",
+      "mapping_state": "editorial_approved",
       "access_behavior": "resolve_only"
     },
     {

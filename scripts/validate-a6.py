@@ -31,7 +31,7 @@ def main():
             errors.append(f"{locale}: html lang mismatch")
         if "scripts/language-switcher.js" not in page:
             errors.append(f"{locale}: language switcher missing")
-        if "TRACK A · MODULE 11 · A.6" not in page:
+        if "TRACK A · COMPOSITE SOURCE ·" not in page:
             errors.append(f"{locale}: lesson identifier missing")
         svgs = SVG_RE.findall(page)
         if len(svgs) != 6:

@@ -56,15 +56,15 @@ class Lesson112113Tests(unittest.TestCase):
 
     def test_lesson_113_has_expanded_case_study_and_source_aligned_quiz(self):
         expected = {
-            "": ("Разбор предметной задачи", "Как оценивать результат", "8. Почему нельзя автоматически"),
-            "-en": ("Case study: monitoring a pump bearing", "Evaluating a model", "8. Why should a model prediction"),
-            "-zh": ("案例分析：水泵轴承温度监测", "如何评估模型", "8. 为什么不能自动"),
+            "": ("Разбор предметной задачи", "Как оценивать результат", "Почему нельзя автоматически"),
+            "-en": ("Case study: monitoring a pump bearing", "Evaluating a model", "Why should a model prediction"),
+            "-zh": ("案例分析：水泵轴承温度监测", "如何评估模型", "为什么不能自动把模型预测"),
         }
         for suffix, phrases in expected.items():
             source = (ROOT / f"lessons/1-1-3-symbolic-ai-and-machine-learning{suffix}.html").read_text(encoding="utf-8")
             for phrase in phrases:
                 self.assertIn(phrase, source)
-            self.assertEqual(source.count('class="quiz-item"'), 8)
+            self.assertEqual(source.count('class="lesson-check-question"'), 8)
             self.assertIn("15.", source)
             self.assertIn("16.", source)
             self.assertNotRegex(source, r"60\s*[–-]\s*75\s*(?:minutes?|минут|分钟)")

@@ -81,6 +81,8 @@ jobs:
         run: python -m unittest discover -s tests -p 'test_catalog_ui_v2.py' -v
       - name: Test lesson content, localized diagrams, and source-aligned quizzes
         run: python -m unittest discover -s tests -p 'test_lessons_112_113.py' -v
+      - name: Test A.4 glossary and interactive quiz
+        run: python -m unittest discover -s tests -p 'test_lesson_a4_interactive_quiz.py' -v
       - name: Test DCH presentation standards
         run: python -m unittest discover -s tests -p 'test_dch_presentation_standards.py' -v
       - name: Test Python code block presentation

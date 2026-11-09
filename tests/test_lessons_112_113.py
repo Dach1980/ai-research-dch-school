@@ -56,7 +56,7 @@ class Lesson112113Tests(unittest.TestCase):
 
     def test_lesson_113_has_expanded_case_study_and_source_aligned_quiz(self):
         expected = {
-            "": ("Разбор предметной задачи", "Как оценивать результат", "Почему нельзя автоматически"),
+            "": ("Разбор предметной задачи", "Как оценивать результат", "Почему прогноз модели нельзя автоматически"),
             "-en": ("Case study: monitoring a pump bearing", "Evaluating a model", "Why should a model prediction"),
             "-zh": ("案例分析：水泵轴承温度监测", "如何评估模型", "为什么不能自动把模型预测"),
         }

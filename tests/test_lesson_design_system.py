@@ -60,15 +60,16 @@ class LessonDesignSystemTests(unittest.TestCase):
                 self.assertIn("lesson-assessment.js", source)
 
     def test_glossary_card_markup_and_shared_styles_are_present(self):
-        for base in (
-            "a-1-what-is-artificial-intelligence",
-            "a-2-ai-ml-deep-learning",
-            "a-3-how-machines-learn-from-data",
-        ):
+        minimums = {
+            "a-1-what-is-artificial-intelligence": 8,
+            "a-2-ai-ml-deep-learning": 8,
+            "a-3-how-machines-learn-from-data": 10,
+        }
+        for base, minimum in minimums.items():
             for suffix in ("", "-en", "-zh"):
                 source = (ROOT / "lessons" / f"{base}{suffix}.html").read_text(encoding="utf-8")
                 terms = source.count('class="glossary-entry"') + source.count("<dt>")
-                self.assertGreaterEqual(terms, 10, f"{base}{suffix}")
+                self.assertGreaterEqual(terms, minimum, f"{base}{suffix}")
         css = (ROOT / "styles/lesson-design-system.css").read_text(encoding="utf-8")
         self.assertIn(".lesson-glossary", css)
         assessment = (ROOT / "scripts/lesson-assessment.js").read_text(encoding="utf-8")
@@ -84,6 +85,41 @@ class LessonDesignSystemTests(unittest.TestCase):
             self.assertEqual(source.count('class="glossary-entry"'), 12, f"A.4{suffix}")
             terms = re.findall(r'class="term">([^<]+)', source)
             self.assertEqual(len(terms), len(set(terms)), f"A.4 duplicate term: {suffix}")
+
+
+    def test_published_lessons_111_to_114_have_valid_assessment_and_glossary_parity(self):
+        lessons = {
+            "1.1.1": ("a-1-what-is-artificial-intelligence", 3, 8),
+            "1.1.2": ("1-1-2-history-of-ai", 4, 11),
+            "1.1.3": ("1-1-3-symbolic-ai-and-machine-learning", 8, 12),
+            "1.1.4": ("a-2-ai-ml-deep-learning", 3, 8),
+        }
+        for code, (base, expected_questions, expected_terms) in lessons.items():
+            locale_counts = []
+            for suffix in ("", "-en", "-zh"):
+                path = ROOT / "lessons" / f"{base}{suffix}.html"
+                source = path.read_text(encoding="utf-8")
+                questions = re.findall(
+                    r'<article class="lesson-check-question"([^>]*)>([\s\S]*?)</article>',
+                    source,
+                )
+                self.assertEqual(len(questions), expected_questions, f"{code}{suffix}")
+                ids = []
+                for attrs, body in questions:
+                    match = re.search(r'data-question-id="([^"]+)"', attrs)
+                    self.assertIsNotNone(match, f"Missing question ID: {code}{suffix}")
+                    ids.append(match.group(1))
+                    self.assertGreater(body.count('type="radio"'), 0, f"{code}{suffix}")
+                    correct = re.search(r'data-correct="([^"]+)"', attrs)
+                    self.assertIsNotNone(correct, f"Missing answer key: {code}{suffix}")
+                    values = re.findall(r'<input[^>]+value="([^"]+)"', body)
+                    for answer in correct.group(1).split(","):
+                        self.assertIn(answer, values, f"Invalid answer key {code}{suffix}")
+                self.assertEqual(len(ids), len(set(ids)), f"Duplicate question IDs: {code}{suffix}")
+                self.assertEqual(source.count('class="glossary-entry"'), expected_terms, f"Glossary count {code}{suffix}")
+                self.assertNotIn("KEY CONCEPT", source, f"Placeholder in {code}{suffix}")
+                locale_counts.append(source.count('class="glossary-entry"'))
+            self.assertEqual(locale_counts, [expected_terms] * 3, code)
 
     def test_admin_exposes_design_system_tab_and_document(self):
         admin = (ROOT / "admin/index.html").read_text(encoding="utf-8")

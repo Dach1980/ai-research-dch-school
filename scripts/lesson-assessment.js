@@ -30,5 +30,5 @@ button.addEventListener("click",function(){var selected=boxes.filter(function(bo
 card.dataset.enhanced="1";
 });
 }
-enhanceLegacyQuiz();styleLegacyGlossaries();enhanceExplicitChecks();
+styleLegacyGlossaries();enhanceExplicitChecks();
 })();

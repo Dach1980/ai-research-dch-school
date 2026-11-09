@@ -27,10 +27,10 @@ class LessonA4InteractiveQuizTests(unittest.TestCase):
             cards = re.findall(r'<div class="interactive-quiz-item" data-question="(\d+)" data-mode="([^"]+)" data-correct="([^"]+)">([\s\S]*?)</div>', source)
             self.assertEqual(len(cards), 6)
             self.assertEqual({mode for _, mode, _, _ in cards}, {"single", "multi", "yesno"})
-            for _, _, correct, body in cards:
+            for _, _, correct, _ in cards:
                 self.assertTrue(correct)
-                self.assertIn('data-explanation="', body)
-                self.assertIn("quiz-check-button", body)
+            self.assertEqual(source.count('data-explanation="'), 6)
+            self.assertEqual(source.count("quiz-check-button"), 6)
 
     def test_answer_feedback_is_computed_from_exact_selected_set(self):
         for suffix in ("", "-en", "-zh"):

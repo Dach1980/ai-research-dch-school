@@ -77,6 +77,11 @@ class LessonDesignSystemTests(unittest.TestCase):
         self.assertIn(".lesson-check-feedback.is-wrong", css)
         self.assertIn(".lesson-code-block", css)
 
+    def test_a4_glossary_has_twelve_unique_cards_in_all_locales(self):
+        for suffix in ("", "-en", "-zh"):
+            source = (ROOT / "lessons" / f"a-4-what-is-machine-learning-model{suffix}.html").read_text(encoding="utf-8")
+            self.assertEqual(source.count('class="glossary-entry"'), 12, f"A.4{suffix}")
+
     def test_admin_exposes_design_system_tab_and_document(self):
         admin = (ROOT / "admin/index.html").read_text(encoding="utf-8")
         self.assertIn('id="tab-design"', admin)

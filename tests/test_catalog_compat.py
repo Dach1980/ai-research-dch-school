@@ -5,7 +5,7 @@ S=importlib.util.spec_from_file_location("catalog_compat",ROOT/"scripts"/"catalo
 class Tests(unittest.TestCase):
  def test_v1_to_hierarchical_ids_and_urls(self):
   x=c.load_catalog(ROOT/"data/catalog");a={z["id"]:z for z in x["lessons"]}
-  self.assertEqual(set(a),{f"A.1.1.{i}" for i in range(1,7)})
+  self.assertEqual(set(a),{f"A.1.1.{i}" for i in range(1,9)})
   self.assertEqual(a["A.1.1.1"]["legacy_id"],"A.1")
   self.assertEqual(a["A.1.1.1"]["url"],"lessons/a-1-what-is-artificial-intelligence.html")
   self.assertEqual(a["A.1.1.6"]["url_i18n"]["zh"],"lessons/a-6-generalization-and-overfitting-zh.html")

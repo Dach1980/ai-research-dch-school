@@ -37,9 +37,9 @@
       '<div class="side-divider"></div><span class="side-heading">После урока вы сможете</span>'+
       '<ul class="outcomes">'+(lesson.learning_outcomes||[]).map(x=>'<li>'+esc(x)+'</li>').join("")+'</ul>'+
       '<p class="side-desc">'+esc(prerequisites)+'</p><div class="meta-grid">'+
-      '<div class="meta-item"><small>Код урока</small><strong>'+esc(displayCodes)+'</strong></div>'+
+      '<div class="meta-item"><small>Код урока</small><strong>'+esc(displayCode)+'</strong></div>'+
       '<div class="meta-item"><small>Длительность</small><strong>'+esc(lesson.duration_min+"–"+lesson.duration_max+" минут")+'</strong></div>'+
-      '<div class="meta-item"><small>Номера в программе</small><strong>'+esc(displayCode)+'</strong></div>'+
+      '<div class="meta-item"><small>Соответствующие уроки</small><strong>'+esc(displayCodes)+'</strong></div>'+
       '<div class="meta-item"><small>Доступ</small><strong>'+esc(lesson.access==="open"?"Открытый урок":lesson.access)+'</strong></div></div>'+
       '<div class="side-actions"><a class="button primary" href="../'+esc(lesson.url)+'">Начать урок ↗</a><a class="button secondary" href="../tracks/understanding-ai.html">О Track A</a></div>';
     universe.querySelectorAll("[data-lesson-id]").forEach(node=>node.setAttribute("aria-pressed",String(node.dataset.lessonId===selectedId)));

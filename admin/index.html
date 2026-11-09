@@ -36,7 +36,7 @@ details{margin-top:12px;font-size:13px}summary{cursor:pointer;color:var(--blue)}
 code{font-size:12px;color:var(--blue)}
 [hidden]{display:none!important}
 @media(max-width:760px){.admin-shell{padding:18px 14px 40px}.admin-grid{grid-template-columns:1fr}.admin-heading h1{font-size:27px}.admin-tab{padding:10px 12px}}
-</style>
+.design-heading{display:flex;justify-content:space-between;gap:20px;align-items:flex-start;flex-wrap:wrap}.design-heading h2{margin:0 0 8px}.design-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:22px}.design-sample{padding:18px;border:1px solid var(--line);border-radius:15px;background:var(--lds-surface,#111d33);min-width:0}.design-sample h3{margin:9px 0;color:var(--text)}.design-sample p{font-size:12px;line-height:1.6;color:var(--muted)}.design-index{font:800 10px monospace;letter-spacing:.12em;color:var(--blue)}.design-choice{display:flex;align-items:center;gap:9px;padding:7px 0;color:var(--muted);font-size:12px}.fake-checkbox{width:16px;height:16px;border:1px solid var(--blue);border-radius:4px}.fake-checkbox.checked{background:var(--blue);box-shadow:inset 0 0 0 4px #fff}.design-actions{display:flex;align-items:center;gap:12px;margin:12px 0}.design-actions span{padding:8px 12px;border-radius:8px;background:var(--blue);color:white;font-size:11px;font-weight:700}.design-actions small{color:var(--muted);font-size:10px}.design-feedback{font-size:11px!important;font-weight:700}.design-feedback.good{color:#168447}.design-feedback.bad{color:#c63737}.design-term{display:grid;grid-template-columns:28px 1fr;gap:9px;padding:12px 0;border-top:1px solid var(--line)}.design-term>b{color:var(--blue);font:800 11px monospace}.design-term strong,.design-term small{display:block}.design-term small{font-size:9px;letter-spacing:.1em;color:var(--blue);margin-top:4px}.design-term p{margin:5px 0 0}.design-code{border:1px solid var(--line);border-radius:10px;overflow:hidden;background:#0b1424;color:#edf3ff}.design-code>div{display:flex;justify-content:space-between;padding:8px 10px;border-bottom:1px solid #30415d;color:#b7c5dc;font-size:9px}.design-code pre{margin:0;padding:12px;overflow:auto;color:#edf3ff;font:11px/1.6 monospace}.design-code code{color:#edf3ff}.design-rules{margin-top:20px;padding:18px;border:1px solid var(--line);border-radius:14px}.design-rules h3{margin-top:0}.design-rules li{margin:8px 0;color:var(--muted);font-size:13px;line-height:1.6}@media(max-width:900px){.design-grid{grid-template-columns:1fr}}</style>
 <link rel="icon" type="image/png" sizes="64x64" href="../assets/favicon.png"></head>
 <body>
 <header class="site-header">
@@ -52,6 +52,7 @@ code{font-size:12px;color:var(--blue)}
 <button class="admin-tab" id="tab-overview" role="tab" aria-selected="true" aria-controls="panel-overview">Обзор</button>
 <button class="admin-tab" id="tab-roadmap" role="tab" aria-selected="false" aria-controls="panel-roadmap">Roadmap</button>
 <button class="admin-tab" id="tab-audit" role="tab" aria-selected="false" aria-controls="panel-audit">Аудит</button>
+<button class="admin-tab" id="tab-design" role="tab" aria-selected="false" aria-controls="panel-design">Lesson Design System</button>
 <button class="admin-tab" id="tab-content" role="tab" aria-selected="false" aria-controls="panel-content">Материалы</button>
 <button class="admin-tab" id="tab-users" role="tab" aria-selected="false" aria-controls="panel-users">Пользователи</button>
 <button class="admin-tab" id="tab-permissions" role="tab" aria-selected="false" aria-controls="panel-permissions">Права</button>
@@ -71,7 +72,21 @@ code{font-size:12px;color:var(--blue)}
 <section id="panel-audit" role="tabpanel" aria-labelledby="tab-audit" hidden>
 <section class="admin-panel"><h2>Журнал административных операций</h2><p class="muted">Изменения каталога, содержимого, прав и разрешений фиксируются в PostgreSQL.</p><div id="admin-db-audit">Журнал БД доступен после применения миграции 006.</div></section>
 </section>
-<section id="panel-content" role="tabpanel" aria-labelledby="tab-content" hidden>
+<section id="panel-design" role="tabpanel" aria-labelledby="tab-design" hidden>
+<section class="admin-panel"><div class="design-heading"><div><p class="eyebrow">LESSON DESIGN SYSTEM · VISUAL MOODBOARD</p><h2>Единый стандарт оформления уроков</h2><p class="muted">Эталонные компоненты для всех треков и локализаций. Это не просто подборка референсов: правила обязательны для новых и перерабатываемых уроков.</p></div><a class="text-link" href="../docs/education/LESSON_DESIGN_SYSTEM.md">Открыть полный стандарт ↗</a></div>
+<div class="design-grid">
+<article class="design-sample"><span class="design-index">01 · SELF-CHECK</span><h3>Самопроверка</h3><p>Вопросы строго по материалу лекции. Один ответ, несколько ответов или Да / Нет.</p><div class="design-choice"><span class="fake-checkbox checked"></span> Один правильный вариант</div><div class="design-choice"><span class="fake-checkbox"></span> Другой вариант</div><div class="design-actions"><span>Проверить ответ</span><small>Кнопка под каждым вопросом</small></div><p class="design-feedback good">✓ Верно. Объяснение ссылается на раздел лекции.</p><p class="design-feedback bad">✕ Неверно. Попробуйте ещё раз и перечитайте объяснение.</p></article>
+<article class="design-sample"><span class="design-index">02 · GLOSSARY</span><h3>Словарь терминов</h3><div class="design-term"><b>01</b><div><strong>Обучение модели</strong><small>MODEL TRAINING</small><p>Настройка параметров модели на обучающих данных.</p></div></div><div class="design-term"><b>02</b><div><strong>Инференс</strong><small>INFERENCE</small><p>Применение обученной модели к новым данным.</p></div></div></article>
+<article class="design-sample"><span class="design-index">03 · CODE</span><h3>Код и практика</h3><div class="design-code"><div><span>PYTHON</span><span>Копировать</span></div><pre><code>def predict(x, weight, bias):
+    return weight * x + bias
+
+result = predict(5, 2, 1)
+print(result)  # 11</code></pre></div><p>Нумерация строк, подсветка синтаксиса, копирование, затем разбор кода и результата.</p></article>
+</div>
+<section class="design-rules"><h3>Обязательные правила</h3><ul><li>Самопроверка: ключ, объяснение и связь с конкретным разделом лекции для каждого вопроса.</li><li>Точный набор ответов проверяется целиком; пустой выбор не считается ошибкой.</li><li>Словарь: номер, термин, английский эквивалент и определение; две колонки на широком экране, одна на мобильном.</li><li>Код: отдельная поверхность, контрастная подсветка, копирование, пояснение и адаптивная прокрутка.</li><li>Все компоненты проверяются в светлой и тёмной теме и на RU / EN / 中文.</li></ul></section>
+<div class="warning">Статус внедрения: стандарт и образцы опубликованы в репозитории. Остальные уроки ещё проходят миграцию; наличие этой страницы не означает, что все уроки уже соответствуют стандарту.</div>
+</section>
+</section>\n<section id="panel-content" role="tabpanel" aria-labelledby="tab-content" hidden>
 <section class="admin-panel"><h2>Каталог учебных материалов</h2><p class="muted">Редактируется metadata в Supabase. Публикация статических HTML-страниц и их переводов по-прежнему проходит через проверенный GitHub Pages deployment.</p>
 <div id="admin-content-list">Загрузка каталога…</div><p id="content-message" class="muted" aria-live="polite"></p></section>
 <section class="admin-panel"><h2>Создать или обновить запись каталога</h2>
@@ -93,6 +108,9 @@ code{font-size:12px;color:var(--blue)}
 })();
 </script>
 <script src="../scripts/supabase-config.js"></script>
+<script>
+(()=>{const tabs=[...document.querySelectorAll('.admin-tabs [role="tab"]')];const panels=tabs.map(t=>document.getElementById(t.getAttribute('aria-controls')));tabs.forEach((tab,i)=>tab.addEventListener('click',()=>{tabs.forEach((t,j)=>{t.setAttribute('aria-selected',String(i===j));if(panels[j])panels[j].hidden=i!==j;});}));})();
+</script>
 <script type="module" src="../scripts/admin-auth.js"></script>
 </body>
 </html>

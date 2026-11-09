@@ -227,6 +227,78 @@
         "en",
         "zh"
       ]
+    },
+    {
+      "id": "A.7",
+      "module_id": "module-11",
+      "track_id": "track-a",
+      "title": "История развития искусственного интеллекта",
+      "status": "published",
+      "access": "open",
+      "level": "beginner",
+      "duration_min": 60,
+      "duration_max": 75,
+      "prerequisites": [
+        "A.1"
+      ],
+      "url": "lessons/1-1-2-history-of-ai.html",
+      "learning_outcomes": [
+        "Объяснять математические и вычислительные предпосылки AI",
+        "Различать ранние предпосылки и формирование AI как дисциплины",
+        "Сравнивать символический, экспертный, статистический и нейросетевой подходы",
+        "Объяснять причины AI winters и условия современных прорывов"
+      ],
+      "title_i18n": {
+        "ru": "История развития искусственного интеллекта",
+        "en": "History of Artificial Intelligence",
+        "zh": "人工智能发展史"
+      },
+      "url_i18n": {
+        "ru": "lessons/1-1-2-history-of-ai.html",
+        "en": "lessons/1-1-2-history-of-ai-en.html",
+        "zh": "lessons/1-1-2-history-of-ai-zh.html"
+      },
+      "languages": [
+        "ru",
+        "en",
+        "zh"
+      ]
+    },
+    {
+      "id": "A.8",
+      "module_id": "module-11",
+      "track_id": "track-a",
+      "title": "Символический AI и машинное обучение",
+      "status": "published",
+      "access": "open",
+      "level": "beginner",
+      "duration_min": 60,
+      "duration_max": 75,
+      "prerequisites": [
+        "A.7"
+      ],
+      "url": "lessons/1-1-3-symbolic-ai-and-machine-learning.html",
+      "learning_outcomes": [
+        "Объяснять символы, правила, базу знаний и механизм вывода",
+        "Описывать цикл машинного обучения",
+        "Различать явно заданную логику и параметры, найденные по данным",
+        "Распознавать гибридные AI-системы"
+      ],
+      "title_i18n": {
+        "ru": "Символический AI и машинное обучение",
+        "en": "Symbolic AI and Machine Learning",
+        "zh": "符号主义 AI 与机器学习"
+      },
+      "url_i18n": {
+        "ru": "lessons/1-1-3-symbolic-ai-and-machine-learning.html",
+        "en": "lessons/1-1-3-symbolic-ai-and-machine-learning-en.html",
+        "zh": "lessons/1-1-3-symbolic-ai-and-machine-learning-zh.html"
+      },
+      "languages": [
+        "ru",
+        "en",
+        "zh"
+      ]
     }
   ]
 }

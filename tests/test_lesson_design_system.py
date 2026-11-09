@@ -36,9 +36,9 @@ class LessonDesignSystemTests(unittest.TestCase):
                     self.assertEqual(source.count('class="quiz-check-button"'), expected, str(path))
                     self.assertEqual(source.count('class="quiz-feedback"'), expected, str(path))
                 else:
-                    self.assertEqual(source.count('class="lesson-check-question"'), expected, str(path))
-                    self.assertEqual(source.count('class="lesson-check-button"'), expected, str(path))
-                    self.assertEqual(source.count('class="lesson-check-feedback"'), expected, str(path))
+                    self.assertEqual(source.count('class="lesson-check-question"'), expected, f"{base}{suffix}")
+                    self.assertEqual(source.count('class="lesson-check-button"'), expected, f"{base}{suffix}")
+                    self.assertEqual(source.count('class="lesson-check-feedback"'), expected, f"{base}{suffix}")
                 self.assertIn('data-explanation="', source, str(path))
                 self.assertIn('type="checkbox"', source, str(path))
                 self.assertIn('data-mode="yesno"', source, str(path))
@@ -67,7 +67,7 @@ class LessonDesignSystemTests(unittest.TestCase):
             for suffix in ("", "-en", "-zh"):
                 source = (ROOT / "lessons" / f"{base}{suffix}.html").read_text(encoding="utf-8")
                 terms = source.count('class="glossary-entry"') + source.count("<dt>")
-                self.assertGreaterEqual(terms, 10, str(path))
+                self.assertGreaterEqual(terms, 10, f"{base}{suffix}")
         css = (ROOT / "styles/lesson-design-system.css").read_text(encoding="utf-8")
         self.assertIn(".lesson-glossary", css)
         assessment = (ROOT / "scripts/lesson-assessment.js").read_text(encoding="utf-8")

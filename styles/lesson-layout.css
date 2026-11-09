@@ -24,3 +24,5 @@
 .lesson-diagram .svg-small{fill:#aebed8;font:12px Manrope,Arial,sans-serif}
 @media(max-width:900px){.site-header{height:auto;min-height:76px;flex-wrap:wrap;padding:12px 0;gap:12px}.nav{gap:14px;flex-wrap:wrap}.header-languages{margin-left:auto}}
 @media(max-width:620px){.track-hero{padding:48px 0 28px}.article-body{padding:1rem 0 3rem}.planet{grid-template-columns:1fr}.orb{margin:8px 0 0}.lesson-outcomes{padding:17px}.header-languages{gap:4px}.header-languages a{padding:6px}}
+
+html[lang="zh"] .track-hero h1{font-family:"Noto Sans SC","Noto Sans CJK SC","Microsoft YaHei",sans-serif;letter-spacing:0}

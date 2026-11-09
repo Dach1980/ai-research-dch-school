@@ -19,7 +19,7 @@ html:not([data-theme="light"]){--lds-ink:#edf3ff;--lds-muted:#b7c5dc;--lds-surfa
 .lesson-check-option input{appearance:none;width:18px;height:18px;flex:0 0 18px;margin:2px 0 0;border:1.5px solid var(--lds-accent);border-radius:4px;background:transparent}
 .lesson-check-option input:checked{background:var(--lds-accent);box-shadow:inset 0 0 0 4px var(--lds-surface)}
 .lesson-check-option input:focus-visible,.lesson-check-button:focus-visible{outline:3px solid var(--lds-accent);outline-offset:3px}
-.lesson-check-button{border:0;border-radius:9px;padding:10px 16px;background:var(--lds-accent);color:#fff;font:700 14px inherit;cursor:pointer}
+.lesson-check-button{border:0;border-radius:9px;padding:10px 16px;background:var(--lds-accent);color:#fff;font-family:inherit;font-size:14px;font-weight:700;cursor:pointer}
 .lesson-check-feedback{margin:12px 0 0;font-weight:700;line-height:1.65}
 .lesson-check-feedback.is-correct{color:var(--lds-good)}.lesson-check-feedback.is-wrong{color:var(--lds-bad)}
 .lesson-code-block{position:relative;margin:1.4rem 0;border:1px solid var(--lds-line);border-radius:13px;background:var(--lds-code);color:var(--lds-ink);overflow:hidden;max-width:100%}

@@ -137,7 +137,7 @@ class PublishedSiteIntegrityTests(unittest.TestCase):
         self.assertGreaterEqual(a5.count("<svg"), 5)
         self.assertIn("Training", a4)
         self.assertIn("Inference", a4)
-        self.assertIn("Проверка понимания", a5)
+        self.assertIn("class=" + chr(34) + "lesson-check" + chr(34), a5)
         self.assertNotIn("\\hat", a4)
 
     def test_language_switcher_and_homepage_knowledge_map(self):

@@ -30,7 +30,7 @@ class LessonA4InteractiveQuizTests(unittest.TestCase):
             for _, _, correct, _ in cards:
                 self.assertTrue(correct)
             self.assertEqual(source.count('data-explanation="'), 6)
-            self.assertEqual(source.count("quiz-check-button"), 6)
+            self.assertEqual(source.count('class="quiz-check-button"'), 6)
 
     def test_answer_feedback_is_computed_from_exact_selected_set(self):
         for suffix in ("", "-en", "-zh"):

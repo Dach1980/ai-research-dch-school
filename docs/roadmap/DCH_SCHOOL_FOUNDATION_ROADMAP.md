@@ -253,3 +253,11 @@ Compatibility projection реализован в browser/Python adapters; доб
 - Добавлены тесты `tests/test_lesson_design_system.py` и подключение к Validate learning catalog.
 
 **Не объявляется завершённым:** визуальная проверка в браузере обеих тем, проверка всех интерактивных сценариев на реальных страницах, а также аудит полноты иллюстраций и кода по содержанию. Результат CI и GitHub Pages для последнего commit должен быть проверен отдельно. Старые и новые страницы с похожими названиями требуют последующей сверки с catalog UID, чтобы не поддерживать случайные дубли.
+
+
+**Результат CI и публикации для commit `dfed9172ae0cf3baceb8bacf07d8537e4491a4ec`:**
+- Validate learning catalog — успешно: [run 42542605535](https://github.com/Dach1980/ai-research-dch-school/actions/runs/42542605535).
+- Deploy static website to GitHub Pages — успешно, включая Supabase migration validation: [run 42542605524](https://github.com/Dach1980/ai-research-dch-school/actions/runs/42542605524).
+- Pages build and deployment — успешно: [run 42542605695](https://github.com/Dach1980/ai-research-dch-school/actions/runs/42542605695).
+
+Ручная визуальная проверка в браузере и проверка поведения после реальной авторизации администратора остаются отдельным приёмочным шагом.

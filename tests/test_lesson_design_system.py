@@ -50,7 +50,12 @@ class LessonDesignSystemTests(unittest.TestCase):
         ):
             for suffix in ("", "-en", "-zh"):
                 source = (ROOT / "lessons" / f"{base}{suffix}.html").read_text(encoding="utf-8")
-                self.assertEqual(source.count('class="quiz-item"'), expected)
+                self.assertEqual(source.count('class="lesson-check-question"'), expected, str(path))
+                self.assertEqual(source.count('class="lesson-check-button"'), expected, str(path))
+                self.assertEqual(source.count('class="lesson-check-feedback"'), expected, str(path))
+                self.assertNotIn('class="quiz-item"', source)
+                self.assertIn('data-correct="', source)
+                self.assertIn('data-explanation="', source)
                 self.assertIn("lesson-assessment.js", source)
 
     def test_glossary_card_markup_and_shared_styles_are_present(self):
@@ -61,9 +66,13 @@ class LessonDesignSystemTests(unittest.TestCase):
         ):
             for suffix in ("", "-en", "-zh"):
                 source = (ROOT / "lessons" / f"{base}{suffix}.html").read_text(encoding="utf-8")
-                self.assertEqual(source.count('class="glossary-entry"'), 5)
+                terms = source.count('class="glossary-entry"') + source.count("<dt>")
+                self.assertGreaterEqual(terms, 10, str(path))
         css = (ROOT / "styles/lesson-design-system.css").read_text(encoding="utf-8")
         self.assertIn(".lesson-glossary", css)
+        assessment = (ROOT / "scripts/lesson-assessment.js").read_text(encoding="utf-8")
+        self.assertNotIn("enhanceLegacyQuiz", assessment)
+        self.assertNotIn("answers[(index+step)", assessment)
         self.assertIn(".lesson-check-feedback.is-correct", css)
         self.assertIn(".lesson-check-feedback.is-wrong", css)
         self.assertIn(".lesson-code-block", css)

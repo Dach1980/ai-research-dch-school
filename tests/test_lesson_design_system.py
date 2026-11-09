@@ -1,3 +1,4 @@
+import re
 import unittest
 from pathlib import Path
 
@@ -81,6 +82,8 @@ class LessonDesignSystemTests(unittest.TestCase):
         for suffix in ("", "-en", "-zh"):
             source = (ROOT / "lessons" / f"a-4-what-is-machine-learning-model{suffix}.html").read_text(encoding="utf-8")
             self.assertEqual(source.count('class="glossary-entry"'), 12, f"A.4{suffix}")
+            terms = re.findall(r'class="term">([^<]+)', source)
+            self.assertEqual(len(terms), len(set(terms)), f"A.4 duplicate term: {suffix}")
 
     def test_admin_exposes_design_system_tab_and_document(self):
         admin = (ROOT / "admin/index.html").read_text(encoding="utf-8")

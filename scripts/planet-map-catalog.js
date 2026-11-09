@@ -23,7 +23,8 @@
     const details = document.querySelector("#planetDetails");
     if (!details) return;
     const legacy = lesson.legacy_id || lesson.id;
-    const displayCode = lesson.v3_target_codes && lesson.v3_target_codes.length ? lesson.v3_target_codes.join(" · ") : "—";
+    const displayCodes = lesson.v3_target_codes && lesson.v3_target_codes.length ? lesson.v3_target_codes.join(" · ") : "—";
+    const displayCode = lesson.v3_target_codes && lesson.v3_target_codes.length > 1 ? lesson.v3_target_codes[0] + " +" + (lesson.v3_target_codes.length - 1) : displayCodes;
     const info = descriptions[legacy] || "Опубликованный учебный материал Track A.";
     const prerequisiteLabels = {"A.1.1.1":"1.1.1","A.1.1.7":"1.1.2","A.7":"1.1.2"};
     const prerequisiteText = (lesson.prerequisites || []).map(id=>prerequisiteLabels[id]||id).join(", ");
@@ -36,7 +37,7 @@
       '<div class="side-divider"></div><span class="side-heading">После урока вы сможете</span>'+
       '<ul class="outcomes">'+(lesson.learning_outcomes||[]).map(x=>'<li>'+esc(x)+'</li>').join("")+'</ul>'+
       '<p class="side-desc">'+esc(prerequisites)+'</p><div class="meta-grid">'+
-      '<div class="meta-item"><small>Код урока</small><strong>'+esc(displayCode)+'</strong></div>'+
+      '<div class="meta-item"><small>Код урока</small><strong>'+esc(displayCodes)+'</strong></div>'+
       '<div class="meta-item"><small>Длительность</small><strong>'+esc(lesson.duration_min+"–"+lesson.duration_max+" минут")+'</strong></div>'+
       '<div class="meta-item"><small>Номера в программе</small><strong>'+esc(displayCode)+'</strong></div>'+
       '<div class="meta-item"><small>Доступ</small><strong>'+esc(lesson.access==="open"?"Открытый урок":lesson.access)+'</strong></div></div>'+
@@ -80,7 +81,8 @@
       });
       list.innerHTML='<div class="side-top"><strong>Track A · Understanding AI</strong><span class="level">'+entries.length+' опубликовано</span></div>'+
         entries.map(({lesson,module,theme})=>{
-          const displayCode=lesson.v3_target_codes&&lesson.v3_target_codes.length?lesson.v3_target_codes.join(" · "):"—";
+          const displayCodes=lesson.v3_target_codes&&lesson.v3_target_codes.length?lesson.v3_target_codes.join(" · "):"—";
+        const displayCode=lesson.v3_target_codes&&lesson.v3_target_codes.length>1?lesson.v3_target_codes[0]+" +"+(lesson.v3_target_codes.length-1):displayCodes;
           return '<div class="list-entry"><div><strong>'+esc(displayCode)+' — '+esc(lesson.title)+'</strong><small>Theme '+esc(theme.id.split('.').pop())+' · Module '+esc(module.id.split('.').pop())+' · '+esc(lesson.duration_min+"–"+lesson.duration_max+" минут")+'</small></div><div class="list-actions"><button type="button" data-select-lesson="'+esc(lesson.id)+'">Показать на карте</button><a class="button secondary" href="../'+esc(lesson.url)+'">Открыть урок ↗</a></div></div>';
         }).join("");
       list.querySelectorAll("[data-select-lesson]").forEach(button=>button.addEventListener("click",()=>{

@@ -106,7 +106,7 @@ class PublishedSiteIntegrityTests(unittest.TestCase):
         self.assertNotIn("getElementById('planetA1')", page)
         self.assertIn('data-planets-root', page)
         self.assertIn('DCHCatalogCompat.load', script)
-        self.assertIn('loadLegacyProjection', script)
+        self.assertIn('schemaVersion:3', script)
         self.assertNotIn('data/catalog/lessons.json', script)
         self.assertNotIn('data/catalog/planets.json', script)
         self.assertIn('catalog-v2.json', (ROOT / 'scripts' / 'catalog-compat.js').read_text(encoding='utf-8'))

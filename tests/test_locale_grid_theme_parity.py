@@ -13,9 +13,9 @@ TRACKS = [
 ]
 MAPS = ["learning-map/index.html", "learning-map/index-en.html", "learning-map/index-zh.html"]
 LESSONS = [
-    "lessons/a-1-what-is-artificial-intelligence.html",
-    "lessons/a-1-what-is-artificial-intelligence-en.html",
-    "lessons/a-1-what-is-artificial-intelligence-zh.html",
+    "lessons/a-1-1-1.html",
+    "lessons/a-1-1-1-en.html",
+    "lessons/a-1-1-1-zh.html",
     "lessons/a-1-1-3.html",
     "lessons/a-1-1-3-en.html",
     "lessons/a-1-1-3-zh.html",
@@ -107,9 +107,9 @@ class LocaleGridThemeParityTests(unittest.TestCase):
 
     def test_a1_lesson_uses_shared_planet_hero_and_end_of_lesson_check_in_all_locales(self):
         pages = {
-            "ru": "lessons/a-1-what-is-artificial-intelligence.html",
-            "en": "lessons/a-1-what-is-artificial-intelligence-en.html",
-            "zh": "lessons/a-1-what-is-artificial-intelligence-zh.html",
+            "ru": "lessons/a-1-1-1.html",
+            "en": "lessons/a-1-1-1-en.html",
+            "zh": "lessons/a-1-1-1-zh.html",
         }
         for locale, relative in pages.items():
             page = (ROOT / relative).read_text(encoding="utf-8")
@@ -178,9 +178,9 @@ class LocaleGridThemeParityTests(unittest.TestCase):
 
     def test_a1_lesson_content_structure_sources_and_final_navigation_match_all_locales(self):
         pages = {
-            "ru": "lessons/a-1-what-is-artificial-intelligence.html",
-            "en": "lessons/a-1-what-is-artificial-intelligence-en.html",
-            "zh": "lessons/a-1-what-is-artificial-intelligence-zh.html",
+            "ru": "lessons/a-1-1-1.html",
+            "en": "lessons/a-1-1-1-en.html",
+            "zh": "lessons/a-1-1-1-zh.html",
         }
         required_sources = [
             "https://oecd.ai/en/ai-principles",
@@ -190,9 +190,9 @@ class LocaleGridThemeParityTests(unittest.TestCase):
             "https://aima.cs.berkeley.edu/",
         ]
         required_navigation = {
-            "ru": ["../learning-map/index.html", "1-1-2-history-of-ai.html", "../tracks/understanding-ai.html", "index.html"],
-            "en": ["../learning-map/index-en.html", "1-1-2-history-of-ai-en.html", "../tracks/understanding-ai-en.html", "index-en.html"],
-            "zh": ["../learning-map/index-zh.html", "1-1-2-history-of-ai-zh.html", "../tracks/understanding-ai-zh.html", "index-zh.html"],
+            "ru": ["../learning-map/index.html", "a-1-1-2.html", "../tracks/understanding-ai.html", "index.html"],
+            "en": ["../learning-map/index-en.html", "a-1-1-2-en.html", "../tracks/understanding-ai-en.html", "index-en.html"],
+            "zh": ["../learning-map/index-zh.html", "a-1-1-2-zh.html", "../tracks/understanding-ai-zh.html", "index-zh.html"],
         }
         locale_headings = {
             "ru": ["14. Словарь урока", "15. Самопроверка", "17. Источники и дополнительное чтение"],
@@ -209,7 +209,8 @@ class LocaleGridThemeParityTests(unittest.TestCase):
                 self.assertEqual(page.count('class="lesson-sources"'), 1)
                 self.assertEqual(page.count('class="lesson-nav"'), 1)
                 nav_start = page.index('class="lesson-nav"')
-                self.assertGreater(nav_start, page.index('class="lesson-check"'))
+                self.assertGreater(nav_start, page.index('class="lesson-sources"'))
+                self.assertLess(nav_start, page.index('class="lesson-glossary"'))
                 for href in required_navigation[locale]:
                     self.assertIn('href="' + href + '"', page[nav_start:])
                 self.assertLess(nav_start, page.index("</main>"))
@@ -223,9 +224,9 @@ class LocaleGridThemeParityTests(unittest.TestCase):
 
     def test_a1_lesson_shell_planet_footer_and_outcomes_contrast_match_all_locales(self):
         pages = {
-            "ru": "lessons/a-1-what-is-artificial-intelligence.html",
-            "en": "lessons/a-1-what-is-artificial-intelligence-en.html",
-            "zh": "lessons/a-1-what-is-artificial-intelligence-zh.html",
+            "ru": "lessons/a-1-1-1.html",
+            "en": "lessons/a-1-1-1-en.html",
+            "zh": "lessons/a-1-1-1-zh.html",
         }
         contents = {}
         for locale, relative in pages.items():
@@ -235,17 +236,17 @@ class LocaleGridThemeParityTests(unittest.TestCase):
                 self.assertIn('class="site-header"', page)
                 self.assertIn('class="lesson-planet-banner"', page)
                 self.assertIn('class="lesson-planet-sphere"', page)
-                self.assertIn('class="page-footer"', page)
+                self.assertIn('class="footer"', page)
                 self.assertIn("lesson-planet-art", page)
                 self.assertIn(".lesson-planet-banner{", page)
                 self.assertNotIn('class="outcomes"', page)
                 self.assertNotIn('<div class="outcomes"><strong>', page)
                 self.assertIn("theme-system.js", page)
                 self.assertIn("lesson-layout.js", page)
-                self.assertEqual(page.count('class="page-footer"'), 1)
+                self.assertEqual(page.count('class="footer"'), 1)
         for locale in ("en", "zh"):
             self.assertIn('class="nav"', contents[locale])
-            self.assertIn('class="page-footer"', contents[locale])
+            self.assertIn('class="footer"', contents[locale])
             self.assertNotIn('href="../tracks/understanding-ai.html"', contents[locale])
         self.assertIn("<h2>Learning outcomes</h2><p>", contents["en"])
         self.assertIn("<h2>学习目标</h2><p>", contents["zh"])

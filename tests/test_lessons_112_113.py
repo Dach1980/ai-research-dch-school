@@ -146,7 +146,7 @@ class Lesson112113Tests(unittest.TestCase):
         for lesson, locales in expected.items():
             for suffix, numbers in locales.items():
                 page = (ROOT / f"lessons/{lesson}{suffix}.html").read_text(encoding="utf-8")
-                actual = [int(value) for value in re.findall(r"<h2[^>]*>\\s*(\\d+)\\.", page)]
+                actual = [int(value) for value in re.findall(r"<h2[^>]*>\s*(\d+)\.", page)]
                 with self.subTest(lesson=lesson, locale=suffix or "ru"):
                     self.assertEqual(actual, numbers)
 

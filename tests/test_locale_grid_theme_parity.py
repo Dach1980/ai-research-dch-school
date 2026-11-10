@@ -264,8 +264,8 @@ class LocaleGridThemeParityTests(unittest.TestCase):
         }
         for locale, (relative, expected_h2, expected_h3) in pages.items():
             page = (ROOT / relative).read_text(encoding="utf-8")
-            h2 = [int(value) for value in re.findall(r"<h2[^>]*>\s*(\d+)\\.", page)]
-            h3 = re.findall(r"<h3[^>]*>\s*(\d+(?:\\.\d+)+)\\.", page)
+            h2 = [int(value) for value in re.findall(r"<h2[^>]*>\s*(\d+)\.", page)]
+            h3 = re.findall(r"<h3[^>]*>\s*(\d+(?:\.\d+)+)\.", page)
             with self.subTest(locale=locale):
                 self.assertEqual(h2, expected_h2)
                 self.assertEqual(h3, expected_h3)
@@ -281,11 +281,11 @@ class LocaleGridThemeParityTests(unittest.TestCase):
             with self.subTest(path=path):
                 self.assertIn('data-lesson-catalog', page)
                 self.assertIn('lesson-catalog.js', page)
-                self.assertIsNone(re.search(r'\\bA\\.\d+', page))
+                self.assertIsNone(re.search(r'\\bA\.\d+', page))
         for path in ("index.html", "index-en.html", "index-zh.html"):
             page = (ROOT / path).read_text(encoding="utf-8")
             with self.subTest(path=path):
-                self.assertIsNone(re.search(r'\\bA\\.\d+', page))
+                self.assertIsNone(re.search(r'\\bA\.\d+', page))
         home_ru = (ROOT / "index.html").read_text(encoding="utf-8")
         self.assertIn("1.1.3 — AI, Machine Learning и Deep Learning", home_ru)
         self.assertIn('href="lessons/a-1-1-3.html"', home_ru)

@@ -114,3 +114,10 @@ Automated catalog validation, the dedicated lesson tests, locale-structure check
 The 15 pages created for lessons 1.2.1, 1.2.2, 1.2.4, 1.2.5 and 1.2.6 have now been refactored to the exact outer page structure of canonical lesson 1.1.1. Shared styles are centralized in `styles/lesson-reference-111.css`; the pages no longer carry inline `<style>` blocks for the shell. Header, hero, planet banner, article width, sources, bottom navigation, glossary, self-check and footer now follow the reference. Repeated practice panels were removed where the same task was already described in the lecture section.
 
 These pages remain `review` in catalog v3. No publication status was changed as part of this design integration.
+
+
+## Template and shell integration update — 2026-11-11
+
+A reusable starter has been added at `templates/lesson-page-template.html`, with the authoring guide at `docs/education/LESSON_AUTHORING_TEMPLATE.md`. The template links the shared styles and defines all structural slots. Both resources are linked from the admin Design System panel.
+
+The same shell is now applied to all 27 existing Track A pages across RU / EN / 中文 (lessons 1.1.1–1.1.4 and the first five 1.2 lessons). The 1.1.2–1.1.4 content-specific CSS is centralized in `styles/lesson-content-components.css`; the shell itself remains in `styles/lesson-reference-111.css`. Source lecture text, glossary terms, practice checks and assessments are preserved.

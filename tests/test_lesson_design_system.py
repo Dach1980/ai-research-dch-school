@@ -105,7 +105,7 @@ class LessonDesignSystemTests(unittest.TestCase):
             "Программа Track",
             "Все уроки",
             "Стандартный footer",
-            "перенаправлением",
+            "перенаправление",
         ):
             self.assertIn(required, standard)
 

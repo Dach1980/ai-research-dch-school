@@ -12,6 +12,8 @@ on:
       - "scripts/lesson-reader.js"
       - "scripts/theme-system.js"
       - "scripts/code-blocks.js"
+      - "scripts/lesson-layout.js"
+      - "styles/lesson-standard.css"
       - "styles/main.css"
       - "styles/theme-system.css"
       - "styles/code-blocks.css"
@@ -30,6 +32,8 @@ on:
       - "data/catalog/**"
       - "scripts/theme-system.js"
       - "scripts/code-blocks.js"
+      - "scripts/lesson-layout.js"
+      - "styles/lesson-standard.css"
       - "styles/main.css"
       - "styles/theme-system.css"
       - "styles/code-blocks.css"
@@ -81,6 +85,8 @@ jobs:
         run: python -m unittest discover -s tests -p 'test_catalog_ui_v2.py' -v
       - name: Test lesson content, localized diagrams, and source-aligned quizzes
         run: python -m unittest discover -s tests -p 'test_lessons_112_113.py' -v
+      - name: Test locale grid and lesson standard parity
+        run: python -m unittest discover -s tests -p 'test_locale_grid_theme_parity.py' -v
       - name: Test lesson design system across Track A
         run: python -m unittest discover -s tests -p 'test_lesson_design_system.py' -v
       - name: Test A.4 glossary and interactive quiz
@@ -92,7 +98,7 @@ jobs:
       - name: Test DCH brand assets
         run: python -m unittest discover -s tests -p 'test_brand_assets.py' -v
       - name: Check theme and code scripts syntax
-        run: node --check scripts/theme-system.js && node --check scripts/code-blocks.js
+        run: node --check scripts/theme-system.js && node --check scripts/code-blocks.js && node --check scripts/lesson-layout.js
       - name: Check browser catalogue scripts syntax
         run: node --check scripts/catalog-compat.js && node --check scripts/lesson-catalog.js && node --check scripts/planet-map-catalog.js && node --check scripts/home-knowledge-map.js && node --check scripts/lesson-reader.js && node --check lessons/data/xai-01-what-and-why.js
       - name: Validate production hierarchical catalog v2

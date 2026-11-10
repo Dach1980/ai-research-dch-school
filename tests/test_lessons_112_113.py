@@ -7,7 +7,7 @@ ROOT = Path(__file__).resolve().parents[1]
 
 class Lesson112113Tests(unittest.TestCase):
     def test_all_locales_exist_and_have_glossary_cards(self):
-        for lesson in ("1-1-2-history-of-ai", "a-1-1-3", "a-1-1-4"):
+        for lesson in ("a-1-1-2", "a-1-1-3", "a-1-1-4"):
             for suffix in ("", "-en", "-zh"):
                 path = ROOT / f"lessons/{lesson}{suffix}.html"
                 self.assertTrue(path.is_file(), str(path))
@@ -18,7 +18,7 @@ class Lesson112113Tests(unittest.TestCase):
                 self.assertIn("lesson-visual-palette.css", (ROOT / "styles/main.css").read_text(encoding="utf-8"))
 
     def test_new_lessons_use_trackless_display_codes(self):
-        for lesson, code in (("1-1-2-history-of-ai", "1.1.2"), ("a-1-1-3", "1.1.3"), ("a-1-1-4", "1.1.4")):
+        for lesson, code in (("a-1-1-2", "1.1.2"), ("a-1-1-3", "1.1.3"), ("a-1-1-4", "1.1.4")):
             for suffix in ("", "-en", "-zh"):
                 source = (ROOT / f"lessons/{lesson}{suffix}.html").read_text(encoding="utf-8")
                 self.assertIn(code, source)
@@ -27,7 +27,7 @@ class Lesson112113Tests(unittest.TestCase):
 
     def test_diagrams_are_localized_for_each_lesson_language(self):
         expected = {
-            "1-1-2-history-of-ai": {
+            "a-1-1-2": {
                 "": ("Пять крупных этапов истории AI", "Предпосылки", "Символический AI"),
                 "-en": ("AI history: five broad periods", "Foundations", "Symbolic AI"),
                 "-zh": ("人工智能发展的五个主要阶段", "基础研究", "符号主义 AI"),
@@ -47,7 +47,7 @@ class Lesson112113Tests(unittest.TestCase):
                     self.assertIn(label, svg.group(0), f"{lesson}{suffix}: {label}")
 
     def test_new_112_113_headers_do_not_claim_reading_duration(self):
-        for lesson in ("1-1-2-history-of-ai", "a-1-1-3", "a-1-1-4"):
+        for lesson in ("a-1-1-2", "a-1-1-3", "a-1-1-4"):
             for suffix in ("", "-en", "-zh"):
                 source = (ROOT / f"lessons/{lesson}{suffix}.html").read_text(encoding="utf-8")
                 header = re.search(r'<div class="(?:lesson-meta|track-meta)">([\s\S]*?)</div>', source)

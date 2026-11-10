@@ -104,7 +104,7 @@
       "prerequisites": [
         "A.1.1.1"
       ],
-      "url": "lessons/a-2-ai-ml-deep-learning.html",
+      "url": "lessons/a-1-1-3.html",
       "learning_outcomes": [
         "Различать AI, Machine Learning и Deep Learning",
         "Объяснять отношения между AI, ML и DL",
@@ -117,9 +117,9 @@
         "zh": "AI、机器学习与深度学习"
       },
       "url_i18n": {
-        "ru": "lessons/a-2-ai-ml-deep-learning.html",
-        "en": "lessons/a-2-ai-ml-deep-learning-en.html",
-        "zh": "lessons/a-2-ai-ml-deep-learning-zh.html"
+        "ru": "lessons/a-1-1-3.html",
+        "en": "lessons/a-1-1-3-en.html",
+        "zh": "lessons/a-1-1-3-zh.html"
       },
       "languages": [
         "ru",
@@ -355,7 +355,7 @@
       "prerequisites": [
         "A.1.1.7"
       ],
-      "url": "lessons/1-1-3-symbolic-ai-and-machine-learning.html",
+      "url": "lessons/a-1-1-4.html",
       "learning_outcomes": [
         "Объяснять символы, правила, базу знаний и механизм вывода",
         "Описывать цикл машинного обучения",
@@ -368,9 +368,9 @@
         "zh": "符号主义人工智能与机器学习"
       },
       "url_i18n": {
-        "ru": "lessons/1-1-3-symbolic-ai-and-machine-learning.html",
-        "en": "lessons/1-1-3-symbolic-ai-and-machine-learning-en.html",
-        "zh": "lessons/1-1-3-symbolic-ai-and-machine-learning-zh.html"
+        "ru": "lessons/a-1-1-4.html",
+        "en": "lessons/a-1-1-4-en.html",
+        "zh": "lessons/a-1-1-4-zh.html"
       },
       "languages": [
         "ru",

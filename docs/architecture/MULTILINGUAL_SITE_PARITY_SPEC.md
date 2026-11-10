@@ -32,10 +32,12 @@ Scope: public school website, shared navigation, homepage, tracks, lesson catalo
 - Fix homepage locale-switcher URL resolution for both GitHub Pages project paths and root-hosted Preview/custom domains.
 - Add static regression tests for homepage structural and shared-shell parity.
 
-### Phase 2 — track pages
-- Bring Track A/B/C pages to a common information architecture.
-- Preserve curriculum facts and published/unpublished status.
-- Complete EN and ZH content based on approved RU source; do not infer or invent missing content.
+### Phase 2 — track pages (implemented in this PR)
+- Bring Track A/B/C pages to a common information architecture across RU / EN / ZH.
+- Preserve curriculum facts, module identifiers and published/unpublished status.
+- Translate the approved curriculum structure and outcomes without creating lessons or inventing publication status.
+- Load the same account, language and theme controls on every track page.
+- Add regression tests for section parity, curriculum counts and shared controls.
 
 ### Phase 3 — knowledge map and catalog
 - Consolidate map rendering around one data source and shared behavior.

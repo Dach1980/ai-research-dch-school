@@ -39,3 +39,4 @@ function installRecoveryPasswordToggles(){
 }
 const recoveryObserver=new MutationObserver(()=>{if(!form.hidden){installRecoveryPasswordToggles();recoveryObserver.disconnect();}});
 recoveryObserver.observe(form,{attributes:true,attributeFilter:["hidden"]});
+installRecoveryPasswordToggles();

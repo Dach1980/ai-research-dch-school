@@ -26,6 +26,7 @@ class LessonStructureParser(HTMLParser):
         self.current_question = None
         self.footer_brand_link = False
         self.language = None
+        self.in_footer = False
 
     def handle_starttag(self, tag, attrs):
         attrs = dict(attrs)

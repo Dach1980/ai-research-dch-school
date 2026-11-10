@@ -1,39 +1,25 @@
 (() => {
   const root = document.querySelector("[data-home-knowledge-map]");
   if (!root) return;
-  const esc = value => String(value ?? "").replace(/[&<>"']/g, c => ({
-    "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
-  })[c]);
-  const locale = document.documentElement.lang || "ru";
-  const cardClass = root.dataset.cardClass || "home-planet";
-  const catalogBase = root.dataset.catalogBase || "data/catalog";
-  const messages = {
-    ru:{open:"Открыть урок ↗",empty:"Опубликованные уроки появятся здесь после проверки.",error:"Не удалось загрузить каталог знаний.",missing:"Каталог знаний временно недоступен."},
-    en:{open:"Open lesson ↗",empty:"Published lessons will appear here after review.",error:"The knowledge catalogue could not be loaded.",missing:"The knowledge catalogue is temporarily unavailable."},
-    zh:{open:"打开课程 ↗",empty:"课程通过审核后将在此显示。",error:"无法加载知识目录。",missing:"知识目录暂时不可用。"}
+  const esc = value => String(value ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+  const raw = document.documentElement.lang || "ru";
+  const locale = raw.toLowerCase().startsWith("zh") ? "zh" : raw.toLowerCase().startsWith("en") ? "en" : "ru";
+  const messages = {ru:{open:"Открыть урок ↗",empty:"Опубликованные уроки появятся здесь после проверки."},en:{open:"Open lesson ↗",empty:"Published lessons will appear here after review."},zh:{open:"打开课程 ↗",empty:"课程通过审核后将在此显示。"}}[locale];
+  const titles = {
+    "1.1.1":{en:"What Is Artificial Intelligence?",zh:"什么是人工智能？"},
+    "1.1.2":{en:"A Brief History of Artificial Intelligence",zh:"人工智能发展简史"},
+    "1.1.3":{en:"Symbolic AI and Machine Learning",zh:"符号人工智能与机器学习"},
+    "1.1.4":{en:"AI, Machine Learning and Deep Learning",zh:"人工智能、机器学习与深度学习"}
   };
-  const ui = messages[locale] || messages.en;
-  if (!window.DCHCatalogCompat) {
-    root.innerHTML = `<p class="muted">${esc(ui.missing)}</p>`;
-    return;
-  }
-  window.DCHCatalogCompat.loadLegacyProjection({baseUrl:catalogBase})
-    .then(data => {
-      const lessons = data.lessons
-        .filter(item => item.status === "published" && item.track_id === "track-a")
-        .sort((a,b) => a.id.localeCompare(b.id, "en", {numeric:true}));
-      if (!lessons.length) {
-        root.innerHTML = `<p class="muted">${esc(ui.empty)}</p>`;
-        return;
-      }
-      root.innerHTML = lessons.map(lesson => {
-        const title = lesson.title_i18n?.[locale] || lesson.title;
-        const href = (lesson.url_i18n && lesson.url_i18n[locale]) || lesson.url;
-        const displayCode = lesson.v3_target_codes && lesson.v3_target_codes.length ? lesson.v3_target_codes.join(" · ") : "—";
-        return `<a class="${esc(cardClass)}" href="${esc(href)}"><b>${esc(displayCode)}</b><strong>${esc(title)}</strong><span>${esc(ui.open)}</span></a>`;
-      }).join("");
-    })
-    .catch(() => {
-      root.innerHTML = `<p class="muted">${esc(ui.error)}</p>`;
-    });
+  const catalog = window.DCHCatalogCompat;
+  if (!catalog) { root.textContent = messages.empty; return; }
+  catalog.load({baseUrl:root.dataset.catalogBase || "data/catalog",schemaVersion:3}).then(data => {
+    const lessons = data.lessons.filter(x => x.status==="published" && x.content_state==="published" && x.track_uid==="trk-a").sort((a,b)=>a.code.localeCompare(b.code,undefined,{numeric:true}));
+    if (!lessons.length) { root.textContent = messages.empty; return; }
+    root.innerHTML = lessons.map(lesson => {
+      const title = lesson.title_i18n?.[locale] || titles[lesson.code]?.[locale] || lesson.title;
+      const href = lesson.url_i18n?.[locale] || lesson.url_i18n?.ru;
+      return '<a class="'+esc(root.dataset.cardClass || "home-planet")+'" href="'+esc(href)+'"><b>'+esc(lesson.code)+'</b><strong>'+esc(title)+'</strong><span>'+esc(messages.open)+'</span></a>';
+    }).join("");
+  }).catch(() => { root.textContent = messages.empty; });
 })();

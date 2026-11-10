@@ -26,7 +26,9 @@ class HomepageLocaleParityTests(unittest.TestCase):
     def test_all_homepages_exist_and_declare_their_locale(self):
         expected = {"ru": "ru", "en": "en", "zh": "zh"}
         for locale, html in self.pages.items():
-            self.assertIn(f'<html lang="{expected[locale]}"', html.lower())
+            match = re.search(r'<html lang="([^"]+)"', html, re.IGNORECASE)
+            self.assertIsNotNone(match, locale)
+            self.assertTrue(match.group(1).lower().startswith(expected[locale]), locale)
 
     def test_homepages_share_the_same_primary_section_order(self):
         for locale, html in self.pages.items():

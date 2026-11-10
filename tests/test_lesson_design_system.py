@@ -106,6 +106,42 @@ class LessonDesignSystemTests(unittest.TestCase):
         self.assertIn("../lessons/a-1-1-1-en.html", admin)
         self.assertIn("../lessons/a-1-1-1-zh.html", admin)
 
+    def test_first_data_lessons_use_the_exact_111_page_shell_in_all_locales(self):
+        bases = ("a-1-2-1", "a-1-2-2", "a-1-2-4", "a-1-2-5", "a-1-2-6")
+        for base in bases:
+            for suffix, locale in (("", "ru"), ("-en", "en"), ("-zh", "zh")):
+                path = ROOT / "lessons" / f"{base}{suffix}.html"
+                source = path.read_text(encoding="utf-8")
+                with self.subTest(path=path):
+                    self.assertIn(f'<html lang="{locale}"', source)
+                    self.assertIn('<header class="site-header">', source)
+                    self.assertIn('<main class="container">', source)
+                    self.assertIn('<section class="track-hero article-hero">', source)
+                    self.assertIn('<article class="article-body">', source)
+                    self.assertIn('class="lesson-planet-banner"', source)
+                    self.assertIn('class="lesson-planet-art"', source)
+                    self.assertIn('<section class="lesson-sources">', source)
+                    self.assertIn('<nav class="lesson-nav"', source)
+                    self.assertIn('class="lesson-glossary"', source)
+                    self.assertIn('<section class="lesson-check">', source)
+                    self.assertIn('<footer class="footer">', source)
+                    self.assertIn("../styles/lesson-reference-111.css", source)
+                    self.assertNotIn("<style>", source)
+                    self.assertNotIn("lesson-languages", source)
+
+    def test_canonical_lesson_111_has_correct_final_section_sequence(self):
+        cases = {
+            "": ("14. Расширенный словарь терминов", "15. Практическое задание", "16. Источники и дополнительное чтение", "17. Самопроверка"),
+            "-en": ("14. Practical task", "15. Lesson glossary", "16. Sources and further reading", "17. Self-check"),
+            "-zh": ("14. 实践任务", "15. 本课术语表", "16. 参考资料与延伸阅读", "17. 自测"),
+        }
+        for suffix, headings in cases.items():
+            source = (ROOT / "lessons" / f"a-1-1-1{suffix}.html").read_text(encoding="utf-8")
+            for heading in headings:
+                self.assertIn(heading, source, f"{suffix}: {heading}")
+            self.assertNotIn("<style>", source)
+            self.assertIn("../styles/lesson-reference-111.css", source)
+
     def test_admin_exposes_design_system_tab_and_document(self):
         admin = (ROOT / "admin/index.html").read_text(encoding="utf-8")
         self.assertIn('id="tab-design"', admin)

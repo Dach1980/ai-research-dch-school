@@ -130,8 +130,8 @@ class LessonDesignSystemTests(unittest.TestCase):
     def test_canonical_lesson_111_has_correct_final_section_sequence(self):
         cases = {
             "": ("14. Расширенный словарь терминов", "15. Практическое задание", "16. Источники и дополнительное чтение", "17. Самопроверка"),
-            "-en": ("14. Practical task", "15. Lesson glossary", "16. Sources and further reading", "17. Self-check"),
-            "-zh": ("14. 实践任务", "15. 本课术语表", "16. 参考资料与延伸阅读", "17. 自测"),
+            "-en": ("7. Review checkpoint", "8. Expanded lesson: concepts, boundaries and examples", "9. Deep dive: approaches and task types", "10. Lesson glossary", "11. Sources and further reading", "12. Self-check"),
+            "-zh": ("7. 复习检查点", "8. 扩展课程：概念、边界与案例", "9. 技术路线与任务类型详解", "10. 本课术语表", "11. 参考资料与延伸阅读", "12. 自测"),
         }
         for suffix, headings in cases.items():
             source = (ROOT / "lessons" / f"a-1-1-1{suffix}.html").read_text(encoding="utf-8")

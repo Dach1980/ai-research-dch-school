@@ -50,3 +50,14 @@ html[data-theme="light"] .news-card{background:linear-gradient(145deg,#fff,#edf2
 @media(max-width:850px){.home-planets{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media(max-width:700px){.latest{grid-template-columns:1fr}.topline{align-items:flex-start;flex-direction:column}}
 @media(max-width:560px){.home-planets{grid-template-columns:repeat(2,minmax(0,1fr))}.knowledge-home{padding-top:60px;padding-bottom:60px}}
+
+/* Shared curriculum roadmap used by Track A in every locale. */
+.track-roadmap{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.track-module{padding:17px 19px;border:1px solid var(--line);border-radius:13px;background:linear-gradient(145deg,#14233b,#0d172a)}
+.track-module .module-id{font-size:10px;letter-spacing:.14em;color:var(--blue);font-weight:800}
+.track-module h3{font:700 16px/1.35 Manrope,sans-serif;margin:7px 0}
+.track-module p{font-size:12px;line-height:1.6;margin:0;color:var(--muted)}
+.track-module .module-status{display:inline-block;margin-top:12px;font-size:10px;color:#a9b8d0}
+html[data-theme="light"] .track-module{background:linear-gradient(145deg,#fff,#edf2f9)}
+html[data-theme="light"] .track-module h3{color:var(--text)}
+@media(max-width:650px){.track-roadmap{grid-template-columns:1fr}}

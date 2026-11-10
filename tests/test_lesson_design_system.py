@@ -127,6 +127,34 @@ class LessonDesignSystemTests(unittest.TestCase):
                     self.assertNotIn("<style>", source)
                     self.assertNotIn("lesson-languages", source)
 
+    def test_all_active_track_a_lessons_share_the_canonical_111_shell(self):
+        bases = (
+            "a-1-1-1", "a-1-1-2", "a-1-1-3", "a-1-1-4",
+            "a-1-2-1", "a-1-2-2", "a-1-2-4", "a-1-2-5", "a-1-2-6",
+        )
+        for base in bases:
+            for suffix, locale in (("", "ru"), ("-en", "en"), ("-zh", "zh")):
+                path = ROOT / "lessons" / f"{base}{suffix}.html"
+                page = path.read_text(encoding="utf-8")
+                with self.subTest(path=path):
+                    self.assertIn(f'<html lang="{locale}"', page)
+                    self.assertIn('<header class="site-header">', page)
+                    self.assertIn('<main class="container">', page)
+                    self.assertIn('<section class="track-hero article-hero">', page)
+                    self.assertIn('<article class="article-body">', page)
+                    self.assertIn('class="lesson-planet-banner"', page)
+                    self.assertIn('class="lesson-planet-art"', page)
+                    self.assertIn('class="lesson-sources"', page)
+                    self.assertIn('<nav class="lesson-nav"', page)
+                    self.assertIn('class="lesson-glossary"', page)
+                    self.assertIn('class="lesson-check"', page)
+                    self.assertIn('<footer class="footer">', page)
+                    self.assertIn("../styles/lesson-reference-111.css", page)
+                    self.assertNotIn("<style>", page)
+                    self.assertEqual(page.count("<h1>"), 1)
+                    if base in ("a-1-1-2", "a-1-1-3", "a-1-1-4"):
+                        self.assertIn("../styles/lesson-content-components.css", page)
+
     def test_canonical_lesson_111_has_correct_final_section_sequence(self):
         cases = {
             "": ("14. Расширенный словарь терминов", "15. Практическое задание", "16. Источники и дополнительное чтение", "17. Самопроверка"),

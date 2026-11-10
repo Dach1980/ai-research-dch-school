@@ -311,18 +311,20 @@
       "track_uid": "trk-a",
       "theme_uid": "thm-a-01",
       "module_uid": "mod-a-01-01",
-      "code": "1.1.4",
+      "code": "1.1.3",
       "title": "AI, Machine Learning и Deep Learning",
       "status": "published",
       "access": "open",
       "level": "beginner",
-      "prerequisite_uids": [],
+      "prerequisite_uids": [
+        "les-a-0051"
+      ],
       "learning_outcomes": [],
       "content_state": "published",
       "url_i18n": {
-        "ru": "lessons/a-2-ai-ml-deep-learning.html",
-        "en": "lessons/a-2-ai-ml-deep-learning-en.html",
-        "zh": "lessons/a-2-ai-ml-deep-learning-zh.html"
+        "ru": "lessons/a-1-1-3.html",
+        "en": "lessons/a-1-1-3-en.html",
+        "zh": "lessons/a-1-1-3-zh.html"
       },
       "title_i18n": {
         "ru": "AI, Machine Learning и Deep Learning",
@@ -1041,13 +1043,13 @@
       "track_uid": "trk-a",
       "theme_uid": "thm-a-01",
       "module_uid": "mod-a-01-01",
-      "code": "1.1.3",
+      "code": "1.1.4",
       "title": "Символический AI и машинное обучение",
       "status": "published",
       "access": "open",
       "level": "beginner",
       "prerequisite_uids": [
-        "les-a-0051"
+        "les-a-0002"
       ],
       "learning_outcomes": [
         "Объяснять символы, правила, базу знаний и механизм вывода",
@@ -1057,9 +1059,9 @@
       ],
       "content_state": "published",
       "url_i18n": {
-        "ru": "lessons/1-1-3-symbolic-ai-and-machine-learning.html",
-        "en": "lessons/1-1-3-symbolic-ai-and-machine-learning-en.html",
-        "zh": "lessons/1-1-3-symbolic-ai-and-machine-learning-zh.html"
+        "ru": "lessons/a-1-1-4.html",
+        "en": "lessons/a-1-1-4-en.html",
+        "zh": "lessons/a-1-1-4-zh.html"
       },
       "title_i18n": {
         "ru": "Символический AI и машинное обучение",

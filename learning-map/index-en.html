@@ -1,1 +1,50 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Track A Knowledge Map — DCH School</title><link rel="stylesheet" href="../styles/main.css"><link rel="icon" href="../assets/favicon.png"><style>.map{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:14px;margin:30px 0}.planet{min-height:190px;padding:18px 12px;border:1px solid #789ee655;border-radius:16px;background:radial-gradient(circle at 50% 12%,#426da344,transparent 50%),#101d34;text-align:center;display:flex;flex-direction:column;justify-content:center}.planet b{font:800 30px Manrope;color:#8fc5ff}.planet strong{font-size:13px;margin:12px 0}.planet span{font-size:11px;color:#9eacc5}@media(max-width:850px){.map{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:460px){.map{grid-template-columns:1fr}}</style></head><body><header class="site-header"><a class="brand" href="../index-en.html"><img src="../assets/site-brand-icon.jpg" alt="DCH"><span><strong>AI Research</strong><small>DCH SCHOOL</small></span></a><button class="menu-toggle" aria-label="Menu" aria-expanded="false">☰</button><nav class="nav"><a href="../index-en.html">Home</a><a href="../lessons/index-en.html">Lessons</a><a href="../tracks/understanding-ai-en.html">Track A</a></nav></header><main class="container"><section class="track-hero"><p class="eyebrow">DCH KNOWLEDGE UNIVERSE</p><h1>Knowledge Map · Track A</h1><p class="lead">Each planet represents a published lesson. Follow the sequence from AI fundamentals to model evaluation.</p></section><div class="map" data-home-knowledge-map data-card-class="planet" data-catalog-base="../data/catalog"><p>Loading published lessons…</p></div><p>You can also use the lesson catalogue as a list-based alternative. <a href="../lessons/index-en.html">Open lesson catalogue ↗</a></p></main><footer class="page-footer"><div class="container">DCH School · EN</div></footer><script src="../scripts/language-switcher.js"></script><script src="../scripts/catalog-compat.js"></script><script src="../scripts/home-knowledge-map.js"></script><script src="../scripts/main.js"></script><script src="../scripts/language-switcher.js"></script></body></html>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#080d1b">
+<meta name="description" content="AI Research DCH School knowledge map. Every published Track A lesson is represented as a planet.">
+<title>Track A Knowledge Map · AI Research DCH School</title>
+<link rel="icon" href="../assets/favicon.png"><link rel="stylesheet" href="../styles/main.css"><link rel="stylesheet" href="../styles/theme-system.css">
+<link rel="stylesheet" href="../styles/knowledge-map.css">
+<link rel="stylesheet" href="../styles/account.css"></head>
+<body>
+<header class="site-header"><a class="brand" href="../index-en.html"><img src="../assets/site-brand-icon.jpg" alt="DCH"><span><strong>AI Research</strong><small>DCH SCHOOL</small></span></a><button class="menu-toggle" aria-label="Open menu" aria-expanded="false">☰</button><nav class="nav"><a href="../index-en.html">Home</a><a href="../tracks/understanding-ai-en.html">Track A</a><a href="../lessons/index-en.html">Lessons</a></nav></header>
+<main class="container map-page">
+<section class="map-intro"><p class="map-kicker">DCH KNOWLEDGE UNIVERSE · TRACK A</p><h1>Knowledge map <span style="color:var(--blue)">Track A</span></h1><p class="lead">Each published lesson is a separate planet. Select a lesson to explore it. The map and list are generated from the shared hierarchy: Track → Theme → Module → Lesson.</p></section>
+<div class="map-toolbar"><p>Published lessons are shown as available planets · new planets appear only after a lesson is fully prepared</p><div class="view-switch" role="group" aria-label="View mode"><button type="button" id="mapMode" aria-pressed="true">Map</button><button type="button" id="listMode" aria-pressed="false">List</button></div></div>
+<section class="map-shell" id="mapView">
+<div class="universe" data-planets-root aria-label="Track A knowledge universe map">
+<div class="sector-label"><strong>SECTOR A</strong><span>UNDERSTANDING AI</span></div>
+<div class="orbit o1"></div><div class="orbit o2"></div><div class="orbit o3"></div>
+<div class="sun" aria-hidden="true"><span>DCH</span></div>
+<span class="moon m1" aria-hidden="true"></span><span class="moon m2" aria-hidden="true"></span><span class="moon m3" aria-hidden="true"></span>
+<div class="map-legend"><span><i class="legend-dot"></i>Published lesson</span><span>Orbits are visual navigation guides</span></div>
+</div>
+<aside class="map-side" id="planetDetails" aria-live="polite">
+<div class="side-top"><span class="side-tag">LESSON A.1.1.1 · INTRODUCTION</span><span class="level">Beginner</span></div>
+<h2>What Is Artificial Intelligence?</h2>
+<p class="side-desc">An introduction to artificial intelligence: definitions, AI system structure, major approaches and their limits.</p>
+<div class="side-divider"></div><span class="side-heading">Learning outcomes</span>
+<ul class="outcomes"><li>Explain the concept of Artificial Intelligence and its main interpretations.</li><li>Distinguish intelligence, intelligent behaviour and consciousness.</li><li>Describe the general structure of an AI system and major approaches to building one.</li><li>Give examples of AI tasks and explain system limitations.</li></ul>
+<div class="meta-grid"><div class="meta-item"><small>Duration</small><strong>40–50 min</strong></div><div class="meta-item"><small>Prerequisites</small><strong>Not required</strong></div><div class="meta-item"><small>Format</small><strong>Detailed lecture</strong></div><div class="meta-item"><small>Access</small><strong>Open lesson</strong></div></div>
+<div class="side-actions"><a class="button primary" href="../lessons/a-1-what-is-artificial-intelligence-en.html">Start lesson ↗</a><a class="button secondary" href="../tracks/understanding-ai-en.html">About Track A</a></div>
+</aside>
+</section>
+<section class="list-view" id="listView" aria-label="List of published Track A planets"><div data-planets-list><p class="muted">Loading the shared planet catalogue…</p></div><p style="color:var(--muted);font-size:11px;margin:14px 0 0">New planets appear after the full learning material is prepared and published.</p></section>
+<div class="map-note"><strong>Map rule:</strong> only a published lesson with a complete page, learning outcomes, content and practical work becomes a planet. Decorative orbits do not represent nonexistent lessons. The catalogue is also available as an alternative navigation mode.</div>
+</main>
+<footer class="footer"><a class="brand" href="../index-en.html"><img src="../assets/site-brand-icon.jpg" alt="DCH"><span><strong>AI Research</strong><small>DCH SCHOOL</small></span></a><p>Understand AI. Build AI. Research AI.</p><span>© 2026 AI Research DCH School</span></footer>
+<script src="../scripts/catalog-compat.js"></script><script src="../scripts/planet-map-catalog.js"></script>
+<script>
+const mapView=document.getElementById('mapView'),listView=document.getElementById('listView');
+const mapMode=document.getElementById('mapMode'),listMode=document.getElementById('listMode');
+function setMode(mode){const isMap=mode==='map';mapView.style.display=isMap?'grid':'none';listView.classList.toggle('active',!isMap);mapMode.setAttribute('aria-pressed',String(isMap));listMode.setAttribute('aria-pressed',String(!isMap));}
+mapMode.addEventListener('click',()=>setMode('map'));listMode.addEventListener('click',()=>setMode('list'));
+
+
+</script>
+<script src="../scripts/main.js"></script>
+<script src="../scripts/supabase-config.js"></script><script type="module" src="../scripts/account-ui.js"></script><script src="../scripts/language-switcher.js"></script><script src="../scripts/theme-system.js" defer></script>
+<script src="../scripts/code-blocks.js" defer></script>
+</body></html>

@@ -1,1 +1,50 @@
-<!doctype html><html lang="zh"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Track A知识星图 — DCH School</title><link rel="stylesheet" href="../styles/main.css"><link rel="icon" href="../assets/favicon.png"><style>.map{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:14px;margin:30px 0}.planet{min-height:190px;padding:18px 12px;border:1px solid #789ee655;border-radius:16px;background:radial-gradient(circle at 50% 12%,#426da344,transparent 50%),#101d34;text-align:center;display:flex;flex-direction:column;justify-content:center}.planet b{font:800 30px Manrope;color:#8fc5ff}.planet strong{font-size:13px;margin:12px 0}.planet span{font-size:11px;color:#9eacc5}@media(max-width:850px){.map{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:460px){.map{grid-template-columns:1fr}}</style></head><body><header class="site-header"><a class="brand" href="../index-zh.html"><img src="../assets/site-brand-icon.jpg" alt="DCH"><span><strong>AI Research</strong><small>DCH SCHOOL</small></span></a><button class="menu-toggle" aria-label="Menu" aria-expanded="false">☰</button><nav class="nav"><a href="../index-zh.html">首页</a><a href="../lessons/index-zh.html">课程目录</a><a href="../tracks/understanding-ai-zh.html">Track A</a></nav></header><main class="container"><section class="track-hero"><p class="eyebrow">DCH KNOWLEDGE UNIVERSE</p><h1>知识星图 · Track A</h1><p class="lead">每颗行星对应一节已发布课程。按顺序学习，建立从AI基础到模型评估的知识体系。</p></section><div class="map" data-home-knowledge-map data-card-class="planet" data-catalog-base="../data/catalog"><p>Loading published lessons…</p></div><p>也可以使用课程目录作为列表导航。 <a href="../lessons/index-zh.html">打开课程目录 ↗</a></p></main><footer class="page-footer"><div class="container">DCH School · ZH</div></footer><script src="../scripts/language-switcher.js"></script><script src="../scripts/catalog-compat.js"></script><script src="../scripts/home-knowledge-map.js"></script><script src="../scripts/main.js"></script><script src="../scripts/language-switcher.js"></script></body></html>
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#080d1b">
+<meta name="description" content="AI Research DCH School知识地图。每一节已发布的Track A课程都以一颗行星表示。">
+<title>Track A知识地图 · AI Research DCH School</title>
+<link rel="icon" href="../assets/favicon.png"><link rel="stylesheet" href="../styles/main.css"><link rel="stylesheet" href="../styles/theme-system.css">
+<link rel="stylesheet" href="../styles/knowledge-map.css">
+<link rel="stylesheet" href="../styles/account.css"></head>
+<body>
+<header class="site-header"><a class="brand" href="../index-zh.html"><img src="../assets/site-brand-icon.jpg" alt="DCH"><span><strong>AI Research</strong><small>DCH SCHOOL</small></span></a><button class="menu-toggle" aria-label="打开菜单" aria-expanded="false">☰</button><nav class="nav"><a href="../index-zh.html">首页</a><a href="../tracks/understanding-ai-zh.html">Track A</a><a href="../lessons/index-zh.html">课程</a></nav></header>
+<main class="container map-page">
+<section class="map-intro"><p class="map-kicker">DCH KNOWLEDGE UNIVERSE · TRACK A</p><h1>知识地图 <span style="color:var(--blue)">Track A</span></h1><p class="lead">每一节已发布课程都是一颗独立的行星。选择课程以查看详情。地图和列表均由统一层级目录生成：Track → Theme → Module → Lesson。</p></section>
+<div class="map-toolbar"><p>已发布课程显示为可访问的行星 · 课程完整准备并发布后才会添加新行星</p><div class="view-switch" role="group" aria-label="显示方式"><button type="button" id="mapMode" aria-pressed="true">地图</button><button type="button" id="listMode" aria-pressed="false">列表</button></div></div>
+<section class="map-shell" id="mapView">
+<div class="universe" data-planets-root aria-label="Track A知识宇宙地图">
+<div class="sector-label"><strong>SECTOR A</strong><span>UNDERSTANDING AI</span></div>
+<div class="orbit o1"></div><div class="orbit o2"></div><div class="orbit o3"></div>
+<div class="sun" aria-hidden="true"><span>DCH</span></div>
+<span class="moon m1" aria-hidden="true"></span><span class="moon m2" aria-hidden="true"></span><span class="moon m3" aria-hidden="true"></span>
+<div class="map-legend"><span><i class="legend-dot"></i>已发布课程</span><span>轨道用于辅助视觉导航</span></div>
+</div>
+<aside class="map-side" id="planetDetails" aria-live="polite">
+<div class="side-top"><span class="side-tag">LESSON A.1.1.1 · INTRODUCTION</span><span class="level">初级</span></div>
+<h2>什么是人工智能？</h2>
+<p class="side-desc">人工智能入门：了解人工智能的定义、AI系统结构、主要方法及其能力边界。</p>
+<div class="side-divider"></div><span class="side-heading">学完本课程后，你将能够</span>
+<ul class="outcomes"><li>解释人工智能的概念及其主要定义。</li><li>区分智能、智能行为与意识。</li><li>描述AI系统的基本结构及其主要构建方法。</li><li>举例说明AI任务并解释系统局限。</li></ul>
+<div class="meta-grid"><div class="meta-item"><small>时长</small><strong>40–50分钟</strong></div><div class="meta-item"><small>先修要求</small><strong>无需先修课程</strong></div><div class="meta-item"><small>形式</small><strong>详细课程</strong></div><div class="meta-item"><small>访问权限</small><strong>开放课程</strong></div></div>
+<div class="side-actions"><a class="button primary" href="../lessons/a-1-what-is-artificial-intelligence-zh.html">开始学习 ↗</a><a class="button secondary" href="../tracks/understanding-ai-zh.html">关于Track A</a></div>
+</aside>
+</section>
+<section class="list-view" id="listView" aria-label="Track A已发布课程列表"><div data-planets-list><p class="muted">正在加载统一行星目录…</p></div><p style="color:var(--muted);font-size:11px;margin:14px 0 0">完整学习材料准备并发布后，新行星才会出现在地图中。</p></section>
+<div class="map-note"><strong>地图规则：</strong> 只有具备完整页面、学习成果、课程内容和实践环节的已发布课程才会成为行星。装饰性轨道不代表尚不存在的课程。目录也可作为另一种导航方式。</div>
+</main>
+<footer class="footer"><a class="brand" href="../index-zh.html"><img src="../assets/site-brand-icon.jpg" alt="DCH"><span><strong>AI Research</strong><small>DCH SCHOOL</small></span></a><p>Understand AI. Build AI. Research AI.</p><span>© 2026 AI Research DCH School</span></footer>
+<script src="../scripts/catalog-compat.js"></script><script src="../scripts/planet-map-catalog.js"></script>
+<script>
+const mapView=document.getElementById('mapView'),listView=document.getElementById('listView');
+const mapMode=document.getElementById('mapMode'),listMode=document.getElementById('listMode');
+function setMode(mode){const isMap=mode==='map';mapView.style.display=isMap?'grid':'none';listView.classList.toggle('active',!isMap);mapMode.setAttribute('aria-pressed',String(isMap));listMode.setAttribute('aria-pressed',String(!isMap));}
+mapMode.addEventListener('click',()=>setMode('map'));listMode.addEventListener('click',()=>setMode('list'));
+
+
+</script>
+<script src="../scripts/main.js"></script>
+<script src="../scripts/supabase-config.js"></script><script type="module" src="../scripts/account-ui.js"></script><script src="../scripts/language-switcher.js"></script><script src="../scripts/theme-system.js" defer></script>
+<script src="../scripts/code-blocks.js" defer></script>
+</body></html>

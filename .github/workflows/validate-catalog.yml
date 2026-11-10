@@ -4,11 +4,23 @@ on:
   push:
     branches: ["main"]
     paths:
+      - "auth/**"
+      - "account/**"
+      - "scripts/auth.js"
+      - "scripts/auth-callback.js"
+      - "scripts/account.js"
+      - "styles/auth.css"
+      - "styles/account.css"
       - "data/catalog/**"
       - "lessons/data/**"
       - "lessons/practice/**"
       - "lessons/*.html"
       - "lessons/**/*.html"
+      - "index*.html"
+      - "tracks/*.html"
+      - "tracks/**/*.html"
+      - "scripts/language-switcher.js"
+      - "scripts/account-ui.js"
       - "scripts/lesson-reader.js"
       - "scripts/theme-system.js"
       - "scripts/code-blocks.js"
@@ -27,6 +39,13 @@ on:
       - ".github/workflows/validate-catalog.yml"
   pull_request:
     paths:
+      - "auth/**"
+      - "account/**"
+      - "scripts/auth.js"
+      - "scripts/auth-callback.js"
+      - "scripts/account.js"
+      - "styles/auth.css"
+      - "styles/account.css"
       - "data/catalog/**"
       - "scripts/theme-system.js"
       - "scripts/code-blocks.js"
@@ -41,10 +60,18 @@ on:
       - "lessons/practice/**"
       - "lessons/*.html"
       - "lessons/**/*.html"
+      - "index*.html"
+      - "tracks/*.html"
+      - "tracks/**/*.html"
+      - "scripts/language-switcher.js"
+      - "scripts/account-ui.js"
       - "scripts/lesson-reader.js"
+      - "scripts/planet-map-catalog.js"
+      - "styles/knowledge-map.css"
       - "styles/lesson-reader.css"
       - "scripts/validate-catalog.py"
       - "requirements-catalog.txt"
+      - "tests/**"
       - ".github/workflows/validate-catalog.yml"
   workflow_dispatch:
 
@@ -65,6 +92,16 @@ jobs:
         run: python -m pip install -r requirements-catalog.txt
       - name: Run catalog validator tests
         run: python -m unittest discover -s tests -p 'test_validate_catalog.py' -v
+      - name: Test homepage locale parity
+        run: python -m unittest discover -s tests -p 'test_homepage_locale_parity.py' -v
+      - name: Test track locale parity
+        run: python -m unittest discover -s tests -p 'test_track_locale_parity.py' -v
+      - name: Test knowledge map locale parity and catalogue equality
+        run: python -m unittest discover -s tests -p 'test_knowledge_map_locale_parity.py' -v
+      - name: Test authentication and account locale parity
+        run: python -m unittest discover -s tests -p 'test_auth_locale_parity.py' -v
+      - name: Check homepage locale and account scripts syntax
+        run: node --check scripts/language-switcher.js && node --input-type=module --check < scripts/account-ui.js && node --input-type=module --check < scripts/auth.js && node --input-type=module --check < scripts/auth-callback.js && node --input-type=module --check < scripts/account.js
       - name: Validate legacy production catalog
         run: python scripts/validate-catalog.py
       - name: Test Python catalog compatibility adapter

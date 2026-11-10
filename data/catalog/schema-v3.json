@@ -158,6 +158,29 @@
             "planned",
             "archived"
           ]
+        },
+        "title_i18n": {
+          "type": "object",
+          "required": [
+            "ru",
+            "en",
+            "zh"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "ru": {
+              "type": "string",
+              "minLength": 1
+            },
+            "en": {
+              "type": "string",
+              "minLength": 1
+            },
+            "zh": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
         }
       }
     },
@@ -192,6 +215,29 @@
             "planned",
             "archived"
           ]
+        },
+        "title_i18n": {
+          "type": "object",
+          "required": [
+            "ru",
+            "en",
+            "zh"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "ru": {
+              "type": "string",
+              "minLength": 1
+            },
+            "en": {
+              "type": "string",
+              "minLength": 1
+            },
+            "zh": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
         }
       }
     },
@@ -283,6 +329,39 @@
           "additionalProperties": {
             "$ref": "#/$defs/path"
           }
+        },
+        "title_i18n": {
+          "type": "object",
+          "required": [
+            "ru",
+            "en",
+            "zh"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "ru": {
+              "type": "string",
+              "minLength": 1
+            },
+            "en": {
+              "type": "string",
+              "minLength": 1
+            },
+            "zh": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        },
+        "duration_min": {
+          "type": "integer",
+          "minimum": 1,
+          "description": "Lower bound of the estimated lesson duration in minutes."
+        },
+        "duration_max": {
+          "type": "integer",
+          "minimum": 1,
+          "description": "Upper bound of the estimated lesson duration in minutes."
         }
       }
     },

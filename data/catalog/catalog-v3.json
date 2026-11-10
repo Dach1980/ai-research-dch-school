@@ -45,7 +45,12 @@
       "number": 1,
       "code": "1",
       "title": "Основы искусственного интеллекта и машинного обучения",
-      "status": "active"
+      "status": "active",
+      "title_i18n": {
+        "ru": "Основы искусственного интеллекта и машинного обучения",
+        "en": "Fundamentals of Artificial Intelligence and Machine Learning",
+        "zh": "人工智能与机器学习基础"
+      }
     },
     {
       "uid": "thm-a-02",
@@ -86,7 +91,12 @@
       "theme_uid": "thm-a-01",
       "number": 1,
       "title": "Что такое AI",
-      "status": "planned"
+      "status": "planned",
+      "title_i18n": {
+        "ru": "Что такое AI",
+        "en": "What Is AI",
+        "zh": "什么是人工智能"
+      }
     },
     {
       "uid": "mod-a-01-02",
@@ -289,6 +299,13 @@
         "ru": "lessons/a-1-what-is-artificial-intelligence.html",
         "en": "lessons/a-1-what-is-artificial-intelligence-en.html",
         "zh": "lessons/a-1-what-is-artificial-intelligence-zh.html"
+      },
+      "duration_min": 40,
+      "duration_max": 50,
+      "title_i18n": {
+        "ru": "Что такое искусственный интеллект?",
+        "en": "What Is Artificial Intelligence?",
+        "zh": "什么是人工智能？"
       }
     },
     {
@@ -308,6 +325,13 @@
         "ru": "lessons/a-2-ai-ml-deep-learning.html",
         "en": "lessons/a-2-ai-ml-deep-learning-en.html",
         "zh": "lessons/a-2-ai-ml-deep-learning-zh.html"
+      },
+      "duration_min": 50,
+      "duration_max": 60,
+      "title_i18n": {
+        "ru": "AI, Machine Learning и Deep Learning",
+        "en": "AI, Machine Learning and Deep Learning",
+        "zh": "人工智能、机器学习与深度学习"
       }
     },
     {
@@ -1009,6 +1033,13 @@
         "ru": "lessons/1-1-2-history-of-ai.html",
         "en": "lessons/1-1-2-history-of-ai-en.html",
         "zh": "lessons/1-1-2-history-of-ai-zh.html"
+      },
+      "duration_min": 60,
+      "duration_max": 75,
+      "title_i18n": {
+        "ru": "История развития искусственного интеллекта",
+        "en": "A Brief History of Artificial Intelligence",
+        "zh": "人工智能发展简史"
       }
     },
     {
@@ -1035,6 +1066,13 @@
         "ru": "lessons/1-1-3-symbolic-ai-and-machine-learning.html",
         "en": "lessons/1-1-3-symbolic-ai-and-machine-learning-en.html",
         "zh": "lessons/1-1-3-symbolic-ai-and-machine-learning-zh.html"
+      },
+      "duration_min": 60,
+      "duration_max": 75,
+      "title_i18n": {
+        "ru": "Символический AI и машинное обучение",
+        "en": "Symbolic AI and Machine Learning",
+        "zh": "符号人工智能与机器学习"
       }
     }
   ],

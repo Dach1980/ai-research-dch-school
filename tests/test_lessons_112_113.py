@@ -18,7 +18,7 @@ class Lesson112113Tests(unittest.TestCase):
                 self.assertIn("lesson-visual-palette.css", (ROOT / "styles/main.css").read_text(encoding="utf-8"))
 
     def test_new_lessons_use_trackless_display_codes(self):
-        for lesson, code in (("1-1-2-history-of-ai", "1.1.2"), ("a-1-1-3", "1.1.3"), ("a-1-1-3", "1.1.3"), ("a-1-1-4", "1.1.4")):
+        for lesson, code in (("1-1-2-history-of-ai", "1.1.2"), ("a-1-1-3", "1.1.3"), ("a-1-1-4", "1.1.4")):
             for suffix in ("", "-en", "-zh"):
                 source = (ROOT / f"lessons/{lesson}{suffix}.html").read_text(encoding="utf-8")
                 self.assertIn(code, source)
@@ -50,7 +50,7 @@ class Lesson112113Tests(unittest.TestCase):
         for lesson in ("1-1-2-history-of-ai", "a-1-1-3", "a-1-1-4"):
             for suffix in ("", "-en", "-zh"):
                 source = (ROOT / f"lessons/{lesson}{suffix}.html").read_text(encoding="utf-8")
-                header = re.search(r'<div class="lesson-meta">([\s\S]*?)</div>', source)
+                header = re.search(r'<div class="(?:lesson-meta|track-meta)">([\s\S]*?)</div>', source)
                 self.assertIsNotNone(header)
                 self.assertNotRegex(header.group(1), r"minutes?|минут|分钟")
 

@@ -111,7 +111,7 @@ class LessonDesignSystemTests(unittest.TestCase):
 
         admin = (ROOT / "admin/index.html").read_text(encoding="utf-8")
         self.assertIn("Канонический URL", admin)
-        self.assertIn("LESSON_DESIGN_SYSTEM.md, разделы 7–12", admin)
+        self.assertIn("LESSON_DESIGN_SYSTEM.md, разделы 8–13", admin)
 
         import json
         roadmap = json.loads((ROOT / "data/audit-roadmap.json").read_text(encoding="utf-8"))

@@ -92,7 +92,7 @@ class Lesson112113Tests(unittest.TestCase):
                     positions = [
                         page.index('class="lesson-sources"'),
                         page.index('<nav class="lesson-nav"'),
-                        page.index(glossary_number + " " + glossary),
+                        page.index('class="lesson-glossary"'),
                         page.index('class="lesson-check"'),
                     ]
                     self.assertEqual(positions, sorted(positions))

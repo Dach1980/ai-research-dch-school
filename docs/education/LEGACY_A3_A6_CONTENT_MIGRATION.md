@@ -106,4 +106,4 @@ Created the first five target lessons in all three locales (15 canonical pages):
 
 All pages include localized learning outcomes, lesson sections, a practical task, references, a five-term glossary, three interactive checks, the standard post-source navigation panel and the DCH footer. The catalog v3 records now carry canonical RU/EN/ZH URLs, localized titles, outcomes and prerequisite links. Their status is deliberately `review` (not `published`); the v3 catalog remains staging and the production v2 reader has not been switched. The legacy A.3–A.6 pages remain untouched.
 
-Remaining for this batch: automated CI, locale/content parity review, manual browser acceptance and final editorial approval before publication.
+Automated catalog validation, the dedicated lesson tests, locale-structure checks, multilingual lesson validation, and GitHub Pages build/deployment passed on commit ce58b919a94e177cc6e846194f520515f49fd5d8. Manual desktop/mobile browser acceptance, keyboard and light/dark theme checks, and native-speaker editorial review remain open before publication.

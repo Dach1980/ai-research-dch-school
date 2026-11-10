@@ -39,10 +39,14 @@ Scope: public school website, shared navigation, homepage, tracks, lesson catalo
 - Load the same account, language and theme controls on every track page.
 - Add regression tests for section parity, curriculum counts and shared controls.
 
-### Phase 3 — knowledge map and catalog
-- Consolidate map rendering around one data source and shared behavior.
-- Verify equal lesson IDs/statuses and correct localized links.
-- Retain map/list/detail interactions and accessible fallback.
+### Phase 3 — knowledge map and catalog (implemented in this PR)
+- Replaced the EN/ZH simplified card grids with the full RU map experience: orbital map, selectable planets, detail panel, list mode, map/list switching and lesson/track navigation.
+- Localized the shared map controller for RU / EN / ZH, including lesson titles, descriptions, learning outcomes, metadata, prerequisites and action labels.
+- Extracted the map layout into one shared `styles/knowledge-map.css`; all three pages also load the shared theme stylesheet.
+- Kept the legacy-preserving catalog projection as the only map data source. Planet entries are filtered by the existing published state; no planned lessons are exposed.
+- Added mobile position clamping so planet names remain inside the map viewport.
+- Added regression tests for identical interactive controls, shared assets, localized pages/routes, and exact equality between Track A published lesson IDs and planet IDs.
+- Updated the existing catalog UI test to expect the unified map rather than the former EN/ZH card-grid renderer.
 
 ### Phase 4 — auth and account localization
 - Localize auth/account screens and labels.
@@ -70,3 +74,12 @@ Scope: public school website, shared navigation, homepage, tracks, lesson catalo
 - The homepage language switcher resolves correctly on /, /index.html and a GitHub Pages project subpath.
 - EN and ZH have localized versions of the home sections; RU remains content-preserving.
 - Static regression tests pass.
+
+## Phase 3 acceptance criteria
+- RU / EN / ZH map pages use the same interactive HTML contract and shared CSS/controller.
+- All locales provide map mode, list mode, planet selection, details, lesson links and Track A navigation.
+- The planet ID set exactly equals the set of published Track A lesson IDs in the v2 compatibility catalog.
+- Every published Track A lesson has a non-empty localized title and a real RU / EN / ZH route.
+- Map UI labels and learning outcomes are localized; EN/ZH pages contain no accidental Russian placeholders.
+- Responsive styles and mobile planet positioning are covered by static regression assertions.
+- Existing v1/v2/v3 catalog compatibility tests continue to pass.

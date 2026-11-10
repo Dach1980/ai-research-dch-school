@@ -33,7 +33,7 @@ class CatalogPathTests(unittest.TestCase):
     def test_accepts_existing_relative_lesson(self):
         errors = []
         validator.validate_relative_html_path(
-            "lessons/a-1-what-is-artificial-intelligence.html", "test", errors
+            "lessons/a-1-1-1.html", "test", errors
         )
         self.assertEqual(errors, [])
 
@@ -196,7 +196,10 @@ class PublishedSiteIntegrityTests(unittest.TestCase):
         pages = [
             "index.html",
             "lessons/index.html",
-            "lessons/a-1-what-is-artificial-intelligence.html",
+            "lessons/a-1-1-1.html",
+            "lessons/a-1-1-2.html",
+            "lessons/a-1-1-2-en.html",
+            "lessons/a-1-1-2-zh.html",
             "lessons/a-1-1-3.html",
             "lessons/a-1-1-3-en.html",
             "lessons/a-1-1-3-zh.html",
@@ -217,8 +220,8 @@ class PublishedSiteIntegrityTests(unittest.TestCase):
             "tracks/understanding-ai-en.html", "tracks/understanding-ai-zh.html",
             "tracks/inside-ai-en.html", "tracks/inside-ai-zh.html",
             "tracks/building-with-ai-en.html", "tracks/building-with-ai-zh.html",
-            "lessons/a-1-what-is-artificial-intelligence-en.html",
-            "lessons/a-1-what-is-artificial-intelligence-zh.html",
+            "lessons/a-1-1-1-en.html",
+            "lessons/a-1-1-1-zh.html",
             "lessons/a-1-1-3-en.html",
             "lessons/a-1-1-3-zh.html",
             "lessons/a-3-how-machines-learn-from-data-en.html",

@@ -45,7 +45,12 @@
       "number": 1,
       "code": "1",
       "title": "Основы искусственного интеллекта и машинного обучения",
-      "status": "active"
+      "status": "active",
+      "title_i18n": {
+        "ru": "Основы искусственного интеллекта и машинного обучения",
+        "en": "Fundamentals of Artificial Intelligence and Machine Learning",
+        "zh": "人工智能与机器学习基础"
+      }
     },
     {
       "uid": "thm-a-02",
@@ -86,7 +91,12 @@
       "theme_uid": "thm-a-01",
       "number": 1,
       "title": "Что такое AI",
-      "status": "planned"
+      "status": "planned",
+      "title_i18n": {
+        "ru": "Что такое AI",
+        "en": "What Is AI",
+        "zh": "什么是人工智能"
+      }
     },
     {
       "uid": "mod-a-01-02",

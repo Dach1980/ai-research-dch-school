@@ -27,5 +27,5 @@
 .lesson-standard-article .quiz-options,.lesson-standard-article .lesson-check-options{display:grid;gap:9px;margin:12px 0}
 .lesson-standard-article .quiz-option,.lesson-standard-article .lesson-check-option{display:flex;gap:10px;align-items:flex-start;line-height:1.55;cursor:pointer}
 .lesson-standard-article .quiz-check-button{border:0;border-radius:9px;padding:10px 16px;background:var(--lds-accent,#246bd6);color:#fff;font:700 14px inherit;cursor:pointer}
-@media(max-width:700px){.lesson{width:min(100% - 32px,920px)}.lesson-standard-hero{padding-top:1.3rem}.lesson-planet-banner{grid-template-columns:1fr;padding:16px}.lesson-planet-art{height:95px}.lesson-standard-article table{font-size:.9rem}}
+@media(max-width:700px){.lesson{width:min(calc(100% - 32px),920px)}.lesson-standard-hero{padding-top:1.3rem}.lesson-planet-banner{grid-template-columns:1fr;padding:16px}.lesson-planet-art{height:95px}.lesson-standard-article table{font-size:.9rem}}
 @media(max-width:420px){.lesson{width:calc(100% - 24px)}.lesson-standard-hero h1{font-size:1.9rem}.lesson-standard-article .quiz,.lesson-standard-article .interactive-quiz-item{padding:13px}}

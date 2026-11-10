@@ -48,9 +48,14 @@ Scope: public school website, shared navigation, homepage, tracks, lesson catalo
 - Added regression tests for identical interactive controls, shared assets, localized pages/routes, and exact equality between Track A published lesson IDs and planet IDs.
 - Updated the existing catalog UI test to expect the unified map rather than the former EN/ZH card-grid renderer.
 
-### Phase 4 — auth and account localization
-- Localize auth/account screens and labels.
-- Verify Supabase session behavior in each locale without changing security policy.
+### Phase 4 — auth and account localization (implemented in this PR)
+- Preserve the selected locale from sign-in through email confirmation and password recovery callbacks.
+- Localize the sign-in form, account profile states, email confirmation results and password recovery flow in RU / EN / 中文.
+- Add locale and theme controls to the account and callback screens.
+- Keep account navigation links localized and retain responsive mobile navigation.
+- Remove duplicate Supabase client bootstrap tags from auth/callback pages.
+- Keep public registration disabled and leave Supabase Auth calls, schema, migrations, RLS and access policies unchanged.
+- Add static regression coverage and CI syntax checks for the auth/account scripts.
 
 ### Phase 5 — acceptance
 - CI and unit/static regression tests.
@@ -83,3 +88,13 @@ Scope: public school website, shared navigation, homepage, tracks, lesson catalo
 - Map UI labels and learning outcomes are localized; EN/ZH pages contain no accidental Russian placeholders.
 - Responsive styles and mobile planet positioning are covered by static regression assertions.
 - Existing v1/v2/v3 catalog compatibility tests continue to pass.
+
+## Phase 4 acceptance criteria
+- Sign-in page, account page and email callback expose RU / EN / 中文 controls.
+- The chosen locale is restored from the URL or existing language preference and preserved in email redirect URLs.
+- Confirmation success/failure and password recovery states are translated in all locales.
+- Account loading, unauthenticated, unconfigured, confirmed and unconfirmed states are localized.
+- Light/dark theme controls and mobile layout are available on the account and callback screens.
+- Public registration remains disabled; the existing Supabase client config and auth flow are preserved.
+- No Supabase migrations, tables, RLS policies, secrets or auth provider settings are changed.
+- Authentication locale regression tests and JavaScript syntax checks pass in CI.

@@ -126,7 +126,7 @@ class LocaleGridThemeParityTests(unittest.TestCase):
                 self.assertEqual(page.count('class="lesson-check"'), 1)
                 self.assertEqual(page.count('class="lesson-check-question"'), 3)
                 self.assertEqual(page.count('class="lesson-check-option"'), 8)
-                self.assertIn("<h2>17. Самопроверка</h2>" if locale == "ru" else ("<h2>17. Self-check</h2>" if locale == "en" else "<h2>17. 自测</h2>"), page)
+                self.assertIn("<h2>17. Самопроверка</h2>" if locale == "ru" else ("<h2>12. Self-check</h2>" if locale == "en" else "<h2>12. 自测</h2>"), page)
         design = (ROOT / "styles/lesson-design-system.css").read_text(encoding="utf-8")
         self.assertIn(".lesson-planet-banner{", design)
         self.assertIn(".lesson-planet-sphere{", design)
@@ -196,8 +196,8 @@ class LocaleGridThemeParityTests(unittest.TestCase):
         }
         locale_headings = {
             "ru": ["14. Расширенный словарь терминов", "15. Практическое задание", "16. Источники и дополнительное чтение", "17. Самопроверка"],
-            "en": ["14. Practical task", "15. Lesson glossary", "16. Sources and further reading", "17. Self-check"],
-            "zh": ["14. 实践任务", "15. 本课术语表", "16. 参考资料与延伸阅读", "17. 自测"],
+            "en": ["7. Review checkpoint", "8. Expanded lesson: concepts, boundaries and examples", "9. Deep dive: approaches and task types", "10. Lesson glossary", "11. Sources and further reading", "12. Self-check"],
+            "zh": ["7. 复习检查点", "8. 扩展课程：概念、边界与案例", "9. 技术路线与任务类型详解", "10. 本课术语表", "11. 参考资料与延伸阅读", "12. 自测"],
         }
         for locale, relative in pages.items():
             page = (ROOT / relative).read_text(encoding="utf-8")
@@ -254,6 +254,21 @@ class LocaleGridThemeParityTests(unittest.TestCase):
         self.assertIn(">学习方向 B</a>", contents["zh"])
         self.assertIn(">All lessons</a>", contents["en"])
         self.assertIn(">全部课程</a>", contents["zh"])
+
+    def test_lesson_111_section_numbering_is_hierarchical_in_all_locales(self):
+        import re
+        pages = {
+            "ru": ("lessons/a-1-1-1.html", list(range(1, 18)), ["2.1", "4.1", "6.1", "6.2", "6.3", "6.4", "6.5", "7.1", "7.2", "7.3", "7.4", "7.5", "7.6"]),
+            "en": ("lessons/a-1-1-1-en.html", list(range(1, 13)), [f"7.{i}" for i in range(1, 7)] + [f"8.{i}" for i in range(1, 9)] + [f"9.{i}" for i in range(1, 9)]),
+            "zh": ("lessons/a-1-1-1-zh.html", list(range(1, 13)), [f"7.{i}" for i in range(1, 7)] + [f"8.{i}" for i in range(1, 9)] + [f"9.{i}" for i in range(1, 9)]),
+        }
+        for locale, (relative, expected_h2, expected_h3) in pages.items():
+            page = (ROOT / relative).read_text(encoding="utf-8")
+            h2 = [int(value) for value in re.findall(r"<h2[^>]*>\\s*(\\d+)\\.", page)]
+            h3 = re.findall(r"<h3[^>]*>\\s*(\\d+(?:\\.\\d+)+)\\.", page)
+            with self.subTest(locale=locale):
+                self.assertEqual(h2, expected_h2)
+                self.assertEqual(h3, expected_h3)
 
     def test_public_track_and_home_pages_use_numeric_catalog_codes_not_legacy_ids(self):
         import re

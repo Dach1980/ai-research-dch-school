@@ -6,14 +6,14 @@
 <main class="container">
 <section class="track-hero article-hero"><a class="back" href="../tracks/understanding-ai-zh.html">← 学习方向 A · 理解人工智能</a><p class="eyebrow">TRACK A · THEME 1 · MODULE 2 · LESSON 1.2.6</p><h1>相关性、变量关系与数据泄漏</h1><p class="lead">变量之间的关系有助于探索数据，但相关性并不能证明因果关系；数据泄漏还可能让模型评估结果虚高。</p><div class="track-meta"><span>入门级</span><span>讲座</span><span>特征与数据划分</span></div><div class="lesson-planet-banner"><div><span class="planet-label">课程 1.2.6 · 主题 1 · 模块 2</span><p>DCH School 的每节课程都是一颗独立的知识行星。请循序学习本主题，并通过实践检验理解。</p><a class="text-link" href="../learning-map/index-zh.html">返回知识地图 ↗</a></div><div class="lesson-planet-art" aria-hidden="true"><div class="lesson-planet-sphere">1.2.6</div></div></div></section>
 <article class="article-body">
-<section class="lesson-outcomes"><h2>学习目标</h2><ul><li>区分正相关、负相关和接近零的线性相关。</li><li>解释相关性的局限，以及关联与因果的区别。</li><li>识别混杂因素与非线性关系。</li><li>识别目标泄漏、时间泄漏、重复样本和预处理泄漏。</li></ul></section>
+<h2>学习目标</h2><p>学习本课后，你将能够：</p><ul><li>区分正相关、负相关和接近零的线性相关。</li><li>解释相关性的局限，以及关联与因果的区别。</li><li>识别混杂因素与非线性关系。</li><li>识别目标泄漏、时间泄漏、重复样本和预处理泄漏。</li></ul>
 <figure class="lesson-figure" role="img" aria-label="关联与预测时点的信息可用性"><svg viewBox="0 0 760 190" role="img" aria-labelledby="diagram-title diagram-desc"><title id="diagram-title">关联与预测时点的信息可用性</title><desc id="diagram-desc">相关性有助于探索关系，但不能证明因果。未来数值和测试集信息都会造成泄漏。</desc><rect x="12" y="55" width="166" height="82" rx="12" fill="#172b49" stroke="#668bc5" stroke-width="1.5"/><text x="95" y="88" text-anchor="middle" fill="#eef4ff" font-size="14" font-weight="700">观察到的关联 ≠ 因果；只有预测时可获得的特征才可使用</text></svg><figcaption>相关性有助于探索关系，但不能证明因果。未来数值和测试集信息都会造成泄漏。</figcaption></figure>
-<section><h2>课程内容</h2><section id="section-1"><h2>1. 相关性说明什么</h2><p>相关性描述两个变量如何共同变化。正相关表示一个变量较大时，另一个变量也往往较大；负相关表示一个变量增加时，另一个变量通常减少。</p><p>Pearson 相关系数衡量线性关系的方向和强度，范围为 −1 到 +1。接近零表示线性关联较弱，但并不能排除非线性关系。</p></section>
+<section id="section-1"><h2>1. 相关性说明什么</h2><p>相关性描述两个变量如何共同变化。正相关表示一个变量较大时，另一个变量也往往较大；负相关表示一个变量增加时，另一个变量通常减少。</p><p>Pearson 相关系数衡量线性关系的方向和强度，范围为 −1 到 +1。接近零表示线性关联较弱，但并不能排除非线性关系。</p></section>
 <section id="section-2"><h2>2. 相关性不等于因果关系</h2><p>如果冰淇淋销量和晒伤人数都在夏季上升，并不意味着两者互为因果。温度和日照可能同时影响这两个变量，这就是混杂因素（confounder）。</p><p>因果结论需要研究设计、时间顺序、对其他解释的控制，并尽可能采用实验或有充分依据的准实验。仅凭相关矩阵无法确定作用机制。</p></section>
 <section id="section-3"><h2>3. 线性与非线性关系</h2><p>Pearson 相关可能无法发现强烈的非线性模式。例如，某个结果在适中温度下最低，而在极低和极高温度下都上升。散点图有助于观察关系形状。</p><p>Spearman 相关通过秩评估单调关系，适用于非线性但单调的关系，或存在异常值的情况。任何相关系数都不能替代可视化、领域知识和时间结构分析。</p></section>
 <section id="section-4"><h2>4. 什么是数据泄漏</h2><p>当训练或评估使用了真实预测时不可获得的信息，或者评估数据影响了模型拟合，就会发生数据泄漏。其结果是指标虚高，并产生错误的可靠感。</p><p>例如：特征由未来目标值计算得出；随机划分使同一对象的重复记录分散到训练集和测试集；划分前执行标准化；或特征记录了预测事件发生后才作出的决定。</p></section>
 <section id="section-5"><h2>5. 泄漏类型与防护</h2><p>目标泄漏：输入直接或间接包含答案。时间泄漏：相对于预测时点，未来信息进入训练。重复/分组泄漏：近似重复记录跨越数据划分边界。预处理泄漏：使用完整数据集计算统计量或选择特征。</p><p>防护首先要定义预测时点以及每个特征何时可用。使用时间或分组感知的数据划分，并让预处理 pipeline 只在训练集上拟合。还要检查目标变量是否由部署时无法获得的信息构造。</p></section>
-<section id="section-6"><h2>6. 实践：检查可疑关系</h2><p>任务：提前一天预测设备停机。数据表包含温度、振动、维护计划、事故代码和实际停机时间。事故代码与实际时间只有事件发生后才会记录。</p><p>先定义预测时点。标出哪些字段在此之前可用，哪些字段泄露了未来。解释为什么与目标高度相关并不足以证明某个字段可以作为模型输入。</p></section></section>
+<section id="section-6"><h2>6. 实践：检查可疑关系</h2><p>任务：提前一天预测设备停机。数据表包含温度、振动、维护计划、事故代码和实际停机时间。事故代码与实际时间只有事件发生后才会记录。</p><p>先定义预测时点。标出哪些字段在此之前可用，哪些字段泄露了未来。解释为什么与目标高度相关并不足以证明某个字段可以作为模型输入。</p></section>
 
 
 </article>

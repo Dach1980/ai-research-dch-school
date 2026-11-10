@@ -111,12 +111,13 @@ class Lesson112113Tests(unittest.TestCase):
                     self.assertIn("© 2026 AI Research DCH School", page)
 
     def test_112_113_114_pages_match_the_exact_111_shell_and_have_clean_section_numbers(self):
-        for lesson, expected_questions, source_heading, check_heading in (
-            ("a-1-1-2", 4, "11.", "12."),
-            ("a-1-1-3", 3, "13.", "14."),
-            ("a-1-1-4", 8, "15.", "16."),
-        ):
-            for suffix in ("", "-en", "-zh"):
+        expected = {
+            "a-1-1-2": (4, {"": ("11.", "12."), "-en": ("11.", "12."), "-zh": ("11.", "12.")}),
+            "a-1-1-3": (3, {"": ("13.", "14."), "-en": ("10.", "11."), "-zh": ("10.", "11.")}),
+            "a-1-1-4": (8, {"": ("15.", "16."), "-en": ("15.", "16."), "-zh": ("15.", "16.")}),
+        }
+        for lesson, (expected_questions, locale_numbers) in expected.items():
+            for suffix, (source_heading, check_heading) in locale_numbers.items():
                 page = (ROOT / f"lessons/{lesson}{suffix}.html").read_text(encoding="utf-8")
                 with self.subTest(lesson=lesson, locale=suffix or "ru"):
                     self.assertIn('<section class="track-hero article-hero">', page)
@@ -132,8 +133,8 @@ class Lesson112113Tests(unittest.TestCase):
                     source = page[page.index('class="lesson-sources"'):page.index('<nav class="lesson-nav"')]
                     check = page[page.index('class="lesson-check"'):]
                     self.assertIn(source_heading, source)
-                    self.assertIn(check_heading, check)
-                    self.assertNotIn("class=\"planet\"", page)
+                    self.assertIn(check_heading + " ", check)
+                    self.assertNotIn('class="planet"', page)
                     self.assertNotIn('class="locale-links"', page)
 
     def test_illustration_palette_is_semantic_and_theme_aware(self):

@@ -80,6 +80,8 @@ jobs:
         run: python -m unittest discover -s tests -p 'test_homepage_locale_parity.py' -v
       - name: Test track locale parity
         run: python -m unittest discover -s tests -p 'test_track_locale_parity.py' -v
+      - name: Test knowledge map locale parity and catalogue equality
+        run: python -m unittest discover -s tests -p 'test_knowledge_map_locale_parity.py' -v
       - name: Check homepage locale and account scripts syntax
         run: node --check scripts/language-switcher.js && node --input-type=module --check < scripts/account-ui.js
       - name: Validate legacy production catalog

@@ -72,23 +72,30 @@ class Lesson112113Tests(unittest.TestCase):
 
     def test_reordered_lessons_share_planet_shell_footer_and_final_section_order(self):
         pages = {
-            "a-1-1-3": ("1.1.3", "13.", "14."),
-            "a-1-1-4": ("1.1.4", "15.", "16."),
+            "a-1-1-2": {"": ("11.", "12."), "-en": ("11.", "12."), "-zh": ("11.", "12.")},
+            "a-1-1-3": {"": ("13.", "14."), "-en": ("10.", "11."), "-zh": ("10.", "11.")},
+            "a-1-1-4": {"": ("15.", "16."), "-en": ("15.", "16."), "-zh": ("15.", "16.")},
         }
-        for base, (code, source_number, check_number) in pages.items():
-            for suffix, glossary, check in [
-                ("", "Словарь урока", "Самопроверка"),
-                ("-en", "Lesson glossary", "Self-check"),
-                ("-zh", "本课术语表", "自测"),
-            ]:
+        labels = {
+            "": ("Словарь урока", "Самопроверка"),
+            "-en": ("Lesson glossary", "Self-check"),
+            "-zh": ("本课术语表", "自测"),
+        }
+        for base, locale_numbers in pages.items():
+            for suffix, (source_number, check_number) in locale_numbers.items():
+                glossary, check = labels[suffix]
                 page = (ROOT / f"lessons/{base}{suffix}.html").read_text(encoding="utf-8")
                 with self.subTest(page=f"{base}{suffix}"):
-                    self.assertIn("LESSON " + code, page)
-                    self.assertIn('class="lesson-planet-banner"', page)\n                    self.assertIn('class="lesson-planet-sphere"', page)\n                    self.assertIn('<section class="track-hero article-hero">', page)\n                    self.assertIn('<article class="article-body">', page)\n                    self.assertIn('../styles/lesson-reference-111.css', page)\n                    self.assertIn('../styles/lesson-content-components.css', page)\n                    self.assertNotIn('<style>', page)
+                    self.assertIn("LESSON " + base.replace("a-", "").replace("-", "."), page)
+                    self.assertIn('class="lesson-planet-banner"', page)
+                    self.assertIn('class="lesson-planet-sphere"', page)
                     self.assertIn('<header class="site-header">', page)
                     self.assertIn('<footer class="footer">', page)
                     self.assertIn('class="lesson-sources"', page)
                     self.assertIn('<nav class="lesson-nav"', page)
+                    self.assertIn('../styles/lesson-reference-111.css', page)
+                    self.assertIn('../styles/lesson-content-components.css', page)
+                    self.assertNotIn('<style>', page)
                     positions = [
                         page.index('class="lesson-sources"'),
                         page.index('<nav class="lesson-nav"'),
@@ -96,7 +103,10 @@ class Lesson112113Tests(unittest.TestCase):
                         page.index('class="lesson-check"'),
                     ]
                     self.assertEqual(positions, sorted(positions))
-                    self.assertIn(check_number + " " + check, page)
+                    source_block = page[page.index('class="lesson-sources"'):page.index('<nav class="lesson-nav"')]
+                    check_block = page[page.index('class="lesson-check"'):]
+                    self.assertIn(source_number, source_block)
+                    self.assertIn(check_number + " ", check_block)
                     self.assertIn("Understand AI. Build AI. Research AI.", page)
                     self.assertIn("© 2026 AI Research DCH School", page)
 

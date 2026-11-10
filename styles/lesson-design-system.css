@@ -43,3 +43,18 @@ html:not([data-theme="light"]) .code-token-keyword{color:#c4a7ff}html:not([data-
 .lesson-planet-sphere{position:relative;z-index:1;width:76px;height:76px;border-radius:50%;display:grid;place-items:center;background:radial-gradient(circle at 30% 25%,#e3eaff 0,#9bb9ee 15%,#5279c1 44%,#263c78 76%,#101b3a 100%);border:1px solid rgba(218,232,255,.72);box-shadow:0 0 28px rgba(93,143,230,.52),inset -12px -10px 20px rgba(4,10,29,.5);font:800 13px Manrope;color:#f5f8ff;letter-spacing:.06em}
 @media(max-width:850px){.lesson-planet-banner{grid-template-columns:minmax(0,1fr) 150px}}
 @media(max-width:520px){.lesson-planet-banner{grid-template-columns:1fr}.lesson-planet-art{height:100px}}
+
+
+/* Canonical lesson 1.1.1 content components reused by every lesson page. */
+.article-body{max-width:900px;margin:0 auto;padding:2rem 0 5rem;line-height:1.78}
+.article-body h2{margin-top:2.8rem}.article-body h3{margin-top:1.8rem}
+.article-body .lesson-outcomes,.article-body .lesson-note{padding:1.1rem 1.3rem;border:1px solid rgba(120,150,220,.25);border-radius:14px;background:rgba(80,110,180,.08);margin:1.3rem 0}
+.article-body .lesson-table-wrap{overflow-x:auto;margin:18px 0}
+.article-body .lesson-table{border-collapse:collapse;width:100%;min-width:560px}
+.article-body .lesson-table th,.article-body .lesson-table td{border:1px solid rgba(130,150,190,.3);padding:10px 12px;text-align:left;vertical-align:top}
+.article-body .lesson-practice{padding:20px 22px;margin:22px 0;border:1px solid rgba(94,234,212,.28);border-radius:14px;background:linear-gradient(125deg,rgba(27,76,88,.18),rgba(20,42,72,.18))}
+.article-body .lesson-figure{margin:28px 0;padding:18px;border:1px solid rgba(120,160,230,.24);border-radius:16px;background:linear-gradient(135deg,rgba(18,35,62,.88),rgba(10,17,32,.92));overflow:hidden}
+.article-body .lesson-figure svg{display:block;width:100%;height:auto}
+.article-body .lesson-figure figcaption{margin-top:12px;color:var(--muted,#aebdd4);font-size:13px;line-height:1.6}
+.lesson-sources{margin:30px 0}.lesson-sources li{margin:.55rem 0}
+@media(max-width:600px){.article-body{padding-left:14px;padding-right:14px}.article-body .lesson-figure{overflow-x:auto}.article-body .lesson-figure svg{min-width:620px}.article-body .lesson-table{font-size:.9rem}}

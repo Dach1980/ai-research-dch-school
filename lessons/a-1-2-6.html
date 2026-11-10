@@ -7,38 +7,8 @@
 <meta property="og:description" content="Связь между признаками помогает исследовать данные, но корреляция не доказывает причинность. А утечка данных может сделать оценку модели искусственно высокой.">
 <title>1.2.6 — Корреляция, зависимости и утечка данных — AI Research DCH School</title>
 <link rel="icon" href="../assets/favicon.png"><link rel="stylesheet" href="../styles/main.css">
-<style>
-.lesson-planet-banner{position:relative;display:grid;grid-template-columns:minmax(0,1fr) 190px;gap:24px;align-items:center;margin:26px 0 0;padding:20px 24px;border:1px solid rgba(120,160,230,.22);border-radius:18px;background:radial-gradient(circle at 82% 50%,rgba(100,140,240,.18),transparent 24%),linear-gradient(120deg,rgba(20,37,65,.8),rgba(15,24,44,.72));overflow:hidden}
-.lesson-planet-banner .planet-label{font-size:10px;letter-spacing:.18em;color:var(--blue);font-weight:800}
-.lesson-planet-banner p{margin:8px 0 0;color:var(--muted);font-size:12px;line-height:1.6}
-.lesson-planet-art{position:relative;width:150px;height:120px;margin:auto;display:grid;place-items:center}
-.lesson-planet-art:before,.lesson-planet-art:after{content:"";position:absolute;width:145px;height:55px;border:1px solid rgba(111,166,255,.42);border-radius:50%;transform:rotate(-24deg)}
-.lesson-planet-art:after{width:120px;height:40px;transform:rotate(34deg);border-color:rgba(174,135,255,.38)}
-.lesson-planet-sphere{position:relative;z-index:1;width:76px;height:76px;border-radius:50%;display:grid;place-items:center;background:radial-gradient(circle at 30% 25%,#e3eaff 0,#9bb9ee 15%,#5279c1 44%,#263c78 76%,#101b3a 100%);border:1px solid rgba(218,232,255,.72);box-shadow:0 0 28px rgba(93,143,230,.52),inset -12px -10px 20px rgba(4,10,29,.5);font:800 13px Manrope;color:#f5f8ff;letter-spacing:.06em}
-.article-body{max-width:900px;margin:0 auto;padding:2rem 0 5rem;line-height:1.78}
-.lesson-problem{padding:19px 21px;margin:24px 0;border:1px solid rgba(94,234,212,.24);border-radius:14px;background:linear-gradient(120deg,rgba(27,76,88,.2),rgba(37,43,83,.2))}
-.lesson-problem strong{display:block;color:#8fe9dc;margin-bottom:7px}
-.system-diagram{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:8px;margin:22px 0;padding:18px;border:1px solid rgba(120,150,220,.2);border-radius:16px;background:linear-gradient(135deg,rgba(18,35,62,.9),rgba(10,17,32,.9))}
-.system-step{position:relative;min-height:98px;padding:13px 9px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;border:1px solid rgba(120,160,230,.22);border-radius:10px;background:rgba(255,255,255,.035)}
-.system-step:not(:last-child):after{content:"→";position:absolute;right:-11px;top:50%;transform:translate(50%,-50%);z-index:2;color:#83baff;font-weight:800}
-.system-step b{font:700 11px Manrope;color:#e8f0ff}.system-step span{font-size:10px;color:var(--muted);line-height:1.4;margin-top:5px}
-.system-step em{font-style:normal;font-size:18px;color:#8fc6ff;margin-bottom:6px}
-.lesson-experiment{padding:20px 22px;margin:22px 0;border:1px solid rgba(167,139,250,.28);border-radius:15px;background:linear-gradient(125deg,rgba(80,57,130,.18),rgba(20,42,72,.18))}
-.lesson-experiment h3{margin-top:0!important;color:#d9c8ff}
-.lesson-conclusion{padding:18px 21px;margin:24px 0;border-left:3px solid var(--teal);border-radius:0 12px 12px 0;background:rgba(94,234,212,.07)}
-@media(max-width:850px){.system-diagram{grid-template-columns:repeat(3,minmax(0,1fr))}.system-step:nth-child(3):after{display:none}}
-@media(max-width:520px){.lesson-planet-banner{grid-template-columns:1fr}.lesson-planet-art{height:100px}.system-diagram{grid-template-columns:repeat(2,minmax(0,1fr));padding:10px}.system-step:nth-child(2n):after{display:none}.system-step:nth-child(3):after{display:block}}
-.article-body h2{margin-top:2.8rem}.article-body h3{margin-top:1.8rem}
-.article-body .definition,.article-body .notice{padding:1.1rem 1.3rem;border:1px solid rgba(120,150,220,.25);border-radius:14px;background:rgba(80,110,180,.08);margin:1.3rem 0}
-.article-body .formula{font-family:ui-monospace,monospace;overflow-wrap:anywhere;text-align:center}
-.article-body table{width:100%;border-collapse:collapse;margin:1.2rem 0;display:block;overflow-x:auto}
-.article-body th,.article-body td{padding:.75rem;border:1px solid rgba(130,150,190,.25);text-align:left;vertical-align:top}
-.article-body li{margin:.45rem 0}.article-body .glossary dt{font-weight:700;margin-top:1rem}.article-body .glossary dd{margin-left:0;color:var(--muted,#aab3c5)}
-.article-body .quiz-question{padding:1rem;border:1px solid rgba(120,150,220,.22);border-radius:12px;margin:1rem 0}
 
-.lesson-figure{margin:28px 0;padding:18px;border:1px solid rgba(120,160,230,.24);border-radius:16px;background:linear-gradient(135deg,rgba(18,35,62,.88),rgba(10,17,32,.92));overflow:hidden}.lesson-figure figcaption{margin-top:12px;color:var(--muted,#aab7cc);font-size:13px;line-height:1.55}.lesson-figure svg{display:block;width:100%;height:auto}.lesson-figure .svg-title{fill:#eef4ff;font:700 17px Manrope,Arial,sans-serif}.lesson-figure .svg-label{fill:#e3edff;font:600 13px Manrope,Arial,sans-serif}.lesson-figure .svg-small{fill:#aebed8;font:12px Manrope,Arial,sans-serif}.lesson-figure .svg-accent{fill:#8fc5ff}.lesson-figure .svg-box{fill:#172b49;stroke:#668bc5;stroke-width:1.4}.lesson-figure .svg-box2{fill:#30294f;stroke:#a78bfa;stroke-width:1.4}.lesson-figure .svg-box3{fill:#153f40;stroke:#5bd6c1;stroke-width:1.4}@media(max-width:560px){.lesson-figure{padding:10px}.lesson-figure .svg-title{font-size:15px}.lesson-figure .svg-label{font-size:12px}.lesson-figure .svg-small{font-size:10px}}
-</style>
-<link rel="stylesheet" href="../styles/account.css"><link rel="stylesheet" href="../styles/lesson-design-system.css"><link rel="stylesheet" href="../styles/lesson-standard.css"><link rel="canonical" href="https://dach1980.github.io/ai-research-dch-school/lessons/a-1-2-6.html"></head>
+<link rel="stylesheet" href="../styles/account.css"><link rel="stylesheet" href="../styles/lesson-design-system.css"><link rel="stylesheet" href="../styles/lesson-standard.css"><link rel="stylesheet" href="../styles/lesson-reference-111.css"><link rel="canonical" href="https://dach1980.github.io/ai-research-dch-school/lessons/a-1-2-6.html"></head>
 <body>
 <header class="site-header"><a class="brand" href="../index.html"><img src="../assets/site-brand-icon.jpg" alt="DCH"><span><strong>AI Research</strong><small>DCH SCHOOL</small></span></a><button class="menu-toggle" aria-label="Открыть меню" aria-expanded="false">☰</button><nav class="nav"><a href="../tracks/understanding-ai.html">Track A</a><a href="../tracks/inside-ai.html">Track B</a><a href="../tracks/building-with-ai.html">Track C</a><a href="index.html">Все уроки</a></nav></header>
 <main class="container">

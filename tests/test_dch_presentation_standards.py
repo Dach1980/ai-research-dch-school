@@ -16,6 +16,12 @@ class DchPresentationStandardsTests(unittest.TestCase):
             "docs/standards/CODE_TEACHING_STANDARD.md",
             "docs/standards/ILLUSTRATION_STANDARD.md",
             "docs/standards/LESSON_QUALITY_GATE.md",
+            "docs/architecture/SITE_FOUNDATION_V1.md",
+            "docs/education/LESSON_DESIGN_SYSTEM.md",
+            "docs/education/LESSON_AUTHORING_TEMPLATE.md",
+            "templates/lesson-page-template.html",
+            "styles/lesson-reference-111.css",
+            "styles/lesson-content-components.css",
         ]
         for relative in required:
             with self.subTest(path=relative):

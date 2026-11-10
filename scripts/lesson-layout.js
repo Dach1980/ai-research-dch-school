@@ -11,8 +11,9 @@ function normalizePlanet(root,code,lead){
  if(oldOrb){oldOrb.classList.add("lesson-planet-sphere");}
  if(!planet.querySelector(".lesson-planet-art")){
   var art=document.createElement("div");art.className="lesson-planet-art";
-  var sphere=document.createElement("div");sphere.className="lesson-planet-sphere";sphere.setAttribute("aria-hidden","true");sphere.textContent=code||"AI";
-  art.appendChild(sphere);planet.appendChild(art);
+  if(oldOrb){oldOrb.parentNode.insertBefore(art,oldOrb);art.appendChild(oldOrb);}
+  else{var sphere=document.createElement("div");sphere.className="lesson-planet-sphere";sphere.setAttribute("aria-hidden","true");sphere.textContent=code||"AI";art.appendChild(sphere);}
+  planet.appendChild(art);
  }
  if(!planet.querySelector(".planet-label")){
   var label=document.createElement("span");label.className="planet-label";label.textContent=labels.planet;

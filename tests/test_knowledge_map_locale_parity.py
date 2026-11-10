@@ -25,7 +25,7 @@ class KnowledgeMapLocaleParityTests(unittest.TestCase):
         cls.catalog = json.loads((ROOT / "data/catalog/catalog-v2.json").read_text(encoding="utf-8"))
 
     def test_all_locales_use_the_same_interactive_map_shell(self):
-        expected_lang = {"ru": "ru", "en": "en", "zh": "zh"}
+        expected_lang = {"ru": "ru", "en": "en", "zh": "zh-CN"}
         for locale, html in self.pages.items():
             self.assertIn(f'<html lang="{expected_lang[locale]}"', html, locale)
             for marker in REQUIRED_MAP_MARKERS:
@@ -51,14 +51,18 @@ class KnowledgeMapLocaleParityTests(unittest.TestCase):
             self.assertNotIn("<style>", html.lower(), locale)
 
     def test_planets_equal_all_published_track_a_lessons(self):
-        lessons = [item for item in self.catalog["lessons"] if item["track_id"] == "track-a" and item["status"] == "published"]
+        modules = {item["id"]: item for item in self.catalog["modules"]}
+        themes = {item["id"]: item for item in self.catalog["themes"]}
+        lessons = [item for item in self.catalog["lessons"] if item["status"] == "published" and themes[modules[item["module_id"]]["theme_id"]]["track_id"] == "track-a"]
         planet_ids = {item["lesson_id"] for item in self.catalog["planets"]}
         lesson_ids = {item["id"] for item in lessons}
         self.assertEqual(planet_ids, lesson_ids)
         self.assertEqual(len(lessons), len(planet_ids))
 
     def test_every_published_lesson_has_a_real_route_in_all_locales(self):
-        lessons = [item for item in self.catalog["lessons"] if item["track_id"] == "track-a" and item["status"] == "published"]
+        modules = {item["id"]: item for item in self.catalog["modules"]}
+        themes = {item["id"]: item for item in self.catalog["themes"]}
+        lessons = [item for item in self.catalog["lessons"] if item["status"] == "published" and themes[modules[item["module_id"]]["theme_id"]]["track_id"] == "track-a"]
         for lesson in lessons:
             for locale in ("ru", "en", "zh"):
                 route = lesson.get("url_i18n", {}).get(locale)

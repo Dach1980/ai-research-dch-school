@@ -108,7 +108,6 @@ class LocaleGridThemeParityTests(unittest.TestCase):
             "en": "lessons/a-1-what-is-artificial-intelligence-en.html",
             "zh": "lessons/a-1-what-is-artificial-intelligence-zh.html",
         }
-        headings = {"ru": "Самопроверка", "en": "Self-check", "zh": "自我检查"}
         for locale, relative in pages.items():
             page = (ROOT / relative).read_text(encoding="utf-8")
             with self.subTest(locale=locale):
@@ -117,14 +116,16 @@ class LocaleGridThemeParityTests(unittest.TestCase):
                 self.assertEqual(page.count("<h1>"), 1)
                 self.assertEqual(page.count('class="lesson-planet-banner"'), 1)
                 self.assertIn("lesson-design-system.css", page)
-                self.assertIn(headings[locale], page)
                 self.assertEqual(page.count('class="lesson-check-question"'), 3)
                 self.assertEqual(page.count('class="lesson-check-option"'), 8)
                 self.assertIn("lesson-assessment.js", page)
                 check_start = page.index('class="lesson-check"')
-                self.assertGreater(page.index(headings[locale]), 0)
-                self.assertGreater(check_start, page.index(headings[locale]))
-                self.assertEqual(page[:check_start].count('type="checkbox"'), 0)
+                self.assertEqual(page.count('class="lesson-check"'), 1)
+                self.assertEqual(page.count('class="lesson-check-question"'), 3)
+                self.assertEqual(page.count('class="lesson-check-option"'), 8)
+                self.assertNotIn("<h2>15. Самопроверка</h2>", page)
+                self.assertNotIn("<h3>Self-check</h3>", page)
+                self.assertNotIn("<h3>自我检查</h3>", page)
         design = (ROOT / "styles/lesson-design-system.css").read_text(encoding="utf-8")
         self.assertIn(".lesson-planet-banner{", design)
         self.assertIn(".lesson-planet-sphere{", design)

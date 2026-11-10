@@ -216,8 +216,6 @@
         "status",
         "access",
         "level",
-        "duration_min",
-        "duration_max",
         "prerequisites",
         "learning_outcomes",
         "url"

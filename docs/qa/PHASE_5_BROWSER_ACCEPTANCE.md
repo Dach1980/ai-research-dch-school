@@ -143,3 +143,40 @@ A valid, user-controlled test account and access to its mailbox are required to 
 6. Attach screenshots or other direct browser evidence for the remaining checks.
 
 **Conclusion:** Candidate desktop localization, core page routing, callback localization, callback theme persistence, auth/account controls, and logged-out states have been browser-checked on the correct PR #3 deployment. Phase 5 remains **PARTIAL**, not passed, because mobile/tablet visual acceptance and live Supabase email/auth flows are still outstanding.
+
+
+## 8. V3-only lesson catalogue correction — 2026-11-10
+
+A user-reported defect showed composite legacy lesson identifiers and mixed lesson topics in the Track A catalogue. The catalogue UI has now been changed to read the V3 catalogue directly; it no longer calls the legacy projection for homepage cards, lesson cards, or the interactive knowledge map.
+
+Implemented on the PR branch:
+- V3 is the direct source for lesson, theme and module structure in the three catalogue surfaces.
+- Each displayed lesson has one V3 code; legacy many-to-many mapping identifiers are not rendered.
+- Only lessons with both `status=published` and `content_state=published` are shown as open lessons.
+- The four currently published A.1 lessons have RU / EN / 中文 titles and localized routes.
+- Duration metadata (40–50, 50–60, 60–75 minutes) was carried into V3 for these four lessons and added to the V3 schema.
+- Theme and module titles support RU / EN / 中文.
+- Planned lessons remain in the V3 data model but are not displayed as open lessons. No lesson status was promoted and no new lesson content was created.
+- Regression coverage was added/updated for V3-only reads, one code per lesson, published filtering, localized titles/routes, and duration metadata.
+
+### Browser evidence
+
+Current Vercel Preview deployment:
+- URL: https://ai-research-dch-school-3ix3eonkw-itprof80-6389.vercel.app
+- Deployment ID: `dpl_6N2TsVT7MkZC48mfZJbNnBfmTHp1`
+- Commit: `507b3d53e7fd2b09c1d31ec30da418d898f85eba`
+- Vercel state: READY
+
+Read-only browser runs:
+- Track A catalogue: https://agent.tinyfish.ai/runs/50ae3069-0e6f-4900-ac14-4aa805623268
+- RU / EN / 中文 lesson catalogue and knowledge maps: https://agent.tinyfish.ai/runs/017d89e3-f259-49f1-b094-0df06d7daf5e
+
+Observed on the Preview:
+- Four published A.1 lesson cards appear consistently in RU / EN / 中文, each with exactly one code: 1.1.1, 1.1.2, 1.1.3, 1.1.4.
+- Titles, routes, durations and module/theme labels are localized.
+- Four corresponding planets appear in each localized knowledge map.
+- No planned lesson is displayed as published/open.
+- No legacy or migration labels are visible in the catalogue.
+- No visible broken links or runtime error messages were reported by the browser run.
+
+The browser-tested deployment commit predates the final test-only and QA updates on this branch. The latest branch head still requires a fresh CI result and a fresh Preview build before this catalogue correction can be considered fully accepted.

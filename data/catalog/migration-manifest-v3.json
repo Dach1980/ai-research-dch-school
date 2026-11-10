@@ -23,11 +23,11 @@
         "v1",
         "v2"
       ],
-      "canonical_url": "lessons/a-1-what-is-artificial-intelligence.html",
+      "canonical_url": "lessons/a-1-1-1.html",
       "localized_urls": {
-        "ru": "lessons/a-1-what-is-artificial-intelligence.html",
-        "en": "lessons/a-1-what-is-artificial-intelligence-en.html",
-        "zh": "lessons/a-1-what-is-artificial-intelligence-zh.html"
+        "ru": "lessons/a-1-1-1.html",
+        "en": "lessons/a-1-1-1-en.html",
+        "zh": "lessons/a-1-1-1-zh.html"
       },
       "status": "published",
       "mapping_state": "direct_candidate",

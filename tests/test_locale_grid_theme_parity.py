@@ -114,6 +114,7 @@ class LocaleGridThemeParityTests(unittest.TestCase):
             with self.subTest(locale=locale):
                 self.assertIn('<section class="track-hero article-hero">', page)
                 self.assertIn('<article class="article-body">', page)
+                self.assertEqual(page.count("<h1>"), 1)
                 self.assertEqual(page.count('class="lesson-planet-banner"'), 1)
                 self.assertIn("lesson-design-system.css", page)
                 self.assertIn(headings[locale], page)

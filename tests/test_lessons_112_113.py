@@ -137,6 +137,19 @@ class Lesson112113Tests(unittest.TestCase):
                     self.assertNotIn('class="planet"', page)
                     self.assertNotIn('class="locale-links"', page)
 
+    def test_section_numbers_are_sequential_for_lessons_112_113_114(self):
+        expected = {
+            "a-1-1-2": {"": list(range(1, 13)), "-en": list(range(1, 13)), "-zh": list(range(1, 13))},
+            "a-1-1-3": {"": list(range(1, 15)), "-en": list(range(1, 12)), "-zh": list(range(1, 12))},
+            "a-1-1-4": {"": list(range(1, 17)), "-en": list(range(1, 17)), "-zh": list(range(1, 17))},
+        }
+        for lesson, locales in expected.items():
+            for suffix, numbers in locales.items():
+                page = (ROOT / f"lessons/{lesson}{suffix}.html").read_text(encoding="utf-8")
+                actual = [int(value) for value in re.findall(r"<h2[^>]*>\\s*(\\d+)\\.", page)]
+                with self.subTest(lesson=lesson, locale=suffix or "ru"):
+                    self.assertEqual(actual, numbers)
+
     def test_illustration_palette_is_semantic_and_theme_aware(self):
         palette = (ROOT / "styles/lesson-visual-palette.css").read_text(encoding="utf-8")
         theme = (ROOT / "styles/theme-system.css").read_text(encoding="utf-8")

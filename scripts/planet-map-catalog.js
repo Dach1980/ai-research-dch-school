@@ -16,7 +16,7 @@
   const esc=v=>String(v??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
   const catalog=window.DCHCatalogCompat;
   if(!catalog){list.textContent=ui.empty;return;}
-  catalog.load({baseUrl:"../data/catalog",schemaVersion:3}).then(data=>{
+  window.DCHCatalogCompat.load({baseUrl:"../data/catalog",schemaVersion:3}).then(data=>{
     const themes=new Map(data.themes.map(x=>[x.uid,x])),modules=new Map(data.modules.map(x=>[x.uid,x]));
     const lessons=data.lessons.filter(x=>x.track_uid==="trk-a"&&x.status==="published"&&x.content_state==="published").sort((a,b)=>a.code.localeCompare(b.code,undefined,{numeric:true}));
     if(!lessons.length){list.innerHTML='<p class="map-note">'+esc(ui.empty)+'</p>';return;}

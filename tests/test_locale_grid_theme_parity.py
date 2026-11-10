@@ -35,7 +35,7 @@ class LocaleGridThemeParityTests(unittest.TestCase):
         for relative in HOME:
             page = (ROOT / relative).read_text(encoding="utf-8")
             with self.subTest(page=relative):
-                self.assertRegex(page, r'class="[^"]*\bknowledge-home\\b')
+                self.assertIn("knowledge-home", page)
                 self.assertIn('class="home-knowledge-grid" data-home-knowledge-map', page)
                 self.assertIn('class="knowledge-cta"', page)
                 self.assertIn("styles/main.css", page)

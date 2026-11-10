@@ -104,6 +104,25 @@ class TrackADataLessonTests(unittest.TestCase):
                 self.assertIn("understanding-ai", nav)
                 self.assertIn("index", nav)
 
+    def test_first_data_batch_uses_111_article_content_order_without_duplicate_practice(self):
+        localized = {
+            "": "После изучения урока вы сможете:",
+            "-en": "After studying this lesson, you will be able to:",
+            "-zh": "学习本课后，你将能够：",
+        }
+        for slug in ("a-1-2-1", "a-1-2-2", "a-1-2-4", "a-1-2-5", "a-1-2-6"):
+            for suffix, intro in localized.items():
+                page = (ROOT / "lessons" / f"{slug}{suffix}.html").read_text(encoding="utf-8")
+                article = page.split('<article class="article-body">', 1)[1].split("</article>", 1)[0]
+                with self.subTest(slug=slug, locale=suffix or "ru"):
+                    self.assertTrue(article.lstrip().startswith("<h2>"))
+                    self.assertIn(intro, article)
+                    self.assertNotIn("Содержание урока", article)
+                    self.assertNotIn("Lesson content", article)
+                    self.assertNotIn("课程内容", article)
+                    self.assertNotIn('class="lesson-practice"', article)
+                    self.assertEqual(article.count("<h2>Результаты обучения</h2>") + article.count("<h2>Learning outcomes</h2>") + article.count("<h2>学习目标</h2>"), 1)
+
     def test_assessment_questions_are_well_formed_and_keyed(self):
         for _, slug in TARGETS.values():
             for locale in LOCALES:

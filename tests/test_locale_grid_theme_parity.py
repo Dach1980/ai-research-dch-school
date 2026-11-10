@@ -204,5 +204,6 @@ class LocaleGridThemeParityTests(unittest.TestCase):
             self.assertNotIn("Орбиты — визуальная навигация", contents[locale])
         self.assertIn('>Home</a>', contents["en"])
         self.assertIn('>首页</a>', contents["zh"])
-\nif __name__ == "__main__":
+
+if __name__ == "__main__":
     unittest.main()

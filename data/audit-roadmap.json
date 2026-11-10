@@ -1038,7 +1038,7 @@
       "date": "2026-11-10",
       "type": "track_a_data_lessons_authoring_batch_1",
       "title": "Созданы пять локализованных уроков раздела 1.2 о данных и признаках",
-      "result": "Созданы 15 канонических HTML-страниц RU/EN/中文 для уроков 1.2.1, 1.2.2, 1.2.4, 1.2.5 и 1.2.6. Каждый урок содержит учебные результаты, шесть тематических разделов, оригинальную локализованную схему, практикум, три источника, пять карточек словаря, три интерактивных вопроса и стандартные нижние блоки с навигацией и footer. В catalog-v3 добавлены локализованные заголовки и URL, outcomes и prerequisites; статусы установлены review, content_state=localized. Добавлены отдельные CI-тесты структуры страниц, locale parity и оценочных вопросов. Production catalog v2 не переключался, старые страницы A.3–A.6 сохранены.",
+      "result": "Созданы 15 канонических HTML-страниц RU/EN/中文 для уроков 1.2.1, 1.2.2, 1.2.4, 1.2.5 и 1.2.6. Каждый урок содержит учебные результаты, шесть тематических разделов, оригинальную локализованную схему, практикум, три источника, пять карточек словаря, три интерактивных вопроса и стандартные нижние блоки с навигацией и footer. В catalog-v3 добавлены локализованные заголовки и URL, outcomes и prerequisites; статусы установлены review, content_state=localized. Добавлены отдельные CI-тесты структуры страниц, locale parity и оценочных вопросов. Production catalog v2 не переключался, старые страницы A.3–A.6 сохранены. GitHub Actions Validate learning catalog завершился успешно на commit ce58b919a94e177cc6e846194f520515f49fd5d8; Pages build/deployment и Deploy static website to GitHub Pages также завершились успешно на этом commit.",
       "evidence": [
         "lessons/a-1-2-1.html",
         "lessons/a-1-2-1-en.html",
@@ -1061,8 +1061,7 @@
         "docs/education/LEGACY_A3_A6_CONTENT_MIGRATION.md"
       ],
       "limitations": [
-        "GitHub Actions validation and Pages deployment for the latest commit must complete successfully before acceptance.",
-        "Manual browser checks on desktop/mobile, keyboard navigation, dark/light themes and native-speaker editorial review have not yet been completed.",
+        "Ручная браузерная приёмка desktop/mobile, клавиатурной навигации и светлой/тёмной тем, а также native-speaker редакторская проверка ещё не выполнены.",
         "The production UI still reads catalog v2; these new lessons remain staged in catalog v3 and are not yet surfaced as published lessons.",
         "16 target lessons (48 localized pages) remain in RM-16."
       ]

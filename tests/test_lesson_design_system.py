@@ -140,6 +140,23 @@ class LessonDesignSystemTests(unittest.TestCase):
             self.assertNotIn("<style>", source)
             self.assertIn("../styles/lesson-reference-111.css", source)
 
+    def test_canonical_html_template_and_authoring_guide_are_available(self):
+        template = (ROOT / "templates/lesson-page-template.html").read_text(encoding="utf-8")
+        guide = (ROOT / "docs/education/LESSON_AUTHORING_TEMPLATE.md").read_text(encoding="utf-8")
+        for required in (
+            'class="site-header"', 'class="track-hero article-hero"',
+            'class="lesson-planet-banner"', 'class="article-body"',
+            'class="lesson-sources"', 'class="lesson-nav"',
+            'class="lesson-glossary"', 'class="lesson-check"',
+            'class="footer"', "lesson-reference-111.css",
+        ):
+            self.assertIn(required, template)
+        self.assertIn("{{LESSON_CODE}}", template)
+        self.assertIn("{{LECTURE_CONTENT}}", template)
+        self.assertIn("{{SELF_CHECK_QUESTIONS}}", template)
+        self.assertIn("точь-в-точь", guide)
+        self.assertIn("не допускаются пропуски, дубли", guide.lower())
+
     def test_admin_exposes_design_system_tab_and_document(self):
         admin = (ROOT / "admin/index.html").read_text(encoding="utf-8")
         self.assertIn('id="tab-design"', admin)

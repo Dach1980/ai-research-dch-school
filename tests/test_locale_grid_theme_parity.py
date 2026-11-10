@@ -37,6 +37,7 @@ class LocaleGridThemeParityTests(unittest.TestCase):
             with self.subTest(page=relative):
                 self.assertIn('class="knowledge-home', page)
                 self.assertIn('class="home-knowledge-grid" data-home-knowledge-map', page)
+                self.assertIn('class="knowledge-cta"', page)
                 self.assertIn("styles/main.css", page)
                 self.assertEqual(page.count("home-knowledge-map.js"), 1)
                 self.assertEqual(page.count("theme-system.js"), 1)

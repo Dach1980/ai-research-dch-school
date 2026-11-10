@@ -41,6 +41,9 @@ class CatalogV3OnlyTests(unittest.TestCase):
             self.assertIn("ru", lesson.get("url_i18n", {}))
             self.assertIn("en", lesson.get("url_i18n", {}))
             self.assertIn("zh", lesson.get("url_i18n", {}))
+            self.assertEqual(set(lesson.get("title_i18n", {})), {"ru", "en", "zh"})
+            self.assertGreaterEqual(lesson.get("duration_min", 0), 1)
+            self.assertGreaterEqual(lesson.get("duration_max", 0), lesson["duration_min"])
 
     def test_all_three_localized_track_and_lesson_pages_keep_v3_scripts(self):
         for relative in [

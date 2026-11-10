@@ -174,6 +174,52 @@ class LocaleGridThemeParityTests(unittest.TestCase):
                         self.assertEqual(page.count(secondary_marker), expected_secondary)
 
 
+
+    def test_a1_lesson_content_structure_sources_and_final_navigation_match_all_locales(self):
+        pages = {
+            "ru": "lessons/a-1-what-is-artificial-intelligence.html",
+            "en": "lessons/a-1-what-is-artificial-intelligence-en.html",
+            "zh": "lessons/a-1-what-is-artificial-intelligence-zh.html",
+        }
+        required_sources = [
+            "https://oecd.ai/en/ai-principles",
+            "https://oecd.ai/en/wonk/ai-system-definition-update",
+            "https://hai.stanford.edu/",
+            "https://plato.stanford.edu/entries/artificial-intelligence/",
+            "https://aima.cs.berkeley.edu/",
+        ]
+        required_navigation = {
+            "ru": ["../learning-map/index.html", "1-1-2-history-of-ai.html", "../tracks/understanding-ai.html", "index.html"],
+            "en": ["../learning-map/index-en.html", "1-1-2-history-of-ai-en.html", "../tracks/understanding-ai-en.html", "index-en.html"],
+            "zh": ["../learning-map/index-zh.html", "1-1-2-history-of-ai-zh.html", "../tracks/understanding-ai-zh.html", "index-zh.html"],
+        }
+        locale_headings = {
+            "ru": ["14. Словарь урока", "15. Самопроверка", "17. Источники и дополнительное чтение"],
+            "en": ["14. Lesson glossary", "15. Self-check", "17. Sources and further reading"],
+            "zh": ["14. 本课术语表", "15. 自测", "17. 参考资料与延伸阅读"],
+        }
+        for locale, relative in pages.items():
+            page = (ROOT / relative).read_text(encoding="utf-8")
+            with self.subTest(locale=locale):
+                for heading in locale_headings[locale]:
+                    self.assertIn("<h2>" + heading + "</h2>", page)
+                for url in required_sources:
+                    self.assertIn(url, page)
+                self.assertEqual(page.count('class="lesson-sources"'), 1)
+                self.assertEqual(page.count('class="lesson-nav"'), 1)
+                nav_start = page.index('class="lesson-nav"')
+                self.assertGreater(nav_start, page.index('class="lesson-check"'))
+                for href in required_navigation[locale]:
+                    self.assertIn('href="' + href + '"', page[nav_start:])
+                self.assertLess(nav_start, page.index("</main>"))
+        # The extended examples and practical work in EN/ZH are retained rather than replaced by a short translation.
+        en_page = (ROOT / pages["en"]).read_text(encoding="utf-8")
+        zh_page = (ROOT / pages["zh"]).read_text(encoding="utf-8")
+        for marker in ["Worked example: a building energy assistant", "Mini-experiment: three ways to detect excessive energy use", "Rule-based systems", "Expert systems", "Search and planning"]:
+            self.assertIn(marker, en_page)
+        for marker in ["案例：建筑能耗助手", "迷你实验：用三种方式发现能耗异常", "基于规则的系统", "专家系统", "搜索与规划"]:
+            self.assertIn(marker, zh_page)
+
     def test_a1_lesson_shell_planet_footer_and_outcomes_contrast_match_all_locales(self):
         pages = {
             "ru": "lessons/a-1-what-is-artificial-intelligence.html",

@@ -16,8 +16,6 @@
     "1.1.3":{en:"Symbolic AI and Machine Learning",zh:"符号人工智能与机器学习"},
     "1.1.4":{en:"AI, Machine Learning and Deep Learning",zh:"人工智能、机器学习与深度学习"}
   };
-  const themeTitles = {ru:"Основы искусственного интеллекта и машинного обучения",en:"Fundamentals of Artificial Intelligence and Machine Learning",zh:"人工智能与机器学习基础"};
-  const moduleTitles = {ru:"Основы AI и машинного обучения",en:"AI and Machine Learning Fundamentals",zh:"人工智能与机器学习基础"};
   const esc = value => String(value ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
   const catalog = window.DCHCatalogCompat;
   if (!catalog) { root.textContent = labels.empty; return; }
@@ -37,7 +35,7 @@
     });
     root.innerHTML = [...groups.values()].map(({module,theme,lessons:items}) => {
       const track = tracks.get(theme.track_uid);
-      return '<section class="catalog-module"><p class="eyebrow">'+esc(track?.code||"")+' · '+esc(labels.theme)+' '+esc(theme.number)+'</p><h3>'+esc(themeTitles[locale])+'</h3><div class="catalog-module-heading"><span>'+esc(labels.module)+' '+esc(module.number)+'</span><strong>'+esc(moduleTitles[locale])+'</strong></div><div class="catalog-lesson-list">'+items.sort((a,b)=>a.code.localeCompare(b.code,undefined,{numeric:true})).map(lesson => {
+      return '<section class="catalog-module"><p class="eyebrow">'+esc(track?.code||"")+' · '+esc(labels.theme)+' '+esc(theme.number)+'</p><h3>'+esc((theme.title_i18n?.[locale] || theme.title))+'</h3><div class="catalog-module-heading"><span>'+esc(labels.module)+' '+esc(module.number)+'</span><strong>'+esc((module.title_i18n?.[locale] || module.title))+'</strong></div><div class="catalog-lesson-list">'+items.sort((a,b)=>a.code.localeCompare(b.code,undefined,{numeric:true})).map(lesson => {
         const href = lesson.url_i18n?.[locale] || lesson.url_i18n?.ru;
         const title = lesson.title_i18n?.[locale] || translations[lesson.code]?.[locale] || lesson.title;
         const duration = Number.isFinite(lesson.duration_min) && Number.isFinite(lesson.duration_max) ? (lesson.duration_min===lesson.duration_max?lesson.duration_min:lesson.duration_min+"–"+lesson.duration_max)+" "+labels.duration : labels.durationPending;

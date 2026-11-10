@@ -156,7 +156,7 @@ class PublishedSiteIntegrityTests(unittest.TestCase):
             self.assertTrue((ROOT / relative).is_file(), relative)
 
     def test_a1_and_a2_have_original_explanatory_diagrams(self):
-        a1 = (ROOT / "lessons" / "a-1-what-is-artificial-intelligence.html").read_text(encoding="utf-8")
+        a1 = (ROOT / "lessons" / "a-1-1-1.html").read_text(encoding="utf-8")
         a2 = (ROOT / "lessons" / "a-1-1-3.html").read_text(encoding="utf-8")
         self.assertGreaterEqual(a1.count("<svg"), 2)
         self.assertGreaterEqual(a2.count("<svg"), 3)

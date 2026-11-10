@@ -31,10 +31,16 @@ class HierarchicalCatalogUITests(unittest.TestCase):
         script = (ROOT / "scripts/home-knowledge-map.js").read_text(encoding="utf-8")
         self.assertIn("loadLegacyProjection", script)
         self.assertIn('root.dataset.catalogBase || "data/catalog"', script)
-        for relative in ["index.html", "index-en.html", "index-zh.html", "learning-map/index-en.html", "learning-map/index-zh.html"]:
+        for relative in ["index.html", "index-en.html", "index-zh.html"]:
             page = (ROOT / relative).read_text(encoding="utf-8")
             self.assertIn("data-home-knowledge-map", page)
             self.assertLess(page.index("catalog-compat.js"), page.index("home-knowledge-map.js"))
+        for relative in ["learning-map/index.html", "learning-map/index-en.html", "learning-map/index-zh.html"]:
+            page = (ROOT / relative).read_text(encoding="utf-8")
+            self.assertIn("data-planets-root", page)
+            self.assertIn("data-planets-list", page)
+            self.assertLess(page.index("catalog-compat.js"), page.index("planet-map-catalog.js"))
+            self.assertNotIn("data-home-knowledge-map", page)
 
     def test_all_track_and_lesson_catalogues_use_v2(self):
         for relative in [

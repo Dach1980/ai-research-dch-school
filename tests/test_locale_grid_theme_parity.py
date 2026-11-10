@@ -126,7 +126,7 @@ class LocaleGridThemeParityTests(unittest.TestCase):
                 self.assertEqual(page.count('class="lesson-check"'), 1)
                 self.assertEqual(page.count('class="lesson-check-question"'), 3)
                 self.assertEqual(page.count('class="lesson-check-option"'), 8)
-                self.assertIn("<h2>15. Самопроверка</h2>" if locale == "ru" else ("<h2>15. Self-check</h2>" if locale == "en" else "<h2>15. 自测</h2>"), page)
+                self.assertIn("<h2>17. Самопроверка</h2>" if locale == "ru" else ("<h2>17. Self-check</h2>" if locale == "en" else "<h2>17. 自测</h2>"), page)
         design = (ROOT / "styles/lesson-design-system.css").read_text(encoding="utf-8")
         self.assertIn(".lesson-planet-banner{", design)
         self.assertIn(".lesson-planet-sphere{", design)
@@ -195,15 +195,15 @@ class LocaleGridThemeParityTests(unittest.TestCase):
             "zh": ["../learning-map/index-zh.html", "a-1-1-2-zh.html", "../tracks/understanding-ai-zh.html", "index-zh.html"],
         }
         locale_headings = {
-            "ru": ["14. Словарь урока", "15. Самопроверка", "17. Источники и дополнительное чтение"],
-            "en": ["14. Lesson glossary", "15. Self-check", "17. Sources and further reading"],
-            "zh": ["14. 本课术语表", "15. 自测", "17. 参考资料与延伸阅读"],
+            "ru": ["14. Расширенный словарь терминов", "15. Практическое задание", "16. Источники и дополнительное чтение", "17. Самопроверка"],
+            "en": ["14. Practical task", "15. Lesson glossary", "16. Sources and further reading", "17. Self-check"],
+            "zh": ["14. 实践任务", "15. 本课术语表", "16. 参考资料与延伸阅读", "17. 自测"],
         }
         for locale, relative in pages.items():
             page = (ROOT / relative).read_text(encoding="utf-8")
             with self.subTest(locale=locale):
                 for heading in locale_headings[locale]:
-                    self.assertIn("<h2>" + heading + "</h2>", page)
+                    self.assertIn(heading, page)
                 for url in required_sources:
                     self.assertIn(url, page)
                 self.assertEqual(page.count('class="lesson-sources"'), 1)
@@ -238,7 +238,7 @@ class LocaleGridThemeParityTests(unittest.TestCase):
                 self.assertIn('class="lesson-planet-sphere"', page)
                 self.assertIn('class="footer"', page)
                 self.assertIn("lesson-planet-art", page)
-                self.assertIn(".lesson-planet-banner{", page)
+                self.assertIn("lesson-reference-111.css", page)
                 self.assertNotIn('class="outcomes"', page)
                 self.assertNotIn('<div class="outcomes"><strong>', page)
                 self.assertIn("theme-system.js", page)

@@ -63,6 +63,8 @@
 11. Самопроверка.
 12. Единый DCH footer.
 
+Стартовая HTML-заготовка для новых уроков находится в `templates/lesson-page-template.html`; правила заполнения placeholders — в `docs/education/LESSON_AUTHORING_TEMPLATE.md`.
+
 CSS оболочки централизован в:
 - `styles/lesson-design-system.css`;
 - `styles/lesson-standard.css`;

@@ -38,7 +38,7 @@
     }
     list.innerHTML='<div class="side-top"><strong>Track A · Understanding AI</strong><span class="level">'+lessons.length+' '+esc(ui.published)+'</span></div>'+lessons.map(lesson=>{
       const title=lesson.title_i18n?.[locale]||titles[lesson.code]?.[locale]||lesson.title,href=lesson.url_i18n?.[locale]||lesson.url_i18n?.ru;
-      return '<div class="list-entry"><div><strong>'+esc(lesson.code)+' — '+esc(title)+'</strong><small>'+esc(ui.theme)+' 1 · '+esc(ui.module)+' 1 · '+esc(ui.duration)+': '+esc(ui.pending)+'</small></div><div class="list-actions"><button type="button" data-select-lesson="'+esc(lesson.uid)+'">'+esc(ui.map)+'</button><a class="button secondary" href="../'+esc(href)+'">'+esc(ui.start)+'</a></div></div>';
+      return '<div class="list-entry"><div><strong>'+esc(lesson.code)+' — '+esc(title)+'</strong><small>'+esc(ui.theme)+' 1 · '+esc(ui.module)+' 1 · '+esc(ui.duration)+': '+esc(lesson.duration_min&&lesson.duration_max?(lesson.duration_min+'–'+lesson.duration_max+' '+ui.minutes):ui.pending)+'</small></div><div class="list-actions"><button type="button" data-select-lesson="'+esc(lesson.uid)+'">'+esc(ui.map)+'</button><a class="button secondary" href="../'+esc(href)+'">'+esc(ui.start)+'</a></div></div>';
     }).join("");
     list.querySelectorAll("[data-select-lesson]").forEach(b=>b.addEventListener("click",()=>{const lesson=lessons.find(x=>x.uid===b.dataset.selectLesson);if(lesson)render(lesson);document.getElementById("mapMode")?.click();}));
     render(lessons[0]);

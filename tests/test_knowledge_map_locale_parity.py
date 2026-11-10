@@ -32,6 +32,7 @@ class KnowledgeMapLocaleParityTests(unittest.TestCase):
                 self.assertIn(marker, html, f"{locale}: {marker}")
             for asset in (
                 "styles/knowledge-map.css",
+                "styles/theme-system.css",
                 "scripts/catalog-compat.js",
                 "scripts/planet-map-catalog.js",
                 "scripts/main.js",
@@ -78,6 +79,7 @@ class KnowledgeMapLocaleParityTests(unittest.TestCase):
             self.assertIn(f'"{lesson_id}":{{', source)
         self.assertIn("url_i18n[locale]", source)
         self.assertIn("title_i18n[locale]", source)
+        self.assertIn("Math.min(78,Math.max(18,position[1]))", source)
 
 if __name__ == "__main__":
     unittest.main()

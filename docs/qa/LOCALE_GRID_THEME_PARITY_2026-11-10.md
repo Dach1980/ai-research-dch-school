@@ -2,7 +2,7 @@
 
 ## Scope and publication
 
-Changes were committed directly to `main`, as explicitly requested. No new branch was created for this work. The public GitHub Pages site now serves the updated main-branch files.
+Changes were committed directly to `main`, as explicitly requested. No new branch was created for this work. The public GitHub Pages site now serves the updated main-branch files. The three homepages also share the same section structure: heading → four-card grid → bottom CTA. The Russian heading was corrected from six to four published lessons.
 
 ## Implemented
 
@@ -33,6 +33,8 @@ Read-only public-site browser run (theme was changed only in the isolated test b
 - All three lesson catalogues displayed four lessons with single codes and no durations.
 - All three learning maps displayed the four V3 published lessons with single codes and no duration metadata.
 - No visible runtime errors were reported.
+- Final homepage smoke check after the final markup alignment: https://agent.tinyfish.ai/runs/d91fbe18-359b-46b5-9e5b-53e376e4a195
+- The final smoke check confirmed identical section structure and light-theme persistence across RU / EN / 中文.
 
 Note: labels such as “Начальный уровень / Beginner / 初级” and “Открытый урок / Open lesson / 免费课程” are level/access metadata, not legacy identifiers. The Russian map heading “Track A · ТЕМА 1 · МОДУЛЬ 1” is hierarchy metadata, not a composite lesson code.
 
@@ -46,7 +48,7 @@ The browser automation environment could not resize the viewport or emulate devi
 
 ## CI / deployment status
 
-- Main-branch commit at the time of this report: `928c625c5637af354272e5868073d30214b6884f`.
+- Main-branch commit at the time of this report: `1406937247e21a1aab5d9d685477960d65385ab5`.
 - The Vercel status check reports a build-rate-limit failure; it did not produce a new Preview deployment for this commit.
 - GitHub Pages public site did update and was inspected successfully in the browser.
 - Regression tests were added/updated, but a successful automated test-suite run has not yet been confirmed. Do not treat the suite as passed until a CI result is available.

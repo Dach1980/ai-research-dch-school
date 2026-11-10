@@ -2,66 +2,49 @@
   const root = document.querySelector("[data-lesson-catalog]");
   if (!root) return;
   const base = root.dataset.base || "../";
-  const locale = document.documentElement.lang || "ru";
-  const trackId = root.dataset.trackId || "";
+  const rawLocale = document.documentElement.lang || "ru";
+  const locale = rawLocale.toLowerCase().startsWith("zh") ? "zh" : rawLocale.toLowerCase().startsWith("en") ? "en" : "ru";
+  const trackUid = root.dataset.trackUid || (root.dataset.trackId === "track-a" ? "trk-a" : "");
   const labels = {
-    ru:{theme:"ТЕМА",module:"МОДУЛЬ",lesson:"Урок",beginner:"Начальный уровень",intermediate:"Средний уровень",advanced:"Продвинутый уровень",open:"Открытый урок",registered:"После регистрации",paid:"Платный урок",empty:"Опубликованных уроков пока нет.",duration:"минут"},
-    en:{theme:"THEME",module:"MODULE",lesson:"Lesson",beginner:"Beginner",intermediate:"Intermediate",advanced:"Advanced",open:"Open lesson",registered:"Registration required",paid:"Paid lesson",empty:"No published lessons yet.",duration:"min"},
-    zh:{theme:"主题",module:"模块",lesson:"课程",beginner:"初级",intermediate:"中级",advanced:"高级",open:"免费课程",registered:"注册后开放",paid:"付费课程",empty:"暂无已发布课程。",duration:"分钟"}
+    ru:{theme:"ТЕМА",module:"МОДУЛЬ",lesson:"Урок",beginner:"Начальный уровень",intermediate:"Средний уровень",advanced:"Продвинутый уровень",open:"Открытый урок",registered:"После регистрации",paid:"Платный урок",empty:"Опубликованных уроков пока нет.",duration:"минут",durationPending:"Длительность уточняется"},
+    en:{theme:"THEME",module:"MODULE",lesson:"Lesson",beginner:"Beginner",intermediate:"Intermediate",advanced:"Advanced",open:"Open lesson",registered:"Registration required",paid:"Paid lesson",empty:"No published lessons yet.",duration:"min",durationPending:"Duration to be confirmed"},
+    zh:{theme:"主题",module:"模块",lesson:"课程",beginner:"初级",intermediate:"中级",advanced:"高级",open:"免费课程",registered:"注册后开放",paid:"付费课程",empty:"暂无已发布课程。",duration:"分钟",durationPending:"时长待确认"}
+  }[locale];
+  const translations = {
+    "1.1.1":{en:"What Is Artificial Intelligence?",zh:"什么是人工智能？"},
+    "1.1.2":{en:"A Brief History of Artificial Intelligence",zh:"人工智能发展简史"},
+    "1.1.3":{en:"Symbolic AI and Machine Learning",zh:"符号人工智能与机器学习"},
+    "1.1.4":{en:"AI, Machine Learning and Deep Learning",zh:"人工智能、机器学习与深度学习"}
   };
-  const ui = labels[locale] || labels.ru;
-  const duration = lesson => {
-    const value = lesson.duration_min === lesson.duration_max
-      ? String(lesson.duration_min)
-      : lesson.duration_min + "–" + lesson.duration_max;
-    return value + " " + ui.duration;
-  };
-  const esc = value => String(value ?? "").replace(/[&<>"']/g, c => ({
-    "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
-  })[c]);
+  const themeTitles = {ru:"Основы искусственного интеллекта и машинного обучения",en:"Fundamentals of Artificial Intelligence and Machine Learning",zh:"人工智能与机器学习基础"};
+  const moduleTitles = {ru:"Основы AI и машинного обучения",en:"AI and Machine Learning Fundamentals",zh:"人工智能与机器学习基础"};
+  const esc = value => String(value ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
   const catalog = window.DCHCatalogCompat;
-  if (!catalog) {
-    root.innerHTML = '<p class="notice">Catalog adapter not loaded.</p>';
-    return;
-  }
-  catalog.loadLegacyProjection({ baseUrl: base + "data/catalog" })
-    .then(data => {
-      const tracks = new Map(data.tracks.map(item => [item.id, item]));
-      const themes = new Map(data.themes.map(item => [item.id, item]));
-      const modules = data.modules.filter(item => !trackId || item.track_id === trackId);
-      const lessons = data.lessons.filter(item =>
-        item.status === "published" && (!trackId || item.track_id === trackId)
-      );
-      if (!lessons.length) {
-        root.innerHTML = '<p class="muted">' + esc(ui.empty) + '</p>';
-        return;
-      }
-      const groups = modules.map(module => {
-        const theme = themes.get(module.theme_id);
-        const items = lessons.filter(lesson => lesson.module_id === module.id);
-        if (!items.length) return "";
-        const themeTitle = theme?.title_i18n?.[locale] || theme?.title || "";
-        const moduleTitle = module.title_i18n?.[locale] || module.title || "";
-        return `<section class="catalog-module" aria-labelledby="module-${esc(module.id)}">
-          <p class="eyebrow">${esc(tracks.get(module.track_id)?.code || "")} · ${esc(ui.theme)} ${esc((theme?.id || "").split(".").pop())}</p>
-          <h3>${esc(themeTitle)}</h3>
-          <div class="catalog-module-heading"><span>${esc(ui.module)} ${esc(module.id.split(".").pop())}</span><strong id="module-${esc(module.id)}">${esc(moduleTitle)}</strong></div>
-          <div class="catalog-lesson-list">${items.map(lesson => {
-            const href = base + ((lesson.url_i18n && lesson.url_i18n[locale]) || lesson.url);
-            const title = (lesson.title_i18n && lesson.title_i18n[locale]) || lesson.title;
-            const displayCode = lesson.v3_target_codes && lesson.v3_target_codes.length ? lesson.v3_target_codes.join(" · ") : "—";
-            const level = ui[lesson.level] || lesson.level;
-            const access = ui[lesson.access] || lesson.access;
-            return `<a class="module" href="${esc(href)}">
-              <strong>${esc(ui.lesson)} ${esc(displayCode)} · ${esc(title)}</strong>
-              <span>${esc(duration(lesson))} · ${esc(level)} · ${esc(access)}</span>
-            </a>`;
-          }).join("")}</div>
-        </section>`;
-      }).join("");
-      root.innerHTML = groups || '<p class="muted">' + esc(ui.empty) + '</p>';
-    })
-    .catch(error => {
-      root.innerHTML = '<p class="notice">Unable to load lesson catalogue: ' + esc(error.message) + '.</p>';
+  if (!catalog) { root.textContent = labels.empty; return; }
+  catalog.load({baseUrl:base+"data/catalog",schemaVersion:3}).then(data => {
+    const tracks = new Map(data.tracks.map(x => [x.uid,x]));
+    const themes = new Map(data.themes.map(x => [x.uid,x]));
+    const modules = new Map(data.modules.map(x => [x.uid,x]));
+    const lessons = data.lessons.filter(x => x.status === "published" && x.content_state === "published" && (!trackUid || x.track_uid === trackUid));
+    if (!lessons.length) { root.innerHTML = '<p class="muted">'+esc(labels.empty)+'</p>'; return; }
+    const groups = new Map();
+    lessons.forEach(lesson => {
+      const module = modules.get(lesson.module_uid), theme = themes.get(lesson.theme_uid);
+      if (!module || !theme) return;
+      const key = module.uid;
+      if (!groups.has(key)) groups.set(key,{module,theme,lessons:[]});
+      groups.get(key).lessons.push(lesson);
     });
+    root.innerHTML = [...groups.values()].map(({module,theme,lessons:items}) => {
+      const track = tracks.get(theme.track_uid);
+      return '<section class="catalog-module"><p class="eyebrow">'+esc(track?.code||"")+' · '+esc(labels.theme)+' '+esc(theme.number)+'</p><h3>'+esc(themeTitles[locale])+'</h3><div class="catalog-module-heading"><span>'+esc(labels.module)+' '+esc(module.number)+'</span><strong>'+esc(moduleTitles[locale])+'</strong></div><div class="catalog-lesson-list">'+items.sort((a,b)=>a.code.localeCompare(b.code,undefined,{numeric:true})).map(lesson => {
+        const href = lesson.url_i18n?.[locale] || lesson.url_i18n?.ru;
+        const title = lesson.title_i18n?.[locale] || translations[lesson.code]?.[locale] || lesson.title;
+        const duration = Number.isFinite(lesson.duration_min) && Number.isFinite(lesson.duration_max) ? (lesson.duration_min===lesson.duration_max?lesson.duration_min:lesson.duration_min+"–"+lesson.duration_max)+" "+labels.duration : labels.durationPending;
+        const level = labels[lesson.level] || lesson.level;
+        const access = labels[lesson.access] || lesson.access;
+        return '<a class="module" href="'+esc(base+href)+'"><strong>'+esc(labels.lesson)+' '+esc(lesson.code)+' · '+esc(title)+'</strong><span>'+esc(duration)+' · '+esc(level)+' · '+esc(access)+'</span></a>';
+      }).join("")+'</div></section>';
+    }).join("");
+  }).catch(() => { root.innerHTML = '<p class="muted">'+esc(labels.empty)+'</p>'; });
 })();

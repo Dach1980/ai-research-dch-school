@@ -173,5 +173,37 @@ class LocaleGridThemeParityTests(unittest.TestCase):
                     if secondary_marker:
                         self.assertEqual(page.count(secondary_marker), expected_secondary)
 
-if __name__ == "__main__":
+
+    def test_learning_maps_share_planet_universe_header_footer_and_theme_contrast(self):
+        pages = {
+            "ru": "learning-map/index.html",
+            "en": "learning-map/index-en.html",
+            "zh": "learning-map/index-zh.html",
+        }
+        contents = {}
+        for locale, relative in pages.items():
+            page = (ROOT / relative).read_text(encoding="utf-8")
+            contents[locale] = page
+            with self.subTest(locale=locale):
+                self.assertIn('class="site-header"', page)
+                self.assertIn('class="map-intro"', page)
+                self.assertIn('class="universe" data-planets-root', page)
+                self.assertIn('class="orbit o1"', page)
+                self.assertIn('class="planetDetails"', page) if False else None
+                self.assertIn('id="planetDetails"', page)
+                self.assertIn('id="listView"', page)
+                self.assertIn('class="footer"', page)
+                self.assertIn('planet-map-catalog.js', page)
+                self.assertIn('language-switcher.js', page)
+                self.assertIn('theme-system.js', page)
+                self.assertIn('color:#f2f6ff', page)
+                self.assertNotIn('home-knowledge-map.js', page)
+        for locale in ("en", "zh"):
+            self.assertIn('<html lang="' + locale + '">', contents[locale])
+            self.assertNotIn("Главная", contents[locale])
+            self.assertNotIn("Доступный урок", contents[locale])
+            self.assertNotIn("Орбиты — визуальная навигация", contents[locale])
+        self.assertIn('>Home</a>', contents["en"])
+        self.assertIn('>首页</a>', contents["zh"])
+\nif __name__ == "__main__":
     unittest.main()

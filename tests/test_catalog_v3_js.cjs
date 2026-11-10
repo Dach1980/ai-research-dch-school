@@ -6,7 +6,8 @@ const legacy=JSON.parse(fs.readFileSync("data/catalog/catalog-v2.json","utf8"));
 const manifest=JSON.parse(fs.readFileSync("data/catalog/migration-manifest-v3.json","utf8"));
 for(const path of ["scripts/lesson-catalog.js","scripts/home-knowledge-map.js","scripts/planet-map-catalog.js"]){
  const source=fs.readFileSync(path,"utf8");
- assert.match(source,/loadLegacyProjection/);
+ assert.match(source,/catalog-v3\\.json/);
+ assert.doesNotMatch(source,/loadLegacyProjection/);
 }
 const normalized=compat.normalizeV3(catalog);
 assert.equal(normalized.schema_version,3);

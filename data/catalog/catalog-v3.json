@@ -339,12 +339,27 @@
       "module_uid": "mod-a-01-02",
       "code": "1.2.1",
       "title": "Что такое данные в машинном обучении",
-      "status": "planned",
+      "status": "review",
       "access": "open",
       "level": "beginner",
       "prerequisite_uids": [],
-      "learning_outcomes": [],
-      "content_state": "outline_only"
+      "learning_outcomes": [
+        "Объяснять данные, наблюдение и набор данных.",
+        "Различать структурированные, полуструктурированные и неструктурированные данные.",
+        "Описывать происхождение, единицы измерения и ограничения набора данных.",
+        "Объяснять роль репрезентативности и смещения выборки."
+      ],
+      "content_state": "localized",
+      "url_i18n": {
+        "ru": "lessons/a-1-2-1.html",
+        "en": "lessons/a-1-2-1-en.html",
+        "zh": "lessons/a-1-2-1-zh.html"
+      },
+      "title_i18n": {
+        "ru": "Что такое данные в машинном обучении",
+        "en": "What Is Data in Machine Learning?",
+        "zh": "什么是机器学习中的数据？"
+      }
     },
     {
       "uid": "les-a-0004",
@@ -353,12 +368,29 @@
       "module_uid": "mod-a-01-02",
       "code": "1.2.2",
       "title": "Объекты, признаки и целевые переменные",
-      "status": "planned",
+      "status": "review",
       "access": "open",
       "level": "beginner",
-      "prerequisite_uids": [],
-      "learning_outcomes": [],
-      "content_state": "outline_only"
+      "prerequisite_uids": [
+        "les-a-0003"
+      ],
+      "learning_outcomes": [
+        "Определять объект и единицу наблюдения.",
+        "Различать признаки X, целевую переменную y и идентификаторы.",
+        "Объяснять различие регрессии и классификации.",
+        "Проверять доступность признаков в момент прогноза."
+      ],
+      "content_state": "localized",
+      "url_i18n": {
+        "ru": "lessons/a-1-2-2.html",
+        "en": "lessons/a-1-2-2-en.html",
+        "zh": "lessons/a-1-2-2-zh.html"
+      },
+      "title_i18n": {
+        "ru": "Объекты, признаки и целевые переменные",
+        "en": "Objects, Features, and Target Variables",
+        "zh": "对象、特征与目标变量"
+      }
     },
     {
       "uid": "les-a-0005",
@@ -367,12 +399,29 @@
       "module_uid": "mod-a-01-02",
       "code": "1.2.5",
       "title": "Качество данных, пропуски и выбросы",
-      "status": "planned",
+      "status": "review",
       "access": "open",
       "level": "beginner",
-      "prerequisite_uids": [],
-      "learning_outcomes": [],
-      "content_state": "outline_only"
+      "prerequisite_uids": [
+        "les-a-0003"
+      ],
+      "learning_outcomes": [
+        "Проверять полноту, типы, диапазоны и дубликаты.",
+        "Различать пропуск, ноль и структурное отсутствие.",
+        "Объяснять стратегии обработки пропусков и их ограничения.",
+        "Отличать ошибку измерения от редкого реального события."
+      ],
+      "content_state": "localized",
+      "url_i18n": {
+        "ru": "lessons/a-1-2-5.html",
+        "en": "lessons/a-1-2-5-en.html",
+        "zh": "lessons/a-1-2-5-zh.html"
+      },
+      "title_i18n": {
+        "ru": "Качество данных, пропуски и выбросы",
+        "en": "Data Quality, Missing Values, and Outliers",
+        "zh": "数据质量、缺失值与异常值"
+      }
     },
     {
       "uid": "les-a-0006",
@@ -381,12 +430,31 @@
       "module_uid": "mod-a-01-02",
       "code": "1.2.6",
       "title": "Корреляция, зависимости и утечка данных",
-      "status": "planned",
+      "status": "review",
       "access": "open",
       "level": "beginner",
-      "prerequisite_uids": [],
-      "learning_outcomes": [],
-      "content_state": "outline_only"
+      "prerequisite_uids": [
+        "les-a-0004",
+        "les-a-0050",
+        "les-a-0005"
+      ],
+      "learning_outcomes": [
+        "Различать положительную, отрицательную и близкую к нулю линейную корреляцию.",
+        "Объяснять отличие корреляции от причинности.",
+        "Распознавать смешивающие факторы и нелинейные зависимости.",
+        "Выявлять утечку цели, времени, дубликатов и предобработки."
+      ],
+      "content_state": "localized",
+      "url_i18n": {
+        "ru": "lessons/a-1-2-6.html",
+        "en": "lessons/a-1-2-6-en.html",
+        "zh": "lessons/a-1-2-6-zh.html"
+      },
+      "title_i18n": {
+        "ru": "Корреляция, зависимости и утечка данных",
+        "en": "Correlation, Relationships, and Data Leakage",
+        "zh": "相关性、变量关系与数据泄漏"
+      }
     },
     {
       "uid": "les-a-0007",
@@ -1000,12 +1068,29 @@
       "module_uid": "mod-a-01-02",
       "code": "1.2.4",
       "title": "Обучающие, проверочные и тестовые данные",
-      "status": "planned",
+      "status": "review",
       "access": "open",
       "level": "beginner",
-      "prerequisite_uids": [],
-      "learning_outcomes": [],
-      "content_state": "outline_only"
+      "prerequisite_uids": [
+        "les-a-0004"
+      ],
+      "learning_outcomes": [
+        "Объяснять роли train, validation и test.",
+        "Выбирать стратегию разделения по структуре данных.",
+        "Различать случайное, стратифицированное, групповое и временное разделение.",
+        "Объяснять, почему предобработка обучается только на train."
+      ],
+      "content_state": "localized",
+      "url_i18n": {
+        "ru": "lessons/a-1-2-4.html",
+        "en": "lessons/a-1-2-4-en.html",
+        "zh": "lessons/a-1-2-4-zh.html"
+      },
+      "title_i18n": {
+        "ru": "Обучающие, проверочные и тестовые данные",
+        "en": "Training, Validation, and Test Data",
+        "zh": "训练集、验证集与测试集"
+      }
     },
     {
       "uid": "les-a-0051",
@@ -1071,5 +1156,6 @@
     }
   ],
   "resources": [],
-  "planets": []
+  "planets": [],
+  "updated_at": "2026-11-10"
 }

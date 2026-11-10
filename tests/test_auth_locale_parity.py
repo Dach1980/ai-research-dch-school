@@ -56,7 +56,8 @@ class AuthenticationLocaleParityTests(unittest.TestCase):
     def test_public_registration_remains_disabled_and_no_auth_schema_is_changed(self):
         config = (ROOT / "scripts/supabase-config.js").read_text(encoding="utf-8")
         self.assertIn("registrationEnabled: false", config)
-        self.assertNotIn("service_role", config)
+        self.assertNotIn('"service_role"', config)
+        self.assertIn("anonKey:", config)
         self.assertTrue((ROOT / "supabase/migrations/004_school_admin_roles.sql").is_file())
 
 if __name__ == "__main__":

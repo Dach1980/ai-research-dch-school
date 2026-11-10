@@ -84,7 +84,7 @@ class LocaleGridThemeParityTests(unittest.TestCase):
         self.assertEqual(len(published), 4)
         for lesson in published:
             with self.subTest(code=lesson["code"]):
-                self.assertRegex(lesson["code"], r"^\\d+\\.\\d+\\.\\d+$")
+                self.assertRegex(lesson["code"], r"^\d+\.\d+\.\d+$")
                 self.assertEqual(set(lesson["title_i18n"]), {"ru", "en", "zh"})
                 self.assertEqual(set(lesson["url_i18n"]), {"ru", "en", "zh"})
                 for route in lesson["url_i18n"].values():

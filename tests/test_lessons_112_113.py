@@ -137,6 +137,16 @@ class Lesson112113Tests(unittest.TestCase):
                     self.assertNotIn('class="planet"', page)
                     self.assertNotIn('class="locale-links"', page)
 
+    def test_lesson_113_preserves_full_localized_glossary_and_practice_checks(self):
+        for suffix in ("-en", "-zh"):
+            page = (ROOT / f"lessons/a-1-1-3{suffix}.html").read_text(encoding="utf-8")
+            with self.subTest(locale=suffix):
+                self.assertEqual(page.count('class="quiz"'), 5)
+                self.assertGreaterEqual(page.count('class="glossary-entry"'), 15)
+                self.assertIn('class="lesson-practice-checks"', page)
+                self.assertIn("data-mode=\"single\"", page)
+                self.assertIn("data-correct=", page)
+
     def test_section_numbers_are_sequential_for_lessons_112_113_114(self):
         expected = {
             "a-1-1-2": {"": list(range(1, 13)), "-en": list(range(1, 13)), "-zh": list(range(1, 13))},

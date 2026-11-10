@@ -49,10 +49,10 @@ The target records in `data/catalog/catalog-v3.json` are currently `planned`, an
 
 ## Required target set (21 lessons)
 
-- [ ] 1.2.1 — Что такое данные в машинном обучении (`les-a-0003`): RU / EN / 中文, page, glossary, self-check, sources and navigation.
-- [ ] 1.2.2 — Объекты, признаки и целевые переменные (`les-a-0004`): RU / EN / 中文, page, glossary, self-check, sources and navigation.
-- [ ] 1.2.5 — Качество данных, пропуски и выбросы (`les-a-0005`): RU / EN / 中文, page, glossary, self-check, sources and navigation.
-- [ ] 1.2.6 — Корреляция, зависимости и утечка данных (`les-a-0006`): RU / EN / 中文, page, glossary, self-check, sources and navigation.
+- [x] 1.2.1 — Что такое данные в машинном обучении (`les-a-0003`): RU / EN / 中文, page, glossary, self-check, sources and navigation.
+- [x] 1.2.2 — Объекты, признаки и целевые переменные (`les-a-0004`): RU / EN / 中文, page, glossary, self-check, sources and navigation.
+- [x] 1.2.5 — Качество данных, пропуски и выбросы (`les-a-0005`): RU / EN / 中文, page, glossary, self-check, sources and navigation.
+- [x] 1.2.6 — Корреляция, зависимости и утечка данных (`les-a-0006`): RU / EN / 中文, page, glossary, self-check, sources and navigation.
 - [ ] 1.3.1 — Обучение с учителем — Supervised Learning (`les-a-0007`): RU / EN / 中文, page, glossary, self-check, sources and navigation.
 - [ ] 1.3.2 — Обучение без учителя — Unsupervised Learning (`les-a-0008`): RU / EN / 中文, page, glossary, self-check, sources and navigation.
 - [ ] 1.3.6 — Генеративные модели и другие современные подходы (`les-a-0009`): RU / EN / 中文, page, glossary, self-check, sources and navigation.
@@ -69,7 +69,7 @@ The target records in `data/catalog/catalog-v3.json` are currently `planned`, an
 - [ ] 1.5.5 — Дисбаланс классов (`les-a-0047`): RU / EN / 中文, page, glossary, self-check, sources and navigation.
 - [ ] 1.5.7 — Метрики регрессии: MAE, MSE, RMSE и R² (`les-a-0048`): RU / EN / 中文, page, glossary, self-check, sources and navigation.
 - [ ] 3.1.6 — Сравнение моделей и базовые алгоритмы (`les-a-0049`): RU / EN / 中文, page, glossary, self-check, sources and navigation.
-- [ ] 1.2.4 — Обучающие, проверочные и тестовые данные (`les-a-0050`): RU / EN / 中文, page, glossary, self-check, sources and navigation.
+- [x] 1.2.4 — Обучающие, проверочные и тестовые данные (`les-a-0050`): RU / EN / 中文, page, glossary, self-check, sources and navigation.
 
 ## Migration acceptance gates
 
@@ -93,3 +93,17 @@ Legacy source pages (each currently exists in RU / EN / 中文):
 - `lessons/a-6-generalization-and-overfitting{,-en,-zh}.html`
 
 The source pages remain canonical migration evidence until acceptance is complete.
+
+
+## First authoring batch — 2026-11-10
+
+Created the first five target lessons in all three locales (15 canonical pages):
+- 1.2.1 — data concepts, observations, dataset forms, provenance and sampling bias;
+- 1.2.2 — entities, observation units, feature matrix X, target y, regression/classification and prediction-time availability;
+- 1.2.4 — train/validation/test roles, random/stratified/group/time splits and preprocessing leakage;
+- 1.2.5 — quality dimensions, missingness, imputation, outliers and quality-control practice;
+- 1.2.6 — Pearson/Spearman interpretation, confounding, nonlinear relationships and leakage types.
+
+All pages include localized learning outcomes, lesson sections, a practical task, references, a five-term glossary, three interactive checks, the standard post-source navigation panel and the DCH footer. The catalog v3 records now carry canonical RU/EN/ZH URLs, localized titles, outcomes and prerequisite links. Their status is deliberately `review` (not `published`); the v3 catalog remains staging and the production v2 reader has not been switched. The legacy A.3–A.6 pages remain untouched.
+
+Remaining for this batch: automated CI, locale/content parity review, manual browser acceptance and final editorial approval before publication.

@@ -93,5 +93,31 @@ class LessonDesignSystemTests(unittest.TestCase):
         self.assertTrue((ROOT / "docs/education/LESSON_DESIGN_SYSTEM.md").exists())
 
 
+    def test_canonical_lesson_url_and_closing_navigation_standard_is_documented(self):
+        standard = (ROOT / "docs/education/LESSON_DESIGN_SYSTEM.md").read_text(encoding="utf-8")
+        for required in (
+            "Единая идентификация и адреса страниц уроков",
+            "a-1-1-1.html",
+            "a-1-1-2.html",
+            "Стандартная нижняя навигация урока",
+            "Карта планет",
+            "Следующий урок",
+            "Программа Track",
+            "Все уроки",
+            "Стандартный footer",
+            "redirects",
+        ):
+            self.assertIn(required, standard)
+
+        admin = (ROOT / "admin/index.html").read_text(encoding="utf-8")
+        self.assertIn("Канонический URL", admin)
+        self.assertIn("LESSON_DESIGN_SYSTEM.md, разделы 7–12", admin)
+
+        import json
+        roadmap = json.loads((ROOT / "data/audit-roadmap.json").read_text(encoding="utf-8"))
+        self.assertTrue(any(item["id"] == "RM-13" for item in roadmap["roadmap"]))
+        self.assertTrue(any(item["id"] == "AUD-034" for item in roadmap["audit_log"]))
+
+
 if __name__ == "__main__":
     unittest.main()

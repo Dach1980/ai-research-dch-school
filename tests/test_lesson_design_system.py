@@ -5,7 +5,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 LESSONS = {
     "a-1-what-is-artificial-intelligence": 3,
-    "a-2-ai-ml-deep-learning": 3,
+    "a-1-1-3": 3,
     "a-3-how-machines-learn-from-data": 4,
     "a-4-what-is-machine-learning-model": 6,
     "a-5-how-to-evaluate-a-model": 4,
@@ -17,7 +17,7 @@ class LessonDesignSystemTests(unittest.TestCase):
     def test_track_a_locales_load_shared_design_assets(self):
         bases = list(LESSONS) + [
             "1-1-2-history-of-ai",
-            "1-1-3-symbolic-ai-and-machine-learning",
+            "a-1-1-4",
         ]
         for base in bases:
             for suffix in ("", "-en", "-zh"):
@@ -47,7 +47,7 @@ class LessonDesignSystemTests(unittest.TestCase):
     def test_history_and_symbolic_lessons_keep_source_linked_questions(self):
         for base, expected in (
             ("1-1-2-history-of-ai", 4),
-            ("1-1-3-symbolic-ai-and-machine-learning", 8),
+            ("a-1-1-4", 8),
         ):
             for suffix in ("", "-en", "-zh"):
                 source = (ROOT / "lessons" / f"{base}{suffix}.html").read_text(encoding="utf-8")
@@ -62,7 +62,7 @@ class LessonDesignSystemTests(unittest.TestCase):
     def test_glossary_card_markup_and_shared_styles_are_present(self):
         for base in (
             "a-1-what-is-artificial-intelligence",
-            "a-2-ai-ml-deep-learning",
+            "a-1-1-3",
             "a-3-how-machines-learn-from-data",
         ):
             for suffix in ("", "-en", "-zh"):

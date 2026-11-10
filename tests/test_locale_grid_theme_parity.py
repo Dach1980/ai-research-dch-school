@@ -255,6 +255,30 @@ class LocaleGridThemeParityTests(unittest.TestCase):
         self.assertIn(">All lessons</a>", contents["en"])
         self.assertIn(">全部课程</a>", contents["zh"])
 
+    def test_public_track_and_home_pages_use_numeric_catalog_codes_not_legacy_ids(self):
+        import re
+        for locale, path in (
+            ("ru", "tracks/understanding-ai.html"),
+            ("en", "tracks/understanding-ai-en.html"),
+            ("zh", "tracks/understanding-ai-zh.html"),
+        ):
+            page = (ROOT / path).read_text(encoding="utf-8")
+            with self.subTest(path=path):
+                self.assertIn('data-lesson-catalog', page)
+                self.assertIn('lesson-catalog.js', page)
+                self.assertIsNone(re.search(r'\\bA\\.\\d+', page))
+        for path in ("index.html", "index-en.html", "index-zh.html"):
+            page = (ROOT / path).read_text(encoding="utf-8")
+            with self.subTest(path=path):
+                self.assertIsNone(re.search(r'\\bA\\.\\d+', page))
+        home_ru = (ROOT / "index.html").read_text(encoding="utf-8")
+        self.assertIn("1.1.3 — AI, Machine Learning и Deep Learning", home_ru)
+        self.assertIn('href="lessons/a-1-1-3.html"', home_ru)
+        for path in ("scripts/lesson-catalog.js", "scripts/planet-map-catalog.js", "scripts/home-knowledge-map.js"):
+            script = (ROOT / path).read_text(encoding="utf-8")
+            self.assertIn("catalog-v3.json", script)
+            self.assertNotIn("catalog-v2.json", script)
+
     def test_learning_maps_share_planet_universe_header_footer_and_theme_contrast(self):
         pages = {
             "ru": "learning-map/index.html",

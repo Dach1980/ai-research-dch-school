@@ -85,6 +85,27 @@ class LessonDesignSystemTests(unittest.TestCase):
             terms = re.findall(r'class="term">([^<]+)', source)
             self.assertEqual(len(terms), len(set(terms)), f"A.4 duplicate term: {suffix}")
 
+    def test_canonical_lesson_111_section_numbering_is_sequential_in_all_locales(self):
+        expected = {
+            "": ("14. Расширенный словарь терминов", "15. Практическое задание", "16. Источники и дополнительное чтение", "17. Самопроверка"),
+            "-en": ("14. Practical task", "15. Lesson glossary", "16. Sources and further reading", "17. Self-check"),
+            "-zh": ("14. 实践任务", "15. 本课术语表", "16. 参考资料与延伸阅读", "17. 自测"),
+        }
+        for suffix, labels in expected.items():
+            source = (ROOT / "lessons" / f"a-1-1-1{suffix}.html").read_text(encoding="utf-8")
+            for label in labels:
+                self.assertIn(label, source, f"{suffix}: {label}")
+            self.assertNotIn("<section><h2>14. Словарь урока</h2></section>", source)
+            self.assertNotIn(">16. Practical task<", source)
+            self.assertNotIn(">16. 实践任务<", source)
+
+    def test_admin_declares_lesson_111_as_the_single_exact_design_reference(self):
+        admin = (ROOT / "admin/index.html").read_text(encoding="utf-8")
+        self.assertIn("Эталон оформления: урок 1.1.1", admin)
+        self.assertIn("точь-в-точь по уроку 1.1.1", admin)
+        self.assertIn("../lessons/a-1-1-1-en.html", admin)
+        self.assertIn("../lessons/a-1-1-1-zh.html", admin)
+
     def test_admin_exposes_design_system_tab_and_document(self):
         admin = (ROOT / "admin/index.html").read_text(encoding="utf-8")
         self.assertIn('id="tab-design"', admin)

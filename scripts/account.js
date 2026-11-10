@@ -9,6 +9,7 @@ function applyLanguage(next,updateUrl=true){
  document.documentElement.lang=lang==="zh"?"zh-CN":lang;
  document.querySelectorAll("[data-lang]").forEach(button=>button.setAttribute("aria-pressed",String(button.dataset.lang===lang)));
  document.querySelectorAll("[data-i18n]").forEach(el=>{const key=el.dataset.i18n;if(copy[lang][key])el.textContent=t(key)});
+ document.querySelectorAll("[data-route]").forEach(el=>{const route=el.dataset.route;el.href=route==="lessons"?(lang==="ru"?"../lessons/index.html":lang==="en"?"../lessons/index-en.html":"../lessons/index-zh.html"):(lang==="ru"?"../index.html":lang==="en"?"../index-en.html":"../index-zh.html")});
  document.title=t("title")+" — AI Research DCH School";
  if(updateUrl){const url=new URL(location.href);url.searchParams.set("lang",lang);history.replaceState({}, "",url);}
 }

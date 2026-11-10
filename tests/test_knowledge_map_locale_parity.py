@@ -42,6 +42,8 @@ class KnowledgeMapLocaleParityTests(unittest.TestCase):
             ):
                 self.assertEqual(html.count(asset), 1, f"{locale}: {asset}")
             self.assertNotIn("data-home-knowledge-map", html, locale)
+            if locale in ("en", "zh"):
+                self.assertNotRegex(html, r"[А-Яа-яЁё]", locale)
 
     def test_all_locales_use_one_shared_responsive_stylesheet(self):
         css = (ROOT / "styles/knowledge-map.css").read_text(encoding="utf-8")

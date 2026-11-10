@@ -21,6 +21,14 @@ class DchPresentationStandardsTests(unittest.TestCase):
             with self.subTest(path=relative):
                 self.assertTrue((ROOT / relative).is_file())
 
+    def test_track_a_ru_uses_catalog_v3_without_legacy_roadmap_markup(self):
+        page = (ROOT / "tracks/understanding-ai.html").read_text(encoding="utf-8")
+        self.assertIn('data-lesson-catalog', page)
+        self.assertIn("lesson-catalog.js", page)
+        self.assertIn("code-blocks.js", page)
+        self.assertNotIn("THEME A.", page)
+        self.assertNotIn("A.1.1.1", page)
+
     def test_shared_styles_and_scripts_are_wired(self):
         main_css = (ROOT / "styles/main.css").read_text(encoding="utf-8")
         reader_css = (ROOT / "styles/lesson-reader.css").read_text(encoding="utf-8")

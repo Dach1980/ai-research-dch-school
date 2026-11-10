@@ -7,7 +7,7 @@ ROOT = Path(__file__).resolve().parents[1]
 
 class Lesson112113Tests(unittest.TestCase):
     def test_all_locales_exist_and_have_glossary_cards(self):
-        for lesson in ("1-1-2-history-of-ai", "1-1-3-symbolic-ai-and-machine-learning"):
+        for lesson in ("1-1-2-history-of-ai", "a-1-1-3", "a-1-1-4"):
             for suffix in ("", "-en", "-zh"):
                 path = ROOT / f"lessons/{lesson}{suffix}.html"
                 self.assertTrue(path.is_file(), str(path))
@@ -18,7 +18,7 @@ class Lesson112113Tests(unittest.TestCase):
                 self.assertIn("lesson-visual-palette.css", (ROOT / "styles/main.css").read_text(encoding="utf-8"))
 
     def test_new_lessons_use_trackless_display_codes(self):
-        for lesson, code in (("1-1-2-history-of-ai", "1.1.2"), ("1-1-3-symbolic-ai-and-machine-learning", "1.1.3")):
+        for lesson, code in (("1-1-2-history-of-ai", "1.1.2"), ("a-1-1-3", "1.1.3"), ("a-1-1-3", "1.1.3"), ("a-1-1-4", "1.1.4")):
             for suffix in ("", "-en", "-zh"):
                 source = (ROOT / f"lessons/{lesson}{suffix}.html").read_text(encoding="utf-8")
                 self.assertIn(code, source)
@@ -32,7 +32,7 @@ class Lesson112113Tests(unittest.TestCase):
                 "-en": ("AI history: five broad periods", "Foundations", "Symbolic AI"),
                 "-zh": ("人工智能发展的五个主要阶段", "基础研究", "符号主义 AI"),
             },
-            "1-1-3-symbolic-ai-and-machine-learning": {
+            "a-1-1-4": {
                 "": ("Два источника поведения системы", "Явное программирование", "Машинное обучение"),
                 "-en": ("Two sources of system behaviour", "Explicit programming", "Machine learning"),
                 "-zh": ("系统行为的两个来源", "显式编程", "机器学习"),
@@ -47,7 +47,7 @@ class Lesson112113Tests(unittest.TestCase):
                     self.assertIn(label, svg.group(0), f"{lesson}{suffix}: {label}")
 
     def test_new_112_113_headers_do_not_claim_reading_duration(self):
-        for lesson in ("1-1-2-history-of-ai", "1-1-3-symbolic-ai-and-machine-learning"):
+        for lesson in ("1-1-2-history-of-ai", "a-1-1-3", "a-1-1-4"):
             for suffix in ("", "-en", "-zh"):
                 source = (ROOT / f"lessons/{lesson}{suffix}.html").read_text(encoding="utf-8")
                 header = re.search(r'<div class="lesson-meta">([\s\S]*?)</div>', source)
@@ -61,13 +61,44 @@ class Lesson112113Tests(unittest.TestCase):
             "-zh": ("案例分析：水泵轴承温度监测", "如何评估模型", "为什么不能自动把模型预测"),
         }
         for suffix, phrases in expected.items():
-            source = (ROOT / f"lessons/1-1-3-symbolic-ai-and-machine-learning{suffix}.html").read_text(encoding="utf-8")
+            source = (ROOT / f"lessons/a-1-1-4{suffix}.html").read_text(encoding="utf-8")
             for phrase in phrases:
                 self.assertIn(phrase, source)
             self.assertEqual(source.count('class="lesson-check-question"'), 8)
             self.assertIn("15.", source)
             self.assertIn("16.", source)
             self.assertNotRegex(source, r"60\s*[–-]\s*75\s*(?:minutes?|минут|分钟)")
+
+
+    def test_reordered_lessons_share_planet_shell_footer_and_final_section_order(self):
+        pages = {
+            "a-1-1-3": ("1.1.3", "13.", "14.", "15."),
+            "a-1-1-4": ("1.1.4", "15.", "16.", "17."),
+        }
+        for base, (code, source_number, glossary_number, check_number) in pages.items():
+            for suffix, glossary, check in [
+                ("", "Словарь урока", "Самопроверка"),
+                ("-en", "Lesson glossary", "Self-check"),
+                ("-zh", "本课术语表", "自测"),
+            ]:
+                page = (ROOT / f"lessons/{base}{suffix}.html").read_text(encoding="utf-8")
+                with self.subTest(page=f"{base}{suffix}"):
+                    self.assertIn("LESSON " + code, page)
+                    self.assertIn('class="planet"', page)
+                    self.assertIn('<header class="site-header">', page)
+                    self.assertIn('<footer class="footer">', page)
+                    self.assertIn('class="lesson-sources"', page)
+                    self.assertIn('<nav class="lesson-nav"', page)
+                    positions = [
+                        page.index('class="lesson-sources"'),
+                        page.index('<nav class="lesson-nav"'),
+                        page.index(glossary_number + " " + glossary),
+                        page.index('class="lesson-check"'),
+                    ]
+                    self.assertEqual(positions, sorted(positions))
+                    self.assertIn(check_number + " " + check, page)
+                    self.assertIn("Understand AI. Build AI. Research AI.", page)
+                    self.assertIn("© 2026 AI Research DCH School", page)
 
     def test_illustration_palette_is_semantic_and_theme_aware(self):
         palette = (ROOT / "styles/lesson-visual-palette.css").read_text(encoding="utf-8")
@@ -80,7 +111,7 @@ class Lesson112113Tests(unittest.TestCase):
 
     def test_legacy_ai_ml_dl_diagrams_do_not_keep_dark_inline_box_fills(self):
         for suffix in ("", "-en", "-zh"):
-            source = (ROOT / f"lessons/a-2-ai-ml-deep-learning{suffix}.html").read_text(encoding="utf-8")
+            source = (ROOT / f"lessons/a-1-1-3{suffix}.html").read_text(encoding="utf-8")
             self.assertNotIn('fill="#172b49"', source)
             self.assertNotIn('fill="#30294f"', source)
             self.assertNotIn('fill="#153f40"', source)

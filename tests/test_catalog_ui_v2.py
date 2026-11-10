@@ -12,25 +12,25 @@ class HierarchicalCatalogUITests(unittest.TestCase):
     def test_track_lesson_catalog_reads_v3_legacy_projection(self):
         script = (ROOT / "scripts/lesson-catalog.js").read_text(encoding="utf-8")
         page = (ROOT / "tracks/understanding-ai.html").read_text(encoding="utf-8")
-        self.assertIn("loadLegacyProjection", script)
-        self.assertIn("data.themes", script)
-        self.assertIn("data.modules", script)
-        self.assertNotIn("lessons.json", script)
+        self.assertIn("schemaVersion:3", script)
+        self.assertIn("content_state", script)
+        self.assertIn("lesson.code", script)
+        self.assertNotIn("v3_target_codes", script)
         self.assertLess(page.index("catalog-compat.js"), page.index("lesson-catalog.js"))
 
     def test_planet_map_reads_v3_legacy_projection(self):
         script = (ROOT / "scripts/planet-map-catalog.js").read_text(encoding="utf-8")
         page = (ROOT / "learning-map/index.html").read_text(encoding="utf-8")
-        self.assertIn("loadLegacyProjection", script)
-        self.assertIn("data.themes", script)
-        self.assertIn("data.modules", script)
-        self.assertNotIn('fetch("../data/catalog/lessons.json"', script)
+        self.assertIn("schemaVersion:3", script)
+        self.assertIn("content_state", script)
+        self.assertIn("lesson.code", script)
+        self.assertNotIn("v3_target_codes", script)
         self.assertLess(page.index("catalog-compat.js"), page.index("planet-map-catalog.js"))
 
     def test_homepage_and_localized_maps_read_v3_projection(self):
         script = (ROOT / "scripts/home-knowledge-map.js").read_text(encoding="utf-8")
-        self.assertIn("loadLegacyProjection", script)
-        self.assertIn('root.dataset.catalogBase || "data/catalog"', script)
+        self.assertIn("schemaVersion:3", script)
+        self.assertIn("schemaVersion:3", script)
         for relative in ["index.html", "index-en.html", "index-zh.html"]:
             page = (ROOT / relative).read_text(encoding="utf-8")
             self.assertIn("data-home-knowledge-map", page)

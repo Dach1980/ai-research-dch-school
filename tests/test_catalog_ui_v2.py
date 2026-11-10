@@ -9,44 +9,50 @@ ROOT = Path(__file__).resolve().parents[1]
 
 
 class HierarchicalCatalogUITests(unittest.TestCase):
-    def test_track_lesson_catalog_reads_v3_legacy_projection(self):
+    def test_track_lesson_catalog_reads_v3_only_and_filters_published_content(self):
         script = (ROOT / "scripts/lesson-catalog.js").read_text(encoding="utf-8")
-        page = (ROOT / "tracks/understanding-ai.html").read_text(encoding="utf-8")
-        self.assertIn("loadLegacyProjection", script)
-        self.assertIn("data.themes", script)
-        self.assertIn("data.modules", script)
-        self.assertNotIn("lessons.json", script)
-        self.assertLess(page.index("catalog-compat.js"), page.index("lesson-catalog.js"))
+        self.assertIn("catalog-v3.json", script)
+        self.assertIn('item.status === "published" && item.content_state === "published"', script)
+        self.assertIn("lesson.code", script)
+        self.assertNotIn("loadLegacyProjection", script)
+        self.assertNotIn("duration_min", script)
+        for relative in ["lessons/index.html", "lessons/index-en.html", "lessons/index-zh.html"]:
+            page = (ROOT / relative).read_text(encoding="utf-8")
+            self.assertIn("lesson-catalog.js", page)
+            self.assertNotIn("catalog-compat.js", page)
 
-    def test_planet_map_reads_v3_legacy_projection(self):
+    def test_planet_map_reads_v3_only_and_has_no_legacy_or_duration(self):
         script = (ROOT / "scripts/planet-map-catalog.js").read_text(encoding="utf-8")
         page = (ROOT / "learning-map/index.html").read_text(encoding="utf-8")
-        self.assertIn("loadLegacyProjection", script)
-        self.assertIn("data.themes", script)
-        self.assertIn("data.modules", script)
-        self.assertNotIn('fetch("../data/catalog/lessons.json"', script)
-        self.assertLess(page.index("catalog-compat.js"), page.index("planet-map-catalog.js"))
+        self.assertIn("catalog-v3.json", script)
+        self.assertIn('x.status==="published"&&x.content_state==="published"', script)
+        self.assertNotIn("loadLegacyProjection", script)
+        self.assertNotIn("duration_min", script)
+        self.assertNotIn("v3_target_codes", script)
+        self.assertNotIn("catalog-compat.js", page)
+        self.assertIn("generatedPlanet", script)
+        self.assertIn("data-select-lesson", script)
 
-    def test_homepage_and_localized_maps_read_v3_projection(self):
+    def test_homepage_reads_v3_only_with_one_code_and_no_duration(self):
         script = (ROOT / "scripts/home-knowledge-map.js").read_text(encoding="utf-8")
-        self.assertIn("loadLegacyProjection", script)
-        self.assertIn('root.dataset.catalogBase || "data/catalog"', script)
-        for relative in ["index.html", "index-en.html", "index-zh.html", "learning-map/index-en.html", "learning-map/index-zh.html"]:
+        self.assertIn("catalog-v3.json", script)
+        self.assertIn('item.status === "published" && item.content_state === "published"', script)
+        self.assertIn("lesson.code", script)
+        self.assertNotIn("loadLegacyProjection", script)
+        self.assertNotIn("v3_target_codes", script)
+        self.assertNotIn("duration_min", script)
+        for relative in ["index.html", "index-en.html", "index-zh.html"]:
             page = (ROOT / relative).read_text(encoding="utf-8")
             self.assertIn("data-home-knowledge-map", page)
-            self.assertLess(page.index("catalog-compat.js"), page.index("home-knowledge-map.js"))
+            self.assertIn("home-knowledge-grid", page)
 
-    def test_all_track_and_lesson_catalogues_use_v2(self):
-        for relative in [
-            "tracks/understanding-ai.html", "tracks/understanding-ai-en.html",
-            "tracks/understanding-ai-zh.html", "lessons/index.html",
-            "lessons/index-en.html", "lessons/index-zh.html"
-        ]:
+    def test_all_localized_lesson_catalogues_use_the_same_v3_reader(self):
+        for relative in ["lessons/index.html", "lessons/index-en.html", "lessons/index-zh.html"]:
             page = (ROOT / relative).read_text(encoding="utf-8")
             self.assertIn("data-lesson-catalog", page, relative)
-            self.assertLess(page.index("catalog-compat.js"), page.index("lesson-catalog.js"), relative)
-        schema = (ROOT / "data/catalog/schema-v2.json").read_text(encoding="utf-8")
-        self.assertIn('"title_i18n"', schema)
+            self.assertIn("lesson-catalog.js", page, relative)
+            self.assertEqual(page.count("language-switcher.js"), 1, relative)
+            self.assertEqual(page.count("theme-system.js"), 1, relative)
 
     def test_xai_review_lesson_has_multilingual_content_and_primary_sources(self):
         source = (ROOT / "lessons/data/xai-01-what-and-why.js").read_text(encoding="utf-8")

@@ -130,5 +130,48 @@ class LocaleGridThemeParityTests(unittest.TestCase):
         self.assertIn(".lesson-planet-banner{", design)
         self.assertIn(".lesson-planet-sphere{", design)
 
+
+    def test_five_checked_lessons_use_the_shared_layout_system_in_all_locales(self):
+        for relative in LESSONS:
+            page = (ROOT / relative).read_text(encoding="utf-8")
+            with self.subTest(page=relative):
+                self.assertIn("lesson-standard.css", page)
+                self.assertEqual(page.count("lesson-layout.js"), 1)
+                self.assertIn("lesson-design-system.css", page)
+        self.assertTrue((ROOT / "styles/lesson-standard.css").is_file())
+        self.assertTrue((ROOT / "scripts/lesson-layout.js").is_file())
+        self.assertTrue((ROOT / "docs/standards/LESSON_PAGE_STANDARD_RU_EN_ZH.md").is_file())
+
+    def test_practice_and_final_assessment_counts_match_across_locales(self):
+        groups = [
+            ([
+                "lessons/a-2-ai-ml-deep-learning.html",
+                "lessons/a-2-ai-ml-deep-learning-en.html",
+                "lessons/a-2-ai-ml-deep-learning-zh.html",
+            ], "class=\"quiz\"", 5, "class=\"lesson-check-question\"", 3),
+            ([
+                "lessons/a-3-how-machines-learn-from-data.html",
+                "lessons/a-3-how-machines-learn-from-data-en.html",
+                "lessons/a-3-how-machines-learn-from-data-zh.html",
+            ], "class=\"quiz\"", 4, "class=\"lesson-check-question\"", 4),
+            ([
+                "lessons/a-4-what-is-machine-learning-model.html",
+                "lessons/a-4-what-is-machine-learning-model-en.html",
+                "lessons/a-4-what-is-machine-learning-model-zh.html",
+            ], "class=\"interactive-quiz-item\"", 6, None, None),
+            ([
+                "lessons/a-5-how-to-evaluate-a-model.html",
+                "lessons/a-5-how-to-evaluate-a-model-en.html",
+                "lessons/a-5-how-to-evaluate-a-model-zh.html",
+            ], "class=\"lesson-check-question\"", 4, None, None),
+        ]
+        for pages, primary_marker, expected_primary, secondary_marker, expected_secondary in groups:
+            for relative in pages:
+                page = (ROOT / relative).read_text(encoding="utf-8")
+                with self.subTest(page=relative, marker=primary_marker):
+                    self.assertEqual(page.count(primary_marker), expected_primary)
+                    if secondary_marker:
+                        self.assertEqual(page.count(secondary_marker), expected_secondary)
+
 if __name__ == "__main__":
     unittest.main()

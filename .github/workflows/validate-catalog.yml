@@ -52,6 +52,8 @@ on:
       - "scripts/language-switcher.js"
       - "scripts/account-ui.js"
       - "scripts/lesson-reader.js"
+      - "scripts/planet-map-catalog.js"
+      - "styles/knowledge-map.css"
       - "styles/lesson-reader.css"
       - "scripts/validate-catalog.py"
       - "requirements-catalog.txt"

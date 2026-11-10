@@ -32,3 +32,14 @@ html:not([data-theme="light"]){--lds-ink:#edf3ff;--lds-muted:#b7c5dc;--lds-surfa
 .code-token-keyword{color:#8b5cf6}.code-token-function{color:#087f8c}.code-token-class{color:#b45309}.code-token-string{color:#168447}.code-token-number{color:#c2410c}.code-token-operator{color:var(--lds-accent)}.code-token-comment{color:var(--lds-muted);font-style:italic}.code-token-identifier{color:var(--lds-ink)}
 html:not([data-theme="light"]) .code-token-keyword{color:#c4a7ff}html:not([data-theme="light"]) .code-token-function{color:#67e8df}html:not([data-theme="light"]) .code-token-class{color:#fbbf73}html:not([data-theme="light"]) .code-token-string{color:#8be0a8}html:not([data-theme="light"]) .code-token-number{color:#ffb17c}
 @media(max-width:650px){.lesson-glossary{grid-template-columns:1fr}.lesson-check{padding:16px}.lesson-code-block pre code{font-size:12px!important}.lesson-code-line{padding-left:3.8em}}
+
+/* Shared lesson hero planet component — RU / EN / 中文. */
+.lesson-planet-banner{position:relative;display:grid;grid-template-columns:minmax(0,1fr) 190px;gap:24px;align-items:center;margin:26px 0 0;padding:20px 24px;border:1px solid rgba(120,160,230,.22);border-radius:18px;background:radial-gradient(circle at 82% 50%,rgba(100,140,240,.18),transparent 24%),linear-gradient(120deg,rgba(20,37,65,.8),rgba(15,24,44,.72));overflow:hidden}
+.lesson-planet-banner .planet-label{font-size:10px;letter-spacing:.18em;color:var(--blue);font-weight:800}
+.lesson-planet-banner p{margin:8px 0 0;color:var(--muted);font-size:12px;line-height:1.6}
+.lesson-planet-art{position:relative;width:150px;height:120px;margin:auto;display:grid;place-items:center}
+.lesson-planet-art:before,.lesson-planet-art:after{content:"";position:absolute;width:145px;height:55px;border:1px solid rgba(111,166,255,.42);border-radius:50%;transform:rotate(-24deg)}
+.lesson-planet-art:after{width:120px;height:40px;transform:rotate(34deg);border-color:rgba(174,135,255,.38)}
+.lesson-planet-sphere{position:relative;z-index:1;width:76px;height:76px;border-radius:50%;display:grid;place-items:center;background:radial-gradient(circle at 30% 25%,#e3eaff 0,#9bb9ee 15%,#5279c1 44%,#263c78 76%,#101b3a 100%);border:1px solid rgba(218,232,255,.72);box-shadow:0 0 28px rgba(93,143,230,.52),inset -12px -10px 20px rgba(4,10,29,.5);font:800 13px Manrope;color:#f5f8ff;letter-spacing:.06em}
+@media(max-width:850px){.lesson-planet-banner{grid-template-columns:minmax(0,1fr) 150px}}
+@media(max-width:520px){.lesson-planet-banner{grid-template-columns:1fr}.lesson-planet-art{height:100px}}

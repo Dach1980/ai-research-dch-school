@@ -36,3 +36,9 @@ html[data-theme="light"] .home-planet{background:linear-gradient(145deg,#fff,#ed
 @media(max-width:900px){.home-knowledge-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media(max-width:620px){.knowledge-home{padding-top:60px;padding-bottom:60px}.home-knowledge-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.home-planet{min-height:140px;padding:15px 10px}}
 @media(max-width:380px){.home-knowledge-grid{grid-template-columns:1fr}}
+
+/* Shared homepage section geometry across RU / EN / 中文. */
+.hero{min-height:550px}
+.knowledge-cta{display:flex;justify-content:space-between;align-items:center;gap:18px;flex-wrap:wrap;margin-top:24px;color:var(--muted);font-size:13px}
+@media(max-width:800px){.hero{min-height:0}}
+@media(max-width:560px){.knowledge-cta{align-items:flex-start;flex-direction:column}}

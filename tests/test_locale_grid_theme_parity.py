@@ -174,6 +174,37 @@ class LocaleGridThemeParityTests(unittest.TestCase):
                         self.assertEqual(page.count(secondary_marker), expected_secondary)
 
 
+    def test_a1_lesson_shell_planet_footer_and_outcomes_contrast_match_all_locales(self):
+        pages = {
+            "ru": "lessons/a-1-what-is-artificial-intelligence.html",
+            "en": "lessons/a-1-what-is-artificial-intelligence-en.html",
+            "zh": "lessons/a-1-what-is-artificial-intelligence-zh.html",
+        }
+        contents = {}
+        for locale, relative in pages.items():
+            page = (ROOT / relative).read_text(encoding="utf-8")
+            contents[locale] = page
+            with self.subTest(locale=locale):
+                self.assertIn('class="site-header"', page)
+                self.assertIn('class="lesson-planet-banner"', page)
+                self.assertIn('class="lesson-planet-sphere"', page)
+                self.assertIn('class="page-footer"', page)
+                self.assertIn("lesson-planet-art", page)
+                self.assertIn(".lesson-planet-banner{", page)
+                self.assertIn(".outcomes{color:#eef4ff", page)
+                self.assertIn(".outcomes strong{display:block;color:#f4f7ff", page)
+                self.assertIn("theme-system.js", page)
+                self.assertIn("lesson-layout.js", page)
+                self.assertEqual(page.count('class="page-footer"'), 1)
+        for locale in ("en", "zh"):
+            self.assertIn('class="nav"', contents[locale])
+            self.assertIn('class="page-footer"', contents[locale])
+            self.assertNotIn('href="../tracks/understanding-ai.html"', contents[locale])
+        self.assertIn(">Track B</a>", contents["en"])
+        self.assertIn(">学习方向 B</a>", contents["zh"])
+        self.assertIn(">All lessons</a>", contents["en"])
+        self.assertIn(">全部课程</a>", contents["zh"])
+
     def test_learning_maps_share_planet_universe_header_footer_and_theme_contrast(self):
         pages = {
             "ru": "learning-map/index.html",

@@ -70,7 +70,7 @@
       "access": "open",
       "level": "beginner",
       "prerequisites": [],
-      "url": "lessons/a-1-what-is-artificial-intelligence.html",
+      "url": "lessons/a-1-1-1.html",
       "learning_outcomes": [
         "Объяснять понятие Artificial Intelligence и его основные трактовки",
         "Различать интеллект, интеллектуальное поведение и сознание",
@@ -83,9 +83,9 @@
         "zh": "什么是人工智能？"
       },
       "url_i18n": {
-        "ru": "lessons/a-1-what-is-artificial-intelligence.html",
-        "en": "lessons/a-1-what-is-artificial-intelligence-en.html",
-        "zh": "lessons/a-1-what-is-artificial-intelligence-zh.html"
+        "ru": "lessons/a-1-1-1.html",
+        "en": "lessons/a-1-1-1-en.html",
+        "zh": "lessons/a-1-1-1-zh.html"
       },
       "languages": [
         "ru",
@@ -321,7 +321,7 @@
       "prerequisites": [
         "A.1.1.1"
       ],
-      "url": "lessons/1-1-2-history-of-ai.html",
+      "url": "lessons/a-1-1-2.html",
       "learning_outcomes": [
         "Объяснять математические и вычислительные предпосылки AI",
         "Различать ранние предпосылки и формирование AI как дисциплины",
@@ -334,9 +334,9 @@
         "zh": "人工智能发展史"
       },
       "url_i18n": {
-        "ru": "lessons/1-1-2-history-of-ai.html",
-        "en": "lessons/1-1-2-history-of-ai-en.html",
-        "zh": "lessons/1-1-2-history-of-ai-zh.html"
+        "ru": "lessons/a-1-1-2.html",
+        "en": "lessons/a-1-1-2-en.html",
+        "zh": "lessons/a-1-1-2-zh.html"
       },
       "languages": [
         "ru",

@@ -47,7 +47,7 @@
 
 ## Правило точного соответствия
 
-Структурные блоки должны сохранять классы и порядок из `templates/lesson-page-template.html` и эталонных страниц 1.1.1:
+Структурные блоки должны сохранять классы и порядок из `templates/lesson-page-template.html` и эталонных страниц 1.1.1. Каждая локализация оформляется точь-в-точь по этому эталону:
 `site-header → track-hero article-hero → lesson-planet-banner → article-body → lesson-sources → lesson-nav → lesson-glossary → lesson-check → footer`.
 
 Если для новой темы нужен компонент, которого нет в общей системе, сначала добавьте его в общий stylesheet/компоненты и тесты. Не создавайте новый вариант оболочки страницы.

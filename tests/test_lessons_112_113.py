@@ -72,10 +72,10 @@ class Lesson112113Tests(unittest.TestCase):
 
     def test_reordered_lessons_share_planet_shell_footer_and_final_section_order(self):
         pages = {
-            "a-1-1-3": ("1.1.3", "13.", "14.", "15."),
-            "a-1-1-4": ("1.1.4", "15.", "16.", "17."),
+            "a-1-1-3": ("1.1.3", "13.", "14."),
+            "a-1-1-4": ("1.1.4", "15.", "16."),
         }
-        for base, (code, source_number, glossary_number, check_number) in pages.items():
+        for base, (code, source_number, check_number) in pages.items():
             for suffix, glossary, check in [
                 ("", "Словарь урока", "Самопроверка"),
                 ("-en", "Lesson glossary", "Self-check"),
@@ -84,7 +84,7 @@ class Lesson112113Tests(unittest.TestCase):
                 page = (ROOT / f"lessons/{base}{suffix}.html").read_text(encoding="utf-8")
                 with self.subTest(page=f"{base}{suffix}"):
                     self.assertIn("LESSON " + code, page)
-                    self.assertIn('class="planet"', page)
+                    self.assertIn('class="lesson-planet-banner"', page)\n                    self.assertIn('class="lesson-planet-sphere"', page)\n                    self.assertIn('<section class="track-hero article-hero">', page)\n                    self.assertIn('<article class="article-body">', page)\n                    self.assertIn('../styles/lesson-reference-111.css', page)\n                    self.assertIn('../styles/lesson-content-components.css', page)\n                    self.assertNotIn('<style>', page)
                     self.assertIn('<header class="site-header">', page)
                     self.assertIn('<footer class="footer">', page)
                     self.assertIn('class="lesson-sources"', page)
@@ -99,6 +99,32 @@ class Lesson112113Tests(unittest.TestCase):
                     self.assertIn(check_number + " " + check, page)
                     self.assertIn("Understand AI. Build AI. Research AI.", page)
                     self.assertIn("© 2026 AI Research DCH School", page)
+
+    def test_112_113_114_pages_match_the_exact_111_shell_and_have_clean_section_numbers(self):
+        for lesson, expected_questions, source_heading, check_heading in (
+            ("a-1-1-2", 4, "11.", "12."),
+            ("a-1-1-3", 3, "13.", "14."),
+            ("a-1-1-4", 8, "15.", "16."),
+        ):
+            for suffix in ("", "-en", "-zh"):
+                page = (ROOT / f"lessons/{lesson}{suffix}.html").read_text(encoding="utf-8")
+                with self.subTest(lesson=lesson, locale=suffix or "ru"):
+                    self.assertIn('<section class="track-hero article-hero">', page)
+                    self.assertIn('<article class="article-body">', page)
+                    self.assertIn('class="lesson-planet-banner"', page)
+                    self.assertIn('class="lesson-planet-art"', page)
+                    self.assertIn('class="lesson-glossary"', page)
+                    self.assertIn('class="lesson-check"', page)
+                    self.assertIn('../styles/lesson-reference-111.css', page)
+                    self.assertIn('../styles/lesson-content-components.css', page)
+                    self.assertNotIn("<style>", page)
+                    self.assertEqual(page.count('class="lesson-check-question"'), expected_questions)
+                    source = page[page.index('class="lesson-sources"'):page.index('<nav class="lesson-nav"')]
+                    check = page[page.index('class="lesson-check"'):]
+                    self.assertIn(source_heading, source)
+                    self.assertIn(check_heading, check)
+                    self.assertNotIn("class=\"planet\"", page)
+                    self.assertNotIn('class="locale-links"', page)
 
     def test_illustration_palette_is_semantic_and_theme_aware(self):
         palette = (ROOT / "styles/lesson-visual-palette.css").read_text(encoding="utf-8")

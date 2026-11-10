@@ -85,7 +85,7 @@
         const button=document.createElement("button");button.type="button";button.className="planet-button";
         if(legacy==="A.2")button.classList.add("planet-a2");if(legacy==="A.4")button.classList.add("planet-a4");if(legacy==="A.5")button.classList.add("planet-a5");
         if(planet.accent_id==="teal")button.classList.add("planet-a3","planet-teal");if(planet.accent_id==="blue")button.classList.add("planet-blue");if(planet.accent_id==="violet")button.classList.add("planet-violet");
-        button.style.left=position[0]+"%";button.style.top=position[1]+"%";button.dataset.lessonId=lesson.id;button.dataset.generatedPlanet="true";
+        button.style.left=position[0]+"%";button.style.top=Math.min(78,Math.max(18,position[1]))+"%";button.dataset.lessonId=lesson.id;button.dataset.generatedPlanet="true";
         button.setAttribute("aria-label",ui.lesson+" "+code+": "+localizedTitle(lesson));
         button.innerHTML='<span class="planet-core"><span>'+esc(code)+'</span></span><span class="planet-code">'+esc(code)+'</span><span class="planet-name">'+esc(localizedTitle(lesson))+'</span>';
         const entry={planet,lesson,module,theme,track};button.addEventListener("click",()=>{renderDetails(entry,lesson.id);if(matchMedia("(max-width:900px)").matches)scrollToDetails();});

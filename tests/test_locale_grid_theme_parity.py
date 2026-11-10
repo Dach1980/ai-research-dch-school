@@ -16,9 +16,12 @@ LESSONS = [
     "lessons/a-1-what-is-artificial-intelligence.html",
     "lessons/a-1-what-is-artificial-intelligence-en.html",
     "lessons/a-1-what-is-artificial-intelligence-zh.html",
-    "lessons/a-2-ai-ml-deep-learning.html",
-    "lessons/a-2-ai-ml-deep-learning-en.html",
-    "lessons/a-2-ai-ml-deep-learning-zh.html",
+    "lessons/a-1-1-3.html",
+    "lessons/a-1-1-3-en.html",
+    "lessons/a-1-1-3-zh.html",
+    "lessons/a-1-1-4.html",
+    "lessons/a-1-1-4-en.html",
+    "lessons/a-1-1-4-zh.html",
     "lessons/a-3-how-machines-learn-from-data.html",
     "lessons/a-3-how-machines-learn-from-data-en.html",
     "lessons/a-3-how-machines-learn-from-data-zh.html",
@@ -143,9 +146,9 @@ class LocaleGridThemeParityTests(unittest.TestCase):
     def test_practice_and_final_assessment_counts_match_across_locales(self):
         groups = [
             ([
-                "lessons/a-2-ai-ml-deep-learning.html",
-                "lessons/a-2-ai-ml-deep-learning-en.html",
-                "lessons/a-2-ai-ml-deep-learning-zh.html",
+                "lessons/a-1-1-3.html",
+                "lessons/a-1-1-3-en.html",
+                "lessons/a-1-1-3-zh.html",
             ], "class=\"quiz\"", 5, "class=\"lesson-check-question\"", 3),
             ([
                 "lessons/a-3-how-machines-learn-from-data.html",

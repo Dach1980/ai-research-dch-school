@@ -102,5 +102,31 @@ class LocaleGridThemeParityTests(unittest.TestCase):
             self.assertNotIn("duration_min", lesson)
             self.assertNotIn("duration_max", lesson)
 
+    def test_a1_lesson_uses_shared_planet_hero_and_end_of_lesson_check_in_all_locales(self):
+        pages = {
+            "ru": "lessons/a-1-what-is-artificial-intelligence.html",
+            "en": "lessons/a-1-what-is-artificial-intelligence-en.html",
+            "zh": "lessons/a-1-what-is-artificial-intelligence-zh.html",
+        }
+        headings = {"ru": "Самопроверка", "en": "Self-check", "zh": "自我检查"}
+        for locale, relative in pages.items():
+            page = (ROOT / relative).read_text(encoding="utf-8")
+            with self.subTest(locale=locale):
+                self.assertIn('<section class="track-hero article-hero">', page)
+                self.assertIn('<article class="article-body">', page)
+                self.assertEqual(page.count('class="lesson-planet-banner"'), 1)
+                self.assertIn("lesson-design-system.css", page)
+                self.assertIn(headings[locale], page)
+                self.assertEqual(page.count('class="lesson-check-question"'), 3)
+                self.assertEqual(page.count('class="lesson-check-option"'), 8)
+                self.assertIn("lesson-assessment.js", page)
+                check_start = page.index('class="lesson-check"')
+                self.assertGreater(page.index(headings[locale]), 0)
+                self.assertGreater(check_start, page.index(headings[locale]))
+                self.assertEqual(page[:check_start].count('type="checkbox"'), 0)
+        design = (ROOT / "styles/lesson-design-system.css").read_text(encoding="utf-8")
+        self.assertIn(".lesson-planet-banner{", design)
+        self.assertIn(".lesson-planet-sphere{", design)
+
 if __name__ == "__main__":
     unittest.main()

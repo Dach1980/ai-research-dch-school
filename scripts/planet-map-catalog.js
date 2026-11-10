@@ -54,7 +54,7 @@
     const {lesson,theme,module,track}=entry, details=document.querySelector("#planetDetails");
     if(!details)return;
     const key=lesson.legacy_id||lesson.id, codes=codeFor(lesson);
-    const prereq=(lesson.prerequisites||[]).join(", ");
+    const prereq=(entry.prerequisiteCodes||lesson.prerequisites||[]).join(locale==="zh"?"、":", ");
     const access=lesson.access==="open"?ui.open:lesson.access;
     const duration=lesson.duration_min===lesson.duration_max?String(lesson.duration_min):lesson.duration_min+"–"+lesson.duration_max;
     const outcomeList=locale==="ru"?(lesson.learning_outcomes||[]):(outcomes[key]?.[locale]||[]);
@@ -88,7 +88,7 @@
         button.style.left=position[0]+"%";button.style.top=Math.min(78,Math.max(18,position[1]))+"%";button.dataset.lessonId=lesson.id;button.dataset.generatedPlanet="true";
         button.setAttribute("aria-label",ui.lesson+" "+code+": "+localizedTitle(lesson));
         button.innerHTML='<span class="planet-core"><span>'+esc(code)+'</span></span><span class="planet-code">'+esc(code)+'</span><span class="planet-name">'+esc(localizedTitle(lesson))+'</span>';
-        const entry={planet,lesson,module,theme,track};button.addEventListener("click",()=>{renderDetails(entry,lesson.id);if(matchMedia("(max-width:900px)").matches)scrollToDetails();});
+        const prerequisiteCodes=(lesson.prerequisites||[]).map(id=>{const prerequisite=lessons.get(id);return prerequisite?codeFor(prerequisite):id;});const entry={planet,lesson,module,theme,track,prerequisiteCodes};button.addEventListener("click",()=>{renderDetails(entry,lesson.id);if(matchMedia("(max-width:900px)").matches)scrollToDetails();});
         universe.appendChild(button);return entry;
       });
       list.innerHTML='<div class="side-top"><strong>Track A · '+(locale==="ru"?"Understanding AI":locale==="en"?"Understanding AI":"理解人工智能")+'</strong><span class="level">'+entries.length+" "+esc(ui.published)+'</span></div>'+

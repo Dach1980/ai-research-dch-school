@@ -69,8 +69,6 @@
       "status": "published",
       "access": "open",
       "level": "beginner",
-      "duration_min": 40,
-      "duration_max": 50,
       "prerequisites": [],
       "url": "lessons/a-1-what-is-artificial-intelligence.html",
       "learning_outcomes": [
@@ -103,8 +101,6 @@
       "status": "published",
       "access": "open",
       "level": "beginner",
-      "duration_min": 50,
-      "duration_max": 60,
       "prerequisites": [
         "A.1.1.1"
       ],
@@ -139,8 +135,6 @@
       "status": "published",
       "access": "open",
       "level": "beginner",
-      "duration_min": 55,
-      "duration_max": 65,
       "prerequisites": [
         "A.1.1.1",
         "A.1.1.2"
@@ -177,8 +171,6 @@
       "status": "published",
       "access": "open",
       "level": "beginner",
-      "duration_min": 55,
-      "duration_max": 65,
       "prerequisites": [
         "A.1.1.1",
         "A.1.1.2",
@@ -216,8 +208,6 @@
       "status": "published",
       "access": "open",
       "level": "beginner",
-      "duration_min": 60,
-      "duration_max": 70,
       "prerequisites": [
         "A.1.1.1",
         "A.1.1.2",
@@ -256,8 +246,6 @@
       "status": "published",
       "access": "open",
       "level": "beginner",
-      "duration_min": 60,
-      "duration_max": 75,
       "prerequisites": [
         "A.1.1.1",
         "A.1.1.2",
@@ -296,8 +284,6 @@
       "status": "review",
       "access": "open",
       "level": "beginner",
-      "duration_min": 45,
-      "duration_max": 60,
       "prerequisites": [
         "A.1.1.6"
       ],
@@ -332,8 +318,6 @@
       "status": "published",
       "access": "open",
       "level": "beginner",
-      "duration_min": 60,
-      "duration_max": 75,
       "prerequisites": [
         "A.1.1.1"
       ],
@@ -368,8 +352,6 @@
       "status": "published",
       "access": "open",
       "level": "beginner",
-      "duration_min": 60,
-      "duration_max": 75,
       "prerequisites": [
         "A.1.1.7"
       ],

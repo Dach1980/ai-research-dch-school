@@ -197,7 +197,7 @@ class PublishedSiteIntegrityTests(unittest.TestCase):
             "index.html",
             "lessons/index.html",
             "lessons/a-1-what-is-artificial-intelligence.html",
-            "lessons/a-2-ai-ml-deep-learning.html",
+            "lessons/a-1-1-3.html",
             "lessons/a-3-how-machines-learn-from-data.html",
             "learning-map/index.html",
             "tracks/understanding-ai.html",

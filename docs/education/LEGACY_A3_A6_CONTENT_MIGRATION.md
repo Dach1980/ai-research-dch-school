@@ -107,3 +107,10 @@ Created the first five target lessons in all three locales (15 canonical pages):
 All pages include localized learning outcomes, lesson sections, a practical task, references, a five-term glossary, three interactive checks, the standard post-source navigation panel and the DCH footer. The catalog v3 records now carry canonical RU/EN/ZH URLs, localized titles, outcomes and prerequisite links. Their status is deliberately `review` (not `published`). The production UI reads catalog v3 and filters by `published`, so these pages are not yet shown in public lesson lists or the planet map. The legacy A.3–A.6 pages remain untouched.
 
 Automated catalog validation, the dedicated lesson tests, locale-structure checks, multilingual lesson validation, and GitHub Pages build/deployment passed on commit ce58b919a94e177cc6e846194f520515f49fd5d8. Manual desktop/mobile browser acceptance, keyboard and light/dark theme checks, and native-speaker editorial review remain open before publication.
+
+
+## Template integration update — 2026-11-11
+
+The 15 pages created for lessons 1.2.1, 1.2.2, 1.2.4, 1.2.5 and 1.2.6 have now been refactored to the exact outer page structure of canonical lesson 1.1.1. Shared styles are centralized in `styles/lesson-reference-111.css`; the pages no longer carry inline `<style>` blocks for the shell. Header, hero, planet banner, article width, sources, bottom navigation, glossary, self-check and footer now follow the reference. Repeated practice panels were removed where the same task was already described in the lecture section.
+
+These pages remain `review` in catalog v3. No publication status was changed as part of this design integration.

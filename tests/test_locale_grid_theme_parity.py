@@ -189,7 +189,6 @@ class LocaleGridThemeParityTests(unittest.TestCase):
                 self.assertIn('class="map-intro"', page)
                 self.assertIn('class="universe" data-planets-root', page)
                 self.assertIn('class="orbit o1"', page)
-                self.assertIn('class="planetDetails"', page) if False else None
                 self.assertIn('id="planetDetails"', page)
                 self.assertIn('id="listView"', page)
                 self.assertIn('class="footer"', page)

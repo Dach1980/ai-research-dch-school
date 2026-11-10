@@ -157,7 +157,7 @@ class PublishedSiteIntegrityTests(unittest.TestCase):
 
     def test_a1_and_a2_have_original_explanatory_diagrams(self):
         a1 = (ROOT / "lessons" / "a-1-what-is-artificial-intelligence.html").read_text(encoding="utf-8")
-        a2 = (ROOT / "lessons" / "a-2-ai-ml-deep-learning.html").read_text(encoding="utf-8")
+        a2 = (ROOT / "lessons" / "a-1-1-3.html").read_text(encoding="utf-8")
         self.assertGreaterEqual(a1.count("<svg"), 2)
         self.assertGreaterEqual(a2.count("<svg"), 3)
         self.assertIn("семейство подходов", a1)
@@ -198,6 +198,11 @@ class PublishedSiteIntegrityTests(unittest.TestCase):
             "lessons/index.html",
             "lessons/a-1-what-is-artificial-intelligence.html",
             "lessons/a-1-1-3.html",
+            "lessons/a-1-1-3-en.html",
+            "lessons/a-1-1-3-zh.html",
+            "lessons/a-1-1-4.html",
+            "lessons/a-1-1-4-en.html",
+            "lessons/a-1-1-4-zh.html",
             "lessons/a-3-how-machines-learn-from-data.html",
             "learning-map/index.html",
             "tracks/understanding-ai.html",
@@ -214,8 +219,8 @@ class PublishedSiteIntegrityTests(unittest.TestCase):
             "tracks/building-with-ai-en.html", "tracks/building-with-ai-zh.html",
             "lessons/a-1-what-is-artificial-intelligence-en.html",
             "lessons/a-1-what-is-artificial-intelligence-zh.html",
-            "lessons/a-2-ai-ml-deep-learning-en.html",
-            "lessons/a-2-ai-ml-deep-learning-zh.html",
+            "lessons/a-1-1-3-en.html",
+            "lessons/a-1-1-3-zh.html",
             "lessons/a-3-how-machines-learn-from-data-en.html",
             "lessons/a-3-how-machines-learn-from-data-zh.html",
             "lessons/a-4-what-is-machine-learning-model-en.html",

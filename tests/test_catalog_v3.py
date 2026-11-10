@@ -80,6 +80,17 @@ class CatalogV3Tests(unittest.TestCase):
         self.assertEqual(by_new["A.1.1.7"]["v3_target_codes"], ["1.1.2"])
         self.assertEqual(by_new["A.1.1.8"]["v3_target_codes"], ["1.1.4"])
 
+    def test_reordered_track_a_lessons_use_canonical_urls_and_prerequisites(self):
+        by_uid = {item["uid"]: item for item in self.catalog["lessons"]}
+        lesson_113 = by_uid["les-a-0002"]
+        lesson_114 = by_uid["les-a-0052"]
+        self.assertEqual(lesson_113["code"], "1.1.3")
+        self.assertEqual(lesson_114["code"], "1.1.4")
+        self.assertEqual(lesson_113["prerequisite_uids"], ["les-a-0051"])
+        self.assertEqual(lesson_114["prerequisite_uids"], ["les-a-0002"])
+        self.assertEqual(lesson_113["url_i18n"]["ru"], "lessons/a-1-1-3.html")
+        self.assertEqual(lesson_114["url_i18n"]["ru"], "lessons/a-1-1-4.html")
+
     def test_python_native_v3_reader_and_relationships(self):
         loaded = compat.load_catalog_v3(ROOT / "data/catalog/catalog-v3.json")
         self.assertEqual(loaded["schema_version"], 3)

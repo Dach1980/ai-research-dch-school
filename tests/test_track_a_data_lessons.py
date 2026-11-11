@@ -131,11 +131,12 @@ class TrackADataLessonTests(unittest.TestCase):
                 parser = LessonStructureParser()
                 parser.feed(html)
                 self.assertEqual(parser.language, locale)
-                self.assertEqual(len(parser.questions), 3, f"{slug}{suffix}")
+                expected_count = 7 if slug == "a-1-2-1" else 3
+                self.assertEqual(len(parser.questions), expected_count, f"{slug}{suffix}")
                 for question in parser.questions:
-                    self.assertIn(question["mode"], ("single", "yesno"))
-                    self.assertIn(question["correct"], ("a", "b", "c", "d"))
-                    expected_inputs = 2 if question["mode"] == "yesno" else 4
+                    self.assertIn(question["mode"], ("single", "yesno", "multiple"))
+                    self.assertIn(question["correct"], ("a", "b", "c", "d", "a,c,d"))
+                    expected_inputs = 2 if question["mode"] == "yesno" else (4 if question["mode"] == "single" else 4)
                     self.assertEqual(question["inputs"], expected_inputs)
 
     def test_each_page_has_five_glossary_cards_and_three_sources(self):
@@ -143,9 +144,11 @@ class TrackADataLessonTests(unittest.TestCase):
             for locale in LOCALES:
                 suffix = "" if locale == "ru" else f"-{locale}"
                 html = (ROOT / "lessons" / f"{slug}{suffix}.html").read_text(encoding="utf-8")
-                self.assertEqual(html.count('class="glossary-entry"'), 5, f"{slug}{suffix}")
+                expected_terms = 14 if slug == "a-1-2-1" and locale == "ru" else (13 if slug == "a-1-2-1" else 5)
+                expected_sources = 4 if slug == "a-1-2-1" else 3
+                self.assertEqual(html.count('class="glossary-entry"'), expected_terms, f"{slug}{suffix}")
                 source_block = html.split('class="lesson-sources"', 1)[1].split("</section>", 1)[0]
-                self.assertEqual(source_block.count("<li>"), 3, f"{slug}{suffix}")
+                self.assertEqual(source_block.count("<li>"), expected_sources, f"{slug}{suffix}")
                 self.assertIn('rel="noopener noreferrer"', source_block)
 
 

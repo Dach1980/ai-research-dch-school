@@ -463,12 +463,29 @@
       "module_uid": "mod-a-01-03",
       "code": "1.3.1",
       "title": "Обучение с учителем — Supervised Learning",
-      "status": "planned",
+      "status": "review",
       "access": "open",
       "level": "beginner",
       "prerequisite_uids": [],
-      "learning_outcomes": [],
-      "content_state": "outline_only"
+      "learning_outcomes": [
+        "Объяснять обучение с учителем и роль известных ответов в обучающих примерах.",
+        "Различать признаки X, целевую переменную y и метки классов.",
+        "Отличать задачи регрессии от классификации.",
+        "Описывать цикл обучения, функцию потерь и настройку параметров на концептуальном уровне.",
+        "Объяснять назначение обучающей, проверочной и тестовой выборок.",
+        "Выявлять риски плохой разметки, смещения выборки, утечки данных и переобучения."
+      ],
+      "content_state": "localized",
+      "url_i18n": {
+        "ru": "lessons/a-1-3-1.html",
+        "en": "lessons/a-1-3-1-en.html",
+        "zh": "lessons/a-1-3-1-zh.html"
+      },
+      "title_i18n": {
+        "ru": "Обучение с учителем — Supervised Learning",
+        "en": "Supervised Learning",
+        "zh": "监督学习 — Supervised Learning"
+      }
     },
     {
       "uid": "les-a-0008",

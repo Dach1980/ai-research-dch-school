@@ -56,13 +56,15 @@ class TrackADataLessonTests(unittest.TestCase):
         cls.catalog = json.loads(CATALOG_PATH.read_text(encoding="utf-8"))
         cls.lessons = {lesson["code"]: lesson for lesson in cls.catalog["lessons"]}
 
-    def test_all_five_lessons_registered_for_review(self):
+    def test_first_five_data_lessons_have_expected_publication_states(self):
         for code, (uid, slug) in TARGETS.items():
             with self.subTest(code=code):
                 lesson = self.lessons[code]
                 self.assertEqual(lesson["uid"], uid)
-                self.assertEqual(lesson["status"], "review")
-                self.assertEqual(lesson["content_state"], "localized")
+                expected_status = "published" if code == "1.2.1" else "review"
+                expected_content_state = "published" if code == "1.2.1" else "localized"
+                self.assertEqual(lesson["status"], expected_status)
+                self.assertEqual(lesson["content_state"], expected_content_state)
                 self.assertEqual(set(lesson["url_i18n"]), set(LOCALES))
                 self.assertEqual(set(lesson["title_i18n"]), set(LOCALES))
                 self.assertGreaterEqual(len(lesson["learning_outcomes"]), 3)

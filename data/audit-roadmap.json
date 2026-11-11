@@ -1387,6 +1387,28 @@
         "RM-02 и RM-12 остаются in_progress: полный crosswalk AIS → DCH, утверждение всех 40 модулей, prerequisites и зависимостей ещё не завершены.",
         "Вкладка административной панели показывает чек-лист read-only из JSON; изменение статусов выполняется через Git, не через интерактивное редактирование."
       ]
+    },
+    {
+      "id": "AUD-050",
+      "date": "2026-11-11",
+      "type": "ais_dch_curriculum_crosswalk",
+      "title": "Проведён curriculum-level аудит сайта AI Interpretability School и сопоставлены все 40 модулей DCH",
+      "result": "Повторно изучена публичная главная страница https://ai-interpretability.school/. Зафиксированы темы AIS Track A и Track B, включая межтрековые блоки concept-based methods, internal representations, agent behaviour, explanation evaluation, perturbation, attacks, deep dives, developmental interpretability, safety и research topics. В репозитории Dach1980/ai-interpretability-course найден первичный документ docs/CURRICULUM_SPECIFICATION.md с утверждённой программой DCH из модулей 0–39 и prerequisites/outcomes/practice. Созданы crosswalk всех 40 модулей DCH к темам AIS, JSON-данные и отображение матрицы в отдельной вкладке AIS / XAI Reference. RM-02 дополнен уточнением: прежний вывод об отсутствии полного curriculum specification устарел.",
+      "evidence": [
+        "https://ai-interpretability.school/",
+        "https://github.com/Dach1980/ai-interpretability-course/blob/main/docs/CURRICULUM_SPECIFICATION.md",
+        "docs/education/AIS_DCH_CURRICULUM_CROSSWALK_2026-11-11.md",
+        "data/ais-dch-crosswalk.json",
+        "data/ais-reference-checklist.json",
+        "scripts/admin-ais-reference.js",
+        "docs/management/RM-02_CURRICULUM_AUDIT.md"
+      ],
+      "limitations": [
+        "Проверена публичная страница-каталог AIS, но не каждый полный урок, закрытый материал или notebook.",
+        "Crosswalk является curriculum-level сопоставлением, не lesson-level проверкой всех DCH страниц, лабораторных и тестов.",
+        "В первичной спецификации DCH есть две редакции раздела 1.1 с различающимися формулировками границ Track A/B; требуется отдельное редакционное решение.",
+        "Track C не сопоставляется с AIS как с основным источником и требует отдельной карты первичных источников."
+      ]
     }
   ],
   "notes": [

@@ -53,7 +53,7 @@ The target records in `data/catalog/catalog-v3.json` are currently `planned`, an
 - [x] 1.2.2 — Объекты, признаки и целевые переменные (`les-a-0004`): RU / EN / 中文, page, glossary, self-check, sources and navigation.
 - [x] 1.2.5 — Качество данных, пропуски и выбросы (`les-a-0005`): RU / EN / 中文, page, glossary, self-check, sources and navigation.
 - [x] 1.2.6 — Корреляция, зависимости и утечка данных (`les-a-0006`): RU / EN / 中文, page, glossary, self-check, sources and navigation.
-- [ ] 1.3.1 — Обучение с учителем — Supervised Learning (`les-a-0007`): RU / EN / 中文, page, glossary, self-check, sources and navigation.
+- [x] 1.3.1 — Обучение с учителем — Supervised Learning (`les-a-0007`): RU / EN / 中文, page, glossary, self-check, sources and navigation (content authored; editorial review pending).
 - [ ] 1.3.2 — Обучение без учителя — Unsupervised Learning (`les-a-0008`): RU / EN / 中文, page, glossary, self-check, sources and navigation.
 - [ ] 1.3.6 — Генеративные модели и другие современные подходы (`les-a-0009`): RU / EN / 中文, page, glossary, self-check, sources and navigation.
 - [ ] 1.4.1 — Понятие модели и параметров (`les-a-0010`): RU / EN / 中文, page, glossary, self-check, sources and navigation.
@@ -121,3 +121,8 @@ These pages remain `review` in catalog v3. No publication status was changed as 
 A reusable starter has been added at `templates/lesson-page-template.html`, with the authoring guide at `docs/education/LESSON_AUTHORING_TEMPLATE.md`. The template links the shared styles and defines all structural slots. Both resources are linked from the admin Design System panel.
 
 The same shell is now applied to all 27 existing Track A pages across RU / EN / 中文 (lessons 1.1.1–1.1.4 and the first five 1.2 lessons). The 1.1.2–1.1.4 content-specific CSS is centralized in `styles/lesson-content-components.css`; the shell itself remains in `styles/lesson-reference-111.css`. Source lecture text, glossary terms, practice checks and assessments are preserved.
+
+
+## Progress update — 2026-11-11
+
+Lesson **1.3.1 — Supervised Learning** has been authored in RU / EN / 中文 and registered in catalog v3 with `status=review`, `content_state=localized`. It includes learning outcomes, an explanatory diagram, a worked building-energy example, regression/classification comparison, training workflow, data-split protocol, practical task, glossary, self-check and sources. The lesson is intentionally not marked published until visual and editorial review is complete.

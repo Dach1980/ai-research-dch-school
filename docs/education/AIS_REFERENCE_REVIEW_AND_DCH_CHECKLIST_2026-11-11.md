@@ -129,6 +129,6 @@
 Проверены публичные упоминания авторов и связанные каналы:
 
 - [Data Blog — @jdata_blog](https://t.me/jdata_blog) — основной авторский канал Sabrina Sadiekh. Тематика: интерпретируемость моделей, XAI, mechanistic interpretability, публикации, исследовательские заметки и образовательные материалы.
-- [Mrs Wallbreaker about AI Risk, AI Alignment, AI Safety](https://t.me/MrsWallbreaker) — связанный канал Elena Ericheva по AI Safety, alignment, interpretability, evaluations и исследовательским вопросам. Это дополнительный источник автора, а не официальный канал AIS.
+- [Mrs Wallbreaker about AI Risk, AI Alignment, AI Safety](https://t.me/+d2Tb_FdRIkozYWEy) — связанный канал Elena Ericheva по AI Safety, alignment, interpretability, evaluations и исследовательским вопросам. Это дополнительный источник автора, а не официальный канал AIS.
 
 Каналы нужно использовать как **watchlist** для обнаружения новых тем, публикаций, практик и изменений курса. Посты не являются автоматически проверенными научными источниками: важные утверждения нужно прослеживать до статьи, официальной документации или исходного кода.

@@ -5,11 +5,12 @@
   const locale = (document.documentElement.lang || "ru").toLowerCase().startsWith("zh") ? "zh" :
     (document.documentElement.lang || "ru").toLowerCase().startsWith("en") ? "en" : "ru";
   const ui = {
-    ru:{empty:"Опубликованных планет пока нет.",error:"Не удалось загрузить каталог планет.",theme:"ТЕМА",module:"МОДУЛЬ",lesson:"УРОК",level:"Начальный уровень",outcomes:"После урока вы сможете",prereq:"Предварительная подготовка не требуется.",code:"Код урока",access:"Доступ",open:"Открытый урок",start:"Начать урок ↗",about:"О Track A",select:"Показать на карте",openLink:"Открыть урок ↗",published:"опубликовано"},
-    en:{empty:"No published planets yet.",error:"The lesson catalogue could not be loaded.",theme:"THEME",module:"MODULE",lesson:"LESSON",level:"Beginner",outcomes:"After this lesson, you will be able to",prereq:"No prerequisites required.",code:"Lesson code",access:"Access",open:"Open lesson",start:"Start lesson ↗",about:"About Track A",select:"Show on map",openLink:"Open lesson ↗",published:"published"},
-    zh:{empty:"暂无已发布课程。",error:"无法加载课程目录。",theme:"主题",module:"模块",lesson:"课程",level:"初级",outcomes:"完成课程后，你将能够",prereq:"无需先修知识。",code:"课程代码",access:"访问权限",open:"免费课程",start:"开始学习 ↗",about:"关于 Track A",select:"在地图上显示",openLink:"打开课程 ↗",published:"已发布"}
+    ru:{empty:"В каталоге пока нет подготовленных уроков.",error:"Не удалось загрузить каталог планет.",theme:"ТЕМА",module:"МОДУЛЬ",lesson:"УРОК",level:"Начальный уровень",outcomes:"После урока вы сможете",prereq:"Предварительная подготовка не требуется.",code:"Код урока",access:"Доступ",open:"Открытый урок",start:"Начать урок ↗",about:"О Track A",select:"Показать на карте",openLink:"Открыть урок ↗",published:"опубликовано",review:"на проверке",planetCount:"планет опубликовано",reviewNote:"Материал подготовлен и проходит проверку"},
+    en:{empty:"No prepared lessons in the catalogue yet.",error:"The lesson catalogue could not be loaded.",theme:"THEME",module:"MODULE",lesson:"LESSON",level:"Beginner",outcomes:"After this lesson, you will be able to",prereq:"No prerequisites required.",code:"Lesson code",access:"Access",open:"Open lesson",start:"Start lesson ↗",about:"About Track A",select:"Show on map",openLink:"Open lesson ↗",published:"published",review:"under review",planetCount:"published planets",reviewNote:"Content prepared and under review"},
+    zh:{empty:"目录中暂无已准备的课程。",error:"无法加载课程目录。",theme:"主题",module:"模块",lesson:"课程",level:"初级",outcomes:"完成课程后，你将能够",prereq:"无需先修知识。",code:"课程代码",access:"访问权限",open:"免费课程",start:"开始学习 ↗",about:"关于 Track A",select:"在地图上显示",openLink:"打开课程 ↗",published:"已发布",review:"审核中",planetCount:"颗已发布行星",reviewNote:"课程内容已准备，正在审核"}
   }[locale];
   const esc = value => String(value ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"})[c]);
+  const statusStyle = document.createElement("style"); statusStyle.textContent=".lesson-review-status{color:#f0c878;font-weight:700}.lesson-published-status{color:#8fd7b2;font-weight:700}"; document.head.appendChild(statusStyle);
   const positions = [[50,49],[72,31],[28,30],[72,68],[28,68],[50,87]];
   const descriptions = {
     "1.1.1":{ru:"Что такое искусственный интеллект, как устроены AI-системы и где проходят границы их возможностей.",en:"What artificial intelligence means, how AI systems work, and where their capabilities end.",zh:"人工智能的含义、AI 系统的工作方式及其能力边界。"},
@@ -49,11 +50,13 @@
       const modules = new Map(data.modules.map(x=>[x.uid,x]));
       allLessons = data.lessons;
       const track = tracks.get("trk-a");
-      const lessons = data.lessons.filter(x=>x.track_uid==="trk-a"&&x.status==="published"&&x.content_state==="published")
-        .sort((a,b)=>a.code.localeCompare(b.code,"en",{numeric:true}));
-      if (!lessons.length) { list.innerHTML='<p class="map-note">'+esc(ui.empty)+'</p>'; return; }
+      const sortByCode = (a,b) => a.code.localeCompare(b.code,"en",{numeric:true});
+      const publishedLessons = data.lessons.filter(x=>x.track_uid==="trk-a"&&x.status==="published"&&x.content_state==="published"&&x.url_i18n?.[locale]).sort(sortByCode);
+      const reviewLessons = data.lessons.filter(x=>x.track_uid==="trk-a"&&x.status==="review"&&x.content_state==="localized"&&x.url_i18n?.[locale]).sort(sortByCode);
+      const listedLessons = [...publishedLessons,...reviewLessons].sort(sortByCode);
+      if (!listedLessons.length) { list.innerHTML='<p class="map-note">'+esc(ui.empty)+'</p>'; return; }
       universe.querySelectorAll("[data-generated-planet]").forEach(node=>node.remove());
-      const entries = lessons.map((lesson,index)=>{
+      const entries = publishedLessons.map((lesson,index)=>{
         const module=modules.get(lesson.module_uid),theme=themes.get(lesson.theme_uid);
         const title=lesson.title_i18n?.[locale]||lesson.title;
         const href=lesson.url_i18n?.[locale];
@@ -67,15 +70,18 @@
         universe.appendChild(button);
         return {lesson,module,theme,href,title};
       });
-      list.innerHTML='<div class="side-top"><strong>Track A · '+esc(track?.title || "Understanding AI")+'</strong><span class="level">'+entries.length+' '+esc(ui.published)+'</span></div>'+
-        entries.map(({lesson,module,theme,href,title})=>'<div class="list-entry"><div><strong>'+esc(lesson.code)+' — '+esc(title)+'</strong><small>'+esc(ui.theme)+' '+esc(theme.number)+' · '+esc(ui.module)+' '+esc(module.number)+'</small></div><div class="list-actions"><button type="button" data-select-lesson="'+esc(lesson.uid)+'">'+esc(ui.select)+'</button><a class="button secondary" href="../'+esc(href)+'">'+esc(ui.openLink)+'</a></div></div>').join("");
+      const entryByUid = new Map(entries.map(entry=>[entry.lesson.uid,entry]));
+      const reviewItems = reviewLessons.map(lesson=>({lesson,module:modules.get(lesson.module_uid),theme:themes.get(lesson.theme_uid),href:lesson.url_i18n[locale],title:lesson.title_i18n?.[locale]||lesson.title,review:true}));
+      const allItems = [...entries,...reviewItems].sort((a,b)=>sortByCode(a.lesson,b.lesson));
+      list.innerHTML='<div class="side-top"><strong>Track A · '+esc(track?.title || "Understanding AI")+'</strong><span class="level">'+publishedLessons.length+' '+esc(ui.planetCount)+'</span></div>'+
+        allItems.map(({lesson,module,theme,href,title,review})=>'<div class="list-entry"><div><strong>'+esc(lesson.code)+' — '+esc(title)+'</strong><small>'+esc(ui.theme)+' '+esc(theme?.number ?? "")+' · '+esc(ui.module)+' '+esc(module?.number ?? "")+' · '+(review?'<span class="lesson-review-status">'+esc(ui.review)+'</span>':'<span class="lesson-published-status">'+esc(ui.published)+'</span>')+(review?'<br>'+esc(ui.reviewNote):'')+'</small></div><div class="list-actions">'+(review?'':'<button type="button" data-select-lesson="'+esc(lesson.uid)+'">'+esc(ui.select)+'</button>')+'<a class="button secondary" href="../'+esc(href)+'">'+esc(ui.openLink)+'</a></div></div>').join("");
       list.querySelectorAll("[data-select-lesson]").forEach(button=>button.addEventListener("click",()=>{
-        const entry=entries.find(x=>x.lesson.uid===button.dataset.selectLesson);
+        const entry=entryByUid.get(button.dataset.selectLesson);
         if(entry)renderDetails(entry.lesson,entry.theme,entry.module);
         document.getElementById("mapMode")?.click();
         universe.scrollIntoView({behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth",block:"nearest"});
       }));
-      const first=entries[0];renderDetails(first.lesson,first.theme,first.module);
+      const first=entries[0];if(first)renderDetails(first.lesson,first.theme,first.module);
     } catch(error) { list.innerHTML='<p class="map-note">'+esc(ui.error)+' '+esc(error.message)+'</p>'; }
   };
   load();

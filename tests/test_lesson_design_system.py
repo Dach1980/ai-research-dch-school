@@ -128,6 +128,36 @@ class LessonDesignSystemTests(unittest.TestCase):
                     self.assertNotIn("<style>", source)
                     self.assertNotIn("lesson-languages", source)
 
+
+    def test_lesson_121_expanded_content_is_complete_and_localized(self):
+        expected = {
+            "": ("ru", "Результаты обучения", "Паспорт набора данных", "Самопроверка"),
+            "-en": ("en", "Learning outcomes", "A dataset datasheet", "Self-check"),
+            "-zh": ("zh", "学习目标", "数据集说明", "自测"),
+        }
+        for suffix, (locale, outcome_heading, datasheet_heading, quiz_heading) in expected.items():
+            path = ROOT / "lessons" / f"a-1-2-1{suffix}.html"
+            source = path.read_text(encoding="utf-8")
+            with self.subTest(locale=locale):
+                self.assertIn(f'<html lang="{locale}"', source)
+                self.assertEqual(len(re.findall(r'<section id="section-\\d+">', source)), 8)
+                self.assertEqual(source.count('class="glossary-entry"'), 14 if locale == "ru" else 13)
+                self.assertEqual(source.count('class="lesson-check-question"'), 7)
+                self.assertEqual(source.count('class="lesson-check-button"'), 7)
+                self.assertIn(outcome_heading, source)
+                self.assertIn(datasheet_heading, source)
+                self.assertIn(quiz_heading, source)
+                self.assertIn("lesson-data-table", source)
+                self.assertIn("sampling bias", source.lower())
+                self.assertIn("distribution shift", source.lower())
+                self.assertIn("data-mode=\\"multiple\\"", source)
+                self.assertIn("data-correct=\\"a,c,d\\"", source)
+                self.assertIn("data-provenance", source.lower()) if locale == "en" else None
+                self.assertIn("data-characteristics", source)
+                self.assertIn("Datasheets for Datasets", source)
+                self.assertIn("lesson-assessment.js", source)
+                self.assertIn("canonical", source)
+
     def test_lesson_131_supervised_learning_is_complete_in_all_locales(self):
         for suffix, locale in (("", "ru"), ("-en", "en"), ("-zh", "zh")):
             page = (ROOT / f"lessons/a-1-3-1{suffix}.html").read_text(encoding="utf-8")

@@ -159,7 +159,7 @@ class TrackADataLessonTests(unittest.TestCase):
             with self.subTest(locale=locale):
                 self.assertEqual(page.count('class="definition"'), 8)
                 self.assertEqual(page.count('<figure class="lesson-figure">'), 4)
-                self.assertEqual(page.count('aria-label='), 4)
+                self.assertEqual(page.count('<svg viewBox="0 0 820 205"'), 4)
                 self.assertIn("Sampling bias" if locale == "en" else ("抽样偏差" if locale == "zh" else "Смещение выборки"), page)
 
 if __name__ == "__main__":

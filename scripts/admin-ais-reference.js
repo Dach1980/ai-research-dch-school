@@ -26,7 +26,7 @@
           <div class="roadmap-item-head"><span class="roadmap-id">ВНЕШНИЙ РЕФЕРЕНС</span><span class="roadmap-date">Обновлено: ${escapeHtml(data.updated_at)}</span></div>
           <h2>${escapeHtml(data.reference.name)}</h2>
           <p class="muted">Авторы: ${data.reference.authors.map(escapeHtml).join(" · ")}</p>
-          <p><a class="text-link" href="${escapeHtml(data.reference.website)}" target="_blank" rel="noopener">Сайт AIS ↗</a> · <a class="text-link" href="${escapeHtml(data.reference.research_repository)}" target="_blank" rel="noopener">Исследовательский репозиторий ↗</a></p>
+          <p><a class="text-link" href="${escapeHtml(data.reference.website)}" target="_blank" rel="noopener">Официальный сайт AIS ↗</a> · <a class="text-link" href="${escapeHtml(data.reference.research_repository)}" target="_blank" rel="noopener">Исследовательский репозиторий ↗</a></p>
           <p>${(data.reference.author_channels || []).map(channel => `<a class="text-link" href="${escapeHtml(channel.url)}" target="_blank" rel="noopener">${escapeHtml(channel.name)} ↗</a> <span class="muted">— ${escapeHtml(channel.author)}</span>`).join(" · ")}</p>
           <p class="muted">Текущий каталог AIS: Track A ${escapeHtml(data.reference.current_catalog.track_a)}; Track B ${escapeHtml(data.reference.current_catalog.track_b)}. ${escapeHtml(data.reference.current_catalog.note)}</p>
           <div class="admin-grid roadmap-stats">
@@ -75,7 +75,7 @@
       }).join("");
       root.insertAdjacentHTML("beforeend",
         '<section class="admin-panel"><div class="roadmap-item-head"><span class="roadmap-id">CURRICULUM CROSSWALK</span><span class="roadmap-date">Снимок: ' +
-        escapeHtml(crosswalk.updated_at) + '</span></div><h2>Матрица AIS → DCH: все 40 модулей</h2><p class="muted">Сопоставление по содержанию, а не по совпадению номеров. Источник AIS — публичный каталог; полный lesson-level аудит не подразумевается.</p>' +
+        escapeHtml(crosswalk.updated_at) + '</span></div><h2>Матрица AIS → DCH: все 40 модулей</h2><p class="muted">Сопоставление по содержанию, а не по совпадению номеров. Источник AIS — публичный каталог; полный lesson-level аудит не подразумевается.</p><p><strong>Важно:</strong> матрица пока предварительная. Спецификация 40 модулей и рабочая архитектура Track A 11–26 расходятся по названиям и границам модулей. До утверждения единой канонической редакции нельзя автоматически переносить эти номера в публичный каталог.</p>' +
         '<div class="admin-grid roadmap-stats"><div class="admin-stat"><strong>' + crosswalk.totals.dch_modules +
         '</strong><span>Модулей DCH</span></div><div class="admin-stat"><strong>' + (counts["Сильное"] || 0) +
         '</strong><span>Сильное покрытие</span></div><div class="admin-stat"><strong>' + (counts["Частичное"] || 0) +

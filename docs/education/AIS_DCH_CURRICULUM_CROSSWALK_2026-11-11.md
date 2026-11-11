@@ -1,3 +1,7 @@
+> **Статус: superseded 2026-11-11.** Этот первоначальный crosswalk был составлен по конфликтующей реконструкции 40 модулей из `ai-interpretability-course/docs/CURRICULUM_SPECIFICATION.md` и не должен использоваться как каноническая структура DCH. Каноническое решение — [DCH_CANONICAL_CURRICULUM_DECISION_2026-11-11.md](../management/DCH_CANONICAL_CURRICULUM_DECISION_2026-11-11.md). Фактические связи Theme/Module/Lesson UID — [data/curriculum-governance-2026-11-11.json](../../data/curriculum-governance-2026-11-11.json). Исторические заметки и AIS topic references ниже сохранены для traceability, но оценки покрытия не утверждены.
+
+---
+
 # Матрица соответствия AI Interpretability School → AI Research DCH School
 
 **Дата:** 2026-11-11  

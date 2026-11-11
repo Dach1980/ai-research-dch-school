@@ -26,9 +26,18 @@
         "url": "https://t.me/+d2Tb_FdRIkozYWEy",
         "role": "Связанный авторский канал Elena Ericheva по AI Safety и alignment; ссылка ведёт на Telegram-приглашение, а не на публичный username. Это дополнительный источник, не официальный канал AIS."
       }
-    ]
+    ],
+    "website_description": "Официальный публичный сайт AI Interpretability School — актуальный внешний учебный референс. Каталог проверен 2026-11-11."
   },
   "source_documents": [
+    {
+      "title": "Матрица соответствия всех 40 модулей DCH темам AIS",
+      "url": "../docs/education/AIS_DCH_CURRICULUM_CROSSWALK_2026-11-11.md"
+    },
+    {
+      "title": "Первичная спецификация 40 модулей DCH",
+      "url": "https://github.com/Dach1980/ai-interpretability-course/blob/main/docs/CURRICULUM_SPECIFICATION.md"
+    },
     {
       "title": "Полный анализ и чек-лист DCH",
       "url": "../docs/education/AIS_REFERENCE_REVIEW_AND_DCH_CHECKLIST_2026-11-11.md"
@@ -62,17 +71,17 @@
       "id": "AIS-02",
       "group": "Исследование AIS",
       "title": "Общая структура и планетная метафора проанализированы",
-      "status": "done",
-      "evidence": "interface-analysis.md; planetary-learning-map.md",
-      "note": "Полная ручная приёмка текущего интерактивного сайта AIS ещё не выполнялась."
+      "status": "in_progress",
+      "evidence": "Актуальная публичная главная страница AIS проверена 2026-11-11",
+      "note": "Проверить интерактивную навигацию, отдельные страницы уроков и мобильную версию; сейчас выполнен content/catalog review."
     },
     {
       "id": "AIS-03",
       "group": "Исследование AIS",
       "title": "Актуальный каталог AIS 00–36 сопоставлен с прежним анализом",
-      "status": "in_progress",
-      "evidence": "Публичная страница проверена 2026-11-11",
-      "note": "Нужно обновить локальный полный crosswalk по всем темам."
+      "status": "done",
+      "evidence": "Публичный каталог AIS проверен 2026-11-11; создан crosswalk всех 40 модулей DCH к тематическим позициям AIS",
+      "note": "Далее нужен углублённый анализ полного текста уроков/ноутбуков AIS там, где они доступны."
     },
     {
       "id": "AIS-04",
@@ -93,33 +102,33 @@
       "id": "DCH-01",
       "group": "Программа DCH",
       "title": "Реконструирована структура 40 модулей",
-      "status": "in_progress",
-      "evidence": "00–10 foundation; 11–26 Track A; 27–39 Track B",
-      "note": "Полные названия и часть зависимостей ещё не утверждены."
+      "status": "done",
+      "evidence": "Найден первичный документ docs/CURRICULUM_SPECIFICATION.md в ai-interpretability-course; содержит модули 0–39 с названиями, темами, prerequisites, outcomes и практикой",
+      "note": "Сверить противоречивые вводные формулировки о границах треков в двух редакциях раздела 1.1 спецификации."
     },
     {
       "id": "DCH-02",
       "group": "Программа DCH",
       "title": "Полный построчный crosswalk AIS → DCH утверждён",
-      "status": "planned",
-      "evidence": "RM-02",
-      "note": "Нужна единая матрица topic → DCH UID/module/lesson, prerequisites, gaps и confidence."
+      "status": "done",
+      "evidence": "AIS_DCH_CURRICULUM_CROSSWALK_2026-11-11.md и data/ais-dch-crosswalk.json; сопоставлены все 40 модулей DCH",
+      "note": "Это curriculum-level crosswalk по публичному каталогу AIS, не lesson-level QA."
     },
     {
       "id": "DCH-03",
       "group": "Программа DCH",
       "title": "Архитектура Track A 11–26 согласована с актуальным AIS",
       "status": "in_progress",
-      "evidence": "TRACK_A_ARCHITECTURE_PROPOSAL.md; решения 2026-11-05",
-      "note": "Есть proposal и отдельные решения; требуется обновить и утвердить после нового crosswalk."
+      "evidence": "TRACK_A_ARCHITECTURE_PROPOSAL.md + crosswalk 2026-11-11",
+      "note": "Привести рабочую архитектуру Track A в соответствие первичной спецификации 0–26 и разрешить расхождения."
     },
     {
       "id": "DCH-04",
       "group": "Программа DCH",
       "title": "Подробная карта Track B 27–39 и prerequisites завершена",
       "status": "in_progress",
-      "evidence": "Общая архитектура Inside AI",
-      "note": "Нужны детальные соответствия, prerequisites и практические результаты для всех блоков."
+      "evidence": "Первичная спецификация 27–39 + AIS crosswalk",
+      "note": "Сверить Track B 27–39, определить диагностические prerequisites и проверить практики/compute."
     },
     {
       "id": "DCH-05",
@@ -192,5 +201,6 @@
       "status": "done",
       "evidence": "RM-02, RM-12, data/audit-roadmap.json"
     }
-  ]
+  ],
+  "crosswalk_json": "../data/ais-dch-crosswalk.json"
 }

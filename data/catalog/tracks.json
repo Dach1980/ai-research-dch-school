@@ -1,8 +1,0 @@
-{
-  "schema_version": 1,
-  "tracks": [
-    {"id":"track-a","code":"A","title":"Understanding AI","status":"active","url":"tracks/understanding-ai.html"},
-    {"id":"track-b","code":"B","title":"Inside AI","status":"active","url":"tracks/inside-ai.html"},
-    {"id":"track-c","code":"C","title":"Building with AI","status":"active","url":"tracks/building-with-ai.html"}
-  ]
-}

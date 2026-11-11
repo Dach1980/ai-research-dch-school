@@ -41,3 +41,21 @@ html[data-theme="light"] .home-planet{background:linear-gradient(145deg,#fff,#ed
 .knowledge-cta{display:flex;justify-content:space-between;align-items:center;gap:18px;flex-wrap:wrap;margin-top:24px;color:var(--muted);font-size:13px}
 @media(max-width:800px){.hero{min-height:0}}
 @media(max-width:560px){.knowledge-cta{align-items:flex-start;flex-direction:column}}
+
+
+/* Track planetary identity — shared vector assets, accessible text remains primary. */
+.track-planet-icon{display:block;width:76px;height:76px;object-fit:contain;flex:0 0 auto;margin:10px auto 0;filter:drop-shadow(0 0 14px #7daeff33)}
+.track-card .track-planet-icon{width:88px;height:88px;margin:12px 0 0;align-self:flex-start}
+.track-card.blue .track-planet-icon{filter:drop-shadow(0 0 18px #39d9df44)}
+.track-card.violet .track-planet-icon{filter:drop-shadow(0 0 18px #a78bfa55)}
+.track-card.teal .track-planet-icon{filter:drop-shadow(0 0 18px #ffb44d55)}
+.track-hero-with-planet{position:relative;padding-right:170px;min-height:220px}
+.track-hero-planet{position:absolute;right:8px;top:48px;width:148px;height:148px;object-fit:contain;filter:drop-shadow(0 0 24px #8e75d955)}
+.track-hero-with-planet:has(img[src*="track-a"]){--track-accent:#43d6d7}
+.track-hero-with-planet:has(img[src*="track-b"]){--track-accent:#b69aff}
+.track-hero-with-planet:has(img[src*="track-c"]){--track-accent:#f6ae4d}
+.track-hero-with-planet .eyebrow{color:var(--track-accent)}
+.track-first-lesson{display:flex;align-items:center;justify-content:space-between;gap:22px;flex-wrap:wrap;border-left-color:#a78bfa}
+.track-first-lesson p{margin:5px 0;color:#c7cde0}
+.lesson-draft-status{display:inline-block;margin-top:8px;padding:4px 8px;border:1px solid #b69aff77;border-radius:99px;color:#d8c6ff;font-size:9px;font-weight:800;letter-spacing:.1em}
+@media(max-width:620px){.track-hero-with-planet{padding-right:0;padding-top:45px}.track-hero-planet{position:static;width:104px;height:104px;margin:0 0 14px}.track-first-lesson{align-items:flex-start;flex-direction:column}.track-card .track-planet-icon{width:74px;height:74px}}

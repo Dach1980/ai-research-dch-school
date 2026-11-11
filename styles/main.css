@@ -48,7 +48,7 @@ html[data-theme="light"] .home-planet{background:linear-gradient(145deg,#fff,#ed
 .track-card .track-planet-icon{width:88px;height:88px;margin:12px 0 0;align-self:flex-start}
 .track-card.blue .track-planet-icon{filter:drop-shadow(0 0 18px #39d9df44)}
 .track-card.violet .track-planet-icon{filter:drop-shadow(0 0 18px #a78bfa55)}
-.track-card.teal .track-planet-icon{filter:drop-shadow(0 0 18px #ffb44d55)}
+.track-card.amber .track-planet-icon{filter:drop-shadow(0 0 18px #ffb44d66)}
 .track-hero-with-planet{position:relative;padding-right:170px;min-height:220px}
 .track-hero-planet{position:absolute;right:8px;top:48px;width:148px;height:148px;object-fit:contain;filter:drop-shadow(0 0 24px #8e75d955)}
 .track-hero-with-planet:has(img[src*="track-a"]){--track-accent:#43d6d7}

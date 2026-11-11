@@ -416,5 +416,23 @@
       "coverage": "Частичное",
       "assessment": "AIS 25 — тест Track A, не эквивалент исследовательского проекта DCH; DCH capstone самостоятельный."
     }
+  ],
+  "critical_conflicts": [
+    {
+      "id": "CURR-CONFLICT-01",
+      "title": "Две несовпадающие редакции DCH Track A",
+      "source_a": "docs/CURRICULUM_SPECIFICATION.md",
+      "source_b": "docs/management/TRACK_A_ARCHITECTURE_PROPOSAL.md",
+      "detail": "В спецификации DCH модули 11–19 охватывают interpretable ML, feature importance, PDP/ICE/ALE, causality, LIME, SHAP, counterfactuals, Causal ML и evaluation; 20–26 — CNN, visual/gradient/concept methods, NLP, Transformer и LLM XAI. В рабочей архитектуре Track A 11–26 задана другая последовательность и другие границы (11 — основы AI/ML; 12 — линейные модели; 13 — нелинейные; 14 — causality; 15 — heterogeneous effects и т.д.).",
+      "decision_needed": "Утвердить один canonical curriculum map и явно определить, какая редакция заменяет другую. До этого crosswalk — provisional, module IDs не следует автоматически переносить в сайт или каталог."
+    },
+    {
+      "id": "CURR-CONFLICT-02",
+      "title": "Разные описания границ Track A и Track B в разделе 1.1 спецификации",
+      "source_a": "docs/CURRICULUM_SPECIFICATION.md, first 1.1",
+      "source_b": "docs/CURRICULUM_SPECIFICATION.md, second 1.1",
+      "detail": "Одна редакция относит Track A к 0–26, Track B к ядру 20–39; другая описывает Track A 0–26, Track B ядро 27–39, а 20–26 как переход. Необходимо оставить одну согласованную формулировку.",
+      "decision_needed": "Отредактировать дублирующий раздел 1.1 после выбора канонической схемы."
+    }
   ]
 }

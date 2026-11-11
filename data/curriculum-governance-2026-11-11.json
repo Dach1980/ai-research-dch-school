@@ -310,9 +310,10 @@
       "lesson_uids": [],
       "lesson_codes": [],
       "lesson_statuses": [],
-      "coverage_status": "not_yet_mapped",
       "mapping_note": "Общая база: не создавать ложную привязку к вводным урокам Track A.",
-      "mapping_confidence": "low"
+      "mapping_confidence": "low",
+      "catalog_mapping_status": "not_yet_mapped",
+      "content_coverage_status": "no_lesson_uid"
     },
     {
       "module": 1,
@@ -324,8 +325,9 @@
       "lesson_uids": [],
       "lesson_codes": [],
       "lesson_statuses": [],
-      "coverage_status": "candidate_only",
-      "mapping_confidence": "low"
+      "mapping_confidence": "low",
+      "catalog_mapping_status": "candidate_only",
+      "content_coverage_status": "no_lesson_uid"
     },
     {
       "module": 2,
@@ -337,8 +339,9 @@
       "lesson_uids": [],
       "lesson_codes": [],
       "lesson_statuses": [],
-      "coverage_status": "candidate_only",
-      "mapping_confidence": "low"
+      "mapping_confidence": "low",
+      "catalog_mapping_status": "candidate_only",
+      "content_coverage_status": "no_lesson_uid"
     },
     {
       "module": 3,
@@ -350,8 +353,9 @@
       "lesson_uids": [],
       "lesson_codes": [],
       "lesson_statuses": [],
-      "coverage_status": "candidate_only",
-      "mapping_confidence": "low"
+      "mapping_confidence": "low",
+      "catalog_mapping_status": "candidate_only",
+      "content_coverage_status": "no_lesson_uid"
     },
     {
       "module": 4,
@@ -363,8 +367,9 @@
       "lesson_uids": [],
       "lesson_codes": [],
       "lesson_statuses": [],
-      "coverage_status": "candidate_only",
-      "mapping_confidence": "low"
+      "mapping_confidence": "low",
+      "catalog_mapping_status": "candidate_only",
+      "content_coverage_status": "no_lesson_uid"
     },
     {
       "module": 5,
@@ -376,8 +381,9 @@
       "lesson_uids": [],
       "lesson_codes": [],
       "lesson_statuses": [],
-      "coverage_status": "candidate_only",
-      "mapping_confidence": "low"
+      "mapping_confidence": "low",
+      "catalog_mapping_status": "candidate_only",
+      "content_coverage_status": "no_lesson_uid"
     },
     {
       "module": 6,
@@ -389,8 +395,9 @@
       "lesson_uids": [],
       "lesson_codes": [],
       "lesson_statuses": [],
-      "coverage_status": "candidate_only",
-      "mapping_confidence": "low"
+      "mapping_confidence": "low",
+      "catalog_mapping_status": "candidate_only",
+      "content_coverage_status": "no_lesson_uid"
     },
     {
       "module": 7,
@@ -402,8 +409,9 @@
       "lesson_uids": [],
       "lesson_codes": [],
       "lesson_statuses": [],
-      "coverage_status": "candidate_only",
-      "mapping_confidence": "low"
+      "mapping_confidence": "low",
+      "catalog_mapping_status": "candidate_only",
+      "content_coverage_status": "no_lesson_uid"
     },
     {
       "module": 8,
@@ -427,8 +435,9 @@
         "planned",
         "planned"
       ],
-      "coverage_status": "candidate_only",
-      "mapping_confidence": "low"
+      "mapping_confidence": "low",
+      "catalog_mapping_status": "candidate_only",
+      "content_coverage_status": "editorial_review"
     },
     {
       "module": 9,
@@ -440,8 +449,9 @@
       "lesson_uids": [],
       "lesson_codes": [],
       "lesson_statuses": [],
-      "coverage_status": "candidate_only",
-      "mapping_confidence": "low"
+      "mapping_confidence": "low",
+      "catalog_mapping_status": "candidate_only",
+      "content_coverage_status": "no_lesson_uid"
     },
     {
       "module": 10,
@@ -453,8 +463,9 @@
       "lesson_uids": [],
       "lesson_codes": [],
       "lesson_statuses": [],
-      "coverage_status": "candidate_only",
-      "mapping_confidence": "low"
+      "mapping_confidence": "low",
+      "catalog_mapping_status": "candidate_only",
+      "content_coverage_status": "no_lesson_uid"
     },
     {
       "module": 11,
@@ -518,8 +529,9 @@
         "planned",
         "published"
       ],
-      "coverage_status": "mapped",
-      "mapping_confidence": "medium"
+      "mapping_confidence": "medium",
+      "catalog_mapping_status": "mapped",
+      "content_coverage_status": "partial_published_core"
     },
     {
       "module": 12,
@@ -537,8 +549,9 @@
       "lesson_statuses": [
         "planned"
       ],
-      "coverage_status": "partial",
-      "mapping_confidence": "medium"
+      "mapping_confidence": "medium",
+      "catalog_mapping_status": "partial",
+      "content_coverage_status": "listed_only_no_published_page"
     },
     {
       "module": 13,
@@ -556,8 +569,9 @@
       "lesson_statuses": [
         "planned"
       ],
-      "coverage_status": "partial",
-      "mapping_confidence": "medium"
+      "mapping_confidence": "medium",
+      "catalog_mapping_status": "partial",
+      "content_coverage_status": "listed_only_no_published_page"
     },
     {
       "module": 14,
@@ -569,8 +583,9 @@
       "lesson_uids": [],
       "lesson_codes": [],
       "lesson_statuses": [],
-      "coverage_status": "planned_only",
-      "mapping_confidence": "low"
+      "mapping_confidence": "low",
+      "catalog_mapping_status": "planned_only",
+      "content_coverage_status": "no_lesson_uid"
     },
     {
       "module": 15,
@@ -582,8 +597,9 @@
       "lesson_uids": [],
       "lesson_codes": [],
       "lesson_statuses": [],
-      "coverage_status": "missing_catalog_mapping",
-      "mapping_confidence": "low"
+      "mapping_confidence": "low",
+      "catalog_mapping_status": "missing_catalog_mapping",
+      "content_coverage_status": "no_lesson_uid"
     },
     {
       "module": 16,
@@ -613,8 +629,9 @@
         "planned",
         "planned"
       ],
-      "coverage_status": "planned_only",
-      "mapping_confidence": "low"
+      "mapping_confidence": "low",
+      "catalog_mapping_status": "planned_only",
+      "content_coverage_status": "listed_only_no_published_page"
     },
     {
       "module": 17,
@@ -671,8 +688,9 @@
         "planned",
         "planned"
       ],
-      "coverage_status": "planned_only",
-      "mapping_confidence": "low"
+      "mapping_confidence": "low",
+      "catalog_mapping_status": "planned_only",
+      "content_coverage_status": "listed_only_no_published_page"
     },
     {
       "module": 18,
@@ -690,8 +708,9 @@
       "lesson_statuses": [
         "planned"
       ],
-      "coverage_status": "planned_only",
-      "mapping_confidence": "low"
+      "mapping_confidence": "low",
+      "catalog_mapping_status": "planned_only",
+      "content_coverage_status": "listed_only_no_published_page"
     },
     {
       "module": 19,
@@ -703,8 +722,9 @@
       "lesson_uids": [],
       "lesson_codes": [],
       "lesson_statuses": [],
-      "coverage_status": "missing_catalog_mapping",
-      "mapping_confidence": "low"
+      "mapping_confidence": "low",
+      "catalog_mapping_status": "missing_catalog_mapping",
+      "content_coverage_status": "no_lesson_uid"
     },
     {
       "module": 20,
@@ -716,8 +736,9 @@
       "lesson_uids": [],
       "lesson_codes": [],
       "lesson_statuses": [],
-      "coverage_status": "missing_catalog_mapping",
-      "mapping_confidence": "low"
+      "mapping_confidence": "low",
+      "catalog_mapping_status": "missing_catalog_mapping",
+      "content_coverage_status": "no_lesson_uid"
     },
     {
       "module": 21,
@@ -729,8 +750,9 @@
       "lesson_uids": [],
       "lesson_codes": [],
       "lesson_statuses": [],
-      "coverage_status": "missing_catalog_mapping",
-      "mapping_confidence": "low"
+      "mapping_confidence": "low",
+      "catalog_mapping_status": "missing_catalog_mapping",
+      "content_coverage_status": "no_lesson_uid"
     },
     {
       "module": 22,
@@ -742,8 +764,9 @@
       "lesson_uids": [],
       "lesson_codes": [],
       "lesson_statuses": [],
-      "coverage_status": "missing_catalog_mapping",
-      "mapping_confidence": "low"
+      "mapping_confidence": "low",
+      "catalog_mapping_status": "missing_catalog_mapping",
+      "content_coverage_status": "no_lesson_uid"
     },
     {
       "module": 23,
@@ -755,8 +778,9 @@
       "lesson_uids": [],
       "lesson_codes": [],
       "lesson_statuses": [],
-      "coverage_status": "missing_catalog_mapping",
-      "mapping_confidence": "low"
+      "mapping_confidence": "low",
+      "catalog_mapping_status": "missing_catalog_mapping",
+      "content_coverage_status": "no_lesson_uid"
     },
     {
       "module": 24,
@@ -768,8 +792,9 @@
       "lesson_uids": [],
       "lesson_codes": [],
       "lesson_statuses": [],
-      "coverage_status": "missing_catalog_mapping",
-      "mapping_confidence": "low"
+      "mapping_confidence": "low",
+      "catalog_mapping_status": "missing_catalog_mapping",
+      "content_coverage_status": "no_lesson_uid"
     },
     {
       "module": 25,
@@ -781,8 +806,9 @@
       "lesson_uids": [],
       "lesson_codes": [],
       "lesson_statuses": [],
-      "coverage_status": "missing_catalog_mapping",
-      "mapping_confidence": "low"
+      "mapping_confidence": "low",
+      "catalog_mapping_status": "missing_catalog_mapping",
+      "content_coverage_status": "no_lesson_uid"
     },
     {
       "module": 26,
@@ -794,8 +820,9 @@
       "lesson_uids": [],
       "lesson_codes": [],
       "lesson_statuses": [],
-      "coverage_status": "planned_only",
-      "mapping_confidence": "low"
+      "mapping_confidence": "low",
+      "catalog_mapping_status": "planned_only",
+      "content_coverage_status": "no_lesson_uid"
     },
     {
       "module": 27,
@@ -807,8 +834,9 @@
       "lesson_uids": [],
       "lesson_codes": [],
       "lesson_statuses": [],
-      "coverage_status": "not_in_catalog",
-      "mapping_confidence": "low"
+      "mapping_confidence": "low",
+      "catalog_mapping_status": "not_in_catalog",
+      "content_coverage_status": "no_lesson_uid"
     },
     {
       "module": 28,
@@ -820,8 +848,9 @@
       "lesson_uids": [],
       "lesson_codes": [],
       "lesson_statuses": [],
-      "coverage_status": "not_in_catalog",
-      "mapping_confidence": "low"
+      "mapping_confidence": "low",
+      "catalog_mapping_status": "not_in_catalog",
+      "content_coverage_status": "no_lesson_uid"
     },
     {
       "module": 29,
@@ -833,8 +862,9 @@
       "lesson_uids": [],
       "lesson_codes": [],
       "lesson_statuses": [],
-      "coverage_status": "not_in_catalog",
-      "mapping_confidence": "low"
+      "mapping_confidence": "low",
+      "catalog_mapping_status": "not_in_catalog",
+      "content_coverage_status": "no_lesson_uid"
     },
     {
       "module": 30,
@@ -846,8 +876,9 @@
       "lesson_uids": [],
       "lesson_codes": [],
       "lesson_statuses": [],
-      "coverage_status": "not_in_catalog",
-      "mapping_confidence": "low"
+      "mapping_confidence": "low",
+      "catalog_mapping_status": "not_in_catalog",
+      "content_coverage_status": "no_lesson_uid"
     },
     {
       "module": 31,
@@ -859,8 +890,9 @@
       "lesson_uids": [],
       "lesson_codes": [],
       "lesson_statuses": [],
-      "coverage_status": "not_in_catalog",
-      "mapping_confidence": "low"
+      "mapping_confidence": "low",
+      "catalog_mapping_status": "not_in_catalog",
+      "content_coverage_status": "no_lesson_uid"
     },
     {
       "module": 32,
@@ -872,8 +904,9 @@
       "lesson_uids": [],
       "lesson_codes": [],
       "lesson_statuses": [],
-      "coverage_status": "not_in_catalog",
-      "mapping_confidence": "low"
+      "mapping_confidence": "low",
+      "catalog_mapping_status": "not_in_catalog",
+      "content_coverage_status": "no_lesson_uid"
     },
     {
       "module": 33,
@@ -885,8 +918,9 @@
       "lesson_uids": [],
       "lesson_codes": [],
       "lesson_statuses": [],
-      "coverage_status": "not_in_catalog",
-      "mapping_confidence": "low"
+      "mapping_confidence": "low",
+      "catalog_mapping_status": "not_in_catalog",
+      "content_coverage_status": "no_lesson_uid"
     },
     {
       "module": 34,
@@ -898,8 +932,9 @@
       "lesson_uids": [],
       "lesson_codes": [],
       "lesson_statuses": [],
-      "coverage_status": "not_in_catalog",
-      "mapping_confidence": "low"
+      "mapping_confidence": "low",
+      "catalog_mapping_status": "not_in_catalog",
+      "content_coverage_status": "no_lesson_uid"
     },
     {
       "module": 35,
@@ -911,21 +946,23 @@
       "lesson_uids": [],
       "lesson_codes": [],
       "lesson_statuses": [],
-      "coverage_status": "not_in_catalog",
-      "mapping_confidence": "low"
+      "mapping_confidence": "low",
+      "catalog_mapping_status": "not_in_catalog",
+      "content_coverage_status": "no_lesson_uid"
     },
     {
       "module": 36,
       "title": "Robustness, adversarial examples и атаки на объяснения",
       "track": "Track B",
       "prerequisites": "19–23,26,35",
-      "theme_uid": "thm-a-05",
-      "catalog_module_uid": "mod-a-05-02",
+      "theme_uid": "нет",
+      "catalog_module_uid": "нет",
       "lesson_uids": [],
       "lesson_codes": [],
       "lesson_statuses": [],
-      "coverage_status": "not_in_catalog",
-      "mapping_confidence": "low"
+      "mapping_confidence": "low",
+      "catalog_mapping_status": "not_in_catalog",
+      "content_coverage_status": "no_lesson_uid"
     },
     {
       "module": 37,
@@ -937,8 +974,9 @@
       "lesson_uids": [],
       "lesson_codes": [],
       "lesson_statuses": [],
-      "coverage_status": "not_in_catalog",
-      "mapping_confidence": "low"
+      "mapping_confidence": "low",
+      "catalog_mapping_status": "not_in_catalog",
+      "content_coverage_status": "no_lesson_uid"
     },
     {
       "module": 38,
@@ -950,21 +988,23 @@
       "lesson_uids": [],
       "lesson_codes": [],
       "lesson_statuses": [],
-      "coverage_status": "not_in_catalog",
-      "mapping_confidence": "low"
+      "mapping_confidence": "low",
+      "catalog_mapping_status": "not_in_catalog",
+      "content_coverage_status": "no_lesson_uid"
     },
     {
       "module": 39,
       "title": "Итоговый исследовательский проект",
       "track": "Capstone",
       "prerequisites": "0–38",
-      "theme_uid": "thm-a-05",
-      "catalog_module_uid": "mod-a-05-05",
+      "theme_uid": "нет",
+      "catalog_module_uid": "нет",
       "lesson_uids": [],
       "lesson_codes": [],
       "lesson_statuses": [],
-      "coverage_status": "not_in_catalog",
-      "mapping_confidence": "low"
+      "mapping_confidence": "low",
+      "catalog_mapping_status": "not_in_catalog",
+      "content_coverage_status": "no_lesson_uid"
     }
   ],
   "lesson_inventory": [
@@ -1949,10 +1989,20 @@
     "published": 5,
     "review": 5,
     "planned": 42,
-    "modules_mapped": 1,
-    "modules_partial": 2,
-    "modules_missing_catalog": 8,
-    "modules_candidate_only": 10,
-    "modules_not_yet_mapped": 1
+    "catalog_mapping_statuses": {
+      "not_yet_mapped": 1,
+      "candidate_only": 10,
+      "mapped": 1,
+      "partial": 2,
+      "planned_only": 5,
+      "missing_catalog_mapping": 8,
+      "not_in_catalog": 13
+    },
+    "content_coverage_statuses": {
+      "no_lesson_uid": 33,
+      "editorial_review": 1,
+      "partial_published_core": 1,
+      "listed_only_no_published_page": 5
+    }
   }
 }

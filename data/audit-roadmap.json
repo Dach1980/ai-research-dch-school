@@ -1524,6 +1524,25 @@
       "limitations": [
         "Не менять published statuses и не удалять legacy pages до завершения reconciliation."
       ]
+    },
+    {
+      "id": "AUD-057",
+      "date": "2026-11-11",
+      "type": "public_author_lesson_page_by_page_audit",
+      "title": "Проверены фактически открытые самостоятельные уроки автора и сопоставлены с DCH",
+      "result": "В репозитории автора обнаружены и прочитаны три самостоятельные открытые lesson pages: Track A — What is AI / AI, ML and DL; Track B — What is Mechanistic Interpretability; Track C — Local vs Cloud LLM. Дополнительно проверена более ранняя вводная AI-страница. Для Track A установлено соответствие с DCH 1.1.1 и смежными 1.1.4/последующими уроками; DCH 1.1.1 уже шире краткого авторского материала и требует точечных улучшений ясности, сквозного примера и worked example, а не сокращения. Для Track B и Track C прямые готовые DCH lesson pages не подтверждены; определены учебные цели и требования к самостоятельным draft-урокам. Создан поурочный аудит.",
+      "evidence": [
+        "docs/education/PUBLIC_AUTHOR_LESSONS_PAGE_BY_PAGE_AUDIT_2026-11-11.md",
+        "https://github.com/Dach1980/ai-interpretability-course/tree/main/site/lessons",
+        "https://github.com/Dach1980/ai-interpretability-course/tree/main/curriculum",
+        "https://github.com/Dach1980/ai-research-dch-school/tree/main/lessons",
+        "https://ai-interpretability.school/"
+      ],
+      "limitations": [
+        "Проверены только три самостоятельные публичные lesson pages и одна более ранняя вводная страница; остальные пункты программы не считались прочитанными уроками.",
+        "Не проверялись закрытые страницы, видео, notebook и пользовательские материалы канала.",
+        "Опубликованные DCH страницы, URL и статусы не менялись; улучшенные редакции Track B/C пока сформулированы как требования к draft, а не опубликованные уроки."
+      ]
     }
   ],
   "notes": [

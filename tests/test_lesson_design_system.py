@@ -18,6 +18,7 @@ class LessonDesignSystemTests(unittest.TestCase):
         bases = list(LESSONS) + [
             "a-1-1-2",
             "a-1-1-4",
+            "a-1-3-1",
         ]
         for base in bases:
             for suffix in ("", "-en", "-zh"):
@@ -105,7 +106,7 @@ class LessonDesignSystemTests(unittest.TestCase):
         self.assertIn("../lessons/a-1-1-1-zh.html", admin)
 
     def test_first_data_lessons_use_the_exact_111_page_shell_in_all_locales(self):
-        bases = ("a-1-2-1", "a-1-2-2", "a-1-2-4", "a-1-2-5", "a-1-2-6")
+        bases = ("a-1-2-1", "a-1-2-2", "a-1-2-4", "a-1-2-5", "a-1-2-6", "a-1-3-1")
         for base in bases:
             for suffix, locale in (("", "ru"), ("-en", "en"), ("-zh", "zh")):
                 path = ROOT / "lessons" / f"{base}{suffix}.html"
@@ -126,6 +127,22 @@ class LessonDesignSystemTests(unittest.TestCase):
                     self.assertIn("../styles/lesson-reference-111.css", source)
                     self.assertNotIn("<style>", source)
                     self.assertNotIn("lesson-languages", source)
+
+    def test_lesson_131_supervised_learning_is_complete_in_all_locales(self):
+        for suffix, locale in (("", "ru"), ("-en", "en"), ("-zh", "zh")):
+            page = (ROOT / f"lessons/a-1-3-1{suffix}.html").read_text(encoding="utf-8")
+            with self.subTest(locale=locale):
+                self.assertIn(f'<html lang="{locale}"', page)
+                self.assertIn("Supervised Learning", page)
+                self.assertEqual(page.count('class="lesson-check-question"'), 4)
+                self.assertEqual(page.count('class="lesson-check-button"'), 4)
+                self.assertEqual(page.count('class="glossary-entry"'), 8)
+                self.assertIn("class=\"lesson-practice\"", page)
+                self.assertIn("class=\"lesson-figure\"", page)
+                self.assertIn('data-correct="', page)
+                self.assertIn('data-explanation="', page)
+                self.assertIn("canonical", page)
+                self.assertNotIn("<style>", page)
 
     def test_all_active_track_a_lessons_share_the_canonical_111_shell(self):
         bases = (

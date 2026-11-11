@@ -1425,6 +1425,70 @@
       "limitations": [
         "Не менять публичные lesson IDs или каталог по предварительной матрице до утверждения одной редакции программы."
       ]
+    },
+    {
+      "id": "AUD-052",
+      "date": "2026-11-11",
+      "type": "canonical_curriculum_decision",
+      "title": "Устранено противоречие редакций программы: зафиксирована каноническая архитектура DCH",
+      "result": "Каноническим источником Track A признан TRACK_A_ARCHITECTURE_PROPOSAL.md от 2026-11-05: 16 модулей 11–26. Общая база 0–10 остаётся рабочей реконструкцией, Track B 27–39 — рабочим ядром, требующим детализации, Track C C0–C12 — отдельной программой. Альтернативная последовательность 11–26 из ai-interpretability-course/CURRICULUM_SPECIFICATION.md не применяется как каноническая. Уточнена иерархия Track → Theme → Module → Lesson.",
+      "evidence": [
+        "docs/management/DCH_CANONICAL_CURRICULUM_DECISION_2026-11-11.md",
+        "docs/management/TRACK_A_ARCHITECTURE_PROPOSAL.md",
+        "docs/management/CURRICULUM_40_MODULE_RECONSTRUCTION.md"
+      ],
+      "limitations": [
+        "Не утверждены детально все 0–10 и 27–39; Track B требует outcomes, лабораторных и module-level approval."
+      ]
+    },
+    {
+      "id": "AUD-053",
+      "date": "2026-11-11",
+      "type": "catalog_curriculum_mapping",
+      "title": "Выполнена привязка 40 макромодулей к фактическим Theme/Module/Lesson UID каталога",
+      "result": "Сопоставлены 40 макромодулей с фактическим catalog-v3: 5 Theme UID, 27 Module UID, 52 Lesson UID. Для 11–26 построена карта связей с существующими Track A сущностями; обнаружено, что часть макромодулей объединяет несколько catalog modules, а некоторые ещё не имеют прямого UID. Для Track B 27–39 UID отсутствуют. Legacy lessons.json содержит старые A.1–A.8/module-11 и не является источником истины для v3. Создан governance JSON.",
+      "evidence": [
+        "data/curriculum-governance-2026-11-11.json",
+        "data/catalog/catalog-v3.json",
+        "data/catalog/lessons.json",
+        "docs/management/DCH_CANONICAL_CURRICULUM_AND_COVERAGE_AUDIT_2026-11-11.md"
+      ],
+      "limitations": [
+        "Catalog v3 остаётся migration_staging / 3.0.0-draft; mapping имеет candidate/partial статусы, не мигрировать production до alias and consumer audit."
+      ]
+    },
+    {
+      "id": "AUD-054",
+      "date": "2026-11-11",
+      "type": "labs_assessment_prerequisites",
+      "title": "Созданы матрица лабораторных и оценивания и диагностические маршруты Track A/B",
+      "result": "Созданы 25 лабораторных A/B + 10 практик Track C, 6 слоёв assessment и общая rubric; описаны prerequisite gates G0–G8, маршруты A-START/A-FAST/A-CAUSAL/A-DEEP/A-LLM/A-EVAL и вход Track B без повторного прохождения всего Track A.",
+      "evidence": [
+        "docs/education/DCH_LAB_AND_ASSESSMENT_MATRIX_2026-11-11.md",
+        "docs/education/TRACK_A_B_PREREQUISITES_AND_DIAGNOSTIC_ROUTES_2026-11-11.md",
+        "data/curriculum-governance-2026-11-11.json"
+      ],
+      "limitations": [
+        "Item bank, точные пороги каждого gate и практическая валидация compute requirements ещё не созданы."
+      ]
+    },
+    {
+      "id": "AUD-055",
+      "date": "2026-11-11",
+      "type": "track_c_primary_source_audit",
+      "title": "Проведён аудит Track C C0–C12 по первичным источникам runtime, MCP, RAG, security и evaluation",
+      "result": "Проверена архитектура Track C и сопоставлена с LM Studio REST v1/server docs, MCP spec release 2026-07-28, Microsoft RAG concepts/evaluators, OWASP GenAI LLM Top 10 2026 и vLLM serving/metrics. Зафиксированы пробелы по auth/permissions, prompt injection, vector/embedding weaknesses, RAG retrieval and generation evaluation, reproducibility, model provenance, performance and security gates.",
+      "evidence": [
+        "docs/education/TRACK_C_PRIMARY_SOURCE_AUDIT_2026-11-11.md",
+        "https://lmstudio.ai/docs/developer/rest",
+        "https://blog.modelcontextprotocol.io/posts/2026-07-28/",
+        "https://learn.microsoft.com/en-us/azure/foundry/concepts/evaluation-evaluators/rag-evaluators",
+        "https://genai.owasp.org/resource/owasp-genai-llm-top-10-2026/",
+        "https://docs.vllm.ai/en/latest/serving/online_serving/openai_compatible_server/"
+      ],
+      "limitations": [
+        "Не выполнен аудит пользовательских 13 видео, Python course и исходных code artifacts; это отдельная инвентаризация."
+      ]
     }
   ],
   "notes": [

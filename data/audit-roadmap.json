@@ -1367,6 +1367,26 @@
         "Необходимо дождаться CI и GitHub Pages deployment; автоматические проверки не заменяют визуальную приёмку desktop/mobile.",
         "Стандарт распространяется на новые и перерабатываемые уроки; остальные существующие уроки ещё не проверены."
       ]
+    },
+    {
+      "id": "AUD-049",
+      "date": "2026-11-11",
+      "type": "ais_reference_repository_and_admin_checklist",
+      "title": "Зафиксирован отдельный репозиторий AIS и создана вкладка AIS / XAI Reference",
+      "result": "Зафиксирован точный исследовательский репозиторий https://github.com/Dach1980/ai-interpretability-course как отдельная база референсных материалов AI Interpretability School. Проверена актуальная публичная программа ai-interpretability.school: Track A содержит блоки 00–17 и 21–25, Track B — 26–36. Восстановлена первоначальная задача по RM-02/RM-12, создан единый документ с анализом и чек-листом выполнения DCH. В административную панель добавлена отдельная вкладка AIS / XAI Reference с ссылками на сайт, репозиторий, документы и статусами 18 пунктов чек-листа.",
+      "evidence": [
+        "data/ais-reference-checklist.json",
+        "scripts/admin-ais-reference.js",
+        "admin/index.html",
+        "docs/education/AIS_REFERENCE_REVIEW_AND_DCH_CHECKLIST_2026-11-11.md",
+        "https://ai-interpretability.school/",
+        "https://github.com/Dach1980/ai-interpretability-course"
+      ],
+      "limitations": [
+        "Актуальная публичная программа AIS проверена по доступной странице и её текстовому каталогу; полный доступ ко всем закрытым урокам и интерактивным материалам не подтверждён.",
+        "RM-02 и RM-12 остаются in_progress: полный crosswalk AIS → DCH, утверждение всех 40 модулей, prerequisites и зависимостей ещё не завершены.",
+        "Вкладка административной панели показывает чек-лист read-only из JSON; изменение статусов выполняется через Git, не через интерактивное редактирование."
+      ]
     }
   ],
   "notes": [

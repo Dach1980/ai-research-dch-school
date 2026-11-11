@@ -1489,6 +1489,21 @@
       "limitations": [
         "Не выполнен аудит пользовательских 13 видео, Python course и исходных code artifacts; это отдельная инвентаризация."
       ]
+    },
+    {
+      "id": "AUD-056",
+      "date": "2026-11-11",
+      "type": "legacy_catalog_reconciliation_gap",
+      "title": "Выявлено расхождение legacy lessons.json и catalog-v3 по опубликованным урокам",
+      "result": "Legacy lessons.json содержит A.1–A.8 как published, тогда как catalog-v3 содержит 5 published, 5 review и 42 planned. Часть URL пересекается, но A.3–A.6 и их legacy content требуют точной таблицы legacy ID → v3 Lesson UID → canonical URL и проверки redirects/content migration. Это зафиксировано как отдельный блокирующий риск cutover.",
+      "evidence": [
+        "data/catalog/lessons.json",
+        "data/catalog/catalog-v3.json",
+        "docs/management/DCH_CANONICAL_CURRICULUM_AND_COVERAGE_AUDIT_2026-11-11.md"
+      ],
+      "limitations": [
+        "Не менять published statuses и не удалять legacy pages до завершения reconciliation."
+      ]
     }
   ],
   "notes": [

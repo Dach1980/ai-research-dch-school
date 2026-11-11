@@ -102,17 +102,17 @@
       "id": "DCH-01",
       "group": "Программа DCH",
       "title": "Реконструирована структура 40 модулей",
-      "status": "done",
-      "evidence": "Найден первичный документ docs/CURRICULUM_SPECIFICATION.md в ai-interpretability-course; содержит модули 0–39 с названиями, темами, prerequisites, outcomes и практикой",
-      "note": "Сверить противоречивые вводные формулировки о границах треков в двух редакциях раздела 1.1 спецификации."
+      "status": "in_progress",
+      "evidence": "Найден полный CURRICULUM_SPECIFICATION.md с 40 модулями 0–39",
+      "note": "Нужно согласовать его с другой рабочей редакцией Track A в TRACK_A_ARCHITECTURE_PROPOSAL.md и устранить дублирование раздела 1.1."
     },
     {
       "id": "DCH-02",
       "group": "Программа DCH",
       "title": "Полный построчный crosswalk AIS → DCH утверждён",
-      "status": "done",
-      "evidence": "AIS_DCH_CURRICULUM_CROSSWALK_2026-11-11.md и data/ais-dch-crosswalk.json; сопоставлены все 40 модулей DCH",
-      "note": "Это curriculum-level crosswalk по публичному каталогу AIS, не lesson-level QA."
+      "status": "in_progress",
+      "evidence": "Создан предварительный crosswalk всех 40 модулей: AIS_DCH_CURRICULUM_CROSSWALK_2026-11-11.md и data/ais-dch-crosswalk.json",
+      "note": "Требуется решение по двум конфликтующим редакциям Track A и утверждение канонической схемы; затем привязать конкретные DCH lesson UID."
     },
     {
       "id": "DCH-03",

@@ -24,6 +24,7 @@ class Lesson132Tests(unittest.TestCase):
             self.assertEqual(len(re.findall(r'data-mode="multi"', html)), 1)
             self.assertIn('data-correct="a,c"', html)
             self.assertIn('language-python', html)
+            self.assertIn('self-supervised learning', html.lower())
     def test_sources_and_svg_accessibility(self):
         required = ('scikit-learn.org/stable/unsupervised_learning.html', 'scikit-learn.org/stable/modules/clustering.html', 'scikit-learn.org/stable/modules/unsupervised_reduction.html', 'developers.google.com/machine-learning/clustering')
         for path in FILES.values():

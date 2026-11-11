@@ -434,5 +434,8 @@
       "detail": "Одна редакция относит Track A к 0–26, Track B к ядру 20–39; другая описывает Track A 0–26, Track B ядро 27–39, а 20–26 как переход. Необходимо оставить одну согласованную формулировку.",
       "decision_needed": "Отредактировать дублирующий раздел 1.1 после выбора канонической схемы."
     }
-  ]
+  ],
+  "status": "superseded",
+  "superseded_by": "docs/management/DCH_CANONICAL_CURRICULUM_DECISION_2026-11-11.md",
+  "note": "This earlier mapping was based on the conflicting 40-module reconstruction and must not be used as canonical DCH module mapping. Use data/curriculum-governance-2026-11-11.json and DCH_CANONICAL_CURRICULUM_DECISION_2026-11-11.md."
 }

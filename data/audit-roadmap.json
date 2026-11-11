@@ -1270,6 +1270,26 @@
       "limitations": [
         "Это редакционно-методический аудит, не независимая научная рецензия и не тестирование поведения страницы в реальном браузере."
       ]
+    },
+    {
+      "id": "AUD-045",
+      "date": "2026-11-11",
+      "type": "brand_asset_integration",
+      "title": "Интегрированы предоставленные векторные логотип и favicon DCH",
+      "result": "Добавлены assets/favicon.svg (предоставленная чистая иконка DCH) и assets/logo-signature.svg (предоставленный логотип AI Research DCH School с подписью). Общий scripts/main.js назначает SVG favicon на страницах, которые загружают общий скрипт, использует логотип с подписью для элементов .brand, убирает дублирующий текст рядом с полным логотипом и заменяет прежние декоративные ссылки site-brand-icon.jpg / assets/logo.png на знак favicon. styles/main.css очищен от старой плитки вокруг логотипа и задаёт размер нового SVG. Обновлены шаблон урока и три локализации 1.2.1. GitHub Actions validation и Pages deployment для финального commit 2481af86ff870898f5dc5f8696cac2825628fee0 завершились success.",
+      "evidence": [
+        "assets/favicon.svg",
+        "assets/logo-signature.svg",
+        "scripts/main.js",
+        "styles/main.css",
+        "templates/lesson-page-template.html",
+        "lessons/a-1-2-1.html",
+        "lessons/a-1-2-1-en.html",
+        "lessons/a-1-2-1-zh.html"
+      ],
+      "limitations": [
+        "Визуальная проверка публичного сайта в браузере после деплоя не завершена; фактический вид на разных viewport не подтверждён. Страницы, не загружающие scripts/main.js, могут требовать отдельной проверки."
+      ]
     }
   ],
   "notes": [

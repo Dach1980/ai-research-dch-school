@@ -1233,6 +1233,27 @@
         "GitHub Pages deployment for the final commit is still running; browser verification after deployment is pending.",
         "Уроки со статусом review не считаются опубликованными планетами до прохождения quality gate."
       ]
+    },
+    {
+      "id": "AUD-043",
+      "date": "2026-11-11",
+      "type": "catalog_and_review_planet_visibility",
+      "title": "Упрощён каталог уроков и добавлены отдельные планеты для материалов на проверке",
+      "result": "На страницах каталога уроков удалён повторяющийся заголовок «ТЕМА 1» и название темы: карточки группируются по модулю, его номер и название сохранены. На карте Track A подготовленные уроки со статусом review/localized теперь отображаются отдельными золотыми планетами с пунктирной рамкой и явной пометкой «на проверке»; опубликованные уроки остаются синими. В списке карты видны оба статуса, а счётчик опубликованных планет считает только опубликованные материалы. Для трёх локалей обновлены подписи и версии скрипта.",
+      "evidence": [
+        "scripts/lesson-catalog.js",
+        "scripts/planet-map-catalog.js",
+        "learning-map/index.html",
+        "learning-map/index-en.html",
+        "learning-map/index-zh.html",
+        "lessons/index.html",
+        "lessons/index-en.html",
+        "lessons/index-zh.html",
+        "tests/test_catalog_v3_js.cjs"
+      ],
+      "limitations": [
+        "GitHub Actions validation and final Pages deployment must complete before claiming the changes are live. Visual browser QA remains required after deployment."
+      ]
     }
   ],
   "notes": [

@@ -1290,6 +1290,25 @@
       "limitations": [
         "Визуальная проверка публичного сайта в браузере после деплоя не завершена; фактический вид на разных viewport не подтверждён. Страницы, не загружающие scripts/main.js, могут требовать отдельной проверки."
       ]
+    },
+    {
+      "id": "AUD-046",
+      "date": "2026-11-11",
+      "type": "lesson_expansion_and_localization",
+      "title": "Расширен и синхронизирован урок 1.2.1 в RU / EN / 中文",
+      "result": "Урок переписан и расширен до 8 последовательных разделов: природа данных; объект и единица наблюдения; три формы данных; источники, измерения и время; качество и ограничения; репрезентативность, sampling bias и distribution shift; паспорт набора данных; практикум. Добавлены 6 learning outcomes, сравнительные таблицы, практический datasheet из 10 групп полей, 14 терминов RU / 13 EN и 中文, 7 ситуационных вопросов с одним multi-select. Источники Google переименованы по фактическим названиям страниц; добавлены ссылки на характеристики данных и документацию датасетов. Обновлены catalog-v3 learning outcomes и тесты структуры/локализаций. Статус оставлен review до CI.",
+      "evidence": [
+        "lessons/a-1-2-1.html",
+        "lessons/a-1-2-1-en.html",
+        "lessons/a-1-2-1-zh.html",
+        "data/catalog/catalog-v3.json",
+        "tests/test_lesson_design_system.py",
+        "tests/test_track_a_data_lessons.py",
+        "docs/education/LESSON_1_2_1_EDITORIAL_REVIEW.md"
+      ],
+      "limitations": [
+        "GitHub Actions и визуальная браузерная проверка должны завершиться успешно до перевода урока в published."
+      ]
     }
   ],
   "notes": [

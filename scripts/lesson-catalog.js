@@ -19,7 +19,6 @@
     .then(response => { if (!response.ok) throw new Error("HTTP " + response.status); return response.json(); })
     .then(data => {
       if (data.schema_version !== 3) throw new Error("Unsupported catalogue schema");
-      const themes = new Map(data.themes.map(item => [item.uid,item]));
       const modules = new Map(data.modules.map(item => [item.uid,item]));
       const lessons = data.lessons.filter(item => item.track_uid === trackUid &&
         ((item.status === "published" && item.content_state === "published") ||
@@ -34,12 +33,8 @@
       });
       root.innerHTML = Array.from(groups.entries()).map(([moduleUid,items]) => {
         const module = modules.get(moduleUid);
-        const theme = themes.get(module?.theme_uid);
-        const themeTitle = theme?.title_i18n?.[locale] || theme?.title || "";
         const moduleTitle = module?.title_i18n?.[locale] || module?.title || "";
         return '<section class="catalog-module" aria-label="' + esc(moduleTitle) + '">' +
-          '<p class="eyebrow">' + esc(ui.theme) + ' ' + esc(theme?.number ?? "") + '</p>' +
-          '<h3>' + esc(themeTitle) + '</h3>' +
           '<div class="catalog-module-heading"><span>' + esc(ui.module) + ' ' + esc(module?.number ?? "") +
           '</span><strong>' + esc(moduleTitle) + '</strong></div>' +
           '<div class="catalog-lesson-list">' + items.map(lesson => {

@@ -31,6 +31,26 @@
   },
   "source_documents": [
     {
+      "title": "Каноническое решение по программе DCH",
+      "url": "../docs/management/DCH_CANONICAL_CURRICULUM_DECISION_2026-11-11.md"
+    },
+    {
+      "title": "Полный аудит структуры, каталога и покрытия",
+      "url": "../docs/management/DCH_CANONICAL_CURRICULUM_AND_COVERAGE_AUDIT_2026-11-11.md"
+    },
+    {
+      "title": "Матрица лабораторных и оценивания A/B/C",
+      "url": "../docs/education/DCH_LAB_AND_ASSESSMENT_MATRIX_2026-11-11.md"
+    },
+    {
+      "title": "Prerequisites и диагностические маршруты A/B",
+      "url": "../docs/education/TRACK_A_B_PREREQUISITES_AND_DIAGNOSTIC_ROUTES_2026-11-11.md"
+    },
+    {
+      "title": "Аудит Track C по первичным источникам",
+      "url": "../docs/education/TRACK_C_PRIMARY_SOURCE_AUDIT_2026-11-11.md"
+    },
+    {
       "title": "Матрица соответствия всех 40 модулей DCH темам AIS",
       "url": "../docs/education/AIS_DCH_CURRICULUM_CROSSWALK_2026-11-11.md"
     },
@@ -102,8 +122,8 @@
       "id": "DCH-01",
       "group": "Программа DCH",
       "title": "Реконструирована структура 40 модулей",
-      "status": "in_progress",
-      "evidence": "Найден полный CURRICULUM_SPECIFICATION.md с 40 модулями 0–39",
+      "status": "done",
+      "evidence": "DCH_CANONICAL_CURRICULUM_DECISION_2026-11-11.md; Track A 11–26 canonical, 0–10 foundation and 27–39 Track B working map, Track C separate.",
       "note": "Нужно согласовать его с другой рабочей редакцией Track A в TRACK_A_ARCHITECTURE_PROPOSAL.md и устранить дублирование раздела 1.1."
     },
     {
@@ -111,32 +131,32 @@
       "group": "Программа DCH",
       "title": "Полный построчный crosswalk AIS → DCH утверждён",
       "status": "in_progress",
-      "evidence": "Создан предварительный crosswalk всех 40 модулей: AIS_DCH_CURRICULUM_CROSSWALK_2026-11-11.md и data/ais-dch-crosswalk.json",
-      "note": "Требуется решение по двум конфликтующим редакциям Track A и утверждение канонической схемы; затем привязать конкретные DCH lesson UID."
+      "evidence": "data/curriculum-governance-2026-11-11.json maps 40 macro modules against actual catalog UIDs and 52 Lesson UIDs",
+      "note": "Catalog v3 is migration_staging; 8 modules have no direct catalog mapping, 10 are candidate mappings only, and Track B UID are not yet created. Final mapping requires schema migration and approval."
     },
     {
       "id": "DCH-03",
       "group": "Программа DCH",
       "title": "Архитектура Track A 11–26 согласована с актуальным AIS",
-      "status": "in_progress",
-      "evidence": "TRACK_A_ARCHITECTURE_PROPOSAL.md + crosswalk 2026-11-11",
-      "note": "Привести рабочую архитектуру Track A в соответствие первичной спецификации 0–26 и разрешить расхождения."
+      "status": "done",
+      "evidence": "TRACK_A_ARCHITECTURE_PROPOSAL.md chosen as canonical; conflict documented in DCH_CANONICAL_CURRICULUM_DECISION_2026-11-11.md",
+      "note": "Content expansion and lesson-by-lesson QA remain separate."
     },
     {
       "id": "DCH-04",
       "group": "Программа DCH",
       "title": "Подробная карта Track B 27–39 и prerequisites завершена",
       "status": "in_progress",
-      "evidence": "Первичная спецификация 27–39 + AIS crosswalk",
-      "note": "Сверить Track B 27–39, определить диагностические prerequisites и проверить практики/compute."
+      "evidence": "Prerequisite gates and diagnostic routes documented for A/B",
+      "note": "Track B 27–39 module-level outcomes, detailed lesson IDs and compute-tested labs still need formal approval."
     },
     {
       "id": "DCH-05",
       "group": "Программа DCH",
       "title": "Track C имеет отдельную карту первичных источников",
-      "status": "planned",
-      "evidence": "RM-12",
-      "note": "Не выводить программу Track C из AIS Track A/B."
+      "status": "in_progress",
+      "evidence": "TRACK_C_PRIMARY_SOURCE_AUDIT_2026-11-11.md; C0–C12 audited against LM Studio, MCP, RAG, OWASP and serving docs",
+      "note": "Audit of user's 13 videos, Python course, code examples and rights/provenance still remains; lessons and labs not authored."
     },
     {
       "id": "CONTENT-01",

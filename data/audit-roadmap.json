@@ -1309,6 +1309,26 @@
       "limitations": [
         "GitHub Actions и визуальная браузерная проверка должны завершиться успешно до перевода урока в published."
       ]
+    },
+    {
+      "id": "AUD-047",
+      "date": "2026-11-11",
+      "type": "lesson_publication",
+      "title": "Урок 1.2.1 утверждён и переведён в published",
+      "result": "После расширения RU / EN / 中文, синхронизации 8 разделов, обновления 6 learning outcomes, словаря, 7 вопросов самопроверки и паспорта данных, GitHub Actions workflow Validate learning catalog успешно завершился на commit d5bdc40e90d9a03c8a5c99584181b11dd4823fa8. Проверки Track A data lessons, expanded lesson design, locale parity, catalog validation и multilingual pages прошли. В catalog-v3.json для урока 1.2.1 выставлены status=published и content_state=published. Урок утверждён к публикации; итоговый визуальный smoke test после Pages deployment остаётся отдельной проверкой.",
+      "evidence": [
+        "lessons/a-1-2-1.html",
+        "lessons/a-1-2-1-en.html",
+        "lessons/a-1-2-1-zh.html",
+        "data/catalog/catalog-v3.json",
+        "tests/test_lesson_design_system.py",
+        "tests/test_track_a_data_lessons.py",
+        "docs/education/LESSON_1_2_1_EDITORIAL_REVIEW.md",
+        "https://github.com/Dach1980/ai-research-dch-school/actions/runs/42943436394"
+      ],
+      "limitations": [
+        "Pages deployment for the final publication-state commit and browser visual check must complete before confirming public visibility."
+      ]
     }
   ],
   "notes": [

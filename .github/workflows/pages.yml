@@ -1,0 +1,89 @@
+name: Deploy static website to GitHub Pages
+on:
+  push:
+    branches: ["main"]
+  workflow_dispatch:
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+concurrency:
+  group: "dch-school-pages-publish"
+  cancel-in-progress: true
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install validator dependencies
+        run: python -m pip install -r requirements-catalog.txt
+      - name: Run catalog unit tests
+        run: python -m unittest discover -s tests -p 'test_validate_catalog.py' -v
+      - name: Validate catalog and localized URLs
+        run: python scripts/validate-catalog.py
+      - name: Validate multilingual lessons and diagram parity
+        run: python scripts/validate-multilingual-lessons.py
+      - name: Validate A.6 lesson and shared illustrations
+        run: python scripts/validate-a6.py
+  validate-supabase-migrations:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: dch_school_test
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U postgres -d dch_school_test"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Install PostgreSQL client
+        run: sudo apt-get update && sudo apt-get install -y postgresql-client
+      - name: Bootstrap isolated Supabase Auth schema
+        env:
+          PGPASSWORD: postgres
+        run: psql -h 127.0.0.1 -U postgres -d dch_school_test -v ON_ERROR_STOP=1 -f supabase/tests/ci_bootstrap.sql
+      - name: Apply all Supabase migrations on clean PostgreSQL 16
+        env:
+          PGPASSWORD: postgres
+        run: |
+          set -euo pipefail
+          for migration in supabase/migrations/*.sql; do
+            echo "Applying $migration"
+            psql -h 127.0.0.1 -U postgres -d dch_school_test -v ON_ERROR_STOP=1 -f "$migration"
+          done
+      - name: Assert RLS, helper functions and public A.1-A.6 metadata
+        env:
+          PGPASSWORD: postgres
+        run: psql -h 127.0.0.1 -U postgres -d dch_school_test -v ON_ERROR_STOP=1 -f supabase/tests/ci_assertions.sql
+  deploy:
+    needs: [validate, validate-supabase-migrations]
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+        with:
+          enablement: true
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: .
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

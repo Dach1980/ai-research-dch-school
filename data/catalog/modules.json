@@ -1,0 +1,6 @@
+{
+  "schema_version": 1,
+  "modules": [
+    {"id":"module-11","number":11,"track_id":"track-a","title":"Основы AI и машинного обучения","status":"in_progress"}
+  ]
+}

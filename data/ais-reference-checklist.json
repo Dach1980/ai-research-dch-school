@@ -1,0 +1,226 @@
+{
+  "updated_at": "2026-11-11",
+  "reference": {
+    "name": "AI Interpretability School (AIS)",
+    "authors": [
+      "Sabrina Sadiekh",
+      "Elena Ericheva"
+    ],
+    "website": "https://ai-interpretability.school/",
+    "research_repository": "https://github.com/Dach1980/ai-interpretability-course",
+    "current_catalog": {
+      "track_a": "00–17, 21–25",
+      "track_b": "26–36",
+      "note": "Снимок публичного каталога на 2026-11-11; нумерация AIS не является нумерацией DCH."
+    },
+    "author_channels": [
+      {
+        "name": "Data Blog / @jdata_blog",
+        "author": "Sabrina Sadiekh",
+        "url": "https://t.me/jdata_blog",
+        "role": "Основной авторский канал о XAI, mechanistic interpretability, публикациях, учебных материалах и исследовательских обновлениях."
+      },
+      {
+        "name": "Mrs Wallbreaker about AI Risk, AI Alignment, AI Safety",
+        "author": "Elena Ericheva",
+        "url": "https://t.me/+d2Tb_FdRIkozYWEy",
+        "role": "Связанный авторский канал Elena Ericheva по AI Safety и alignment; ссылка ведёт на Telegram-приглашение, а не на публичный username. Это дополнительный источник, не официальный канал AIS."
+      }
+    ],
+    "website_description": "Официальный публичный сайт AI Interpretability School — актуальный внешний учебный референс. Каталог проверен 2026-11-11."
+  },
+  "source_documents": [
+    {
+      "title": "Каноническое решение по программе DCH",
+      "url": "../docs/management/DCH_CANONICAL_CURRICULUM_DECISION_2026-11-11.md"
+    },
+    {
+      "title": "Полный аудит структуры, каталога и покрытия",
+      "url": "../docs/management/DCH_CANONICAL_CURRICULUM_AND_COVERAGE_AUDIT_2026-11-11.md"
+    },
+    {
+      "title": "Матрица лабораторных и оценивания A/B/C",
+      "url": "../docs/education/DCH_LAB_AND_ASSESSMENT_MATRIX_2026-11-11.md"
+    },
+    {
+      "title": "Prerequisites и диагностические маршруты A/B",
+      "url": "../docs/education/TRACK_A_B_PREREQUISITES_AND_DIAGNOSTIC_ROUTES_2026-11-11.md"
+    },
+    {
+      "title": "Аудит Track C по первичным источникам",
+      "url": "../docs/education/TRACK_C_PRIMARY_SOURCE_AUDIT_2026-11-11.md"
+    },
+    {
+      "title": "Матрица соответствия всех 40 модулей DCH темам AIS",
+      "url": "../docs/education/AIS_DCH_CURRICULUM_CROSSWALK_2026-11-11.md"
+    },
+    {
+      "title": "Первичная спецификация 40 модулей DCH",
+      "url": "https://github.com/Dach1980/ai-interpretability-course/blob/main/docs/CURRICULUM_SPECIFICATION.md"
+    },
+    {
+      "title": "Полный анализ и чек-лист DCH",
+      "url": "../docs/education/AIS_REFERENCE_REVIEW_AND_DCH_CHECKLIST_2026-11-11.md"
+    },
+    {
+      "title": "Политика использования источников AIS",
+      "url": "../docs/education/AIS_SOURCE_INTEGRATION_POLICY.md"
+    },
+    {
+      "title": "RM-02 — аудит 40-модульной программы",
+      "url": "../docs/management/RM-02_CURRICULUM_AUDIT.md"
+    },
+    {
+      "title": "Сводная ревизия AIS 00/01/02/04/07",
+      "url": "../docs/management/AIS_00_01_02_04_07_CONSOLIDATED_REVIEW.md"
+    },
+    {
+      "title": "Предложение архитектуры Track A",
+      "url": "../docs/management/TRACK_A_ARCHITECTURE_PROPOSAL.md"
+    }
+  ],
+  "checklist": [
+    {
+      "id": "AIS-01",
+      "group": "Исследование AIS",
+      "title": "Отдельный референс и авторы зафиксированы",
+      "status": "done",
+      "evidence": "reference/ai-interpretability-school/README.md; ai-interpretability-course"
+    },
+    {
+      "id": "AIS-02",
+      "group": "Исследование AIS",
+      "title": "Общая структура и планетная метафора проанализированы",
+      "status": "in_progress",
+      "evidence": "Актуальная публичная главная страница AIS проверена 2026-11-11",
+      "note": "Проверить интерактивную навигацию, отдельные страницы уроков и мобильную версию; сейчас выполнен content/catalog review."
+    },
+    {
+      "id": "AIS-03",
+      "group": "Исследование AIS",
+      "title": "Актуальный каталог AIS 00–36 сопоставлен с прежним анализом",
+      "status": "in_progress",
+      "evidence": "Актуальный публичный каталог AIS изучен; прежний DCH crosswalk помечен superseded после выявления конфликта канонических программ.",
+      "note": "Создать новый lesson-level crosswalk по каноническим модулям Track A 11–26 и отдельно Track B 27–39 после утверждения его module map."
+    },
+    {
+      "id": "AIS-04",
+      "group": "Исследование AIS",
+      "title": "Материалы AIS 00, 01, 02, 04 и 07 изучены",
+      "status": "done",
+      "evidence": "AIS_00_01_02_04_07_CONSOLIDATED_REVIEW.md; SOURCE и PEDAGOGICAL_ANALYSIS"
+    },
+    {
+      "id": "AIS-05",
+      "group": "Исследование AIS",
+      "title": "Педагогические декомпозиции Module 02/04/07 подготовлены",
+      "status": "done",
+      "evidence": "Предложения: 41 / 50 / 24 микроурока",
+      "note": "Предложения не являются утверждённой программой DCH."
+    },
+    {
+      "id": "DCH-01",
+      "group": "Программа DCH",
+      "title": "Реконструирована структура 40 модулей",
+      "status": "done",
+      "evidence": "DCH_CANONICAL_CURRICULUM_DECISION_2026-11-11.md; Track A 11–26 canonical, 0–10 foundation and 27–39 Track B working map, Track C separate.",
+      "note": "Нужно согласовать его с другой рабочей редакцией Track A в TRACK_A_ARCHITECTURE_PROPOSAL.md и устранить дублирование раздела 1.1."
+    },
+    {
+      "id": "DCH-02",
+      "group": "Программа DCH",
+      "title": "Полный построчный crosswalk AIS → DCH утверждён",
+      "status": "in_progress",
+      "evidence": "data/curriculum-governance-2026-11-11.json maps 40 macro modules against actual catalog UIDs and 52 Lesson UIDs",
+      "note": "Catalog v3 is migration_staging; 8 modules have no direct catalog mapping, 10 are candidate mappings only, and Track B UID are not yet created. Final mapping requires schema migration and approval."
+    },
+    {
+      "id": "DCH-03",
+      "group": "Программа DCH",
+      "title": "Архитектура Track A 11–26 согласована с актуальным AIS",
+      "status": "done",
+      "evidence": "TRACK_A_ARCHITECTURE_PROPOSAL.md chosen as canonical; conflict documented in DCH_CANONICAL_CURRICULUM_DECISION_2026-11-11.md",
+      "note": "Content expansion and lesson-by-lesson QA remain separate."
+    },
+    {
+      "id": "DCH-04",
+      "group": "Программа DCH",
+      "title": "Подробная карта Track B 27–39 и prerequisites завершена",
+      "status": "in_progress",
+      "evidence": "Prerequisite gates and diagnostic routes documented for A/B",
+      "note": "Track B 27–39 module-level outcomes, detailed lesson IDs and compute-tested labs still need formal approval."
+    },
+    {
+      "id": "DCH-05",
+      "group": "Программа DCH",
+      "title": "Track C имеет отдельную карту первичных источников",
+      "status": "in_progress",
+      "evidence": "TRACK_C_PRIMARY_SOURCE_AUDIT_2026-11-11.md; C0–C12 audited against LM Studio, MCP, RAG, OWASP and serving docs",
+      "note": "Audit of user's 13 videos, Python course, code examples and rights/provenance still remains; lessons and labs not authored."
+    },
+    {
+      "id": "CONTENT-01",
+      "group": "Учебные материалы",
+      "title": "Создаются самостоятельные уроки и схемы DCH",
+      "status": "in_progress",
+      "evidence": "Уроки Track A; 1.2.1 опубликован после расширения",
+      "note": "Нужно закрыть весь согласованный маршрут, не только отдельные уроки."
+    },
+    {
+      "id": "CONTENT-02",
+      "group": "Учебные материалы",
+      "title": "Полный смысловой аудит RU / EN / 中文 завершён",
+      "status": "in_progress",
+      "evidence": "Есть локализационные валидаторы и аудиты",
+      "note": "Требуется ручная редакторская проверка каждого урока."
+    },
+    {
+      "id": "CONTENT-03",
+      "group": "Учебные материалы",
+      "title": "Все уроки соответствуют стандарту определений и иллюстраций",
+      "status": "in_progress",
+      "evidence": "Lesson Design System; AUD-048",
+      "note": "Стандарт закреплён, но аудит всех существующих уроков не завершён."
+    },
+    {
+      "id": "CONTENT-04",
+      "group": "Учебные материалы",
+      "title": "Все лабораторные воспроизводимы",
+      "status": "in_progress",
+      "evidence": "Есть практики и отдельные Python-файлы",
+      "note": "Не для всех практик подтверждены clean install, версии, seed, expected output и повторный запуск."
+    },
+    {
+      "id": "CONTENT-05",
+      "group": "Учебные материалы",
+      "title": "Самопроверка всех уроков имеет ключи и объяснения",
+      "status": "in_progress",
+      "evidence": "Стандарт оценивания и проверки существуют",
+      "note": "Нужен постраничный аудит вариантов, правильных ответов и объяснений."
+    },
+    {
+      "id": "PLATFORM-01",
+      "group": "Платформа",
+      "title": "Каталог, карта и навигация связаны с фактической программой",
+      "status": "in_progress",
+      "evidence": "Каталог v3 и планетная карта",
+      "note": "Требуется полная сверка всего маршрута, prerequisites и всех локализаций."
+    },
+    {
+      "id": "PLATFORM-02",
+      "group": "Платформа",
+      "title": "Визуальная и доступностная приёмка desktop/mobile завершена",
+      "status": "in_progress",
+      "evidence": "Автоматические проверки и CI",
+      "note": "Полный ручной viewport, keyboard и screen-reader QA не подтверждён."
+    },
+    {
+      "id": "GOV-01",
+      "group": "Управление",
+      "title": "Аудиты и roadmap фиксируют доказательства и ограничения",
+      "status": "done",
+      "evidence": "RM-02, RM-12, data/audit-roadmap.json"
+    }
+  ],
+  "crosswalk_json": "../data/ais-dch-crosswalk.json"
+}

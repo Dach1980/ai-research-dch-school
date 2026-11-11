@@ -1,0 +1,7 @@
+project_id = "cwzhzmicfipfjxkfbwqa"
+
+[functions.school-admin-management]
+verify_jwt = true
+
+[functions.resolve-lesson-alias]
+verify_jwt = true

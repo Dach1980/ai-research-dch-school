@@ -1,0 +1,425 @@
+{
+  "schema_version": 2,
+  "tracks": [
+    {
+      "id": "track-a",
+      "code": "A",
+      "title": "Understanding AI",
+      "status": "active",
+      "url": "tracks/understanding-ai.html"
+    },
+    {
+      "id": "track-b",
+      "code": "B",
+      "title": "Inside AI",
+      "status": "active",
+      "url": "tracks/inside-ai.html"
+    },
+    {
+      "id": "track-c",
+      "code": "C",
+      "title": "Building with AI",
+      "status": "active",
+      "url": "tracks/building-with-ai.html"
+    }
+  ],
+  "themes": [
+    {
+      "id": "A.1",
+      "track_id": "track-a",
+      "code": "A.1",
+      "title": "Основы искусственного интеллекта и объяснимости",
+      "status": "in_progress",
+      "title_i18n": {
+        "ru": "Основы искусственного интеллекта и объяснимости",
+        "en": "AI Foundations and Explainability",
+        "zh": "人工智能基础与可解释性"
+      }
+    }
+  ],
+  "modules": [
+    {
+      "id": "A.1.1",
+      "theme_id": "A.1",
+      "title": "Основы AI и машинного обучения",
+      "status": "in_progress",
+      "title_i18n": {
+        "ru": "Основы AI и машинного обучения",
+        "en": "AI and Machine Learning Foundations",
+        "zh": "AI 与机器学习基础"
+      }
+    },
+    {
+      "id": "A.1.2",
+      "theme_id": "A.1",
+      "title": "Введение в Explainable AI (XAI)",
+      "status": "in_progress",
+      "title_i18n": {
+        "ru": "Введение в Explainable AI (XAI)",
+        "en": "Introduction to Explainable AI (XAI)",
+        "zh": "可解释人工智能（XAI）导论"
+      }
+    }
+  ],
+  "lessons": [
+    {
+      "id": "A.1.1.1",
+      "module_id": "A.1.1",
+      "title": "Что такое искусственный интеллект?",
+      "status": "published",
+      "access": "open",
+      "level": "beginner",
+      "prerequisites": [],
+      "url": "lessons/a-1-1-1.html",
+      "learning_outcomes": [
+        "Объяснять понятие Artificial Intelligence и его основные трактовки",
+        "Различать интеллект, интеллектуальное поведение и сознание",
+        "Описывать общую схему AI-системы и основные подходы к её созданию",
+        "Приводить примеры задач AI и объяснять ограничения таких систем"
+      ],
+      "title_i18n": {
+        "ru": "Что такое искусственный интеллект?",
+        "en": "What Is Artificial Intelligence?",
+        "zh": "什么是人工智能？"
+      },
+      "url_i18n": {
+        "ru": "lessons/a-1-1-1.html",
+        "en": "lessons/a-1-1-1-en.html",
+        "zh": "lessons/a-1-1-1-zh.html"
+      },
+      "languages": [
+        "ru",
+        "en",
+        "zh"
+      ],
+      "legacy_id": "A.1"
+    },
+    {
+      "id": "A.1.1.2",
+      "module_id": "A.1.1",
+      "title": "AI, Machine Learning и Deep Learning",
+      "status": "published",
+      "access": "open",
+      "level": "beginner",
+      "prerequisites": [
+        "A.1.1.1"
+      ],
+      "url": "lessons/a-1-1-3.html",
+      "learning_outcomes": [
+        "Различать AI, Machine Learning и Deep Learning",
+        "Объяснять отношения между AI, ML и DL",
+        "Приводить примеры AI-систем без машинного обучения",
+        "Классифицировать прикладные системы по используемому подходу"
+      ],
+      "title_i18n": {
+        "ru": "AI, Machine Learning и Deep Learning",
+        "en": "AI, Machine Learning and Deep Learning",
+        "zh": "AI、机器学习与深度学习"
+      },
+      "url_i18n": {
+        "ru": "lessons/a-1-1-3.html",
+        "en": "lessons/a-1-1-3-en.html",
+        "zh": "lessons/a-1-1-3-zh.html"
+      },
+      "languages": [
+        "ru",
+        "en",
+        "zh"
+      ],
+      "legacy_id": "A.2"
+    },
+    {
+      "id": "A.1.1.3",
+      "module_id": "A.1.1",
+      "title": "Как машина учится на данных",
+      "status": "published",
+      "access": "open",
+      "level": "beginner",
+      "prerequisites": [
+        "A.1.1.1",
+        "A.1.1.2"
+      ],
+      "url": "lessons/a-3-how-machines-learn-from-data.html",
+      "learning_outcomes": [
+        "Различать данные, наблюдения, признаки и целевую переменную",
+        "Объяснять роль алгоритма обучения, модели, параметров и функции потерь",
+        "Описывать обучение с учителем и без учителя на простых примерах",
+        "Объяснять обобщение, недообучение и переобучение",
+        "Распознавать утечку данных в учебной постановке"
+      ],
+      "title_i18n": {
+        "ru": "Как машина учится на данных",
+        "en": "How Machines Learn from Data",
+        "zh": "机器如何从数据中学习"
+      },
+      "url_i18n": {
+        "ru": "lessons/a-3-how-machines-learn-from-data.html",
+        "en": "lessons/a-3-how-machines-learn-from-data-en.html",
+        "zh": "lessons/a-3-how-machines-learn-from-data-zh.html"
+      },
+      "languages": [
+        "ru",
+        "en",
+        "zh"
+      ],
+      "legacy_id": "A.3"
+    },
+    {
+      "id": "A.1.1.4",
+      "module_id": "A.1.1",
+      "title": "Что такое модель машинного обучения?",
+      "status": "published",
+      "access": "open",
+      "level": "beginner",
+      "prerequisites": [
+        "A.1.1.1",
+        "A.1.1.2",
+        "A.1.1.3"
+      ],
+      "url": "lessons/a-4-what-is-machine-learning-model.html",
+      "learning_outcomes": [
+        "Объяснять различие между данными, алгоритмом обучения и моделью",
+        "Различать архитектуру, параметры и гиперпараметры",
+        "Объяснять этапы training и inference",
+        "Сравнивать линейные модели, деревья решений и нейронные сети на концептуальном уровне",
+        "Описывать место модели в полной AI-системе"
+      ],
+      "title_i18n": {
+        "ru": "Что такое модель машинного обучения?",
+        "en": "What Is a Machine Learning Model?",
+        "zh": "什么是机器学习模型？"
+      },
+      "url_i18n": {
+        "ru": "lessons/a-4-what-is-machine-learning-model.html",
+        "en": "lessons/a-4-what-is-machine-learning-model-en.html",
+        "zh": "lessons/a-4-what-is-machine-learning-model-zh.html"
+      },
+      "languages": [
+        "ru",
+        "en",
+        "zh"
+      ],
+      "legacy_id": "A.4"
+    },
+    {
+      "id": "A.1.1.5",
+      "module_id": "A.1.1",
+      "title": "Как проверяют качество модели",
+      "status": "published",
+      "access": "open",
+      "level": "beginner",
+      "prerequisites": [
+        "A.1.1.1",
+        "A.1.1.2",
+        "A.1.1.3",
+        "A.1.1.4"
+      ],
+      "url": "lessons/a-5-how-to-evaluate-a-model.html",
+      "learning_outcomes": [
+        "Различать обучающую, валидационную и тестовую выборки",
+        "Выбирать метрики регрессии и классификации",
+        "Интерпретировать confusion matrix, precision, recall и F1",
+        "Распознавать дисбаланс классов, переобучение и утечку данных",
+        "Объяснять ограничения и область применимости оценки"
+      ],
+      "title_i18n": {
+        "ru": "Как проверяют качество модели",
+        "en": "How to Evaluate a Machine Learning Model",
+        "zh": "如何评估机器学习模型？"
+      },
+      "url_i18n": {
+        "ru": "lessons/a-5-how-to-evaluate-a-model.html",
+        "en": "lessons/a-5-how-to-evaluate-a-model-en.html",
+        "zh": "lessons/a-5-how-to-evaluate-a-model-zh.html"
+      },
+      "languages": [
+        "ru",
+        "en",
+        "zh"
+      ],
+      "legacy_id": "A.5"
+    },
+    {
+      "id": "A.1.1.6",
+      "module_id": "A.1.1",
+      "title": "Почему модель ошибается на новых данных?",
+      "status": "published",
+      "access": "open",
+      "level": "beginner",
+      "prerequisites": [
+        "A.1.1.1",
+        "A.1.1.2",
+        "A.1.1.3",
+        "A.1.1.4",
+        "A.1.1.5"
+      ],
+      "learning_outcomes": [
+        "Объяснять обобщение и отличие запоминания от обучения закономерности",
+        "Различать недообучение, хорошее обобщение и переобучение по train и validation error",
+        "Интерпретировать кривые ошибок в зависимости от сложности модели и объёма данных",
+        "Выбирать способы улучшения модели: регуляризацию, early stopping, дополнительные данные и корректную валидацию"
+      ],
+      "url": "lessons/a-6-generalization-and-overfitting.html",
+      "title_i18n": {
+        "ru": "Почему модель ошибается на новых данных?",
+        "en": "Why Does a Model Fail on New Data?",
+        "zh": "为什么模型在新数据上会出错？"
+      },
+      "url_i18n": {
+        "ru": "lessons/a-6-generalization-and-overfitting.html",
+        "en": "lessons/a-6-generalization-and-overfitting-en.html",
+        "zh": "lessons/a-6-generalization-and-overfitting-zh.html"
+      },
+      "languages": [
+        "ru",
+        "en",
+        "zh"
+      ],
+      "legacy_id": "A.6"
+    },
+    {
+      "id": "A.1.2.1",
+      "module_id": "A.1.2",
+      "title": "Что такое XAI и зачем нужно объяснять модели?",
+      "status": "review",
+      "access": "open",
+      "level": "beginner",
+      "prerequisites": [
+        "A.1.1.6"
+      ],
+      "learning_outcomes": [
+        "Объяснять, зачем исследовать поведение модели помимо просмотра её прогноза",
+        "Различать прогноз модели, post-hoc объяснение поведения и исследование внутренних механизмов",
+        "Выбирать базовый класс метода с учётом цели, масштаба, типа данных и доступа к модели",
+        "Рассчитывать локальные вклады в простую аддитивную score-модель относительно baseline",
+        "Объяснять ограничения XAI-методов и отличать объяснение от доказательства причинности, справедливости или корректности"
+      ],
+      "url": "lessons/xai/01-what-and-why.html",
+      "title_i18n": {
+        "ru": "Что такое XAI и зачем нужно объяснять модели?",
+        "en": "What Is XAI and Why Explain Models?",
+        "zh": "什么是 XAI？为什么需要解释模型？"
+      },
+      "url_i18n": {
+        "ru": "lessons/xai/01-what-and-why.html",
+        "en": "lessons/xai/01-what-and-why.html",
+        "zh": "lessons/xai/01-what-and-why.html"
+      },
+      "languages": [
+        "ru",
+        "en",
+        "zh"
+      ]
+    },
+    {
+      "id": "A.1.1.7",
+      "module_id": "A.1.1",
+      "title": "История развития искусственного интеллекта",
+      "status": "published",
+      "access": "open",
+      "level": "beginner",
+      "prerequisites": [
+        "A.1.1.1"
+      ],
+      "url": "lessons/a-1-1-2.html",
+      "learning_outcomes": [
+        "Объяснять математические и вычислительные предпосылки AI",
+        "Различать ранние предпосылки и формирование AI как дисциплины",
+        "Сравнивать символический, экспертный, статистический и нейросетевой подходы",
+        "Объяснять причины AI winters и условия современных прорывов"
+      ],
+      "title_i18n": {
+        "ru": "История развития искусственного интеллекта",
+        "en": "History of Artificial Intelligence",
+        "zh": "人工智能发展史"
+      },
+      "url_i18n": {
+        "ru": "lessons/a-1-1-2.html",
+        "en": "lessons/a-1-1-2-en.html",
+        "zh": "lessons/a-1-1-2-zh.html"
+      },
+      "languages": [
+        "ru",
+        "en",
+        "zh"
+      ],
+      "legacy_id": "A.7"
+    },
+    {
+      "id": "A.1.1.8",
+      "module_id": "A.1.1",
+      "title": "Символический AI и машинное обучение",
+      "status": "published",
+      "access": "open",
+      "level": "beginner",
+      "prerequisites": [
+        "A.1.1.7"
+      ],
+      "url": "lessons/a-1-1-4.html",
+      "learning_outcomes": [
+        "Объяснять символы, правила, базу знаний и механизм вывода",
+        "Описывать цикл машинного обучения",
+        "Различать явно заданную логику и параметры, найденные по данным",
+        "Распознавать гибридные AI-системы"
+      ],
+      "title_i18n": {
+        "ru": "Символический AI и машинное обучение",
+        "en": "Symbolic AI and Machine Learning",
+        "zh": "符号主义人工智能与机器学习"
+      },
+      "url_i18n": {
+        "ru": "lessons/a-1-1-4.html",
+        "en": "lessons/a-1-1-4-en.html",
+        "zh": "lessons/a-1-1-4-zh.html"
+      },
+      "languages": [
+        "ru",
+        "en",
+        "zh"
+      ],
+      "legacy_id": "A.8"
+    }
+  ],
+  "planets": [
+    {
+      "id": "planet-A-1",
+      "lesson_id": "A.1.1.1",
+      "accent_id": "blue"
+    },
+    {
+      "id": "planet-A-2",
+      "lesson_id": "A.1.1.2",
+      "accent_id": "teal"
+    },
+    {
+      "id": "planet-A-3",
+      "lesson_id": "A.1.1.3",
+      "accent_id": "teal"
+    },
+    {
+      "id": "planet-A-4",
+      "lesson_id": "A.1.1.4",
+      "accent_id": "blue"
+    },
+    {
+      "id": "planet-A-5",
+      "lesson_id": "A.1.1.5",
+      "accent_id": "violet"
+    },
+    {
+      "id": "planet-A-6",
+      "lesson_id": "A.1.1.6",
+      "accent_id": "violet"
+    },
+    {
+      "id": "planet-A-7",
+      "lesson_id": "A.1.1.7",
+      "accent_id": "blue"
+    },
+    {
+      "id": "planet-A-8",
+      "lesson_id": "A.1.1.8",
+      "accent_id": "blue"
+    }
+  ]
+}

@@ -24,6 +24,7 @@
           <h2>${escapeHtml(data.reference.name)}</h2>
           <p class="muted">Авторы: ${data.reference.authors.map(escapeHtml).join(" · ")}</p>
           <p><a class="text-link" href="${escapeHtml(data.reference.website)}" target="_blank" rel="noopener">Сайт AIS ↗</a> · <a class="text-link" href="${escapeHtml(data.reference.research_repository)}" target="_blank" rel="noopener">Исследовательский репозиторий ↗</a></p>
+          <p>${(data.reference.author_channels || []).map(channel => `<a class="text-link" href="${escapeHtml(channel.url)}" target="_blank" rel="noopener">${escapeHtml(channel.name)} ↗</a> <span class="muted">— ${escapeHtml(channel.author)}</span>`).join(" · ")}</p>
           <p class="muted">Текущий каталог AIS: Track A ${escapeHtml(data.reference.current_catalog.track_a)}; Track B ${escapeHtml(data.reference.current_catalog.track_b)}. ${escapeHtml(data.reference.current_catalog.note)}</p>
           <div class="admin-grid roadmap-stats">
             <div class="admin-stat"><strong>${done}</strong><span>Выполнено</span></div>

@@ -132,3 +132,15 @@
 - DCH Track C specification: https://github.com/Dach1980/ai-interpretability-course/blob/main/docs/TRACK_C_LLM_ENGINEERING.md
 - DCH source integration policy: https://github.com/Dach1980/ai-research-dch-school/blob/main/docs/education/AIS_SOURCE_INTEGRATION_POLICY.md
 - DCH RM-02: https://github.com/Dach1980/ai-research-dch-school/blob/main/docs/management/RM-02_CURRICULUM_AUDIT.md
+
+
+## 9. Критическое противоречие внутри документов DCH — требует решения до публикации итоговой программы
+
+Найдено расхождение между двумя документами, которые сейчас претендуют на роль рабочей архитектуры Track A:
+
+- `docs/CURRICULUM_SPECIFICATION.md` из `ai-interpretability-course`: модули 11–19 посвящены interpretable ML, XAI, causal ML и evaluation; 20–26 — CNN, visual/gradient/concept methods, NLP, Transformer и LLM XAI.
+- `docs/management/TRACK_A_ARCHITECTURE_PROPOSAL.md` в основном DCH repo: модуль 11 начинается с основ AI/ML; 12 — линейные модели; 13 — нелинейные модели; 14 — causality; 15 — heterogeneous effects; далее иная последовательность вплоть до 26.
+
+Эти две последовательности нельзя одновременно считать каноническими. Crosswalk построен по полному документу `CURRICULUM_SPECIFICATION.md`, поскольку он содержит 40 полных модулей с outcomes и prerequisites. Однако его статус как единственного действующего источника должен быть явно подтверждён. До решения владельца программы crosswalk помечен **предварительным**, а DCH-03 остаётся в работе.
+
+Также в самом `CURRICULUM_SPECIFICATION.md` обнаружены две редакции раздела 1.1 с несовпадающими формулировками границ Track B. Их следует объединить после выбора единой схемы.

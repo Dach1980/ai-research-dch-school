@@ -12,7 +12,21 @@
       "track_a": "00–17, 21–25",
       "track_b": "26–36",
       "note": "Снимок публичного каталога на 2026-11-11; нумерация AIS не является нумерацией DCH."
-    }
+    },
+    "author_channels": [
+      {
+        "name": "Data Blog / @jdata_blog",
+        "author": "Sabrina Sadiekh",
+        "url": "https://t.me/jdata_blog",
+        "role": "Основной авторский канал о XAI, mechanistic interpretability, публикациях, учебных материалах и исследовательских обновлениях."
+      },
+      {
+        "name": "Mrs Wallbreaker about AI Risk, AI Alignment, AI Safety",
+        "author": "Elena Ericheva",
+        "url": "https://t.me/MrsWallbreaker",
+        "role": "Связанный авторский канал по AI Safety и alignment; учитывать как дополнительный исследовательский поток, не как официальный канал AIS."
+      }
+    ]
   },
   "source_documents": [
     {

@@ -18,6 +18,10 @@ const sharedScriptUrl=document.currentScript?.src;
 if(sharedScriptUrl){
   const brandLogoUrl=new URL("../assets/logo-signature.svg",sharedScriptUrl).href;
   const faviconUrl=new URL("../assets/favicon.svg",sharedScriptUrl).href;
+  document.querySelectorAll('img[src*="site-brand-icon.jpg"], img[src*="assets/logo.png"]').forEach(img=>{
+    img.src=faviconUrl;
+    img.alt="DCH";
+  });
   document.querySelectorAll(".brand img").forEach(img=>{
     img.src=brandLogoUrl;
     img.alt="AI Research DCH School";

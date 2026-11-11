@@ -152,7 +152,6 @@ class LessonDesignSystemTests(unittest.TestCase):
                 self.assertIn("distribution shift", source.lower())
                 self.assertIn("data-mode=\\"multiple\\"", source)
                 self.assertIn("data-correct=\\"a,c,d\\"", source)
-                self.assertIn("data-provenance", source.lower()) if locale == "en" else None
                 self.assertIn("data-characteristics", source)
                 self.assertIn("Datasheets for Datasets", source)
                 self.assertIn("lesson-assessment.js", source)

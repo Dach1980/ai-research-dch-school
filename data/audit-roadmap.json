@@ -1214,6 +1214,25 @@
         "Урок не опубликован до прохождения quality gate.",
         "Следующие целевые уроки 1.3.2 и 1.3.6 ещё предстоит создать."
       ]
+    },
+    {
+      "id": "AUD-042",
+      "date": "2026-11-11",
+      "type": "planet_map_review_lesson_visibility",
+      "title": "Исправлено отображение подготовленных уроков на карте знаний",
+      "result": "Скрипт карты разделяет опубликованные уроки и подготовленные уроки на проверке. На карте планет остаются только записи status=published и content_state=published; список теперь дополнительно показывает записи status=review и content_state=localized с явной пометкой «на проверке» и ссылкой на соответствующую страницу. В каталоге сейчас должны отображаться пять уроков на проверке: 1.2.1, 1.2.2, 1.2.4, 1.2.5, 1.2.6 и новый 1.3.1. Плановые записи без готовых страниц (например, 1.3.2 и 1.3.6) по-прежнему не показываются как готовые материалы.",
+      "evidence": [
+        "scripts/planet-map-catalog.js",
+        "learning-map/index.html",
+        "learning-map/index-en.html",
+        "learning-map/index-zh.html",
+        "tests/test_catalog_v3_js.cjs",
+        "data/catalog/catalog-v3.json"
+      ],
+      "limitations": [
+        "GitHub Pages deployment for the final commit is still running; browser verification after deployment is pending.",
+        "Уроки со статусом review не считаются опубликованными планетами до прохождения quality gate."
+      ]
     }
   ],
   "notes": [

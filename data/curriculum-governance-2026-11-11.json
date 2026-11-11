@@ -286,7 +286,18 @@
         "status": "planned"
       }
     ],
-    "lesson_count": 52
+    "lesson_count": 52,
+    "lesson_status_counts": {
+      "published": 5,
+      "review": 5,
+      "planned": 42
+    },
+    "actual_lesson_counts": {
+      "published": 5,
+      "review": 5,
+      "planned": 42
+    },
+    "lessons_with_ru_page": 10
   },
   "module_mapping": [
     {
@@ -934,7 +945,9 @@
       "status": "published",
       "theme_uid": "thm-a-01",
       "module_uid": "mod-a-01-01",
-      "url": null
+      "url": "lessons/a-1-1-1.html",
+      "prerequisites": [],
+      "languages": []
     },
     {
       "uid": "les-a-0002",
@@ -943,7 +956,9 @@
       "status": "published",
       "theme_uid": "thm-a-01",
       "module_uid": "mod-a-01-01",
-      "url": null
+      "url": "lessons/a-1-1-3.html",
+      "prerequisites": [],
+      "languages": []
     },
     {
       "uid": "les-a-0003",
@@ -952,7 +967,9 @@
       "status": "published",
       "theme_uid": "thm-a-01",
       "module_uid": "mod-a-01-02",
-      "url": null
+      "url": "lessons/a-1-2-1.html",
+      "prerequisites": [],
+      "languages": []
     },
     {
       "uid": "les-a-0004",
@@ -961,7 +978,9 @@
       "status": "review",
       "theme_uid": "thm-a-01",
       "module_uid": "mod-a-01-02",
-      "url": null
+      "url": "lessons/a-1-2-2.html",
+      "prerequisites": [],
+      "languages": []
     },
     {
       "uid": "les-a-0005",
@@ -970,7 +989,9 @@
       "status": "review",
       "theme_uid": "thm-a-01",
       "module_uid": "mod-a-01-02",
-      "url": null
+      "url": "lessons/a-1-2-5.html",
+      "prerequisites": [],
+      "languages": []
     },
     {
       "uid": "les-a-0006",
@@ -979,7 +1000,9 @@
       "status": "review",
       "theme_uid": "thm-a-01",
       "module_uid": "mod-a-01-02",
-      "url": null
+      "url": "lessons/a-1-2-6.html",
+      "prerequisites": [],
+      "languages": []
     },
     {
       "uid": "les-a-0007",
@@ -988,7 +1011,9 @@
       "status": "review",
       "theme_uid": "thm-a-01",
       "module_uid": "mod-a-01-03",
-      "url": null
+      "url": "lessons/a-1-3-1.html",
+      "prerequisites": [],
+      "languages": []
     },
     {
       "uid": "les-a-0008",
@@ -997,7 +1022,9 @@
       "status": "planned",
       "theme_uid": "thm-a-01",
       "module_uid": "mod-a-01-03",
-      "url": null
+      "url": null,
+      "prerequisites": [],
+      "languages": []
     },
     {
       "uid": "les-a-0009",
@@ -1006,7 +1033,9 @@
       "status": "planned",
       "theme_uid": "thm-a-01",
       "module_uid": "mod-a-01-03",
-      "url": null
+      "url": null,
+      "prerequisites": [],
+      "languages": []
     },
     {
       "uid": "les-a-0010",
@@ -1015,7 +1044,9 @@
       "status": "planned",
       "theme_uid": "thm-a-01",
       "module_uid": "mod-a-01-04",
-      "url": null
+      "url": null,
+      "prerequisites": [],
+      "languages": []
     },
     {
       "uid": "les-a-0011",
@@ -1024,7 +1055,9 @@
       "status": "planned",
       "theme_uid": "thm-a-01",
       "module_uid": "mod-a-01-04",
-      "url": null
+      "url": null,
+      "prerequisites": [],
+      "languages": []
     },
     {
       "uid": "les-a-0012",
@@ -1033,7 +1066,9 @@
       "status": "planned",
       "theme_uid": "thm-a-01",
       "module_uid": "mod-a-01-04",
-      "url": null
+      "url": null,
+      "prerequisites": [],
+      "languages": []
     },
     {
       "uid": "les-a-0013",
@@ -1042,7 +1077,9 @@
       "status": "planned",
       "theme_uid": "thm-a-01",
       "module_uid": "mod-a-01-04",
-      "url": null
+      "url": null,
+      "prerequisites": [],
+      "languages": []
     },
     {
       "uid": "les-a-0014",
@@ -1051,7 +1088,9 @@
       "status": "planned",
       "theme_uid": "thm-a-01",
       "module_uid": "mod-a-01-04",
-      "url": null
+      "url": null,
+      "prerequisites": [],
+      "languages": []
     },
     {
       "uid": "les-a-0015",
@@ -1060,7 +1099,9 @@
       "status": "planned",
       "theme_uid": "thm-a-01",
       "module_uid": "mod-a-01-05",
-      "url": null
+      "url": null,
+      "prerequisites": [],
+      "languages": []
     },
     {
       "uid": "les-a-0016",
@@ -1069,7 +1110,9 @@
       "status": "planned",
       "theme_uid": "thm-a-04",
       "module_uid": "mod-a-04-01",
-      "url": null
+      "url": null,
+      "prerequisites": [],
+      "languages": []
     },
     {
       "uid": "les-a-0017",
@@ -1078,7 +1121,9 @@
       "status": "planned",
       "theme_uid": "thm-a-04",
       "module_uid": "mod-a-04-01",
-      "url": null
+      "url": null,
+      "prerequisites": [],
+      "languages": []
     },
     {
       "uid": "les-a-0018",
@@ -1087,7 +1132,9 @@
       "status": "planned",
       "theme_uid": "thm-a-04",
       "module_uid": "mod-a-04-02",
-      "url": null
+      "url": null,
+      "prerequisites": [],
+      "languages": []
     },
     {
       "uid": "les-a-0019",
@@ -1096,7 +1143,9 @@
       "status": "planned",
       "theme_uid": "thm-a-04",
       "module_uid": "mod-a-04-02",
-      "url": null
+      "url": null,
+      "prerequisites": [],
+      "languages": []
     },
     {
       "uid": "les-a-0020",
@@ -1105,7 +1154,9 @@
       "status": "planned",
       "theme_uid": "thm-a-04",
       "module_uid": "mod-a-04-02",
-      "url": null
+      "url": null,
+      "prerequisites": [],
+      "languages": []
     },
     {
       "uid": "les-a-0021",
@@ -1114,7 +1165,9 @@
       "status": "planned",
       "theme_uid": "thm-a-04",
       "module_uid": "mod-a-04-02",
-      "url": null
+      "url": null,
+      "prerequisites": [],
+      "languages": []
     },
     {
       "uid": "les-a-0022",
@@ -1123,7 +1176,9 @@
       "status": "planned",
       "theme_uid": "thm-a-04",
       "module_uid": "mod-a-04-02",
-      "url": null
+      "url": null,
+      "prerequisites": [],
+      "languages": []
     },
     {
       "uid": "les-a-0023",
@@ -1132,7 +1187,9 @@
       "status": "planned",
       "theme_uid": "thm-a-04",
       "module_uid": "mod-a-04-02",
-      "url": null
+      "url": null,
+      "prerequisites": [],
+      "languages": []
     },
     {
       "uid": "les-a-0024",
@@ -1141,7 +1198,9 @@
       "status": "planned",
       "theme_uid": "thm-a-04",
       "module_uid": "mod-a-04-03",
-      "url": null
+      "url": null,
+      "prerequisites": [],
+      "languages": []
     },
     {
       "uid": "les-a-0025",
@@ -1150,7 +1209,9 @@
       "status": "planned",
       "theme_uid": "thm-a-04",
       "module_uid": "mod-a-04-03",
-      "url": null
+      "url": null,
+      "prerequisites": [],
+      "languages": []
     },
     {
       "uid": "les-a-0026",
@@ -1159,7 +1220,9 @@
       "status": "planned",
       "theme_uid": "thm-a-04",
       "module_uid": "mod-a-04-03",
-      "url": null
+      "url": null,
+      "prerequisites": [],
+      "languages": []
     },
     {
       "uid": "les-a-0027",
@@ -1168,7 +1231,9 @@
       "status": "planned",
       "theme_uid": "thm-a-04",
       "module_uid": "mod-a-04-03",
-      "url": null
+      "url": null,
+      "prerequisites": [],
+      "languages": []
     },
     {
       "uid": "les-a-0028",
@@ -1177,7 +1242,9 @@
       "status": "planned",
       "theme_uid": "thm-a-04",
       "module_uid": "mod-a-04-03",
-      "url": null
+      "url": null,
+      "prerequisites": [],
+      "languages": []
     },
     {
       "uid": "les-a-0029",
@@ -1186,7 +1253,9 @@
       "status": "planned",
       "theme_uid": "thm-a-04",
       "module_uid": "mod-a-04-05",
-      "url": null
+      "url": null,
+      "prerequisites": [],
+      "languages": []
     },
     {
       "uid": "les-a-0030",
@@ -1195,7 +1264,9 @@
       "status": "planned",
       "theme_uid": "thm-a-04",
       "module_uid": "mod-a-04-05",
-      "url": null
+      "url": null,
+      "prerequisites": [],
+      "languages": []
     },
     {
       "uid": "les-a-0031",
@@ -1204,7 +1275,9 @@
       "status": "planned",
       "theme_uid": "thm-a-04",
       "module_uid": "mod-a-04-05",
-      "url": null
+      "url": null,
+      "prerequisites": [],
+      "languages": []
     },
     {
       "uid": "les-a-0032",
@@ -1213,7 +1286,9 @@
       "status": "planned",
       "theme_uid": "thm-a-04",
       "module_uid": "mod-a-04-05",
-      "url": null
+      "url": null,
+      "prerequisites": [],
+      "languages": []
     },
     {
       "uid": "les-a-0033",
@@ -1222,7 +1297,9 @@
       "status": "planned",
       "theme_uid": "thm-a-04",
       "module_uid": "mod-a-04-05",
-      "url": null
+      "url": null,
+      "prerequisites": [],
+      "languages": []
     },
     {
       "uid": "les-a-0034",
@@ -1231,7 +1308,9 @@
       "status": "planned",
       "theme_uid": "thm-a-04",
       "module_uid": "mod-a-04-06",
-      "url": null
+      "url": null,
+      "prerequisites": [],
+      "languages": []
     },
     {
       "uid": "les-a-0035",
@@ -1240,7 +1319,9 @@
       "status": "planned",
       "theme_uid": "thm-a-04",
       "module_uid": "mod-a-04-06",
-      "url": null
+      "url": null,
+      "prerequisites": [],
+      "languages": []
     },
     {
       "uid": "les-a-0036",
@@ -1249,7 +1330,9 @@
       "status": "planned",
       "theme_uid": "thm-a-04",
       "module_uid": "mod-a-04-06",
-      "url": null
+      "url": null,
+      "prerequisites": [],
+      "languages": []
     },
     {
       "uid": "les-a-0037",
@@ -1258,7 +1341,9 @@
       "status": "planned",
       "theme_uid": "thm-a-04",
       "module_uid": "mod-a-04-06",
-      "url": null
+      "url": null,
+      "prerequisites": [],
+      "languages": []
     },
     {
       "uid": "les-a-0038",
@@ -1267,7 +1352,9 @@
       "status": "planned",
       "theme_uid": "thm-a-04",
       "module_uid": "mod-a-04-06",
-      "url": null
+      "url": null,
+      "prerequisites": [],
+      "languages": []
     },
     {
       "uid": "les-a-0039",
@@ -1276,7 +1363,9 @@
       "status": "planned",
       "theme_uid": "thm-a-04",
       "module_uid": "mod-a-04-06",
-      "url": null
+      "url": null,
+      "prerequisites": [],
+      "languages": []
     },
     {
       "uid": "les-a-0040",
@@ -1285,7 +1374,9 @@
       "status": "planned",
       "theme_uid": "thm-a-04",
       "module_uid": "mod-a-04-07",
-      "url": null
+      "url": null,
+      "prerequisites": [],
+      "languages": []
     },
     {
       "uid": "les-a-0041",
@@ -1294,7 +1385,9 @@
       "status": "planned",
       "theme_uid": "thm-a-04",
       "module_uid": "mod-a-04-07",
-      "url": null
+      "url": null,
+      "prerequisites": [],
+      "languages": []
     },
     {
       "uid": "les-a-0042",
@@ -1303,7 +1396,9 @@
       "status": "planned",
       "theme_uid": "thm-a-04",
       "module_uid": "mod-a-04-07",
-      "url": null
+      "url": null,
+      "prerequisites": [],
+      "languages": []
     },
     {
       "uid": "les-a-0043",
@@ -1312,7 +1407,9 @@
       "status": "planned",
       "theme_uid": "thm-a-01",
       "module_uid": "mod-a-01-05",
-      "url": null
+      "url": null,
+      "prerequisites": [],
+      "languages": []
     },
     {
       "uid": "les-a-0044",
@@ -1321,7 +1418,9 @@
       "status": "planned",
       "theme_uid": "thm-a-01",
       "module_uid": "mod-a-01-05",
-      "url": null
+      "url": null,
+      "prerequisites": [],
+      "languages": []
     },
     {
       "uid": "les-a-0045",
@@ -1330,7 +1429,9 @@
       "status": "planned",
       "theme_uid": "thm-a-01",
       "module_uid": "mod-a-01-05",
-      "url": null
+      "url": null,
+      "prerequisites": [],
+      "languages": []
     },
     {
       "uid": "les-a-0046",
@@ -1339,7 +1440,9 @@
       "status": "planned",
       "theme_uid": "thm-a-01",
       "module_uid": "mod-a-01-05",
-      "url": null
+      "url": null,
+      "prerequisites": [],
+      "languages": []
     },
     {
       "uid": "les-a-0047",
@@ -1348,7 +1451,9 @@
       "status": "planned",
       "theme_uid": "thm-a-01",
       "module_uid": "mod-a-01-05",
-      "url": null
+      "url": null,
+      "prerequisites": [],
+      "languages": []
     },
     {
       "uid": "les-a-0048",
@@ -1357,7 +1462,9 @@
       "status": "planned",
       "theme_uid": "thm-a-01",
       "module_uid": "mod-a-01-05",
-      "url": null
+      "url": null,
+      "prerequisites": [],
+      "languages": []
     },
     {
       "uid": "les-a-0049",
@@ -1366,7 +1473,9 @@
       "status": "planned",
       "theme_uid": "thm-a-03",
       "module_uid": "mod-a-03-01",
-      "url": null
+      "url": null,
+      "prerequisites": [],
+      "languages": []
     },
     {
       "uid": "les-a-0050",
@@ -1375,7 +1484,9 @@
       "status": "review",
       "theme_uid": "thm-a-01",
       "module_uid": "mod-a-01-02",
-      "url": null
+      "url": "lessons/a-1-2-4.html",
+      "prerequisites": [],
+      "languages": []
     },
     {
       "uid": "les-a-0051",
@@ -1384,7 +1495,9 @@
       "status": "published",
       "theme_uid": "thm-a-01",
       "module_uid": "mod-a-01-01",
-      "url": null
+      "url": "lessons/a-1-1-2.html",
+      "prerequisites": [],
+      "languages": []
     },
     {
       "uid": "les-a-0052",
@@ -1393,7 +1506,9 @@
       "status": "published",
       "theme_uid": "thm-a-01",
       "module_uid": "mod-a-01-01",
-      "url": null
+      "url": "lessons/a-1-1-4.html",
+      "prerequisites": [],
+      "languages": []
     }
   ],
   "labs": [
@@ -1797,5 +1912,14 @@
       "url": "https://docs.vllm.ai/en/latest/usage/metrics/",
       "note": "Operational metrics endpoint and monitoring."
     }
-  ]
+  ],
+  "coverage_summary": {
+    "macro_modules": 40,
+    "catalog_lessons": 52,
+    "published": 5,
+    "review": 5,
+    "planned": 42,
+    "track_b_modules_without_catalog_uid": 13,
+    "track_c_modules_without_catalog_uid": 13
+  }
 }

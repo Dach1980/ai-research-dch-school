@@ -1329,6 +1329,25 @@
       "limitations": [
         "Pages deployment for the final publication-state commit and browser visual check must complete before confirming public visibility."
       ]
+    },
+    {
+      "id": "AUD-048",
+      "date": "2026-11-11",
+      "type": "concept_definition_standard_and_lesson_visual_audit",
+      "title": "В админке закреплён стандарт визуальных определений; урок 1.2.1 дополнен схемами и блоками понятий",
+      "result": "В панели администратора в Lesson Design System добавлено обязательное правило: ключевые понятия оформляются блоками .definition по образцу определения AI-системы в уроке 1.1.1; правило также внесено в LESSON_DESIGN_SYSTEM.md. Во всех локализациях урока 1.2.1 добавлено по 8 выделенных определений и 4 учебные SVG-схемы: путь формирования набора данных, формы данных, паспорт набора и различие sampling bias/distribution shift. Содержание урока уже охватывает объект и единицу наблюдения, типы данных, происхождение, единицы и временной контекст, качество, репрезентативность, обработку, лицензию, приватность, практический паспорт и ситуационную проверку. Не следует дублировать подробную работу с признаками и целевой переменной — это предмет урока 1.2.2.",
+      "evidence": [
+        "admin/index.html",
+        "docs/education/LESSON_DESIGN_SYSTEM.md",
+        "lessons/a-1-2-1.html",
+        "lessons/a-1-2-1-en.html",
+        "lessons/a-1-2-1-zh.html",
+        "tests/test_track_a_data_lessons.py"
+      ],
+      "limitations": [
+        "Нужно дождаться CI и GitHub Pages deployment; автоматическая проверка SVG-разметки не заменяет визуальный просмотр desktop/mobile.",
+        "Правило принято как стандарт для новых и перерабатываемых уроков; все ранее созданные страницы ещё не проверены на соответствие."
+      ]
     }
   ],
   "notes": [

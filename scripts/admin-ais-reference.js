@@ -54,34 +54,25 @@
           <ul>${data.source_documents.map(doc => `<li><a class="text-link" href="${escapeHtml(doc.url)}">${escapeHtml(doc.title)} ↗</a></li>`).join("")}</ul>
           <p class="muted">Статусы отражают наличие проверяемых артефактов в репозитории, а не субъективную оценку процента готовности. «Выполнено» не означает, что все последующие этапы автоматически приняты.</p>
         </section>`;
-      const coverageGroups = [...new Set(crosswalk.crosswalk.map(item => item.group))];
-      const counts = crosswalk.crosswalk.reduce((acc, item) => {
-        acc[item.coverage] = (acc[item.coverage] || 0) + 1;
-        return acc;
-      }, {});
-      const groupHtml = coverageGroups.map(group => {
-        const items = crosswalk.crosswalk.filter(item => item.group === group);
-        const itemHtml = items.map(item =>
-          '<details class="roadmap-item"><summary><div class="roadmap-item-head"><span class="roadmap-id">DCH ' +
-          escapeHtml(item.dch_module) + '</span><span class="roadmap-status ' +
-          (item.coverage === "Сильное" ? "done" : "progress") + '">' + escapeHtml(item.coverage) +
-          '</span></div><strong>' + escapeHtml(item.dch_title) + '</strong></summary><p><strong>AIS:</strong> ' +
-          escapeHtml(item.ais_modules) + '</p><p><strong>Темы пересечения:</strong> ' +
-          escapeHtml(item.topic_overlap) + '</p><p><strong>Prerequisites DCH:</strong> ' +
-          escapeHtml(item.prerequisites) + '</p><p class="muted">' + escapeHtml(item.assessment) +
-          '</p></details>'
-        ).join("");
-        return '<h3>' + escapeHtml(group) + '</h3><div class="roadmap-list">' + itemHtml + '</div>';
-      }).join("");
+      const governanceResponse = await fetch("../data/curriculum-governance-2026-11-11.json", { cache: "no-store" });
+      if (!governanceResponse.ok) throw new Error("Governance HTTP " + governanceResponse.status);
+      const governance = await governanceResponse.json();
+      const summary = governance.coverage_summary;
       root.insertAdjacentHTML("beforeend",
-        '<section class="admin-panel"><div class="roadmap-item-head"><span class="roadmap-id">CURRICULUM CROSSWALK</span><span class="roadmap-date">Снимок: ' +
-        escapeHtml(crosswalk.updated_at) + '</span></div><h2>Матрица AIS → DCH: все 40 модулей</h2><p class="muted">Сопоставление по содержанию, а не по совпадению номеров. Источник AIS — публичный каталог; полный lesson-level аудит не подразумевается.</p><p><strong>Важно:</strong> матрица пока предварительная. Спецификация 40 модулей и рабочая архитектура Track A 11–26 расходятся по названиям и границам модулей. До утверждения единой канонической редакции нельзя автоматически переносить эти номера в публичный каталог.</p>' +
-        '<div class="admin-grid roadmap-stats"><div class="admin-stat"><strong>' + crosswalk.totals.dch_modules +
-        '</strong><span>Модулей DCH</span></div><div class="admin-stat"><strong>' + (counts["Сильное"] || 0) +
-        '</strong><span>Сильное покрытие</span></div><div class="admin-stat"><strong>' + (counts["Частичное"] || 0) +
-        '</strong><span>Частичное</span></div><div class="admin-stat"><strong>' + (counts["Нет прямого аналога"] || 0) +
-        '</strong><span>Нет прямого аналога</span></div></div>' + groupHtml +
-        '<p><a class="text-link" href="../docs/education/AIS_DCH_CURRICULUM_CROSSWALK_2026-11-11.md">Открыть полный отчёт и матрицу ↗</a></p></section>');
+        '<section class="admin-panel"><div class="roadmap-item-head"><span class="roadmap-id">DCH CURRICULUM GOVERNANCE</span><span class="roadmap-date">Обновлено: ' +
+        escapeHtml(governance.updated_at) + '</span></div><h2>Каноническая программа DCH и аудит покрытия</h2>' +
+        '<p>Канонический Track A: 16 модулей 11–26. Track B: ядро 27–39 с диагностическим входом. Track C: отдельная программа C0–C12.</p>' +
+        '<div class="admin-grid roadmap-stats"><div class="admin-stat"><strong>' + summary.macro_modules +
+        '</strong><span>Макромодулей A/B</span></div><div class="admin-stat"><strong>' + summary.catalog_lessons +
+        '</strong><span>Lesson UID в каталоге</span></div><div class="admin-stat"><strong>' + summary.published +
+        '</strong><span>Published</span></div><div class="admin-stat"><strong>' + summary.review +
+        '</strong><span>На проверке</span></div></div>' +
+        '<p class="muted">Каталог v3 пока migration_staging. Многие макромодули ещё не имеют точных catalog UID; отсутствующие UID не выдумываются. Предыдущий AIS crosswalk помечен как superseded и не используется как источник структуры DCH.</p>' +
+        '<ul><li><a class="text-link" href="../docs/management/DCH_CANONICAL_CURRICULUM_DECISION_2026-11-11.md">Решение о канонической программе ↗</a></li>' +
+        '<li><a class="text-link" href="../docs/management/DCH_CANONICAL_CURRICULUM_AND_COVERAGE_AUDIT_2026-11-11.md">Полный аудит и mapping ↗</a></li>' +
+        '<li><a class="text-link" href="../docs/education/DCH_LAB_AND_ASSESSMENT_MATRIX_2026-11-11.md">Матрица лабораторных и оценивания ↗</a></li>' +
+        '<li><a class="text-link" href="../docs/education/TRACK_A_B_PREREQUISITES_AND_DIAGNOSTIC_ROUTES_2026-11-11.md">Prerequisites и диагностические маршруты ↗</a></li>' +
+        '<li><a class="text-link" href="../docs/education/TRACK_C_PRIMARY_SOURCE_AUDIT_2026-11-11.md">Аудит Track C по первичным источникам ↗</a></li></ul></section>');
 
     } catch (error) {
       root.innerHTML = '<section class="admin-panel"><h2>Не удалось загрузить чек-лист AIS</h2><p class="muted">Проверьте доступность data/ais-reference-checklist.json. ' + escapeHtml(error.message) + '</p></section>';

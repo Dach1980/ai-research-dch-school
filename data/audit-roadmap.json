@@ -1543,6 +1543,25 @@
         "Не проверялись закрытые страницы, видео, notebook и пользовательские материалы канала.",
         "Опубликованные DCH страницы, URL и статусы не менялись; улучшенные редакции Track B/C пока сформулированы как требования к draft, а не опубликованные уроки."
       ]
+    },
+    {
+      "id": "AUD-058",
+      "date": "2026-11-11",
+      "type": "multilingual_lesson_drafts_and_track_b_draft",
+      "title": "Подготовлены трёхъязычные редакции урока 1.1.1 и самостоятельный draft вводного урока Track B",
+      "result": "Созданы отдельные RU/EN/中文 редакции 1.1.1 с унифицированной учебной структурой, сравнительной картой подходов AI, объяснением AI/ML/DL, инженерной схемой системы, формулой обучения с пояснением символов, сквозным кейсом энергопотребления, failure modes, baseline, практикой и самопроверкой. Структурная проверка GitHub-файлов пройдена. Подготовлен Track B draft о mechanistic interpretability с уровнями анализа, features/superposition/polysemanticity, ablation, activation patching, worked experiment и критериями оценки. Зафиксировано расхождение структуры действующих RU и EN/中文 страниц 1.1.1. Публичные страницы, URL, статусы и каталог не менялись.",
+      "evidence": [
+        "docs/education/drafts/LESSON_1_1_1_RU_DRAFT_2026-11-11.md",
+        "docs/education/drafts/LESSON_1_1_1_EN_DRAFT_2026-11-11.md",
+        "docs/education/drafts/LESSON_1_1_1_ZH_DRAFT_2026-11-11.md",
+        "docs/education/drafts/TRACK_B_27_MECHANISTIC_INTERPRETABILITY_INTRO_DRAFT_2026-11-11.md",
+        "docs/education/LESSON_1_1_1_AND_TRACK_B_DRAFT_QA_2026-11-11.md"
+      ],
+      "limitations": [
+        "Структурная QA не заменяет научную экспертизу и вычитку EN/中文 носителями языка.",
+        "Track B draft не получил catalog UID и публичный URL: в catalog-v3 не обнаружен утверждённый набор Track B UID; нельзя создавать фиктивные идентификаторы.",
+        "Новые материалы не сверстаны в HTML и не прошли браузерный/CI acceptance; опубликованные уроки не менялись."
+      ]
     }
   ],
   "notes": [

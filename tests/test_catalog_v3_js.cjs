@@ -7,7 +7,8 @@ const manifest=JSON.parse(fs.readFileSync("data/catalog/migration-manifest-v3.js
 for(const path of ["scripts/lesson-catalog.js","scripts/home-knowledge-map.js","scripts/planet-map-catalog.js"]){
  const source=fs.readFileSync(path,"utf8");
  assert.ok(source.includes("catalog-v3.json"));
- if(path==="scripts/planet-map-catalog.js"){assert.ok(source.includes('x.status==="review"&&x.content_state==="localized"'));assert.ok(source.includes('x.status==="published"&&x.content_state==="published"'));assert.ok(source.includes("reviewNote"));}
+ if(path==="scripts/planet-map-catalog.js"){assert.ok(source.includes('x.status==="review"&&x.content_state==="localized"'));assert.ok(source.includes('x.status==="published"&&x.content_state==="published"'));assert.ok(source.includes("reviewNote"));assert.ok(source.includes("planet-review"));assert.ok(source.includes("planetItems"));} 
+ if(path==="scripts/lesson-catalog.js"){assert.ok(source.includes('item.status === "review"'));assert.ok(source.includes("lesson-status-review"));assert.doesNotMatch(source,/ui\.theme|themeTitle/);}
  assert.doesNotMatch(source,/loadLegacyProjection/);
 }
 const normalized=compat.normalizeV3(catalog);

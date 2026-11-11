@@ -153,6 +153,14 @@ class TrackADataLessonTests(unittest.TestCase):
                 self.assertEqual(source_block.count("<li>"), expected_sources, f"{slug}{suffix}")
                 self.assertIn('rel="noopener noreferrer"', source_block)
 
+    def test_lesson_121_has_definition_blocks_and_four_accessible_diagrams_in_all_locales(self):
+        for locale, suffix in (("ru", ""), ("en", "-en"), ("zh", "-zh")):
+            page = (ROOT / "lessons" / f"a-1-2-1{suffix}.html").read_text(encoding="utf-8")
+            with self.subTest(locale=locale):
+                self.assertEqual(page.count('class="definition"'), 8)
+                self.assertEqual(page.count('<figure class="lesson-figure">'), 4)
+                self.assertEqual(page.count('aria-label='), 4)
+                self.assertIn("Sampling bias" if locale == "en" else ("抽样偏差" if locale == "zh" else "Смещение выборки"), page)
 
 if __name__ == "__main__":
     unittest.main()

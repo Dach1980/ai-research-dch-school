@@ -59,3 +59,5 @@ html[data-theme="light"] .home-planet{background:linear-gradient(145deg,#fff,#ed
 .track-first-lesson p{margin:5px 0;color:#c7cde0}
 .lesson-draft-status{display:inline-block;margin-top:8px;padding:4px 8px;border:1px solid #b69aff77;border-radius:99px;color:#d8c6ff;font-size:9px;font-weight:800;letter-spacing:.1em}
 @media(max-width:620px){.track-hero-with-planet{padding-right:0;padding-top:45px}.track-hero-planet{position:static;width:104px;height:104px;margin:0 0 14px}.track-first-lesson{align-items:flex-start;flex-direction:column}.track-card .track-planet-icon{width:74px;height:74px}}
+
+.track-card.amber h3,.track-card.amber .card-icon{color:#f6ae4d}

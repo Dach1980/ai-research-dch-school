@@ -1409,6 +1409,22 @@
         "В первичной спецификации DCH есть две редакции раздела 1.1 с различающимися формулировками границ Track A/B; требуется отдельное редакционное решение.",
         "Track C не сопоставляется с AIS как с основным источником и требует отдельной карты первичных источников."
       ]
+    },
+    {
+      "id": "AUD-051",
+      "date": "2026-11-11",
+      "type": "curriculum_conflict_found",
+      "title": "Выявлено противоречие между двумя редакциями 40-модульной программы DCH",
+      "result": "Сравнение CURRICULUM_SPECIFICATION.md и TRACK_A_ARCHITECTURE_PROPOSAL.md показало, что последовательности и названия модулей Track A 11–26 не совпадают. Дополнительно в CURRICULUM_SPECIFICATION.md дублируется раздел 1.1 с различающимися формулировками границ Track B. Матрица AIS → DCH создана как предварительная по полной спецификации, но не может считаться окончательно утверждённой до решения о canonical curriculum.",
+      "evidence": [
+        "docs/education/AIS_DCH_CURRICULUM_CROSSWALK_2026-11-11.md",
+        "data/ais-dch-crosswalk.json",
+        "docs/management/TRACK_A_ARCHITECTURE_PROPOSAL.md",
+        "https://github.com/Dach1980/ai-interpretability-course/blob/main/docs/CURRICULUM_SPECIFICATION.md"
+      ],
+      "limitations": [
+        "Не менять публичные lesson IDs или каталог по предварительной матрице до утверждения одной редакции программы."
+      ]
     }
   ],
   "notes": [

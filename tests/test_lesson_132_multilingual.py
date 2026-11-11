@@ -12,7 +12,7 @@ class Lesson132Tests(unittest.TestCase):
                 html = path.read_text(encoding="utf-8")
                 self.assertIn(f'<html lang="{locale}">', html)
                 self.assertIn('1.3.2', html)
-                for marker in ('rel="canonical"', 'lesson-planet-banner', 'lesson-sources', 'lesson-nav', 'lesson-glossary', 'lesson-check', '© 2026 AI Research DCH School'):
+                for marker in ('rel="canonical"', 'name="robots" content="noindex,nofollow"', 'lesson-planet-banner', 'lesson-sources', 'lesson-nav', 'lesson-glossary', 'lesson-check', '© 2026 AI Research DCH School'):
                     self.assertIn(marker, html)
                 self.assertNotRegex(html, r'\{\{[A-Z_]+\}\}')
     def test_figures_glossary_and_assessment(self):

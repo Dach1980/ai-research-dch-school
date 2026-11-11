@@ -339,7 +339,7 @@
       "module_uid": "mod-a-01-02",
       "code": "1.2.1",
       "title": "Что такое данные в машинном обучении",
-      "status": "review",
+      "status": "published",
       "access": "open",
       "level": "beginner",
       "prerequisite_uids": [],
@@ -351,7 +351,7 @@
         "Различать смещение выборки и изменение распределения данных.",
         "Составлять краткий паспорт набора данных."
       ],
-      "content_state": "localized",
+      "content_state": "published",
       "url_i18n": {
         "ru": "lessons/a-1-2-1.html",
         "en": "lessons/a-1-2-1-en.html",

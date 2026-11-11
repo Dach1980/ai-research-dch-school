@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="title desc">
+  <title id="title">Track B — Mechanistic Interpretability</title>
+  <desc id="desc">A luminous violet planet with a tilted orbital ring and small stars.</desc>
+  <defs>
+    <radialGradient id="planet" cx="30%" cy="24%" r="80%">
+      <stop offset="0" stop-color="#f1e5ff"/>
+      <stop offset=".22" stop-color="#c5a0ff"/>
+      <stop offset=".58" stop-color="#8055dc"/>
+      <stop offset="1" stop-color="#34205f"/>
+    </radialGradient>
+    <linearGradient id="ring" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f0dcff"/>
+      <stop offset=".48" stop-color="#b28aff"/>
+      <stop offset="1" stop-color="#6552d8"/>
+    </linearGradient>
+    <filter id="glow" x="-60%" y="-60%" width="220%" height="220%">
+      <feGaussianBlur stdDeviation="5" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <clipPath id="disc"><circle cx="128" cy="126" r="65"/></clipPath>
+  </defs>
+  <g fill="none" stroke="#c6a4ff" stroke-linecap="round" opacity=".85">
+    <path d="M35 91l5-5m-2 7 7-2M205 53l4-7m-1 9 7-3M211 188l5-5m-2 8 7-2" stroke-width="2"/>
+    <circle cx="54" cy="163" r="2" fill="#eadcff" stroke="none"/><circle cx="190" cy="91" r="2" fill="#eadcff" stroke="none"/>
+  </g>
+  <ellipse cx="128" cy="130" rx="105" ry="37" transform="rotate(-23 128 130)" fill="none" stroke="#4d368f" stroke-width="15" opacity=".55"/>
+  <ellipse cx="128" cy="130" rx="105" ry="37" transform="rotate(-23 128 130)" fill="none" stroke="url(#ring)" stroke-width="8" filter="url(#glow)"/>
+  <circle cx="128" cy="126" r="65" fill="url(#planet)"/>
+  <g clip-path="url(#disc)" fill="none" stroke="#f0e4ff" stroke-linecap="round" opacity=".34">
+    <path d="M56 108c24-17 58-21 95-7s49 15 59 9" stroke-width="9"/>
+    <path d="M59 145c35-14 67-10 91 3s39 10 53 2" stroke-width="6"/>
+    <path d="M85 65c-8 31-7 65 8 99" stroke-width="4"/>
+  </g>
+  <ellipse cx="128" cy="130" rx="105" ry="37" transform="rotate(-23 128 130)" fill="none" stroke="#f2e6ff" stroke-width="2.5" opacity=".9" stroke-dasharray="72 360" stroke-dashoffset="-30"/>
+  <path d="M96 77c15-9 34-12 49-8" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" opacity=".65"/>
+  <circle cx="103" cy="112" r="5" fill="#fff" opacity=".78"/>
+</svg>

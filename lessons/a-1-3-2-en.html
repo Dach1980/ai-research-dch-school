@@ -14,7 +14,7 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.cluster import KMeans
 from sklearn.metrics import silhouette_score
 
-# Generate synthetic features; discard the generated reference labels.
+# Create synthetic features; discard the generated reference labels.
 X, _ = make_blobs(
     n_samples=300,
     centers=3,
@@ -26,7 +26,7 @@ X_scaled = StandardScaler().fit_transform(X)
 model = KMeans(n_clusters=3, n_init=10, random_state=42)
 cluster_ids = model.fit_predict(X_scaled)
 
-# This measures geometric separation, not semantic correctness.
+# Measure geometric separation, not semantic correctness.
 score = silhouette_score(X_scaled, cluster_ids)
 print(&quot;Silhouette score:&quot;, round(score, 3))
 print(&quot;Cluster IDs:&quot;, sorted(set(cluster_ids)))</code></pre><p><b>Explanation:</b> make_blobs creates points; StandardScaler puts features on comparable scales; KMeans searches for three groups; silhouette_score measures geometric separation. Cluster IDs are technical identifiers: cluster 0 is not better or more important than cluster 1.</p><p><b>Environment:</b> Environment: Python 3.9+ and a current scikit-learn release. Install with python -m pip install scikit-learn. In real projects, fit transformations only on data permitted for that stage of analysis.</p></article>

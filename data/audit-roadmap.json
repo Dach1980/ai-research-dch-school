@@ -2,7 +2,7 @@
   "schema_version": 1,
   "project": "AI Research DCH School",
   "section": "Аудит и roadmap",
-  "updated_at": "2026-11-12",
+  "updated_at": "2026-11-13",
   "timezone": "Asia/Singapore",
   "principles": [
     "Планетная карта дополняет обычный каталог и не заменяет его.",
@@ -523,6 +523,45 @@
         "Ручная браузерная проверка desktop/mobile и light/dark зафиксирована как отдельная QA-задача."
       ],
       "source": "data/catalog/catalog-v3.json; docs/education/TRACK_A_CURRICULUM.md; docs/education/LESSON_DESIGN_SYSTEM.md; docs/education/LESSON_PRODUCTION_PROMPT_TEMPLATE.md"
+    },
+    {
+      "id": "RM-26",
+      "date": "2026-11-13",
+      "title": "Разработать и опубликовать урок 1.4.2 «Обучение модели и функция потерь»",
+      "status": "done",
+      "priority": "high",
+      "decision": "Созданы равнозначные RU / EN / 中文 страницы урока 1.4.2 с четырьмя локализованными SVG-схемами, формулами loss / empirical risk / gradient descent, исполняемым Python-примером batch gradient descent, самостоятельным заданием, 10 определениями, словарём и 8 вопросами с объяснениями. Сохранён UID les-a-0011; каталог v3 получил три канонических URL, prerequisites на les-a-0010 и published/published. Навигация обновлена по цепочке 1.3.6 → 1.4.1 → 1.4.2 во всех локализациях. Validate learning catalog — success (run 43331570966); Supabase migrations validation и GitHub Pages deploy job — success (run 43331570993).",
+      "acceptance": [
+        "Сохранены код 1.4.2, UID les-a-0011 и module UID mod-a-01-04.",
+        "RU / EN / 中文 содержат равнозначную лекцию без сокращения ключевых объяснений.",
+        "Каждая локализация содержит 4 SVG с title/desc и локализованными подписями, 4 формулы, 10 определений, 10 glossary entries и 8 вопросов.",
+        "Добавлены самостоятельное задание и Python-пример; код проверяется AST parser.",
+        "Каталог фиксирует prerequisite les-a-0010, три URL и status=published/content_state=published.",
+        "Навигация 1.3.6 → 1.4.1 → 1.4.2 согласована во всех локализациях; planned 1.4.3 не показан как опубликованный.",
+        "Регрессионные проверки HTML, локальных ссылок, локализаций, структуры, формул, SVG, кода, quiz и sequential navigation проходят.",
+        "Validate learning catalog, Supabase migration validation и GitHub Pages deploy job завершились успешно.",
+        "Ручная desktop/mobile, light/dark, keyboard и screen-reader QA отдельно отмечена как незавершённая."
+      ],
+      "source": "lessons/a-1-4-2*.html; lessons/a-1-4-1*.html; lessons/a-1-3-6*.html; styles/lesson-142.css; data/catalog/catalog-v3.json; tests/test_lesson_142_multilingual.py; tests/test_lesson_navigation_and_concepts.py"
+    },
+    {
+      "id": "RM-27",
+      "date": "2026-11-13",
+      "title": "Спроектировать бесплатную регистрацию и систему обратной связи сообщества",
+      "status": "in_progress",
+      "priority": "high",
+      "decision": "Подготовлен проект MVP на существующей Supabase Auth и profiles: зарегистрированные пользователи смогут задавать вопросы, сообщать об ошибках/неточностях и предлагать улучшения; обращения будут приватными по умолчанию и доступны автору и модераторам, с ответами и статусами. Зафиксированы схема community_feedback, RLS, антиспам, модерация, локализации и этапы запуска. Оплата и подписки исключены. Публичная регистрация остаётся выключенной: Terms/Privacy — неутверждённые черновики, SMTP и CAPTCHA не проверены; миграция БД не применялась.",
+      "acceptance": [
+        "Используется существующий Supabase Auth, без второй системы аккаунтов.",
+        "Публичная регистрация остаётся выключенной до утверждения Terms/Privacy и проверки email.",
+        "Определены типы обращений question, bug, content_issue и idea.",
+        "Определены статусы обращения, ответ администратора и приватная видимость по умолчанию.",
+        "Описаны схема данных, RLS, роли school_admins, ограничения длины, rate limits и CAPTCHA.",
+        "Определены RU / EN / 中文 интерфейс, пользовательская история обращений и административная модерация.",
+        "Нет платёжных механизмов, подписок или платного доступа.",
+        "Перед включением регистрации пройдены юридические, SMTP, redirect URL, CAPTCHA, RLS и security checks."
+      ],
+      "source": "docs/management/COMMUNITY_FEEDBACK_MVP_2026-11-13.md; auth/index.html; scripts/auth.js; scripts/supabase-config.js; docs/legal/TERMS_DRAFT.md; docs/legal/PRIVACY_POLICY_DRAFT.md"
     }
   ],
   "audit_log": [
@@ -2192,6 +2231,55 @@
       "limitations": [
         "Ручная браузерная QA desktop/mobile и светлой/тёмной тем ещё не выполнена.",
         "Подключение dchai.ru требует подтверждения Custom domain в GitHub Pages Settings и DNS-записей у регистратора; корневой CNAME-файл уже присутствует в репозитории."
+      ]
+    },
+    {
+      "id": "AUD-082",
+      "date": "2026-11-13",
+      "type": "lesson_1_4_2_multilingual_publication",
+      "title": "Опубликован урок 1.4.2 на трёх языках и восстановлена последовательная навигация",
+      "result": "Созданы RU / EN / 中文 версии «Обучение модели и функция потерь» / “Model Training and the Loss Function” / «模型训练与损失函数». Сохранён UID les-a-0011. В каталоге урок имеет status=published, content_state=published, access=open, prerequisite les-a-0010 и три канонических URL. Добавлены четыре локализованные SVG, формулы, Python batch gradient descent, самостоятельное задание, 10 определений, 10 терминов и 8 вопросов с объяснениями. Обновлены переходы 1.3.6 → 1.4.1 → 1.4.2. Validate learning catalog run 43331570966 — success; validate-supabase-migrations и deploy job run 43331570993 — success.",
+      "evidence": [
+        "lessons/a-1-4-2.html",
+        "lessons/a-1-4-2-en.html",
+        "lessons/a-1-4-2-zh.html",
+        "lessons/a-1-4-1.html",
+        "lessons/a-1-4-1-en.html",
+        "lessons/a-1-4-1-zh.html",
+        "lessons/a-1-3-6.html",
+        "lessons/a-1-3-6-en.html",
+        "lessons/a-1-3-6-zh.html",
+        "styles/lesson-142.css",
+        "data/catalog/catalog-v3.json",
+        "tests/test_lesson_142_multilingual.py",
+        "tests/test_lesson_navigation_and_concepts.py"
+      ],
+      "limitations": [
+        "Ручная браузерная проверка desktop/mobile, светлой/тёмной тем, клавиатуры и screen reader не выполнена.",
+        "Профессиональная вычитка переводов носителями языка не проводилась.",
+        "Публичный URL dchai.ru не удалось проверить через доступный web-preview; факт GitHub Pages deploy job success подтверждён, но визуальное содержимое сайта вручную не проверено.",
+        "Корневой каталог v3 сохраняет migration_staging / 3.0.0-draft; production activation каталога не выполнялась."
+      ]
+    },
+    {
+      "id": "AUD-083",
+      "date": "2026-11-13",
+      "type": "community_registration_feedback_mvp_design",
+      "title": "Подготовлена архитектура бесплатной регистрации и обратной связи",
+      "result": "Подготовлен документ COMMUNITY_FEEDBACK_MVP_2026-11-13.md. Решено использовать существующий Supabase Auth и profiles; типы обращений: question, bug, content_issue, idea; приватная видимость по умолчанию, собственная история пользователя, ответы и статусы, модерация через school_admins. Описаны RLS, антиспам, CAPTCHA, локализации, бесплатная модель без платежей и этапы реализации. Production schema не изменялась, миграция community_feedback не применялась, registrationEnabled остаётся false.",
+      "evidence": [
+        "docs/management/COMMUNITY_FEEDBACK_MVP_2026-11-13.md",
+        "auth/index.html",
+        "scripts/auth.js",
+        "scripts/supabase-config.js",
+        "docs/legal/TERMS_DRAFT.md",
+        "docs/legal/PRIVACY_POLICY_DRAFT.md"
+      ],
+      "limitations": [
+        "Terms и Privacy прямо помечены как черновики и не готовы к сбору пользовательских данных.",
+        "Проверка SMTP, redirect URLs, CAPTCHA и полного auth flow не проводилась.",
+        "Supabase Security Advisors сообщают предупреждения о публично исполняемых SECURITY DEFINER-функциях и отключённой leaked-password protection; требуется отдельный аудит и решение.",
+        "Публичная регистрация и пользовательская форма обратной связи не включены; требуется завершить этапы RM-27."
       ]
     }
   ]

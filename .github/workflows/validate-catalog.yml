@@ -123,6 +123,8 @@ jobs:
         run: python -m unittest discover -s tests -p 'test_lesson_133_multilingual.py' -v
       - name: Test lesson 1.3.4 classification and regression publication
         run: python -m unittest discover -s tests -p 'test_lesson_134_multilingual.py' -v
+      - name: Test lesson 1.3.5 clustering and dimensionality reduction
+        run: python -m unittest discover -s tests -p 'test_lesson_135_multilingual.py' -v
       - name: Test sequential lesson navigation and concept emphasis
         run: python -m unittest discover -s tests -p 'test_lesson_navigation_and_concepts.py' -v
       - name: Validate multilingual lesson pages and diagrams

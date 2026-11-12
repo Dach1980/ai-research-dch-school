@@ -31,7 +31,7 @@
 | Lesson UID | 55 |
 | Published / published | 15 |
 | Review / localized | 1 |\n| Planned / outline_only | 39 |
-| Review | 0 |
+| Review | 1 |
 | Каталог | `migration_staging` |
 
 Опубликованные записи имеют три локализованных URL RU / EN / 中文. Один новый урок (1.4.1) переведён в review / localized; его три страницы имеют noindex,nofollow и не считаются опубликованными. Каталог остаётся в состоянии `migration_staging`; эта сверка не переводит его в production.

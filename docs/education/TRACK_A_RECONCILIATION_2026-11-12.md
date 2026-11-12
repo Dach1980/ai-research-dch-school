@@ -31,13 +31,13 @@
 | 1.1.4 | AI, Machine Learning и Deep Learning | RU, EN, ZH | published / published | — | проверить расхождение названия |
 | 1.1.5 | Возможности и ограничения современного AI | нет канонической страницы | нет записи | — | — |
 | 1.2.1 | Что такое данные в машинном обучении | RU, EN, ZH | published / published | lessons/a-3-how-machines-learn-from-data.html | — |
-| 1.2.2 | Объекты, признаки и целевые переменные | RU, EN, ZH |${1}published / published | lessons/a-3-how-machines-learn-from-data.html | — |
+| 1.2.2 | Объекты, признаки и целевые переменные | RU, EN, ZH | published / published | lessons/a-3-how-machines-learn-from-data.html | — |
 | 1.2.3 | Числовые, категориальные и текстовые признаки | нет канонической страницы | нет записи | — | — |
-| 1.2.4 | Обучающие, проверочные и тестовые данные | RU, EN, ZH |${1}published / published | lessons/a-5-how-to-evaluate-a-model.html | — |
-| 1.2.5 | Качество данных, пропуски и выбросы | RU, EN, ZH |${1}published / published | lessons/a-3-how-machines-learn-from-data.html | — |
-| 1.2.6 | Корреляция, зависимости и утечка данных | RU, EN, ZH |${1}published / published | lessons/a-3-how-machines-learn-from-data.html<br>lessons/a-6-generalization-and-overfitting.html<br>lessons/a-5-how-to-evaluate-a-model.html | — |
-| 1.3.1 | Обучение с учителем — Supervised Learning | RU, EN, ZH |${1}published / published | lessons/a-3-how-machines-learn-from-data.html | — |
-| 1.3.2 | Обучение без учителя — Unsupervised Learning | RU, EN, ZH |${1}published / published | lessons/a-3-how-machines-learn-from-data.html | — |
+| 1.2.4 | Обучающие, проверочные и тестовые данные | RU, EN, ZH | published / published | lessons/a-5-how-to-evaluate-a-model.html | — |
+| 1.2.5 | Качество данных, пропуски и выбросы | RU, EN, ZH | published / published | lessons/a-3-how-machines-learn-from-data.html | — |
+| 1.2.6 | Корреляция, зависимости и утечка данных | RU, EN, ZH | published / published | lessons/a-3-how-machines-learn-from-data.html<br>lessons/a-6-generalization-and-overfitting.html<br>lessons/a-5-how-to-evaluate-a-model.html | — |
+| 1.3.1 | Обучение с учителем — Supervised Learning | RU, EN, ZH | published / published | lessons/a-3-how-machines-learn-from-data.html | — |
+| 1.3.2 | Обучение без учителя — Unsupervised Learning | RU, EN, ZH | published / published | lessons/a-3-how-machines-learn-from-data.html | — |
 | 1.3.3 | Обучение с подкреплением — Reinforcement Learning | RU, EN, ZH | published / published | — | — |
 | 1.3.4 | Классификация и регрессия | RU, EN, ZH | published / published | — | Глубокая постановка задач; метрики оставлены для 1.5 |
 | 1.3.5 | Кластеризация и снижение размерности | нет канонической страницы | planned / outline_only | — | — |

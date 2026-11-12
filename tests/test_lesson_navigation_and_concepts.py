@@ -44,13 +44,14 @@ class LessonNavigationAndConceptTests(unittest.TestCase):
                 page = self.by_code["1.3.4"]["url_i18n"][locale]
                 html = (ROOT / page).read_text(encoding="utf-8")
                 self.assertIn("../styles/lesson-design-system.css", html)
-                self.assertGreaterEqual(html.count('class="concept-term"'), 8)
-        css = (ROOT / "styles/lesson-design-system.css").read_text(encoding="utf-8")
-        self.assertIn(".article-body .concept-term", css)
+                self.assertGreaterEqual(html.count('class="definition"'), 8)
+        css = (ROOT / "styles/lesson-reference-111.css").read_text(encoding="utf-8")
+        self.assertIn(".article-body .definition", css)
 
     def test_future_lesson_prompt_requires_concept_and_navigation_standards(self):
         prompt = (ROOT / "docs/education/LESSON_PRODUCTION_PROMPT_TEMPLATE.md").read_text(encoding="utf-8")
-        self.assertIn(".concept-term", prompt)
+        self.assertIn('class="definition"', prompt)
+        self.assertIn("LESSON_DESIGN_SYSTEM.md", prompt)
         self.assertIn("предыдущего и следующего", prompt)
         self.assertIn("planned", prompt)
 

@@ -507,16 +507,18 @@
       "id": "RM-25",
       "date": "2026-11-12",
       "title": "Разработать урок 1.4.1 «Понятие модели и параметров»",
-      "status": "planned",
+      "status": "in_progress",
       "priority": "high",
-      "decision": "Следующая производственная единица Track A после опубликованного 1.3.6. Сохранить UID les-a-0010, Theme UID thm-a-01 и Module UID mod-a-01-04. Подготовить эквивалентные RU / EN / 中文 версии по единому Lesson Design System. До полной готовности не назначать URL и не менять planned / outline_only.",
+      "decision": "Черновая редакция 1.4.1 подготовлена в RU / EN / 中文. Созданы три review-страницы с noindex,nofollow; catalog-v3 переведён в review / localized. Публикация запрещена до прохождения multilingual regression tests, CI, Pages deployment и отдельной проверки визуальной корректности.",
       "acceptance": [
         "Содержательно развести понятие модели, алгоритм обучения, параметры и предсказание.",
         "Не дублировать 1.4.2 (обучение и loss), 1.4.3 (overfitting/underfitting) и 1.5 (оценка качества).",
         "Подготовить RU / EN / 中文 с равнозначной глубиной и локализованными иллюстрациями.",
         "Использовать стандарт определений и формул для светлой и тёмной темы.",
         "Добавить источники, словарь, самопроверку, навигацию и обновить каталог только после проверки.",
-        "Публиковать только после automated tests и успешного Pages deployment; manual QA фиксировать отдельно."
+        "Публиковать только после automated tests и успешного Pages deployment; manual QA фиксировать отдельно.",
+        "Три локализованные review-страницы созданы и связаны с UID les-a-0010; в каталоге статус review / localized, не published.",
+        "До прохождения тестов и Pages deployment страницы сохраняют noindex,nofollow."
       ],
       "source": "data/catalog/catalog-v3.json; docs/education/TRACK_A_CURRICULUM.md; docs/education/LESSON_DESIGN_SYSTEM.md; docs/education/LESSON_PRODUCTION_PROMPT_TEMPLATE.md"
     }

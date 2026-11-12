@@ -18,6 +18,18 @@ class Lesson136Tests(unittest.TestCase):
  def test_definitions_sources_glossary_quiz(self):
   for p in FILES.values():
    h=p.read_text(encoding="utf-8");self.assertEqual(h.count('class="definition"'),12);self.assertEqual(h.count('class="definition-term"'),12);self.assertEqual(h.count('class="definition-text"'),12);self.assertEqual(h.count('class="glossary-entry"'),10);self.assertEqual(h.count('class="lesson-check-question"'),8);self.assertEqual(h.count('class="lesson-check-feedback"'),8);self.assertEqual(h.count("<li><a href="),7);self.assertLess(h.index('class="lesson-sources"'),h.index('class="lesson-nav"'));self.assertLess(h.index('class="lesson-nav"'),h.index('class="lesson-glossary"'));self.assertLess(h.index('class="lesson-glossary"'),h.index('class="lesson-check"'))
+ def test_definition_terms_and_explanations_are_forced_onto_separate_rows(self):
+  for p in FILES.values():
+   h=p.read_text(encoding="utf-8")
+   blocks=re.findall(r'<div class="definition">(.*?)</div>',h,re.S)
+   self.assertEqual(len(blocks),12)
+   for block in blocks:
+    self.assertRegex(block,r'<strong class="definition-term">[\\s\\S]*?</strong>\\s*<span class="definition-text">')
+  for css_path in ["styles/lesson-design-system.css","styles/lesson-reference-111.css"]:
+   css=(ROOT/css_path).read_text(encoding="utf-8")
+   self.assertIn("display:flex;flex-direction:column",css)
+   self.assertIn(".definition-term{display:block",css)
+   self.assertIn(".definition-text{display:block",css)
  def test_quiz_explanations(self):
   expected=["a","a","a","a","a","a","a","a,b,c"]
   for p in FILES.values():

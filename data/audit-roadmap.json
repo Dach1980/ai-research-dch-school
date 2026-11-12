@@ -2079,6 +2079,22 @@
       "limitations": [
         "Ручная браузерная QA опубликованных страниц остаётся незавершённой."
       ]
+    },
+    {
+      "id": "AUD-078",
+      "date": "2026-11-12",
+      "type": "definition_card_line_break_fix",
+      "title": "Исправлено слияние термина и определения в одну строку",
+      "result": "Причина установлена: в styles/lesson-reference-111.css более позднее правило с той же специфичностью переопределяло display:block из lesson-design-system.css на display:inline для .definition-term и .definition-text. В обеих общих таблицах стилей добавлен единый окончательный override: карточка использует вертикальную flex-компоновку, а термин и пояснение — отдельные блочные строки полной ширины. Добавлен регрессионный тест для всех 12 определений в каждой локализации.",
+      "evidence": [
+        "styles/lesson-design-system.css",
+        "styles/lesson-reference-111.css",
+        "tests/test_lesson_136_multilingual.py",
+        "docs/education/LESSON_DESIGN_SYSTEM.md"
+      ],
+      "limitations": [
+        "CI и GitHub Pages deployment для данного исправления ожидаются; визуальная браузерная QA всех локализаций и тем требует отдельной проверки."
+      ]
     }
   ]
 }

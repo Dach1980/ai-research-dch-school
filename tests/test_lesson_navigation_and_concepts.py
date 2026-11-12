@@ -36,9 +36,9 @@ class LessonNavigationAndConceptTests(unittest.TestCase):
                         following = self.by_code[self.codes[index + 1]]["url_i18n"][locale].split("/")[-1]
                         self.assertIn(f'href="{following}"', nav, page)
                     else:
-                        self.assertIn('aria-disabled="true"', nav, page)
+                        self.assertNotIn('aria-disabled="true"', nav, page)
 
-    def test_134_core_concepts_use_shared_highlight_style_in_all_locales(self):
+    def test_134_core_concepts_use_shared_definition_blocks_in_all_locales(self):
         for locale in LOCALES:
             with self.subTest(locale=locale):
                 page = self.by_code["1.3.4"]["url_i18n"][locale]

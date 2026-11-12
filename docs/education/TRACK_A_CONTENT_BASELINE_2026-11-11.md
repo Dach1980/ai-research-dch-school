@@ -9,8 +9,12 @@ This document records the lesson list selected by the project owner as the worki
 ## Theme 1 — foundational knowledge
 
 ### 1.3 — Types of machine learning
+- **1.3.1 — Supervised Learning.** Existing RU / EN / 中文 pages; catalog status review.
 - **1.3.2 — Unsupervised Learning.** Prepared in RU / EN / 中文; status review.
-- **1.3.6 — Generative models and other modern approaches.**
+- **1.3.3 — Reinforcement Learning.** Prepared and published in RU / EN / 中文; UID `les-a-0053`.
+- **1.3.4 — Classification and Regression.** Planned; separate deepening of task formulation beyond the introductory distinction in 1.3.1.
+- **1.3.5 — Clustering and Dimensionality Reduction.** Planned; an advanced practical deepening of 1.3.2, not a repeat of its introductory material.
+- **1.3.6 — Generative models and other modern approaches.** Planned.
 
 ### 1.4 — Model fundamentals
 - **1.4.1 — The model and its parameters.**

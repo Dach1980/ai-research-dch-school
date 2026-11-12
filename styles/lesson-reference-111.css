@@ -58,3 +58,9 @@ html[data-theme="light"] .lesson-figure .cluster-noise{fill:#64748b;stroke:#fff}
   .lesson-figure:has(.cluster-diagram){overflow-x:auto;overscroll-behavior-inline:contain}
   .lesson-figure .cluster-diagram{width:100%;min-width:640px;max-width:none}
 }
+
+
+/* Definition visual parity with lesson 1.1.1: accent-coloured term + neutral explanation. */
+.article-body .definition{padding:1.05rem 1.25rem;margin:1.25rem 0;border:1px solid var(--lds-definition-border);border-left:4px solid var(--lds-definition-term);border-radius:13px;background:var(--lds-definition-surface);color:var(--lds-definition-text);line-height:1.75}
+.article-body .definition .definition-term{display:inline;color:var(--lds-definition-term);font-weight:800}
+.article-body .definition .definition-text{display:inline;color:var(--lds-definition-text);font-weight:400}

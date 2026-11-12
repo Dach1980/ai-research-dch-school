@@ -123,7 +123,7 @@ class Lesson133Tests(unittest.TestCase):
         self.assertEqual(lesson["url_i18n"]["zh"], "lessons/a-1-3-3-zh.html")
         self.assertIn("les-a-0008", lesson["prerequisite_uids"])
         self.assertEqual(by_code["1.3.4"]["status"], "published")
-        self.assertEqual(by_code["1.3.5"]["status"], "planned")
+        self.assertEqual(by_code["1.3.5"]["status"], "published")
 
     def test_previous_lesson_links_to_1_3_3_in_all_locales(self):
         for locale in ("", "-en", "-zh"):

@@ -696,12 +696,33 @@
       "module_uid": "mod-a-01-04",
       "code": "1.4.2",
       "title": "Обучение модели и функция потерь",
-      "status": "planned",
+      "status": "published",
       "access": "open",
       "level": "beginner",
-      "prerequisite_uids": [],
-      "learning_outcomes": [],
-      "content_state": "outline_only"
+      "prerequisite_uids": [
+        "les-a-0010"
+      ],
+      "learning_outcomes": [
+        "Различать обучение и прогнозирование; объяснять функцию потерь и эмпирический риск.",
+        "Рассчитывать MSE и объяснять градиентный спуск.",
+        "Запускать учебную реализацию обучения линейной модели и критически оценивать ограничения loss."
+      ],
+      "content_state": "published",
+      "title_i18n": {
+        "ru": "Обучение модели и функция потерь",
+        "en": "Model Training and the Loss Function",
+        "zh": "模型训练与损失函数"
+      },
+      "description_i18n": {
+        "ru": "Как модель учится на примерах: функция потерь, эмпирический риск, градиентный спуск и обновление параметров.",
+        "en": "How a model learns from examples: loss functions, empirical risk, gradient descent, and parameter updates.",
+        "zh": "模型如何从样本中学习：损失函数、经验风险、梯度下降与参数更新。"
+      },
+      "url_i18n": {
+        "ru": "lessons/a-1-4-2.html",
+        "en": "lessons/a-1-4-2-en.html",
+        "zh": "lessons/a-1-4-2-zh.html"
+      }
     },
     {
       "uid": "les-a-0012",

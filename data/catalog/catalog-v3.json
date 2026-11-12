@@ -524,6 +524,91 @@
       }
     },
     {
+      "uid": "les-a-0053",
+      "track_uid": "trk-a",
+      "theme_uid": "thm-a-01",
+      "module_uid": "mod-a-01-03",
+      "code": "1.3.3",
+      "title": "Обучение с подкреплением — Reinforcement Learning",
+      "status": "published",
+      "access": "open",
+      "level": "beginner",
+      "prerequisite_uids": [
+        "les-a-0007",
+        "les-a-0008"
+      ],
+      "learning_outcomes": [
+        "Объяснять отличие обучения с подкреплением от обучения с учителем и без учителя.",
+        "Различать агента, среду, состояние, действие, награду и эпизод.",
+        "Объяснять политику, функцию ценности и дисконтированный возврат.",
+        "Различать исследование новых действий и эксплуатацию известного опыта.",
+        "Описывать Q-learning, policy-based и actor–critic методы на концептуальном уровне.",
+        "Формулировать учебную RL-задачу и выявлять риски неверной награды и небезопасного исследования."
+      ],
+      "content_state": "published",
+      "url_i18n": {
+        "ru": "lessons/a-1-3-3.html",
+        "en": "lessons/a-1-3-3-en.html",
+        "zh": "lessons/a-1-3-3-zh.html"
+      },
+      "title_i18n": {
+        "ru": "Обучение с подкреплением — Reinforcement Learning",
+        "en": "Reinforcement Learning",
+        "zh": "强化学习 — Reinforcement Learning"
+      }
+    },
+    {
+      "uid": "les-a-0054",
+      "track_uid": "trk-a",
+      "theme_uid": "thm-a-01",
+      "module_uid": "mod-a-01-03",
+      "code": "1.3.4",
+      "title": "Классификация и регрессия",
+      "status": "planned",
+      "access": "open",
+      "level": "beginner",
+      "prerequisite_uids": [
+        "les-a-0007"
+      ],
+      "learning_outcomes": [
+        "Различать классификацию и регрессию как типы задач.",
+        "Сопоставлять тип целевой переменной и подходящую постановку задачи.",
+        "Объяснять вероятностный прогноз, порог решения и числовую оценку."
+      ],
+      "content_state": "outline_only",
+      "title_i18n": {
+        "ru": "Классификация и регрессия",
+        "en": "Classification and Regression",
+        "zh": "分类与回归"
+      }
+    },
+    {
+      "uid": "les-a-0055",
+      "track_uid": "trk-a",
+      "theme_uid": "thm-a-01",
+      "module_uid": "mod-a-01-03",
+      "code": "1.3.5",
+      "title": "Кластеризация и снижение размерности",
+      "status": "planned",
+      "access": "open",
+      "level": "beginner",
+      "prerequisite_uids": [
+        "les-a-0008"
+      ],
+      "learning_outcomes": [
+        "Сравнивать алгоритмы кластеризации и условия их применимости.",
+        "Оценивать устойчивость кластеров и ограничения внутренних метрик.",
+        "Объяснять PCA и различать снижение размерности и визуализацию.",
+        "Интерпретировать результаты кластеризации с учётом масштаба, признаков и шума."
+      ],
+      "content_state": "outline_only",
+      "title_i18n": {
+        "ru": "Кластеризация и снижение размерности",
+        "en": "Clustering and Dimensionality Reduction",
+        "zh": "聚类与降维"
+      }
+    },
+    {
       "uid": "les-a-0009",
       "track_uid": "trk-a",
       "theme_uid": "thm-a-01",

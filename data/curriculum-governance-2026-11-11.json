@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-11",
+  "updated_at": "2026-11-12",
   "canonical_decision": {
     "authority": "docs/management/TRACK_A_ARCHITECTURE_PROPOSAL.md",
     "track_a": "The 16 module architecture 11-26 in the approved 2026-11-05 decision is canonical for the XAI/Understanding AI sequence.",
@@ -286,18 +286,16 @@
         "status": "planned"
       }
     ],
-    "lesson_count": 52,
+    "lesson_count": 55,
     "lesson_status_counts": {
-      "published": 5,
-      "review": 5,
-      "planned": 42
+      "published": 15,
+      "planned": 40
     },
     "actual_lesson_counts": {
-      "published": 5,
-      "review": 5,
-      "planned": 42
+      "published": 15,
+      "planned": 40
     },
-    "lessons_with_ru_page": 10
+    "lessons_with_ru_page": 15
   },
   "module_mapping": [
     {
@@ -310,7 +308,7 @@
       "lesson_uids": [],
       "lesson_codes": [],
       "lesson_statuses": [],
-      "mapping_note": "Общая база: не создавать ложную привязку к вводным урокам Track A.",
+      "mapping_note": "Общая база; прямое соответствие вводным урокам Track A не назначать.",
       "mapping_confidence": "low",
       "catalog_mapping_status": "not_yet_mapped",
       "content_coverage_status": "no_lesson_uid"
@@ -421,23 +419,18 @@
       "theme_uid": "кандидат thm-a-03",
       "catalog_module_uid": "mod-a-03-01",
       "lesson_uids": [
-        "les-a-0007",
-        "les-a-0008",
         "les-a-0049"
       ],
       "lesson_codes": [
-        "1.3.1",
-        "1.3.2",
         "3.1.6"
       ],
       "lesson_statuses": [
-        "review",
-        "planned",
         "planned"
       ],
       "mapping_confidence": "low",
       "catalog_mapping_status": "candidate_only",
-      "content_coverage_status": "editorial_review"
+      "content_coverage_status": "listed_only_no_published_page",
+      "mapping_note": "В каталоге есть только planned-урок 3.1.6; вводные уроки 1.3.1/1.3.2 относятся к макромодулю 11."
     },
     {
       "module": 9,
@@ -483,6 +476,9 @@
         "les-a-0006",
         "les-a-0007",
         "les-a-0008",
+        "les-a-0053",
+        "les-a-0054",
+        "les-a-0055",
         "les-a-0009",
         "les-a-0010",
         "les-a-0011",
@@ -490,6 +486,13 @@
         "les-a-0013",
         "les-a-0014",
         "les-a-0015",
+        "les-a-0043",
+        "les-a-0044",
+        "les-a-0045",
+        "les-a-0046",
+        "les-a-0047",
+        "les-a-0048",
+        "les-a-0050",
         "les-a-0051",
         "les-a-0052"
       ],
@@ -502,6 +505,9 @@
         "1.2.6",
         "1.3.1",
         "1.3.2",
+        "1.3.3",
+        "1.3.4",
+        "1.3.5",
         "1.3.6",
         "1.4.1",
         "1.4.2",
@@ -509,16 +515,29 @@
         "1.4.4",
         "1.4.5",
         "1.5.6",
-        "1.1.2"
+        "1.5.1",
+        "1.5.2",
+        "1.5.3",
+        "1.5.4",
+        "1.5.5",
+        "1.5.7",
+        "1.2.4",
+        "1.1.2",
+        "1.1.4"
       ],
       "lesson_statuses": [
         "published",
         "published",
         "published",
-        "review",
-        "review",
-        "review",
-        "review",
+        "published",
+        "published",
+        "published",
+        "published",
+        "published",
+        "published",
+        "published",
+        "published",
+        "published",
         "planned",
         "planned",
         "planned",
@@ -527,11 +546,18 @@
         "planned",
         "planned",
         "planned",
+        "planned",
+        "planned",
+        "planned",
+        "planned",
+        "published",
+        "published",
         "published"
       ],
       "mapping_confidence": "medium",
       "catalog_mapping_status": "mapped",
-      "content_coverage_status": "partial_published_core"
+      "content_coverage_status": "partial_published_core",
+      "mapping_note": "Единый вводный макромодуль 11 покрывается пятью детализированными модулями каталога Theme 1; mapping many-to-many."
     },
     {
       "module": 12,
@@ -551,7 +577,8 @@
       ],
       "mapping_confidence": "medium",
       "catalog_mapping_status": "partial",
-      "content_coverage_status": "listed_only_no_published_page"
+      "content_coverage_status": "listed_only_no_published_page",
+      "mapping_note": "Линейные интерпретируемые модели; детализированный модуль каталога также содержит отдельные уроки о деревьях."
     },
     {
       "module": 13,
@@ -571,7 +598,8 @@
       ],
       "mapping_confidence": "medium",
       "catalog_mapping_status": "partial",
-      "content_coverage_status": "listed_only_no_published_page"
+      "content_coverage_status": "listed_only_no_published_page",
+      "mapping_note": "Нелинейные интерпретируемые модели; совместно использует контейнерный Module UID mod-a-04-01 с макромодулем 12."
     },
     {
       "module": 14,
@@ -599,7 +627,8 @@
       "lesson_statuses": [],
       "mapping_confidence": "low",
       "catalog_mapping_status": "missing_catalog_mapping",
-      "content_coverage_status": "no_lesson_uid"
+      "content_coverage_status": "no_lesson_uid",
+      "mapping_note": "Отдельного catalog Module UID пока нет."
     },
     {
       "module": 16,
@@ -612,18 +641,15 @@
         "les-a-0024",
         "les-a-0025",
         "les-a-0026",
-        "les-a-0027",
         "les-a-0028"
       ],
       "lesson_codes": [
         "4.3.1",
         "4.3.2",
         "4.3.3",
-        "4.3.4",
         "4.3.5"
       ],
       "lesson_statuses": [
-        "planned",
         "planned",
         "planned",
         "planned",
@@ -631,7 +657,8 @@
       ],
       "mapping_confidence": "low",
       "catalog_mapping_status": "planned_only",
-      "content_coverage_status": "listed_only_no_published_page"
+      "content_coverage_status": "listed_only_no_published_page",
+      "mapping_note": "PDP, ICE, ALE и сравнение методов; урок 4.3.4 выделен макромодулю 18."
     },
     {
       "module": 17,
@@ -639,8 +666,14 @@
       "track": "Track A",
       "prerequisites": "11–13,16",
       "theme_uid": "thm-a-04",
-      "catalog_module_uid": "mod-a-04-05; mod-a-04-06; mod-a-04-07",
+      "catalog_module_uid": "mod-a-04-02; mod-a-04-05; mod-a-04-06; mod-a-04-07; mod-a-05-03; mod-a-05-04",
       "lesson_uids": [
+        "les-a-0018",
+        "les-a-0019",
+        "les-a-0020",
+        "les-a-0021",
+        "les-a-0022",
+        "les-a-0023",
         "les-a-0029",
         "les-a-0030",
         "les-a-0031",
@@ -657,6 +690,12 @@
         "les-a-0042"
       ],
       "lesson_codes": [
+        "4.2.1",
+        "4.2.2",
+        "4.2.3",
+        "4.2.4",
+        "4.2.5",
+        "4.2.6",
         "4.5.1",
         "4.5.2",
         "4.5.3",
@@ -686,11 +725,18 @@
         "planned",
         "planned",
         "planned",
+        "planned",
+        "planned",
+        "planned",
+        "planned",
+        "planned",
+        "planned",
         "planned"
       ],
       "mapping_confidence": "low",
       "catalog_mapping_status": "planned_only",
-      "content_coverage_status": "listed_only_no_published_page"
+      "content_coverage_status": "listed_only_no_published_page",
+      "mapping_note": "Классические методы XAI; модули 5.3/5.4 трактуются как углублённые лабораторные SHAP и counterfactual, а не отдельные макромодули."
     },
     {
       "module": 18,
@@ -710,77 +756,83 @@
       ],
       "mapping_confidence": "low",
       "catalog_mapping_status": "planned_only",
-      "content_coverage_status": "listed_only_no_published_page"
+      "content_coverage_status": "listed_only_no_published_page",
+      "mapping_note": "Взаимодействия признаков; детализированный модуль каталога общий с макромодулем 16."
     },
     {
       "module": 19,
       "title": "Анализ CNN-based моделей",
       "track": "Track A → B bridge",
       "prerequisites": "9",
-      "theme_uid": "thm-a-05",
-      "catalog_module_uid": "нет отдельного UID для CNN",
+      "theme_uid": "кандидат thm-a-05",
+      "catalog_module_uid": "нет",
       "lesson_uids": [],
       "lesson_codes": [],
       "lesson_statuses": [],
       "mapping_confidence": "low",
       "catalog_mapping_status": "missing_catalog_mapping",
-      "content_coverage_status": "no_lesson_uid"
+      "content_coverage_status": "no_lesson_uid",
+      "mapping_note": "Для CNN-based анализа отдельный catalog Module UID ещё не создан."
     },
     {
       "module": 20,
       "title": "Градиентные эвристики объяснения",
       "track": "Track A → B bridge",
       "prerequisites": "19",
-      "theme_uid": "thm-a-05",
-      "catalog_module_uid": "нет отдельного UID для gradients",
+      "theme_uid": "кандидат thm-a-05",
+      "catalog_module_uid": "нет",
       "lesson_uids": [],
       "lesson_codes": [],
       "lesson_statuses": [],
       "mapping_confidence": "low",
       "catalog_mapping_status": "missing_catalog_mapping",
-      "content_coverage_status": "no_lesson_uid"
+      "content_coverage_status": "no_lesson_uid",
+      "mapping_note": "Для gradient-based методов отдельный catalog Module UID ещё не создан."
     },
     {
       "module": 21,
       "title": "Объяснения на основе локализации и CAM",
       "track": "Track A → B bridge",
       "prerequisites": "19–20",
-      "theme_uid": "thm-a-05",
-      "catalog_module_uid": "нет отдельного UID для CAM",
+      "theme_uid": "кандидат thm-a-05",
+      "catalog_module_uid": "нет",
       "lesson_uids": [],
       "lesson_codes": [],
       "lesson_statuses": [],
       "mapping_confidence": "low",
       "catalog_mapping_status": "missing_catalog_mapping",
-      "content_coverage_status": "no_lesson_uid"
+      "content_coverage_status": "no_lesson_uid",
+      "mapping_note": "Для CAM отдельный catalog Module UID ещё не создан."
     },
     {
       "module": 22,
       "title": "Concept-based методы",
       "track": "Track A → B bridge",
       "prerequisites": "19–21",
-      "theme_uid": "thm-a-05",
-      "catalog_module_uid": "нет отдельного UID для concepts",
+      "theme_uid": "кандидат thm-a-05",
+      "catalog_module_uid": "нет",
       "lesson_uids": [],
       "lesson_codes": [],
       "lesson_statuses": [],
       "mapping_confidence": "low",
       "catalog_mapping_status": "missing_catalog_mapping",
-      "content_coverage_status": "no_lesson_uid"
+      "content_coverage_status": "no_lesson_uid",
+      "mapping_note": "Для concept-based методов отдельный catalog Module UID ещё не создан."
     },
     {
       "module": 23,
       "title": "Attention-based explainability",
       "track": "Track A → B bridge",
       "prerequisites": "11,19–20",
-      "theme_uid": "thm-a-05",
-      "catalog_module_uid": "нет отдельного UID для attention",
+      "theme_uid": "кандидат thm-a-05",
+      "catalog_module_uid": "нет",
       "lesson_uids": [],
       "lesson_codes": [],
       "lesson_statuses": [],
       "mapping_confidence": "low",
       "catalog_mapping_status": "missing_catalog_mapping",
-      "content_coverage_status": "no_lesson_uid"
+      "content_coverage_status": "no_lesson_uid",
+      "mapping_note": "Для attention-based explainability отдельный catalog Module UID ещё не создан."
     },
     {
       "module": 24,
@@ -794,7 +846,8 @@
       "lesson_statuses": [],
       "mapping_confidence": "low",
       "catalog_mapping_status": "missing_catalog_mapping",
-      "content_coverage_status": "no_lesson_uid"
+      "content_coverage_status": "no_lesson_uid",
+      "mapping_note": "Applied LLM analysis пока не представлен отдельными catalog Theme/Module UID."
     },
     {
       "module": 25,
@@ -808,7 +861,8 @@
       "lesson_statuses": [],
       "mapping_confidence": "low",
       "catalog_mapping_status": "missing_catalog_mapping",
-      "content_coverage_status": "no_lesson_uid"
+      "content_coverage_status": "no_lesson_uid",
+      "mapping_note": "Объяснение поведения агентов пока не представлено отдельными catalog Theme/Module UID."
     },
     {
       "module": 26,
@@ -816,13 +870,14 @@
       "track": "Track A",
       "prerequisites": "12–25",
       "theme_uid": "thm-a-05",
-      "catalog_module_uid": "mod-a-05-01; mod-a-05-02; mod-a-05-03; mod-a-05-04; mod-a-05-05",
+      "catalog_module_uid": "mod-a-05-01; mod-a-05-02; mod-a-05-05",
       "lesson_uids": [],
       "lesson_codes": [],
       "lesson_statuses": [],
       "mapping_confidence": "low",
       "catalog_mapping_status": "planned_only",
-      "content_coverage_status": "no_lesson_uid"
+      "content_coverage_status": "no_lesson_uid",
+      "mapping_note": "Оценка качества, advanced attacks и capstone; Deep Dive SHAP/Counterfactual (5.3/5.4) отнесены к лабораториям макромодуля 17."
     },
     {
       "module": 27,
@@ -836,7 +891,8 @@
       "lesson_statuses": [],
       "mapping_confidence": "low",
       "catalog_mapping_status": "not_in_catalog",
-      "content_coverage_status": "no_lesson_uid"
+      "content_coverage_status": "no_lesson_uid",
+      "mapping_note": "Track B — отдельная рабочая архитектура; catalog UID пока не создавались."
     },
     {
       "module": 28,
@@ -850,7 +906,8 @@
       "lesson_statuses": [],
       "mapping_confidence": "low",
       "catalog_mapping_status": "not_in_catalog",
-      "content_coverage_status": "no_lesson_uid"
+      "content_coverage_status": "no_lesson_uid",
+      "mapping_note": "Track B — отдельная рабочая архитектура; catalog UID пока не создавались."
     },
     {
       "module": 29,
@@ -864,7 +921,8 @@
       "lesson_statuses": [],
       "mapping_confidence": "low",
       "catalog_mapping_status": "not_in_catalog",
-      "content_coverage_status": "no_lesson_uid"
+      "content_coverage_status": "no_lesson_uid",
+      "mapping_note": "Track B — отдельная рабочая архитектура; catalog UID пока не создавались."
     },
     {
       "module": 30,
@@ -878,7 +936,8 @@
       "lesson_statuses": [],
       "mapping_confidence": "low",
       "catalog_mapping_status": "not_in_catalog",
-      "content_coverage_status": "no_lesson_uid"
+      "content_coverage_status": "no_lesson_uid",
+      "mapping_note": "Track B — отдельная рабочая архитектура; catalog UID пока не создавались."
     },
     {
       "module": 31,
@@ -892,7 +951,8 @@
       "lesson_statuses": [],
       "mapping_confidence": "low",
       "catalog_mapping_status": "not_in_catalog",
-      "content_coverage_status": "no_lesson_uid"
+      "content_coverage_status": "no_lesson_uid",
+      "mapping_note": "Track B — отдельная рабочая архитектура; catalog UID пока не создавались."
     },
     {
       "module": 32,
@@ -906,7 +966,8 @@
       "lesson_statuses": [],
       "mapping_confidence": "low",
       "catalog_mapping_status": "not_in_catalog",
-      "content_coverage_status": "no_lesson_uid"
+      "content_coverage_status": "no_lesson_uid",
+      "mapping_note": "Track B — отдельная рабочая архитектура; catalog UID пока не создавались."
     },
     {
       "module": 33,
@@ -920,7 +981,8 @@
       "lesson_statuses": [],
       "mapping_confidence": "low",
       "catalog_mapping_status": "not_in_catalog",
-      "content_coverage_status": "no_lesson_uid"
+      "content_coverage_status": "no_lesson_uid",
+      "mapping_note": "Track B — отдельная рабочая архитектура; catalog UID пока не создавались."
     },
     {
       "module": 34,
@@ -934,7 +996,8 @@
       "lesson_statuses": [],
       "mapping_confidence": "low",
       "catalog_mapping_status": "not_in_catalog",
-      "content_coverage_status": "no_lesson_uid"
+      "content_coverage_status": "no_lesson_uid",
+      "mapping_note": "Track B — отдельная рабочая архитектура; catalog UID пока не создавались."
     },
     {
       "module": 35,
@@ -948,7 +1011,8 @@
       "lesson_statuses": [],
       "mapping_confidence": "low",
       "catalog_mapping_status": "not_in_catalog",
-      "content_coverage_status": "no_lesson_uid"
+      "content_coverage_status": "no_lesson_uid",
+      "mapping_note": "Track B — отдельная рабочая архитектура; catalog UID пока не создавались."
     },
     {
       "module": 36,
@@ -962,7 +1026,8 @@
       "lesson_statuses": [],
       "mapping_confidence": "low",
       "catalog_mapping_status": "not_in_catalog",
-      "content_coverage_status": "no_lesson_uid"
+      "content_coverage_status": "no_lesson_uid",
+      "mapping_note": "Track B — отдельная рабочая архитектура; catalog UID пока не создавались."
     },
     {
       "module": 37,
@@ -976,7 +1041,8 @@
       "lesson_statuses": [],
       "mapping_confidence": "low",
       "catalog_mapping_status": "not_in_catalog",
-      "content_coverage_status": "no_lesson_uid"
+      "content_coverage_status": "no_lesson_uid",
+      "mapping_note": "Track B — отдельная рабочая архитектура; catalog UID пока не создавались."
     },
     {
       "module": 38,
@@ -990,7 +1056,8 @@
       "lesson_statuses": [],
       "mapping_confidence": "low",
       "catalog_mapping_status": "not_in_catalog",
-      "content_coverage_status": "no_lesson_uid"
+      "content_coverage_status": "no_lesson_uid",
+      "mapping_note": "Track B — отдельная рабочая архитектура; catalog UID пока не создавались."
     },
     {
       "module": 39,
@@ -1004,7 +1071,8 @@
       "lesson_statuses": [],
       "mapping_confidence": "low",
       "catalog_mapping_status": "not_in_catalog",
-      "content_coverage_status": "no_lesson_uid"
+      "content_coverage_status": "no_lesson_uid",
+      "mapping_note": "Track B — отдельная рабочая архитектура; catalog UID пока не создавались."
     }
   ],
   "lesson_inventory": [
@@ -1017,7 +1085,11 @@
       "module_uid": "mod-a-01-01",
       "url": "lessons/a-1-1-1.html",
       "prerequisites": [],
-      "languages": []
+      "languages": [
+        "ru",
+        "en",
+        "zh"
+      ]
     },
     {
       "uid": "les-a-0002",
@@ -1027,8 +1099,14 @@
       "theme_uid": "thm-a-01",
       "module_uid": "mod-a-01-01",
       "url": "lessons/a-1-1-3.html",
-      "prerequisites": [],
-      "languages": []
+      "prerequisites": [
+        "les-a-0051"
+      ],
+      "languages": [
+        "ru",
+        "en",
+        "zh"
+      ]
     },
     {
       "uid": "les-a-0003",
@@ -1039,73 +1117,169 @@
       "module_uid": "mod-a-01-02",
       "url": "lessons/a-1-2-1.html",
       "prerequisites": [],
-      "languages": []
+      "languages": [
+        "ru",
+        "en",
+        "zh"
+      ]
     },
     {
       "uid": "les-a-0004",
       "code": "1.2.2",
       "title": "Объекты, признаки и целевые переменные",
-      "status": "review",
+      "status": "published",
       "theme_uid": "thm-a-01",
       "module_uid": "mod-a-01-02",
       "url": "lessons/a-1-2-2.html",
-      "prerequisites": [],
-      "languages": []
+      "prerequisites": [
+        "les-a-0003"
+      ],
+      "languages": [
+        "ru",
+        "en",
+        "zh"
+      ]
     },
     {
       "uid": "les-a-0005",
       "code": "1.2.5",
       "title": "Качество данных, пропуски и выбросы",
-      "status": "review",
+      "status": "published",
       "theme_uid": "thm-a-01",
       "module_uid": "mod-a-01-02",
       "url": "lessons/a-1-2-5.html",
-      "prerequisites": [],
-      "languages": []
+      "prerequisites": [
+        "les-a-0003"
+      ],
+      "languages": [
+        "ru",
+        "en",
+        "zh"
+      ]
     },
     {
       "uid": "les-a-0006",
       "code": "1.2.6",
       "title": "Корреляция, зависимости и утечка данных",
-      "status": "review",
+      "status": "published",
       "theme_uid": "thm-a-01",
       "module_uid": "mod-a-01-02",
       "url": "lessons/a-1-2-6.html",
-      "prerequisites": [],
-      "languages": []
+      "prerequisites": [
+        "les-a-0004",
+        "les-a-0050",
+        "les-a-0005"
+      ],
+      "languages": [
+        "ru",
+        "en",
+        "zh"
+      ]
     },
     {
       "uid": "les-a-0007",
       "code": "1.3.1",
       "title": "Обучение с учителем — Supervised Learning",
-      "status": "review",
+      "status": "published",
       "theme_uid": "thm-a-01",
       "module_uid": "mod-a-01-03",
       "url": "lessons/a-1-3-1.html",
       "prerequisites": [],
-      "languages": []
+      "languages": [
+        "ru",
+        "en",
+        "zh"
+      ]
     },
     {
       "uid": "les-a-0008",
       "code": "1.3.2",
       "title": "Обучение без учителя — Unsupervised Learning",
-      "status": "planned",
+      "status": "published",
       "theme_uid": "thm-a-01",
       "module_uid": "mod-a-01-03",
-      "url": null,
-      "prerequisites": [],
-      "languages": []
+      "url": "lessons/a-1-3-2.html",
+      "prerequisites": [
+        "les-a-0003",
+        "les-a-0007"
+      ],
+      "languages": [
+        "ru",
+        "en",
+        "zh"
+      ]
+    },
+    {
+      "uid": "les-a-0053",
+      "code": "1.3.3",
+      "title": "Обучение с подкреплением — Reinforcement Learning",
+      "status": "published",
+      "theme_uid": "thm-a-01",
+      "module_uid": "mod-a-01-03",
+      "url": "lessons/a-1-3-3.html",
+      "prerequisites": [
+        "les-a-0007",
+        "les-a-0008"
+      ],
+      "languages": [
+        "ru",
+        "en",
+        "zh"
+      ]
+    },
+    {
+      "uid": "les-a-0054",
+      "code": "1.3.4",
+      "title": "Классификация и регрессия",
+      "status": "published",
+      "theme_uid": "thm-a-01",
+      "module_uid": "mod-a-01-03",
+      "url": "lessons/a-1-3-4.html",
+      "prerequisites": [
+        "les-a-0007"
+      ],
+      "languages": [
+        "ru",
+        "en",
+        "zh"
+      ]
+    },
+    {
+      "uid": "les-a-0055",
+      "code": "1.3.5",
+      "title": "Кластеризация и снижение размерности",
+      "status": "published",
+      "theme_uid": "thm-a-01",
+      "module_uid": "mod-a-01-03",
+      "url": "lessons/a-1-3-5.html",
+      "prerequisites": [
+        "les-a-0008",
+        "les-a-0054"
+      ],
+      "languages": [
+        "ru",
+        "en",
+        "zh"
+      ]
     },
     {
       "uid": "les-a-0009",
       "code": "1.3.6",
       "title": "Генеративные модели и другие современные подходы",
-      "status": "planned",
+      "status": "published",
       "theme_uid": "thm-a-01",
       "module_uid": "mod-a-01-03",
-      "url": null,
-      "prerequisites": [],
-      "languages": []
+      "url": "lessons/a-1-3-6.html",
+      "prerequisites": [
+        "les-a-0053",
+        "les-a-0054",
+        "les-a-0055"
+      ],
+      "languages": [
+        "ru",
+        "en",
+        "zh"
+      ]
     },
     {
       "uid": "les-a-0010",
@@ -1544,19 +1718,28 @@
       "theme_uid": "thm-a-03",
       "module_uid": "mod-a-03-01",
       "url": null,
-      "prerequisites": [],
+      "prerequisites": [
+        "les-a-0010",
+        "les-a-0011"
+      ],
       "languages": []
     },
     {
       "uid": "les-a-0050",
       "code": "1.2.4",
       "title": "Обучающие, проверочные и тестовые данные",
-      "status": "review",
+      "status": "published",
       "theme_uid": "thm-a-01",
       "module_uid": "mod-a-01-02",
       "url": "lessons/a-1-2-4.html",
-      "prerequisites": [],
-      "languages": []
+      "prerequisites": [
+        "les-a-0004"
+      ],
+      "languages": [
+        "ru",
+        "en",
+        "zh"
+      ]
     },
     {
       "uid": "les-a-0051",
@@ -1566,8 +1749,14 @@
       "theme_uid": "thm-a-01",
       "module_uid": "mod-a-01-01",
       "url": "lessons/a-1-1-2.html",
-      "prerequisites": [],
-      "languages": []
+      "prerequisites": [
+        "les-a-0001"
+      ],
+      "languages": [
+        "ru",
+        "en",
+        "zh"
+      ]
     },
     {
       "uid": "les-a-0052",
@@ -1577,8 +1766,14 @@
       "theme_uid": "thm-a-01",
       "module_uid": "mod-a-01-01",
       "url": "lessons/a-1-1-4.html",
-      "prerequisites": [],
-      "languages": []
+      "prerequisites": [
+        "les-a-0002"
+      ],
+      "languages": [
+        "ru",
+        "en",
+        "zh"
+      ]
     }
   ],
   "labs": [
@@ -1985,10 +2180,10 @@
   ],
   "coverage_summary": {
     "macro_modules": 40,
-    "catalog_lessons": 52,
-    "published": 5,
-    "review": 5,
-    "planned": 42,
+    "catalog_lessons": 55,
+    "published": 15,
+    "review": 0,
+    "planned": 40,
     "catalog_mapping_statuses": {
       "not_yet_mapped": 1,
       "candidate_only": 10,
@@ -2000,9 +2195,8 @@
     },
     "content_coverage_statuses": {
       "no_lesson_uid": 33,
-      "editorial_review": 1,
-      "partial_published_core": 1,
-      "listed_only_no_published_page": 5
+      "listed_only_no_published_page": 6,
+      "partial_published_core": 1
     }
   }
 }

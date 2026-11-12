@@ -37,7 +37,7 @@ The lesson contains:
 10. An independent comparison task, limitations, and summary.
 11. Five references, ten glossary entries, and eight self-check questions with explanations.
 
-Three original SVG diagrams are localised in each language. Each SVG includes `title`, `desc`, and a localised caption. Diagram overflow is contained within the figure on narrow screens.
+Thirteen key concepts use the shared Definition component at first introduction. Three original SVG diagrams are localised in each language. Each SVG includes `title`, `desc`, and a localised caption. Diagram overflow is contained within the figure on narrow screens.
 
 ## Python lab
 

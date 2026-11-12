@@ -1884,6 +1884,26 @@
         "CI после последних изменений не подтверждён; требуется дождаться GitHub Actions workflow.",
         "Ручная визуальная проверка опубликованного сайта на desktop/mobile и в светлой/тёмной темах не выполнялась."
       ]
+    },
+    {
+      "id": "AUD-071",
+      "date": "2026-11-12",
+      "type": "post_navigation_and_concept_standard_ci_deployment_visual_qa",
+      "title": "Проверка CI, GitHub Pages и визуального результата после обновления стандарта уроков",
+      "result": "Проверен HEAD main: f038032bcab08f1fccd9c16d276ad0374aa8aa37. Workflow validate-catalog.yml содержит запуск test_lesson_navigation_and_concepts.py и test_lesson_134_multilingual.py, а workflow_dispatch разрешён. GitHub commit combined status показывает только Vercel failure с build-rate-limit. Получение GitHub Actions runs через доступный commit-runs метод вернуло пустой список (метод возвращает только PR-triggered runs), поэтому это не доказывает, что push CI не запускался. Публичный GitHub Pages URL урока 1.3.4 не удалось открыть через доступный web fetch; проверка прямого HTTP-запроса также остановилась на DNS resolution. Визуальная проверка в браузере не выполнена.",
+      "evidence": [
+        ".github/workflows/validate-catalog.yml",
+        "tests/test_lesson_navigation_and_concepts.py",
+        "tests/test_lesson_134_multilingual.py",
+        "https://github.com/Dach1980/ai-research-dch-school/commit/f038032bcab08f1fccd9c16d276ad0374aa8aa37",
+        "https://dach1980.github.io/ai-research-dch-school/lessons/a-1-3-4.html"
+      ],
+      "limitations": [
+        "Vercel failure build-rate-limit не является результатом GitHub Actions или GitHub Pages.",
+        "Доступный GitHub connector не предоставляет список push workflow runs для этого коммита.",
+        "Публичный Pages сайт недоступен из текущей среды из-за DNS/fetch failure; нельзя подтвердить, что опубликованная версия уже содержит последний commit.",
+        "Desktop/mobile, light/dark и keyboard visual QA остаются невыполненными."
+      ]
     }
   ]
 }

@@ -45,7 +45,7 @@ class Lesson133Tests(unittest.TestCase):
                 self.assertEqual(len(re.findall(r'<figure class="lesson-figure lesson-133-figure">', html)), 3)
                 self.assertEqual(html.count("<title id="), 3)
                 self.assertEqual(html.count("<desc"), 3)
-                timeline = re.findall(r'<svg viewBox="0 0 820 220"[\\s\\S]*?</svg>', html)
+                timeline = re.findall(r'<svg viewBox="0 0 820 220"[\s\S]*?</svg>', html)
                 self.assertEqual(len(timeline), 1)
                 self.assertEqual(timeline[0].count('fill="#243f6b"'), 4)
                 self.assertEqual(timeline[0].count('fill="#ffffff"'), 4)

@@ -1,0 +1,13 @@
+/* Lesson 1.3.5 — diagrams remain readable on narrow screens and in both themes. */
+.lesson-135-figure{max-width:100%;overflow-x:auto;overscroll-behavior-x:contain;scrollbar-width:thin;}
+.lesson-135-figure svg{display:block;width:100%;height:auto;min-width:760px;}
+.lesson-135-figure .panel{fill:var(--lds-surface,#101d34);stroke:var(--lds-border,rgba(120,160,230,.35));stroke-width:1.5;}
+.lesson-135-figure .step{fill:var(--lds-card-bg,rgba(70,100,160,.16));stroke:var(--lds-border,rgba(120,160,230,.45));stroke-width:1.5;}
+.lesson-135-figure .labels{fill:var(--lds-ink,#eaf1ff);font:700 15px system-ui,sans-serif;}
+.lesson-135-figure .step-label{fill:var(--lds-ink,#eaf1ff);font:700 14px system-ui,sans-serif;}
+.lesson-135-figure .minor{fill:var(--lds-muted,#aebdd4);font:12px system-ui,sans-serif;}
+html[data-theme="light"] .lesson-135-figure .panel{fill:#f3f7ff;stroke:#c4d4eb;}
+html[data-theme="light"] .lesson-135-figure .step{fill:#e8f0fc;stroke:#b6cbe8;}
+html[data-theme="light"] .lesson-135-figure .labels,html[data-theme="light"] .lesson-135-figure .step-label{fill:#172d4d;}
+html[data-theme="light"] .lesson-135-figure .minor{fill:#526783;}
+@media(max-width:560px){.lesson-135-figure{padding:12px!important;}.lesson-135-figure svg{width:900px;max-width:none;}}

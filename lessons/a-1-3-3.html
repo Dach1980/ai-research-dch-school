@@ -46,7 +46,7 @@ def step(state, action):
 for episode in range(400):
     state = 0
     for _ in range(10):
-        if random.random() < epsilon:
+        if random.random() &lt; epsilon:
             action_index = random.randrange(len(ACTIONS))
         else:
             action_index = max(range(2), key=lambda i: Q[state][i])
@@ -66,7 +66,7 @@ for _ in range(10):
     path.append(state)
     if done:
         break
-print(" -> ".join(map(str, path)))</code></pre>
+print(" -&gt; ".join(map(str, path)))</code></pre>
 <h3>Как работает код</h3>
 <ul><li><code>Q[state][action_index]</code> хранит оценку действия в состоянии.</li><li><code>epsilon</code> задаёт вероятность случайного исследования.</li><li><code>target</code> объединяет немедленную награду и лучшую оценку следующего действия.</li><li>Параметр <code>alpha</code> задаёт скорость обновления Q-оценки, а <code>gamma</code> — вес будущей награды.</li></ul>
 <p><strong>Ожидаемый вывод:</strong> <code>0 -&gt; 1 -&gt; 2 -&gt; 3 -&gt; 4</code>. Это иллюстрация механизма Q-learning, а не доказательство пригодности алгоритма для реального оборудования.</p>

@@ -433,6 +433,23 @@
         "Добавлены регрессионные тесты и CI trigger для общего stylesheet."
       ],
       "source": "lessons/*.html; styles/lesson-design-system.css; docs/education/LESSON_PRODUCTION_PROMPT_TEMPLATE.md; tests/test_lesson_navigation_and_concepts.py"
+    },
+    {
+      "id": "RM-21",
+      "date": "2026-11-12",
+      "title": "Ввести единый компонент математических формул для светлой и тёмной тем",
+      "status": "in_progress",
+      "priority": "high",
+      "decision": "В Lesson Design System добавлен обязательный раздел 17 о компоненте Formula: отдельная карточка формулы, локализованная метка, доступное описание, контрастные переменные для светлой/тёмной темы, мобильная горизонтальная прокрутка и пояснение обозначений. Общий CSS-компонент реализован в lesson-design-system.css. Формула возврата в уроке 1.3.3 обновлена во всех локализациях. Короткий production prompt требует применять этот стандарт. Добавлен регрессионный тест; CI и браузерная визуальная проверка после публикации ожидают подтверждения.",
+      "acceptance": [
+        "Новые и перерабатываемые уроки используют .formula / .formula-label / .formula-expression для отображаемых формул.",
+        "Светлая и тёмная темы используют --lds-math-* токены без локальных жёстких цветов.",
+        "Формула имеет role=math и локализованный aria-label.",
+        "На узких экранах прокручивается формульная карточка, а не вся страница.",
+        "Формула 1.3.3 обновлена в RU / EN / 中文.",
+        "Регрессионные тесты, CI и Pages deployment проходят; ручная проверка обеих тем и мобильного поведения зафиксирована отдельно."
+      ],
+      "source": "docs/education/LESSON_DESIGN_SYSTEM.md; docs/education/LESSON_PRODUCTION_PROMPT_TEMPLATE.md; styles/lesson-design-system.css; lessons/a-1-3-3*.html; tests/test_lesson_133_multilingual.py"
     }
   ],
   "audit_log": [
@@ -1903,6 +1920,26 @@
         "Доступный GitHub connector не предоставляет список push workflow runs для этого коммита.",
         "Публичный Pages сайт недоступен из текущей среды из-за DNS/fetch failure; нельзя подтвердить, что опубликованная версия уже содержит последний commit.",
         "Desktop/mobile, light/dark и keyboard visual QA остаются невыполненными."
+      ]
+    },
+    {
+      "id": "AUD-072",
+      "date": "2026-11-12",
+      "type": "mathematical_formula_design_standard",
+      "title": "Утверждён общий дизайн формул для светлой и тёмной тем",
+      "result": "В обязательный Lesson Design System добавлен раздел 17 с требованиями к отображаемым и inline формулам, доступности, локализациям, пояснению обозначений, контрасту, мобильной прокрутке и цветовым токенам для двух тем. В styles/lesson-design-system.css реализован общий адаптивный компонент с отдельной меткой и математическим выражением. Формула дисконтированного возврата урока 1.3.3 обновлена во всех трёх локализациях. Короткий промпт для новых уроков дополнен обязательным применением компонента. Добавлен регрессионный тест формулы и theme tokens.",
+      "evidence": [
+        "docs/education/LESSON_DESIGN_SYSTEM.md",
+        "docs/education/LESSON_PRODUCTION_PROMPT_TEMPLATE.md",
+        "styles/lesson-design-system.css",
+        "lessons/a-1-3-3.html",
+        "lessons/a-1-3-3-en.html",
+        "lessons/a-1-3-3-zh.html",
+        "tests/test_lesson_133_multilingual.py"
+      ],
+      "limitations": [
+        "CI после добавления теста ещё не подтверждён.",
+        "Визуальная проверка опубликованной формулы в светлой/тёмной темах и на мобильном экране ещё не выполнена."
       ]
     }
   ]

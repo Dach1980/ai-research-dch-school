@@ -99,3 +99,11 @@ html:not([data-theme="light"]) .code-token-keyword{color:#c4a7ff}html:not([data-
   .article-body .formula{margin:1.2rem 0;padding:1rem .85rem;border-radius:13px}
   .article-body .formula-expression{font-size:1rem}
 }
+
+
+/* Definition component — term and explanation use distinct theme tokens. */
+:root{--lds-definition-term:#205fb7;--lds-definition-text:#334155;--lds-definition-surface:#f5f8fd;--lds-definition-border:#cbd8e9}
+html:not([data-theme="light"]){--lds-definition-term:#91c5ff;--lds-definition-text:#e0e9f7;--lds-definition-surface:#111f36;--lds-definition-border:#3b5272}
+.article-body .definition{display:block;padding:1.05rem 1.25rem;margin:1.25rem 0;border:1px solid var(--lds-definition-border);border-left:4px solid var(--lds-definition-term);border-radius:13px;background:var(--lds-definition-surface);color:var(--lds-definition-text);line-height:1.75}
+.article-body .definition .definition-term{display:inline;color:var(--lds-definition-term);font-weight:800}
+.article-body .definition .definition-text{display:inline;color:var(--lds-definition-text);font-weight:400}

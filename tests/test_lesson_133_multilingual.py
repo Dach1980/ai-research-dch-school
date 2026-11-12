@@ -27,6 +27,8 @@ class Lesson133Tests(unittest.TestCase):
                 html = path.read_text(encoding="utf-8")
                 self.assertIn(f'<html lang="{locale}">', html)
                 self.assertIn("1.3.3", html)
+                self.assertNotIn("<h2>undefined</h2>", html)
+                self.assertNotIn("undefined", html)
                 self.assertIn(TITLES[locale], html)
                 self.assertIn('rel="canonical"', html)
                 self.assertNotIn('name="robots" content="noindex,nofollow"', html)

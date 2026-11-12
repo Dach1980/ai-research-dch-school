@@ -58,3 +58,6 @@ html:not([data-theme="light"]) .code-token-keyword{color:#c4a7ff}html:not([data-
 .article-body .lesson-figure figcaption{margin-top:12px;color:var(--muted,#aebdd4);font-size:13px;line-height:1.6}
 .lesson-sources{margin:30px 0}.lesson-sources li{margin:.55rem 0}
 @media(max-width:600px){.article-body{padding-left:14px;padding-right:14px}.article-body .lesson-figure{overflow-x:auto}.article-body .lesson-figure svg{min-width:620px}.article-body .lesson-table{font-size:.9rem}}
+
+/* Inline concept emphasis: use for the first meaningful occurrence of a key term in lesson prose. */
+.article-body .concept-term{display:inline;color:var(--lds-ink,var(--text));font-weight:800;padding:.04em .22em;border-radius:.28em;background:color-mix(in srgb,var(--lds-accent,#78aaff) 16%,transparent);border-bottom:1px solid var(--lds-accent,#78aaff);box-decoration-break:clone;-webkit-box-decoration-break:clone}

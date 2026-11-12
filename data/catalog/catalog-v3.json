@@ -665,12 +665,38 @@
       "module_uid": "mod-a-01-04",
       "code": "1.4.1",
       "title": "Понятие модели и параметров",
-      "status": "planned",
+      "status": "review",
       "access": "open",
       "level": "beginner",
       "prerequisite_uids": [],
-      "learning_outcomes": [],
-      "content_state": "outline_only"
+      "learning_outcomes": {
+        "ru": [
+          "Объяснять модель как отображение входных данных в выход.",
+          "Различать входные признаки, параметры и прогноз.",
+          "Различать модель, алгоритм обучения и AI-систему."
+        ],
+        "en": [
+          "Explain a model as a mapping from inputs to outputs.",
+          "Distinguish input features, parameters, and predictions.",
+          "Distinguish a model, a training algorithm, and an AI system."
+        ],
+        "zh": [
+          "解释模型如何将输入映射为输出。",
+          "区分输入特征、模型参数和预测结果。",
+          "区分模型、训练算法和 AI 系统。"
+        ]
+      },
+      "content_state": "localized",
+      "url_i18n": {
+        "ru": "lessons/a-1-4-1.html",
+        "en": "lessons/a-1-4-1-en.html",
+        "zh": "lessons/a-1-4-1-zh.html"
+      },
+      "title_i18n": {
+        "ru": "Понятие модели и параметров",
+        "en": "The Model and Its Parameters",
+        "zh": "模型与参数的概念"
+      }
     },
     {
       "uid": "les-a-0011",

@@ -597,7 +597,7 @@
       "module_uid": "mod-a-01-03",
       "code": "1.3.5",
       "title": "Кластеризация и снижение размерности",
-      "status": "review",
+      "status": "published",
       "access": "open",
       "level": "beginner",
       "prerequisite_uids": [
@@ -611,7 +611,7 @@
         "Проверять устойчивость кластеров при изменении выборки, инициализации и параметров.",
         "Объяснять PCA, объяснённую дисперсию и ограничения двумерной визуализации."
       ],
-      "content_state": "localized",
+      "content_state": "published",
       "title_i18n": {
         "ru": "Кластеризация и снижение размерности",
         "en": "Clustering and Dimensionality Reduction",

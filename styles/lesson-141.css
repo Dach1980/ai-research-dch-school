@@ -4,7 +4,7 @@
 .lesson-141-figure figcaption{margin-top:12px;color:var(--lds-muted);font-size:13px;line-height:1.6}
 .d141-bg{fill:var(--lds-surface);stroke:var(--lds-line);stroke-width:1.2}
 .d141-card{fill:var(--lds-surface);stroke:var(--lds-line);stroke-width:1.6}
-.d141-model{fill:color-mix(in srgb,var(--lds-accent) 12%,var(--lds-surface));stroke:var(--lds-accent);stroke-width:1.8}
+.d141-model{fill:var(--lds-surface);fill:color-mix(in srgb,var(--lds-accent) 12%,var(--lds-surface));stroke:var(--lds-accent);stroke-width:1.8}
 .d141-heading{fill:var(--lds-ink);font:700 17px Manrope,Arial,sans-serif}
 .d141-emphasis{fill:var(--lds-accent);font:800 22px ui-monospace,monospace}
 .d141-note{fill:var(--lds-muted);font:500 13px Manrope,Arial,sans-serif}

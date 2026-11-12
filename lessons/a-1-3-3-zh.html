@@ -32,7 +32,7 @@ def step(state, action):
 for episode in range(400):
     state = 0
     for _ in range(10):
-        if random.random() < epsilon:
+        if random.random() &lt; epsilon:
             action_index = random.randrange(len(ACTIONS))
         else:
             action_index = max(range(2), key=lambda i: Q[state][i])
@@ -52,7 +52,7 @@ for _ in range(10):
     path.append(state)
     if done:
         break
-print(" -> ".join(map(str, path)))</code></pre><h3>代码说明</h3><ul><li><code>Q[state][action_index]</code>保存某个状态下行动的估值。</li><li><code>epsilon</code>设定随机探索概率。</li><li><code>target</code>结合即时奖励与下一个状态的最佳行动估值。</li><li><code>alpha</code>控制更新步长，<code>gamma</code>控制未来奖励的权重。</li></ul><p><strong>预期输出：</strong><code>0 -&gt; 1 -&gt; 2 -&gt; 3 -&gt; 4</code>。这只是 Q-learning 机制示例，不代表算法适用于真实设备。</p>
+print(" -&gt; ".join(map(str, path)))</code></pre><h3>代码说明</h3><ul><li><code>Q[state][action_index]</code>保存某个状态下行动的估值。</li><li><code>epsilon</code>设定随机探索概率。</li><li><code>target</code>结合即时奖励与下一个状态的最佳行动估值。</li><li><code>alpha</code>控制更新步长，<code>gamma</code>控制未来奖励的权重。</li></ul><p><strong>预期输出：</strong><code>0 -&gt; 1 -&gt; 2 -&gt; 3 -&gt; 4</code>。这只是 Q-learning 机制示例，不代表算法适用于真实设备。</p>
 <h2>8. 局限性与常见错误</h2><ul><li><strong>奖励设计不当：</strong>智能体优化的形式信号可能与真实目标不一致。</li><li><strong>不安全探索：</strong>真实环境中的随机行动可能不可接受。</li><li><strong>经验成本高：</strong>训练可能需要大量交互或仿真器。</li><li><strong>仿真与现实差距：</strong>仿真中学到的行为不一定能迁移。</li><li><strong>部分可观测与不稳定：</strong>重要因素可能不可见，结果也会受到随机种子和设置影响。</li></ul><p>强化学习不能保证安全或最优控制。必须进行测试、设置独立约束、监控系统，并保留停止或人工接管行动的能力。</p>
 <h2>9. 本课要点</h2><ul><li>强化学习通过环境交互和奖励训练智能体。</li><li>行动具有连续后果，因此长期回报很重要。</li><li>策略负责选择行动，价值函数估计结果。</li><li>探索与利用需要平衡。</li><li>质量取决于任务定义、奖励、约束和环境，而不只是算法。</li></ul><div class="lesson-practice"><h3>独立练习</h3><p>为建筑教学仿真设计一个强化学习任务：列出三个观察量、允许行动、奖励示例、回合结束条件和两个硬性安全约束。说明如果奖励只考虑能耗，可能出现什么不良行为。</p></div></article>
 <section class="lesson-sources"><h2>10. 参考资料与延伸阅读</h2><ul><li><a href="https://incompleteideas.net/book/the-book-2nd.html" target="_blank" rel="noopener noreferrer">Sutton, Barto — Reinforcement Learning: An Introduction, 2nd edition</a>: 关于智能体、环境、奖励、回报和策略的基础教材。</li><li><a href="https://spinningup.openai.com/en/latest/spinningup/rl_intro.html" target="_blank" rel="noopener noreferrer">OpenAI Spinning Up — Key Concepts in RL</a>: 强化学习术语、价值函数、MDP 和基础公式。</li><li><a href="https://spinningup.openai.com/en/latest/user/introduction.html" target="_blank" rel="noopener noreferrer">OpenAI Spinning Up — Introduction</a>: 强化学习与深度强化学习入门。</li><li><a href="https://gymnasium.farama.org/api/env/" target="_blank" rel="noopener noreferrer">Gymnasium — Environment API</a>: 环境接口：reset、step、observation、reward、terminated 和 truncated。</li><li><a href="https://spinningup.openai.com/en/latest/algorithms/vpg.html" target="_blank" rel="noopener noreferrer">OpenAI Spinning Up — Vanilla Policy Gradient</a>: 策略梯度方法示例。</li></ul><p class="muted">这些资料用于进一步学习。本课不能替代对 MDP、概率模型、优化和安全控制的系统学习。</p></section>

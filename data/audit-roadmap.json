@@ -1972,7 +1972,8 @@
         "styles/lesson-135.css",
         "tests/test_lesson_135_multilingual.py",
         "data/catalog/catalog-v3.json",
-        "scripts/planet-map-catalog.js"
+        "scripts/planet-map-catalog.js",
+        "docs/education/LESSON_1_3_5_EDITORIAL_REVIEW.md"
       ],
       "limitations": [
         "CI и GitHub Pages deployment после создания урока ещё не подтверждены.",

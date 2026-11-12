@@ -31,7 +31,7 @@ class LessonNavigationAndConceptTests(unittest.TestCase):
                         previous = self.by_code[self.codes[index - 1]]["url_i18n"][locale].split("/")[-1]
                         self.assertIn(f'href="{previous}"', nav, page)
                     else:
-                        self.assertIn('aria-disabled="true"', nav, page)
+                        self.assertNotIn('aria-disabled="true"', nav, page)
                     if index < len(self.codes) - 1:
                         following = self.by_code[self.codes[index + 1]]["url_i18n"][locale].split("/")[-1]
                         self.assertIn(f'href="{following}"', nav, page)
@@ -45,6 +45,8 @@ class LessonNavigationAndConceptTests(unittest.TestCase):
                 html = (ROOT / page).read_text(encoding="utf-8")
                 self.assertIn("../styles/lesson-design-system.css", html)
                 self.assertGreaterEqual(html.count('class="definition"'), 8)
+                self.assertNotIn("**", html)
+                self.assertNotIn("concept-term", html)
         css = (ROOT / "styles/lesson-reference-111.css").read_text(encoding="utf-8")
         self.assertIn(".article-body .definition", css)
 

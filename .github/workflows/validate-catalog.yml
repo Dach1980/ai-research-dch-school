@@ -105,5 +105,7 @@ jobs:
         run: node --check scripts/catalog-compat.js && node --check scripts/lesson-catalog.js && node --check scripts/planet-map-catalog.js && node --check scripts/home-knowledge-map.js && node --check scripts/lesson-reader.js && node --check lessons/data/xai-01-what-and-why.js
       - name: Validate production hierarchical catalog v2
         run: python scripts/validate-catalog-v2.py
+      - name: Test lesson 1.3.2 multilingual diagrams, themes, and mobile layout
+        run: python -m unittest discover -s tests -p 'test_lesson_132_multilingual.py' -v
       - name: Validate multilingual lesson pages and diagrams
         run: python scripts/validate-multilingual-lessons.py

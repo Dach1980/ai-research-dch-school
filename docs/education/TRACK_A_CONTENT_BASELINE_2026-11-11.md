@@ -1,6 +1,7 @@
 # Track A — approved content baseline
 
-**Date:** 2026-11-11  
+**Original approval:** 2026-11-11  
+**Last reconciled:** 2026-11-12  
 **Track:** A — Understanding AI  
 **Status:** accepted working baseline; lesson production and publication gates remain separate.
 

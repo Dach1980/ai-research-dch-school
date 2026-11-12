@@ -2,7 +2,7 @@
   "schema_version": 1,
   "project": "AI Research DCH School",
   "section": "Аудит и roadmap",
-  "updated_at": "2026-11-11",
+  "updated_at": "2026-11-12",
   "timezone": "Asia/Singapore",
   "principles": [
     "Планетная карта дополняет обычный каталог и не заменяет его.",
@@ -381,6 +381,24 @@
         "CI, deployment и ручная браузерная проверка завершены до публикации."
       ],
       "source": "docs/education/TRACK_A_CONTENT_BASELINE_2026-11-11.md; docs/education/LESSON_1_3_2_EDITORIAL_REVIEW.md"
+    },
+    {
+      "id": "RM-18",
+      "date": "2026-11-12",
+      "title": "Сверить программу Track A и подготовить урок 1.3.3",
+      "status": "done",
+      "priority": "high",
+      "decision": "Создан полный lesson-level crosswalk по 146 урокам структуры Track A; подтверждена последовательность модуля 1.3; урок 1.3.3 разработан и опубликован в RU / EN / 中文; каталог, карта знаний и переход из 1.3.2 синхронизированы; добавлен обязательный шаблон расширенного промпта для новых уроков.",
+      "acceptance": [
+        "Все 146 пунктов TRACK_A_CURRICULUM сопоставлены с записями каталога, найденными локализованными страницами и известными legacy-фрагментами.",
+        "Урок 1.3.3 имеет status=published и content_state=published во всех трёх языковых URL.",
+        "Уроки 1.3.4 и 1.3.5 присутствуют в каталоге как planned, без фиктивных опубликованных страниц.",
+        "RU / EN / 中文 версии 1.3.3 имеют одинаковую структуру: три схемы, Python-пример, пять источников, десять терминов и шесть вопросов.",
+        "Переход из 1.3.2 к 1.3.3 синхронизирован в трёх локализациях; knowledge map получает новый урок из catalog-v3.",
+        "CI проходит; GitHub Pages build и deployment завершены успешно.",
+        "Ограничения и незавершённые редакторские решения явно зафиксированы в crosswalk-отчёте."
+      ],
+      "source": "docs/education/TRACK_A_RECONCILIATION_2026-11-12.md; docs/education/LESSON_PRODUCTION_PROMPT_TEMPLATE.md; docs/education/LESSON_1_3_3_EDITORIAL_REVIEW.md"
     }
   ],
   "audit_log": [
@@ -1705,6 +1723,33 @@
       ],
       "limitations": [
         "Ручная визуальная проверка опубликованных страниц в браузере на desktop/mobile с переключением светлой и тёмной темы не выполнена: TinyFish исключён по указанию владельца проекта, а другой интерактивный браузерный инструмент в доступном наборе отсутствует. Статические проверки исходников и CSS не подменяют этот этап."
+      ]
+    },
+    {
+      "id": "AUD-065",
+      "date": "2026-11-12",
+      "type": "track_a_curriculum_reconciliation_and_lesson_1_3_3_publication",
+      "title": "Сверена программа Track A и опубликован урок 1.3.3",
+      "result": "Сформирован crosswalk всех 146 уроков TRACK_A_CURRICULUM с каталогом v3, фактическими RU / EN / 中文 страницами и legacy fragment mappings. Для модуля 1.3 восстановлена непрерывная последовательность 1.3.1–1.3.6; 1.3.3 опубликован в трёх локализациях, 1.3.4 и 1.3.5 добавлены как planned. Добавлены три оригинальные SVG, табличный пример MDP, исполняемый tabular Q-learning на стандартной библиотеке Python, 10 терминов, 6 вопросов с rationale и 5 ссылок на первичные/официальные учебные ресурсы. Обновлены catalog-v3, динамическая карта знаний, навигация из 1.3.2, baseline и Curriculum; создан LESSON_PRODUCTION_PROMPT_TEMPLATE.md. CI run 43135444217 завершился success; Pages build run 43135444339 и Deploy static website to GitHub Pages run 43135444142 завершились success.",
+      "evidence": [
+        "docs/education/TRACK_A_RECONCILIATION_2026-11-12.md",
+        "docs/education/LESSON_PRODUCTION_PROMPT_TEMPLATE.md",
+        "docs/education/LESSON_1_3_3_EDITORIAL_REVIEW.md",
+        "docs/education/TRACK_A_CURRICULUM.md",
+        "docs/education/TRACK_A_CONTENT_BASELINE_2026-11-11.md",
+        "data/catalog/catalog-v3.json",
+        "scripts/planet-map-catalog.js",
+        "lessons/a-1-3-3.html",
+        "lessons/a-1-3-3-en.html",
+        "lessons/a-1-3-3-zh.html",
+        "tests/test_lesson_133_multilingual.py",
+        ".github/workflows/validate-catalog.yml"
+      ],
+      "limitations": [
+        "Ручная браузерная проверка desktop/mobile, светлой/тёмной темы и клавиатурной доступности не выполнена; CI и Pages deployment не подменяют её.",
+        "В каталоге уроки 1.3.1 и 1.3.2 остаются в review; их статус не менялся.",
+        "В crosswalk выявлено расхождение названий 1.1.3 и 1.1.4 между TRACK_A_CURRICULUM и catalog-v3; требуется отдельное решение владельца программы.",
+        "Сверка 146 позиций проверяет наличие страниц, статусы и legacy mappings; она не является полной семантической вычиткой каждого перевода и не означает перенос всех legacy-упражнений в ещё не созданные уроки."
       ]
     }
   ]

@@ -78,3 +78,12 @@ Links are embedded in all three lesson pages.
 Manual visual verification in a real browser at desktop/mobile sizes, switching light/dark themes, and keyboard/screen-reader review were not performed in this session. Do not interpret source-level tests or GitHub Pages deployment as proof of those manual checks. The publication state is set to published at the project owner's explicit direction.
 
 The prerequisite lessons 1.3.1 and 1.3.2 remain in review state in the catalog; this report does not change their status.
+
+
+## 8. CI and Pages result — 2026-11-12
+
+- Catalog and lesson validation: [GitHub Actions run 43135444217](https://github.com/Dach1980/ai-research-dch-school/actions/runs/43135444217) — success.
+- GitHub Pages build: [run 43135444339](https://github.com/Dach1980/ai-research-dch-school/actions/runs/43135444339) — success.
+- Static website deployment: [run 43135444142](https://github.com/Dach1980/ai-research-dch-school/actions/runs/43135444142) — success.
+- The automated lesson-specific test passed, including locale parity, page structure, code escaping, quiz structure, catalog status, and previous-lesson navigation.
+- Manual visual review in a browser remains outstanding, as recorded above.

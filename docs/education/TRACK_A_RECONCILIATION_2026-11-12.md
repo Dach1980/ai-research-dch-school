@@ -210,3 +210,11 @@
 2. Продолжить по порядку: 1.3.4, затем 1.3.5, затем 1.3.6.
 3. Для 1.3.5 подготовить углублённый практикум, а не повторную вводную лекцию по кластеризации.
 4. Полная миграция всех исторических материалов и активация каталога v3 остаются отдельными задачами; данный отчёт не утверждает, что все страницы Track A уже существуют или опубликованы.
+
+
+## 8. CI and deployment verification — 2026-11-12
+
+- GitHub Actions workflow **Validate learning catalog**: run [43135444217](https://github.com/Dach1980/ai-research-dch-school/actions/runs/43135444217) — success. The run includes the new 1.3.3 multilingual publication test, the 1.3.2 mobile/theme regression test, catalog checks, localization checks, and JavaScript syntax checks including the knowledge-map script.
+- GitHub Pages build: run [43135444339](https://github.com/Dach1980/ai-research-dch-school/actions/runs/43135444339) — success.
+- Static website deployment: run [43135444142](https://github.com/Dach1980/ai-research-dch-school/actions/runs/43135444142) — success.
+- Manual browser review was not performed. Source-level and automated checks are not presented as desktop/mobile visual QA.

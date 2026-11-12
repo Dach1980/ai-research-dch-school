@@ -81,7 +81,7 @@ class Lesson133Tests(unittest.TestCase):
             self.assertIn("incompleteideas.net/book/the-book-2nd.html", html)
             self.assertIn("gymnasium.farama.org/api/env/", html)
             self.assertIn("spinningup.openai.com/en/latest/spinningup/rl_intro.html", html)
-            self.assertNotIn('href="a-1-3-4', html)
+            self.assertIn('href="a-1-3-4', html)
 
     def test_catalog_sequence_and_publication_state(self):
         catalog = json.loads((ROOT / "data/catalog/catalog-v3.json").read_text(encoding="utf-8"))
@@ -94,7 +94,7 @@ class Lesson133Tests(unittest.TestCase):
         self.assertEqual(lesson["url_i18n"]["en"], "lessons/a-1-3-3-en.html")
         self.assertEqual(lesson["url_i18n"]["zh"], "lessons/a-1-3-3-zh.html")
         self.assertIn("les-a-0008", lesson["prerequisite_uids"])
-        self.assertEqual(by_code["1.3.4"]["status"], "planned")
+        self.assertEqual(by_code["1.3.4"]["status"], "published")
         self.assertEqual(by_code["1.3.5"]["status"], "planned")
 
     def test_previous_lesson_links_to_1_3_3_in_all_locales(self):

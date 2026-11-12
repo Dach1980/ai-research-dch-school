@@ -19,7 +19,8 @@
     "1.1.4":{ru:"Разбираем различия AI, Machine Learning и Deep Learning и их взаимосвязь.",en:"Understand the differences and relationships between AI, machine learning and deep learning.",zh:"理解人工智能、机器学习与深度学习之间的区别和联系。"},
     "1.3.3":{ru:"Как агент учится выбирать действия по наградам и долгосрочным последствиям взаимодействия со средой.",en:"How an agent learns to select actions from reward feedback and the long-term consequences of interacting with an environment.",zh:"智能体如何根据奖励反馈以及与环境交互的长期后果来学习选择行动。"},
     "1.3.4":{ru:"Как формулировать задачи регрессии и классификации, определять целевой ответ и выбирать порог решения.",en:"How to formulate regression and classification tasks, define the target answer, and choose a decision threshold.",zh:"如何定义回归与分类任务、明确目标答案并选择决策阈值。"},
-    "1.3.5":{ru:"Как выбирать алгоритмы кластеризации, проверять устойчивость групп и осмысленно применять PCA и другие методы снижения размерности.",en:"How to choose clustering algorithms, test cluster stability, and use PCA and other dimensionality-reduction methods responsibly.",zh:"如何选择聚类算法、检验群组稳定性，并合理使用 PCA 等降维方法。"}
+    "1.3.5":{ru:"Как выбирать алгоритмы кластеризации, проверять устойчивость групп и осмысленно применять PCA и другие методы снижения размерности.",en:"How to choose clustering algorithms, test cluster stability, and use PCA and other dimensionality-reduction methods responsibly.",zh:"如何选择聚类算法、检验群组稳定性，并合理使用 PCA 等降维方法。"},
+    "1.3.6":{ru:"Как работают авторегрессия, VAE, GAN и диффузия; чем отличаются foundation models, мультимодальность и RAG.",en:"How autoregression, VAEs, GANs, and diffusion work, and how foundation models, multimodality, and RAG fit modern AI.",zh:"了解自回归、VAE、GAN 与扩散模型，并区分基础模型、多模态和 RAG。"}
   };
   const renderDetails = (lesson, theme, module, isReview = false) => {
     const details = document.querySelector("#planetDetails");

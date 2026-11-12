@@ -630,12 +630,33 @@
       "module_uid": "mod-a-01-03",
       "code": "1.3.6",
       "title": "Генеративные модели и другие современные подходы",
-      "status": "planned",
+      "status": "published",
       "access": "open",
       "level": "beginner",
-      "prerequisite_uids": [],
-      "learning_outcomes": [],
-      "content_state": "outline_only"
+      "prerequisite_uids": [
+        "les-a-0053",
+        "les-a-0054",
+        "les-a-0055"
+      ],
+      "learning_outcomes": [
+        "Различать генеративную и дискриминативную постановки.",
+        "Объяснять принципы авторегрессии, VAE, GAN и диффузионных моделей.",
+        "Понимать роль self-supervised learning и foundation models.",
+        "Отличать генеративную модель от RAG и системы с инструментами.",
+        "Оценивать качество, разнообразие, достоверность и риски результата.",
+        "Проводить эксперимент с простой авторегрессионной моделью."
+      ],
+      "content_state": "published",
+      "url_i18n": {
+        "ru": "lessons/a-1-3-6.html",
+        "en": "lessons/a-1-3-6-en.html",
+        "zh": "lessons/a-1-3-6-zh.html"
+      },
+      "title_i18n": {
+        "ru": "Генеративные модели и современные подходы ИИ",
+        "en": "Generative Models and Modern AI Approaches",
+        "zh": "生成式模型与现代人工智能方法"
+      }
     },
     {
       "uid": "les-a-0010",

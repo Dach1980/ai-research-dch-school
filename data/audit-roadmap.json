@@ -467,6 +467,22 @@
         "Регрессионные тесты, CI и GitHub Pages deployment проходят; ручная desktop/mobile, light/dark и keyboard QA отражена отдельно."
       ],
       "source": "lessons/a-1-3-5*.html; styles/lesson-135.css; tests/test_lesson_135_multilingual.py; data/catalog/catalog-v3.json; scripts/planet-map-catalog.js"
+    },
+    {
+      "id": "RM-23",
+      "date": "2026-11-12",
+      "title": "Разработать и опубликовать урок 1.3.6 «Генеративные модели и современные подходы ИИ»",
+      "status": "done",
+      "priority": "high",
+      "decision": "Созданы RU / EN / 中文 версии с равнозначной структурой, тремя локализованными SVG, Python-практикой, самостоятельным заданием, источниками, словарём и восемью вопросами. Сохранён UID les-a-0009; каталог, карта знаний и переход 1.3.5 → 1.3.6 синхронизированы. CI, Pages и ручная QA фиксируются по фактическим результатам.",
+      "acceptance": [
+        "Три локализации имеют три SVG с title/desc, 10 терминов и 8 вопросов с объяснениями.",
+        "Python-пример синтаксически корректен и работает на Python 3.10+ без внешних зависимостей.",
+        "Сохранён UID les-a-0009; каталог содержит три канонических URL и published/published.",
+        "Карта знаний и навигация 1.3.5 → 1.3.6 согласованы; нет фиктивного следующего урока.",
+        "CI и Pages deployment успешны; ручная desktop/mobile, light/dark и keyboard QA отражена отдельно."
+      ],
+      "source": "lessons/a-1-3-6*.html; styles/lesson-136.css; tests/test_lesson_136_multilingual.py; data/catalog/catalog-v3.json; scripts/planet-map-catalog.js"
     }
   ],
   "audit_log": [
@@ -2026,6 +2042,28 @@
       "limitations": [
         "Автоматические тесты и GitHub Pages deployment после этих изменений ещё не подтверждены.",
         "Ручная браузерная проверка схемы на desktop/mobile и в светлой/тёмной темах ещё не выполнена."
+      ]
+    },
+    {
+      "id": "AUD-076",
+      "date": "2026-11-12",
+      "type": "lesson_1_3_6_authoring",
+      "title": "Создан урок 1.3.6 в RU / EN / 中文",
+      "result": "Созданы три равнозначные страницы: генеративная и дискриминативная постановки, токены и авторегрессия, VAE, GAN, диффузия, self-supervised learning, foundation models, мультимодальность, prompting/fine-tuning, RAG и оркестрация. Добавлены три локализованные SVG, исполняемый пример символьной bigram-модели на Python 3.10+ без внешних зависимостей, практическое задание для инженерного AI-сервиса, ограничения и риски, семь научных источников, десять терминов и восемь вопросов с объяснениями. Сохранён UID les-a-0009; каталог получил три URL, prerequisites и outcomes; карта знаний и навигация 1.3.5 → 1.3.6 обновлены.",
+      "evidence": [
+        "lessons/a-1-3-6.html",
+        "lessons/a-1-3-6-en.html",
+        "lessons/a-1-3-6-zh.html",
+        "styles/lesson-136.css",
+        "tests/test_lesson_136_multilingual.py",
+        "data/catalog/catalog-v3.json",
+        "scripts/planet-map-catalog.js",
+        "docs/education/TRACK_A_RECONCILIATION_2026-11-12.md"
+      ],
+      "limitations": [
+        "CI и GitHub Pages deployment должны быть подтверждены после commit.",
+        "Ручная desktop/mobile, light/dark, keyboard и screen-reader QA не выполнена.",
+        "Профессиональная вычитка переводов носителями языка отдельно не проводилась."
       ]
     }
   ]

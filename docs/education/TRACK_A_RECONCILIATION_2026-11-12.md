@@ -41,7 +41,7 @@
 | 1.3.3 | Обучение с подкреплением — Reinforcement Learning | RU, EN, ZH | published / published | — | — |
 | 1.3.4 | Классификация и регрессия | RU, EN, ZH | published / published | — | Глубокая постановка задач; метрики оставлены для 1.5 |
 | 1.3.5 | Кластеризация и снижение размерности | нет канонической страницы | planned / outline_only | — | — |
-| 1.3.6 | Генеративные модели и другие современные подходы | нет канонической страницы | planned / outline_only | lessons/a-3-how-machines-learn-from-data.html | — |
+| 1.3.6 | Генеративные модели и другие современные подходы | RU, EN, ZH | published / published | lessons/a-3-how-machines-learn-from-data.html | Создан канонический урок; legacy-фрагменты сохранены для дальнейшей сверки и возможного переноса |
 | 1.4.1 | Понятие модели и параметров | нет канонической страницы | planned / outline_only | lessons/a-3-how-machines-learn-from-data.html<br>lessons/a-4-what-is-machine-learning-model.html | — |
 | 1.4.2 | Обучение модели и функция потерь | нет канонической страницы | planned / outline_only | lessons/a-3-how-machines-learn-from-data.html<br>lessons/a-4-what-is-machine-learning-model.html | — |
 | 1.4.3 | Переобучение и недообучение | нет канонической страницы | planned / outline_only | lessons/a-6-generalization-and-overfitting.html<br>lessons/a-3-how-machines-learn-from-data.html<br>lessons/a-5-how-to-evaluate-a-model.html | — |

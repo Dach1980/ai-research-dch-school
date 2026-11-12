@@ -70,7 +70,6 @@ class Lesson135Tests(unittest.TestCase):
             self.assertIsNotNone(match)
             code = (match.group(1).replace("&lt;", "<").replace("&gt;", ">").replace("&amp;", "&"))
             ast.parse(code)
-            practice = EXPECTED[path.name.split("a-1-3-5")[-1].replace(".html","").replace("-","") if False else "ru"][1]
             self.assertLess(html.index('<pre class="language-python">'), html.index("lesson-practice"))
 
     def test_catalog_uid_review_state_and_previous_navigation(self):

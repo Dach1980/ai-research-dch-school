@@ -289,13 +289,15 @@
     "lesson_count": 55,
     "lesson_status_counts": {
       "published": 15,
-      "planned": 40
+      "review": 1,
+      "planned": 39
     },
     "actual_lesson_counts": {
       "published": 15,
-      "planned": 40
+      "review": 1,
+      "planned": 39
     },
-    "lessons_with_ru_page": 15
+    "lessons_with_ru_page": 16
   },
   "module_mapping": [
     {
@@ -1285,12 +1287,16 @@
       "uid": "les-a-0010",
       "code": "1.4.1",
       "title": "Понятие модели и параметров",
-      "status": "planned",
+      "status": "review",
       "theme_uid": "thm-a-01",
       "module_uid": "mod-a-01-04",
-      "url": null,
+      "url": "lessons/a-1-4-1.html",
       "prerequisites": [],
-      "languages": []
+      "languages": [
+        "ru",
+        "en",
+        "zh"
+      ]
     },
     {
       "uid": "les-a-0011",
@@ -2182,8 +2188,8 @@
     "macro_modules": 40,
     "catalog_lessons": 55,
     "published": 15,
-    "review": 0,
-    "planned": 40,
+    "review": 1,
+    "planned": 39,
     "catalog_mapping_statuses": {
       "not_yet_mapped": 1,
       "candidate_only": 10,

@@ -248,9 +248,9 @@ The full crosswalk is an inventory of program entries, catalog records, locale p
 
 Повторная сверка выполнена по текущим файлам `data/catalog/catalog-v3.json`, `data/curriculum-governance-2026-11-11.json`, `docs/management/DCH_CANONICAL_CURRICULUM_DECISION_2026-11-11.md` и фактическим canonical URL.
 
-- Текущий catalog-v3: 5 Theme UID, 27 Module UID, 55 Lesson UID; 15 уроков имеют `published / published`, 40 — `planned / outline_only`.
+- Текущий catalog-v3: 5 Theme UID, 27 Module UID, 55 Lesson UID; 15 уроков имеют `published / published`, 1 — `review / localized`, 39 — `planned / outline_only`.
 - Все 15 опубликованных уроков имеют RU / EN / 中文 URL. Каталог остаётся `migration_staging`; это не является разрешением переводить его в production.
 - Макроархитектура 40 позиций не совпадает один-к-одному с 5 Theme / 27 Module UID Track A. Связи обновлены как many-to-many; точные соответствия и пробелы зафиксированы в `docs/management/CURRICULUM_CROSSWALK_2026-11-12.md`.
 - Каноническая архитектура Track A — 16 макромодулей 11–26. Общая база 00–10 и Track B 27–39 остаются рабочими и не объявляются полностью утверждёнными только на основании наличия записей в реконструкции. Track C C0–C12 и PY.1 остаются отдельными траекториями.
-- Следующий урок: **1.4.1 «Понятие модели и параметров»**, UID `les-a-0010`, Theme UID `thm-a-01`, Module UID `mod-a-01-04`. Запись уже существует в каталоге со статусом `planned / outline_only`; URL не назначается до готовности трёх локализаций.
+- Следующий урок: **1.4.1 «Понятие модели и параметров»**, UID `les-a-0010`, Theme UID `thm-a-01`, Module UID `mod-a-01-04`. Запись существует в каталоге со статусом `review / localized`; три страницы доступны для редакционной проверки, но помечены `noindex,nofollow` и не опубликованы.
 - Ручная браузерная QA не заявляется выполненной. Исторические статусы и отчёты выше сохранены как снимки на даты их выполнения.

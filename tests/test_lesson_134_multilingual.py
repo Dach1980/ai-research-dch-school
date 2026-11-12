@@ -43,6 +43,7 @@ class Lesson134Tests(unittest.TestCase):
             self.assertIn("Multilabel", html) if 'lang="en"' in html else None
             self.assertIn("lesson-134.css", html)
             self.assertIn("data-mode=\"single\"", html)
+            self.assertEqual(re.findall(r'data-correct="([abc])"', html), ["a", "a", "c", "b", "a", "a"])
 
     def test_source_navigation_glossary_quiz_order(self):
         for path in FILES.values():

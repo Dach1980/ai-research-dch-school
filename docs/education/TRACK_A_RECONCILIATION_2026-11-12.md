@@ -218,3 +218,18 @@
 - GitHub Pages build: run [43135444339](https://github.com/Dach1980/ai-research-dch-school/actions/runs/43135444339) — success.
 - Static website deployment: run [43135444142](https://github.com/Dach1980/ai-research-dch-school/actions/runs/43135444142) — success.
 - Manual browser review was not performed. Source-level and automated checks are not presented as desktop/mobile visual QA.
+
+
+## 9. Final post-publication correction and verification — 2026-11-12
+
+A final source review found an unresolved template value in the learning-outcomes heading. It was corrected in all three locales (RU: «Результаты обучения», EN: “Learning outcomes”, 中文:「学习目标」). The regression test now rejects unresolved `undefined` text.
+
+The three SVG diagrams now use `styles/lesson-133.css`: at widths up to 560 px the diagram keeps a 640 px readable canvas inside a horizontally scrollable figure rather than shrinking all labels. The test also checks localized SVG `title` / `desc` elements and the responsive stylesheet.
+
+- Final Validate learning catalog: [run 43135828910](https://github.com/Dach1980/ai-research-dch-school/actions/runs/43135828910) — success.
+- Final GitHub Pages build: [run 43135829148](https://github.com/Dach1980/ai-research-dch-school/actions/runs/43135829148) — success.
+- Final static website deployment: [run 43135830784](https://github.com/Dach1980/ai-research-dch-school/actions/runs/43135830784) — success.
+- An intermediate test run failed because the test still expected the previous figure class after the responsive class was added. The selector was updated; the final full CI run passed.
+- Manual browser visual review remains outstanding. TinyFish was not used.
+
+The full crosswalk is an inventory of program entries, catalog records, locale page presence, and legacy fragment mappings. It does not claim that all 146 lesson translations have received semantic native-speaker review or that every legacy exercise has already been migrated into future lesson pages. Existing legacy pages and exercises were not deleted.

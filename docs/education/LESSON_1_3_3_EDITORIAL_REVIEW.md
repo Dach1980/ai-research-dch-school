@@ -87,3 +87,17 @@ The prerequisite lessons 1.3.1 and 1.3.2 remain in review state in the catalog; 
 - Static website deployment: [run 43135444142](https://github.com/Dach1980/ai-research-dch-school/actions/runs/43135444142) — success.
 - The automated lesson-specific test passed, including locale parity, page structure, code escaping, quiz structure, catalog status, and previous-lesson navigation.
 - Manual visual review in a browser remains outstanding, as recorded above.
+
+
+## 9. Post-publication correction and final checks — 2026-11-12
+
+A final source review found that the learning-outcomes heading still contained an unresolved template value. It was corrected in RU / EN / 中文, and the lesson-specific test now rejects any remaining `undefined` placeholder.
+
+A dedicated `styles/lesson-133.css` stylesheet was added for the three SVG figures. On screens up to 560 px, each diagram retains a 640 px canvas inside a horizontally scrollable figure so labels are not compressed. Tests check the responsive breakpoint, overflow behavior, and localized SVG `title` / `desc` elements.
+
+Final checks:
+- [Validate learning catalog run 43135828910](https://github.com/Dach1980/ai-research-dch-school/actions/runs/43135828910) — success.
+- [GitHub Pages build run 43135829148](https://github.com/Dach1980/ai-research-dch-school/actions/runs/43135829148) — success.
+- [Static website deployment run 43135830784](https://github.com/Dach1980/ai-research-dch-school/actions/runs/43135830784) — success.
+
+Manual browser verification remains outstanding; no claim of desktop/mobile visual QA is made.

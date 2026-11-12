@@ -149,9 +149,9 @@
       "id": "RM-08",
       "date": "2026-11-05",
       "title": "Подготовить безопасную регистрацию и административные роли",
-      "status": "in_progress",
+      "status": "done",
       "priority": "high",
-      "decision": "Созданы защищённые интерфейсы каталога и JSON-содержимого, управления пользователями, административными ролями, entitlements и аудитом; добавлена Edge Function с owner-only проверкой и JWT verification. Миграции 006 и Edge Function ещё не применены/развёрнуты в реальном Supabase; SMTP, legal gate и registration остаются незавершёнными. 2026-11-05: admin-auth.js now calls supabase.auth.getUser() to validate the identity with Auth before role lookup; migration 003 SQL syntax defect fixed; clean PostgreSQL 16 CI smoke test applies migrations 001–006 and verifies RLS, helper functions and A.1–A.5 public metadata. Live Supabase migration state, owner bootstrap, Edge Function deployment and role integration tests remain unverified. 2026-11-06: migration 007 adds A.6 public metadata; CI assertion set now expects six published public lessons A.1–A.6. This remains an isolated PostgreSQL 16 smoke test, not live Supabase acceptance. Live migration history, Auth confirmation email, Edge Function deployment/secrets and owner/editor tests remain pending.",
+      "decision": "Урок 1.3.2 опубликован в RU / EN / 中文 по прямому решению владельца 2026-11-12. Статус catalog v3 и content_state обновлены на published; noindex удалён из трёх локализаций. Ручная браузерная проверка остаётся отдельным QA-этапом.",
       "acceptance": [
         "RLS ограничивает чтение и запись административных таблиц и контента.",
         "Роли не могут выдаваться из браузера или самим пользователем.",
@@ -388,11 +388,11 @@
       "title": "Сверить программу Track A и подготовить урок 1.3.3",
       "status": "done",
       "priority": "high",
-      "decision": "Создан полный lesson-level crosswalk по 146 урокам структуры Track A; подтверждена последовательность модуля 1.3; урок 1.3.3 разработан и опубликован в RU / EN / 中文; каталог, карта знаний и переход из 1.3.2 синхронизированы; добавлен обязательный шаблон расширенного промпта для новых уроков. После дополнительной проверки исправлен заголовок learning outcomes во всех локализациях и добавлена отдельная мобильная таблица стилей для диаграмм.",
+      "decision": "Создан полный lesson-level crosswalk по 146 урокам структуры Track A; подтверждена последовательность модуля 1.3; уроки 1.3.3 и 1.3.4 разработаны и опубликованы в RU / EN / 中文; каталог, карта знаний и переходы 1.3.2 → 1.3.3 → 1.3.4 синхронизированы. Вместо громоздкого шаблона расширенного задания подготовлен компактный рабочий промпт.",
       "acceptance": [
         "Все 146 пунктов TRACK_A_CURRICULUM сопоставлены с записями каталога, найденными локализованными страницами и известными legacy-фрагментами.",
         "Урок 1.3.3 имеет status=published и content_state=published во всех трёх языковых URL.",
-        "Уроки 1.3.4 и 1.3.5 присутствуют в каталоге как planned, без фиктивных опубликованных страниц.",
+        "Урок 1.3.4 опубликован в трёх локализациях; 1.3.5 остаётся planned без фиктивных страниц.",
         "RU / EN / 中文 версии 1.3.3 имеют одинаковую структуру: три схемы, Python-пример, пять источников, десять терминов и шесть вопросов.",
         "Переход из 1.3.2 к 1.3.3 синхронизирован в трёх локализациях; knowledge map получает новый урок из catalog-v3.",
         "CI проходит; GitHub Pages build и deployment завершены успешно.",
@@ -400,6 +400,23 @@
         "Три SVG-диаграммы имеют локализованные title/desc и мобильную горизонтальную прокрутку с читаемой шириной."
       ],
       "source": "docs/education/TRACK_A_RECONCILIATION_2026-11-12.md; docs/education/LESSON_PRODUCTION_PROMPT_TEMPLATE.md; docs/education/LESSON_1_3_3_EDITORIAL_REVIEW.md"
+    },
+    {
+      "id": "RM-19",
+      "date": "2026-11-12",
+      "title": "Опубликовать все существующие уроки сайта и разработать 1.3.4",
+      "status": "done",
+      "priority": "high",
+      "decision": "Всем 13 существующим урокам каталога с полными RU / EN / 中文 URL установлены status=published и content_state=published. Проверено наличие всех 39 HTML-страниц. Для 1.3.2 удалён noindex. Создан и опубликован урок 1.3.4 на трёх языках; 1.3.3 связан с ним как с новым следующим уроком. Подготовлен компактный промпт для будущих уроков.",
+      "acceptance": [
+        "Все 13 уроков с существующими тремя локализациями имеют published/published.",
+        "Ни одна запись planned без страницы не выдана за готовый урок.",
+        "Урок 1.3.4 имеет RU / EN / 中文 страницы, оригинальную SVG-схему, словарь, самопроверку и источники.",
+        "Переход 1.3.3 → 1.3.4 работает по каноническим локализованным URL.",
+        "Короткий промпт сохранён в документации.",
+        "CI и Pages deployment проходят; ручная браузерная QA честно отделена от автоматических проверок."
+      ],
+      "source": "data/catalog/catalog-v3.json; docs/education/LESSON_PRODUCTION_PROMPT_TEMPLATE.md; docs/education/TRACK_A_RECONCILIATION_2026-11-12.md"
     }
   ],
   "audit_log": [
@@ -1769,6 +1786,48 @@
       ],
       "limitations": [
         "Ручная проверка фактического отображения в браузере на desktop/mobile, переключения светлой/тёмной темы и клавиатурной навигации остаётся невыполненной; автоматические тесты проверяют структуру и CSS-правила, но не заменяют визуальную проверку."
+      ]
+    },
+    {
+      "id": "AUD-067",
+      "date": "2026-11-12",
+      "type": "publish_all_existing_multilingual_lessons",
+      "title": "Все существующие уроки сайта переведены в статус published",
+      "result": "Проверено наличие 12 существовавших канонических уроков во всех трёх локализациях (36 HTML-страниц). В catalog-v3 шесть записей со статусом review переведены в status=published и content_state=published. Урок 1.3.2 освобождён от meta robots noindex,nofollow во всех локализациях. Записи без готовых страниц, включая 1.3.5 и 1.3.6, оставлены planned. Это решение о публикационном статусе по прямому распоряжению владельца, а не утверждение о завершённой ручной редакторской и браузерной QA.",
+      "evidence": [
+        "data/catalog/catalog-v3.json",
+        "lessons/a-1-2-2.html",
+        "lessons/a-1-2-4.html",
+        "lessons/a-1-2-5.html",
+        "lessons/a-1-2-6.html",
+        "lessons/a-1-3-1.html",
+        "lessons/a-1-3-2.html",
+        "docs/education/TRACK_A_RECONCILIATION_2026-11-12.md"
+      ],
+      "limitations": [
+        "Ручная проверка desktop/mobile, светлой/тёмной темы, клавиатуры и screen reader для всех страниц не выполнена.",
+        "Публикационный статус не заменяет постраничную семантическую и профессиональную языковую вычитку."
+      ]
+    },
+    {
+      "id": "AUD-068",
+      "date": "2026-11-12",
+      "type": "lesson_1_3_4_publication_and_compact_authoring_prompt",
+      "title": "Создан и опубликован урок 1.3.4; подготовлен компактный промпт для новых уроков",
+      "result": "Созданы RU / EN / 中文 страницы 1.3.4 «Классификация и регрессия» с разбором постановки задач, целевой переменной, регрессии, бинарной/многоклассовой/многометочной классификации, вероятностных оценок, порогов и цены ошибок. Добавлены локализованная SVG-схема, 8 терминов, 6 вопросов, источники и мобильные правила диаграммы. Каталог обновлён; 1.3.3 ссылается на 1.3.4 во всех локализациях. Большой документ-шаблон заменён компактным рабочим промптом.",
+      "evidence": [
+        "lessons/a-1-3-4.html",
+        "lessons/a-1-3-4-en.html",
+        "lessons/a-1-3-4-zh.html",
+        "styles/lesson-134.css",
+        "tests/test_lesson_134_multilingual.py",
+        "docs/education/LESSON_PRODUCTION_PROMPT_TEMPLATE.md",
+        "data/catalog/catalog-v3.json"
+      ],
+      "limitations": [
+        "CI и Pages deployment ожидают проверки после финальных изменений.",
+        "Ручная визуальная браузерная проверка desktop/mobile и обеих тем не выполнена.",
+        "Переводы имеют структурную parity, но профессиональная вычитка носителями языка отдельно не проводилась."
       ]
     }
   ]

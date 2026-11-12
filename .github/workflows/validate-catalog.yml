@@ -107,5 +107,7 @@ jobs:
         run: python scripts/validate-catalog-v2.py
       - name: Test lesson 1.3.2 multilingual diagrams, themes, and mobile layout
         run: python -m unittest discover -s tests -p 'test_lesson_132_multilingual.py' -v
+      - name: Test lesson 1.3.3 reinforcement learning publication and localization
+        run: python -m unittest discover -s tests -p 'test_lesson_133_multilingual.py' -v
       - name: Validate multilingual lesson pages and diagrams
         run: python scripts/validate-multilingual-lessons.py

@@ -17,7 +17,8 @@
     "1.1.2":{ru:"История развития искусственного интеллекта: ключевые идеи, подходы и этапы.",en:"A concise history of artificial intelligence, its key ideas, approaches and milestones.",zh:"人工智能发展历程中的关键思想、方法与里程碑。"},
     "1.1.3":{ru:"Сравнение явных правил и логического вывода с обучением закономерностям по данным.",en:"Compare explicit rules and logical inference with learning patterns from data.",zh:"比较显式规则、逻辑推理与从数据中学习规律的方法。"},
     "1.1.4":{ru:"Разбираем различия AI, Machine Learning и Deep Learning и их взаимосвязь.",en:"Understand the differences and relationships between AI, machine learning and deep learning.",zh:"理解人工智能、机器学习与深度学习之间的区别和联系。"},
-    "1.3.3":{ru:"Как агент учится выбирать действия по наградам и долгосрочным последствиям взаимодействия со средой.",en:"How an agent learns to select actions from reward feedback and the long-term consequences of interacting with an environment.",zh:"智能体如何根据奖励反馈以及与环境交互的长期后果来学习选择行动。"}
+    "1.3.3":{ru:"Как агент учится выбирать действия по наградам и долгосрочным последствиям взаимодействия со средой.",en:"How an agent learns to select actions from reward feedback and the long-term consequences of interacting with an environment.",zh:"智能体如何根据奖励反馈以及与环境交互的长期后果来学习选择行动。"},
+    "1.3.4":{ru:"Как формулировать задачи регрессии и классификации, определять целевой ответ и выбирать порог решения.",en:"How to formulate regression and classification tasks, define the target answer, and choose a decision threshold.",zh:"如何定义回归与分类任务、明确目标答案并选择决策阈值。"}
   };
   const renderDetails = (lesson, theme, module, isReview = false) => {
     const details = document.querySelector("#planetDetails");

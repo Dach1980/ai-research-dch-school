@@ -30,7 +30,7 @@
 | Module UID | 27 |
 | Lesson UID | 55 |
 | Published / published | 15 |
-| Planned / outline_only | 40 |
+| Review / localized | 1 |\n| Planned / outline_only | 39 |
 | Review | 0 |
 | Каталог | `migration_staging` |
 

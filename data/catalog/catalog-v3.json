@@ -1,7 +1,7 @@
 {
   "schema_version": 3,
   "catalog_id": "dch-school-curriculum",
-  "catalog_version": "3.0.0-draft",
+  "catalog_version": "3.0.0",
   "status": "migration_staging",
   "tracks": [
     {
@@ -370,7 +370,7 @@
       "module_uid": "mod-a-01-02",
       "code": "1.2.2",
       "title": "Объекты, признаки и целевые переменные",
-      "status": "review",
+      "status": "published",
       "access": "open",
       "level": "beginner",
       "prerequisite_uids": [
@@ -382,7 +382,7 @@
         "Объяснять различие регрессии и классификации.",
         "Проверять доступность признаков в момент прогноза."
       ],
-      "content_state": "localized",
+      "content_state": "published",
       "url_i18n": {
         "ru": "lessons/a-1-2-2.html",
         "en": "lessons/a-1-2-2-en.html",
@@ -401,7 +401,7 @@
       "module_uid": "mod-a-01-02",
       "code": "1.2.5",
       "title": "Качество данных, пропуски и выбросы",
-      "status": "review",
+      "status": "published",
       "access": "open",
       "level": "beginner",
       "prerequisite_uids": [
@@ -413,7 +413,7 @@
         "Объяснять стратегии обработки пропусков и их ограничения.",
         "Отличать ошибку измерения от редкого реального события."
       ],
-      "content_state": "localized",
+      "content_state": "published",
       "url_i18n": {
         "ru": "lessons/a-1-2-5.html",
         "en": "lessons/a-1-2-5-en.html",
@@ -432,7 +432,7 @@
       "module_uid": "mod-a-01-02",
       "code": "1.2.6",
       "title": "Корреляция, зависимости и утечка данных",
-      "status": "review",
+      "status": "published",
       "access": "open",
       "level": "beginner",
       "prerequisite_uids": [
@@ -446,7 +446,7 @@
         "Распознавать смешивающие факторы и нелинейные зависимости.",
         "Выявлять утечку цели, времени, дубликатов и предобработки."
       ],
-      "content_state": "localized",
+      "content_state": "published",
       "url_i18n": {
         "ru": "lessons/a-1-2-6.html",
         "en": "lessons/a-1-2-6-en.html",
@@ -465,7 +465,7 @@
       "module_uid": "mod-a-01-03",
       "code": "1.3.1",
       "title": "Обучение с учителем — Supervised Learning",
-      "status": "review",
+      "status": "published",
       "access": "open",
       "level": "beginner",
       "prerequisite_uids": [],
@@ -477,7 +477,7 @@
         "Объяснять назначение обучающей, проверочной и тестовой выборок.",
         "Выявлять риски плохой разметки, смещения выборки, утечки данных и переобучения."
       ],
-      "content_state": "localized",
+      "content_state": "published",
       "url_i18n": {
         "ru": "lessons/a-1-3-1.html",
         "en": "lessons/a-1-3-1-en.html",
@@ -496,7 +496,7 @@
       "module_uid": "mod-a-01-03",
       "code": "1.3.2",
       "title": "Обучение без учителя — Unsupervised Learning",
-      "status": "review",
+      "status": "published",
       "access": "open",
       "level": "beginner",
       "prerequisite_uids": [
@@ -511,7 +511,7 @@
         "Описывать обнаружение аномалий и ограничения такого результата.",
         "Выбирать первичные проверки качества и формулировать ограничения найденной структуры."
       ],
-      "content_state": "localized",
+      "content_state": "published",
       "url_i18n": {
         "ru": "lessons/a-1-3-2.html",
         "en": "lessons/a-1-3-2-en.html",
@@ -1192,7 +1192,7 @@
       "module_uid": "mod-a-01-02",
       "code": "1.2.4",
       "title": "Обучающие, проверочные и тестовые данные",
-      "status": "review",
+      "status": "published",
       "access": "open",
       "level": "beginner",
       "prerequisite_uids": [
@@ -1204,7 +1204,7 @@
         "Различать случайное, стратифицированное, групповое и временное разделение.",
         "Объяснять, почему предобработка обучается только на train."
       ],
-      "content_state": "localized",
+      "content_state": "published",
       "url_i18n": {
         "ru": "lessons/a-1-2-4.html",
         "en": "lessons/a-1-2-4-en.html",

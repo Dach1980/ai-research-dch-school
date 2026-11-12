@@ -2085,7 +2085,7 @@
       "date": "2026-11-12",
       "type": "definition_card_line_break_fix",
       "title": "Исправлено слияние термина и определения в одну строку",
-      "result": "Причина установлена: в styles/lesson-reference-111.css более позднее правило с той же специфичностью переопределяло display:block из lesson-design-system.css на display:inline для .definition-term и .definition-text. В обеих общих таблицах стилей добавлен единый окончательный override: карточка использует вертикальную flex-компоновку, а термин и пояснение — отдельные блочные строки полной ширины. Добавлен регрессионный тест для всех 12 определений в каждой локализации.",
+      "result": "Причина установлена: в styles/lesson-reference-111.css более позднее правило с той же специфичностью переопределяло display:block из lesson-design-system.css на display:inline для .definition-term и .definition-text. В обеих общих таблицах стилей добавлен единый окончательный override: карточка использует вертикальную flex-компоновку, а термин и пояснение — отдельные блочные строки полной ширины. Добавлен регрессионный тест для всех 12 определений в каждой локализации. Validate learning catalog завершился успешно (run 43162170045), Pages build/deployment завершился успешно (run 43162169126).",
       "evidence": [
         "styles/lesson-design-system.css",
         "styles/lesson-reference-111.css",
@@ -2093,7 +2093,7 @@
         "docs/education/LESSON_DESIGN_SYSTEM.md"
       ],
       "limitations": [
-        "CI и GitHub Pages deployment для данного исправления ожидаются; визуальная браузерная QA всех локализаций и тем требует отдельной проверки."
+        "Deploy static website to GitHub Pages, включая отдельную проверку Supabase migrations, ещё выполняется на момент записи. Ручная браузерная проверка визуального результата не выполнена."
       ]
     }
   ]

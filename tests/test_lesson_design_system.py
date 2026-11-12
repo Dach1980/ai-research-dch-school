@@ -10,6 +10,7 @@ LESSONS = {
     "a-4-what-is-machine-learning-model": 6,
     "a-5-how-to-evaluate-a-model": 4,
     "a-6-generalization-and-overfitting": 4,
+    "a-1-4-2": 8,
 }
 
 

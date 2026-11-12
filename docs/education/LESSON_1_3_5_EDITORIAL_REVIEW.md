@@ -3,7 +3,7 @@
 **Lesson:** 1.3.5 — Clustering and Dimensionality Reduction  
 **Track:** A — Understanding AI · Theme 1 · Module 3  
 **UID:** `les-a-0055` (preserved)  
-**Editorial state:** `review` / `localized`  
+**Editorial state:** `published` / `published`  
 **Locales:** RU / EN / 中文  
 **Date:** 2026-11-12
 
@@ -37,7 +37,9 @@ The lesson contains:
 10. An independent comparison task, limitations, and summary.
 11. Five references, ten glossary entries, and eight self-check questions with explanations.
 
-Thirteen key concepts use the shared Definition component at first introduction. Three original SVG diagrams are localised in each language. Each SVG includes `title`, `desc`, and a localised caption. Diagram overflow is contained within the figure on narrow screens.
+Thirteen key concepts use the shared Definition component at first introduction. Three original SVG diagrams are localised in each language. They have been redrawn as: (1) three separately labelled cluster geometries with filled density regions and explicit noise points; (2) a five-stage validation flow with separated node labels and a return loop; (3) a before/after PCA projection with principal-component axes and projection guides. Explanatory paragraphs are placed in captions below the SVG rather than squeezed into the diagram canvas. Each SVG includes `title`, `desc`, and a localised caption. Diagram overflow is contained within the figure on narrow screens.
+
+All 13 first-use definitions in RU / EN / 中文 use separate `.definition-term` and `.definition-text` spans. The term uses the accent colour and the explanation uses the neutral reading colour, with light/dark tokens in the shared design system. Chinese punctuation is localised.
 
 ## Python lab
 
@@ -58,12 +60,11 @@ These values describe this synthetic example only; they are not target values fo
 
 Automated source-level checks are defined in `tests/test_lesson_135_multilingual.py` and added to `.github/workflows/validate-catalog.yml`. The test checks locale pages, canonical structure, SVG count and accessibility labels, definitions, glossary, sources, quiz keys and explanations, Python syntax, navigation, catalogue UID/state, and mobile stylesheet rules.
 
-The catalogue keeps UID `les-a-0055`, with `status=review` and `content_state=localized`. Pages use `noindex,nofollow` while awaiting acceptance. The previous lesson link points to 1.3.4. No forward link to planned 1.3.6 is created.
+The catalogue keeps UID `les-a-0055`, with `status=published` and `content_state=published`. All three pages use `index,follow`. The previous lesson link points to 1.3.4. No forward link to planned 1.3.6 is created.
 
 ## Outstanding checks
 
-- GitHub Actions result for the latest main commit must be confirmed.
-- GitHub Pages deployment for the latest main commit must be confirmed.
+- GitHub Actions and GitHub Pages deployment for the final visual-repair commit must be confirmed.
 - Manual browser QA remains outstanding for desktop/mobile, light/dark themes, keyboard navigation, and screen-reader behaviour.
 - Professional native-speaker review of EN and Chinese translations remains outstanding.
 

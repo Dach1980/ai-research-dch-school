@@ -14,8 +14,8 @@ This document records the lesson list selected by the project owner as the worki
 - **1.3.2 — Unsupervised Learning.** RU / EN / 中文 pages; published 2026-11-12 by owner direction.
 - **1.3.3 — Reinforcement Learning.** Prepared and published in RU / EN / 中文; UID `les-a-0053`.
 - **1.3.4 — Classification and Regression.** Published in RU / EN / 中文 on 2026-11-12; deepens task formulation beyond the introductory distinction in 1.3.1.
-- **1.3.5 — Clustering and Dimensionality Reduction.** Planned; an advanced practical deepening of 1.3.2, not a repeat of its introductory material.
-- **1.3.6 — Generative models and other modern approaches.** Planned.
+- **1.3.5 — Clustering and Dimensionality Reduction.** Published in RU / EN / 中文; advanced practical deepening of 1.3.2, not a repeat of its introductory material.
+- **1.3.6 — Generative models and other modern approaches.** Published in RU / EN / 中文; UID `les-a-0009`.
 
 ### 1.4 — Model fundamentals
 - **1.4.1 — The model and its parameters.**

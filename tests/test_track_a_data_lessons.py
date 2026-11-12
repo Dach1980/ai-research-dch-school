@@ -61,8 +61,8 @@ class TrackADataLessonTests(unittest.TestCase):
             with self.subTest(code=code):
                 lesson = self.lessons[code]
                 self.assertEqual(lesson["uid"], uid)
-                expected_status = "published" if code == "1.2.1" else "review"
-                expected_content_state = "published" if code == "1.2.1" else "localized"
+                expected_status = "published"
+                expected_content_state = "published"
                 self.assertEqual(lesson["status"], expected_status)
                 self.assertEqual(lesson["content_state"], expected_content_state)
                 self.assertEqual(set(lesson["url_i18n"]), set(LOCALES))
@@ -101,7 +101,7 @@ class TrackADataLessonTests(unittest.TestCase):
                 ]
                 self.assertEqual(positions, sorted(positions), f"{slug}{suffix}")
                 nav = html.split('class="lesson-nav"', 1)[1].split("</nav>", 1)[0]
-                self.assertEqual(nav.count('class="button'), 3)
+                self.assertEqual(nav.count('class="button'), 5)
                 self.assertIn("learning-map/", nav)
                 self.assertIn("understanding-ai", nav)
                 self.assertIn("index", nav)

@@ -26,9 +26,10 @@ class Lesson132Tests(unittest.TestCase):
             with self.subTest(locale=locale):
                 html = path.read_text(encoding="utf-8")
                 self.assertIn(f'<html lang="{locale}">', html)
+                self.assertNotIn('name="robots" content="noindex,nofollow"', html)
                 self.assertIn("1.3.2", html)
                 for marker in (
-                    'rel="canonical"', 'name="robots" content="noindex,nofollow"',
+                    'rel="canonical"',
                     "lesson-planet-banner", "lesson-sources", "lesson-nav",
                     "lesson-glossary", "lesson-check", "© 2026 AI Research DCH School",
                 ):

@@ -15,6 +15,19 @@ class Lesson136Tests(unittest.TestCase):
   self.assertIn("@media(max-width:560px)",css);self.assertIn("width:900px",css)
   for p in FILES.values():
    h=p.read_text(encoding="utf-8");self.assertEqual(h.count('<figure class="lesson-figure lesson-136-figure">'),3);self.assertEqual(h.count("<title id="),3);self.assertEqual(h.count("<desc id="),3);self.assertIn("d136-arrow",h)
+ def test_illustration_text_is_wrapped_and_stays_inside_card_geometry(self):
+  for p in FILES.values():
+   h=p.read_text(encoding="utf-8")
+   svgs=re.findall(r'<svg.*?</svg>',h,re.S)
+   self.assertEqual(len(svgs),3)
+   for svg in svgs:
+    self.assertIn('text-anchor="middle"',svg)
+    self.assertIn('<tspan',svg)
+    self.assertIn('d136-bg',svg)
+  css=(ROOT/"styles/lesson-136.css").read_text(encoding="utf-8")
+  for cls in ["d136-input","d136-process","d136-data","d136-tools","d136-generated"]:
+   self.assertIn("."+cls,css)
+  self.assertIn("overflow-x:auto",css)
  def test_definitions_sources_glossary_quiz(self):
   for p in FILES.values():
    h=p.read_text(encoding="utf-8");self.assertEqual(h.count('class="definition"'),12);self.assertEqual(h.count('class="definition-term"'),12);self.assertEqual(h.count('class="definition-text"'),12);self.assertEqual(h.count('class="glossary-entry"'),10);self.assertEqual(h.count('class="lesson-check-question"'),8);self.assertEqual(h.count('class="lesson-check-feedback"'),8);self.assertEqual(h.count("<li><a href="),7);self.assertLess(h.index('class="lesson-sources"'),h.index('class="lesson-nav"'));self.assertLess(h.index('class="lesson-nav"'),h.index('class="lesson-glossary"'));self.assertLess(h.index('class="lesson-glossary"'),h.index('class="lesson-check"'))

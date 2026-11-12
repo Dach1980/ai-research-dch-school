@@ -65,7 +65,7 @@ class Lesson142Tests(unittest.TestCase):
             self.assertEqual(source.count('class="lesson-check-question"'), 8)
             self.assertEqual(source.count('class="lesson-check-feedback"'), 8)
             self.assertEqual(source.count('class="lesson-problem"'), 2)
-            self.assertEqual(source.count('class="lesson-practice-task"'), 1)
+            self.assertEqual(source.count('class="lesson-problem lesson-practice-task"'), 1)
             self.assertLess(source.index('class="lesson-sources"'), source.index('class="lesson-nav"'))
             self.assertLess(source.index('class="lesson-nav"'), source.index('class="lesson-glossary"'))
             self.assertLess(source.index('class="lesson-glossary"'), source.index('class="lesson-check"'))

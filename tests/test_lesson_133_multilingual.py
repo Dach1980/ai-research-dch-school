@@ -72,6 +72,28 @@ class Lesson133Tests(unittest.TestCase):
             self.assertIn("print(", code.group(1))
             self.assertIn("0 -&gt; 1 -&gt; 2 -&gt; 3 -&gt; 4", html)
 
+    def test_formula_component_and_theme_tokens(self):
+        labels = {
+            "ru": "Формула возврата",
+            "en": "Discounted return",
+            "zh": "折扣回报公式",
+        }
+        for locale, path in FILES.items():
+            with self.subTest(locale=locale):
+                html = path.read_text(encoding="utf-8")
+                formula = re.search(r'<div class="formula" role="math" aria-label="([^"]+)"><span class="formula-label">([^<]+)</span><span class="formula-expression">([^<]+)</span></div>', html)
+                self.assertIsNotNone(formula)
+                self.assertTrue(formula.group(1).strip())
+                self.assertEqual(formula.group(2), labels[locale])
+                self.assertIn("Gₜ = rₜ₊₁ + γrₜ₊₂ + γ²rₜ₊₃ + …", formula.group(3))
+        css = (ROOT / "styles/lesson-design-system.css").read_text(encoding="utf-8")
+        for token in ("--lds-math-bg:", "--lds-math-border:", "--lds-math-ink:", "--lds-math-accent:", "--lds-math-label-bg:"):
+            self.assertIn(token, css)
+        self.assertIn('html:not([data-theme="light"])', css)
+        self.assertIn(".article-body .formula-expression", css)
+        self.assertIn("overflow-x:auto", css)
+        self.assertIn("@media(max-width:560px)", css)
+
     def test_mobile_diagram_rules_preserve_readability(self):
         css = (ROOT / "styles/lesson-133.css").read_text(encoding="utf-8")
         self.assertIn("@media (max-width: 560px)", css)

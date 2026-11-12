@@ -7,12 +7,12 @@ TITLES={"ru":"Понятие модели и параметров","en":"The Mod
 class Parser(HTMLParser):
     def error(self,message): raise AssertionError(message)
 class Lesson141Tests(unittest.TestCase):
-    def test_locales_html_and_review_indexing(self):
+    def test_locales_html_and_public_indexing(self):
         for lang,path in FILES.items():
             h=path.read_text(encoding="utf-8")
             self.assertIn(f'<html lang="{lang}">',h)
             self.assertIn(TITLES[lang],h)
-            self.assertIn('content="noindex,nofollow"',h)
+            self.assertNotIn('content="noindex,nofollow"',h)
             self.assertIn('rel="canonical"',h)
             self.assertNotIn("undefined",h)
             self.assertNotIn("{{",h)
@@ -52,7 +52,7 @@ class Lesson141Tests(unittest.TestCase):
         c=json.loads((ROOT/"data/catalog/catalog-v3.json").read_text(encoding="utf-8"))
         x=next(v for v in c["lessons"] if v["uid"]=="les-a-0010")
         self.assertEqual(x["code"],"1.4.1")
-        self.assertEqual(x["status"],"review")
-        self.assertEqual(x["content_state"],"localized")
+        self.assertEqual(x["status"],"published")
+        self.assertEqual(x["content_state"],"published")
         self.assertEqual(set(x["url_i18n"]),{"ru","en","zh"})
 if __name__=="__main__": unittest.main()

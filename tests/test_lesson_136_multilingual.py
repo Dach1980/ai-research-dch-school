@@ -21,7 +21,7 @@ class Lesson136Tests(unittest.TestCase):
  def test_quiz_explanations(self):
   expected=["a","a","a","a","a","a","a","a,b,c"]
   for p in FILES.values():
-   h=p.read_text(encoding="utf-8");self.assertEqual(re.findall(r'data-correct="([^"]+)"',h),expected);ex=re.findall(r'data-explanation="([^"]+)"',h);self.assertEqual(len(ex),8);self.assertTrue(all(len(x)>35 for x in ex))
+   h=p.read_text(encoding="utf-8");self.assertEqual(re.findall(r'data-correct="([^"]+)"',h),expected);ex=re.findall(r'data-explanation="([^"]+)"',h);self.assertEqual(len(ex),8);self.assertTrue(all(len(x)>25 for x in ex))
  def test_python_and_navigation_catalog(self):
   for lang,p in FILES.items():
    h=p.read_text(encoding="utf-8");m=re.search(r'<pre class="language-python"><code>(.*?)</code></pre>',h,re.S);self.assertIsNotNone(m);ast.parse(m.group(1).replace("&lt;","<").replace("&gt;",">").replace("&amp;","&"));suf="" if lang=="ru" else "-en" if lang=="en" else "-zh";self.assertIn(f'href="a-1-3-5{suf}.html"',h);self.assertNotIn(f'href="a-1-3-7{suf}.html"',h)

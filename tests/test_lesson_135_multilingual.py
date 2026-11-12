@@ -83,7 +83,7 @@ class Lesson135Tests(unittest.TestCase):
         self.assertEqual(lesson["uid"], "les-a-0055")
         self.assertEqual(lesson["status"], "published")
         self.assertEqual(lesson["content_state"], "published")
-        self.assertEqual(lesson["content_state"], "localized")
+        self.assertEqual(lesson["content_state"], "published")
         self.assertEqual(lesson["url_i18n"], {
             "ru": "lessons/a-1-3-5.html",
             "en": "lessons/a-1-3-5-en.html",

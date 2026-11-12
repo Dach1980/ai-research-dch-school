@@ -27,7 +27,7 @@ class Lesson135Tests(unittest.TestCase):
             self.assertIn(f'<html lang="{locale}">', html)
             self.assertIn(EXPECTED[locale][0], html)
             self.assertIn('rel="canonical"', html)
-            self.assertIn('name="robots" content="noindex,nofollow"', html)
+            self.assertNotIn('name="robots" content="noindex,nofollow"', html)
             self.assertIn('class="lesson-planet-banner"', html)
             self.assertIn('class="lesson-nav"', html)
             self.assertNotIn("undefined", html)
@@ -39,13 +39,18 @@ class Lesson135Tests(unittest.TestCase):
             html = path.read_text(encoding="utf-8")
             self.assertEqual(html.count('<figure class="lesson-figure lesson-135-figure">'), 3)
             self.assertEqual(html.count("<title id="), 3)
+            self.assertIn("d135-region", html)
+            self.assertIn("d135-projection-line", html)
+            self.assertIn("d135-loop", html)
             self.assertEqual(html.count("<desc id="), 3)
             self.assertIn("overflow-x:auto", (ROOT / "styles/lesson-135.css").read_text(encoding="utf-8"))
 
     def test_definitions_glossary_sources_and_quiz(self):
         for path in FILES.values():
             html = path.read_text(encoding="utf-8")
-            self.assertGreaterEqual(html.count('class="definition"'), 12)
+            self.assertEqual(html.count('class="definition"'), 13)
+            self.assertEqual(html.count('class="definition-term"'), 13)
+            self.assertEqual(html.count('class="definition-text"'), 13)
             self.assertEqual(html.count('class="glossary-entry"'), 10)
             self.assertEqual(html.count('class="lesson-check-question"'), 8)
             self.assertEqual(html.count('class="lesson-check-feedback"'), 8)
@@ -76,7 +81,8 @@ class Lesson135Tests(unittest.TestCase):
         catalog = json.loads((ROOT / "data/catalog/catalog-v3.json").read_text(encoding="utf-8"))
         lesson = next(item for item in catalog["lessons"] if item["code"] == "1.3.5")
         self.assertEqual(lesson["uid"], "les-a-0055")
-        self.assertEqual(lesson["status"], "review")
+        self.assertEqual(lesson["status"], "published")
+        self.assertEqual(lesson["content_state"], "published")
         self.assertEqual(lesson["content_state"], "localized")
         self.assertEqual(lesson["url_i18n"], {
             "ru": "lessons/a-1-3-5.html",
@@ -92,7 +98,8 @@ class Lesson135Tests(unittest.TestCase):
     def test_mobile_css_and_theme_adaptation(self):
         css = (ROOT / "styles/lesson-135.css").read_text(encoding="utf-8")
         self.assertIn("@media(max-width:560px)", css)
-        self.assertIn("width:900px", css)
+        self.assertIn("width:960px", css)
+        self.assertIn("--lds-definition-term", (ROOT / "styles/lesson-design-system.css").read_text(encoding="utf-8"))
         self.assertIn('html[data-theme="light"]', css)
 
 if __name__ == "__main__":

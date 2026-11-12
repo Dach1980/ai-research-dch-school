@@ -40,6 +40,7 @@ on:
       - "scripts/lesson-layout.js"
       - "styles/lesson-standard.css"
       - "styles/lesson-133.css"
+      - "styles/lesson-134.css"
       - "styles/main.css"
       - "styles/theme-system.css"
       - "styles/code-blocks.css"
@@ -54,6 +55,7 @@ on:
       - "scripts/lesson-reader.js"
       - "styles/lesson-reader.css"
       - "scripts/validate-catalog.py"
+      - "tests/**"
       - "requirements-catalog.txt"
       - ".github/workflows/validate-catalog.yml"
   workflow_dispatch:

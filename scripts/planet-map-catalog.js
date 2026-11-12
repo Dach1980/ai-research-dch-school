@@ -1,93 +1,15 @@
 (() => {
-  const universe = document.querySelector("[data-planets-root]");
-  const list = document.querySelector("[data-planets-list]");
-  if (!universe || !list) return;
-  const locale = (document.documentElement.lang || "ru").toLowerCase().startsWith("zh") ? "zh" :
-    (document.documentElement.lang || "ru").toLowerCase().startsWith("en") ? "en" : "ru";
-  const ui = {
-    ru:{empty:"В каталоге пока нет подготовленных уроков.",error:"Не удалось загрузить каталог планет.",theme:"ТЕМА",module:"МОДУЛЬ",lesson:"УРОК",level:"Начальный уровень",outcomes:"После урока вы сможете",prereq:"Предварительная подготовка не требуется.",code:"Код урока",access:"Доступ",open:"Открытый урок",start:"Начать урок ↗",about:"О Track A",select:"Показать на карте",openLink:"Открыть урок ↗",published:"опубликовано",review:"на проверке",planetCount:"планет опубликовано",reviewNote:"Материал подготовлен и проходит проверку"},
-    en:{empty:"No prepared lessons in the catalogue yet.",error:"The lesson catalogue could not be loaded.",theme:"THEME",module:"MODULE",lesson:"LESSON",level:"Beginner",outcomes:"After this lesson, you will be able to",prereq:"No prerequisites required.",code:"Lesson code",access:"Access",open:"Open lesson",start:"Start lesson ↗",about:"About Track A",select:"Show on map",openLink:"Open lesson ↗",published:"published",review:"under review",planetCount:"published planets",reviewNote:"Content prepared and under review"},
-    zh:{empty:"目录中暂无已准备的课程。",error:"无法加载课程目录。",theme:"主题",module:"模块",lesson:"课程",level:"初级",outcomes:"完成课程后，你将能够",prereq:"无需先修知识。",code:"课程代码",access:"访问权限",open:"免费课程",start:"开始学习 ↗",about:"关于 Track A",select:"在地图上显示",openLink:"打开课程 ↗",published:"已发布",review:"审核中",planetCount:"颗已发布行星",reviewNote:"课程内容已准备，正在审核"}
-  }[locale];
-  const esc = value => String(value ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"})[c]);
-  const statusStyle = document.createElement("style"); statusStyle.textContent=".lesson-review-status{color:#f0c878;font-weight:700}.lesson-published-status{color:#8fd7b2;font-weight:700}.planet-review .planet-core{background:radial-gradient(circle at 32% 28%,#f8e7bf,#c28b48 38%,#76512f 74%,#35271e);border:2px dashed #f0c878;box-shadow:0 0 14px #d99a4b55}.planet-review .planet-code{border:1px dashed #f0c878;color:#f0c878}.planet-review .planet-name{color:#f0d4a3}"; document.head.appendChild(statusStyle);
-  const positions = [[50,49],[72,31],[28,30],[72,68],[28,68],[50,87],[18,48],[82,48],[38,18],[62,82]];
-  const descriptions = {
-    "1.1.1":{ru:"Что такое искусственный интеллект, как устроены AI-системы и где проходят границы их возможностей.",en:"What artificial intelligence means, how AI systems work, and where their capabilities end.",zh:"人工智能的含义、AI 系统的工作方式及其能力边界。"},
-    "1.1.2":{ru:"История развития искусственного интеллекта: ключевые идеи, подходы и этапы.",en:"A concise history of artificial intelligence, its key ideas, approaches and milestones.",zh:"人工智能发展历程中的关键思想、方法与里程碑。"},
-    "1.1.3":{ru:"Сравнение явных правил и логического вывода с обучением закономерностям по данным.",en:"Compare explicit rules and logical inference with learning patterns from data.",zh:"比较显式规则、逻辑推理与从数据中学习规律的方法。"},
-    "1.1.4":{ru:"Разбираем различия AI, Machine Learning и Deep Learning и их взаимосвязь.",en:"Understand the differences and relationships between AI, machine learning and deep learning.",zh:"理解人工智能、机器学习与深度学习之间的区别和联系。"},
-    "1.3.3":{ru:"Как агент учится выбирать действия по наградам и долгосрочным последствиям взаимодействия со средой.",en:"How an agent learns to select actions from reward feedback and the long-term consequences of interacting with an environment.",zh:"智能体如何根据奖励反馈以及与环境交互的长期后果来学习选择行动。"},
-    "1.3.4":{ru:"Как формулировать задачи регрессии и классификации, определять целевой ответ и выбирать порог решения.",en:"How to formulate regression and classification tasks, define the target answer, and choose a decision threshold.",zh:"如何定义回归与分类任务、明确目标答案并选择决策阈值。"},
-    "1.3.5":{ru:"Как выбирать алгоритмы кластеризации, проверять устойчивость групп и осмысленно применять PCA и другие методы снижения размерности.",en:"How to choose clustering algorithms, test cluster stability, and use PCA and other dimensionality-reduction methods responsibly.",zh:"如何选择聚类算法、检验群组稳定性，并合理使用 PCA 等降维方法。"},
-    "1.3.6":{ru:"Как работают авторегрессия, VAE, GAN и диффузия; чем отличаются foundation models, мультимодальность и RAG.",en:"How autoregression, VAEs, GANs, and diffusion work, and how foundation models, multimodality, and RAG fit modern AI.",zh:"了解自回归、VAE、GAN 与扩散模型，并区分基础模型、多模态和 RAG。"}
-  };
-  const renderDetails = (lesson, theme, module, isReview = false) => {
-    const details = document.querySelector("#planetDetails");
-    if (!details) return;
-    const title = lesson.title_i18n?.[locale] || lesson.title;
-    const themeTitle = theme.title_i18n?.[locale] || theme.title;
-    const moduleTitle = module.title_i18n?.[locale] || module.title;
-    const prerequisites = (lesson.prerequisite_uids || []).map(uid => allLessons.find(x=>x.uid===uid)?.code).filter(Boolean);
-    const prereqText = prerequisites.length ? (locale==="ru"?"Рекомендуется предварительно пройти: ":locale==="zh"?"建议先学习：":"Recommended first: ") + prerequisites.join(", ") + "." : ui.prereq;
-    const outcomes = (lesson.learning_outcomes || []).map(x=>'<li>'+esc(x)+'</li>').join("");
-    const href = lesson.url_i18n?.[locale] || "#";
-    details.innerHTML =
-      '<div class="side-top"><span class="side-tag">TRACK A · '+esc(ui.theme)+' '+esc(theme.number)+' · '+esc(ui.module)+' '+esc(module.number)+'</span><span class="level">'+esc(ui.level)+'</span></div>'+
-      '<p class="side-tag">'+esc(ui.lesson)+' '+esc(lesson.code)+' · '+(isReview?'<span class="lesson-review-status">'+esc(ui.review)+'</span>':'<span class="lesson-published-status">'+esc(ui.published)+'</span>')+'</p><h2>'+esc(title)+'</h2><p class="side-desc">'+esc(descriptions[lesson.code]?.[locale] || (isReview?ui.reviewNote:""))+'</p>'+
-      (outcomes ? '<div class="side-divider"></div><span class="side-heading">'+esc(ui.outcomes)+'</span><ul class="outcomes">'+outcomes+'</ul>' : '')+
-      '<p class="side-desc">'+esc(prereqText)+'</p><div class="meta-grid">'+
-      '<div class="meta-item"><small>'+esc(ui.code)+'</small><strong>'+esc(lesson.code)+'</strong></div>'+
-      '<div class="meta-item"><small>'+esc(ui.access)+'</small><strong>'+esc(ui.open)+'</strong></div></div>'+
-      (isReview?'<p class="side-desc lesson-review-status">'+esc(ui.reviewNote)+'</p>':'')+
-      '<div class="side-actions"><a class="button primary" href="../'+esc(href)+'">'+esc(ui.start)+'</a><a class="button secondary" href="../tracks/understanding-ai'+(locale==="ru"?"":locale==="en"?"-en":"-zh")+'.html">'+esc(ui.about)+'</a></div>';
-    universe.querySelectorAll("[data-lesson-id]").forEach(node=>node.setAttribute("aria-pressed",String(node.dataset.lessonId===lesson.uid)));
-  };
-  let allLessons = [];
-  const load = async () => {
-    try {
-      const response = await fetch("../data/catalog/catalog-v3.json");
-      if (!response.ok) throw new Error("HTTP " + response.status);
-      const data = await response.json();
-      if (data.schema_version !== 3) throw new Error("Unsupported catalogue schema");
-      const tracks = new Map(data.tracks.map(x=>[x.uid,x]));
-      const themes = new Map(data.themes.map(x=>[x.uid,x]));
-      const modules = new Map(data.modules.map(x=>[x.uid,x]));
-      allLessons = data.lessons;
-      const track = tracks.get("trk-a");
-      const sortByCode = (a,b) => a.code.localeCompare(b.code,"en",{numeric:true});
-      const publishedLessons = data.lessons.filter(x=>x.track_uid==="trk-a"&&x.status==="published"&&x.content_state==="published"&&x.url_i18n?.[locale]).sort(sortByCode);
-      const reviewLessons = data.lessons.filter(x=>x.track_uid==="trk-a"&&x.status==="review"&&x.content_state==="localized"&&x.url_i18n?.[locale]).sort(sortByCode);
-      const listedLessons = [...publishedLessons,...reviewLessons].sort(sortByCode);
-      if (!listedLessons.length) { list.innerHTML='<p class="map-note">'+esc(ui.empty)+'</p>'; return; }
-      universe.querySelectorAll("[data-generated-planet]").forEach(node=>node.remove());
-      const planetItems = [...publishedLessons.map(lesson=>({lesson,review:false})),...reviewLessons.map(lesson=>({lesson,review:true}))].sort((a,b)=>sortByCode(a.lesson,b.lesson));
-      const entries = planetItems.map(({lesson,review},index)=>{
-        const module=modules.get(lesson.module_uid),theme=themes.get(lesson.theme_uid);
-        const title=lesson.title_i18n?.[locale]||lesson.title;
-        const href=lesson.url_i18n?.[locale];
-        const position=positions[index%positions.length];
-        const button=document.createElement("button");
-        button.type="button";button.className="planet-button"+(review?" planet-review":"");button.style.left=position[0]+"%";button.style.top=position[1]+"%";
-        button.dataset.lessonId=lesson.uid;button.dataset.generatedPlanet="true";
-        button.setAttribute("aria-label",ui.select+" "+lesson.code+": "+title+" ("+(review?ui.review:ui.published)+")");
-        button.innerHTML='<span class="planet-core"><span style="font:800 11px Manrope">'+esc(lesson.code)+'</span></span><span class="planet-code">'+esc(lesson.code)+'</span><span class="planet-name">'+esc(title)+'</span>';
-        button.addEventListener("click",()=>{renderDetails(lesson,theme,module,review);if(matchMedia("(max-width:900px)").matches)document.querySelector("#planetDetails")?.scrollIntoView({behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth",block:"start"});});
-        universe.appendChild(button);
-        return {lesson,module,theme,href,title,review};
-      });
-      const entryByUid = new Map(entries.map(entry=>[entry.lesson.uid,entry]));
-      const allItems = entries;
-      list.innerHTML='<div class="side-top"><strong>Track A · '+esc(track?.title || "Understanding AI")+'</strong><span class="level">'+publishedLessons.length+' '+esc(ui.planetCount)+'</span></div>'+
-        allItems.map(({lesson,module,theme,href,title,review})=>'<div class="list-entry"><div><strong>'+esc(lesson.code)+' — '+esc(title)+'</strong><small>'+esc(ui.theme)+' '+esc(theme?.number ?? "")+' · '+esc(ui.module)+' '+esc(module?.number ?? "")+' · '+(review?'<span class="lesson-review-status">'+esc(ui.review)+'</span>':'<span class="lesson-published-status">'+esc(ui.published)+'</span>')+(review?'<br>'+esc(ui.reviewNote):'')+'</small></div><div class="list-actions">'+'<button type="button" data-select-lesson="'+esc(lesson.uid)+'">'+esc(ui.select)+'</button>'+'<a class="button secondary" href="../'+esc(href)+'">'+esc(ui.openLink)+'</a></div></div>').join("");
-      list.querySelectorAll("[data-select-lesson]").forEach(button=>button.addEventListener("click",()=>{
-        const entry=entryByUid.get(button.dataset.selectLesson);
-        if(entry)renderDetails(entry.lesson,entry.theme,entry.module,entry.review);
-        document.getElementById("mapMode")?.click();
-        universe.scrollIntoView({behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth",block:"nearest"});
-      }));
-      const first=entries.find(entry=>!entry.review)||entries[0];if(first)renderDetails(first.lesson,first.theme,first.module,first.review);
-    } catch(error) { list.innerHTML='<p class="map-note">'+esc(ui.error)+' '+esc(error.message)+'</p>'; }
-  };
-  load();
+const root=document.querySelector("[data-planets-root]"),layer=root?.querySelector("[data-orbit-layer]"),guides=root?.querySelector("[data-orbit-guides]"),list=document.querySelector("[data-planets-list]"),details=document.querySelector("#planetDetails");
+if(!root||!layer||!guides||!list||!details)return;
+const locale=(document.documentElement.lang||"ru").startsWith("zh")?"zh":(document.documentElement.lang||"ru").startsWith("en")?"en":"ru";
+const M={ru:{theme:"ТЕМА",module:"МОДУЛЬ",lesson:"УРОК",published:"Опубликовано",review:"На проверке",prereq:"Предварительные уроки",none:"Предварительная подготовка не требуется.",start:"Начать урок ↗",about:"О Track A",select:"Выбрать урок",count:"опубликованных планет",error:"Не удалось загрузить каталог знаний.",listSelect:"Показать на карте",open:"Открыть урок ↗",level:"Начальный уровень"},en:{theme:"THEME",module:"MODULE",lesson:"LESSON",published:"Published",review:"Under review",prereq:"Prerequisites",none:"No prerequisites required.",start:"Start lesson ↗",about:"About Track A",select:"Select lesson",count:"published planets",error:"Could not load the knowledge catalogue.",listSelect:"Show on map",open:"Open lesson ↗",level:"Beginner"},zh:{theme:"主题",module:"模块",lesson:"课程",published:"已发布",review:"审核中",prereq:"先修课程",none:"无需先修课程。",start:"开始学习 ↗",about:"关于 Track A",select:"选择课程",count:"颗已发布行星",error:"无法加载知识目录。",listSelect:"在地图中显示",open:"打开课程 ↗",level:"初级"}}[locale];
+const esc=v=>String(v??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const moduleNames={ru:{"mod-a-01-01":"Основы AI и машинного обучения","mod-a-01-02":"Данные и признаки","mod-a-01-03":"Типы машинного обучения","mod-a-01-04":"Модели машинного обучения","mod-a-01-05":"Оценка качества моделей"},en:{"mod-a-01-01":"AI and Machine Learning Fundamentals","mod-a-01-02":"Data and Features","mod-a-01-03":"Types of Machine Learning","mod-a-01-04":"Machine Learning Models","mod-a-01-05":"Model Evaluation"},zh:{"mod-a-01-01":"人工智能与机器学习基础","mod-a-01-02":"数据与特征","mod-a-01-03":"机器学习类型","mod-a-01-04":"机器学习模型","mod-a-01-05":"模型评估"}}[locale];
+const palette=["#8d75ef","#39b8d4","#e6a64f","#51c99a","#e477a7","#7e9df5"];let entries=[],groups=[];
+const titleOf=x=>x.title_i18n?.[locale]||x.title||x.code,urlOf=x=>x.url_i18n?.[locale]||"";
+const renderDetails=e=>{const l=e.lesson,pr=(l.prerequisite_uids||[]).map(id=>entries.find(x=>x.lesson.uid===id)?.lesson.code).filter(Boolean),mn=moduleNames[e.module.uid]||e.module.title||"";details.innerHTML='<span class="side-tag">TRACK A · '+esc(M.theme)+' '+esc(e.theme.number)+' · '+esc(M.module)+' '+esc(e.module.number)+'</span><p class="side-tag">'+esc(M.lesson)+' '+esc(l.code)+' · <span class="lesson-status">'+esc(e.review?M.review:M.published)+'</span></p><h2>'+esc(titleOf(l))+'</h2><p class="side-desc">'+esc(mn)+' · '+esc(M.level)+'</p><div class="side-divider"></div><span class="side-heading">'+esc(M.prereq)+'</span><p class="side-desc">'+esc(pr.length?pr.join(", "):M.none)+'</p><div class="side-meta"><div class="meta-item"><small>'+esc(M.lesson)+'</small><strong>'+esc(l.code)+'</strong></div><div class="meta-item"><small>'+esc(M.module)+'</small><strong>'+esc(e.module.number)+'</strong></div></div><div class="side-actions">'+(urlOf(l)?'<a class="button primary" href="../'+esc(urlOf(l))+'">'+esc(M.start)+'</a>':'')+'<a class="button secondary" href="../tracks/understanding-ai'+(locale==="ru"?"":locale==="en"?"-en":"-zh")+'.html">'+esc(M.about)+'</a></div>';root.querySelectorAll(".planet-point").forEach(n=>n.setAttribute("aria-pressed",String(n.dataset.lessonId===l.uid)));};
+const planet=(e,color,duration)=>{const l=e.lesson,t=titleOf(l),b=document.createElement("button");b.type="button";b.className="planet-point";b.dataset.lessonId=l.uid;b.style.setProperty("--planet-color",color);b.style.setProperty("--orbit-duration",duration+"s");b.setAttribute("aria-label",M.select+" "+l.code+": "+t);b.title=l.code+" — "+t;b.innerHTML='<span class="planet-face"><span class="planet-core"><span class="planet-code">'+esc(l.code)+'</span></span><span class="planet-tooltip" role="tooltip"><b>'+esc(l.code)+'</b><span>'+esc(t)+'</span></span></span>';b.addEventListener("click",()=>renderDetails(e));return b;};
+const layout=()=>{const w=root.clientWidth,h=root.clientHeight;groups.forEach(g=>{const rx=w*(.19+g.index*.115),ry=h*(.145+g.index*.115);g.track.style.width=rx*2+"px";g.track.style.height=ry*2+"px";g.guide.style.width=rx*2+"px";g.guide.style.height=ry*2+"px";g.points.forEach((p,i)=>{const a=-Math.PI/2+2*Math.PI*i/g.points.length+g.index*.19;p.style.setProperty("--planet-x",(50+Math.cos(a)*50)+"%");p.style.setProperty("--planet-y",(50+Math.sin(a)*50)+"%");});});};
+const build=data=>{const mods=new Map(data.modules.map(x=>[x.uid,x])),themes=new Map(data.themes.map(x=>[x.uid,x]));entries=data.lessons.filter(x=>x.track_uid==="trk-a"&&x.url_i18n?.[locale]).sort((a,b)=>a.code.localeCompare(b.code,"en",{numeric:true})).map(l=>({lesson:l,module:mods.get(l.module_uid)||{},theme:themes.get(l.theme_uid)||{},review:l.status!=="published"||l.content_state!=="published"}));const published=entries.filter(e=>!e.review),by=new Map();published.forEach(e=>{if(!by.has(e.lesson.module_uid))by.set(e.lesson.module_uid,[]);by.get(e.lesson.module_uid).push(e);});[...by.entries()].sort((a,b)=>Number(a[1][0].module.number)-Number(b[1][0].module.number)).forEach(([id,items],i)=>{const color=palette[i%palette.length],duration=76+i*21,track=document.createElement("div"),guide=document.createElement("div");track.className="orbit-track";track.style.setProperty("--orbit-color",color);track.style.setProperty("--orbit-duration",duration+"s");guide.className="orbit-guide";guides.appendChild(guide);const points=items.map(e=>{const p=planet(e,color,duration);track.appendChild(p);return p;});layer.appendChild(track);groups.push({index:i,track,guide,points});});root.querySelector("[data-map-loading]")?.remove();if(published[0])renderDetails(published[0]);list.innerHTML='<div class="list-entry"><strong>Track A</strong><small>'+published.length+" "+esc(M.count)+'</small></div>'+entries.map(e=>'<div class="list-entry"><div><strong>'+esc(e.lesson.code)+' — '+esc(titleOf(e.lesson))+'</strong><small>'+esc(moduleNames[e.module.uid]||e.module.title||"")+' · '+esc(e.review?M.review:M.published)+'</small></div><div class="list-actions">'+(e.review?'':'<button type="button" data-select="'+esc(e.lesson.uid)+'">'+esc(M.listSelect)+'</button>')+(urlOf(e.lesson)?'<a class="button secondary" href="../'+esc(urlOf(e.lesson))+'">'+esc(M.open)+'</a>':'')+'</div></div>').join("");list.querySelectorAll("[data-select]").forEach(b=>b.addEventListener("click",()=>{const e=entries.find(x=>x.lesson.uid===b.dataset.select);if(e){renderDetails(e);document.getElementById("mapMode")?.click();}}));layout();if("ResizeObserver"in window)new ResizeObserver(layout).observe(root);else window.addEventListener("resize",layout);};
+fetch("../data/catalog/catalog-v3.json").then(r=>{if(!r.ok)throw Error("HTTP "+r.status);return r.json();}).then(d=>{if(d.schema_version!==3)throw Error("Unsupported catalog");build(d);}).catch(()=>{root.querySelector("[data-map-loading]")?.remove();layer.innerHTML='<p class="planet-empty">'+esc(M.error)+'</p>';});
 })();

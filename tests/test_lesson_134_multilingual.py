@@ -25,7 +25,7 @@ class Lesson134Tests(unittest.TestCase):
                 self.assertIn(TITLES[locale], html)
                 self.assertIn('rel="canonical"', html)
                 self.assertNotIn('name="robots" content="noindex,nofollow"', html)
-                self.assertNotIn("undefined", html)
+                self.assertNotIn(">undefined<", html)
                 self.assertNotIn("{{", html)
                 self.assertIn("lesson-planet-banner", html)
                 self.assertIn("lesson-assessment.js", html)

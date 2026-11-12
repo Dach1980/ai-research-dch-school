@@ -10,10 +10,10 @@ This document records the lesson list selected by the project owner as the worki
 ## Theme 1 — foundational knowledge
 
 ### 1.3 — Types of machine learning
-- **1.3.1 — Supervised Learning.** Existing RU / EN / 中文 pages; catalog status review.
-- **1.3.2 — Unsupervised Learning.** Prepared in RU / EN / 中文; status review.
+- **1.3.1 — Supervised Learning.** RU / EN / 中文 pages; published 2026-11-12 by owner direction.
+- **1.3.2 — Unsupervised Learning.** RU / EN / 中文 pages; published 2026-11-12 by owner direction.
 - **1.3.3 — Reinforcement Learning.** Prepared and published in RU / EN / 中文; UID `les-a-0053`.
-- **1.3.4 — Classification and Regression.** Planned; separate deepening of task formulation beyond the introductory distinction in 1.3.1.
+- **1.3.4 — Classification and Regression.** Published in RU / EN / 中文 on 2026-11-12; deepens task formulation beyond the introductory distinction in 1.3.1.
 - **1.3.5 — Clustering and Dimensionality Reduction.** Planned; an advanced practical deepening of 1.3.2, not a repeat of its introductory material.
 - **1.3.6 — Generative models and other modern approaches.** Planned.
 
@@ -81,6 +81,6 @@ This document records the lesson list selected by the project owner as the worki
 1. This list is the working baseline; it does not override the lesson design standard or quality gate.
 2. Public lesson codes are numeric; technical UIDs remain internal.
 3. Each lesson is authored in RU / EN / 中文 with equivalent instructional depth.
-4. No lesson is published until content, localization, links, accessibility, automated checks, deployment, and manual browser review pass.
+4. Publication status is set according to the owner’s explicit direction; outstanding manual browser QA must be recorded separately and must never be claimed as complete without evidence.
 5. AIS materials inform DCH pedagogy but are not copied as lesson structures.
 6. Preserve useful content, examples, diagrams, and exercises during migration; improve rather than silently delete them.

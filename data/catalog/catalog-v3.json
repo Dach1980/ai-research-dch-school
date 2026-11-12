@@ -665,7 +665,7 @@
       "module_uid": "mod-a-01-04",
       "code": "1.4.1",
       "title": "Понятие модели и параметров",
-      "status": "review",
+      "status": "published",
       "access": "open",
       "level": "beginner",
       "prerequisite_uids": [],
@@ -677,7 +677,7 @@
         "Различать модель, алгоритм обучения и AI-систему.",
         "Объяснять, почему параметры сами по себе не доказывают причинную связь."
       ],
-      "content_state": "localized",
+      "content_state": "published",
       "url_i18n": {
         "ru": "lessons/a-1-4-1.html",
         "en": "lessons/a-1-4-1-en.html",

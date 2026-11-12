@@ -43,7 +43,7 @@ class Lesson133Tests(unittest.TestCase):
             with self.subTest(locale=locale):
                 html = path.read_text(encoding="utf-8")
                 self.assertEqual(len(re.findall(r'<figure class="lesson-figure lesson-133-figure">', html)), 3)
-                self.assertEqual(html.count("<title"), 3)
+                self.assertEqual(html.count("<title id="), 3)
                 self.assertEqual(html.count("<desc"), 3)
                 self.assertIn("lesson-133.css", html)
                 self.assertEqual(len(re.findall(r'class="glossary-entry"', html)), 10)

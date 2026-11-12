@@ -12,7 +12,7 @@
 
 ## 2. Сводные выводы
 
-- В модуле 1.3 подтверждена последовательность 1.3.1–1.3.6. Страницы 1.3.1 и 1.3.2 существуют в трёх локализациях; 1.3.3 создан в RU / EN / 中文 и опубликован; 1.3.4 и 1.3.5 внесены в каталог как planned; 1.3.6 уже присутствует как planned.
+- В модуле 1.3 подтверждена последовательность 1.3.1–1.3.6. Страницы 1.3.1, 1.3.2 и 1.3.3 опубликованы в RU / EN / 中文; 1.3.4 создан и опубликован в трёх локализациях; 1.3.5 и 1.3.6 остаются planned.
 - Урок 1.3.2 уже вводит кластеризацию, DBSCAN, PCA, оценку кластеров и обнаружение аномалий. Поэтому 1.3.5 должен быть углублением: сравнение методов и их предпосылок, настройка, устойчивость, оценка и ограничения. Повторять вводные определения и базовый K-means-пример нельзя.
 - В v3 есть составные legacy-источники: A.3 сопоставлен с несколькими уроками тем 1.2–1.4; A.4 — с моделью, обучением, настройкой и сравнением; A.5 — с данными и метриками; A.6 — с обобщением и переобучением. Их полезные объяснения, упражнения и примеры нужно переносить по фрагментам, а не копировать целиком в один новый урок.
 - В каталоге v3 обнаружено расхождение названий 1.1.3 и 1.1.4 относительно `TRACK_A_CURRICULUM.md`. Это не исправлялось автоматически: требуется отдельное решение владельца программы, чтобы не перенумеровать уже используемые страницы и ссылки.
@@ -31,15 +31,15 @@
 | 1.1.4 | AI, Machine Learning и Deep Learning | RU, EN, ZH | published / published | — | проверить расхождение названия |
 | 1.1.5 | Возможности и ограничения современного AI | нет канонической страницы | нет записи | — | — |
 | 1.2.1 | Что такое данные в машинном обучении | RU, EN, ZH | published / published | lessons/a-3-how-machines-learn-from-data.html | — |
-| 1.2.2 | Объекты, признаки и целевые переменные | RU, EN, ZH | review / localized | lessons/a-3-how-machines-learn-from-data.html | — |
+| 1.2.2 | Объекты, признаки и целевые переменные | RU, EN, ZH |${1}published / published | lessons/a-3-how-machines-learn-from-data.html | — |
 | 1.2.3 | Числовые, категориальные и текстовые признаки | нет канонической страницы | нет записи | — | — |
-| 1.2.4 | Обучающие, проверочные и тестовые данные | RU, EN, ZH | review / localized | lessons/a-5-how-to-evaluate-a-model.html | — |
-| 1.2.5 | Качество данных, пропуски и выбросы | RU, EN, ZH | review / localized | lessons/a-3-how-machines-learn-from-data.html | — |
-| 1.2.6 | Корреляция, зависимости и утечка данных | RU, EN, ZH | review / localized | lessons/a-3-how-machines-learn-from-data.html<br>lessons/a-6-generalization-and-overfitting.html<br>lessons/a-5-how-to-evaluate-a-model.html | — |
-| 1.3.1 | Обучение с учителем — Supervised Learning | RU, EN, ZH | review / localized | lessons/a-3-how-machines-learn-from-data.html | — |
-| 1.3.2 | Обучение без учителя — Unsupervised Learning | RU, EN, ZH | review / localized | lessons/a-3-how-machines-learn-from-data.html | — |
+| 1.2.4 | Обучающие, проверочные и тестовые данные | RU, EN, ZH |${1}published / published | lessons/a-5-how-to-evaluate-a-model.html | — |
+| 1.2.5 | Качество данных, пропуски и выбросы | RU, EN, ZH |${1}published / published | lessons/a-3-how-machines-learn-from-data.html | — |
+| 1.2.6 | Корреляция, зависимости и утечка данных | RU, EN, ZH |${1}published / published | lessons/a-3-how-machines-learn-from-data.html<br>lessons/a-6-generalization-and-overfitting.html<br>lessons/a-5-how-to-evaluate-a-model.html | — |
+| 1.3.1 | Обучение с учителем — Supervised Learning | RU, EN, ZH |${1}published / published | lessons/a-3-how-machines-learn-from-data.html | — |
+| 1.3.2 | Обучение без учителя — Unsupervised Learning | RU, EN, ZH |${1}published / published | lessons/a-3-how-machines-learn-from-data.html | — |
 | 1.3.3 | Обучение с подкреплением — Reinforcement Learning | RU, EN, ZH | published / published | — | — |
-| 1.3.4 | Классификация и регрессия | нет канонической страницы | planned / outline_only | — | — |
+| 1.3.4 | Классификация и регрессия | RU, EN, ZH | published / published | — | Глубокая постановка задач; метрики оставлены для 1.5 |
 | 1.3.5 | Кластеризация и снижение размерности | нет канонической страницы | planned / outline_only | — | — |
 | 1.3.6 | Генеративные модели и другие современные подходы | нет канонической страницы | planned / outline_only | lessons/a-3-how-machines-learn-from-data.html | — |
 | 1.4.1 | Понятие модели и параметров | нет канонической страницы | planned / outline_only | lessons/a-3-how-machines-learn-from-data.html<br>lessons/a-4-what-is-machine-learning-model.html | — |
@@ -233,3 +233,12 @@ The three SVG diagrams now use `styles/lesson-133.css`: at widths up to 560 px t
 - Manual browser visual review remains outstanding. TinyFish was not used.
 
 The full crosswalk is an inventory of program entries, catalog records, locale page presence, and legacy fragment mappings. It does not claim that all 146 lesson translations have received semantic native-speaker review or that every legacy exercise has already been migrated into future lesson pages. Existing legacy pages and exercises were not deleted.
+
+
+## 4. Публикация существующих страниц — 2026-11-12
+
+По прямому решению владельца проекта всем существующим каноническим урокам каталога присвоен статус `published` и `content_state=published`. Перед изменением статусов проверено наличие каждой RU / EN / 中文 страницы: 12 прежних уроков, 36 HTML-файлов. Затем добавлен урок 1.3.4 ещё в трёх локализациях; итог — 13 опубликованных уроков и 39 канонических страниц.
+
+В число обновлённых статусов вошли 1.2.2, 1.2.4, 1.2.5, 1.2.6, 1.3.1 и 1.3.2. Урок 1.3.2 дополнительно освобождён от `noindex,nofollow` во всех трёх версиях. Страницы будущих уроков без готового содержимого (например, 1.3.5 и 1.3.6) остались `planned`: они не являются существующими уроками сайта и не получили фиктивных URL.
+
+Публикация выполнена по прямому распоряжению владельца. Автоматические проверки и Pages deployment должны пройти после внесённых изменений. Ручная визуальная проверка desktop/mobile, обеих тем и клавиатурной доступности не заявляется как выполненная и остаётся отдельным QA-этапом.

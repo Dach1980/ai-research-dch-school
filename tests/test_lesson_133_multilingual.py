@@ -42,7 +42,10 @@ class Lesson133Tests(unittest.TestCase):
         for locale, path in FILES.items():
             with self.subTest(locale=locale):
                 html = path.read_text(encoding="utf-8")
-                self.assertEqual(len(re.findall(r'<figure class="lesson-figure">', html)), 3)
+                self.assertEqual(len(re.findall(r'<figure class="lesson-figure lesson-133-figure">', html)), 3)
+                self.assertEqual(html.count("<title"), 3)
+                self.assertEqual(html.count("<desc"), 3)
+                self.assertIn("lesson-133.css", html)
                 self.assertEqual(len(re.findall(r'class="glossary-entry"', html)), 10)
                 self.assertEqual(len(re.findall(r'class="lesson-check-question"', html)), 6)
                 self.assertEqual(html.count('data-mode="multi"'), 1)
@@ -62,6 +65,12 @@ class Lesson133Tests(unittest.TestCase):
             self.assertNotIn("<", code.group(1))
             self.assertIn("print(", code.group(1))
             self.assertIn("0 -&gt; 1 -&gt; 2 -&gt; 3 -&gt; 4", html)
+
+    def test_mobile_diagram_rules_preserve_readability(self):
+        css = (ROOT / "styles/lesson-133.css").read_text(encoding="utf-8")
+        self.assertIn("@media (max-width: 560px)", css)
+        self.assertIn("width: 640px", css)
+        self.assertIn("overflow-x: auto", css)
 
     def test_sources_quiz_and_navigation_order(self):
         for locale, path in FILES.items():

@@ -57,7 +57,7 @@ class Lesson133Tests(unittest.TestCase):
             self.assertIsNotNone(code)
             self.assertIn("random.seed(7)", code.group(1))
             self.assertIn("&lt; epsilon", code.group(1))
-            self.assertIn("&gt;", code.group(1))
+            self.assertNotIn("<", code.group(1))
             self.assertIn("print(", code.group(1))
             self.assertIn("0 -&gt; 1 -&gt; 2 -&gt; 3 -&gt; 4", html)
 

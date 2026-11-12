@@ -50,3 +50,8 @@ Browser verification remains a separate acceptance item: no browser automation p
 - GitHub Pages build/deployment run **43129628987**: passed.
 - The dedicated test covers the three distinct cluster structures and noise markers, all three localized environment labels, the light-theme SVG palette, mobile horizontal-scroll breakpoint, accessible SVG descriptions, and equal figure/glossary/assessment counts.
 - Manual visual browser verification of the live pages in desktop/mobile and both themes remains outstanding. TinyFish was not used, as requested; no other interactive browser tool was available in this session.
+
+
+## Navigation update — 2026-11-12
+
+After lesson 1.3.3 was prepared and published, the lower navigation in RU / EN / 中文 was updated to include an explicit next-lesson link to 1.3.3. The 1.3.2 lesson itself remains in review state; its publication status was not changed by this navigation update.

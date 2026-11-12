@@ -20,9 +20,9 @@ class Lesson141Tests(unittest.TestCase):
     def test_structure_definitions_formulas_and_diagrams(self):
         for p in FILES.values():
             h=p.read_text(encoding="utf-8")
-            self.assertEqual(h.count('class="definition"'),10)
-            self.assertEqual(h.count('class="definition-term"'),10)
-            self.assertEqual(h.count('class="definition-text"'),10)
+            self.assertEqual(h.count('class="definition"'),12)
+            self.assertEqual(h.count('class="definition-term"'),12)
+            self.assertEqual(h.count('class="definition-text"'),12)
             self.assertEqual(h.count('class="formula"'),2)
             self.assertEqual(h.count('class="lesson-figure lesson-141-figure"'),3)
             self.assertEqual(h.count("<title id="),3)

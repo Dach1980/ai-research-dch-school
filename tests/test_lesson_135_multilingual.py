@@ -45,7 +45,7 @@ class Lesson135Tests(unittest.TestCase):
     def test_definitions_glossary_sources_and_quiz(self):
         for path in FILES.values():
             html = path.read_text(encoding="utf-8")
-            self.assertGreaterEqual(html.count('class="definition"'), 5)
+            self.assertGreaterEqual(html.count('class="definition"'), 12)
             self.assertEqual(html.count('class="glossary-entry"'), 10)
             self.assertEqual(html.count('class="lesson-check-question"'), 8)
             self.assertEqual(html.count('class="lesson-check-feedback"'), 8)

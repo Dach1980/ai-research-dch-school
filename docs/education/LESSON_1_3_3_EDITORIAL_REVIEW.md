@@ -70,14 +70,14 @@ Links are embedded in all three lesson pages.
 - Catalog record: `les-a-0053`; status and content state are both published.
 - The pages do not contain `noindex,nofollow`.
 - The three 1.3.2 locale pages link to 1.3.3 as the next lesson.
-- 1.3.4 and 1.3.5 are catalogued as planned and are not linked as published pages.
+- 1.3.4 is now published in RU / EN / 中文 and linked as the next lesson; 1.3.5 remains planned.
 - The knowledge map, home knowledge map, and Track A catalogue read the v3 catalogue dynamically; the map script now has a localized 1.3.3 description.
 
 ### Limitations
 
 Manual visual verification in a real browser at desktop/mobile sizes, switching light/dark themes, and keyboard/screen-reader review were not performed in this session. Do not interpret source-level tests or GitHub Pages deployment as proof of those manual checks. The publication state is set to published at the project owner's explicit direction.
 
-The prerequisite lessons 1.3.1 and 1.3.2 remain in review state in the catalog; this report does not change their status.
+On 2026-11-12, the owner explicitly directed that all existing website lessons be marked published. The catalog status for 1.3.1 and 1.3.2 was updated accordingly; the noindex directive was removed from 1.3.2 in all three locales. Manual browser QA remains outstanding.
 
 
 ## 8. CI and Pages result — 2026-11-12
@@ -101,3 +101,10 @@ Final checks:
 - [Static website deployment run 43135830784](https://github.com/Dach1980/ai-research-dch-school/actions/runs/43135830784) — success.
 
 Manual browser verification remains outstanding; no claim of desktop/mobile visual QA is made.
+
+
+## Update 2026-11-12 — publication sequence
+
+Lesson 1.3.4 (Classification and Regression) was created in RU / EN / 中文 and published as the next lesson. It expands task formulation, target semantics, binary/multiclass/multilabel classification, model scores versus decisions, and threshold selection. Detailed evaluation metrics remain in Module 1.5 to avoid curriculum duplication. The three 1.3.3 pages now link to the corresponding 1.3.4 locale.
+
+The owner also directed publication of all existing website lessons. All 13 catalog entries with three localized canonical URLs now have `status=published` and `content_state=published`. This is a publication-state decision, not a claim that every page has received a new full editorial review or manual browser QA. See the updated Track A reconciliation report and Audit entries.

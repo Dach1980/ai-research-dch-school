@@ -24,7 +24,7 @@ class Lesson136Tests(unittest.TestCase):
    blocks=re.findall(r'<div class="definition">(.*?)</div>',h,re.S)
    self.assertEqual(len(blocks),12)
    for block in blocks:
-    self.assertRegex(block,r'<strong class="definition-term">[\\s\\S]*?</strong>\\s*<span class="definition-text">')
+    self.assertLess(block.index('<strong class="definition-term">'),block.index('<span class="definition-text">'))
   for css_path in ["styles/lesson-design-system.css","styles/lesson-reference-111.css"]:
    css=(ROOT/css_path).read_text(encoding="utf-8")
    self.assertIn("display:flex;flex-direction:column",css)

@@ -33,3 +33,12 @@ RU / EN / 中文 share the same instructional sequence, figures, code example, f
 Three canonical locale files are created with locale-specific canonical URLs and lang attributes. They reuse the shared lesson shell styles and scripts. Catalog record les-a-0008 is set to status=review and content_state=localized, with three locale paths and measurable learning outcomes.
 
 Not yet accepted for publication: CI, deployment, live URL checks, desktop/mobile browser review, dark/light theme review, keyboard/screen-reader review, and execution of the Python example remain outstanding. Do not change the lesson to published until the quality gate is satisfied.
+
+
+## Follow-up review — 2026-11-12
+
+The second illustration was revised in all three locales. It now distinguishes a compact cluster, an elongated cluster, and an irregular cluster with uneven density, plus isolated noise observations. The SVG uses theme-aware surface and text colours in the light theme while retaining the dark palette. On narrow screens the clustering diagram remains readable in a horizontally scrollable figure rather than being compressed into illegible labels.
+
+The duplicated runtime labels were corrected in RU, EN, and 中文. A dedicated regression test now checks the localized diagram labels, distinct geometric primitives, noise markers, environment-label uniqueness, light-theme CSS, mobile breakpoint, SVG accessibility, and locale parity in figure/glossary/assessment counts.
+
+Browser verification remains a separate acceptance item: no browser automation provider was used for this change. CI and Pages deployment results must be checked after commit; live desktop/mobile screenshots and manual theme switching are not claimed here.

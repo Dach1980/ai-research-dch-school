@@ -42,6 +42,10 @@ class Lesson135Tests(unittest.TestCase):
             self.assertIn("d135-region", html)
             self.assertIn("d135-projection-line", html)
             self.assertIn("d135-loop", html)
+            self.assertEqual(html.count('class="d135-step-number"'), 5)
+            self.assertEqual(html.count('class="d135-step-title"'), 5)
+            self.assertEqual(html.count('class="d135-step-caption"'), 5)
+            self.assertIn('viewBox="0 0 1200 390"', html)
             self.assertEqual(html.count("<desc id="), 3)
             self.assertIn("overflow-x:auto", (ROOT / "styles/lesson-135.css").read_text(encoding="utf-8"))
 
@@ -99,6 +103,11 @@ class Lesson135Tests(unittest.TestCase):
         css = (ROOT / "styles/lesson-135.css").read_text(encoding="utf-8")
         self.assertIn("@media(max-width:560px)", css)
         self.assertIn("width:960px", css)
+        self.assertIn("font:900 20px system-ui,sans-serif", css)
+        self.assertIn("d135-step-caption", css)
+        design_css = (ROOT / "styles/lesson-design-system.css").read_text(encoding="utf-8")
+        self.assertIn(".definition-term{display:block", design_css)
+        self.assertIn(".definition-text{display:block", design_css)
         self.assertIn("--lds-definition-term", (ROOT / "styles/lesson-design-system.css").read_text(encoding="utf-8"))
         self.assertIn('html[data-theme="light"]', css)
 

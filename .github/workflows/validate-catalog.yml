@@ -17,6 +17,7 @@ on:
       - "scripts/code-blocks.js"
       - "scripts/lesson-layout.js"
       - "styles/lesson-standard.css"
+      - "styles/lesson-design-system.css"
       - "styles/lesson-133.css"
       - "styles/lesson-134.css"
       - "styles/main.css"

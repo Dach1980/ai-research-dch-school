@@ -75,7 +75,7 @@ class Lesson134Tests(unittest.TestCase):
         self.assertEqual(set(draft["url_i18n"]), {"ru", "en", "zh"})
         for locale_path in draft["url_i18n"].values():
             html = (ROOT / locale_path).read_text(encoding="utf-8")
-            self.assertIn('name="robots" content="noindex,nofollow"', html)
+            self.assertNotIn('name="robots" content="noindex,nofollow"', html)
         lesson = {item["code"]: item for item in catalog["lessons"]}["1.3.4"]
         self.assertEqual(lesson["uid"], "les-a-0054")
         self.assertEqual(lesson["url_i18n"]["ru"], "lessons/a-1-3-4.html")

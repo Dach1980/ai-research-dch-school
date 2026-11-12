@@ -56,7 +56,7 @@ class Lesson132Tests(unittest.TestCase):
                 self.assertIn(label, svg)
             self.assertIn("<ellipse", svg)
             self.assertIn("<path", svg)
-            noise_group = re.search(r'<g class="cluster-noise">([\\s\\S]*?)</g>', svg)
+            noise_group = re.search(r'<g class="cluster-noise">(.*?)</g>', svg)
             self.assertIsNotNone(noise_group)
             self.assertGreaterEqual(noise_group.group(1).count("<circle"), 6)
             self.assertIn('<circle class="cluster-noise"', svg)

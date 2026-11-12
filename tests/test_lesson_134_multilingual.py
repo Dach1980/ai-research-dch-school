@@ -71,7 +71,7 @@ class Lesson134Tests(unittest.TestCase):
         draft = {item["code"]: item for item in catalog["lessons"]}["1.4.1"]
         self.assertEqual(draft["uid"], "les-a-0010")
         self.assertEqual(draft["status"], "published")
-        self.assertEqual(draft["content_state"], "localized")
+        self.assertEqual(draft["content_state"], "published")
         self.assertEqual(set(draft["url_i18n"]), {"ru", "en", "zh"})
         for locale_path in draft["url_i18n"].values():
             html = (ROOT / locale_path).read_text(encoding="utf-8")

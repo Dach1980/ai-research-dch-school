@@ -9,7 +9,7 @@ class KnowledgeMapTests(unittest.TestCase):
    for token in ['data-planets-root','data-orbit-layer','id="planetDetails"','id="mapMode"','id="listMode"','styles/knowledge-map.css','scripts/planet-map-catalog.js']:self.assertIn(token,h)
  def test_orbits_tooltips_accessibility_and_responsive_layout(self):
   js=(ROOT/"scripts/planet-map-catalog.js").read_text(encoding="utf-8");css=(ROOT/"styles/knowledge-map.css").read_text(encoding="utf-8")
-  for token in ['status!=="published"','content_state!=="published"','aria-label','button.title','planet-tooltip','ResizeObserver','2*Math.PI*i/g.points.length']:self.assertIn(token,js)
+  for token in ['status!=="published"','content_state!=="published"','aria-label','button.title','generatedPlanet','planet-tooltip','ResizeObserver','2*Math.PI*i/g.points.length']:self.assertIn(token,js)
   for token in ['@keyframes orbit-spin','@keyframes counter-spin',':focus-visible','overflow-wrap:anywhere','prefers-reduced-motion']:self.assertIn(token,css)
  def test_catalog_has_localized_published_lessons(self):
   c=json.loads((ROOT/"data/catalog/catalog-v3.json").read_text(encoding="utf-8"))

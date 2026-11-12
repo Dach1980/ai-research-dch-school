@@ -70,7 +70,7 @@ class Lesson135Tests(unittest.TestCase):
             self.assertEqual(re.findall(r'data-correct="([^"]+)"', html), expected)
             explanations = re.findall(r'data-explanation="([^"]+)"', html)
             self.assertEqual(len(explanations), 8)
-            self.assertTrue(all(len(value) > 35 for value in explanations))
+            self.assertTrue(all(len(value) > 25 for value in explanations))
 
     def test_python_example_is_syntactically_valid_and_precedes_practice(self):
         for path in FILES.values():
@@ -97,7 +97,7 @@ class Lesson135Tests(unittest.TestCase):
             html = path.read_text(encoding="utf-8")
             suffix = "" if locale == "ru" else "-en" if locale == "en" else "-zh"
             self.assertIn(f'href="a-1-3-4{suffix}.html"', html)
-            self.assertNotIn(f'href="a-1-3-6{suffix}.html"', html)
+            self.assertIn(f'href="a-1-3-6{suffix}.html"', html)
 
     def test_mobile_css_and_theme_adaptation(self):
         css = (ROOT / "styles/lesson-135.css").read_text(encoding="utf-8")

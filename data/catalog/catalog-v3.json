@@ -1,7 +1,7 @@
 {
   "schema_version": 3,
   "catalog_id": "dch-school-curriculum",
-  "catalog_version": "3.0.0",
+  "catalog_version": "3.0.0-draft",
   "status": "migration_staging",
   "tracks": [
     {

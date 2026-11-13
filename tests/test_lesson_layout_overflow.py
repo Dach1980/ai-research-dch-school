@@ -41,6 +41,23 @@ class LessonLayoutOverflowTests(unittest.TestCase):
                             theme,
                         )
                         page.evaluate("() => document.fonts ? document.fonts.ready.then(() => true) : true")
+                        if lesson.name.startswith("a-1-4-5"):
+                            glossary = page.evaluate("""() => {
+                              const dl = document.querySelector('.lesson-glossary dl');
+                              if (!dl) return {error: 'glossary dl missing'};
+                              const columns = getComputedStyle(dl).gridTemplateColumns
+                                .split(' ').filter(Boolean).length;
+                              return {
+                                columns,
+                                entries: dl.querySelectorAll('.glossary-entry').length,
+                                display: getComputedStyle(dl).display
+                              };
+                            }""")
+                            expected_columns = 1 if width <= 700 else 2
+                            if glossary.get("error") or glossary["display"] != "grid" or glossary["columns"] != expected_columns or glossary["entries"] != 10:
+                                failures.append(
+                                    f"{lesson.name} | {width}px | {theme}: glossary layout {glossary}"
+                                )
                         result = page.evaluate("""(selector) => {
                           const cards = [...document.querySelectorAll(selector)];
                           const problems = [];

@@ -91,7 +91,7 @@ class LocaleGridThemeParityTests(unittest.TestCase):
     def test_v3_published_lessons_have_single_codes_and_complete_localization(self):
         catalog = json.loads((ROOT / "data/catalog/catalog-v3.json").read_text(encoding="utf-8"))
         published = [x for x in catalog["lessons"] if x["status"] == "published" and x["content_state"] == "published"]
-        self.assertEqual(len(published), 19)
+        self.assertEqual(len(published), 20)
         self.assertIn("les-a-0010", {lesson["uid"] for lesson in published})
         for lesson in published:
             with self.subTest(code=lesson["code"]):

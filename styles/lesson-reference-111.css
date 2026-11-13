@@ -49,6 +49,11 @@
 .lesson-figure .cluster-boundaries{fill:none;stroke:var(--lds-muted);stroke-width:1.6;stroke-dasharray:6 5;opacity:.72}
 .lesson-figure .cluster-noise{fill:var(--lds-muted);stroke:var(--lds-surface);stroke-width:1.2}
 
+/* Explicit light-theme contrast for the 1.3.2 clustering SVG. */
+html[data-theme="light"] .lesson-figure .cluster-panel{fill:var(--lds-surface);stroke:var(--lds-line)}
+html[data-theme="light"] .lesson-figure .svg-label{fill:var(--lds-ink)}
+html[data-theme="light"] .lesson-figure .svg-title{fill:var(--lds-ink)}
+
 
 
 

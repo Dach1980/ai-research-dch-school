@@ -825,7 +825,7 @@
       "module_uid": "mod-a-01-05",
       "code": "1.5.6",
       "title": "Кросс-валидация и устойчивость результатов",
-      "status": "review",
+      "status": "published",
       "access": "open",
       "level": "beginner",
       "prerequisite_uids": [
@@ -840,7 +840,7 @@
         "Предотвращать утечку данных при preprocessing, feature selection и подборе гиперпараметров.",
         "Проектировать процедуру оценки с отдельным тестовым набором."
       ],
-      "content_state": "localized",
+      "content_state": "published",
       "title_i18n": {
         "ru": "Кросс-валидация и устойчивость результатов",
         "en": "Cross-Validation and Result Stability",

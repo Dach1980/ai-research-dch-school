@@ -1504,7 +1504,7 @@
       "module_uid": "mod-a-01-02",
       "code": "1.2.3",
       "title": "Типы данных и представление признаков",
-      "status": "review",
+      "status": "published",
       "access": "open",
       "level": "beginner",
       "prerequisite_uids": [
@@ -1517,7 +1517,7 @@
         "Учитывать доступность признаков и предотвращать утечку при подготовке данных.",
         "Составлять спецификацию признаков перед обучением модели."
       ],
-      "content_state": "localized",
+      "content_state": "published",
       "url_i18n": {
         "ru": "lessons/a-1-2-3.html",
         "en": "lessons/a-1-2-3-en.html",

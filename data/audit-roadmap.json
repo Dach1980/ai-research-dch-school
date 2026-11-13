@@ -2502,7 +2502,7 @@
       "date": "2026-11-13",
       "type": "lesson_1_4_5_multilingual_publication",
       "title": "Подготовлены языковые версии и регрессионные проверки урока 1.4.5",
-      "result": "Созданы RU / EN / 中文 страницы «Гиперпараметры и настройка модели» / “Hyperparameters and Model Tuning” / «超参数与模型调优» с UID les-a-0014. Добавлены 3 локализованные SVG, 2 формулы, Python/scikit-learn пример с Pipeline и RandomizedSearchCV, практическое задание, 10 терминов и 8 вопросов с объяснениями. Catalog v3 обновлён: prerequisite les-a-0013, три URL, status=published и content_state=published. Добавлен отдельный тест урока, он включён в Validate learning catalog; проверки количества опубликованных уроков, карты знаний и последовательной навигации расширены. CI и Pages deployment ещё не подтверждены.",
+      "result": "Созданы RU / EN / 中文 страницы «Гиперпараметры и настройка модели» / “Hyperparameters and Model Tuning” / «超参数与模型调优» с UID les-a-0014. Добавлены 3 локализованные SVG, 2 формулы, Python/scikit-learn пример с Pipeline и RandomizedSearchCV, практическое задание, 10 терминов и 8 вопросов с объяснениями. Catalog v3 обновлён: prerequisite les-a-0013, три URL, status=published и content_state=published. Добавлен отдельный тест урока, он включён в Validate learning catalog; проверки количества опубликованных уроков, карты знаний, общего дизайн-стандарта, локализаций и последовательной навигации расширены. Исходники и проверки зафиксированы в main. CI и Pages deployment не подтверждены.",
       "evidence": [
         "lessons/a-1-4-5.html",
         "lessons/a-1-4-5-en.html",
@@ -2515,10 +2515,11 @@
         ".github/workflows/validate-catalog.yml"
       ],
       "limitations": [
-        "Автоматические CI и Pages deployment должны завершиться успешно; до этого нельзя считать публикацию подтверждённой.",
+        "GitHub combined status показывает Vercel context failure с причиной build-rate-limit; этот статус сам по себе не подтверждает сбой GitHub Pages.",
+        "GitHub Actions run IDs и результат Pages deployment недоступны через используемый GitHub connector; прямое открытие опубликованных URL также не удалось. Поэтому CI и публикация на домене не считаются проверенными.",
         "Ручная проверка на реальных desktop/mobile устройствах, клавиатурная навигация и screen reader не выполнены.",
         "Профессиональная вычитка английской и китайской версий носителями языка не проводилась.",
-        "Python-пример проверяется синтаксически; запуск в целевой пользовательской среде отдельно не выполнялся."
+        "Python-пример прошёл AST-проверку, но не запускался в целевой пользовательской среде."
       ]
     }
   ]

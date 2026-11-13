@@ -112,3 +112,22 @@ html:not([data-theme="light"]){--lds-definition-term:#5eead4;--lds-definition-te
 .article-body .definition{display:flex;flex-direction:column;align-items:stretch;gap:.35rem;min-width:0;max-width:100%;padding:1.05rem 1.25rem;margin:1.25rem 0;border:1px solid var(--lds-definition-border);border-left:4px solid var(--lds-definition-term);border-radius:13px;background:var(--lds-definition-surface);color:var(--lds-definition-text);line-height:1.75}
 .article-body .definition .definition-term{display:block;flex:0 0 auto;width:100%;margin:0;color:var(--lds-definition-term);font-weight:800;line-height:1.45;overflow-wrap:anywhere}
 .article-body .definition .definition-text{display:block;flex:0 0 auto;width:100%;min-width:0;margin:0;color:var(--lds-definition-text);font-weight:400;line-height:1.7;overflow-wrap:anywhere}
+
+/* Canonical glossary contract: two-column outer grid, vertical flex cards.
+   Keep this rule more specific than the legacy .glossary-entry grid above. */
+.lesson-glossary > .glossary-entry{
+  display:flex;
+  flex-direction:column;
+  align-items:stretch;
+  gap:6px;
+  min-width:0;
+  max-width:100%;
+  overflow-wrap:anywhere;
+}
+.lesson-glossary > .glossary-entry > strong,
+.lesson-glossary > .glossary-entry > span{
+  display:block;
+  min-width:0;
+  max-width:100%;
+  overflow-wrap:anywhere;
+}

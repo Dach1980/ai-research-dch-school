@@ -61,3 +61,14 @@ def test_every_lesson_with_svg_loads_the_shared_theme_system():
                         f"{page.name} contains hard-coded dark SVG text color: {value!r}"
                     )
     assert checked > 0
+
+def test_legacy_figure_rules_use_theme_tokens_and_light_theme_has_contrast_override():
+    components = (ROOT / "styles" / "lesson-content-components.css").read_text(encoding="utf-8")
+    theme = (ROOT / "styles" / "theme-system.css").read_text(encoding="utf-8")
+    figure_rules = re.search(r"\.lesson-figure\s*\{[^}]*\}", components)
+    assert figure_rules, "Legacy lesson figure rule is missing"
+    assert "background:var(--lds-surface)" in figure_rules.group(0)
+    for token in ("--lds-ink", "--lds-muted", "--lds-accent", "--lds-good"):
+        assert token in components
+    assert 'html[data-theme="light"] .article-body .lesson-figure' in theme
+    assert 'html[data-theme="light"] .article-body .lesson-nav a.primary{color:#fff}' in theme

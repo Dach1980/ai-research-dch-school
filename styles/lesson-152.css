@@ -1,0 +1,27 @@
+/* Lesson 1.5.2 — semantic confusion-matrix cells; theme-aware and responsive. */
+.lesson-152-table-wrap{max-width:100%;overflow-x:auto;overscroll-behavior-inline:contain;margin:18px 0 24px;border:1px solid var(--lds-line);border-radius:14px;background:var(--lds-surface)}
+.lesson-152-matrix{width:100%;min-width:620px;border-collapse:separate;border-spacing:0;color:var(--lds-ink)}
+.lesson-152-matrix caption{padding:13px 16px;text-align:left;color:var(--lds-muted);font-size:.9rem}
+.lesson-152-matrix th,.lesson-152-matrix td{padding:12px 14px;border-top:1px solid var(--lds-line);border-right:1px solid var(--lds-line);text-align:left;vertical-align:top;overflow-wrap:anywhere}
+.lesson-152-matrix tr>*:last-child{border-right:0}
+.lesson-152-matrix thead th{background:var(--lds-surface);font-weight:800}
+.lesson-152-matrix tbody th{background:color-mix(in srgb,var(--lds-muted) 8%,var(--lds-surface));font-weight:750}
+.lesson-152-matrix td strong{display:block;font-size:1.15rem;color:var(--lds-ink)}
+.lesson-152-matrix td span{display:block;margin-top:3px;font-weight:700;color:var(--lds-ink)}
+.lesson-152-matrix td small{display:block;margin-top:5px;color:var(--lds-muted);line-height:1.45}
+.lesson-152-matrix .cell-tp{background:color-mix(in srgb,var(--lds-good) 12%,var(--lds-surface))}
+.lesson-152-matrix .cell-tn{background:color-mix(in srgb,var(--lds-accent) 9%,var(--lds-surface))}
+.lesson-152-matrix .cell-fp{background:color-mix(in srgb,var(--lds-bad) 9%,var(--lds-surface))}
+.lesson-152-matrix .cell-fn{background:color-mix(in srgb,var(--lds-warning,var(--lds-bad)) 11%,var(--lds-surface))}
+.lesson-152-figure{margin:24px 0;padding:14px;border:1px solid var(--lds-line);border-radius:16px;background:var(--lds-surface);max-width:100%;overflow-x:auto;overscroll-behavior-inline:contain}
+.lesson-152-figure svg{display:block;width:100%;min-width:760px;height:auto;max-width:none}
+.lesson-152-figure figcaption{margin:10px 4px 2px;color:var(--lds-muted);font-size:.9rem;line-height:1.6;overflow-wrap:anywhere}
+.lesson-152-bg{fill:var(--lds-surface);stroke:var(--lds-line);stroke-width:1.5}
+.lesson-152-node{stroke-width:2}
+.lesson-152-accent{fill:color-mix(in srgb,var(--lds-accent) 12%,var(--lds-surface));stroke:var(--lds-accent)}
+.lesson-152-good{fill:color-mix(in srgb,var(--lds-good) 13%,var(--lds-surface));stroke:var(--lds-good)}
+.lesson-152-muted{fill:color-mix(in srgb,var(--lds-muted) 10%,var(--lds-surface));stroke:var(--lds-muted)}
+.lesson-152-warning{fill:color-mix(in srgb,var(--lds-bad) 10%,var(--lds-surface));stroke:var(--lds-bad)}
+.lesson-152-label{fill:var(--lds-ink);font:700 18px system-ui,sans-serif}
+.lesson-152-small{fill:var(--lds-muted);font:700 13px system-ui,sans-serif}
+@media(max-width:700px){.lesson-152-figure{padding:8px}.lesson-152-label{font-size:16px}.lesson-152-small{font-size:12px}.lesson-152-matrix th,.lesson-152-matrix td{padding:10px}}

@@ -1281,7 +1281,7 @@
       "module_uid": "mod-a-01-05",
       "code": "1.5.3",
       "title": "Accuracy, Precision, Recall и F1",
-      "status": "review",
+      "status": "published",
       "access": "open",
       "level": "beginner",
       "prerequisite_uids": [
@@ -1294,7 +1294,7 @@
         "Объяснять гармоническую природу F1 и ограничения его интерпретации.",
         "Сравнивать модели и выбирать приоритетную метрику с учётом последствий ошибок."
       ],
-      "content_state": "localized",
+      "content_state": "published",
       "title_i18n": {
         "ru": "Accuracy, Precision, Recall и F1",
         "en": "Accuracy, Precision, Recall and F1",

@@ -1,4 +1,5 @@
 import json
+import re
 import unittest
 from html.parser import HTMLParser
 from pathlib import Path
@@ -40,6 +41,8 @@ class Lesson123Tests(unittest.TestCase):
             self.assertGreater(len(source), 20000)
             self.assertIn("lesson-assessment.js", source)
             self.assertEqual(source.count('class="lesson-check-question"'), 8)
+            correct = re.findall(r'data-correct="([abc])"', source)
+            self.assertEqual(len(set(correct)), 3, "correct answer positions should vary")
             self.assertEqual(source.count('class="glossary-entry"'), 10)
             self.assertEqual(source.count('class="lesson-outcomes"'), 1)
             self.assertIn('lesson-practice-task', source)

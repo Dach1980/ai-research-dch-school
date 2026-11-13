@@ -43,7 +43,7 @@ class LessonLayoutOverflowTests(unittest.TestCase):
                         page.evaluate("() => document.fonts ? document.fonts.ready.then(() => true) : true")
                         if lesson.name.startswith(("a-1-4-5", "a-1-5-1", "a-1-5-4")):
                             expected_entries = 5 if lesson.name.startswith(("a-1-5-1", "a-1-5-4")) else 10
-                            expected_children = 4 if lesson.name.startswith("a-1-5-1") else 2
+                            expected_children = 4 if lesson.name.startswith("a-1-5-1") else 3 if lesson.name.startswith("a-1-5-4") else 2
                             glossary = page.evaluate("""([expectedEntries, expectedChildren]) => {
                               const container = document.querySelector('.lesson-glossary');
                               if (!container) return {error: 'lesson-glossary missing'};
@@ -55,8 +55,12 @@ class LessonLayoutOverflowTests(unittest.TestCase):
                                     entry.children[1].tagName === 'STRONG' &&
                                     entry.children[2].classList.contains('term-en') &&
                                     entry.children[3].tagName === 'P'
-                                  : entry.children[0].tagName === 'STRONG' &&
-                                    entry.children[1].tagName === 'SPAN')
+                                  : expectedChildren === 3
+                                    ? entry.children[0].tagName === 'STRONG' &&
+                                      entry.children[1].classList.contains('glossary-equivalent') &&
+                                      entry.children[2].tagName === 'SPAN'
+                                    : entry.children[0].tagName === 'STRONG' &&
+                                      entry.children[1].tagName === 'SPAN')
                               );
                               return {
                                 entries: entries.length,

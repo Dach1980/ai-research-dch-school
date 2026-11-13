@@ -1,5 +1,4 @@
 import json
-import re
 import unittest
 from html.parser import HTMLParser
 from pathlib import Path
@@ -34,11 +33,16 @@ class Lesson123Tests(unittest.TestCase):
             self.assertIn(TITLES[locale], source)
             self.assertIn('rel="canonical"', source)
             self.assertIn("lesson-design-system.css", source)
+            self.assertIn("lesson-123.css", source)
+            self.assertEqual(source.count('class="lesson-123-figure"'), 6)
+            self.assertEqual(source.count('<section id="section-'), 10)
+            self.assertIn('class="lesson-123-table"', source)
+            self.assertGreater(len(source), 20000)
             self.assertIn("lesson-assessment.js", source)
             self.assertEqual(source.count('class="lesson-check-question"'), 8)
             self.assertEqual(source.count('class="glossary-entry"'), 10)
             self.assertEqual(source.count('class="lesson-outcomes"'), 1)
-            self.assertIn('class="lesson-practice-task"', source)
+            self.assertIn('lesson-practice-task', source)
             self.assertIn('class="lesson-sources"', source)
             self.assertIn('class="lesson-nav"', source)
             parser = Links()
@@ -53,6 +57,8 @@ class Lesson123Tests(unittest.TestCase):
         catalog = json.loads((ROOT / "data/catalog/catalog-v3.json").read_text(encoding="utf-8"))
         lesson = next(item for item in catalog["lessons"] if item["code"] == "1.2.3")
         self.assertEqual(lesson["uid"], "les-a-0056")
+        uids = [item["uid"] for item in catalog["lessons"]]
+        self.assertEqual(len(uids), len(set(uids)), "catalogue UIDs must be unique")
         self.assertEqual(lesson["status"], "review")
         self.assertEqual(lesson["content_state"], "localized")
         self.assertEqual(lesson["prerequisite_uids"], ["les-a-0004"])

@@ -550,7 +550,7 @@
       "title": "Спроектировать бесплатную регистрацию и систему обратной связи сообщества",
       "status": "in_progress",
       "priority": "high",
-      "decision": "Подготовлен проект MVP на существующей Supabase Auth и profiles: зарегистрированные пользователи смогут задавать вопросы, сообщать об ошибках/неточностях и предлагать улучшения; обращения будут приватными по умолчанию и доступны автору и модераторам, с ответами и статусами. Зафиксированы схема community_feedback, RLS, антиспам, модерация, локализации и этапы запуска. Оплата и подписки исключены. Публичная регистрация остаётся выключенной: Terms/Privacy — неутверждённые черновики, SMTP и CAPTCHA не проверены; миграция БД не применялась.",
+      "decision": "Подготовлен проект MVP на существующей Supabase Auth и profiles: зарегистрированные пользователи смогут задавать вопросы, сообщать об ошибках/неточностях и предлагать улучшения; обращения будут приватными по умолчанию и доступны автору и модераторам, с ответами и статусами. Зафиксированы схема community_feedback, RLS, антиспам, модерация, локализации и этапы запуска. Оплата и подписки исключены. Публичная регистрация остаётся выключенной: Terms/Privacy — неутверждённые черновики, SMTP и CAPTCHA не проверены; миграция БД не применялась. 2026-11-13: отдельно реализован публичный статический mailto-канал вопросов и пожеланий без регистрации (RM-29). Он не создаёт базу обращений и не снимает блокировки RM-28; аккаунтная система обратной связи остаётся предметом дальнейшей реализации.",
       "acceptance": [
         "Используется существующий Supabase Auth, без второй системы аккаунтов.",
         "Публичная регистрация остаётся выключенной до утверждения Terms/Privacy и проверки email.",
@@ -559,7 +559,8 @@
         "Описаны схема данных, RLS, роли school_admins, ограничения длины, rate limits и CAPTCHA.",
         "Определены RU / EN / 中文 интерфейс, пользовательская история обращений и административная модерация.",
         "Нет платёжных механизмов, подписок или платного доступа.",
-        "Перед включением регистрации пройдены юридические, SMTP, redirect URL, CAPTCHA, RLS и security checks."
+        "Перед включением регистрации пройдены юридические, SMTP, redirect URL, CAPTCHA, RLS и security checks.",
+        "Публичный почтовый канал без регистрации реализован отдельным этапом; он не подменяет приватную систему обращений в аккаунте (RM-29)."
       ],
       "source": "docs/management/COMMUNITY_FEEDBACK_MVP_2026-11-13.md; auth/index.html; scripts/auth.js; scripts/supabase-config.js; docs/legal/TERMS_DRAFT.md; docs/legal/PRIVACY_POLICY_DRAFT.md"
     },
@@ -584,6 +585,46 @@
       ],
       "source": "docs/legal/RUSSIA_DATA_LOCALIZATION_REVIEW_2026-11-13.md",
       "description": ""
+    },
+    {
+      "id": "RM-29",
+      "date": "2026-11-13",
+      "title": "Реализовать почтовую форму вопросов и пожеланий без регистрации",
+      "status": "done",
+      "priority": "medium",
+      "decision": "Созданы локализованные страницы обратной связи RU / EN / 中文. Общая навигация сайта добавляет ссылку на форму и передаёт только URL исходной страницы без query-параметров и hash. Форма формирует письмо на itprof80@gmail.com через почтовое приложение посетителя; отправка происходит только после его подтверждения. Данные не сохраняются сайтом, не передаются в Supabase и не отправляются через сторонний сервис. Это ограниченный публичный канал, а не база обращений с историей и статусами.",
+      "acceptance": [
+        "Созданы feedback/index.html, feedback/index-en.html и feedback/index-zh.html.",
+        "Ссылка на обратную связь доступна из общей навигации RU / EN / 中文.",
+        "Форма включает тип сообщения, имя и email для ответа (необязательно), URL страницы и текст сообщения.",
+        "Письмо адресуется itprof80@gmail.com и формируется через mailto; пользователь сам подтверждает отправку.",
+        "Нет Supabase-записей, стороннего form backend или скрытого хранения обращений.",
+        "URL исходной страницы передаётся без query-параметров и hash.",
+        "Добавлены автоматические тесты формы; Validate learning catalog завершился успешно (run 43342318343).",
+        "GitHub Pages build/deployment и deploy workflow завершились успешно (runs 43342318218 и 43342318344).",
+        "Ручная проверка открытия почтового приложения и реальной доставки письма остаётся отдельной задачей."
+      ],
+      "source": "feedback/index.html; feedback/index-en.html; feedback/index-zh.html; scripts/main.js; styles/feedback.css; tests/test_feedback_pages.py; docs/management/COMMUNITY_FEEDBACK_MVP_2026-11-13.md"
+    },
+    {
+      "id": "RM-30",
+      "date": "2026-11-13",
+      "title": "Разработать и опубликовать урок 1.4.3 «Переобучение и недообучение»",
+      "status": "done",
+      "priority": "high",
+      "decision": "Опубликованы RU / EN / 中文 страницы урока 1.4.3 с сохранением UID les-a-0012 и module UID mod-a-01-04. Добавлены четыре локализованные SVG-схемы, четыре формулы, пример Python/scikit-learn, самостоятельное задание, словарь из 10 терминов и 8 вопросов с объяснениями. Catalog v3 содержит три канонических URL, prerequisites на les-a-0010 и les-a-0011, status=published и content_state=published. Карта знаний получает опубликованный урок из каталога.",
+      "acceptance": [
+        "Сохранены код 1.4.3, UID les-a-0012 и module UID mod-a-01-04.",
+        "RU / EN / 中文 содержат равнозначную лекцию о недообучении, переобучении, кривых обучения и generalization gap.",
+        "Каждая локализация содержит 4 SVG с title/desc и локализованными подписями, 4 формулы, 10 glossary entries и 8 вопросов с объяснениями.",
+        "Добавлены практическое задание и Python/scikit-learn пример.",
+        "Catalog v3 фиксирует prerequisites les-a-0010 и les-a-0011, три URL и published/published.",
+        "Карта знаний и локализованный каталог отображают новый опубликованный урок.",
+        "Автоматические тесты урока и локализаций прошли; Validate learning catalog — success (run 43342318343).",
+        "GitHub Pages build/deployment и deploy workflow завершились успешно (runs 43342318218 и 43342318344).",
+        "Ручная desktop/mobile, light/dark, keyboard и screen-reader QA отдельно ожидает проверки."
+      ],
+      "source": "lessons/a-1-4-3.html; lessons/a-1-4-3-en.html; lessons/a-1-4-3-zh.html; styles/lesson-143.css; data/catalog/catalog-v3.json; tests/test_lesson_143_multilingual.py; tests/test_knowledge_map.py; tests/test_locale_grid_theme_parity.py"
     }
   ],
   "audit_log": [
@@ -2326,6 +2367,49 @@
         "Требуется адресный аудит SECURITY DEFINER ACL; механическое снятие EXECUTE может сломать RLS-политики.",
         "Production migration history API вернул пустой список при существующих таблицах.",
         "Статус НПД указан владельцем, но документально не проверен; адрес оператора не предоставлен; публичный email itprof80@gmail.com предоставлен владельцем, доступность не проверена."
+      ]
+    },
+    {
+      "id": "AUD-085",
+      "date": "2026-11-13",
+      "type": "public_mailto_feedback_channel",
+      "title": "Реализована форма вопросов и пожеланий без регистрации",
+      "result": "Созданы три локализованные страницы обратной связи. Общая навигация добавляет ссылку на форму; контекст исходной страницы передаётся без query/hash. Форма только формирует письмо на itprof80@gmail.com через почтовое приложение посетителя. Никакие данные не сохраняются на сайте и не записываются в Supabase; сторонний form backend не подключён. Регистрация остаётся выключенной.",
+      "evidence": [
+        "feedback/index.html",
+        "feedback/index-en.html",
+        "feedback/index-zh.html",
+        "scripts/main.js",
+        "styles/feedback.css",
+        "tests/test_feedback_pages.py",
+        "docs/management/COMMUNITY_FEEDBACK_MVP_2026-11-13.md"
+      ],
+      "limitations": [
+        "Реальная доставка письма не подтверждена; зависит от настроенного почтового приложения и действия пользователя.",
+        "Не реализованы история обращений, статусы, модерация и серверная отправка; это не замена аккаунтной системе RM-27.",
+        "Ручная проверка desktop/mobile и трёх языковых вариантов ещё требуется."
+      ]
+    },
+    {
+      "id": "AUD-086",
+      "date": "2026-11-13",
+      "type": "lesson_1_4_3_multilingual_publication",
+      "title": "Опубликован урок 1.4.3 на трёх языках",
+      "result": "Созданы RU / EN / 中文 версии «Переобучение и недообучение» / “Overfitting and Underfitting” / «过拟合与欠拟合». Сохранён UID les-a-0012. Добавлены 4 локализованные SVG, 4 формулы, Python/scikit-learn пример, практическое задание, 10 терминов и 8 вопросов самопроверки. Catalog v3 переведён в status=published и content_state=published, указаны prerequisites les-a-0010 и les-a-0011 и три канонических URL. Карта знаний строится из обновлённого каталога. Validate learning catalog run 43342318343 — success; GitHub Pages build/deployment run 43342318218 — success; deploy workflow run 43342318344 — success.",
+      "evidence": [
+        "lessons/a-1-4-3.html",
+        "lessons/a-1-4-3-en.html",
+        "lessons/a-1-4-3-zh.html",
+        "styles/lesson-143.css",
+        "data/catalog/catalog-v3.json",
+        "tests/test_lesson_143_multilingual.py",
+        "tests/test_knowledge_map.py",
+        "tests/test_locale_grid_theme_parity.py"
+      ],
+      "limitations": [
+        "Ручная браузерная QA desktop/mobile, светлой/тёмной тем, клавиатуры и screen reader не выполнена.",
+        "Профессиональная вычитка EN и 中文 носителями языка не проводилась.",
+        "Python/scikit-learn пример не запускался в целевой пользовательской среде; результаты зависят от установленной версии библиотек и случайного разбиения."
       ]
     }
   ]

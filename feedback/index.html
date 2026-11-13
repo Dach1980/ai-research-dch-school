@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#080d1b"><meta name="description" content="Есть вопрос по уроку, заметили ошибку или хотите предложить улучшение сайта? Напишите нам — мы внимательно читаем сообщения и используем их для развития школы.">
+<title>Вопросы и пожелания · AI Research DCH School</title>
+<link rel="icon" href="../assets/favicon.svg"><link rel="stylesheet" href="../styles/main.css"><link rel="stylesheet" href="../styles/account.css"><link rel="stylesheet" href="../styles/feedback.css">
+</head>
+<body>
+<header class="site-header">
+<a class="brand" href="../index.html"><img src="../assets/logo.svg" alt="DCH"></a>
+<button class="menu-toggle" aria-label="Открыть меню" aria-expanded="false">☰</button>
+<nav class="nav"><a href="../index.html">Главная</a><a href="../lessons/index.html">Уроки</a><a href="../learning-map/index.html">Карта знаний</a></nav>
+</header>
+<main class="feedback-page">
+<a class="feedback-back" href="../index.html">← На главную</a>
+<section class="feedback-card">
+<p class="eyebrow">AI RESEARCH DCH SCHOOL · ОБРАТНАЯ СВЯЗЬ</p>
+<h1>Вопросы и пожелания</h1>
+<p class="feedback-intro">Есть вопрос по уроку, заметили ошибку или хотите предложить улучшение сайта? Напишите нам — мы внимательно читаем сообщения и используем их для развития школы.</p>
+<form class="feedback-form" id="feedback-form">
+<label>Тема обращения<select name="kind" required><option value="question">Вопрос по сайту или урокам</option><option value="suggestion">Пожелание или идея</option><option value="bug">Сообщить об ошибке</option><option value="content">Замечание к учебному материалу</option></select></label>
+<label>Ваше имя (необязательно)<input name="name" type="text" maxlength="100" autocomplete="name"></label>
+<label>Email для ответа (необязательно)<input name="replyEmail" type="email" maxlength="254" autocomplete="email"></label>
+<label>Страница, к которой относится сообщение (необязательно)<input name="pageUrl" id="feedback-page-url" type="url" maxlength="1000" placeholder="https://dchai.ru/..."></label>
+<label>Сообщение<textarea name="message" required minlength="10" maxlength="3000"></textarea><span class="hint">Не указывайте пароли, платёжные данные или другую конфиденциальную информацию.</span></label>
+<div class="feedback-actions"><button class="feedback-submit" type="submit">Подготовить письмо</button></div>
+<p class="feedback-notice" id="feedback-notice" role="status" aria-live="polite" hidden>Почтовое приложение должно открыться с подготовленным письмом. Чтобы отправить сообщение, подтвердите отправку в нём.</p>
+</form>
+<div class="feedback-privacy">После нажатия откроется почтовое приложение с подготовленным письмом на itprof80@gmail.com. Сообщение не отправляется автоматически: проверьте его и нажмите «Отправить» в почтовом приложении. Сайт не сохраняет введённые данные и не передаёт их в Supabase или сторонние формы. Если почтовое приложение не открылось, отправьте письмо вручную на <a href="mailto:itprof80@gmail.com">itprof80@gmail.com</a>.</div>
+</section>
+</main>
+<footer class="feedback-footer">© 2026 AI Research DCH School · <a href="../index.html">Главная</a></footer>
+<script src="../scripts/main.js"></script>
+<script src="../scripts/theme-system.js" defer></script>
+<script>
+(() => {
+ const form = document.getElementById("feedback-form");
+ const pageField = document.getElementById("feedback-page-url");
+ const notice = document.getElementById("feedback-notice");
+ const params = new URLSearchParams(window.location.search);
+ const from = params.get("from");
+ if (from) { try { const parsed = new URL(from); if (parsed.origin === window.location.origin) pageField.value = parsed.href; } catch {} }
+ form.addEventListener("submit", (event) => {
+   event.preventDefault();
+   if (!form.reportValidity()) return;
+   const data = new FormData(form);
+   const labels = {"question":"Вопрос по сайту или урокам","suggestion":"Пожелание или идея","bug":"Сообщить об ошибке","content":"Замечание к учебному материалу"};
+   const kind = labels[data.get("kind")] || data.get("kind");
+   const subject = "DCH School — " + kind;
+   const lines = [
+     "Тип: " + kind,
+     "Имя: " + (data.get("name") || "—"),
+     "Email для ответа: " + (data.get("replyEmail") || "—"),
+     "Страница: " + (data.get("pageUrl") || "—"),
+     "",
+     data.get("message")
+   ];
+   const mailto = "mailto:itprof80@gmail.com?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(lines.join("\n"));
+   notice.hidden = false;
+   window.location.href = mailto;
+ });
+})();
+</script>
+</body></html>

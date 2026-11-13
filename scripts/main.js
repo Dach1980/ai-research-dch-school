@@ -38,3 +38,25 @@ if(sharedScriptUrl){
   favicon.type="image/svg+xml";
   favicon.href=faviconUrl;
 }
+
+// Add a localized, privacy-preserving feedback entry point to every page
+// that uses the shared navigation. The form opens the visitor's own mail app.
+(() => {
+  const lang = document.documentElement.lang === "en" ? "en" : document.documentElement.lang === "zh" ? "zh" : "ru";
+  const labels = {
+    ru: "Вопросы и пожелания",
+    en: "Questions & feedback",
+    zh: "问题与建议"
+  };
+  const path = window.location.pathname;
+  if (path.includes("/feedback/")) return;
+  const nav = document.querySelector(".nav");
+  if (!nav || nav.querySelector('[data-feedback-link]')) return;
+  const href = new URL("../feedback/index" + (lang === "ru" ? "" : "-" + lang) + ".html", sharedScriptUrl || window.location.href);
+  href.searchParams.set("from", window.location.href);
+  const link = document.createElement("a");
+  link.href = href.href;
+  link.textContent = labels[lang];
+  link.setAttribute("data-feedback-link", "");
+  nav.appendChild(link);
+})();

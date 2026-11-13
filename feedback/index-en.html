@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#080d1b"><meta name="description" content="Have a question about a lesson, spotted an error, or want to suggest an improvement? Send us a note. Your feedback helps us improve the school.">
+<title>Questions & feedback · AI Research DCH School</title>
+<link rel="icon" href="../assets/favicon.svg"><link rel="stylesheet" href="../styles/main.css"><link rel="stylesheet" href="../styles/account.css"><link rel="stylesheet" href="../styles/feedback.css">
+</head>
+<body>
+<header class="site-header">
+<a class="brand" href="../index-en.html"><img src="../assets/logo.svg" alt="DCH"></a>
+<button class="menu-toggle" aria-label="Open menu" aria-expanded="false">☰</button>
+<nav class="nav"><a href="../index-en.html">Home</a><a href="../lessons/index-en.html">Lessons</a><a href="../learning-map/index-en.html">Knowledge map</a></nav>
+</header>
+<main class="feedback-page">
+<a class="feedback-back" href="../index-en.html">← Home</a>
+<section class="feedback-card">
+<p class="eyebrow">AI RESEARCH DCH SCHOOL · FEEDBACK</p>
+<h1>Questions & feedback</h1>
+<p class="feedback-intro">Have a question about a lesson, spotted an error, or want to suggest an improvement? Send us a note. Your feedback helps us improve the school.</p>
+<form class="feedback-form" id="feedback-form">
+<label>Message topic<select name="kind" required><option value="question">Question about the site or lessons</option><option value="suggestion">Suggestion or idea</option><option value="bug">Report a problem</option><option value="content">Comment on learning content</option></select></label>
+<label>Your name (optional)<input name="name" type="text" maxlength="100" autocomplete="name"></label>
+<label>Email for a reply (optional)<input name="replyEmail" type="email" maxlength="254" autocomplete="email"></label>
+<label>Related page (optional)<input name="pageUrl" id="feedback-page-url" type="url" maxlength="1000" placeholder="https://dchai.ru/..."></label>
+<label>Message<textarea name="message" required minlength="10" maxlength="3000"></textarea><span class="hint">Do not include passwords, payment details or other confidential information.</span></label>
+<div class="feedback-actions"><button class="feedback-submit" type="submit">Prepare email</button></div>
+<p class="feedback-notice" id="feedback-notice" role="status" aria-live="polite" hidden>Your email app should open with a prepared message. Confirm sending in the email app to deliver it.</p>
+</form>
+<div class="feedback-privacy">After you submit, your email app will open with a draft addressed to itprof80@gmail.com. The message is not sent automatically: review it and press Send in your email app. This website does not store the form data or send it to Supabase or a third-party form service. If no email app opens, send a message manually to <a href="mailto:itprof80@gmail.com">itprof80@gmail.com</a>.</div>
+</section>
+</main>
+<footer class="feedback-footer">© 2026 AI Research DCH School · <a href="../index-en.html">Home</a></footer>
+<script src="../scripts/main.js"></script>
+<script src="../scripts/theme-system.js" defer></script>
+<script>
+(() => {
+ const form = document.getElementById("feedback-form");
+ const pageField = document.getElementById("feedback-page-url");
+ const notice = document.getElementById("feedback-notice");
+ const params = new URLSearchParams(window.location.search);
+ const from = params.get("from");
+ if (from) { try { const parsed = new URL(from); if (parsed.origin === window.location.origin) pageField.value = parsed.href; } catch {} }
+ form.addEventListener("submit", (event) => {
+   event.preventDefault();
+   if (!form.reportValidity()) return;
+   const data = new FormData(form);
+   const labels = {"question":"Question about the site or lessons","suggestion":"Suggestion or idea","bug":"Report a problem","content":"Comment on learning content"};
+   const kind = labels[data.get("kind")] || data.get("kind");
+   const subject = "DCH School — " + kind;
+   const lines = [
+     "Topic: " + kind,
+     "Name: " + (data.get("name") || "—"),
+     "Reply email: " + (data.get("replyEmail") || "—"),
+     "Page: " + (data.get("pageUrl") || "—"),
+     "",
+     data.get("message")
+   ];
+   const mailto = "mailto:itprof80@gmail.com?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(lines.join("\n"));
+   notice.hidden = false;
+   window.location.href = mailto;
+ });
+})();
+</script>
+</body></html>

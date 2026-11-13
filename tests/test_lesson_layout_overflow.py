@@ -41,8 +41,8 @@ class LessonLayoutOverflowTests(unittest.TestCase):
                             theme,
                         )
                         page.evaluate("() => document.fonts ? document.fonts.ready.then(() => true) : true")
-                        if lesson.name.startswith(("a-1-4-5", "a-1-5-1")):
-                            expected_entries = 5 if lesson.name.startswith("a-1-5-1") else 10
+                        if lesson.name.startswith(("a-1-4-5", "a-1-5-1", "a-1-5-4")):
+                            expected_entries = 5 if lesson.name.startswith(("a-1-5-1", "a-1-5-4")) else 10
                             expected_children = 4 if lesson.name.startswith("a-1-5-1") else 2
                             glossary = page.evaluate("""([expectedEntries, expectedChildren]) => {
                               const container = document.querySelector('.lesson-glossary');

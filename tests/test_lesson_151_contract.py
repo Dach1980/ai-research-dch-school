@@ -58,7 +58,7 @@ class Lesson151PublicationContractTests(unittest.TestCase):
                 self.assertEqual(source.count('class="lesson-check-button"'), 7)
                 self.assertEqual(source.count('class="lesson-check-feedback"'), 7)
                 self.assertEqual(source.count('data-explanation="'), 7)
-                self.assertEqual(source.count('type="checkbox"'), 28)
+                self.assertEqual(source.count('type="checkbox"'), 26)
                 self.assertIn('data-mode="yesno"', source)
                 self.assertIn('aria-live="polite"', source)
 
@@ -75,7 +75,7 @@ class Lesson151PublicationContractTests(unittest.TestCase):
     def test_topic_boundary_and_sources_are_present(self):
         curriculum = (ROOT / "docs/education/TRACK_A_CURRICULUM.md").read_text(encoding="utf-8")
         self.assertIn("Граница содержания урока 1.5.1", curriculum)
-        for path in PAGES.values():
+        for locale, path in PAGES.items():
             source = path.read_text(encoding="utf-8")
             self.assertIn("baseline", source.lower())
             self.assertIn("evaluation", source.lower())

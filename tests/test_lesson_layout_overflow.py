@@ -40,7 +40,7 @@ class LessonLayoutOverflowTests(unittest.TestCase):
                             "(theme) => document.documentElement.setAttribute('data-theme', theme)",
                             theme,
                         )
-                        page.evaluate("document.fonts && document.fonts.ready")
+                        page.evaluate("() => document.fonts ? document.fonts.ready.then(() => true) : true")
                         result = page.evaluate("""(selector) => {
                           const cards = [...document.querySelectorAll(selector)];
                           const problems = [];

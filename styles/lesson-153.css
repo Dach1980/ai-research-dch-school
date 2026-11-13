@@ -1,0 +1,23 @@
+/* Lesson 1.5.3 — classification metric comparison; theme-aware and responsive. */
+.lesson-153-figure{margin:24px 0;padding:14px;border:1px solid var(--lds-line);border-radius:16px;background:var(--lds-surface);max-width:100%;overflow-x:auto;overscroll-behavior-inline:contain}
+.lesson-153-figure svg{display:block;width:100%;min-width:760px;height:auto;max-width:none}
+.lesson-153-figure figcaption{margin:10px 4px 2px;color:var(--lds-muted);font-size:.9rem;line-height:1.6;overflow-wrap:anywhere}
+.lesson-153-bg{fill:var(--lds-surface);stroke:var(--lds-line);stroke-width:1.5}
+.lesson-153-source{fill:color-mix(in srgb,var(--lds-accent) 10%,var(--lds-surface));stroke:var(--lds-accent);stroke-width:2}
+.lesson-153-card{stroke-width:2}
+.lesson-153-accent{fill:color-mix(in srgb,var(--lds-accent) 10%,var(--lds-surface));stroke:var(--lds-accent)}
+.lesson-153-good{fill:color-mix(in srgb,var(--lds-good) 12%,var(--lds-surface));stroke:var(--lds-good)}
+.lesson-153-warning{fill:color-mix(in srgb,var(--lds-warning,var(--lds-bad)) 12%,var(--lds-surface));stroke:var(--lds-warning,var(--lds-bad))}
+.lesson-153-text{fill:var(--lds-ink);font:700 18px system-ui,sans-serif}
+.lesson-153-sub{fill:var(--lds-muted);font:600 14px system-ui,sans-serif}
+.lesson-153-arrow{fill:none;stroke:var(--lds-muted);stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+.lesson-153-table-wrap{max-width:100%;overflow-x:auto;overscroll-behavior-inline:contain;margin:18px 0 24px;border:1px solid var(--lds-line);border-radius:14px;background:var(--lds-surface)}
+.lesson-153-table{width:100%;min-width:560px;border-collapse:separate;border-spacing:0;color:var(--lds-ink)}
+.lesson-153-table caption{padding:13px 16px;text-align:left;color:var(--lds-muted);font-size:.9rem}
+.lesson-153-table th,.lesson-153-table td{padding:12px 14px;border-top:1px solid var(--lds-line);border-right:1px solid var(--lds-line);text-align:left;vertical-align:top;overflow-wrap:anywhere}
+.lesson-153-table tr>*:last-child{border-right:0}
+.lesson-153-table thead th{background:var(--lds-surface);font-weight:800}
+.lesson-153-table tbody th{background:color-mix(in srgb,var(--lds-muted) 8%,var(--lds-surface));font-weight:750}
+.lesson-153-table td strong{color:var(--lds-good)}
+.lesson-153-table tbody tr:nth-child(even) td{background:color-mix(in srgb,var(--lds-accent) 4%,var(--lds-surface))}
+@media(max-width:700px){.lesson-153-figure{padding:8px}.lesson-153-text{font-size:16px}.lesson-153-sub{font-size:13px}.lesson-153-table th,.lesson-153-table td{padding:10px}}

@@ -52,13 +52,13 @@ class Lesson123Tests(unittest.TestCase):
     def test_catalog_and_sequence(self):
         catalog = json.loads((ROOT / "data/catalog/catalog-v3.json").read_text(encoding="utf-8"))
         lesson = next(item for item in catalog["lessons"] if item["code"] == "1.2.3")
-        self.assertEqual(lesson["uid"], "les-a-0051")
+        self.assertEqual(lesson["uid"], "les-a-0056")
         self.assertEqual(lesson["status"], "review")
         self.assertEqual(lesson["content_state"], "localized")
         self.assertEqual(lesson["prerequisite_uids"], ["les-a-0004"])
         self.assertEqual(set(lesson["url_i18n"]), {"ru", "en", "zh"})
         next_lesson = next(item for item in catalog["lessons"] if item["code"] == "1.2.4")
-        self.assertEqual(next_lesson["prerequisite_uids"], ["les-a-0051"])
+        self.assertEqual(next_lesson["prerequisite_uids"], ["les-a-0056"])
 
 if __name__ == "__main__":
     unittest.main()

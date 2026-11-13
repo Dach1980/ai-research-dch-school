@@ -35,6 +35,16 @@ class Lesson151PublicationContractTests(unittest.TestCase):
                 self.assertIn('../styles/lesson-124.css', source)
                 self.assertIn('../scripts/lesson-layout.js', source)
                 self.assertIn('../scripts/lesson-assessment.js', source)
+                footer_match = re.search(r'<footer class="footer">([\\s\\S]*?)</footer>', source)
+                self.assertIsNotNone(footer_match, "canonical footer is required")
+                footer = footer_match.group(1)
+                expected_home = {"ru": "../index.html", "en": "../index-en.html", "zh": "../index-zh.html"}[locale]
+                self.assertIn(f'<a class="brand" href="{expected_home}">', footer)
+                self.assertIn('<img src="../assets/site-brand-icon.jpg" alt="DCH">', footer)
+                self.assertIn("<strong>AI Research</strong><small>DCH SCHOOL</small>", footer)
+                self.assertIn("<p>Understand AI. Build AI. Research AI.</p>", footer)
+                self.assertIn("<span>© 2026 AI Research DCH School</span>", footer)
+                self.assertNotIn('<div class="container">', footer)
                 for component, count in expected.items():
                     self.assertEqual(source.count(f'class="{component}"'), count, component)
                 self.assertEqual(len(re.findall(r'<li><a href="https://', source)), 3)

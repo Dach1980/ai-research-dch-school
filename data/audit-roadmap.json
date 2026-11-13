@@ -2602,6 +2602,27 @@
       "limitations": [
         "Изменения исходников подтверждены, но GitHub Actions и Pages deployment после этих коммитов ещё не подтверждены. Опубликованная страница не принята до проверки production HTML."
       ]
+    },
+    {
+      "id": "AUD-094",
+      "date": "2026-11-13",
+      "type": "lesson_1_4_5_glossary_layout_parity",
+      "title": "Словарь 1.4.5 приведён к layout-паттерну урока 1.4.4",
+      "result": "Подтверждено различие в CSS: общая дизайн-система задаёт .glossary-entry display:grid (две внутренние колонки для старого шаблона с номером/меткой), а styles/lesson-144.css переопределяет карточки как display:flex; flex-direction:column внутри внешнего grid-контейнера .lesson-glossary. В lesson-145.css такого переопределения не было, поэтому карточки 1.4.5 оставались grid внутри grid и выглядели иначе. Добавлено точное соответствующее правило для .lesson-glossary .glossary-entry: display:flex; flex-direction:column; gap:6px; стили strong/span и responsive breakpoint 700px синхронизированы с 1.4.4. Тест теперь дополнительно проверяет computed display:flex и flex-direction:column у карточек.",
+      "evidence": [
+        "styles/lesson-144.css",
+        "styles/lesson-145.css",
+        "styles/lesson-design-system.css",
+        "tests/test_lesson_layout_overflow.py"
+      ],
+      "commits": [
+        "88e58069b2d9bae66ceae25c2b03f2a24929aa49",
+        "78a332183b651621abc561c28746d9989801c66b",
+        "4ed7bd09ebb62498fe1561050e7396dc695174cd"
+      ],
+      "limitations": [
+        "CSS и тест обновлены в main, но GitHub Actions и Pages deployment после этих коммитов не подтверждены; production-приёмка остаётся открытой."
+      ]
     }
   ]
 }

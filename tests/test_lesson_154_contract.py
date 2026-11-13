@@ -111,12 +111,15 @@ class Lesson154ContractTests(unittest.TestCase):
             "ROC-AUC = ∫₀¹ TPR(FPR) d(FPR)",
             "AP = Σₙ (Recallₙ − Recallₙ₋₁) × Precisionₙ",
             "TP = 80", "FN = 20", "FP = 198",
-            "28.8%", "0.02", "0.80",
         ]
-        localized_tn = {"ru": "TN = 9 702", "en": "TN = 9,702", "zh": "TN = 9,702"}
+        localized_values = {
+            "ru": ["TN = 9 702", "28,8%", "0,02", "0,80"],
+            "en": ["TN = 9,702", "28.8%", "0.02", "0.80"],
+            "zh": ["TN = 9,702", "28.8%", "0.02", "0.80"],
+        }
         for locale, path in PAGES.items():
             source = path.read_text(encoding="utf-8")
-            for token in required + [localized_tn[locale]]:
+            for token in required + localized_values[locale]:
                 self.assertIn(token, source)
             self.assertIn("lesson-154-figure", source)
             self.assertIn("lesson-154-table", source)
@@ -135,7 +138,6 @@ class Lesson154ContractTests(unittest.TestCase):
             self.assertNotIn("<style", source)
             self.assertIn('aria-labelledby="roc154-', source)
             self.assertIn("<figcaption>", source)
-            self.assertIn("tspan", source) if locale_has_multiline(source) else None
 
     def test_assessment_has_explanations_and_balanced_answer_positions(self):
         for path in PAGES.values():
@@ -145,10 +147,6 @@ class Lesson154ContractTests(unittest.TestCase):
             keys = re.findall(r'data-correct="([a-d])"', source)
             self.assertEqual(set(keys), {"a", "b", "c", "d"})
             self.assertGreaterEqual(len(set(keys)), 3)
-
-
-def locale_has_multiline(source):
-    return False
 
 
 if __name__ == "__main__":

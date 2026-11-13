@@ -792,12 +792,31 @@
       "module_uid": "mod-a-01-04",
       "code": "1.4.5",
       "title": "Гиперпараметры и настройка модели",
-      "status": "planned",
+      "status": "published",
       "access": "open",
       "level": "beginner",
-      "prerequisite_uids": [],
-      "learning_outcomes": [],
-      "content_state": "outline_only"
+      "prerequisite_uids": [
+        "les-a-0013"
+      ],
+      "learning_outcomes": [
+        "Различать обучаемые параметры модели и гиперпараметры алгоритма.",
+        "Объяснять влияние гиперпараметров на сложность, регуляризацию и процесс обучения.",
+        "Формировать обоснованное пространство поиска с учётом модели, данных и вычислительных ограничений.",
+        "Сравнивать ручную настройку, Grid Search, Random Search и байесовскую оптимизацию.",
+        "Использовать validation или cross-validation для настройки, сохраняя test для финальной оценки.",
+        "Оценивать устойчивость, воспроизводимость и вычислительную стоимость выбранной конфигурации."
+      ],
+      "content_state": "published",
+      "title_i18n": {
+        "ru": "Гиперпараметры и настройка модели",
+        "en": "Hyperparameters and Model Tuning",
+        "zh": "超参数与模型调优"
+      },
+      "url_i18n": {
+        "ru": "lessons/a-1-4-5.html",
+        "en": "lessons/a-1-4-5-en.html",
+        "zh": "lessons/a-1-4-5-zh.html"
+      }
     },
     {
       "uid": "les-a-0015",

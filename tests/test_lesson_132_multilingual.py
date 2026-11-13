@@ -74,7 +74,7 @@ class Lesson132Tests(unittest.TestCase):
         css = (ROOT / "styles/lesson-reference-111.css").read_text(encoding="utf-8")
         self.assertIn(".cluster-panel", css)
         self.assertIn('html[data-theme="light"] .lesson-figure .cluster-panel', css)
-        self.assertIn('html[data-theme="light"] .lesson-figure .svg-label', css)
+        self.assertIn('html[data-theme="light"] .lesson-figure .cluster-diagram .svg-label', css)
         self.assertIn("@media(max-width:560px)", css)
         self.assertIn("min-width:640px", css)
         for path in FILES.values():

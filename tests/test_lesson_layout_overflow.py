@@ -133,6 +133,35 @@ class LessonLayoutOverflowTests(unittest.TestCase):
                             failures.append(
                                 f"{lesson.name} | {width}px | {theme}: {result[:8]}"
                             )
+                        svg_problems = page.evaluate("""() => {
+                          const problems = [];
+                          for (const svg of document.querySelectorAll('.lesson-155-figure svg')) {
+                            const vb = svg.viewBox.baseVal;
+                            for (const label of svg.querySelectorAll('text')) {
+                              const b = label.getBBox();
+                              if (b.x < 0 || b.y < 0 || b.x + b.width > vb.width || b.y + b.height > vb.height) {
+                                problems.push({type:'svg-text-outside-viewbox', text:label.textContent, box:{x:b.x,y:b.y,w:b.width,h:b.height}});
+                              }
+                              const cx = b.x + b.width / 2, cy = b.y + b.height / 2;
+                              const owner = [...svg.querySelectorAll('rect')].find(r => {
+                                const rbox = r.getBBox();
+                                return cx >= rbox.x && cx <= rbox.x + rbox.width && cy >= rbox.y && cy <= rbox.y + rbox.height;
+                              });
+                              if (owner) {
+                                const r = owner.getBBox();
+                                if (b.x < r.x - 1 || b.x + b.width > r.x + r.width + 1 ||
+                                    b.y < r.y - 1 || b.y + b.height > r.y + r.height + 1) {
+                                  problems.push({type:'svg-text-outside-container',text:label.textContent});
+                                }
+                              }
+                            }
+                          }
+                          return problems;
+                        }""")
+                        if svg_problems:
+                            failures.append(
+                                f"{lesson.name} | {width}px | {theme}: SVG label fit {svg_problems[:8]}"
+                            )
             browser.close()
         self.assertFalse(
             failures,

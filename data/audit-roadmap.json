@@ -648,6 +648,27 @@
         "Ручная desktop/mobile, light/dark, keyboard, screen-reader QA и вычитка EN/中文 носителями отмечаются отдельно."
       ],
       "source": "lessons/a-1-4-4*.html; styles/lesson-144.css; data/catalog/catalog-v3.json; tests/test_lesson_144_multilingual.py; tests/test_lesson_layout_overflow.py; tests/test_lesson_navigation_and_concepts.py"
+    },
+    {
+      "id": "RM-32",
+      "date": "2026-11-13",
+      "title": "Разработать и опубликовать урок 1.4.5 «Гиперпараметры и настройка модели»",
+      "status": "in_progress",
+      "priority": "high",
+      "decision": "Подготовлены RU / EN / 中文 страницы урока 1.4.5 с UID les-a-0014 и module UID mod-a-01-04. Материал продолжает 1.4.4: различие параметров и гиперпараметров, пространство поиска, ручная настройка, Grid Search, Random Search, байесовская оптимизация, корректное использование train/validation/test, cross-validation, Pipeline, вычислительный бюджет и воспроизводимость. Добавлены 3 локализованные SVG-схемы, 2 формулы, пример Python/scikit-learn RandomizedSearchCV, практическое задание, 10 терминов и 8 вопросов с объяснениями. Catalog v3 обновлён: published/published, prerequisite les-a-0013, три URL. Добавлены отдельный regression test и запуск в Validate learning catalog workflow; расширены проверки числа опубликованных уроков, knowledge map и последовательности уроков. CI и Pages deployment ожидают завершения.",
+      "acceptance": [
+        "Сохранены код 1.4.5, UID les-a-0014 и module UID mod-a-01-04.",
+        "RU / EN / 中文 содержат равнозначное объяснение гиперпараметров и методов настройки.",
+        "Каждая локализация содержит 3 SVG с title/desc, 2 формулы, 10 терминов и 8 вопросов с объяснениями.",
+        "Python-пример использует Pipeline и RandomizedSearchCV; код проходит AST parsing.",
+        "Каталог фиксирует prerequisite les-a-0013, три локализованных URL и published/published.",
+        "Карта знаний и локализованный каталог получают урок из catalog v3.",
+        "Regression test проверяет локализации, локальные ссылки, структуру, число схем/формул/терминов/вопросов и Python syntax.",
+        "Playwright browser overflow CI проверяет текст в карточках и SVG-узлах на пяти ширинах и двух темах.",
+        "Validate learning catalog, Pages workflow и GitHub Pages deployment должны завершиться успешно до подтверждения публикации.",
+        "Ручная проверка реальных desktop/mobile устройств, клавиатуры, screen reader и вычитка EN/中文 носителями отмечаются отдельно."
+      ],
+      "source": "lessons/a-1-4-5*.html; styles/lesson-145.css; data/catalog/catalog-v3.json; tests/test_lesson_145_multilingual.py; tests/test_lesson_layout_overflow.py; tests/test_lesson_navigation_and_concepts.py"
     }
   ],
   "audit_log": [
@@ -2474,6 +2495,30 @@
         "Ручная проверка на реальных desktop/mobile устройствах, клавиатурная навигация и screen reader не выполнены; автоматическая Playwright-проверка не заменяет их.",
         "Профессиональная вычитка английской и китайской версий носителями языка не проводилась.",
         "Python-пример синтаксически проверен AST и использует корректный Pipeline, но не запускался на реальном equipment.csv; такой файл не входит в репозиторий."
+      ]
+    },
+    {
+      "id": "AUD-089",
+      "date": "2026-11-13",
+      "type": "lesson_1_4_5_multilingual_publication",
+      "title": "Подготовлены языковые версии и регрессионные проверки урока 1.4.5",
+      "result": "Созданы RU / EN / 中文 страницы «Гиперпараметры и настройка модели» / “Hyperparameters and Model Tuning” / «超参数与模型调优» с UID les-a-0014. Добавлены 3 локализованные SVG, 2 формулы, Python/scikit-learn пример с Pipeline и RandomizedSearchCV, практическое задание, 10 терминов и 8 вопросов с объяснениями. Catalog v3 обновлён: prerequisite les-a-0013, три URL, status=published и content_state=published. Добавлен отдельный тест урока, он включён в Validate learning catalog; проверки количества опубликованных уроков, карты знаний и последовательной навигации расширены. CI и Pages deployment ещё не подтверждены.",
+      "evidence": [
+        "lessons/a-1-4-5.html",
+        "lessons/a-1-4-5-en.html",
+        "lessons/a-1-4-5-zh.html",
+        "styles/lesson-145.css",
+        "data/catalog/catalog-v3.json",
+        "tests/test_lesson_145_multilingual.py",
+        "tests/test_lesson_layout_overflow.py",
+        "tests/test_lesson_navigation_and_concepts.py",
+        ".github/workflows/validate-catalog.yml"
+      ],
+      "limitations": [
+        "Автоматические CI и Pages deployment должны завершиться успешно; до этого нельзя считать публикацию подтверждённой.",
+        "Ручная проверка на реальных desktop/mobile устройствах, клавиатурная навигация и screen reader не выполнены.",
+        "Профессиональная вычитка английской и китайской версий носителями языка не проводилась.",
+        "Python-пример проверяется синтаксически; запуск в целевой пользовательской среде отдельно не выполнялся."
       ]
     }
   ]

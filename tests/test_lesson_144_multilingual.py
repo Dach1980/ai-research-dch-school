@@ -62,6 +62,11 @@ class Lesson144Tests(unittest.TestCase):
             self.assertEqual(source.count('class="lesson-check-feedback"'), 8)
             self.assertEqual(source.count('class="lesson-outcomes"'), 1)
             self.assertIn('class="lesson-nav"', source)
+            self.assertIn('class="lesson-sources"', source)
+            self.assertIn('class="lesson-problem lesson-practice-task"', source)
+            self.assertLess(source.index('class="lesson-sources"'), source.index('class="lesson-nav"'))
+            self.assertLess(source.index('class="lesson-nav"'), source.index('class="lesson-glossary"'))
+            self.assertLess(source.index('class="lesson-glossary"'), source.index('class="lesson-check"'))
             self.assertIn('class="language-python"', source)
             self.assertIn("Pipeline", source)
             localized_leakage = {"ru": "утечка данных", "en": "data leakage", "zh": "数据泄漏"}

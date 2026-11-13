@@ -1322,7 +1322,7 @@
       "access": "open",
       "level": "beginner",
       "prerequisite_uids": [
-        "les-a-0051"
+        "les-a-0056"
       ],
       "learning_outcomes": [
         "Объяснять роли train, validation и test.",
@@ -1405,7 +1405,7 @@
       }
     },
     {
-      "uid": "les-a-0051",
+      "uid": "les-a-0056",
       "track_uid": "trk-a",
       "theme_uid": "thm-a-01",
       "module_uid": "mod-a-01-02",

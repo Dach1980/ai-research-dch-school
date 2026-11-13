@@ -1249,7 +1249,7 @@
       "module_uid": "mod-a-01-05",
       "code": "1.5.2",
       "title": "Матрица ошибок классификации",
-      "status": "review",
+      "status": "published",
       "access": "open",
       "level": "beginner",
       "prerequisite_uids": [
@@ -1262,7 +1262,7 @@
         "Интерпретировать ложную тревогу и пропуск в контексте практической задачи.",
         "Объяснять ограничения матрицы и расширение представления на несколько классов."
       ],
-      "content_state": "localized",
+      "content_state": "published",
       "title_i18n": {
         "ru": "Матрица ошибок классификации",
         "en": "The Confusion Matrix",

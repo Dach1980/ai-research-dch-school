@@ -51,7 +51,7 @@ class Lesson144Tests(unittest.TestCase):
                     self.assertTrue(target.exists(), f"{path.name}: missing {href}")
 
     def test_equal_core_structure_all_locales(self):
-        for path in FILES.values():
+        for locale, path in FILES.items():
             source = path.read_text(encoding="utf-8")
             self.assertEqual(source.count('class="formula"'), 4)
             self.assertEqual(source.count('class="lesson-144-figure"'), 4)

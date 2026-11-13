@@ -669,6 +669,26 @@
         "Ручная проверка реальных desktop/mobile устройств, клавиатуры, screen reader и вычитка EN/中文 носителями отмечаются отдельно."
       ],
       "source": "lessons/a-1-4-5*.html; styles/lesson-145.css; data/catalog/catalog-v3.json; tests/test_lesson_145_multilingual.py; tests/test_lesson_layout_overflow.py; tests/test_lesson_navigation_and_concepts.py"
+    },
+    {
+      "id": "RM-33",
+      "date": "2026-11-13",
+      "title": "Разработать и принять урок 1.2.3 «Типы данных и представление признаков»",
+      "status": "in_progress",
+      "priority": "high",
+      "decision": "Созданы RU / EN / 中文 версии с UID les-a-0051. Урок занимает место между 1.2.2 и 1.2.4. Каталог и последовательная навигация обновлены; урок оставлен в review до технической и редакционной приёмки.",
+      "acceptance": [
+        "RU / EN / 中文 версии содержат эквивалентные результаты обучения и объяснения.",
+        "Раскрыты числовые, номинальные, порядковые, временные и текстовые признаки, идентификаторы, кодирование категорий и масштабирование.",
+        "Каждая локаль содержит 10 терминов и 8 вопросов с объяснениями.",
+        "Каталог содержит UID les-a-0051, status=review, content_state=localized и три URL.",
+        "Навигация 1.2.2 → 1.2.3 → 1.2.4 работает на всех локалях.",
+        "Regression test проходит.",
+        "CI и GitHub Pages deployment успешны.",
+        "Выполнена ручная браузерная проверка desktop/mobile и обеих тем.",
+        "EN и 中文 вычитаны носителями языка."
+      ],
+      "source": "lessons/a-1-2-3*.html; data/catalog/catalog-v3.json; tests/test_lesson_123_multilingual.py"
     }
   ],
   "audit_log": [
@@ -2622,6 +2642,29 @@
       ],
       "limitations": [
         "CSS и тест обновлены в main, но GitHub Actions и Pages deployment после этих коммитов не подтверждены; production-приёмка остаётся открытой."
+      ]
+    },
+    {
+      "id": "AUD-095",
+      "date": "2026-11-13",
+      "type": "lesson_1_2_3_multilingual_draft",
+      "title": "Создан трёхъязычный урок 1.2.3 «Типы данных и представление признаков»",
+      "result": "В main добавлены RU / EN / 中文 страницы урока 1.2.3. Материал закрывает переход от определения объектов и признаков (1.2.2) к разделению выборок (1.2.4): числовые, номинальные и порядковые признаки; one-hot и ordinal encoding; даты и циклические признаки; текст и идентификаторы; масштабирование и безопасная подготовка признаков без утечки. Добавлены результаты обучения, практическое задание, 5 источников, 10 терминов и 8 вопросов с объяснениями на каждой локали. В catalog v3 добавлен UID les-a-0051 со статусом review/content_state localized; для 1.2.4 prerequisite изменён на les-a-0051. Навигация RU/EN/中文 уроков 1.2.2 и 1.2.4 обновлена для последовательности 1.2.2 → 1.2.3 → 1.2.4. Добавлен regression test.",
+      "evidence": [
+        "lessons/a-1-2-3.html",
+        "lessons/a-1-2-3-en.html",
+        "lessons/a-1-2-3-zh.html",
+        "lessons/a-1-2-2.html",
+        "lessons/a-1-2-4.html",
+        "data/catalog/catalog-v3.json",
+        "tests/test_lesson_123_multilingual.py"
+      ],
+      "limitations": [
+        "Урок не опубликован: status=review и content_state=localized до прохождения CI и ручной приёмки.",
+        "Проверки GitHub Actions и GitHub Pages deployment после коммитов не подтверждены.",
+        "Не выполнена браузерная проверка desktop/mobile, светлой/тёмной темы, переполнения блоков, клавиатурной навигации и screen reader.",
+        "EN и 中文 требуют профессиональной вычитки носителями языка.",
+        "В уроке нет runnable code example; практикум построен как анализ и спецификация признаков."
       ]
     }
   ]

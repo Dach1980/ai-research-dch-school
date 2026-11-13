@@ -35,3 +35,11 @@ html[data-theme="light"] .reader-brand img{
   border:1px solid #c5d5ef;
   box-shadow:0 4px 14px rgba(54,91,150,.12)
 }
+
+/* Light-theme contrast: match the specific legacy article figure rule and keep
+   the gradient lesson CTA label white regardless of the page text token. */
+html[data-theme="light"] .article-body .lesson-figure{background:var(--lds-surface);border-color:var(--lds-line)}
+html[data-theme="light"] .article-body .lesson-figure .svg-title,
+html[data-theme="light"] .article-body .lesson-figure .svg-label{fill:var(--lds-ink)}
+html[data-theme="light"] .article-body .lesson-figure .svg-small{fill:var(--lds-muted)}
+html[data-theme="light"] .article-body .lesson-nav a.primary{color:#fff}

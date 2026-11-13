@@ -1,6 +1,6 @@
 """Real-browser regression test for text escaping lesson cards.
 
-Checks every localized 1.4.x lesson at desktop/tablet/mobile widths in both themes.
+Checks localized 1.4.x and 1.5.1–1.5.3 lessons at desktop/tablet/mobile widths in both themes.
 Intentional horizontal scrollers (math, code and tables) are excluded from the
 no-overflow rule and remain independently scrollable.
 """
@@ -9,7 +9,7 @@ from pathlib import Path
 from playwright.sync_api import sync_playwright
 
 ROOT = Path(__file__).resolve().parents[1]
-LESSONS = sorted([* (ROOT / "lessons").glob("a-1-4-*.html"), * (ROOT / "lessons").glob("a-1-5-1*.html")])
+LESSONS = sorted([* (ROOT / "lessons").glob("a-1-4-*.html"), * (ROOT / "lessons").glob("a-1-5-1*.html"), * (ROOT / "lessons").glob("a-1-5-2*.html"), * (ROOT / "lessons").glob("a-1-5-3*.html")])
 VIEWPORTS = (360, 390, 768, 1024, 1440)
 THEMES = ("dark", "light")
 CARD_SELECTOR = (

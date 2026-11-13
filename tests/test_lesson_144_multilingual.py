@@ -63,8 +63,9 @@ class Lesson144Tests(unittest.TestCase):
             self.assertEqual(source.count('class="lesson-outcomes"'), 1)
             self.assertIn('class="lesson-nav"', source)
             self.assertIn('class="language-python"', source)
-            self.assertIn("data-leakage", source.lower() + "data-leakage")
             self.assertIn("Pipeline", source)
+            localized_leakage = {"ru": "утечка данных", "en": "data leakage", "zh": "数据泄漏"}
+            self.assertIn(localized_leakage[locale], source.lower())
             for svg in re.findall(r"<svg.*?</svg>", source, re.S):
                 self.assertIn('role="img"', svg)
                 self.assertIn("<title", svg)

@@ -16,8 +16,8 @@ class Lesson151PublicationContractTests(unittest.TestCase):
         catalog = json.loads((ROOT / "data/catalog/catalog-v3.json").read_text(encoding="utf-8"))
         lesson = next(item for item in catalog["lessons"] if item["uid"] == "les-a-0043")
         self.assertEqual(lesson["code"], "1.5.1")
-        self.assertEqual(lesson["status"], "review")
-        self.assertEqual(lesson["content_state"], "localized")
+        self.assertEqual(lesson["status"], "published")
+        self.assertEqual(lesson["content_state"], "published")
         self.assertEqual(set(lesson["url_i18n"]), {"ru", "en", "zh"})
         self.assertEqual(lesson["prerequisite_uids"], ["les-a-0014"])
 

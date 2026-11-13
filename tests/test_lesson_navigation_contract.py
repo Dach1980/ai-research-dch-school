@@ -29,11 +29,7 @@ class PublishedLessonNavigationContractTests(unittest.TestCase):
                     self.assertTrue(page.is_file(), str(page))
                     source = page.read_text(encoding="utf-8")
                     self.assertIn('<nav class="lesson-nav"', source, str(page))
-                    self.assertRegex(
-                        source,
-                        r'<script\\b[^>]*src=["'][^"']*scripts/lesson-layout\\.js["']',
-                        str(page),
-                    )
+                    self.assertIn("../scripts/lesson-layout.js", source, str(page))
 
     def test_normalizer_uses_only_published_track_a_lessons_and_catalog_order(self):
         self.assertIn('item.track_uid==="trk-a"&&item.status==="published"', self.script)

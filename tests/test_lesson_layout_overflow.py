@@ -9,7 +9,7 @@ from pathlib import Path
 from playwright.sync_api import sync_playwright
 
 ROOT = Path(__file__).resolve().parents[1]
-LESSONS = sorted([* (ROOT / "lessons").glob("a-1-4-*.html"), * (ROOT / "lessons").glob("a-1-5-1*.html"), * (ROOT / "lessons").glob("a-1-5-2*.html"), * (ROOT / "lessons").glob("a-1-5-3*.html")])
+LESSONS = sorted([* (ROOT / "lessons").glob("a-1-4-*.html"), * (ROOT / "lessons").glob("a-1-5-1*.html"), * (ROOT / "lessons").glob("a-1-5-2*.html"), * (ROOT / "lessons").glob("a-1-5-3*.html"), * (ROOT / "lessons").glob("a-1-5-4*.html")])
 VIEWPORTS = (360, 390, 768, 1024, 1440)
 THEMES = ("dark", "light")
 CARD_SELECTOR = (

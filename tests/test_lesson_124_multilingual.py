@@ -79,6 +79,63 @@ class Lesson124Tests(unittest.TestCase):
             self.assertIn("min-width:760px", lesson_css)
             self.assertIn("overflow-x:auto", lesson_css)
 
+
+    def test_every_svg_element_has_a_matching_theme_aware_css_rule(self):
+        css = (ROOT / "styles/lesson-124.css").read_text(encoding="utf-8")
+        design_system = (ROOT / "styles/lesson-design-system.css").read_text(encoding="utf-8")
+        self.assertIn('html:not([data-theme="light"])', design_system)
+        for token in ("--lds-ink", "--lds-muted", "--lds-surface", "--lds-line", "--lds-accent", "--lds-good", "--lds-bad"):
+            self.assertIn(token, design_system)
+
+        locale_signatures = {}
+        graphical_tags = {"rect", "text", "path", "line", "circle", "ellipse", "polygon", "polyline"}
+
+        class SvgParser(HTMLParser):
+            def __init__(self):
+                super().__init__()
+                self.elements = []
+
+            def handle_starttag(self, tag, attrs):
+                if tag in graphical_tags:
+                    attrs = dict(attrs)
+                    self.elements.append({
+                        "tag": tag,
+                        "classes": set(attrs.get("class", "").split()),
+                        "fill": attrs.get("fill", ""),
+                        "stroke": attrs.get("stroke", ""),
+                    })
+
+        for locale, path in FILES.items():
+            source = path.read_text(encoding="utf-8")
+            svgs = re.findall(r"<svg\\b.*?</svg>", source, re.S)
+            self.assertEqual(len(svgs), 4, f"{locale}: expected four SVG diagrams")
+            signature = []
+            for index, svg in enumerate(svgs, start=1):
+                parser = SvgParser()
+                parser.feed(svg)
+                self.assertTrue(parser.elements, f"{locale} SVG {index}: no graphical elements")
+                for element in parser.elements:
+                    self.assertTrue(element["classes"], f"{locale} SVG {index}: {element['tag']} has no CSS class")
+                    self.assertFalse(re.fullmatch(r"#[0-9a-fA-F]{3,8}", element["fill"]), f"{locale} SVG {index}: hard-coded fill")
+                    self.assertFalse(re.fullmatch(r"#[0-9a-fA-F]{3,8}", element["stroke"]), f"{locale} SVG {index}: hard-coded stroke")
+                    for class_name in element["classes"]:
+                        self.assertIn(f".{class_name}{{", css, f"missing CSS rule for .{class_name}")
+                signature.append(tuple(sorted(set().union(*(element["classes"] for element in parser.elements)))))
+            self.assertNotRegex(source, r"\\bl124-(?:bg|label|small|arrow)\\b")
+            locale_signatures[locale] = signature
+
+        self.assertEqual(locale_signatures["ru"], locale_signatures["en"])
+        self.assertEqual(locale_signatures["ru"], locale_signatures["zh"])
+        for required_class in (
+            "lesson-124-bg", "lesson-124-node", "lesson-124-node--accent",
+            "lesson-124-node--good", "lesson-124-node--muted",
+            "lesson-124-node--warning", "lesson-124-label",
+            "lesson-124-small", "lesson-124-arrow",
+        ):
+            self.assertIn("." + required_class + "{", css)
+        for token in ("--lds-accent", "--lds-good", "--lds-muted", "--lds-bad", "--lds-ink", "--lds-surface"):
+            self.assertIn(token, css)
+
     def test_python_example_is_syntactically_valid(self):
         for path in FILES.values():
             source = path.read_text(encoding="utf-8")

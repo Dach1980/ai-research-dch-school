@@ -110,12 +110,13 @@ class Lesson154ContractTests(unittest.TestCase):
             "FPR = FP / (FP + TN)",
             "ROC-AUC = ∫₀¹ TPR(FPR) d(FPR)",
             "AP = Σₙ (Recallₙ − Recallₙ₋₁) × Precisionₙ",
-            "TP = 80", "FN = 20", "FP = 198", "TN = 9,702",
+            "TP = 80", "FN = 20", "FP = 198",
             "28.8%", "0.02", "0.80",
         ]
-        for path in PAGES.values():
+        localized_tn = {"ru": "TN = 9 702", "en": "TN = 9,702", "zh": "TN = 9,702"}
+        for locale, path in PAGES.items():
             source = path.read_text(encoding="utf-8")
-            for token in required:
+            for token in required + [localized_tn[locale]]:
                 self.assertIn(token, source)
             self.assertIn("lesson-154-figure", source)
             self.assertIn("lesson-154-table", source)

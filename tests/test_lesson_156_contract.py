@@ -41,8 +41,8 @@ class Lesson156ContractTests(unittest.TestCase):
         lesson = next(x for x in catalog["lessons"] if x["uid"] == "les-a-0015")
         self.assertEqual((lesson["code"], lesson["track_uid"], lesson["theme_uid"], lesson["module_uid"]),
                          ("1.5.6", "trk-a", "thm-a-01", "mod-a-01-05"))
-        self.assertIn(lesson["status"], {"review", "published"})
-        self.assertIn(lesson["content_state"], {"localized", "published"})
+        self.assertEqual(lesson["status"], "published")
+        self.assertEqual(lesson["content_state"], "published")
         self.assertEqual(lesson["prerequisite_uids"], ["les-a-0047"])
         self.assertEqual(set(lesson["url_i18n"]), {"ru", "en", "zh"})
         self.assertEqual(set(lesson["title_i18n"]), {"ru", "en", "zh"})

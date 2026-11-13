@@ -1,0 +1,20 @@
+/* Lesson 1.2.3 — educational figures and expanded content */
+.lesson-123-figure{margin:1.7rem 0;padding:16px;border:1px solid var(--lds-line);border-radius:16px;background:var(--lds-surface);min-width:0;max-width:100%;overflow:hidden}
+.lesson-123-figure svg{display:block;width:100%;height:auto;max-width:100%}
+.lesson-123-figure figcaption{margin-top:11px;color:var(--lds-muted);font-size:13px;line-height:1.65;overflow-wrap:anywhere}
+.l123-bg{fill:var(--lds-surface);stroke:var(--lds-line);stroke-width:1.4}
+.l123-node{fill:color-mix(in srgb,var(--lds-accent) 10%,var(--lds-surface));stroke:var(--lds-accent);stroke-width:1.6}
+.l123-node-alt{fill:color-mix(in srgb,var(--lds-good) 10%,var(--lds-surface));stroke:var(--lds-good);stroke-width:1.6}
+.l123-node-warn{fill:color-mix(in srgb,#d99b38 12%,var(--lds-surface));stroke:#d99b38;stroke-width:1.6}
+.l123-txt{fill:var(--lds-ink);font:600 17px Manrope,Arial,sans-serif}
+.l123-small{fill:var(--lds-muted);font:500 14px Manrope,Arial,sans-serif}
+.l123-arrow{fill:none;stroke:var(--lds-accent);stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+.l123-line{stroke:var(--lds-line);stroke-width:1.5;fill:none}
+.article-body .lesson-123-table-wrap{max-width:100%;overflow-x:auto;margin:1.2rem 0;border:1px solid var(--lds-line);border-radius:12px}
+.article-body table.lesson-123-table{width:100%;border-collapse:collapse;min-width:620px;font-size:.94rem}
+.article-body .lesson-123-table th,.article-body .lesson-123-table td{padding:11px 13px;border-bottom:1px solid var(--lds-line);text-align:left;vertical-align:top}
+.article-body .lesson-123-table th{background:var(--lds-surface);color:var(--lds-ink)}
+.article-body .lesson-123-table td{color:var(--lds-muted)}
+.article-body .lesson-123-callout{margin:1.2rem 0;padding:15px 18px;border-left:3px solid var(--lds-accent);border-radius:0 12px 12px 0;background:var(--lds-surface);overflow-wrap:anywhere}
+.article-body .lesson-123-callout strong{display:block;margin-bottom:5px;color:var(--lds-ink)}
+@media(max-width:700px){.lesson-123-figure{padding:8px;margin:1.2rem 0;overflow-x:auto;overscroll-behavior-x:contain}.lesson-123-figure svg{min-width:640px}.lesson-123-table-wrap{overscroll-behavior-x:contain}}

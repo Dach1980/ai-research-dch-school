@@ -74,6 +74,7 @@
 <div class="formula" role="math" aria-label="F1 公式：二乘 Precision 乘 Recall，再除以 Precision 与 Recall 之和"><span class="formula-label">使用 Precision 和 Recall 表示的 F1 公式</span><span class="formula-expression">F1 = 2 × (Precision × Recall) / (Precision + Recall)</span></div>
 <p>这里 Precision 和 Recall 的取值范围为 0 到 1。系数 2 用于规范调和平均，使两个指标都为 1 时，F1 也等于 1。还可以直接用混淆矩阵中的数量表示：</p>
 <div class="formula" role="math" aria-label="F1 等价公式：二倍 TP 除以二倍 TP 加 FP 加 FN"><span class="formula-label">F1 的等价公式</span><span class="formula-expression">F1 = 2TP / (2TP + FP + FN)</span></div>
+<p>还需要注意计算边界：如果模型没有给出任何正类预测，TP + FP = 0，Precision 就无法通过普通除法计算；如果评估数据中没有真实正类，TP + FN = 0，Recall 也没有定义。软件库可能发出警告、返回 0 或使用其他预先配置的值。报告中应说明采用的处理规则，不能把这种特殊值当作普通测量结果。</p>
 <p>在本例中，Precision = 0.60，Recall = 0.90。因此 F1 = 2 × 0.60 × 0.90 / (0.60 + 0.90) = 1.08 / 1.50 = <strong>0.72，即 72%</strong>。F1 低于 Recall，是因为 Precision 明显较弱。这不是计算错误，而是说明正类预测的两个方面并不平衡。</p>
 <p>F1 不会直接计入 TN，也不表示错误在金钱、时间或风险方面的真实代价。它并不是任何场景下都最好的指标。如果漏掉事件比误报更严重，Recall 可能更重要；如果误报代价过高，Precision 可能更重要。只有在需要用一个数值综合表示这两方面、并且认为两者同等重要时，F1 才特别有用。</p>
 </section>

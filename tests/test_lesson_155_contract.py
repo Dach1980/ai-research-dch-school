@@ -126,6 +126,11 @@ class Lesson155ContractTests(unittest.TestCase):
             keys = re.findall(r'data-correct="([a-d])"', source)
             self.assertEqual(set(keys), {"a","b","c","d"})
             self.assertGreaterEqual(len(set(keys)), 3)
+            explanations = re.findall(r'data-explanation="([^"]+)"', source)
+            self.assertEqual(len(explanations), 7)
+            self.assertTrue(all(len(value) > 100 for value in explanations))
+            distractor_phrase = {"ru": "вариант", "en": "Other options", "zh": "其他选项"}[locale]
+            self.assertIn(distractor_phrase.lower(), source.lower())
             for href in re.findall(r'href="([^"]+)"', source):
                 parts = urlsplit(href)
                 if parts.scheme or href.startswith("#") or not parts.path:

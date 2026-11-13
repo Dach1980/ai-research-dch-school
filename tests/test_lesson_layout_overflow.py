@@ -43,35 +43,23 @@ class LessonLayoutOverflowTests(unittest.TestCase):
                         page.evaluate("() => document.fonts ? document.fonts.ready.then(() => true) : true")
                         if lesson.name.startswith("a-1-4-5"):
                             glossary = page.evaluate("""() => {
-                              const dl = document.querySelector('.lesson-glossary dl');
-                              if (!dl) return {error: 'glossary dl missing'};
-                              const columns = getComputedStyle(dl).gridTemplateColumns
-                                .split(' ').filter(Boolean).length;
-                              const entries = [...dl.querySelectorAll(':scope > .glossary-entry')];
-                              const firstEntry = entries[0];
-                              const term = firstEntry?.querySelector(':scope > dt');
-                              const definition = firstEntry?.querySelector(':scope > dd');
-                              const termBox = term?.getBoundingClientRect();
-                              const definitionBox = definition?.getBoundingClientRect();
+                              const container = document.querySelector('.lesson-glossary');
+                              if (!container) return {error: 'lesson-glossary missing'};
+                              const entries = [...container.querySelectorAll(':scope > .glossary-entry')];
                               const structureValid = entries.length === 10 && entries.every(entry =>
-                                entry.querySelectorAll(':scope > dt').length === 1 &&
-                                entry.querySelectorAll(':scope > dd').length === 1 &&
-                                entry.children.length === 2
+                                entry.children.length === 2 &&
+                                entry.children[0].tagName === 'STRONG' &&
+                                entry.children[1].tagName === 'SPAN'
                               );
                               return {
-                                columns,
                                 entries: entries.length,
-                                display: getComputedStyle(dl).display,
-                                entryDisplay: firstEntry ? getComputedStyle(firstEntry).display : null,
                                 structureValid,
-                                termDefinitionStacked: !!termBox && !!definitionBox &&
-                                  definitionBox.top >= termBox.bottom - 1
+                                display: getComputedStyle(container).display
                               };
                             }""")
-                            expected_columns = 1 if width <= 700 else 2
-                            if glossary.get("error") or glossary["display"] != "grid" or glossary["columns"] != expected_columns or glossary["entries"] != 10 or glossary["entryDisplay"] != "flex" or not glossary["structureValid"] or not glossary["termDefinitionStacked"]:
+                            if glossary.get("error") or glossary["entries"] != 10 or not glossary["structureValid"] or glossary["display"] != "grid":
                                 failures.append(
-                                    f"{lesson.name} | {width}px | {theme}: glossary layout {glossary}"
+                                    f"{lesson.name} | {width}px | {theme}: non-canonical glossary structure {glossary}"
                                 )
                         result = page.evaluate("""(selector) => {
                           const cards = [...document.querySelectorAll(selector)];

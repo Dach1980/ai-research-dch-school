@@ -1313,12 +1313,31 @@
       "module_uid": "mod-a-01-05",
       "code": "1.5.4",
       "title": "ROC-AUC и Precision-Recall AUC",
-      "status": "planned",
+      "status": "published",
       "access": "open",
       "level": "beginner",
-      "prerequisite_uids": [],
-      "learning_outcomes": [],
-      "content_state": "outline_only"
+      "prerequisite_uids": [
+        "les-a-0045"
+      ],
+      "learning_outcomes": [
+        "Объяснять роль порога классификации и почему изменение порога меняет TP, FP, TN и FN.",
+        "Рассчитывать TPR и FPR и интерпретировать ROC-кривую.",
+        "Объяснять ROC-AUC как площадь под ROC-кривой и как вероятностную характеристику ранжирования.",
+        "Интерпретировать Precision–Recall-кривую и базовую линию, связанную с долей положительного класса.",
+        "Различать Average Precision и трапецеидальную PR-AUC и выбирать способ оценки под задачу.",
+        "Сравнивать ROC-AUC и PR-AUC, корректно выбирать порог на validation и сохранять test для финальной оценки."
+      ],
+      "content_state": "published",
+      "title_i18n": {
+        "ru": "ROC-AUC и Precision-Recall AUC",
+        "en": "ROC-AUC and Precision-Recall AUC",
+        "zh": "ROC-AUC 与 Precision-Recall AUC"
+      },
+      "url_i18n": {
+        "ru": "lessons/a-1-5-4.html",
+        "en": "lessons/a-1-5-4-en.html",
+        "zh": "lessons/a-1-5-4-zh.html"
+      }
     },
     {
       "uid": "les-a-0047",
@@ -1330,7 +1349,9 @@
       "status": "planned",
       "access": "open",
       "level": "beginner",
-      "prerequisite_uids": [],
+      "prerequisite_uids": [
+        "les-a-0046"
+      ],
       "learning_outcomes": [],
       "content_state": "outline_only"
     },

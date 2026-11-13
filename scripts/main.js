@@ -53,7 +53,10 @@ if(sharedScriptUrl){
   const nav = document.querySelector(".nav");
   if (!nav || nav.querySelector('[data-feedback-link]')) return;
   const href = new URL("../feedback/index" + (lang === "ru" ? "" : "-" + lang) + ".html", sharedScriptUrl || window.location.href);
-  href.searchParams.set("from", window.location.href);
+  const sourcePage = new URL(window.location.href);
+  sourcePage.search = "";
+  sourcePage.hash = "";
+  href.searchParams.set("from", sourcePage.href);
   const link = document.createElement("a");
   link.href = href.href;
   link.textContent = labels[lang];

@@ -11,6 +11,7 @@ LESSONS = {
     "a-5-how-to-evaluate-a-model": 4,
     "a-6-generalization-and-overfitting": 4,
     "a-1-4-2": 8,
+    "a-1-4-4": 8,
 }
 
 
@@ -177,7 +178,7 @@ class LessonDesignSystemTests(unittest.TestCase):
     def test_all_active_track_a_lessons_share_the_canonical_111_shell(self):
         bases = (
             "a-1-1-1", "a-1-1-2", "a-1-1-3", "a-1-1-4",
-            "a-1-2-1", "a-1-2-2", "a-1-2-4", "a-1-2-5", "a-1-2-6", "a-1-3-1",
+            "a-1-2-1", "a-1-2-2", "a-1-2-4", "a-1-2-5", "a-1-2-6", "a-1-3-1", "a-1-4-4",
         )
         for base in bases:
             for suffix, locale in (("", "ru"), ("-en", "en"), ("-zh", "zh")):

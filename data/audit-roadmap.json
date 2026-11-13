@@ -2,7 +2,7 @@
   "schema_version": 1,
   "project": "AI Research DCH School",
   "section": "Аудит и roadmap",
-  "updated_at": "2026-11-14T10:15:00+10:00",
+  "updated_at": "2026-11-14T10:45:00+10:00",
   "timezone": "Asia/Singapore",
   "principles": [
     "Планетная карта дополняет обычный каталог и не заменяет его.",
@@ -899,7 +899,7 @@
       "title": "Создать урок 1.5.6 «Кросс-валидация и устойчивость результатов»",
       "status": "in_progress",
       "priority": "high",
-      "decision": "Подготовлены три локализованные страницы, тематические SVG и формулы; урок остаётся review до обязательных автоматических проверок. Ручная визуальная приёмка RU/EN/中文 в светлой и тёмной темах на desktop/mobile не заявляется.",
+      "decision": "Три локализованные страницы урока 1.5.6 созданы и включены в каталог со статусом published после успешного прохождения контрактных, каталоговых, мультиязычных, SVG-theme и browser overflow проверок. Финальный Pages deployment для опубликованного статуса и ручная визуальная приёмка RU/EN/中文 в светлой/тёмной темах на desktop/mobile остаются отдельными шагами.",
       "acceptance": [
         "RU / EN / 中文 содержат восемь сопоставимых учебных разделов и практическое задание.",
         "Во всех локалях ровно три источника, пять карточек глоссария и семь вопросов с объяснениями правильных и неправильных вариантов.",
@@ -910,13 +910,57 @@
         "Ручная проверка desktop/mobile и light/dark каждой локали выполнена и зафиксирована отдельно."
       ],
       "verification": {
-        "lesson_156_contract": "pending",
-        "catalog_validation": "pending",
-        "multilingual_validation": "pending",
-        "svg_theme_audit": "pending",
-        "pages_build": "pending",
-        "pages_deployment": "pending",
-        "manual_visual_qa": "pending"
+        "lesson_156_contract": {
+          "status": "success",
+          "run_id": 43526053434,
+          "commit": "0586b8a2e4e856e5101f50b1c85d0c13283904da"
+        },
+        "catalog_validation": {
+          "status": "success",
+          "run_id": 43526053437,
+          "commit": "9f62563179c0c5aa62b5101a992cccac71103a6e"
+        },
+        "browser_overflow": {
+          "status": "success",
+          "run_id": 43526053437,
+          "commit": "9f62563179c0c5aa62b5101a992cccac71103a6e"
+        },
+        "locale_grid_theme_parity": {
+          "status": "success",
+          "run_id": 43526053437,
+          "commit": "9f62563179c0c5aa62b5101a992cccac71103a6e"
+        },
+        "design_system": {
+          "status": "success",
+          "run_id": 43526053437,
+          "commit": "9f62563179c0c5aa62b5101a992cccac71103a6e"
+        },
+        "navigation_contract": {
+          "status": "success",
+          "run_id": 43526053437,
+          "commit": "9f62563179c0c5aa62b5101a992cccac71103a6e"
+        },
+        "multilingual_validation": {
+          "status": "success",
+          "run_id": 43526053437,
+          "commit": "9f62563179c0c5aa62b5101a992cccac71103a6e"
+        },
+        "svg_theme_audit": {
+          "status": "success",
+          "run_id": 43525849253,
+          "commit": "2b309e7f54b092c55720e75fe59a66775462403a"
+        },
+        "pages_build": {
+          "status": "success",
+          "run_id": 43526053215,
+          "commit": "9f62563179c0c5aa62b5101a992cccac71103a"
+        },
+        "pages_deployment": {
+          "status": "pending"
+        },
+        "manual_visual_qa": {
+          "status": "pending"
+        }
       },
       "evidence": [
         "lessons/a-1-5-6.html",
@@ -924,11 +968,12 @@
         "lessons/a-1-5-6-zh.html",
         "styles/lesson-156.css",
         "tests/test_lesson_156_contract.py",
-        "data/catalog/catalog-v3.json"
+        "data/catalog/catalog-v3.json",
+        "docs/education/TRACK_A_CURRICULUM.md"
       ],
       "limitations": [
-        "Ручная браузерная проверка трёх локалей в двух темах на desktop/mobile не выполнена.",
-        "Публикация в каталоге будет завершена после прохождения автоматических проверок."
+        "Ручная браузерная визуальная проверка всех трёх локализаций в светлой/тёмной темах на desktop/mobile ещё не выполнена.",
+        "Ожидается финальный GitHub Pages deployment после перевода записи les-a-0015 в published."
       ]
     },
     {

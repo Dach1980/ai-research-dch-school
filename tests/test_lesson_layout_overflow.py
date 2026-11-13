@@ -54,10 +54,12 @@ class LessonLayoutOverflowTests(unittest.TestCase):
                               return {
                                 entries: entries.length,
                                 structureValid,
-                                display: getComputedStyle(container).display
+                                display: getComputedStyle(container).display,
+                                cardDisplay: entries[0] ? getComputedStyle(entries[0]).display : null,
+                                cardDirection: entries[0] ? getComputedStyle(entries[0]).flexDirection : null
                               };
                             }""")
-                            if glossary.get("error") or glossary["entries"] != 10 or not glossary["structureValid"] or glossary["display"] != "grid":
+                            if glossary.get("error") or glossary["entries"] != 10 or not glossary["structureValid"] or glossary["display"] != "grid" or glossary["cardDisplay"] != "flex" or glossary["cardDirection"] != "column":
                                 failures.append(
                                     f"{lesson.name} | {width}px | {theme}: non-canonical glossary structure {glossary}"
                                 )

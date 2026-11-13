@@ -1,0 +1,30 @@
+/* Lesson 1.5.4 — ROC / Precision–Recall curves. Theme-aware, responsive. */
+.lesson-154-figure{margin:24px 0;padding:14px;border:1px solid var(--lds-line);border-radius:16px;background:var(--lds-surface);max-width:100%;overflow-x:auto;overscroll-behavior-inline:contain}
+.lesson-154-figure svg{display:block;width:100%;min-width:680px;height:auto;max-width:none}
+.lesson-154-figure figcaption{margin:10px 4px 2px;color:var(--lds-muted);font-size:.9rem;line-height:1.6;overflow-wrap:anywhere}
+.lesson-154-bg{fill:var(--lds-surface);stroke:var(--lds-line);stroke-width:1.5}
+.lesson-154-label{fill:var(--lds-ink);font:700 18px system-ui,sans-serif}
+.lesson-154-muted{fill:var(--lds-muted);font:600 14px system-ui,sans-serif}
+.lesson-154-caption{fill:var(--lds-muted);font:600 13px system-ui,sans-serif}
+.lesson-154-axis{stroke:var(--lds-ink);stroke-width:2;fill:none}
+.lesson-154-grid{stroke:var(--lds-line);stroke-width:1;stroke-dasharray:4 6}
+.lesson-154-negative circle{fill:color-mix(in srgb,var(--lds-muted) 22%,var(--lds-surface));stroke:var(--lds-muted);stroke-width:2}
+.lesson-154-positive circle{fill:color-mix(in srgb,var(--lds-accent) 22%,var(--lds-surface));stroke:var(--lds-accent);stroke-width:2}
+.lesson-154-threshold{stroke:var(--lds-bad);stroke-width:3;stroke-dasharray:7 5}
+.lesson-154-threshold-label{fill:var(--lds-bad);font:700 14px system-ui,sans-serif}
+.lesson-154-random{fill:none;stroke:var(--lds-muted);stroke-width:3;stroke-dasharray:9 7}
+.lesson-154-roc{fill:none;stroke:var(--lds-good);stroke-width:6;stroke-linecap:round}
+.lesson-154-pr{fill:none;stroke:var(--lds-accent);stroke-width:6;stroke-linecap:round}
+.lesson-154-baseline{fill:none;stroke:var(--lds-warning,var(--lds-muted));stroke-width:3;stroke-dasharray:8 7}
+.lesson-154-legend{fill:var(--lds-ink);font:700 15px system-ui,sans-serif}
+.lesson-154-table-wrap{max-width:100%;overflow-x:auto;overscroll-behavior-inline:contain;margin:18px 0 24px;border:1px solid var(--lds-line);border-radius:14px;background:var(--lds-surface)}
+.lesson-154-table{width:100%;min-width:650px;border-collapse:separate;border-spacing:0;color:var(--lds-ink)}
+.lesson-154-table th,.lesson-154-table td{padding:12px 14px;border-top:1px solid var(--lds-line);border-right:1px solid var(--lds-line);text-align:left;vertical-align:top;overflow-wrap:anywhere}
+.lesson-154-table tr>*:last-child{border-right:0}
+.lesson-154-table thead th{background:var(--lds-surface);font-weight:800}
+.lesson-154-table tbody th{background:color-mix(in srgb,var(--lds-muted) 8%,var(--lds-surface));font-weight:750}
+.lesson-154-table tbody tr:nth-child(even) td{background:color-mix(in srgb,var(--lds-accent) 4%,var(--lds-surface))}
+.article-body .formula{display:flex;flex-direction:column;gap:8px;align-items:center;padding:16px;margin:16px 0;border:1px solid var(--lds-line);border-radius:12px;background:color-mix(in srgb,var(--lds-accent) 5%,var(--lds-surface));color:var(--lds-ink);overflow-wrap:anywhere}
+.article-body .formula-label{font-weight:800;color:var(--lds-muted);font-family:system-ui,sans-serif;font-size:.88rem}
+.article-body .formula-expression{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:clamp(.9rem,2vw,1.08rem);text-align:center;max-width:100%}
+@media(max-width:700px){.lesson-154-figure{padding:8px}.lesson-154-label{font-size:16px}.lesson-154-muted{font-size:13px}.lesson-154-table th,.lesson-154-table td{padding:10px}.article-body .formula{padding:12px 8px}}

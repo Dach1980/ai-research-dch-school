@@ -1346,14 +1346,32 @@
       "module_uid": "mod-a-01-05",
       "code": "1.5.5",
       "title": "Дисбаланс классов",
-      "status": "planned",
+      "status": "published",
       "access": "open",
       "level": "beginner",
       "prerequisite_uids": [
         "les-a-0046"
       ],
-      "learning_outcomes": [],
-      "content_state": "outline_only"
+      "learning_outcomes": [
+        "Определять дисбаланс классов и рассчитывать долю положительного класса.",
+        "Объяснять, почему высокая Accuracy может сочетаться с нулевым Recall.",
+        "Рассчитывать Precision с учётом TPR, FPR и распространённости положительного класса.",
+        "Сравнивать стратифицированное разбиение, oversampling, undersampling и взвешивание классов.",
+        "Объяснять принцип SMOTE и ограничения синтетических примеров.",
+        "Строить протокол, в котором балансировка выполняется только внутри обучающей части.",
+        "Выбирать метрики с учётом исходной распространённости событий."
+      ],
+      "content_state": "published",
+      "title_i18n": {
+        "ru": "Дисбаланс классов",
+        "en": "Class Imbalance",
+        "zh": "类别不平衡"
+      },
+      "url_i18n": {
+        "ru": "lessons/a-1-5-5.html",
+        "en": "lessons/a-1-5-5-en.html",
+        "zh": "lessons/a-1-5-5-zh.html"
+      }
     },
     {
       "uid": "les-a-0048",

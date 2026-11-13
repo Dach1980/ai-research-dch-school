@@ -9,7 +9,7 @@ from pathlib import Path
 from playwright.sync_api import sync_playwright
 
 ROOT = Path(__file__).resolve().parents[1]
-LESSONS = sorted([* (ROOT / "lessons").glob("a-1-4-*.html"), * (ROOT / "lessons").glob("a-1-5-1*.html"), * (ROOT / "lessons").glob("a-1-5-2*.html"), * (ROOT / "lessons").glob("a-1-5-3*.html"), * (ROOT / "lessons").glob("a-1-5-4*.html")])
+LESSONS = sorted([* (ROOT / "lessons").glob("a-1-4-*.html"), * (ROOT / "lessons").glob("a-1-5-1*.html"), * (ROOT / "lessons").glob("a-1-5-2*.html"), * (ROOT / "lessons").glob("a-1-5-3*.html"), * (ROOT / "lessons").glob("a-1-5-4*.html"), * (ROOT / "lessons").glob("a-1-5-5*.html")])
 VIEWPORTS = (360, 390, 768, 1024, 1440)
 THEMES = ("dark", "light")
 CARD_SELECTOR = (
@@ -42,8 +42,8 @@ class LessonLayoutOverflowTests(unittest.TestCase):
                         )
                         page.evaluate("() => document.fonts ? document.fonts.ready.then(() => true) : true")
                         if lesson.name.startswith(("a-1-4-5", "a-1-5-1", "a-1-5-4")):
-                            expected_entries = 5 if lesson.name.startswith(("a-1-5-1", "a-1-5-4")) else 10
-                            expected_children = 4 if lesson.name.startswith("a-1-5-1") else 3 if lesson.name.startswith("a-1-5-4") else 2
+                            expected_entries = 5 if lesson.name.startswith(("a-1-5-1", "a-1-5-4", "a-1-5-5")) else 10
+                            expected_children = 4 if lesson.name.startswith("a-1-5-1") else 3 if lesson.name.startswith(("a-1-5-4", "a-1-5-5")) else 2
                             glossary = page.evaluate("""([expectedEntries, expectedChildren]) => {
                               const container = document.querySelector('.lesson-glossary');
                               if (!container) return {error: 'lesson-glossary missing'};

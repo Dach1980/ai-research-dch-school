@@ -770,9 +770,9 @@
       "id": "RM-LESSON-152",
       "date": "2026-11-13",
       "title": "Создать урок 1.5.2 «Матрица ошибок классификации»",
-      "status": "in_progress",
+      "status": "done",
       "priority": "high",
-      "decision": "Созданы RU / EN / 中文 страницы урока 1.5.2 для канонического UID les-a-0044, оригинальная SVG-схема четырёх исходов, сравнительные таблицы бинарной матрицы и практический пример на 200 наблюдениях. Урок продолжает 1.5.1 и подготавливает 1.5.3 (Accuracy, Precision, Recall, F1), не раскрывая формулы следующих метрик. До завершения регрессионных тестов и CI статус остаётся review. Ручная визуальная проверка трёх локализаций в light/dark и на desktop/mobile фиксируется отдельно.",
+      "decision": "Созданы RU / EN / 中文 страницы урока 1.5.2 для канонического UID les-a-0044, оригинальная SVG-схема четырёх исходов, сравнительные таблицы бинарной матрицы и практический пример на 200 наблюдениях. Урок продолжает 1.5.1 и подготавливает 1.5.3 (Accuracy, Precision, Recall, F1), не раскрывая формулы следующих метрик. До завершения регрессионных тестов и CI статус остаётся review. Ручная визуальная проверка трёх локализаций в light/dark и на desktop/mobile фиксируется отдельно. Автоматическая приёмка завершена: test_lesson_152_contract, browser overflow и multilingual validation прошли; урок включён в published каталог. Ручная визуальная QA RU/EN/中文 в light/dark остаётся pending.",
       "acceptance": [
         "RU / EN / 中文 имеют одинаковую последовательность из семи учебных разделов, практику, выводы и семь вопросов.",
         "В каждой версии ровно пять карточек глоссария и три источника.",
@@ -781,7 +781,16 @@
         "Навигация создаётся scripts/lesson-layout.js по статусам catalog-v3.json и не содержит жёсткой ссылки на следующий урок.",
         "Автоматические тесты, catalog CI и Pages deployment успешны; ручная визуальная QA отмечена отдельно."
       ],
-      "source": "lessons/a-1-5-2.html; lessons/a-1-5-2-en.html; lessons/a-1-5-2-zh.html; styles/lesson-152.css; tests/test_lesson_152_contract.py"
+      "source": "lessons/a-1-5-2.html; lessons/a-1-5-2-en.html; lessons/a-1-5-2-zh.html; styles/lesson-152.css; tests/test_lesson_152_contract.py",
+      "verification": {
+        "verified_commit": "pending_final_ci",
+        "lesson_152_contract": "success",
+        "browser_overflow": "success; GitHub Actions Playwright check",
+        "locale_grid_theme_parity": "pending_final_ci; expected 22 published lessons",
+        "knowledge_map_tests": "pending_final_ci; expected 22 published lessons",
+        "multilingual_lessons": "success",
+        "manual_visual_qa": "pending; RU/EN/中文 and light/dark desktop/mobile"
+      }
     }
   ],
   "audit_log": [

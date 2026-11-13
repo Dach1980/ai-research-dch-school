@@ -825,12 +825,32 @@
       "module_uid": "mod-a-01-05",
       "code": "1.5.6",
       "title": "Кросс-валидация и устойчивость результатов",
-      "status": "planned",
+      "status": "published",
       "access": "open",
       "level": "beginner",
-      "prerequisite_uids": [],
-      "learning_outcomes": [],
-      "content_state": "outline_only"
+      "prerequisite_uids": [
+        "les-a-0047"
+      ],
+      "learning_outcomes": [
+        "Объяснять назначение кросс-валидации и её отличие от одного holdout-разбиения.",
+        "Описывать k-fold и stratified k-fold cross-validation.",
+        "Выбирать group-aware или time-aware схему для зависимых или временных наблюдений.",
+        "Рассчитывать среднюю метрику и описывать разброс результатов по фолдам.",
+        "Объяснять ограничения стандартного отклонения и зависимость оценок фолдов.",
+        "Предотвращать утечку данных при preprocessing, feature selection и подборе гиперпараметров.",
+        "Проектировать процедуру оценки с отдельным тестовым набором."
+      ],
+      "content_state": "published",
+      "title_i18n": {
+        "ru": "Кросс-валидация и устойчивость результатов",
+        "en": "Cross-Validation and Result Stability",
+        "zh": "交叉验证与结果稳定性"
+      },
+      "url_i18n": {
+        "ru": "lessons/a-1-5-6.html",
+        "en": "lessons/a-1-5-6-en.html",
+        "zh": "lessons/a-1-5-6-zh.html"
+      }
     },
     {
       "uid": "les-a-0016",

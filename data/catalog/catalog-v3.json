@@ -1248,13 +1248,31 @@
       "theme_uid": "thm-a-01",
       "module_uid": "mod-a-01-05",
       "code": "1.5.2",
-      "title": "Confusion Matrix",
-      "status": "planned",
+      "title": "Матрица ошибок классификации",
+      "status": "review",
       "access": "open",
       "level": "beginner",
-      "prerequisite_uids": [],
-      "learning_outcomes": [],
-      "content_state": "outline_only"
+      "prerequisite_uids": [
+        "les-a-0043"
+      ],
+      "learning_outcomes": [
+        "Объяснять назначение матрицы ошибок и правильно читать её строки и столбцы.",
+        "Различать TP, TN, FP и FN с позиции фактического класса и прогноза.",
+        "Строить матрицу по размеченным результатам классификатора и проверять сумму ячеек.",
+        "Интерпретировать ложную тревогу и пропуск в контексте практической задачи.",
+        "Объяснять ограничения матрицы и расширение представления на несколько классов."
+      ],
+      "content_state": "localized",
+      "title_i18n": {
+        "ru": "Матрица ошибок классификации",
+        "en": "The Confusion Matrix",
+        "zh": "分类混淆矩阵"
+      },
+      "url_i18n": {
+        "ru": "lessons/a-1-5-2.html",
+        "en": "lessons/a-1-5-2-en.html",
+        "zh": "lessons/a-1-5-2-zh.html"
+      }
     },
     {
       "uid": "les-a-0045",

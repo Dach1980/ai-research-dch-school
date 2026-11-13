@@ -44,6 +44,8 @@ class Lesson145Tests(unittest.TestCase):
             self.assertIn('class="lesson-nav"',source)
             self.assertIn('class="lesson-problem lesson-practice-task"',source)
             self.assertIn('data-mode="single"',source)
+            yesno=source.split('data-mode="yesno"',1)[1].split("</article>",1)[0]
+            self.assertEqual(yesno.count('class="lesson-check-option"'),2)
             self.assertEqual(len(re.findall(r'data-correct="[abc]"',source)),8)
             self.assertNotRegex(source,r'data-explanation="[abc]"')
             nav=source.split('class="lesson-nav"',1)[1].split("</nav>",1)[0]

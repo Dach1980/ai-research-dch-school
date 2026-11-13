@@ -726,12 +726,33 @@
       "module_uid": "mod-a-01-04",
       "code": "1.4.3",
       "title": "Переобучение и недообучение",
-      "status": "planned",
+      "status": "published",
       "access": "open",
       "level": "beginner",
-      "prerequisite_uids": [],
-      "learning_outcomes": [],
-      "content_state": "outline_only"
+      "prerequisite_uids": [
+        "les-a-0010",
+        "les-a-0011"
+      ],
+      "learning_outcomes": [
+        "Различать недообучение, приемлемое обучение и переобучение по ошибкам на обучающих и проверочных данных",
+        "Интерпретировать кривые обучения и разрыв между train loss и validation loss",
+        "Объяснять связь сложности модели с систематической ошибкой и вариативностью результата",
+        "Выбирать обоснованные способы уменьшения недообучения и переобучения",
+        "Описывать корректную роль validation и test выборок при настройке модели"
+      ],
+      "content_state": "published",
+      "title_i18n": {
+        "ru": "Переобучение и недообучение",
+        "en": "Overfitting and Underfitting",
+        "zh": "过拟合与欠拟合"
+      },
+      "duration_min": 65,
+      "duration_max": 80,
+      "url_i18n": {
+        "ru": "lessons/a-1-4-3.html",
+        "en": "lessons/a-1-4-3-en.html",
+        "zh": "lessons/a-1-4-3-zh.html"
+      }
     },
     {
       "uid": "les-a-0013",

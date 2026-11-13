@@ -13,6 +13,9 @@ TRACKS = [
 ]
 MAPS = ["learning-map/index.html", "learning-map/index-en.html", "learning-map/index-zh.html"]
 LESSONS = [
+    "lessons/a-1-4-3.html",
+    "lessons/a-1-4-3-en.html",
+    "lessons/a-1-4-3-zh.html",
     "lessons/a-1-1-1.html",
     "lessons/a-1-1-1-en.html",
     "lessons/a-1-1-1-zh.html",

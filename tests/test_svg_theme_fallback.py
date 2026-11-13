@@ -8,24 +8,24 @@ DESIGN_SYSTEM = ROOT / "styles" / "lesson-design-system.css"
 REFERENCE_STYLES = ROOT / "styles" / "lesson-reference-111.css"
 
 DARK_COLOR = re.compile(
-    r"^(?:black|#(?:0{3}|0{6}|1{3}|1{6})|rgb\\(\\s*0\\s*,\\s*0\\s*,\\s*0\\s*\\))$",
+    r"^(?:black|#(?:0{3}|0{6}|1{3}|1{6})|rgb\(\s*0\s*,\s*0\s*,\s*0\s*\))$",
     re.IGNORECASE,
 )
 
 
 def _text_color_declarations(attrs):
     """Return explicit fill/color values only; typography styles are harmless."""
-    values = re.findall(r"""\\b(?:fill|color)\\s*=\\s*["']([^"']+)["']""", attrs, re.IGNORECASE)
-    for style in re.findall(r"""\\bstyle\\s*=\\s*["']([^"']*)["']""", attrs, re.IGNORECASE):
+    values = re.findall(r"""\b(?:fill|color)\s*=\s*["']([^"']+)["']""", attrs, re.IGNORECASE)
+    for style in re.findall(r"""\bstyle\s*=\s*["']([^']*)["']""", attrs, re.IGNORECASE):
         values.extend(
-            re.findall(r"""(?:^|;)\\s*(?:fill|color)\\s*:\\s*([^;]+)""", style, re.IGNORECASE)
+            re.findall(r"""(?:^|;)\s*(?:fill|color)\s*:\s*([^;]+)""", style, re.IGNORECASE)
         )
     return [value.strip() for value in values]
 
 
 def test_shared_svg_text_fallback_uses_theme_tokens():
     css = DESIGN_SYSTEM.read_text(encoding="utf-8")
-    assert re.search(r"svg\\s+text\\s*\\{[^}]*fill\\s*:\\s*var\\(--lds-ink\\)", css)
+    assert re.search(r"svg\s+text\s*\{[^}]*fill\s*:\s*var\(--lds-ink\)", css)
     assert "--lds-ink:" in css
     assert 'html:not([data-theme="light"])' in css
 
@@ -36,7 +36,7 @@ def test_shared_diagram_styles_are_theme_aware():
         assert selector in css
     for token in ("--lds-ink", "--lds-muted", "--lds-surface", "--lds-line", "--lds-accent", "--lds-good"):
         assert token in css
-    assert not re.search(r'html\\[data-theme="light"\\] \\.lesson-figure \\.svg-(?:title|label|small)', css)
+    assert not re.search(r'html\[data-theme="light"\] \.lesson-figure \.svg-(?:title|label|small)', css)
 
 
 def test_every_lesson_with_svg_loads_the_shared_theme_system():
@@ -45,7 +45,7 @@ def test_every_lesson_with_svg_loads_the_shared_theme_system():
     checked = 0
     for page in pages:
         html = page.read_text(encoding="utf-8")
-        svgs = re.findall(r"<svg\\b[\\s\\S]*?</svg>", html, re.IGNORECASE)
+        svgs = re.findall(r"<svg\b[\s\S]*?</svg>", html, re.IGNORECASE)
         if not svgs:
             continue
         checked += 1
@@ -53,7 +53,7 @@ def test_every_lesson_with_svg_loads_the_shared_theme_system():
             f"{page.name} contains SVG but does not load the shared theme system"
         )
         for svg in svgs:
-            for match in re.finditer(r"<text\\b([^>]*)>", svg, re.IGNORECASE):
+            for match in re.finditer(r"<text\b([^>]*)>", svg, re.IGNORECASE):
                 attrs = match.group(1)
                 for value in _text_color_declarations(attrs):
                     normalized = value.strip().lower()

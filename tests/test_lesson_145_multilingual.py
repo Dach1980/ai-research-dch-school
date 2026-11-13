@@ -44,6 +44,11 @@ class Lesson145Tests(unittest.TestCase):
             self.assertIn('class="lesson-nav"',source)
             self.assertIn('class="lesson-problem lesson-practice-task"',source)
             self.assertIn('data-mode="single"',source)
+            self.assertEqual(len(re.findall(r'data-correct="[abc]"',source)),8)
+            self.assertNotRegex(source,r'data-explanation="[abc]"')
+            nav=source.split('class="lesson-nav"',1)[1].split("</nav>",1)[0]
+            self.assertEqual(nav.count('class="button'),5)
+            self.assertIn("a-1-4-4",nav)
             self.assertIn('class="language-python"',source)
             match=re.search(r'<pre class="language-python"><code>(.*?)</code></pre>',source,re.S)
             self.assertIsNotNone(match)

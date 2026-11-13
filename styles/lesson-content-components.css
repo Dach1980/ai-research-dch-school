@@ -27,3 +27,19 @@ table{width:100%;border-collapse:collapse;margin:18px 0;display:block;overflow-x
 .lesson-callout,.lesson-practice{padding:18px 21px;margin:22px 0;border:1px solid var(--line);border-radius:14px;background:var(--panel)}
 .lesson-callout strong,.lesson-practice h3{color:var(--blue)}
 .lesson-practice{border-left:3px solid var(--blue)}
+
+/* Layout safety net for every newly authored lesson component.
+   Long localized words and inline math must never force a card wider than its parent. */
+.article-body,.article-body *,
+.article-body *::before,.article-body *::after{box-sizing:border-box}
+.article-body :where(section,article,aside,div,figure,fieldset,li,.lesson-callout,.lesson-practice,.lesson-note,.lesson-outcomes,.lesson-problem,.definition,.glossary-entry,.lesson-check,.lesson-check-question,.lesson-check-option,.lesson-planet-banner){min-width:0;max-width:100%}
+.article-body :where(p,li,strong,em,b,small,span,a,dt,dd,figcaption,label,legend){overflow-wrap:anywhere;word-break:normal}
+.article-body :where(.lesson-callout,.lesson-practice,.lesson-note,.lesson-outcomes,.lesson-problem,.definition,.glossary-entry,.lesson-check,.lesson-check-question,.lesson-check-option,.lesson-planet-banner){overflow-wrap:anywhere}
+.article-body :where(img,svg,video,canvas){max-width:100%;height:auto}
+.article-body :where(.lesson-table-wrap,.formula,pre,.lesson-code-block,.lesson-figure,.lesson-diagram){max-width:100%;min-width:0}
+.article-body :where(.lesson-table-wrap,pre,.lesson-code-block,.formula){overflow-x:auto;overscroll-behavior-x:contain}
+@media(max-width:600px){
+  .article-body :where(.lesson-callout,.lesson-practice,.lesson-note,.lesson-problem,.definition,.glossary-entry,.lesson-check){padding-inline:14px}
+  .article-body :where(.lesson-planet-banner){grid-template-columns:minmax(0,1fr)}
+  .article-body :where(.lesson-planet-art){max-width:100%}
+}

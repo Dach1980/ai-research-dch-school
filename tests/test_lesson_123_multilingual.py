@@ -71,7 +71,7 @@ class Lesson123Tests(unittest.TestCase):
         self.assertEqual(lesson["uid"], "les-a-0056")
         uids = [item["uid"] for item in catalog["lessons"]]
         self.assertEqual(len(uids), len(set(uids)), "catalogue UIDs must be unique")
-        self.assertEqual(lesson["status"], "review")
+        self.assertEqual(lesson["status"], "published")
         self.assertEqual(lesson["content_state"], "localized")
         self.assertEqual(lesson["prerequisite_uids"], ["les-a-0004"])
         self.assertEqual(set(lesson["url_i18n"]), {"ru", "en", "zh"})

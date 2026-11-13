@@ -9,12 +9,15 @@ DESIGN_SYSTEM = ROOT / "styles/lesson-design-system.css"
 class GlossaryLayoutContractTests(unittest.TestCase):
     def test_glossary_cards_are_flex_columns_not_nested_grids(self):
         css = DESIGN_SYSTEM.read_text(encoding="utf-8")
+        outer = re.search(r"\.lesson-glossary\s*\{([^}]*)\}", css, re.S)
         legacy_grid = re.search(r"\.glossary-entry\s*\{[^}]*display\s*:\s*grid", css, re.S)
         canonical = re.search(
             r"\.lesson-glossary\s*>\s*\.glossary-entry\s*\{([^}]*)\}",
             css,
             re.S,
         )
+        self.assertIsNotNone(outer, "outer glossary grid rule is required")
+        self.assertRegex(outer.group(1), r"display\s*:\s*grid")
         self.assertIsNotNone(legacy_grid, "legacy base rule changed; review cascade")
         self.assertIsNotNone(canonical, "shared canonical glossary rule is required")
         self.assertLess(

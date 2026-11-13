@@ -83,7 +83,7 @@ class Lesson142Tests(unittest.TestCase):
             ast.parse(code)
             suffix = "" if lang == "ru" else "-en" if lang == "en" else "-zh"
             self.assertIn(f'href="a-1-4-1{suffix}.html"', source)
-            self.assertNotIn(f'href="a-1-4-3{suffix}.html"', source)
+            self.assertIn(f'href="a-1-4-3{suffix}.html"', source)
 
         catalog = json.loads((ROOT / "data/catalog/catalog-v3.json").read_text(encoding="utf-8"))
         lesson = next(x for x in catalog["lessons"] if x["uid"] == "les-a-0011")

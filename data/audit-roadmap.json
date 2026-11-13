@@ -783,16 +783,15 @@
       ],
       "source": "lessons/a-1-5-2.html; lessons/a-1-5-2-en.html; lessons/a-1-5-2-zh.html; styles/lesson-152.css; tests/test_lesson_152_contract.py",
       "verification": {
-        "verified_commit": "5cecb20c07349e1fa370cbdfa8211bfd21ff545a",
+        "verified_commit": "a52fcf7eff442c23af971a9b38db24f515ed8373",
         "lesson_152_contract": "success",
-        "browser_overflow": "success; Validate learning catalog run 43425112197",
+        "browser_overflow": "success; Validate learning catalog run 43425303846",
         "locale_grid_theme_parity": "success; 22 published lessons",
         "knowledge_map_tests": "success; 22 published lessons",
         "multilingual_lessons": "success",
-        "full_catalog_ci": "success; run 43425112197",
-        "pages_validation": "success; Deploy static website run 43425112057",
-        "pages_deployment": "success; run 43425112057",
-        "pages_build": "success; run 43425112472",
+        "full_catalog_ci": "success; run 43425303846",
+        "pages_validation": "success; run 43425303672",
+        "pages_deployment": "success; run 43425303672",
         "manual_visual_qa": "pending; RU/EN/中文 in light/dark on desktop/mobile"
       }
     }
@@ -2731,7 +2730,7 @@
       "date": "2026-11-13",
       "type": "lesson_1_5_2_publication",
       "title": "Создан и опубликован урок 1.5.2 «Матрица ошибок классификации»",
-      "result": "Созданы полные RU / EN / 中文 версии для UID les-a-0044, Track A / Theme 1 / Module 5. Урок содержит семь учебных разделов, практическое задание, выводы, три источника, пять карточек глоссария и семь локализованных вопросов с объяснениями. Добавлены две таблицы матрицы, оригинальная SVG-схема четырёх исходов с локализованными title/desc/figcaption и theme-aware CSS через --lds-* токены. Каталог переведён в published; навигация остаётся catalog-driven. Регрессионный тест lesson 1.5.2, браузерный overflow check, locale-grid parity (22 опубликованных урока), knowledge-map tests и multilingual validation прошли. GitHub Actions catalog CI и GitHub Pages deployment завершились успешно. Проверенный исходный commit: 5cecb20c07349e1fa370cbdfa8211bfd21ff545a.",
+      "result": "Созданы полные RU / EN / 中文 версии для UID les-a-0044, Track A / Theme 1 / Module 5. Урок содержит семь учебных разделов, практическое задание, выводы, три источника, пять карточек глоссария и семь локализованных вопросов с объяснениями. Добавлены две таблицы матрицы, оригинальная SVG-схема четырёх исходов с локализованными title/desc/figcaption и theme-aware CSS через --lds-* токены. Каталог переведён в published; навигация остаётся catalog-driven. Регрессионный тест lesson 1.5.2, браузерный overflow check, locale-grid parity (22 опубликованных урока), knowledge-map tests и multilingual validation прошли. GitHub Actions catalog CI и GitHub Pages deployment завершились успешно на commit a52fcf7eff442c23af971a9b38db24f515ed8373 (catalog CI run 43425303846; Pages deploy run 43425303672).",
       "evidence": [
         "lessons/a-1-5-2.html",
         "lessons/a-1-5-2-en.html",

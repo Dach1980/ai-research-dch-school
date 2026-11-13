@@ -13,4 +13,4 @@
 .article-body .glossary-entry{min-width:0;padding:14px 16px;border:1px solid var(--lds-line);border-radius:12px;background:var(--lds-surface);display:flex;flex-direction:column;gap:6px;overflow-wrap:anywhere}
 .article-body .glossary-entry strong{color:var(--lds-ink)}
 .article-body .glossary-entry span{color:var(--lds-muted)}
-@media(max-width:700px){.lesson-144-figure{padding:8px;margin:1.2rem 0}.d144-text{font-size:15px}.d144-sub{font-size:12px}.article-body .lesson-glossary{grid-template-columns:minmax(0,1fr)}}
+@media(max-width:700px){.lesson-144-figure{padding:8px;margin:1.2rem 0;overflow-x:auto;overscroll-behavior-x:contain}.lesson-144-figure svg{min-width:640px}.d144-text{font-size:18px}.d144-sub{font-size:14px}.article-body .lesson-glossary{grid-template-columns:minmax(0,1fr)}}

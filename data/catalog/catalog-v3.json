@@ -1322,7 +1322,7 @@
       "access": "open",
       "level": "beginner",
       "prerequisite_uids": [
-        "les-a-0004"
+        "les-a-0051"
       ],
       "learning_outcomes": [
         "Объяснять роли train, validation и test.",
@@ -1402,6 +1402,38 @@
         "ru": "Символический AI и машинное обучение",
         "en": "Symbolic AI and Machine Learning",
         "zh": "符号人工智能与机器学习"
+      }
+    },
+    {
+      "uid": "les-a-0051",
+      "track_uid": "trk-a",
+      "theme_uid": "thm-a-01",
+      "module_uid": "mod-a-01-02",
+      "code": "1.2.3",
+      "title": "Типы данных и представление признаков",
+      "status": "review",
+      "access": "open",
+      "level": "beginner",
+      "prerequisite_uids": [
+        "les-a-0004"
+      ],
+      "learning_outcomes": [
+        "Различать числовые, номинальные, порядковые, временные и текстовые признаки.",
+        "Выбирать базовые способы представления и кодирования категорий.",
+        "Объяснять влияние единиц измерения и масштаба признаков.",
+        "Учитывать доступность признаков и предотвращать утечку при подготовке данных.",
+        "Составлять спецификацию признаков перед обучением модели."
+      ],
+      "content_state": "localized",
+      "url_i18n": {
+        "ru": "lessons/a-1-2-3.html",
+        "en": "lessons/a-1-2-3-en.html",
+        "zh": "lessons/a-1-2-3-zh.html"
+      },
+      "title_i18n": {
+        "ru": "Типы данных и представление признаков",
+        "en": "Data Types and Feature Representation",
+        "zh": "数据类型与特征表示"
       }
     }
   ],

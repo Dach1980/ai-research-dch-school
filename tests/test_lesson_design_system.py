@@ -12,6 +12,7 @@ LESSONS = {
     "a-6-generalization-and-overfitting": 4,
     "a-1-4-2": 8,
     "a-1-4-4": 8,
+    "a-1-4-5": 8,
 }
 
 

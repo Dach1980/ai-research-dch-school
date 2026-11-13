@@ -738,9 +738,9 @@
       "id": "RM-LESSON-151",
       "date": "2026-11-13",
       "title": "Создать урок 1.5.1 «Зачем оценивать качество модели»",
-      "status": "in_progress",
+      "status": "done",
       "priority": "high",
-      "decision": "Созданы RU / EN / 中文 страницы для canonical UID les-a-0043. Содержание ограничено назначением оценки, контекстом качества, метриками как измерителями, последствиями ошибок, baseline, независимой проверкой и ограничениями выводов. Подробные метрики и confusion matrix оставлены последующим урокам. Lesson-specific contract, design-system, locale parity, real-browser overflow и SVG theme checks завершились успешно; Pages deployment завершён успешно. Полный Validate learning catalog остаётся красным из-за независимого существующего теста урока 1.3.2: в styles/lesson-reference-111.css отсутствуют ожидаемые правила cluster-panel. Поэтому урок остаётся в review до устранения общей CI-блокировки. Ручная визуальная проверка RU/EN/中文 в light/dark отмечена отдельно и ещё не выполнена.",
+      "decision": "2026-11-13: урок 1.5.1 создан в RU / EN / 中文 для canonical UID les-a-0043 и переведён в published. Содержание охватывает назначение оценки, контекст качества, метрики как измерители, последствия ошибок, baseline, независимую проверку и ограничения выводов; подробные метрики и confusion matrix оставлены последующим урокам. Исправлена общая CI-блокировка урока 1.3.2: светлая тема ограничена только SVG диаграммой кластеризации, а тесты согласованы с этой областью действия. Футер всех трёх локализаций приведён к эталону 1.1.1: бренд-ссылка, логотип, слоган и копирайт. Обновлены счётчики опубликованных уроков и проверки карты знаний. Полный Validate learning catalog и GitHub Pages build/deployment завершились успешно. Ручная визуальная проверка RU/EN/中文 в light/dark остаётся отдельной задачей и не отмечена как выполненная.",
       "acceptance": [
         "Три локализованные страницы используют общую оболочку урока 1.1.1.",
         "Глоссарий содержит ровно пять карточек с flex-column внутри grid-контейнера.",
@@ -751,15 +751,18 @@
       ],
       "source": "lessons/a-1-5-1.html; lessons/a-1-5-1-en.html; lessons/a-1-5-1-zh.html",
       "verification": {
-        "verified_commit": "9ba5631197b5ca43bd4f42ebf53b5ee420956501",
+        "verified_commit": "274db998047d6261167459e65e6421db41f89868",
         "lesson_151_contract": "success",
         "lesson_design_system": "success",
-        "locale_grid_theme_parity": "success",
+        "locale_grid_theme_parity": "success; 21 published localized lessons",
         "browser_overflow": "success; RU/EN/中文; 360, 390, 768, 1024, 1440 px; light/dark",
-        "svg_theme_audit": "success",
-        "github_pages_build": "success",
-        "static_site_deployment": "success",
-        "full_catalog_ci": "failure; unrelated pre-existing 1.3.2 cluster-panel CSS contract",
+        "svg_theme_audit": "success; clustering light-theme override scoped to .cluster-diagram",
+        "lesson_132_multilingual_diagrams": "success",
+        "footer_parity": "success; RU/EN/中文 match lesson 1.1.1 brand, slogan, copyright and locale home link",
+        "knowledge_map_tests": "success; 21 published lessons",
+        "full_catalog_ci": "success; run 43416798971",
+        "github_pages_build": "success; run 43416798228",
+        "static_site_deployment": "success; run 43416799166",
         "manual_visual_qa": "pending; RU/EN/中文 and light/dark"
       }
     }

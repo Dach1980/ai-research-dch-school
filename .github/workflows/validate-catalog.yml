@@ -108,6 +108,8 @@ jobs:
         run: python -m unittest discover -s tests -p 'test_track_a_data_lessons.py' -v
       - name: Test lesson content, localized diagrams, and source-aligned quizzes
         run: python -m unittest discover -s tests -p 'test_lessons_112_113.py' -v
+      - name: Test SVG node label containment
+        run: python -m unittest discover -s tests -p 'test_svg_text_fit.py' -v
       - name: Test feedback form pages
         run: python -m unittest discover -s tests -p 'test_feedback_pages.py' -v
       - name: Test lesson 1.4.3 multilingual content, diagrams and assessment

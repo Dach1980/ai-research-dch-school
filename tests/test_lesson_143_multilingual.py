@@ -37,7 +37,7 @@ class Lesson143Tests(unittest.TestCase):
     def test_parallel_lesson_components(self):
         for path in FILES.values():
             source=path.read_text(encoding="utf-8")
-            self.assertEqual(source.count('class="lesson-143-figure"'),4)
+            self.assertEqual(source.count("lesson-143-figure"),4)
             self.assertEqual(source.count('class="formula"'),4)
             self.assertEqual(source.count('class="glossary-entry"'),10)
             self.assertEqual(source.count('class="lesson-check-question"'),8)

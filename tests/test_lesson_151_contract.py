@@ -35,9 +35,9 @@ class Lesson151PublicationContractTests(unittest.TestCase):
                 self.assertIn('../styles/lesson-124.css', source)
                 self.assertIn('../scripts/lesson-layout.js', source)
                 self.assertIn('../scripts/lesson-assessment.js', source)
-                footer_match = re.search(r'<footer class="footer">([\\s\\S]*?)</footer>', source)
-                self.assertIsNotNone(footer_match, "canonical footer is required")
-                footer = footer_match.group(1)
+                footer_parts = source.split('<footer class="footer">', 1)
+                self.assertEqual(len(footer_parts), 2, "canonical footer is required")
+                footer = footer_parts[1].split("</footer>", 1)[0]
                 expected_home = {"ru": "../index.html", "en": "../index-en.html", "zh": "../index-zh.html"}[locale]
                 self.assertIn(f'<a class="brand" href="{expected_home}">', footer)
                 self.assertIn('<img src="../assets/site-brand-icon.jpg" alt="DCH">', footer)

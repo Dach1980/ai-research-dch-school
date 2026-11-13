@@ -17,6 +17,7 @@ class KnowledgeMapTests(unittest.TestCase):
   self.assertEqual(len(lessons),23)
   self.assertIn("les-a-0043", {lesson["uid"] for lesson in lessons})
   self.assertIn("les-a-0044", {lesson["uid"] for lesson in lessons})
+  self.assertIn("les-a-0045", {lesson["uid"] for lesson in lessons})
   self.assertIn("les-a-0010", {lesson["uid"] for lesson in lessons})
   self.assertIn("les-a-0012", {lesson["uid"] for lesson in lessons})
   self.assertIn("les-a-0013", {lesson["uid"] for lesson in lessons})

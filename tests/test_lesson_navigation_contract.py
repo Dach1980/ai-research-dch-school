@@ -34,7 +34,7 @@ class PublishedLessonNavigationContractTests(unittest.TestCase):
     def test_normalizer_uses_only_published_track_a_lessons_and_catalog_order(self):
         self.assertIn('item.track_uid==="trk-a"&&item.status==="published"', self.script)
         self.assertIn('item.url_i18n[locale]', self.script)
-        self.assertIn('return a.code.split(".").map(Number)', self.script)
+        self.assertIn('var aa=a.code.split(".").map(Number),bb=b.code.split(".").map(Number)', self.script)
         self.assertIn('var currentPath=window.location.pathname.split("/").pop()', self.script)
         self.assertIn('var index=published.findIndex', self.script)
         self.assertIn('new URL(previous.url_i18n[locale],rootUrl)', self.script)

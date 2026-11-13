@@ -1,6 +1,6 @@
 /* Lesson 1.2.4 — readable responsive diagrams, tables, code and callouts. */
-.lesson-124-figure{margin:24px 0;padding:14px;border:1px solid var(--lds-line);border-radius:16px;background:var(--lds-surface);max-width:100%;overflow:hidden}
-.lesson-124-figure svg{display:block;width:100%;height:auto;max-width:100%}
+.lesson-124-figure{margin:24px 0;padding:14px;border:1px solid var(--lds-line);border-radius:16px;background:var(--lds-surface);max-width:100%;overflow-x:auto;overscroll-behavior-inline:contain}
+.lesson-124-figure svg{display:block;width:100%;min-width:760px;height:auto;max-width:none}
 .lesson-124-figure figcaption{margin:10px 4px 2px;color:var(--lds-muted);font-size:.9rem;line-height:1.6;overflow-wrap:anywhere}
 .lesson-124-bg{fill:var(--lds-surface);stroke:var(--lds-line);stroke-width:1.5}
 .lesson-124-label{fill:var(--lds-ink);font:700 18px system-ui,sans-serif}

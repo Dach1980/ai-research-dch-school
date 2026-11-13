@@ -131,3 +131,9 @@ html:not([data-theme="light"]){--lds-definition-term:#5eead4;--lds-definition-te
   max-width:100%;
   overflow-wrap:anywhere;
 }
+
+
+/* SVG text fallback: prevent browser-default black text on dark diagram surfaces.
+   Existing semantic classes (title/label/accent and lesson-specific text classes)
+   keep their own higher-specificity theme-aware colors. */
+svg text{fill:var(--lds-ink)}

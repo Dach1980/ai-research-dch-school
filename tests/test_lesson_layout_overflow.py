@@ -47,22 +47,29 @@ class LessonLayoutOverflowTests(unittest.TestCase):
                               if (!dl) return {error: 'glossary dl missing'};
                               const columns = getComputedStyle(dl).gridTemplateColumns
                                 .split(' ').filter(Boolean).length;
-                              const firstEntry = dl.querySelector('.glossary-entry');
-                              const term = firstEntry?.querySelector('dt');
-                              const definition = firstEntry?.querySelector('dd');
+                              const entries = [...dl.querySelectorAll(':scope > .glossary-entry')];
+                              const firstEntry = entries[0];
+                              const term = firstEntry?.querySelector(':scope > dt');
+                              const definition = firstEntry?.querySelector(':scope > dd');
                               const termBox = term?.getBoundingClientRect();
                               const definitionBox = definition?.getBoundingClientRect();
+                              const structureValid = entries.length === 10 && entries.every(entry =>
+                                entry.querySelectorAll(':scope > dt').length === 1 &&
+                                entry.querySelectorAll(':scope > dd').length === 1 &&
+                                entry.children.length === 2
+                              );
                               return {
                                 columns,
-                                entries: dl.querySelectorAll('.glossary-entry').length,
+                                entries: entries.length,
                                 display: getComputedStyle(dl).display,
                                 entryDisplay: firstEntry ? getComputedStyle(firstEntry).display : null,
+                                structureValid,
                                 termDefinitionStacked: !!termBox && !!definitionBox &&
                                   definitionBox.top >= termBox.bottom - 1
                               };
                             }""")
                             expected_columns = 1 if width <= 700 else 2
-                            if glossary.get("error") or glossary["display"] != "grid" or glossary["columns"] != expected_columns or glossary["entries"] != 10 or glossary["entryDisplay"] != "flex" or not glossary["termDefinitionStacked"]:
+                            if glossary.get("error") or glossary["display"] != "grid" or glossary["columns"] != expected_columns or glossary["entries"] != 10 or glossary["entryDisplay"] != "flex" or not glossary["structureValid"] or not glossary["termDefinitionStacked"]:
                                 failures.append(
                                     f"{lesson.name} | {width}px | {theme}: glossary layout {glossary}"
                                 )

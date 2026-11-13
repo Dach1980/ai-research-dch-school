@@ -60,6 +60,7 @@ class Lesson144Tests(unittest.TestCase):
             self.assertEqual(source.count('class="glossary-entry"'), 10)
             self.assertEqual(source.count('class="lesson-check-question"'), 8)
             self.assertEqual(source.count('class="lesson-check-feedback"'), 8)
+            self.assertIn('data-mode="yesno"', source)
             self.assertEqual(source.count('class="lesson-outcomes"'), 1)
             self.assertIn('class="lesson-nav"', source)
             self.assertIn('class="lesson-sources"', source)

@@ -2,7 +2,7 @@
   "schema_version": 1,
   "project": "AI Research DCH School",
   "section": "Аудит и roadmap",
-  "updated_at": "2026-11-14T07:00:00+10:00",
+  "updated_at": "2026-11-14T07:15:00+10:00",
   "timezone": "Asia/Singapore",
   "principles": [
     "Планетная карта дополняет обычный каталог и не заменяет его.",
@@ -831,9 +831,9 @@
       "id": "RM-LESSON-154",
       "date": "2026-11-14",
       "title": "Создать урок 1.5.4 «ROC-AUC и Precision-Recall AUC»",
-      "status": "in_progress",
+      "status": "done",
       "priority": "high",
-      "decision": "Созданы RU / EN / 中文 страницы урока 1.5.4 для существующего UID les-a-0046. Материал раскрывает score и порог классификации, ROC-кривую, TPR/FPR, ROC-AUC, Precision–Recall-кривую, зависимость базовой линии от prevalence, различие Average Precision и трапецеидальной PR-AUC, сравнение метрик на примере редких дефектов и корректный выбор порога на validation. Добавлены три оригинальные локализованные SVG-схемы, пять формульных блоков, ровно пять терминов, три источника и семь вопросов. Каталог и prerequisite edges обновлены; тесты добавлены в catalog CI и Pages workflow. Автоматические проверки и deployment ещё ожидаются; ручная визуальная QA не выполнена.",
+      "decision": "Урок 1.5.4 создан и опубликован в RU / EN / 中文 для UID les-a-0046. Полный контрактный тест, HTML-проверка, browser overflow на 360/390/768/1024/1440 px в light/dark, locale parity, карта знаний, навигация, дизайн-система, мультиязычная валидация и SVG-аудит завершились успешно. Validate learning catalog run 43516508788 прошёл на commit ea2eefdebefac0e630b9fc8fa896241156cb61a4. GitHub Pages build и deployment run 43516508246 завершились успешно на том же commit. Ручная визуальная QA RU/EN/中文 в светлой/тёмной темах и на desktop/mobile остаётся pending.",
       "acceptance": [
         "Три локализации имеют одинаковые восемь разделов, одинаковое практическое упражнение и семь вопросов с одинаковыми ключами ответов.",
         "В каждой локали ровно пять карточек глоссария и три источника.",
@@ -846,17 +846,17 @@
       ],
       "source": "lessons/a-1-5-4.html; lessons/a-1-5-4-en.html; lessons/a-1-5-4-zh.html; styles/lesson-154.css; tests/test_lesson_154_contract.py; data/catalog/catalog-v3.json",
       "verification": {
-        "verified_commit": null,
-        "lesson_154_contract": "pending",
-        "browser_overflow": "pending",
-        "locale_grid_theme_parity": "pending; expected 24 published lessons",
-        "knowledge_map_tests": "pending; expected 24 published lessons",
-        "navigation_contract": "pending",
-        "svg_theme_audit": "pending",
-        "multilingual_validation": "pending",
-        "catalog_ci": "pending",
-        "pages_build": "pending",
-        "pages_deployment": "pending",
+        "verified_commit": "ea2eefdebefac0e630b9fc8fa896241156cb61a4",
+        "lesson_154_contract": "success; Validate learning catalog run 43516508788",
+        "browser_overflow": "success; RU/EN/中文 at 360, 390, 768, 1024 and 1440 px in light/dark; run 43516508788",
+        "locale_grid_theme_parity": "success; 24 published lessons; run 43516508788",
+        "knowledge_map_tests": "success; 24 published lessons including les-a-0046; run 43516508788",
+        "navigation_contract": "success; catalog-driven navigation and published-only next links; run 43516508788",
+        "svg_theme_audit": "success; run 43516233046; no SVG source/style changes after audited content",
+        "multilingual_validation": "success; run 43516508788",
+        "catalog_ci": "success; run 43516508788",
+        "pages_build": "success; run 43516508246",
+        "pages_deployment": "success; GitHub Pages deploy job in run 43516508246",
         "manual_visual_qa": "pending; RU/EN/中文 in light/dark on desktop/mobile"
       }
     }
@@ -2835,7 +2835,7 @@
       "date": "2026-11-14",
       "type": "lesson_1_5_4_creation",
       "title": "Создан урок 1.5.4 «ROC-AUC и Precision-Recall AUC»",
-      "result": "Созданы три локализованные страницы для UID les-a-0046. Содержание охватывает порог классификации, TPR/FPR, ROC и ROC-AUC, PR-кривую, prevalence, Average Precision и отличие от трапецеидальной PR-AUC, пример с 1% положительного класса и практический протокол выбора порога. Добавлены три оригинальные SVG-схемы на локаль, пять формульных блоков, пять карточек глоссария, три источника и семь вопросов. Каталог, prerequisite 1.5.5, программа и регрессионные проверки обновлены. Автоматическая проверка, CI и deployment ожидаются; ручная визуальная QA остаётся pending.",
+      "result": "Созданы полные RU / EN / 中文 версии для UID les-a-0046. Урок раскрывает порог классификации, TPR/FPR, ROC-кривую и ROC-AUC, PR-кривую, prevalence, Average Precision и отличие от трапецеидальной PR-AUC, пример с 1% положительного класса и протокол выбора порога на validation. Добавлены три локализованные SVG-схемы, пять формульных блоков, ровно пять карточек глоссария, три источника и семь вопросов с объяснениями. Каталог опубликован; prerequisite для 1.5.5 установлен на les-a-0046; число опубликованных уроков Track A — 24. Контрактный тест, browser overflow, locale parity, design system, navigation, knowledge map и multilingual validation завершились успешно в Validate learning catalog run 43516508788. GitHub Pages build/deployment успешны в run 43516508246 на проверенном commit ea2eefdebefac0e630b9fc8fa896241156cb61a4. Ручная визуальная QA остаётся pending.",
       "evidence": [
         "lessons/a-1-5-4.html",
         "lessons/a-1-5-4-en.html",
@@ -2846,9 +2846,20 @@
         "docs/education/TRACK_A_CURRICULUM.md"
       ],
       "limitations": [
-        "CI и GitHub Pages deployment ещё не подтверждены.",
-        "Ручная визуальная проверка RU/EN/中文 в светлой/тёмной темах и на desktop/mobile не выполнена."
-      ]
+        "Ручная визуальная проверка RU/EN/中文 в светлой и тёмной темах на desktop/mobile не выполнена; автоматический browser overflow test не заменяет ручную приёмку."
+      ],
+      "verification": {
+        "verified_commit": "ea2eefdebefac0e630b9fc8fa896241156cb61a4",
+        "lesson_154_contract": "success",
+        "browser_overflow": "success; run 43516508788",
+        "locale_grid_theme_parity": "success; 24 published lessons; run 43516508788",
+        "knowledge_map_tests": "success; 24 published lessons; run 43516508788",
+        "multilingual_validation": "success; run 43516508788",
+        "catalog_ci": "success; run 43516508788",
+        "pages_build": "success; run 43516508246",
+        "pages_deployment": "success; run 43516508246",
+        "manual_visual_qa": "pending"
+      }
     }
   ],
   "entries": [

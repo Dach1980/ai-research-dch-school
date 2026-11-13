@@ -76,6 +76,8 @@ class Lesson124Tests(unittest.TestCase):
             self.assertIsNotNone(card_rule)
             self.assertRegex(card_rule.group(1), r"display:flex;flex-direction:column")
             self.assertNotRegex(card_rule.group(1), r"display:grid")
+            self.assertIn("min-width:760px", lesson_css)
+            self.assertIn("overflow-x:auto", lesson_css)
 
     def test_python_example_is_syntactically_valid(self):
         for path in FILES.values():

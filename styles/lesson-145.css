@@ -5,4 +5,4 @@
 .lesson-glossary .glossary-entry{min-width:0;max-width:100%;padding:14px 16px;border:1px solid var(--lds-line);border-radius:12px;background:var(--lds-surface);display:flex;flex-direction:column;gap:6px;overflow-wrap:anywhere}
 .lesson-glossary .glossary-entry strong{display:block;color:var(--lds-ink)}
 .lesson-glossary .glossary-entry span{display:block;color:var(--lds-muted)}
-@media(max-width:650px){.lesson-glossary{grid-template-columns:minmax(0,1fr)}}
+@media(max-width:700px){.lesson-glossary{grid-template-columns:minmax(0,1fr)}}

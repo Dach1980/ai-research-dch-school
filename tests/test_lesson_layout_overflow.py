@@ -9,7 +9,7 @@ from pathlib import Path
 from playwright.sync_api import sync_playwright
 
 ROOT = Path(__file__).resolve().parents[1]
-LESSONS = sorted((ROOT / "lessons").glob("a-1-4-*.html"))
+LESSONS = sorted([* (ROOT / "lessons").glob("a-1-4-*.html"), * (ROOT / "lessons").glob("a-1-5-1*.html")])
 VIEWPORTS = (360, 390, 768, 1024, 1440)
 THEMES = ("dark", "light")
 CARD_SELECTOR = (
@@ -41,15 +41,22 @@ class LessonLayoutOverflowTests(unittest.TestCase):
                             theme,
                         )
                         page.evaluate("() => document.fonts ? document.fonts.ready.then(() => true) : true")
-                        if lesson.name.startswith("a-1-4-5"):
-                            glossary = page.evaluate("""() => {
+                        if lesson.name.startswith(("a-1-4-5", "a-1-5-1")):
+                            expected_entries = 5 if lesson.name.startswith("a-1-5-1") else 10
+                            expected_children = 4 if lesson.name.startswith("a-1-5-1") else 2
+                            glossary = page.evaluate("""([expectedEntries, expectedChildren]) => {
                               const container = document.querySelector('.lesson-glossary');
                               if (!container) return {error: 'lesson-glossary missing'};
                               const entries = [...container.querySelectorAll(':scope > .glossary-entry')];
-                              const structureValid = entries.length === 10 && entries.every(entry =>
-                                entry.children.length === 2 &&
-                                entry.children[0].tagName === 'STRONG' &&
-                                entry.children[1].tagName === 'SPAN'
+                              const structureValid = entries.length === expectedEntries && entries.every(entry =>
+                                entry.children.length === expectedChildren &&
+                                (expectedChildren === 4
+                                  ? entry.children[0].classList.contains('term-index') &&
+                                    entry.children[1].tagName === 'STRONG' &&
+                                    entry.children[2].classList.contains('term-en') &&
+                                    entry.children[3].tagName === 'P'
+                                  : entry.children[0].tagName === 'STRONG' &&
+                                    entry.children[1].tagName === 'SPAN')
                               );
                               return {
                                 entries: entries.length,
@@ -58,8 +65,8 @@ class LessonLayoutOverflowTests(unittest.TestCase):
                                 cardDisplay: entries[0] ? getComputedStyle(entries[0]).display : null,
                                 cardDirection: entries[0] ? getComputedStyle(entries[0]).flexDirection : null
                               };
-                            }""")
-                            if glossary.get("error") or glossary["entries"] != 10 or not glossary["structureValid"] or glossary["display"] != "grid" or glossary["cardDisplay"] != "flex" or glossary["cardDirection"] != "column":
+                            }""", [expected_entries, expected_children])
+                            if glossary.get("error") or glossary["entries"] != expected_entries or not glossary["structureValid"] or glossary["display"] != "grid" or glossary["cardDisplay"] != "flex" or glossary["cardDirection"] != "column":
                                 failures.append(
                                     f"{lesson.name} | {width}px | {theme}: non-canonical glossary structure {glossary}"
                                 )

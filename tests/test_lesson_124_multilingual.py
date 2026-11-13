@@ -57,7 +57,8 @@ class Lesson124Tests(unittest.TestCase):
             source = path.read_text(encoding="utf-8")
             self.assertEqual(len(re.findall(r'<section id="section-\d+">', source)), 10)
             self.assertEqual(source.count('class="lesson-124-figure"'), 4)
-            self.assertEqual(source.count("<title id=") - source.count("<title>"), 4)
+            self.assertEqual(source.count("<title id="), 4)
+            self.assertEqual(source.count("<desc id="), 4)
             self.assertEqual(source.count('class="glossary-entry"'), 10)
             self.assertEqual(source.count('class="lesson-check-question"'), 8)
             self.assertEqual(source.count('class="lesson-check-button"'), 8)
@@ -70,6 +71,11 @@ class Lesson124Tests(unittest.TestCase):
             glossary = source.split('<section class="lesson-glossary">', 1)[1].split("</section>", 1)[0]
             self.assertEqual(glossary.count('<article class="glossary-entry">'), 10)
             self.assertNotRegex(glossary, r'<article class="glossary-entry">\s*<div')
+            lesson_css = (ROOT / "styles/lesson-124.css").read_text(encoding="utf-8")
+            card_rule = re.search(r"\.lesson-glossary>\.glossary-entry\{([^}]*)\}", lesson_css)
+            self.assertIsNotNone(card_rule)
+            self.assertRegex(card_rule.group(1), r"display:flex;flex-direction:column")
+            self.assertNotRegex(card_rule.group(1), r"display:grid")
 
     def test_python_example_is_syntactically_valid(self):
         for path in FILES.values():

@@ -78,7 +78,7 @@ class Lesson153ContractTests(unittest.TestCase):
                 self.assertIn('<figcaption>', source)
                 self.assertEqual(len(re.findall(r'<li><a href="https://', source)), 3)
                 self.assertEqual(source.count('type="checkbox"'), 28)
-                self.assertEqual(source.count('role="math"'), 4)
+                self.assertEqual(source.count('role="math"'), 5)
                 self.assertGreaterEqual(source.count('aria-label="'), 4)
                 self.assertIn('data-mode="single"', source)
                 self.assertIn('aria-live="polite"', source)
@@ -109,7 +109,7 @@ class Lesson153ContractTests(unittest.TestCase):
                 self.assertIn("<strong>AI Research</strong><small>DCH SCHOOL</small>", footer)
 
     def test_metric_definitions_and_calculations_are_consistent(self):
-        for path in PAGES.values():
+        for locale, path in PAGES.items():
             source = path.read_text(encoding="utf-8")
             with self.subTest(path=path.name):
                 for token in ("Accuracy", "Precision", "Recall", "F1"):
@@ -128,7 +128,7 @@ class Lesson153ContractTests(unittest.TestCase):
                 self.assertIn("87%", source)
                 self.assertIn("84%", source)
                 self.assertIn("70%", source)
-                self.assertIn("76.4%", source)
+                self.assertIn("76,4%" if locale == "ru" else "76.4%", source)
                 self.assertIn("lesson-153-figure", source)
 
     def test_glossary_svg_formula_and_theme_tokens(self):

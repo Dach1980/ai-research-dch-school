@@ -47,14 +47,22 @@ class LessonLayoutOverflowTests(unittest.TestCase):
                               if (!dl) return {error: 'glossary dl missing'};
                               const columns = getComputedStyle(dl).gridTemplateColumns
                                 .split(' ').filter(Boolean).length;
+                              const firstEntry = dl.querySelector('.glossary-entry');
+                              const term = firstEntry?.querySelector('dt');
+                              const definition = firstEntry?.querySelector('dd');
+                              const termBox = term?.getBoundingClientRect();
+                              const definitionBox = definition?.getBoundingClientRect();
                               return {
                                 columns,
                                 entries: dl.querySelectorAll('.glossary-entry').length,
-                                display: getComputedStyle(dl).display
+                                display: getComputedStyle(dl).display,
+                                entryDisplay: firstEntry ? getComputedStyle(firstEntry).display : null,
+                                termDefinitionStacked: !!termBox && !!definitionBox &&
+                                  definitionBox.top >= termBox.bottom - 1
                               };
                             }""")
                             expected_columns = 1 if width <= 700 else 2
-                            if glossary.get("error") or glossary["display"] != "grid" or glossary["columns"] != expected_columns or glossary["entries"] != 10:
+                            if glossary.get("error") or glossary["display"] != "grid" or glossary["columns"] != expected_columns or glossary["entries"] != 10 or glossary["entryDisplay"] != "flex" or not glossary["termDefinitionStacked"]:
                                 failures.append(
                                     f"{lesson.name} | {width}px | {theme}: glossary layout {glossary}"
                                 )

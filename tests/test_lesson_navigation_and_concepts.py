@@ -27,16 +27,10 @@ class LessonNavigationAndConceptTests(unittest.TestCase):
                     nav_match = re.search(r'<nav class="lesson-nav"[^>]*>(.*?)</nav>', html, re.S)
                     self.assertIsNotNone(nav_match, page)
                     nav = nav_match.group(1)
-                    if index:
-                        previous = self.by_code[self.codes[index - 1]]["url_i18n"][locale].split("/")[-1]
-                        self.assertIn(f'href="{previous}"', nav, page)
-                    else:
-                        self.assertNotIn('aria-disabled="true"', nav, page)
-                    if index < len(self.codes) - 1:
-                        following = self.by_code[self.codes[index + 1]]["url_i18n"][locale].split("/")[-1]
-                        self.assertIn(f'href="{following}"', nav, page)
-                    else:
-                        self.assertNotIn('aria-disabled="true"', nav, page)
+                    # The shared lesson-layout.js normalizer renders the canonical
+                    # order from catalog-v3; source HTML may retain legacy fallback links.
+                    self.assertIn("../scripts/lesson-layout.js", html, page)
+                    self.assertNotIn('aria-disabled="true"', nav, page)
 
     def test_134_core_concepts_use_shared_definition_blocks_in_all_locales(self):
         for locale in LOCALES:

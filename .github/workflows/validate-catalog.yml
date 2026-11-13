@@ -158,6 +158,8 @@ jobs:
         run: python -m unittest discover -s tests -p 'test_lesson_136_multilingual.py' -v
       - name: Test sequential lesson navigation and concept emphasis
         run: python -m unittest discover -s tests -p 'test_lesson_navigation_and_concepts.py' -v
+      - name: Test canonical published lesson navigation contract
+        run: python -m unittest discover -s tests -p 'test_lesson_navigation_contract.py' -v
       - name: Test interactive DCH knowledge map and localized navigation
         run: python -m unittest discover -s tests -p 'test_knowledge_map.py' -v
       - name: Validate multilingual lesson pages and diagrams

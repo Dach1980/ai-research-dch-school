@@ -740,7 +740,7 @@
       "title": "Создать урок 1.5.1 «Зачем оценивать качество модели»",
       "status": "in_progress",
       "priority": "high",
-      "decision": "Созданы RU / EN / 中文 страницы для canonical UID les-a-0043. Содержание ограничено назначением оценки, контекстом качества, метриками как измерителями, последствиями ошибок, baseline, независимой проверкой и ограничениями выводов. Подробные метрики и confusion matrix оставлены последующим урокам. Автоматические проверки и CI должны подтвердить публикацию; ручная визуальная проверка трёх локализаций и двух тем остаётся отдельным шагом.",
+      "decision": "Созданы RU / EN / 中文 страницы для canonical UID les-a-0043. Содержание ограничено назначением оценки, контекстом качества, метриками как измерителями, последствиями ошибок, baseline, независимой проверкой и ограничениями выводов. Подробные метрики и confusion matrix оставлены последующим урокам. Lesson-specific contract, design-system, locale parity, real-browser overflow и SVG theme checks завершились успешно; Pages deployment завершён успешно. Полный Validate learning catalog остаётся красным из-за независимого существующего теста урока 1.3.2: в styles/lesson-reference-111.css отсутствуют ожидаемые правила cluster-panel. Поэтому урок остаётся в review до устранения общей CI-блокировки. Ручная визуальная проверка RU/EN/中文 в light/dark отмечена отдельно и ещё не выполнена.",
       "acceptance": [
         "Три локализованные страницы используют общую оболочку урока 1.1.1.",
         "Глоссарий содержит ровно пять карточек с flex-column внутри grid-контейнера.",
@@ -749,7 +749,19 @@
         "Навигация формируется scripts/lesson-layout.js только по опубликованным урокам.",
         "Зафиксированы результаты автоматических тестов, CI и Pages; ручная визуальная проверка отмечена отдельно."
       ],
-      "source": "lessons/a-1-5-1.html; lessons/a-1-5-1-en.html; lessons/a-1-5-1-zh.html"
+      "source": "lessons/a-1-5-1.html; lessons/a-1-5-1-en.html; lessons/a-1-5-1-zh.html",
+      "verification": {
+        "verified_commit": "9ba5631197b5ca43bd4f42ebf53b5ee420956501",
+        "lesson_151_contract": "success",
+        "lesson_design_system": "success",
+        "locale_grid_theme_parity": "success",
+        "browser_overflow": "success; RU/EN/中文; 360, 390, 768, 1024, 1440 px; light/dark",
+        "svg_theme_audit": "success",
+        "github_pages_build": "success",
+        "static_site_deployment": "success",
+        "full_catalog_ci": "failure; unrelated pre-existing 1.3.2 cluster-panel CSS contract",
+        "manual_visual_qa": "pending; RU/EN/中文 and light/dark"
+      }
     }
   ],
   "audit_log": [

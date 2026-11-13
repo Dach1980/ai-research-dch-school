@@ -135,7 +135,7 @@ class Lesson156ContractTests(unittest.TestCase):
                 self.assertTrue(target.is_file(), f"{locale}: broken internal link {href}")
             explanations = re.findall(r'data-explanation="([^"]+)"', source)
             self.assertEqual(len(explanations), 7)
-            self.assertTrue(all(len(x) > 90 for x in explanations))
+            self.assertTrue(all(len(x) > (45 if locale == "zh" else 90) for x in explanations))
             self.assertIn("lesson-156-figure", source)
             self.assertIn("lesson-156-figure", (ROOT / "styles/lesson-156.css").read_text(encoding="utf-8"))
 

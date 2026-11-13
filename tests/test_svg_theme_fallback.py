@@ -9,17 +9,17 @@ DESIGN_SYSTEM = ROOT / "styles" / "lesson-design-system.css"
 REFERENCE_STYLES = ROOT / "styles" / "lesson-reference-111.css"
 
 DARK_COLOR = re.compile(
-    r"^(?:black|#(?:0{3}|0{6}|1{3}|1{6})|rgb\\(\\s*0\\s*,\\s*0\\s*,\\s*0\\s*\\))$",
+    r"^(?:black|#(?:0{3}|0{6}|1{3}|1{6})|rgb\(\s*0\s*,\s*0\s*,\s*0\s*\))$",
     re.IGNORECASE,
 )
 
 
 def _text_color_declarations(attrs):
     """Return explicit fill/color values only; typography styles are harmless."""
-    values = re.findall(r"""\\b(?:fill|color)\\s*=\\s*["']([^"']+)["']""", attrs, re.IGNORECASE)
-    for style in re.findall(r"""\\bstyle\\s*=\\s*["']([^']*)["']""", attrs, re.IGNORECASE):
+    values = re.findall(r"""\b(?:fill|color)\s*=\s*["']([^"']+)["']""", attrs, re.IGNORECASE)
+    for style in re.findall(r"""\bstyle\s*=\s*["']([^']*)["']""", attrs, re.IGNORECASE):
         values.extend(
-            re.findall(r"""(?:^|;)\\s*(?:fill|color)\\s*:\\s*([^;]+)""", style, re.IGNORECASE)
+            re.findall(r"""(?:^|;)\s*(?:fill|color)\s*:\s*([^;]+)""", style, re.IGNORECASE)
         )
     return [value.strip() for value in values]
 
@@ -27,7 +27,7 @@ def _text_color_declarations(attrs):
 class SvgThemeFallbackTests(unittest.TestCase):
     def test_shared_svg_text_fallback_uses_theme_tokens(self):
         css = DESIGN_SYSTEM.read_text(encoding="utf-8")
-        self.assertRegex(css, r"svg\\s+text\\s*\\{[^}]*fill\\s*:\\s*var\\(--lds-ink\\)")
+        self.assertRegex(css, r"svg\s+text\s*\{[^}]*fill\s*:\s*var\(--lds-ink\)")
         self.assertIn("--lds-ink:", css)
         self.assertIn('html:not([data-theme="light"])', css)
 
@@ -37,7 +37,7 @@ class SvgThemeFallbackTests(unittest.TestCase):
             self.assertIn(selector, css)
         for token in ("--lds-ink", "--lds-muted", "--lds-surface", "--lds-line", "--lds-accent", "--lds-good"):
             self.assertIn(token, css)
-        self.assertNotRegex(css, r'html\\[data-theme="light"\\] \\.lesson-figure \\.svg-(?:title|label|small)')
+        self.assertNotRegex(css, r'html\[data-theme="light"\] \.lesson-figure \.svg-(?:title|label|small)')
 
     def test_every_lesson_with_svg_loads_the_shared_theme_system(self):
         pages = sorted(LESSONS.glob("*.html"))
@@ -45,7 +45,7 @@ class SvgThemeFallbackTests(unittest.TestCase):
         checked = 0
         for page in pages:
             html = page.read_text(encoding="utf-8")
-            svgs = re.findall(r"<svg\\b[\\s\\S]*?</svg>", html, re.IGNORECASE)
+            svgs = re.findall(r"<svg\b[\s\S]*?</svg>", html, re.IGNORECASE)
             if not svgs:
                 continue
             checked += 1
@@ -53,7 +53,7 @@ class SvgThemeFallbackTests(unittest.TestCase):
                 f"{page.name} contains SVG but does not load the shared theme system"
             ))
             for svg in svgs:
-                for match in re.finditer(r"<text\\b([^>]*)>", svg, re.IGNORECASE):
+                for match in re.finditer(r"<text\b([^>]*)>", svg, re.IGNORECASE):
                     for value in _text_color_declarations(match.group(1)):
                         self.assertFalse(
                             DARK_COLOR.fullmatch(value.strip().lower()),
@@ -64,7 +64,7 @@ class SvgThemeFallbackTests(unittest.TestCase):
     def test_legacy_figure_rules_use_theme_tokens_and_light_theme_has_contrast_override(self):
         components = (ROOT / "styles" / "lesson-content-components.css").read_text(encoding="utf-8")
         theme = (ROOT / "styles" / "theme-system.css").read_text(encoding="utf-8")
-        figure_rules = re.search(r"\\.lesson-figure\\s*\\{[^}]*\\}", components)
+        figure_rules = re.search(r"\.lesson-figure\s*\{[^}]*\}", components)
         self.assertIsNotNone(figure_rules, "Legacy lesson figure rule is missing")
         self.assertIn("background:var(--lds-surface)", figure_rules.group(0))
         for token in ("--lds-ink", "--lds-muted", "--lds-accent", "--lds-good"):

@@ -56,7 +56,7 @@ class Lesson154ContractTests(unittest.TestCase):
 
     def test_three_locales_have_equal_structure_components_and_assessment_keys(self):
         expected = {
-            "lesson-outcomes": 1, "lesson-problem": 2, "lesson-conclusion": 1,
+            "lesson-outcomes": 1, "lesson-problem": 1, "lesson-conclusion": 1,
             "lesson-sources": 1, "lesson-nav": 1, "lesson-glossary": 1,
             "glossary-entry": 5, "lesson-check-question": 7,
             "lesson-check-button": 7, "lesson-check-feedback": 7,

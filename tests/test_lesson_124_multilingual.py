@@ -107,7 +107,7 @@ class Lesson124Tests(unittest.TestCase):
 
         for locale, path in FILES.items():
             source = path.read_text(encoding="utf-8")
-            svgs = re.findall(r"<svg\\b.*?</svg>", source, re.S)
+            svgs = re.findall(r"<svg\b.*?</svg>", source, re.S)
             self.assertEqual(len(svgs), 4, f"{locale}: expected four SVG diagrams")
             signature = []
             for index, svg in enumerate(svgs, start=1):
@@ -121,7 +121,7 @@ class Lesson124Tests(unittest.TestCase):
                     for class_name in element["classes"]:
                         self.assertIn(f".{class_name}{{", css, f"missing CSS rule for .{class_name}")
                 signature.append(tuple(sorted(set().union(*(element["classes"] for element in parser.elements)))))
-            self.assertNotRegex(source, r"\\bl124-(?:bg|label|small|arrow)\\b")
+            self.assertNotRegex(source, r"\bl124-(?:bg|label|small|arrow)\b")
             locale_signatures[locale] = signature
 
         self.assertEqual(locale_signatures["ru"], locale_signatures["en"])

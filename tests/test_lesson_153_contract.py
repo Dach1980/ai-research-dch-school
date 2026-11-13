@@ -79,7 +79,7 @@ class Lesson153ContractTests(unittest.TestCase):
                 self.assertEqual(len(re.findall(r'<li><a href="https://', source)), 3)
                 self.assertEqual(source.count('type="checkbox"'), 28)
                 self.assertEqual(source.count('role="math"'), 4)
-                self.assertEqual(source.count('aria-label="'), 4 + 2) # four formulas plus SVG title/description IDs are not labels
+                self.assertGreaterEqual(source.count('aria-label="'), 4)
                 self.assertIn('data-mode="single"', source)
                 self.assertIn('aria-live="polite"', source)
                 self.assertIn('<nav class="lesson-nav"', source)

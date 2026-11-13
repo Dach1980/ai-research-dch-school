@@ -17,9 +17,9 @@
 <line class="lesson-154-axis" x1="45" y1="126" x2="915" y2="126"/>
 <g class="lesson-154-negative"><circle cx="110" cy="126" r="13"/><circle cx="190" cy="126" r="13"/><circle cx="270" cy="126" r="13"/><circle cx="350" cy="126" r="13"/></g>
 <g class="lesson-154-positive"><circle cx="430" cy="126" r="13"/><circle cx="510" cy="126" r="13"/><circle cx="590" cy="126" r="13"/><circle cx="670" cy="126" r="13"/><circle cx="750" cy="126" r="13"/><circle cx="830" cy="126" r="13"/></g>
-<line class="lesson-154-threshold" x1="510" y1="68" x2="510" y2="183"/><text class="lesson-154-threshold-label" x="510" y="62" text-anchor="middle">Порог</text>
+<line class="lesson-154-threshold" x1="390" y1="68" x2="390" y2="183"/><text class="lesson-154-threshold-label" x="390" y="62" text-anchor="middle">Порог</text>
 <text class="lesson-154-muted" x="45" y="218">Ниже порога → отрицательный прогноз</text><text class="lesson-154-muted" x="915" y="246" text-anchor="end">Выше порога → положительный прогноз</text>
-<text class="lesson-154-caption" x="480" y="258" text-anchor="middle">Сдвиг вертикальной границы меняет TP / FP / TN / FN</text></svg><figcaption>Порог — настраиваемая граница решения, а не неизменное свойство модели. Цвета обозначают зоны score, а не истинные метки объектов.</figcaption></figure>
+</svg><figcaption>Порог — настраиваемая граница решения, а не неизменное свойство модели. Цвета обозначают зоны score, а не истинные метки объектов.</figcaption></figure>
 </section>
 <section id="section-2"><h2>2. ROC-кривая: доля обнаружений и доля ложных тревог</h2>
 <p>ROC расшифровывается как <em>Receiver Operating Characteristic</em>. Для каждого порога рассчитывают две величины: True Positive Rate (TPR) и False Positive Rate (FPR). TPR совпадает с Recall: это доля найденных положительных объектов среди всех реально положительных. FPR показывает долю отрицательных объектов, ошибочно объявленных положительными.</p>

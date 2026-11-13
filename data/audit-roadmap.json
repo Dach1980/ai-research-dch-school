@@ -772,7 +772,7 @@
       "title": "Создать урок 1.5.2 «Матрица ошибок классификации»",
       "status": "done",
       "priority": "high",
-      "decision": "Созданы RU / EN / 中文 страницы урока 1.5.2 для канонического UID les-a-0044, оригинальная SVG-схема четырёх исходов, сравнительные таблицы бинарной матрицы и практический пример на 200 наблюдениях. Урок продолжает 1.5.1 и подготавливает 1.5.3 (Accuracy, Precision, Recall, F1), не раскрывая формулы следующих метрик. До завершения регрессионных тестов и CI статус остаётся review. Ручная визуальная проверка трёх локализаций в light/dark и на desktop/mobile фиксируется отдельно. Автоматическая приёмка завершена: test_lesson_152_contract, browser overflow и multilingual validation прошли; урок включён в published каталог. Ручная визуальная QA RU/EN/中文 в light/dark остаётся pending.",
+      "decision": "Урок 1.5.2 создан на RU / EN / 中文 для UID les-a-0044. Содержание включает матрицу бинарной классификации, TP/TN/FP/FN, пример на 200 наблюдениях, последствия FP/FN, построение матрицы, многоклассовое расширение, ограничения и практическое задание. Урок продолжает 1.5.1 и подготавливает 1.5.3 (Accuracy, Precision, Recall, F1), не раскрывая формулы следующей темы. Все обязательные автоматические проверки, браузерная проверка переполнения, каталог CI и GitHub Pages deployment завершились успешно. Ручная визуальная QA RU/EN/中文 в светлой/тёмной темах и на desktop/mobile остаётся отдельной задачей.",
       "acceptance": [
         "RU / EN / 中文 имеют одинаковую последовательность из семи учебных разделов, практику, выводы и семь вопросов.",
         "В каждой версии ровно пять карточек глоссария и три источника.",
@@ -783,13 +783,17 @@
       ],
       "source": "lessons/a-1-5-2.html; lessons/a-1-5-2-en.html; lessons/a-1-5-2-zh.html; styles/lesson-152.css; tests/test_lesson_152_contract.py",
       "verification": {
-        "verified_commit": "pending_final_ci",
+        "verified_commit": "5cecb20c07349e1fa370cbdfa8211bfd21ff545a",
         "lesson_152_contract": "success",
-        "browser_overflow": "success; GitHub Actions Playwright check",
-        "locale_grid_theme_parity": "pending_final_ci; expected 22 published lessons",
-        "knowledge_map_tests": "pending_final_ci; expected 22 published lessons",
+        "browser_overflow": "success; Validate learning catalog run 43425112197",
+        "locale_grid_theme_parity": "success; 22 published lessons",
+        "knowledge_map_tests": "success; 22 published lessons",
         "multilingual_lessons": "success",
-        "manual_visual_qa": "pending; RU/EN/中文 and light/dark desktop/mobile"
+        "full_catalog_ci": "success; run 43425112197",
+        "pages_validation": "success; Deploy static website run 43425112057",
+        "pages_deployment": "success; run 43425112057",
+        "pages_build": "success; run 43425112472",
+        "manual_visual_qa": "pending; RU/EN/中文 in light/dark on desktop/mobile"
       }
     }
   ],
@@ -2720,6 +2724,26 @@
         "Полный тест добавлен в CI, но фактический результат GitHub Actions ещё не получен.",
         "Браузерная проверка всех RU/EN/中文 страниц в light/dark на desktop/mobile не выполнена; CI проверяет исходники, а не пиксельную читаемость.",
         "Визуальная приёмка не завершена до проверки опубликованного Pages."
+      ]
+    },
+    {
+      "id": "AUD-101",
+      "date": "2026-11-13",
+      "type": "lesson_1_5_2_publication",
+      "title": "Создан и опубликован урок 1.5.2 «Матрица ошибок классификации»",
+      "result": "Созданы полные RU / EN / 中文 версии для UID les-a-0044, Track A / Theme 1 / Module 5. Урок содержит семь учебных разделов, практическое задание, выводы, три источника, пять карточек глоссария и семь локализованных вопросов с объяснениями. Добавлены две таблицы матрицы, оригинальная SVG-схема четырёх исходов с локализованными title/desc/figcaption и theme-aware CSS через --lds-* токены. Каталог переведён в published; навигация остаётся catalog-driven. Регрессионный тест lesson 1.5.2, браузерный overflow check, locale-grid parity (22 опубликованных урока), knowledge-map tests и multilingual validation прошли. GitHub Actions catalog CI и GitHub Pages deployment завершились успешно. Проверенный исходный commit: 5cecb20c07349e1fa370cbdfa8211bfd21ff545a.",
+      "evidence": [
+        "lessons/a-1-5-2.html",
+        "lessons/a-1-5-2-en.html",
+        "lessons/a-1-5-2-zh.html",
+        "styles/lesson-152.css",
+        "tests/test_lesson_152_contract.py",
+        "data/catalog/catalog-v3.json",
+        "docs/education/TRACK_A_CURRICULUM.md"
+      ],
+      "limitations": [
+        "Ручная визуальная проверка трёх локализаций в light/dark и на desktop/mobile не выполнена; автоматический browser overflow test не заменяет ручную визуальную приёмку.",
+        "Формулы Accuracy, Precision, Recall и F1 намеренно оставлены уроку 1.5.3."
       ]
     }
   ],

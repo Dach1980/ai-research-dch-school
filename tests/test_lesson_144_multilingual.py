@@ -63,6 +63,8 @@ class Lesson144Tests(unittest.TestCase):
             self.assertIn('data-mode="yesno"', source)
             self.assertEqual(source.count('class="lesson-outcomes"'), 1)
             self.assertIn('class="lesson-nav"', source)
+            nav = source.split('class="lesson-nav"', 1)[1].split("</nav>", 1)[0]
+            self.assertEqual(nav.count('class="button'), 5)
             self.assertIn('class="lesson-sources"', source)
             self.assertIn('class="lesson-problem lesson-practice-task"', source)
             self.assertLess(source.index('class="lesson-sources"'), source.index('class="lesson-nav"'))

@@ -16,7 +16,7 @@ CARD_SELECTOR = (
     ".lesson-callout, .lesson-practice, .lesson-note, .lesson-outcomes, "
     ".lesson-problem, .definition, .glossary-entry, .lesson-check, "
     ".lesson-check-question, .lesson-check-option, .lesson-planet-banner, "
-    ".lesson-hero-card, .learning-box, .reflection-box, .quiz-item"
+    ".lesson-hero-card, .learning-box, .reflection-box, .quiz-item, .lesson-144-figure"
 )
 
 class LessonLayoutOverflowTests(unittest.TestCase):

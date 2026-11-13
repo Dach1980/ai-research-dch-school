@@ -2,7 +2,7 @@
   "schema_version": 1,
   "project": "AI Research DCH School",
   "section": "Аудит и roadmap",
-  "updated_at": "2026-11-14T07:15:00+10:00",
+  "updated_at": "2026-11-14T08:45:00+10:00",
   "timezone": "Asia/Singapore",
   "principles": [
     "Планетная карта дополняет обычный каталог и не заменяет его.",
@@ -857,6 +857,35 @@
         "catalog_ci": "success; run 43516508788",
         "pages_build": "success; run 43516508246",
         "pages_deployment": "success; GitHub Pages deploy job in run 43516508246",
+        "manual_visual_qa": "pending; RU/EN/中文 in light/dark on desktop/mobile"
+      }
+    },
+    {
+      "id": "RM-LESSON-155",
+      "date": "2026-11-14",
+      "title": "Создать урок 1.5.5 «Дисбаланс классов»",
+      "status": "in_progress",
+      "priority": "high",
+      "decision": "Подготовлены RU / EN / 中文 страницы для UID les-a-0047, три тематические SVG-диаграммы, три формульных блока, пять карточек глоссария, три источника и семь вопросов самопроверки. Каталог v3 синхронизирован; регрессионный контракт и расширение browser overflow проверки добавлены. Статус автоматической приёмки ожидает GitHub Actions. Ручная визуальная QA в светлой/тёмной темах на desktop/mobile не выполнена и не считается пройденной.",
+      "acceptance": [
+        "RU / EN / 中文 имеют семь одинаковых учебных разделов, одинаковый пример, практику и семь вопросов с одинаковыми ключами.",
+        "Каждая локализация содержит ровно пять карточек глоссария и три источника.",
+        "Три формулы имеют название, aria-label, пояснение обозначений и простое смысловое объяснение.",
+        "Три SVG локализованы, используют тематические --lds-* токены и не содержат inline цветов.",
+        "Глоссарий использует внешний grid и внутренние flex-column карточки по эталону 1.4.4.",
+        "Нижняя навигация строится scripts/lesson-layout.js из опубликованных записей каталога; planned/review уроки не становятся целями.",
+        "Контрактный тест, catalog CI, браузерный overflow, multilingual validation и Pages deployment должны завершиться успешно.",
+        "Ручная визуальная проверка RU/EN/中文 в светлой и тёмной темах на desktop/mobile фиксируется отдельно."
+      ],
+      "source": "lessons/a-1-5-5.html; lessons/a-1-5-5-en.html; lessons/a-1-5-5-zh.html; styles/lesson-155.css; tests/test_lesson_155_contract.py; data/catalog/catalog-v3.json",
+      "verification": {
+        "source_commit": "75613e4325f57a810901183f2f3fcb9f22e5a387",
+        "lesson_155_contract": "pending; run 43522124483",
+        "browser_overflow": "pending; run 43522124483",
+        "multilingual_validation": "pending; run 43522124483",
+        "catalog_ci": "in_progress; run 43522124483",
+        "pages_build": "pending; run 43522123278",
+        "pages_deployment": "pending; run 43522122825",
         "manual_visual_qa": "pending; RU/EN/中文 in light/dark on desktop/mobile"
       }
     }

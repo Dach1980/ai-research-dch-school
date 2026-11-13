@@ -1,0 +1,426 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://dach1980.github.io/ai-research-dch-school/data/catalog/schema-v3.json",
+  "title": "DCH School catalog v3",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "catalog_id",
+    "catalog_version",
+    "status",
+    "tracks",
+    "themes",
+    "modules",
+    "lessons",
+    "resources",
+    "planets"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": 3
+    },
+    "catalog_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "catalog_version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "status": {
+      "enum": [
+        "migration_staging",
+        "active"
+      ]
+    },
+    "tracks": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/track"
+      }
+    },
+    "themes": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/theme"
+      }
+    },
+    "modules": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/module"
+      }
+    },
+    "lessons": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/lesson"
+      }
+    },
+    "resources": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/resource"
+      }
+    },
+    "planets": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/planet"
+      }
+    }
+  },
+  "$defs": {
+    "uid": {
+      "type": "string",
+      "pattern": "^(trk|thm|mod|les|res|pln)[_-][a-z0-9][a-z0-9_-]{0,80}$"
+    },
+    "path": {
+      "type": "string",
+      "pattern": "^(?!/)(?![A-Za-z][A-Za-z0-9+.-]*:)(?!.*(?:^|/)\\.\\.(?:/|$))[A-Za-z0-9._/-]+\\.html$"
+    },
+    "track": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "uid",
+        "code",
+        "title",
+        "status",
+        "url_i18n"
+      ],
+      "properties": {
+        "uid": {
+          "$ref": "#/$defs/uid"
+        },
+        "code": {
+          "type": "string",
+          "pattern": "^[A-Z]$"
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1
+        },
+        "status": {
+          "enum": [
+            "active",
+            "planned",
+            "archived"
+          ]
+        },
+        "url_i18n": {
+          "type": "object",
+          "required": [
+            "ru",
+            "en",
+            "zh"
+          ],
+          "additionalProperties": {
+            "$ref": "#/$defs/path"
+          }
+        }
+      }
+    },
+    "theme": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "uid",
+        "track_uid",
+        "number",
+        "code",
+        "title",
+        "status"
+      ],
+      "properties": {
+        "uid": {
+          "$ref": "#/$defs/uid"
+        },
+        "track_uid": {
+          "$ref": "#/$defs/uid"
+        },
+        "number": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "code": {
+          "type": "string",
+          "pattern": "^[1-9][0-9]*$"
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1
+        },
+        "status": {
+          "enum": [
+            "active",
+            "planned",
+            "archived"
+          ]
+        },
+        "title_i18n": {
+          "type": "object",
+          "required": [
+            "ru",
+            "en",
+            "zh"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "ru": {
+              "type": "string",
+              "minLength": 1
+            },
+            "en": {
+              "type": "string",
+              "minLength": 1
+            },
+            "zh": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        }
+      }
+    },
+    "module": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "uid",
+        "theme_uid",
+        "number",
+        "title",
+        "status"
+      ],
+      "properties": {
+        "uid": {
+          "$ref": "#/$defs/uid"
+        },
+        "theme_uid": {
+          "$ref": "#/$defs/uid"
+        },
+        "number": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1
+        },
+        "status": {
+          "enum": [
+            "active",
+            "planned",
+            "archived"
+          ]
+        },
+        "title_i18n": {
+          "type": "object",
+          "required": [
+            "ru",
+            "en",
+            "zh"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "ru": {
+              "type": "string",
+              "minLength": 1
+            },
+            "en": {
+              "type": "string",
+              "minLength": 1
+            },
+            "zh": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        }
+      }
+    },
+    "lesson": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "uid",
+        "track_uid",
+        "theme_uid",
+        "module_uid",
+        "code",
+        "title",
+        "status",
+        "access",
+        "level",
+        "prerequisite_uids",
+        "learning_outcomes",
+        "content_state"
+      ],
+      "properties": {
+        "uid": {
+          "$ref": "#/$defs/uid"
+        },
+        "track_uid": {
+          "$ref": "#/$defs/uid"
+        },
+        "theme_uid": {
+          "$ref": "#/$defs/uid"
+        },
+        "module_uid": {
+          "$ref": "#/$defs/uid"
+        },
+        "code": {
+          "type": "string",
+          "pattern": "^[1-9][0-9]*\\.[1-9][0-9]*\\.[1-9][0-9]*$"
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1
+        },
+        "status": {
+          "enum": [
+            "draft",
+            "review",
+            "published",
+            "unpublished",
+            "planned"
+          ]
+        },
+        "access": {
+          "enum": [
+            "open",
+            "registered",
+            "paid"
+          ]
+        },
+        "level": {
+          "enum": [
+            "beginner",
+            "intermediate",
+            "advanced"
+          ]
+        },
+        "prerequisite_uids": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/uid"
+          }
+        },
+        "learning_outcomes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "content_state": {
+          "enum": [
+            "outline_only",
+            "content_draft",
+            "content_ready",
+            "localized",
+            "published"
+          ]
+        },
+        "url_i18n": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/$defs/path"
+          }
+        },
+        "title_i18n": {
+          "type": "object",
+          "required": [
+            "ru",
+            "en",
+            "zh"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "ru": {
+              "type": "string",
+              "minLength": 1
+            },
+            "en": {
+              "type": "string",
+              "minLength": 1
+            },
+            "zh": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        }
+      }
+    },
+    "resource": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "uid",
+        "kind",
+        "title",
+        "status"
+      ],
+      "properties": {
+        "uid": {
+          "$ref": "#/$defs/uid"
+        },
+        "kind": {
+          "enum": [
+            "orientation",
+            "lab",
+            "exercise",
+            "reference",
+            "quiz",
+            "project"
+          ]
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1
+        },
+        "status": {
+          "enum": [
+            "draft",
+            "review",
+            "published"
+          ]
+        },
+        "url_i18n": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/$defs/path"
+          }
+        }
+      }
+    },
+    "planet": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "uid",
+        "lesson_uid",
+        "accent_id"
+      ],
+      "properties": {
+        "uid": {
+          "$ref": "#/$defs/uid"
+        },
+        "lesson_uid": {
+          "$ref": "#/$defs/uid"
+        },
+        "accent_id": {
+          "enum": [
+            "blue",
+            "violet",
+            "teal",
+            "amber"
+          ]
+        }
+      }
+    }
+  }
+}

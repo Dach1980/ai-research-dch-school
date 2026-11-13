@@ -1,0 +1,19 @@
+/* Feedback page — theme-aware, responsive and dependency-free. */
+.feedback-page{width:min(820px,calc(100% - 40px));margin:0 auto;padding:3.5rem 0 5rem}
+.feedback-card{padding:clamp(20px,4vw,36px);border:1px solid var(--line);border-radius:20px;background:var(--panel);box-shadow:0 18px 55px rgba(0,0,0,.16)}
+.feedback-page h1{font:800 clamp(2rem,5vw,3.2rem)/1.12 Manrope,sans-serif;letter-spacing:-.04em;margin:.2rem 0 1rem}
+.feedback-intro{max-width:68ch;color:var(--muted);font-size:1.05rem;line-height:1.75}
+.feedback-form{display:grid;gap:18px;margin-top:28px}
+.feedback-form label{display:grid;gap:7px;font-size:13px;font-weight:700;color:var(--text)}
+.feedback-form input,.feedback-form select,.feedback-form textarea{width:100%;min-width:0;border:1px solid var(--line);border-radius:10px;padding:12px 13px;background:var(--bg);color:var(--text);font:400 15px 'DM Sans',sans-serif}
+.feedback-form textarea{min-height:180px;resize:vertical;line-height:1.65}
+.feedback-form input:focus-visible,.feedback-form select:focus-visible,.feedback-form textarea:focus-visible,.feedback-form button:focus-visible{outline:3px solid var(--blue);outline-offset:2px}
+.feedback-form .hint{font-size:12px;font-weight:400;color:var(--muted)}
+.feedback-actions{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+.feedback-submit{border:0;border-radius:10px;padding:13px 20px;background:linear-gradient(100deg,#2878d6,#7455d9);color:#fff;font:700 14px 'DM Sans',sans-serif;cursor:pointer}
+.feedback-notice{padding:14px 16px;border:1px solid var(--line);border-radius:12px;background:var(--panel2);color:var(--text);line-height:1.65}
+.feedback-privacy{margin-top:22px;padding:16px;border:1px solid var(--line);border-radius:12px;color:var(--muted);font-size:13px;line-height:1.7}
+.feedback-privacy a{color:var(--blue);text-decoration:underline}
+.feedback-back{display:inline-block;margin:0 0 18px;color:var(--blue);font-size:13px}
+.feedback-footer{padding:24px;text-align:center;border-top:1px solid var(--line);color:var(--muted);font-size:12px}
+@media(max-width:600px){.feedback-page{width:calc(100% - 28px);padding:2rem 0 3rem}.feedback-card{border-radius:15px}.feedback-form{gap:14px}}

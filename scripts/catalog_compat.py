@@ -1,0 +1,191 @@
+"""Legacy v1 to hierarchical v2 catalog compatibility adapter."""
+from __future__ import annotations
+import json
+from pathlib import Path
+from typing import Any
+ROOT=Path(__file__).resolve().parents[1]
+CATALOG_DIR=ROOT/"data"/"catalog"
+class CatalogCompatibilityError(ValueError): pass
+def _read(path:Path)->dict[str,Any]:
+    try:return json.loads(path.read_text(encoding="utf-8"))
+    except (OSError,json.JSONDecodeError) as exc:raise CatalogCompatibilityError(str(exc)) from exc
+def _hid(old:str)->str:
+    import re
+    m=re.fullmatch(r"A\.(\d+)",old)
+    return "A.1.1."+m.group(1) if m else old
+def load_catalog(source:str|Path|None=None)->dict[str,Any]:
+    target=Path(source) if source is not None else CATALOG_DIR
+    if target.is_dir():
+        t=_read(target/"tracks.json");md=_read(target/"modules.json");ld=_read(target/"lessons.json");pd=_read(target/"planets.json")
+        if any(x.get("schema_version")!=1 for x in (t,md,ld,pd)):raise CatalogCompatibilityError("Expected v1 split catalog")
+        track_index={x["id"]:x for x in t["tracks"]};themes=[];modules=[];legacy_modules={}
+        for old in md["modules"]:
+            track=track_index.get(old.get("track_id"))
+            if not track:raise CatalogCompatibilityError("Unknown track for "+old["id"])
+            theme_id="A.1" if old["id"]=="module-11" and old["track_id"]=="track-a" else track["code"]+".1"
+            module_id="A.1.1" if theme_id=="A.1" else theme_id+".1"
+            if not any(x["id"]==theme_id for x in themes):
+                themes.append({"id":theme_id,"track_id":old["track_id"],"code":theme_id,"title":"Основы AI и машинного обучения" if theme_id=="A.1" else track["title"],"status":"in_progress"})
+            m={"id":module_id,"legacy_id":old["id"],"theme_id":theme_id,"title":old["title"],"status":old["status"],"track_id":old["track_id"]}
+            modules.append(m);legacy_modules[old["id"]]=m
+        idmap={x["id"]:_hid(x["id"]) for x in ld["lessons"]};lessons=[]
+        for old in ld["lessons"]:
+            m=legacy_modules.get(old.get("module_id"))
+            if not m or m["track_id"]!=old.get("track_id"):raise CatalogCompatibilityError("Invalid legacy module/track relation: "+old["id"])
+            x=dict(old);x["legacy_id"]=old["id"];x["id"]=idmap[old["id"]];x["module_id"]=m["id"];x["prerequisites"]=[idmap.get(p,p) for p in x.get("prerequisites",[])];lessons.append(x)
+        planets=[{**p,"lesson_id":idmap.get(p["lesson_id"],p["lesson_id"])} for p in pd["planets"]]
+        return {"schema_version":2,"source_schema_version":1,"tracks":t["tracks"],"themes":themes,"modules":modules,"lessons":lessons,"planets":planets}
+    doc=json.loads(target.read_text(encoding="utf-8"))
+    if doc.get("schema_version")!=2:raise CatalogCompatibilityError("Expected v2 catalog")
+    out=json.loads(json.dumps(doc));tracks={x["id"]:x for x in out["tracks"]};themes={x["id"]:x for x in out["themes"]};modules={x["id"]:x for x in out["modules"]}
+    for theme in out["themes"]:
+        if theme["track_id"] not in tracks:raise CatalogCompatibilityError("Unknown track for theme "+theme["id"])
+    for module in out["modules"]:
+        theme=themes.get(module["theme_id"])
+        if not theme:raise CatalogCompatibilityError("Unknown theme for module "+module["id"])
+        module["track_id"]=theme["track_id"]
+    for lesson in out["lessons"]:
+        module=modules.get(lesson["module_id"])
+        if not module:raise CatalogCompatibilityError("Unknown module for lesson "+lesson["id"])
+        lesson["track_id"]=module["track_id"]
+    out["source_schema_version"]=2
+    return out
+def validate_relationships(c:dict[str,Any])->list[str]:
+    e=[];tracks={x["id"]:x for x in c["tracks"]};themes={x["id"]:x for x in c["themes"]};modules={x["id"]:x for x in c["modules"]};lessons={x["id"]:x for x in c["lessons"]}
+    for t in c["themes"]:
+        if t["track_id"] not in tracks:e.append("Theme "+t["id"]+" references missing track")
+    for m in c["modules"]:
+        t=themes.get(m["theme_id"])
+        if not t:e.append("Module "+m["id"]+" references missing theme")
+        elif m.get("track_id",t["track_id"])!=t["track_id"]:e.append("Module "+m["id"]+" track/theme mismatch")
+    for l in c["lessons"]:
+        m=modules.get(l["module_id"])
+        if not m:e.append("Lesson "+l["id"]+" references missing module")
+        elif l.get("track_id")!=m.get("track_id"):e.append("Lesson "+l["id"]+" track/module mismatch")
+        for p in l.get("prerequisites",[]):
+            if p not in lessons:e.append("Lesson "+l["id"]+" missing prerequisite "+p)
+    for p in c["planets"]:
+        if p["lesson_id"] not in lessons:e.append("Planet "+p["id"]+" references missing lesson")
+    return e
+
+
+def load_catalog_v3(source: str | Path | None = None) -> dict[str, Any]:
+    """Load native v3 without collapsing UID identity into display codes."""
+    target = Path(source) if source is not None else CATALOG_DIR / "catalog-v3.json"
+    if target.is_dir():
+        target = target / "catalog-v3.json"
+    doc = _read(target)
+    if doc.get("schema_version") != 3:
+        raise CatalogCompatibilityError("Expected v3 catalog")
+    errors = validate_v3_relationships(doc)
+    if errors:
+        raise CatalogCompatibilityError("; ".join(errors))
+    return doc
+
+
+def validate_v3_relationships(c: dict[str, Any]) -> list[str]:
+    errors: list[str] = []
+    collections = {
+        "tracks": "uid", "themes": "uid", "modules": "uid",
+        "lessons": "uid", "resources": "uid", "planets": "uid",
+    }
+    indexes: dict[str, dict[str, dict[str, Any]]] = {}
+    for name, key in collections.items():
+        rows = c.get(name, [])
+        index: dict[str, dict[str, Any]] = {}
+        for row in rows:
+            uid = row.get(key)
+            if not uid or uid in index:
+                errors.append(f"{name}: missing or duplicate UID {uid!r}")
+            else:
+                index[uid] = row
+        indexes[name] = index
+
+    tracks, themes, modules, lessons = (
+        indexes["tracks"], indexes["themes"], indexes["modules"], indexes["lessons"]
+    )
+    theme_codes: set[tuple[str, str]] = set()
+    module_codes: set[tuple[str, int]] = set()
+    lesson_codes: set[tuple[str, str]] = set()
+    for theme in c.get("themes", []):
+        if theme.get("track_uid") not in tracks:
+            errors.append(f"Theme {theme.get('uid')} references missing track")
+        key = (theme.get("track_uid"), str(theme.get("number")))
+        if key in theme_codes:
+            errors.append(f"Duplicate theme number {key}")
+        theme_codes.add(key)
+    for module in c.get("modules", []):
+        theme = themes.get(module.get("theme_uid"))
+        if not theme:
+            errors.append(f"Module {module.get('uid')} references missing theme")
+            continue
+        key = (module.get("theme_uid"), module.get("number"))
+        if key in module_codes:
+            errors.append(f"Duplicate module number {key}")
+        module_codes.add(key)
+    for lesson in c.get("lessons", []):
+        theme = themes.get(lesson.get("theme_uid"))
+        module = modules.get(lesson.get("module_uid"))
+        if not theme or not module:
+            errors.append(f"Lesson {lesson.get('uid')} references missing theme/module")
+            continue
+        if module.get("theme_uid") != theme.get("uid"):
+            errors.append(f"Lesson {lesson.get('uid')} theme/module mismatch")
+        if theme.get("track_uid") != lesson.get("track_uid"):
+            errors.append(f"Lesson {lesson.get('uid')} track/theme mismatch")
+        key = (lesson.get("module_uid"), lesson.get("code"))
+        if key in lesson_codes:
+            errors.append(f"Duplicate lesson code {key}")
+        lesson_codes.add(key)
+        for prerequisite in lesson.get("prerequisite_uids", []):
+            if prerequisite not in lessons:
+                errors.append(f"Lesson {lesson.get('uid')} missing prerequisite {prerequisite}")
+    for planet in c.get("planets", []):
+        if planet.get("lesson_uid") not in lessons:
+            errors.append(f"Planet {planet.get('uid')} references missing lesson")
+    return errors
+
+
+def project_v3_legacy_catalog(
+    v3: dict[str, Any], legacy_v2: dict[str, Any], manifest: dict[str, Any]
+) -> dict[str, Any]:
+    """Enrich the v2 presentation contract with v3 UID targets without changing legacy identity."""
+    errors = validate_v3_relationships(v3)
+    if errors:
+        raise CatalogCompatibilityError("; ".join(errors))
+    legacy = json.loads(json.dumps(legacy_v2))
+    if legacy.get("schema_version") != 2:
+        raise CatalogCompatibilityError("Legacy projection requires v2 catalog")
+    target_index = {item["uid"]: item for item in v3.get("lessons", [])}
+    aliases: dict[str, dict[str, list[str]]] = {}
+    for alias in manifest.get("external_aliases", []):
+        if alias.get("source_system") != "catalog_v2" or alias.get("alias_kind") not in {"v2_id", "legacy_id"}:
+            continue
+        entry = aliases.setdefault(alias["alias_value"], {"uids": [], "states": []})
+        entry["uids"].extend(alias.get("target_lesson_uids", []))
+        entry["states"].append(alias.get("mapping_state", "unknown"))
+    for lesson in legacy.get("lessons", []):
+        hit = aliases.get(lesson["id"]) or aliases.get(lesson.get("legacy_id", ""))
+        uids = list(dict.fromkeys(hit["uids"])) if hit else []
+        targets = [target_index[uid] for uid in uids if uid in target_index]
+        lesson["v3_target_uids"] = [item["uid"] for item in targets]
+        lesson["v3_target_codes"] = [item["code"] for item in targets]
+        lesson["v3_mapping_state"] = sorted(set(hit["states"])) if hit else ["unmapped"]
+    legacy["compatibility"] = {
+        "source_schema_version": 2,
+        "target_schema_version": 3,
+        "projection": "legacy_preserving",
+        "v3_lesson_count": len(v3.get("lessons", [])),
+    }
+    return legacy
+
+
+def load_legacy_projection(
+    catalog_dir: str | Path | None = None,
+) -> dict[str, Any]:
+    """Load v2 + v3 + manifest and return the v2-compatible projection."""
+    base = Path(catalog_dir) if catalog_dir is not None else CATALOG_DIR
+    legacy = load_catalog(base / "catalog-v2.json")
+    v3 = load_catalog_v3(base / "catalog-v3.json")
+    manifest = _read(base / "migration-manifest-v3.json")
+    return project_v3_legacy_catalog(v3, legacy, manifest)

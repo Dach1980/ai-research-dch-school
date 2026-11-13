@@ -1,0 +1,52 @@
+/* Homepage orbital typography — three word-planets around the DCH identity. */
+.hero-universe{isolation:isolate;overflow:visible}
+.hero-universe:after{content:none}
+.hero-universe .orbit{border-color:rgba(116,164,255,.22);box-shadow:0 0 24px rgba(77,139,255,.06);pointer-events:none}
+.hero-universe .orbit-one{width:350px;height:350px;animation:orbit-ring-spin 46s linear infinite}
+.hero-universe .orbit-two{width:445px;height:255px;animation:orbit-ring-spin-reverse 58s linear infinite}
+.hero-universe .dch-core{position:relative;z-index:3;width:166px;height:166px;border-radius:50%;background:radial-gradient(circle at 35% 28%,#243d68 0,#142747 48%,#0b1428 100%);border:1px solid rgba(126,177,255,.6);box-shadow:0 0 35px rgba(70,129,255,.24),0 0 90px rgba(91,103,235,.24),inset 0 0 30px rgba(116,168,255,.15);animation:dch-core-float 7s ease-in-out infinite}
+.hero-universe .dch-core:before{content:"";position:absolute;inset:-13px;border:1px solid rgba(110,174,255,.5);border-radius:50%;border-top-color:#a78bfa;border-right-color:transparent;animation:dch-halo-spin 12s linear infinite}
+.hero-universe .dch-core:after{content:"";position:absolute;inset:-23px;border:1px solid rgba(94,234,212,.18);border-radius:50%;border-bottom-color:rgba(94,234,212,.65);border-left-color:transparent;animation:dch-halo-spin 19s linear infinite reverse}
+.hero-universe .dch-core img{width:104px;height:104px;object-fit:contain;position:relative;z-index:1;filter:drop-shadow(0 0 12px rgba(109,165,255,.42));animation:dch-mark-breathe 5s ease-in-out infinite}
+.hero-universe .planet{top:50%;left:50%;right:auto;bottom:auto;z-index:4;width:112px;height:112px;padding:0;display:grid;place-items:center;overflow:visible;border:0;border-radius:50%;background:transparent;box-shadow:none;color:#f3f7ff;font:800 10px/1.2 Manrope,sans-serif;letter-spacing:.08em;text-align:center;text-shadow:0 1px 8px rgba(0,0,0,.8);isolation:isolate;will-change:transform}
+.hero-universe .planet:before{content:"";position:absolute;inset:0;z-index:-1;border-radius:50%;border:1px solid rgba(207,229,255,.52);box-shadow:inset -13px -15px 25px rgba(0,0,0,.45),inset 8px 8px 20px rgba(255,255,255,.2),0 0 28px var(--planet-glow);background:radial-gradient(circle at 28% 23%,rgba(255,255,255,.95) 0,rgba(255,255,255,.34) 5%,transparent 18%),radial-gradient(ellipse at 35% 30%,var(--planet-hi),var(--planet-mid) 48%,var(--planet-low) 78%,#080d1b 100%);animation:planet-surface 9s ease-in-out infinite}
+.hero-universe .planet:after{content:"";position:absolute;inset:-7px;z-index:-2;border-radius:50%;border:1px solid var(--planet-ring);transform:rotate(-28deg) scaleY(.34);box-shadow:0 0 12px var(--planet-glow);opacity:.8}
+.hero-universe .planet>span{max-width:90px;display:block;padding:4px;position:relative}
+.hero-universe .planet-understand{--planet-hi:#a4f1ff;--planet-mid:#258ec9;--planet-low:#123b78;--planet-glow:rgba(52,185,255,.38);--planet-ring:rgba(94,220,255,.7);animation:planet-orbit-a 28s linear infinite}
+.hero-universe .planet-build{--planet-hi:#e3c5ff;--planet-mid:#8750d6;--planet-low:#3a216e;--planet-glow:rgba(167,139,250,.42);--planet-ring:rgba(203,166,255,.75);animation:planet-orbit-b 34s linear infinite}
+.hero-universe .planet-research{--planet-hi:#ffe0a1;--planet-mid:#d17a31;--planet-low:#713c20;--planet-glow:rgba(255,177,80,.4);--planet-ring:rgba(255,204,126,.72);animation:planet-orbit-c 31s linear infinite}
+.hero-universe .planet-build:before{animation-delay:-3s}
+.hero-universe .planet-research:before{animation-delay:-6s}
+@keyframes orbit-ring-spin{to{transform:rotate(336deg)}}
+@keyframes orbit-ring-spin-reverse{to{transform:rotate(-322deg)}}
+@keyframes dch-halo-spin{to{transform:rotate(360deg)}}
+@keyframes dch-core-float{0%,100%{transform:translateY(0);box-shadow:0 0 35px rgba(70,129,255,.24),0 0 90px rgba(91,103,235,.24),inset 0 0 30px rgba(116,168,255,.15)}50%{transform:translateY(-5px);box-shadow:0 0 48px rgba(70,129,255,.36),0 0 110px rgba(91,103,235,.3),inset 0 0 35px rgba(116,168,255,.2)}}
+@keyframes dch-mark-breathe{0%,100%{transform:scale(1) rotate(-2deg)}50%{transform:scale(1.045) rotate(2deg)}}
+@keyframes planet-surface{0%,100%{filter:brightness(1)}50%{filter:brightness(1.16)}}
+@keyframes planet-orbit-a{0%{transform:translate(-50%,-50%) translate(0,-183px)}25%{transform:translate(-50%,-50%) translate(154px,-28px)}50%{transform:translate(-50%,-50%) translate(0,166px)}75%{transform:translate(-50%,-50%) translate(-154px,-28px)}100%{transform:translate(-50%,-50%) translate(0,-183px)}}
+@keyframes planet-orbit-b{0%{transform:translate(-50%,-50%) translate(0,0) translate(205px,0)}25%{transform:translate(-50%,-50%) translate(0,0) translate(0,112px)}50%{transform:translate(-50%,-50%) translate(-205px,0)}75%{transform:translate(-50%,-50%) translate(0,-112px)}100%{transform:translate(-50%,-50%) translate(205px,0)}}
+@keyframes planet-orbit-c{0%{transform:translate(-50%,-50%) translate(-165px,85px)}25%{transform:translate(-50%,-50%) translate(-40px,-138px)}50%{transform:translate(-50%,-50%) translate(165px,-85px)}75%{transform:translate(-50%,-50%) translate(40px,138px)}100%{transform:translate(-50%,-50%) translate(-165px,85px)}}
+@media(max-width:800px){.hero-universe{height:340px}.hero-universe .orbit-one{width:270px;height:270px}.hero-universe .orbit-two{width:340px;height:205px}.hero-universe .dch-core{width:132px;height:132px}.hero-universe .dch-core img{width:86px;height:86px}.hero-universe .planet{width:90px;height:90px;font-size:8px}.hero-universe .planet>span{max-width:78px}}
+@media(max-width:620px){.hero-universe{height:300px}.hero-universe .orbit-one{width:230px;height:230px}.hero-universe .orbit-two{width:292px;height:175px}.hero-universe .planet-understand{animation-name:planet-orbit-a-mobile}.hero-universe .planet-build{animation-name:planet-orbit-b-mobile}.hero-universe .planet-research{animation-name:planet-orbit-c-mobile}}
+@keyframes planet-orbit-a-mobile{0%{transform:translate(-50%,-50%) translate(0,-130px)}25%{transform:translate(-50%,-50%) translate(112px,-20px)}50%{transform:translate(-50%,-50%) translate(0,126px)}75%{transform:translate(-50%,-50%) translate(-112px,-20px)}100%{transform:translate(-50%,-50%) translate(0,-130px)}}
+@keyframes planet-orbit-b-mobile{0%{transform:translate(-50%,-50%) translate(144px,0)}25%{transform:translate(-50%,-50%) translate(0,82px)}50%{transform:translate(-50%,-50%) translate(-144px,0)}75%{transform:translate(-50%,-50%) translate(0,-82px)}100%{transform:translate(-50%,-50%) translate(144px,0)}}
+@keyframes planet-orbit-c-mobile{0%{transform:translate(-50%,-50%) translate(-112px,65px)}25%{transform:translate(-50%,-50%) translate(-28px,-105px)}50%{transform:translate(-50%,-50%) translate(112px,-65px)}75%{transform:translate(-50%,-50%) translate(28px,105px)}100%{transform:translate(-50%,-50%) translate(-112px,65px)}}
+@media(prefers-reduced-motion:reduce){.hero-universe .orbit,.hero-universe .dch-core,.hero-universe .dch-core:before,.hero-universe .dch-core:after,.hero-universe .dch-core img,.hero-universe .planet,.hero-universe .planet:before{animation:none!important}.hero-universe .planet-understand{left:20%;top:23%;transform:none}.hero-universe .planet-build{left:80%;top:50%;transform:none}.hero-universe .planet-research{left:23%;top:78%;transform:none}}
+
+/* Animated track-card planets: retain each track's original SVG palette. */
+.track-planet-orbit{position:relative;isolation:isolate;display:grid;place-items:center;flex:0 0 88px;width:88px;height:88px;margin:8px 0 0;perspective:500px}
+.track-planet-orbit:before,.track-planet-orbit:after{content:"";position:absolute;inset:12px -3px;border:1px solid currentColor;border-radius:50%;transform:rotate(-28deg) scaleY(.43);pointer-events:none;opacity:.75}
+.track-planet-orbit:before{animation:track-card-orbit-spin 13s linear infinite}
+.track-planet-orbit:after{inset:5px -7px;border-style:dashed;opacity:.3;transform:rotate(32deg) scaleY(.28);animation:track-card-orbit-spin-reverse 21s linear infinite}
+.track-planet-icon{position:relative;z-index:1;display:block;width:100%;height:100%;object-fit:contain;margin:0;transform-origin:50% 50%;animation:track-card-planet-spin 32s linear infinite;will-change:transform}
+.track-card.blue .track-planet-orbit{color:#43d6d7}
+.track-card.violet .track-planet-orbit{color:#b69aff}
+.track-card.amber .track-planet-orbit{color:#f6ae4d}
+.track-card:hover .track-planet-icon{animation-duration:17s}
+.track-card:hover .track-planet-orbit:before{animation-duration:7s}
+.track-card:hover .track-planet-orbit:after{animation-duration:11s}
+@keyframes track-card-planet-spin{to{transform:rotate(360deg)}}
+@keyframes track-card-orbit-spin{to{transform:rotate(332deg) scaleY(.43)}}
+@keyframes track-card-orbit-spin-reverse{to{transform:rotate(-328deg) scaleY(.28)}}
+@media(max-width:620px){.track-planet-orbit{width:74px;height:74px;flex-basis:74px}.track-card .track-planet-icon{width:100%;height:100%}}
+@media(prefers-reduced-motion:reduce){.track-planet-icon,.track-planet-orbit:before,.track-planet-orbit:after{animation:none!important}}

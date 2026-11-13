@@ -1,0 +1,25 @@
+/* Lesson 1.2.4 — shared DCH lesson tokens, theme-aware diagrams and responsive content. */
+.lesson-124-figure{margin:24px 0;padding:14px;border:1px solid var(--lds-line);border-radius:16px;background:var(--lds-surface);max-width:100%;overflow-x:auto;overscroll-behavior-inline:contain}
+.lesson-124-figure svg{display:block;width:100%;min-width:760px;height:auto;max-width:none}
+.lesson-124-figure figcaption{margin:10px 4px 2px;color:var(--lds-muted);font-size:.9rem;line-height:1.6;overflow-wrap:anywhere}
+.lesson-124-bg{fill:var(--lds-surface);stroke:var(--lds-line);stroke-width:1.5}
+.lesson-124-node{stroke-width:2}
+.lesson-124-node--accent{fill:color-mix(in srgb,var(--lds-accent) 13%,var(--lds-surface));stroke:var(--lds-accent)}
+.lesson-124-node--good{fill:color-mix(in srgb,var(--lds-good) 13%,var(--lds-surface));stroke:var(--lds-good)}
+.lesson-124-node--muted{fill:color-mix(in srgb,var(--lds-muted) 12%,var(--lds-surface));stroke:var(--lds-muted)}
+.lesson-124-node--warning{fill:color-mix(in srgb,var(--lds-bad) 10%,var(--lds-surface));stroke:var(--lds-bad)}
+.lesson-124-label{fill:var(--lds-ink);font:700 18px system-ui,sans-serif}
+.lesson-124-small{fill:var(--lds-muted);font:500 14px system-ui,sans-serif}
+.lesson-124-arrow{fill:none;stroke:var(--lds-accent);stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+.lesson-124-takeaway{margin:14px 0 22px;padding:13px 16px;border-left:3px solid var(--lds-accent);border-radius:0 10px 10px 0;background:var(--lds-surface);color:var(--lds-ink);overflow-wrap:anywhere}
+.lesson-124-table-wrap{max-width:100%;overflow-x:auto;overscroll-behavior-inline:contain;margin:18px 0}
+.lesson-124-table{width:100%;border-collapse:collapse;min-width:620px}
+.lesson-124-table th,.lesson-124-table td{padding:11px 13px;border:1px solid var(--lds-line);text-align:left;vertical-align:top;color:var(--lds-ink);overflow-wrap:anywhere}
+.lesson-124-table th{background:var(--lds-surface);font-weight:800}
+.article-body pre.language-python{max-width:100%;overflow-x:auto;white-space:pre;padding:18px;border:1px solid var(--lds-line);border-radius:12px;background:var(--lds-surface);color:var(--lds-ink)}
+.article-body pre.language-python code{font:13px/1.65 ui-monospace,SFMono-Regular,Consolas,monospace}
+.lesson-glossary{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:18px 0 34px}
+.lesson-glossary>.glossary-entry{display:flex;flex-direction:column;align-items:stretch;gap:6px;min-width:0;max-width:100%;padding:14px 16px;border:1px solid var(--lds-line);border-radius:12px;background:var(--lds-surface);overflow-wrap:anywhere}
+.lesson-glossary>.glossary-entry strong{display:block;color:var(--lds-ink);overflow-wrap:anywhere}
+.lesson-glossary>.glossary-entry span{display:block;color:var(--lds-muted);overflow-wrap:anywhere}
+@media(max-width:700px){.lesson-glossary{grid-template-columns:minmax(0,1fr)}.lesson-124-figure{padding:8px}.lesson-124-label{font-size:16px}.lesson-124-small{font-size:12px}}

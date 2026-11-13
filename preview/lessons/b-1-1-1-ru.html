@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow"><meta name="theme-color" content="#080d1b">
+<meta name="description" content="Preview draft урока B.1.1 — Mechanistic Interpretability.">
+<title>B.1.1 · Что такое Mechanistic Interpretability — Preview</title>
+<link rel="icon" href="../../assets/favicon.png"><link rel="stylesheet" href="../../styles/main.css"><link rel="stylesheet" href="../../styles/account.css">
+<style>
+.track-b-lesson{--track-accent:#b69aff;--track-glow:#8055dc}.preview-flag{display:inline-flex;padding:6px 10px;border:1px solid #b69aff88;border-radius:99px;color:#d8c6ff;background:#8055dc22;font-size:10px;font-weight:800;letter-spacing:.12em}.lesson-meta{display:flex;gap:10px;flex-wrap:wrap;margin:22px 0}.lesson-meta span{padding:7px 11px;border:1px solid var(--line);border-radius:30px;color:var(--muted);font-size:11px}.article-body h2{color:#d9caff}.article-body h3{color:#c9b4ff}.article-body table{width:100%;border-collapse:collapse;margin:18px 0;font-size:13px}.article-body th,.article-body td{border:1px solid var(--line);padding:10px;text-align:left;vertical-align:top}.article-body th{background:#8055dc22;color:#eadfff}.article-body .notice{border-left-color:#a78bfa}.track-b-lesson .track-hero{padding-top:54px}.track-lesson-top{display:flex;align-items:center;gap:18px}.track-lesson-top img{width:94px;height:94px}
+</style>
+</head>
+<body class="track-b-lesson">
+<header class="site-header"><a class="brand" href="../../index.html"><img src="../../assets/site-brand-icon.jpg" alt="DCH"><span><strong>AI Research</strong><small>DCH SCHOOL</small></span></a><nav class="nav"><a href="../../tracks/inside-ai.html">Track B</a><a href="../../index.html#tracks">Все направления</a><a href="../../learning-map/index.html">Карта знаний</a></nav></header>
+<main class="container article-container">
+<section class="track-hero">
+<div class="track-lesson-top"><img src="../../assets/tracks/planet-track-b.svg" alt="Планета Track B"><div><span class="preview-flag">PREVIEW · НЕ ОПУБЛИКОВАН</span><p class="eyebrow" style="margin:12px 0 0">TRACK B · ТЕМА B.1</p></div></div>
+<h1>B.1.1 · Что такое <span style="color:#b69aff">Mechanistic Interpretability</span></h1>
+<p class="lead">Как исследовать внутренние представления и вычисления нейросети, переходя от наблюдения за ответами к проверяемым гипотезам о механизмах.</p>
+<div class="lesson-meta"><span>Продвинутый уровень</span><span>60–75 минут</span><span>Редакционный draft</span></div>
+<div class="notice"><strong>Статус материала.</strong> Это учебный preview первого урока Track B. Публичный Lesson UID и канонический URL ещё не назначены. Материал не считается опубликованным уроком и не включён в каталог опубликованных занятий.</div>
+</section>
+<article class="article-body">
+<h2>Зачем нужен этот урок</h2>
+<p>Поведенческий тест показывает, что языковая модель отвечает правильно, но сам по себе не раскрывает внутренние вычисления, которые привели к ответу. Mechanistic Interpretability (MI) исследует внутренние представления и вычисления нейросетей. Её задача — построить проверяемую гипотезу о механизме и проверить её вмешательствами и контрольными экспериментами.</p>
+<h2>Результаты обучения</h2>
+<ul><li>Различать поведенческий, репрезентационный и механистический уровни анализа.</li><li>Объяснять различия между параметрами, активациями, нейронами, features, компонентами и circuits.</li><li>Описывать feature hypothesis, superposition и polysemanticity без чрезмерных обобщений.</li><li>Понимать, почему корреляция и декодируемость не доказывают причинную роль.</li><li>Различать ablation и activation patching.</li><li>Формулировать проверяемую circuit-гипотезу с метрикой и контролями.</li></ul>
+<h2>1. Три уровня вопроса к модели</h2>
+<p><strong>Поведенческий уровень:</strong> в каких условиях модель даёт правильный ответ? Как меняется точность при изменении формулировки?</p>
+<p><strong>Репрезентационный уровень:</strong> какая информация доступна в активациях? Можно ли декодировать её с помощью probe?</p>
+<p><strong>Механистический уровень:</strong> какие компоненты преобразуют и передают эту информацию, и какую функциональную роль они играют?</p>
+<p>Probe может декодировать информацию, даже если модель не использует её так, как предполагает исследователь. Поведенческая успешность также не раскрывает внутренний алгоритм.</p>
+<h2>2. Что именно анализируется</h2>
+<table><thead><tr><th>Объект</th><th>Смысл</th><th>Оговорка</th></tr></thead><tbody>
+<tr><td>Weights / параметры</td><td>Обученные числа, задающие преобразования</td><td>Отдельное значение веса редко имеет понятный смысл</td></tr>
+<tr><td>Activations / активации</td><td>Внутренние значения при конкретном входе</td><td>Зависят от входа, позиции и слоя</td></tr>
+<tr><td>Neurons / нейроны</td><td>Координаты или вычислительные единицы слоя</td><td>Нейрон не обязан соответствовать одному понятию</td></tr>
+<tr><td>Features / признаки</td><td>Предполагаемые направления или структуры представления</td><td>Могут распределяться по множеству нейронов</td></tr>
+<tr><td>Components / компоненты</td><td>Attention heads, MLP, residual stream</td><td>Функциональную роль нужно проверять</td></tr>
+<tr><td>Circuit / цепь</td><td>Гипотеза о взаимодействии компонентов</td><td>Может быть неполной и специфичной для задачи</td></tr>
+</tbody></table>
+<h2>3. Feature hypothesis, superposition и polysemanticity</h2>
+<p>Рабочая <strong>feature hypothesis</strong> предполагает, что внутренние представления можно описывать через признаки, полезные для обработки входных данных. Это не означает, что каждый признак соответствует одному нейрону или является отдельной причинной переменной.</p>
+<p><strong>Superposition</strong> — гипотеза о ситуации, когда сеть кодирует больше потенциально полезных признаков, чем имеется независимых координат в доступном пространстве представления. Несколько признаков могут быть закодированы в пересекающихся направлениях.</p>
+<p><strong>Polysemanticity</strong> — наблюдение, что одна нейронная единица может активироваться в нескольких различных контекстах. Это объясняет, почему top-activating examples одного нейрона не дают полного объяснения модели.</p>
+<h2>4. От компонента к circuit-гипотезе</h2>
+<p>Circuit — предполагаемая функциональная цепочка компонентов, совместно выполняющая операцию. Исследователь должен указать модель, слой и компонент; входные условия; предполагаемую операцию; метрику; альтернативные объяснения; условия, в которых гипотеза должна не сработать.</p>
+<h2>5. Почему корреляции недостаточно</h2>
+<p>Если активация компонента H часто высока на примерах с правильным ответом, это показывает связь, но не доказывает, что H необходим, достаточен, выполняет именно предполагаемую операцию или является единственным путём передачи информации. Возможны общая причина, избыточные пути и побочные эффекты выборки.</p>
+<h2>6. Два вида вмешательств</h2>
+<h3>Ablation</h3><p><strong>Ablation</strong> — удаление, зануление или подавление выбранного компонента/активации с измерением изменения поведения. Метод показывает влияние вмешательства в заданном эксперименте, но не доказывает, что компонент — единственный механизм или необходим во всех контекстах.</p>
+<h3>Activation patching</h3><p><strong>Activation patching</strong> — перенос активации из одного запуска модели в другой. Обычно сравнивают clean input, где целевое поведение наблюдается, и corrupted input, где оно нарушено. Перенос активации может восстановить метрику, но это не доказывает, что весь circuit найден или что механизм универсален.</p>
+<h2>7. Worked example: гипотеза о переносе информации</h2>
+<ol><li>Создать контрастные последовательности, где меняется предыдущий токен, а остальной контекст контролируется.</li><li>Задать baseline: вероятность ожидаемого следующего токена и контрольные последовательности без целевой зависимости.</li><li>Выполнить ablation предполагаемого attention head H и измерить изменение метрики.</li><li>Перенести активацию H из clean run в corrupted run и измерить восстановление.</li><li>Повторить на отрицательных контрольных примерах, других позициях и, при необходимости, других heads.</li><li>Сформулировать ограниченный вывод: результаты могут поддерживать функциональный вклад H в данном протоколе, но не доказывают уникальный полный механизм.</li></ol>
+<h2>8. Сильный вывод и чрезмерное утверждение</h2>
+<table><thead><tr><th>Наблюдение</th><th>Допустимый вывод</th><th>Недопустимый скачок</th></tr></thead><tbody>
+<tr><td>Probe декодирует признак</td><td>Информация доступна для данного probe</td><td>Модель обязательно использует её</td></tr>
+<tr><td>Нейрон активируется на примерах</td><td>Активация связана с примерами</td><td>Нейрон «понимает» понятие</td></tr>
+<tr><td>Ablation ухудшает метрику</td><td>Компонент влияет на поведение в эксперименте</td><td>Компонент — единственная причина</td></tr>
+<tr><td>Patching восстанавливает метрику</td><td>Перенесённое состояние может восстановить часть поведения</td><td>Весь circuit полностью найден</td></tr>
+</tbody></table>
+<h2>9. Связь с XAI</h2>
+<p>XAI может объяснять вклад входных признаков в отдельное предсказание, например с помощью SHAP. MI исследует, какие внутренние вычисления реализуют поведение. Эти объяснения дополняют друг друга, но не заменяют друг друга; обоим нужны проверки faithfulness, устойчивости и границ применимости.</p>
+<h2>10. Ограничения и исследовательская добросовестность</h2>
+<ul><li>Вычислительные пути могут быть распределёнными и избыточными.</li><li>Выбранные примеры могут не отражать другие распределения.</li><li>Вмешательство может повредить сеть способом, нехарактерным для обычного использования.</li><li>Метрика может отражать только часть поведения.</li><li>Результат может зависеть от модели, слоя, токенизации и задачи.</li><li>Отрицательный результат тоже важен и ограничивает гипотезу.</li></ul>
+<p>В отчёте фиксируйте версию модели и токенизатора, данные, seeds, слой/компонент, способ вмешательства, метрику, baseline, контроли и ограничения.</p>
+<h2>11. Практическая работа</h2>
+<p>Найдите опубликованный пример circuit analysis и заполните исследовательскую карточку: гипотеза; модель и компонент; активации/признаки; вмешательства и контроли; метрика; результаты и отрицательные результаты; альтернативные объяснения; границы обобщения.</p>
+<p><strong>Критерии оценки:</strong> точность терминов — 20%; воспроизводимость описания — 20%; корректность причинного вывода — 25%; качество контролей — 20%; описание ограничений — 15%.</p>
+<h2>12. Самопроверка</h2>
+<ol><li>Чем поведенческий анализ отличается от механистической интерпретации?</li><li>Почему feature и neuron — не синонимы?</li><li>Что объясняет superposition и почему это не универсальный закон?</li><li>Почему probe accuracy не доказывает, что модель использует признак?</li><li>Чем ablation отличается от activation patching?</li><li>Что можно заключить, если patching частично восстанавливает метрику?</li><li>Зачем нужны отрицательные контрольные примеры?</li></ol>
+<h2>Краткие выводы</h2>
+<ol><li>MI реконструирует внутренние вычисления, а не только описывает ответы.</li><li>Weights, activations, neurons, features, components и circuits — разные уровни анализа.</li><li>Корреляция и декодируемость сами по себе не доказывают причинную роль.</li><li>Ablation и activation patching — экспериментальные инструменты, а не автоматические доказательства.</li><li>Вывод привязывается к модели, данным, метрике и протоколу.</li></ol>
+<h2>Источники</h2>
+<ul><li><a href="https://transformer-circuits.pub/2021/framework/index.html" target="_blank" rel="noopener">A Mathematical Framework for Transformer Circuits</a></li><li><a href="https://transformer-circuits.pub/2023/monosemantic-features/index.html" target="_blank" rel="noopener">Towards Monosemanticity</a></li><li><a href="https://github.com/TransformerLensOrg/TransformerLens" target="_blank" rel="noopener">TransformerLens</a></li><li><a href="https://www.anthropic.com/research" target="_blank" rel="noopener">Anthropic Mechanistic Interpretability Research</a></li></ul>
+<div class="notice"><strong>Лабораторная работа ещё не включена.</strong> Для воспроизводимых численных результатов необходимо отдельно зафиксировать версии модели, токенизатора и инструментов. До этого урок не обещает конкретных экспериментальных чисел.</div>
+<nav class="lesson-nav"><a class="button secondary" href="../../tracks/inside-ai.html">← Программа Track B</a><a class="button primary" href="../../index.html#tracks">Все направления</a></nav>
+</article>
+</main>
+<footer class="page-footer"><div class="container">AI Research DCH School · Track B · Preview</div></footer>
+<script src="../../scripts/main.js"></script><script src="../../scripts/theme-system.js" defer></script><script src="../../scripts/code-blocks.js" defer></script>
+</body></html>

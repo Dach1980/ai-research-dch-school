@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "planets": [
+    {
+      "id": "planet-A-1",
+      "lesson_id": "A.1",
+      "accent_id": "blue"
+    },
+    {
+      "id": "planet-A-2",
+      "lesson_id": "A.2",
+      "accent_id": "teal"
+    },
+    {
+      "id": "planet-A-3",
+      "lesson_id": "A.3",
+      "accent_id": "teal"
+    },
+    {
+      "id": "planet-A-4",
+      "lesson_id": "A.4",
+      "accent_id": "blue"
+    },
+    {
+      "id": "planet-A-5",
+      "lesson_id": "A.5",
+      "accent_id": "violet"
+    },
+    {
+      "id": "planet-A-6",
+      "lesson_id": "A.6",
+      "accent_id": "violet"
+    },
+    {
+      "id": "planet-A-7",
+      "lesson_id": "A.7",
+      "accent_id": "blue"
+    },
+    {
+      "id": "planet-A-8",
+      "lesson_id": "A.8",
+      "accent_id": "teal"
+    }
+  ]
+}

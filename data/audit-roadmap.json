@@ -799,9 +799,9 @@
       "id": "RM-LESSON-153",
       "date": "2026-11-14",
       "title": "Создать урок 1.5.3 «Accuracy, Precision, Recall и F1»",
-      "status": "in_progress",
+      "status": "done",
       "priority": "high",
-      "decision": "Урок 1.5.3 создан и включён в published каталог после успешного review-stage CI. Финальная проверка опубликованной страницы (включая браузерный overflow, locale grid 23 урока, knowledge map, multilingual validation и Pages deployment) выполняется на текущем опубликованном коммите. Ручная визуальная QA трёх локализаций в светлой/тёмной темах и на desktop/mobile остаётся отдельной проверкой.",
+      "decision": "Урок 1.5.3 создан и опубликован в RU / EN / 中文 для UID les-a-0045. На публикационном коммите 6470ffc9325e02dcf137b0e3eaac7c63d76457e8 успешно прошли контрактный тест урока, браузерная проверка переполнения, locale grid и дизайн-система (23 опубликованных урока), проверка навигации, карты знаний и мультиязычных страниц. GitHub Pages build и deployment завершились успешно. Ручная визуальная QA RU/EN/中文 в светлой/тёмной темах и на desktop/mobile остаётся отдельной задачей.",
       "acceptance": [
         "RU / EN / 中文 имеют одинаковую последовательность семи разделов, одинаковые примеры, практическое упражнение и семь вопросов.",
         "В каждой локализации ровно пять карточек глоссария и три источника.",
@@ -813,14 +813,17 @@
       ],
       "source": "lessons/a-1-5-3.html; lessons/a-1-5-3-en.html; lessons/a-1-5-3-zh.html; styles/lesson-153.css; tests/test_lesson_153_contract.py",
       "verification": {
-        "review_stage_ci": "success; Validate learning catalog run 43512314713",
-        "lesson_153_contract": "success",
-        "svg_theme_audit": "success; run 43512314876",
-        "published_browser_overflow": "pending_final_ci",
-        "locale_grid_theme_parity": "pending_final_ci; expected 23 published lessons",
-        "knowledge_map_tests": "pending_final_ci; expected 23 published lessons",
-        "multilingual_validation": "success_on_review_stage",
-        "pages_deployment": "pending_final_ci",
+        "verified_commit": "6470ffc9325e02dcf137b0e3eaac7c63d76457e8",
+        "lesson_153_contract": "success; Validate learning catalog run 43512549722 and Pages validate job in run 43512549742",
+        "browser_overflow": "success; run 43512549722",
+        "locale_grid_theme_parity": "success; 23 published lessons; run 43512549722",
+        "lesson_design_system": "success; run 43512549722",
+        "navigation_contract": "success; run 43512549722",
+        "knowledge_map_tests": "success; 23 published lessons; run 43512549722",
+        "multilingual_validation": "success; run 43512549722",
+        "svg_theme_audit": "success; run 43512314876 on lesson files/styles commit f1d86f585406fab912302ab1ee36aba3d9b5a9a3",
+        "pages_build": "success; run 43512549665",
+        "pages_deployment": "success; run 43512549742",
         "manual_visual_qa": "pending; RU/EN/中文 in light/dark on desktop/mobile"
       }
     }
@@ -2779,7 +2782,7 @@
       "date": "2026-11-14",
       "type": "lesson_1_5_3_creation",
       "title": "Создан урок 1.5.3 «Accuracy, Precision, Recall и F1»",
-      "result": "Подготовлены полные версии RU / EN / 中文 для UID les-a-0045, Track A / Theme 1 / Module 5. Урок объясняет четыре метрики классификации и их знаменатели, содержит четыре формулы с доступными описаниями, оригинальную SVG-схему, расчёты на данных 1.5.2, сравнение моделей и практическое упражнение. Добавлены ровно пять карточек глоссария, три источника и семь вопросов с объяснениями. Целевой статус публикации будет подтверждён после обязательных автоматических проверок. Ручная визуальная QA трёх локализаций в light/dark и desktop/mobile остаётся отдельной проверкой.",
+      "result": "Созданы полные RU / EN / 中文 версии для UID les-a-0045, Track A / Theme 1 / Module 5. Урок объясняет Accuracy, Precision, Recall и F1, их разные знаменатели и ограничения; содержит пять формульных карточек (четыре метрики, F1 показан в двух эквивалентных формах) с доступными описаниями, оригинальную SVG-схему, расчёты на данных 1.5.2, сравнение двух моделей и практическое упражнение. Добавлены ровно пять карточек глоссария, три источника и семь вопросов с объяснениями. Каталог опубликован, число опубликованных уроков Track A — 23. Автоматический контрактный тест, browser overflow, locale grid, design system, navigation, knowledge map и multilingual validation завершились успешно; Pages build и deployment успешны на publication commit 6470ffc9325e02dcf137b0e3eaac7c63d76457e8. Ручная визуальная QA остаётся pending.",
       "evidence": [
         "lessons/a-1-5-3.html",
         "lessons/a-1-5-3-en.html",
@@ -2790,9 +2793,8 @@
         "docs/education/TRACK_A_CURRICULUM.md"
       ],
       "limitations": [
-        "До финального прохождения CI урок имеет статус review / localized.",
-        "Ручная визуальная QA не выполнялась и не подменяется автоматической браузерной проверкой.",
-        "ROC-AUC и Precision-Recall AUC оставлены уроку 1.5.4; стратегии работы с дисбалансом — уроку 1.5.5."
+        "Ручная визуальная QA трёх локализаций в light/dark на desktop/mobile не выполнена; автоматический browser overflow check не заменяет ручную приёмку.",
+        "ROC-AUC и Precision-Recall AUC оставлены уроку 1.5.4; углублённая тема дисбаланса классов — уроку 1.5.5."
       ]
     }
   ],

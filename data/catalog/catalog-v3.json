@@ -1217,7 +1217,7 @@
       "module_uid": "mod-a-01-05",
       "code": "1.5.1",
       "title": "Зачем оценивать качество модели",
-      "status": "published",
+      "status": "review",
       "access": "open",
       "level": "beginner",
       "prerequisite_uids": [
@@ -1230,7 +1230,7 @@
         "Описывать роль базовой модели, независимой проверки и фиксации протокола.",
         "Объяснять, почему результат тестирования не является гарантией качества в любых будущих условиях."
       ],
-      "content_state": "published",
+      "content_state": "localized",
       "title_i18n": {
         "ru": "Зачем оценивать качество модели",
         "en": "Why Evaluate Model Quality?",

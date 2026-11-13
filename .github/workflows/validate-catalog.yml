@@ -9,6 +9,10 @@ on:
       - "lessons/practice/**"
       - "lessons/*.html"
       - "lessons/**/*.html"
+      - "feedback/**"
+      - "scripts/main.js"
+      - "styles/feedback.css"
+      - "styles/lesson-143.css"
       - "scripts/lesson-reader.js"
       - "scripts/planet-map-catalog.js"
       - "styles/knowledge-map.css"
@@ -104,6 +108,10 @@ jobs:
         run: python -m unittest discover -s tests -p 'test_track_a_data_lessons.py' -v
       - name: Test lesson content, localized diagrams, and source-aligned quizzes
         run: python -m unittest discover -s tests -p 'test_lessons_112_113.py' -v
+      - name: Test feedback form pages
+        run: python -m unittest discover -s tests -p 'test_feedback_pages.py' -v
+      - name: Test lesson 1.4.3 multilingual content, diagrams and assessment
+        run: python -m unittest discover -s tests -p 'test_lesson_143_multilingual.py' -v
       - name: Test locale grid and lesson standard parity
         run: python -m unittest discover -s tests -p 'test_locale_grid_theme_parity.py' -v
       - name: Test lesson design system across Track A
@@ -117,7 +125,7 @@ jobs:
       - name: Test DCH brand assets
         run: python -m unittest discover -s tests -p 'test_brand_assets.py' -v
       - name: Check theme and code scripts syntax
-        run: node --check scripts/theme-system.js && node --check scripts/code-blocks.js && node --check scripts/lesson-layout.js
+        run: node --check scripts/main.js && node --check scripts/theme-system.js && node --check scripts/code-blocks.js && node --check scripts/lesson-layout.js
       - name: Check browser catalogue scripts syntax
         run: node --check scripts/catalog-compat.js && node --check scripts/lesson-catalog.js && node --check scripts/planet-map-catalog.js && node --check scripts/home-knowledge-map.js && node --check scripts/lesson-reader.js && node --check lessons/data/xai-01-what-and-why.js
       - name: Validate production hierarchical catalog v2

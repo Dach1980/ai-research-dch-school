@@ -16,7 +16,7 @@ CARD_SELECTOR = (
     ".lesson-callout, .lesson-practice, .lesson-note, .lesson-outcomes, "
     ".lesson-problem, .definition, .glossary-entry, .lesson-check, "
     ".lesson-check-question, .lesson-check-option, .lesson-planet-banner, "
-    ".lesson-hero-card, .learning-box, .reflection-box, .quiz-item, .lesson-144-figure"
+    ".lesson-hero-card, .learning-box, .reflection-box, .quiz-item"
 )
 
 class LessonLayoutOverflowTests(unittest.TestCase):
@@ -72,6 +72,25 @@ class LessonLayoutOverflowTests(unittest.TestCase):
                                   });
                                   break;
                                 }
+                              }
+                            }
+                          }
+                          for (const svg of document.querySelectorAll('.lesson-144-figure svg')) {
+                            const svgBox = svg.getBoundingClientRect();
+                            for (const label of svg.querySelectorAll('text')) {
+                              const node = label.previousElementSibling;
+                              if (!node || node.tagName.toLowerCase() !== 'rect') continue;
+                              const textBox = label.getBoundingClientRect();
+                              const nodeBox = node.getBoundingClientRect();
+                              if (textBox.left < nodeBox.left - 1 || textBox.right > nodeBox.right + 1 ||
+                                  textBox.top < nodeBox.top - 1 || textBox.bottom > nodeBox.bottom + 1) {
+                                problems.push({
+                                  type: 'svg-label-outside-node',
+                                  text: label.textContent,
+                                  textBox: {left:textBox.left,right:textBox.right,top:textBox.top,bottom:textBox.bottom},
+                                  nodeBox: {left:nodeBox.left,right:nodeBox.right,top:nodeBox.top,bottom:nodeBox.bottom},
+                                  svgWidth: svgBox.width
+                                });
                               }
                             }
                           }

@@ -813,17 +813,17 @@
       ],
       "source": "lessons/a-1-5-3.html; lessons/a-1-5-3-en.html; lessons/a-1-5-3-zh.html; styles/lesson-153.css; tests/test_lesson_153_contract.py",
       "verification": {
-        "verified_commit": "6470ffc9325e02dcf137b0e3eaac7c63d76457e8",
-        "lesson_153_contract": "success; Validate learning catalog run 43512549722 and Pages validate job in run 43512549742",
-        "browser_overflow": "success; run 43512549722",
-        "locale_grid_theme_parity": "success; 23 published lessons; run 43512549722",
-        "lesson_design_system": "success; run 43512549722",
-        "navigation_contract": "success; run 43512549722",
-        "knowledge_map_tests": "success; 23 published lessons; run 43512549722",
-        "multilingual_validation": "success; run 43512549722",
+        "verified_commit": "57ea0fd11d32ded9c582bc2b30f057a55feb1417",
+        "lesson_153_contract": "success; Validate learning catalog run 43513220423",
+        "browser_overflow": "success; run 43513220423 includes localized lessons 1.5.2 and 1.5.3 at 360, 390, 768, 1024 and 1440 px in light and dark themes",
+        "locale_grid_theme_parity": "success; 23 published lessons; run 43513220423",
+        "lesson_design_system": "success; run 43513220423",
+        "navigation_contract": "success; run 43513220423",
+        "knowledge_map_tests": "success; 23 published lessons including les-a-0045; run 43513220423",
+        "multilingual_validation": "success; run 43513220423",
         "svg_theme_audit": "success; run 43512314876 on lesson files/styles commit f1d86f585406fab912302ab1ee36aba3d9b5a9a3",
-        "pages_build": "success; run 43512549665",
-        "pages_deployment": "success; run 43512549742",
+        "pages_build": "success; run 43513219431",
+        "pages_deployment": "success; run 43513220406",
         "manual_visual_qa": "pending; RU/EN/中文 in light/dark on desktop/mobile"
       }
     }
@@ -2782,7 +2782,7 @@
       "date": "2026-11-14",
       "type": "lesson_1_5_3_creation",
       "title": "Создан урок 1.5.3 «Accuracy, Precision, Recall и F1»",
-      "result": "Созданы полные RU / EN / 中文 версии для UID les-a-0045, Track A / Theme 1 / Module 5. Урок объясняет Accuracy, Precision, Recall и F1, их разные знаменатели и ограничения; содержит пять формульных карточек (четыре метрики, F1 показан в двух эквивалентных формах) с доступными описаниями, оригинальную SVG-схему, расчёты на данных 1.5.2, сравнение двух моделей и практическое упражнение. Добавлены ровно пять карточек глоссария, три источника и семь вопросов с объяснениями. Каталог опубликован, число опубликованных уроков Track A — 23. Автоматический контрактный тест, browser overflow, locale grid, design system, navigation, knowledge map и multilingual validation завершились успешно; Pages build и deployment успешны на publication commit 6470ffc9325e02dcf137b0e3eaac7c63d76457e8. Ручная визуальная QA остаётся pending.",
+      "result": "Созданы полные RU / EN / 中文 версии для UID les-a-0045, Track A / Theme 1 / Module 5. Урок объясняет Accuracy, Precision, Recall и F1, их разные знаменатели и ограничения; содержит пять формульных карточек (четыре метрики, F1 показан в двух эквивалентных формах) с доступными описаниями, оригинальную SVG-схему, расчёты на данных 1.5.2, сравнение двух моделей и практическое упражнение. Добавлены ровно пять карточек глоссария, три источника и семь вопросов с объяснениями. Каталог опубликован, число опубликованных уроков Track A — 23. Автоматический контрактный тест, browser overflow, locale grid, design system, navigation, knowledge map и multilingual validation завершились успешно; Pages build и deployment успешны на проверенном commit 57ea0fd11d32ded9c582bc2b30f057a55feb1417; browser overflow дополнительно расширен на RU/EN/中文 1.5.2 и 1.5.3. Ручная визуальная QA остаётся pending.",
       "evidence": [
         "lessons/a-1-5-3.html",
         "lessons/a-1-5-3-en.html",

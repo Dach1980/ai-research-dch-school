@@ -1575,7 +1575,7 @@
       "module_uid": "mod-a-01-05",
       "code": "1.5.8",
       "title": "Калибровка вероятностей и качество вероятностных прогнозов",
-      "status": "review",
+      "status": "published",
       "access": "open",
       "level": "beginner",
       "prerequisite_uids": [
@@ -1590,7 +1590,7 @@
         "Сравнивать Platt scaling, isotonic regression и temperature scaling.",
         "Строить протокол калибровки без утечки данных и оценивать его на независимом test."
       ],
-      "content_state": "localized",
+      "content_state": "published",
       "title_i18n": {
         "ru": "Калибровка вероятностей и качество вероятностных прогнозов",
         "en": "Probability Calibration and Probabilistic Prediction Quality",

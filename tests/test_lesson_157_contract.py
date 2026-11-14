@@ -84,7 +84,7 @@ class Lesson157ContractTests(unittest.TestCase):
             self.assertIn(token,css)
         for loc,path in PAGES.items():
             source=path.read_text(encoding="utf-8")
-            svgs=re.findall(r"<svg\\b.*?</svg>",source,re.S)
+            svgs=re.findall(r"<svg\b.*?</svg>",source,re.S)
             self.assertEqual(len(svgs),2,loc)
             for svg in svgs:
                 self.assertRegex(svg,r"<title id=")

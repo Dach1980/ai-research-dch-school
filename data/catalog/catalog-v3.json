@@ -1400,12 +1400,31 @@
       "module_uid": "mod-a-01-05",
       "code": "1.5.7",
       "title": "Метрики регрессии: MAE, MSE, RMSE и R²",
-      "status": "planned",
+      "status": "review",
       "access": "open",
       "level": "beginner",
-      "prerequisite_uids": [],
-      "learning_outcomes": [],
-      "content_state": "outline_only"
+      "prerequisite_uids": [
+        "les-a-0015"
+      ],
+      "learning_outcomes": [
+        "Различать регрессию и классификацию по типу прогноза.",
+        "Рассчитывать MAE, MSE и RMSE.",
+        "Объяснять влияние крупных ошибок и единицы измерения.",
+        "Интерпретировать R², включая отрицательные значения.",
+        "Сравнивать модель с baseline на одинаковых данных.",
+        "Выбирать метрику с учётом масштаба и цены ошибки."
+      ],
+      "content_state": "localized",
+      "title_i18n": {
+        "ru": "Метрики регрессии: MAE, MSE, RMSE и R²",
+        "en": "Regression Metrics: MAE, MSE, RMSE and R²",
+        "zh": "回归指标：MAE、MSE、RMSE 与 R²"
+      },
+      "url_i18n": {
+        "ru": "lessons/a-1-5-7.html",
+        "en": "lessons/a-1-5-7-en.html",
+        "zh": "lessons/a-1-5-7-zh.html"
+      }
     },
     {
       "uid": "les-a-0049",

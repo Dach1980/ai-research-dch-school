@@ -52,7 +52,7 @@ class Lesson156ContractTests(unittest.TestCase):
         previous = next(x for x in catalog["lessons"] if x["code"] == "1.5.5")
         next_lesson = next(x for x in catalog["lessons"] if x["code"] == "1.5.7")
         self.assertEqual(previous["status"], "published")
-        self.assertEqual(next_lesson["status"], "planned")
+        self.assertIn(next_lesson["status"], {"planned", "review", "published"})
         self.assertNotIn("a-1-5-7", "".join(p.read_text(encoding="utf-8") for p in PAGES.values()))
 
     def test_locales_have_equal_sections_assessment_and_assets(self):

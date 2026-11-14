@@ -34,6 +34,8 @@ jobs:
         run: python -m unittest discover -s tests -p 'test_lesson_154_contract.py' -v
       - name: Test lesson 1.5.6 cross-validation, stability, localization and assessment
         run: python -m unittest discover -s tests -p 'test_lesson_156_contract.py' -v
+      - name: Test lesson 1.5.7 regression metrics, localization and assessment
+        run: python -m unittest discover -s tests -p 'test_lesson_157_contract.py' -v
       - name: Validate catalog and localized URLs
         run: python scripts/validate-catalog.py
       - name: Audit theme-aware SVG text across all lessons

@@ -1567,6 +1567,40 @@
         "en": "Data Types and Feature Representation",
         "zh": "数据类型与特征表示"
       }
+    },
+    {
+      "uid": "les-a-0057",
+      "track_uid": "trk-a",
+      "theme_uid": "thm-a-01",
+      "module_uid": "mod-a-01-05",
+      "code": "1.5.8",
+      "title": "Калибровка вероятностей и качество вероятностных прогнозов",
+      "status": "review",
+      "access": "open",
+      "level": "beginner",
+      "prerequisite_uids": [
+        "les-a-0048",
+        "les-a-0046"
+      ],
+      "learning_outcomes": [
+        "Различать ранжирование и калибровку вероятностных прогнозов.",
+        "Интерпретировать reliability diagram и calibration curve.",
+        "Рассчитывать и интерпретировать Brier score и log loss.",
+        "Объяснять overconfidence, underconfidence и sharpness.",
+        "Сравнивать Platt scaling, isotonic regression и temperature scaling.",
+        "Строить протокол калибровки без утечки данных и оценивать его на независимом test."
+      ],
+      "content_state": "review",
+      "title_i18n": {
+        "ru": "Калибровка вероятностей и качество вероятностных прогнозов",
+        "en": "Probability Calibration and Probabilistic Prediction Quality",
+        "zh": "概率校准与概率预测质量"
+      },
+      "url_i18n": {
+        "ru": "lessons/a-1-5-8.html",
+        "en": "lessons/a-1-5-8-en.html",
+        "zh": "lessons/a-1-5-8-zh.html"
+      }
     }
   ],
   "resources": [],

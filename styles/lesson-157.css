@@ -1,0 +1,21 @@
+/* Lesson 1.5.7 — regression metrics, theme-aware diagrams and formulas. */
+.lesson-157-figure{margin:24px 0;padding:14px;border:1px solid var(--lds-line);border-radius:16px;background:var(--lds-surface);max-width:100%;overflow-x:auto;overscroll-behavior-inline:contain}
+.lesson-157-figure svg{display:block;width:100%;min-width:640px;height:auto;max-width:none}
+.lesson-157-figure figcaption{margin:10px 4px 2px;color:var(--lds-muted);font-size:.9rem;line-height:1.6;overflow-wrap:anywhere}
+.l157-bg{fill:var(--lds-surface);stroke:var(--lds-line);stroke-width:1.5}
+.l157-actual{fill:color-mix(in srgb,var(--lds-accent) 14%,var(--lds-surface));stroke:var(--lds-accent);stroke-width:2}
+.l157-pred{fill:color-mix(in srgb,var(--lds-good) 16%,var(--lds-surface));stroke:var(--lds-good);stroke-width:2}
+.l157-res{fill:color-mix(in srgb,var(--lds-accent) 8%,var(--lds-surface));stroke:var(--lds-line);stroke-width:2}
+.l157-label{fill:var(--lds-ink);font:700 20px system-ui,sans-serif}
+.l157-small{fill:var(--lds-muted);font:600 15px system-ui,sans-serif}
+.l157-arrow{fill:none;stroke:var(--lds-accent);stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+.l157-axis{fill:none;stroke:var(--lds-line);stroke-width:2}
+.l157-line{fill:none;stroke:var(--lds-good);stroke-width:5;stroke-linecap:round}
+.l157-curve{fill:none;stroke:var(--lds-accent);stroke-width:5;stroke-linecap:round}
+.article-body .formula{display:flex;flex-direction:column;gap:8px;align-items:center;padding:16px;margin:16px 0;border:1px solid var(--lds-line);border-radius:12px;background:color-mix(in srgb,var(--lds-accent) 5%,var(--lds-surface));color:var(--lds-ink);max-width:100%;overflow-x:auto}
+.article-body .formula-label{font-weight:800;color:var(--lds-muted);font-family:system-ui,sans-serif;font-size:.88rem;text-align:center}
+.article-body .formula-expression{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:clamp(.86rem,2vw,1.08rem);text-align:center;max-width:100%;overflow-wrap:anywhere}
+.article-body .formula-description{font-size:.94rem;line-height:1.6;color:var(--lds-muted);max-width:72ch}
+.lesson-157-takeaway{margin:16px 0 24px;padding:14px 17px;border-left:3px solid var(--lds-accent);border-radius:0 12px 12px 0;background:var(--lds-surface);color:var(--lds-ink);overflow-wrap:anywhere}
+.lesson-157-takeaway strong{display:block;margin-bottom:5px}
+@media(max-width:700px){.lesson-157-figure{padding:8px}.l157-label{font-size:17px}.l157-small{font-size:13px}.article-body .formula{padding:12px 8px}}

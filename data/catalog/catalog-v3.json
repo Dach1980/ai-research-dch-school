@@ -1400,7 +1400,7 @@
       "module_uid": "mod-a-01-05",
       "code": "1.5.7",
       "title": "Метрики регрессии: MAE, MSE, RMSE и R²",
-      "status": "review",
+      "status": "published",
       "access": "open",
       "level": "beginner",
       "prerequisite_uids": [
@@ -1414,7 +1414,7 @@
         "Сравнивать модель с baseline на одинаковых данных.",
         "Выбирать метрику с учётом масштаба и цены ошибки."
       ],
-      "content_state": "localized",
+      "content_state": "published",
       "title_i18n": {
         "ru": "Метрики регрессии: MAE, MSE, RMSE и R²",
         "en": "Regression Metrics: MAE, MSE, RMSE and R²",

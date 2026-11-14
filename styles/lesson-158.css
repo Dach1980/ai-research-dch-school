@@ -27,3 +27,5 @@
 .lesson-glossary>.glossary-entry .term{display:block;color:var(--lds-ink);font-weight:800;overflow-wrap:anywhere}
 .lesson-glossary>.glossary-entry .term-en{display:block;color:var(--lds-accent);font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;font-weight:700;overflow-wrap:anywhere}
 .lesson-glossary>.glossary-entry p{margin:4px 0 0;color:var(--lds-muted);font-size:.9rem;line-height:1.6;overflow-wrap:anywhere}
+
+.lesson-glossary>.glossary-entry>.term-index{display:block;color:var(--lds-accent);font:800 .72rem ui-monospace,monospace;letter-spacing:.06em}

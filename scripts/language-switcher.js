@@ -14,7 +14,8 @@
   const isMapIndex = relativePage === "learning-map/index.html";
   const isTrack = /^tracks\/(understanding-ai|inside-ai|building-with-ai)\.html$/.test(relativePage);
   const isLesson = /^lessons\/a-[1-6]-.*\.html$/.test(relativePage);
-  const isKnownPage = isHome || isLessonsIndex || isMapIndex || isTrack || isLesson;
+  const isFeedback = relativePage === "feedback/index.html";
+  const isKnownPage = isHome || isLessonsIndex || isMapIndex || isTrack || isLesson || isFeedback;
   const target = locale => {
     const suffix = locale === "ru" ? "" : "-" + locale;
     if (!isKnownPage) return projectRoot + "index" + suffix + ".html";

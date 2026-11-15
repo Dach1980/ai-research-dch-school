@@ -9,8 +9,8 @@ PAGES = {
 }
 EXPECTED = {
     "ru": ("Вопросы и пожелания", "Отправить"),
-    "en": ("Questions & feedback", "Prepare email"),
-    "zh": ("问题与建议", "准备邮件"),
+    "en": ("Questions & feedback", "Send"),
+    "zh": ("问题与建议", "发送"),
 }
 
 class FeedbackPageTests(unittest.TestCase):
@@ -22,6 +22,7 @@ class FeedbackPageTests(unittest.TestCase):
             for token in EXPECTED[lang]:
                 self.assertIn(token, source)
             self.assertIn('id="feedback-form"', source)
+            self.assertIn('../scripts/language-switcher.js', source)
             self.assertIn('mailto:itprof80@gmail.com', source)
             self.assertIn('aria-live="polite"', source)
             self.assertIn('maxlength="3000"', source)

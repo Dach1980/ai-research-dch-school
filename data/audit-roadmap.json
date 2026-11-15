@@ -2429,6 +2429,25 @@
         "Recovery callback и установка нового пароля не проверены.",
         "Это тест отправки через Dashboard; отдельный вызов resetPasswordForEmail из сайта с явным redirectTo ещё не тестировался."
       ]
+    },
+    {
+      "id": "AUD-070",
+      "date": "2026-11-15",
+      "type": "supabase_auth_password_recovery_e2e_and_visibility_fix",
+      "title": "Успешно завершено восстановление пароля на dchai.ru; исправлено отображение переключателя пароля",
+      "result": "Пользователь выполнил полный recovery flow через форму сайта на каноническом домене https://dchai.ru/. Письмо от 12:03 доставлено через Supabase custom SMTP/Unisender Go с отправителем no-reply@auth.dchai.ru и tracking domain links.dchai.ru. Декодированный redirect_to указывает на https://dchai.ru/auth/callback.html?lang=ru&mode=recovery. Пользователь открыл ссылку, ввёл новый пароль и получил подтверждение «Пароль изменён / Пароль успешно изменён. Теперь можно войти в аккаунт». Таким образом, доставка SMTP, redirect на custom domain, recovery callback и обновление пароля подтверждены end-to-end. Дополнительно исправлен scripts/auth-callback.js: переключатель видимости пароля теперь инициализируется непосредственно при показе recovery-формы, а не полагается только на MutationObserver.",
+      "evidence": [
+        "Письмо Reset your password, полученное пользователем 2026-11-15 в 12:03 на dchpost@mail.ru",
+        "Decoded redirect_to=https://dchai.ru/auth/callback.html?lang=ru&mode=recovery",
+        "Пользователь подтвердил успешное изменение пароля; страница показала «Пароль изменён»",
+        "scripts/auth-callback.js: вызов installRecoveryPasswordToggles() сразу после отображения recovery-формы",
+        "Source commit bc64aa25da5c9fd7161e0b843121484c93399814"
+      ],
+      "limitations": [
+        "Исправление переключателя видимости пароля опубликовано в исходном репозитории, но отображение на production необходимо подтвердить после GitHub Pages deployment.",
+        "Signup confirmation flow для отдельного тестового адреса ещё не проверен.",
+        "Публичная регистрация остаётся закрытой."
+      ]
     }
   ],
   "notes": [

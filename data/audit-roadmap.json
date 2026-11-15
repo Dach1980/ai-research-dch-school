@@ -2,7 +2,7 @@
   "schema_version": 1,
   "project": "AI Research DCH School",
   "section": "Аудит и roadmap",
-  "updated_at": "2026-11-14",
+  "updated_at": "2026-11-15",
   "timezone": "Asia/Singapore",
   "principles": [
     "Планетная карта дополняет обычный каталог и не заменяет его.",
@@ -2328,6 +2328,25 @@
         "Не опубликован: требуется CI, deployment и ручная браузерная проверка desktop/mobile, light/dark, клавиатуры и screen reader.",
         "Python пример не запускался в целевой среде; требуется проверить установленную версию scikit-learn.",
         "Фактическая визуальная читаемость SVG на мобильном экране требует проверки."
+      ]
+    },
+    {
+      "id": "AUD-064",
+      "date": "2026-11-15",
+      "type": "supabase_custom_smtp_test_preparation",
+      "title": "Подготовлена проверка SMTP Supabase Auth через Unisender Go",
+      "result": "В REG.RU добавлены DNS-записи для sender domain auth.dchai.ru и tracking domain links.dchai.ru. Unisender Go подтвердил успешную проверку verification TXT и DKIM для auth.dchai.ru; links.dchai.ru отображается со статусом «Настроен». В Supabase Authentication → Emails → SMTP Settings сохранены custom SMTP параметры для отправителя no-reply@auth.dchai.ru с именем AI Research DCH School. Проверено наличие тестового пользователя: адрес dchpost1@mail.ru отсутствует в Supabase Authentication → Users; ранее использованный pea-test-user относится к отдельному Keycloak-контексту и не является пользователем Supabase Auth. Согласован отдельный тестовый сценарий с контролируемым адресом dchpost1@mail.ru. Публичная регистрация сайта остаётся отключённой.",
+      "evidence": [
+        "Supabase project cwzhzmicfipfjxkfbwqa (Authentication → Emails → SMTP Settings; Authentication → Users)",
+        "REG.RU DNS zone dchai.ru",
+        "Unisender Go: проверка auth.dchai.ru — DNS и DKIM пройдены; links.dchai.ru — статус «Настроен»",
+        "scripts/supabase-config.js — registrationEnabled: false"
+      ],
+      "limitations": [
+        "Фактическая отправка и доставка письма через SMTP ещё не проверены.",
+        "Подтверждение email, redirect flow и восстановление пароля ещё не протестированы.",
+        "Тестовая учётная запись в Supabase ещё не создана; создание выполняется отдельно через Dashboard.",
+        "Публичную регистрацию не включать до завершения end-to-end тестирования и повторной проверки безопасности."
       ]
     }
   ],

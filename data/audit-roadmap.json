@@ -2394,6 +2394,23 @@
         "Recovery email ещё не отправлялось.",
         "Фактическая SMTP-доставка и работа recovery redirect ещё не проверены."
       ]
+    },
+    {
+      "id": "AUD-068",
+      "date": "2026-11-15",
+      "type": "supabase_auth_redirect_configuration_verified",
+      "title": "Проверены Site URL и Redirect URL для восстановления пароля Supabase Auth",
+      "result": "Пользователь подтвердил, что Site URL в Supabase Authentication → URL Configuration установлен в https://dach1980.github.io/ai-research-dch-school/. В allow list Redirect URLs присутствует https://dach1980.github.io/ai-research-dch-school/auth/callback.html. Проверенный код scripts/auth.js формирует redirectTo на auth/callback.html с mode=recovery, а scripts/auth-callback.js обрабатывает recovery session и позволяет задать новый пароль. Значения URL соответствуют текущему GitHub Pages адресу сайта и callback-маршруту.",
+      "evidence": [
+        "Supabase Authentication → URL Configuration: Site URL подтверждён пользователем",
+        "Supabase Authentication → URL Configuration: Redirect URL https://dach1980.github.io/ai-research-dch-school/auth/callback.html",
+        "scripts/auth.js: resetPasswordForEmail(email, { redirectTo: emailRedirect()+\"&mode=recovery\" })",
+        "scripts/auth-callback.js: обработка recovery session и updateUser({password})"
+      ],
+      "limitations": [
+        "Фактическая отправка и доставка recovery email через Unisender SMTP ещё не проверены.",
+        "Переход по ссылке из письма и обновление пароля ещё не тестировались."
+      ]
     }
   ],
   "notes": [

@@ -8,7 +8,7 @@ PAGES = {
     "zh": ROOT / "feedback/index-zh.html",
 }
 EXPECTED = {
-    "ru": ("Вопросы и пожелания", "Подготовить письмо"),
+    "ru": ("Вопросы и пожелания", "Отправить"),
     "en": ("Questions & feedback", "Prepare email"),
     "zh": ("问题与建议", "准备邮件"),
 }

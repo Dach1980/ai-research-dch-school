@@ -2411,6 +2411,24 @@
         "Фактическая отправка и доставка recovery email через Unisender SMTP ещё не проверены.",
         "Переход по ссылке из письма и обновление пароля ещё не тестировались."
       ]
+    },
+    {
+      "id": "AUD-069",
+      "date": "2026-11-15",
+      "type": "supabase_unisender_smtp_delivery_verified",
+      "title": "Успешно получено письмо восстановления пароля через Unisender SMTP",
+      "result": "После нажатия Supabase Dashboard → Authentication → Users → dchpost@mail.ru → Send password recovery письмо фактически доставлено на dchpost@mail.ru. В письме отображаются название отправителя AI Research DCH School и адрес no-reply@auth.dchai.ru; ссылка трекинга использует links.dchai.ru. Это подтверждает успешную отправку и получение recovery email через настроенный SMTP/Unisender и работу tracking domain. При декодировании параметра url ссылки обнаружено, что redirect_to указывает на корень сайта https://dach1980.github.io/ai-research-dch-school/, а не на /auth/callback.html. Поэтому ссылку пока не открывали и проверку завершения восстановления пароля не проводили; сначала требуется исправить/проверить redirect destination для письма, отправленного из Dashboard.",
+      "evidence": [
+        "Письмо Reset your password, полученное пользователем 2026-11-15 в 11:48 на dchpost@mail.ru",
+        "From: AI Research DCH School <no-reply@auth.dchai.ru>",
+        "Tracking URL host: links.dchai.ru",
+        "Decoded Supabase verification URL contains redirect_to=https://dach1980.github.io/ai-research-dch-school/"
+      ],
+      "limitations": [
+        "Ссылка из этого письма пока не открывалась.",
+        "Recovery callback и установка нового пароля не проверены.",
+        "Это тест отправки через Dashboard; отдельный вызов resetPasswordForEmail из сайта с явным redirectTo ещё не тестировался."
+      ]
     }
   ],
   "notes": [

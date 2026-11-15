@@ -17,7 +17,7 @@ else{
   const {data,error}=await sb.auth.getSession();if(error)throw error;if(!data.session)throw new Error("No verified session");
   if(recovery){
    title.textContent=lang==="ru"?"Изменение пароля":lang==="en"?"Choose a new password":"设置新密码";message.textContent=lang==="ru"?"Введите новый пароль для аккаунта.":lang==="en"?"Enter a new password for your account.":"请输入账户的新密码。";
-   document.getElementById("new-password-label").textContent=w.newPassword;document.getElementById("confirm-password-label").textContent=w.confirmPassword;document.getElementById("recovery-submit").textContent=w.save;form.hidden=false;link.hidden=true;
+   document.getElementById("new-password-label").textContent=w.newPassword;document.getElementById("confirm-password-label").textContent=w.confirmPassword;document.getElementById("recovery-submit").textContent=w.save;form.hidden=false;link.hidden=true;installRecoveryPasswordToggles();
    form.addEventListener("submit",async e=>{e.preventDefault();const p=document.getElementById("new-password").value,c=document.getElementById("confirm-password").value;if(p.length<8||p!==c){message.textContent=w.mismatch;return}const {error:updateError}=await sb.auth.updateUser({password:p});if(updateError){message.textContent=w.updateError;return}await sb.auth.signOut();title.textContent=lang==="ru"?"Пароль изменён":lang==="en"?"Password updated":"密码已更新";message.textContent=w.updated;form.hidden=true;link.hidden=false;link.href="index.html";link.textContent=w.signin});
   }else{title.textContent=w.ok;message.textContent=w.success;link.hidden=false;link.textContent=w.go;link.href="../lessons/index.html"}
  }catch(e){title.textContent=w.bad;message.textContent=w.error;link.hidden=false;link.href="index.html";link.textContent=w.signin}

@@ -2379,6 +2379,21 @@
         "Redirect URL и фактическая доставка recovery email ещё не проверены.",
         "Запрос восстановления пароля пока не отправлялся; пароль не изменялся."
       ]
+    },
+    {
+      "id": "AUD-067",
+      "date": "2026-11-15",
+      "type": "supabase_auth_test_user_confirmation_status",
+      "title": "Подтверждён статус существующей учётной записи для SMTP-теста",
+      "result": "В карточке Supabase Auth пользователя dchpost@mail.ru проверено поле Confirmed: 04 Nov, 2026 12:19. Учётная запись использует email provider, не является anonymous и не заблокирована. В Dashboard доступно действие Send password recovery. Следующим шагом перед отправкой recovery email назначена проверка URL Configuration, чтобы ссылка восстановления вела на корректный адрес сайта.",
+      "evidence": [
+        "Supabase Dashboard → Authentication → Users → dchpost@mail.ru: Confirmed 04 Nov, 2026 12:19; Provider email; Created 04 Nov, 2026 12:17; Last signed in 10 Nov, 2026 20:57",
+        "Supabase project cwzhzmicfipfjxkfbwqa"
+      ],
+      "limitations": [
+        "Recovery email ещё не отправлялось.",
+        "Фактическая SMTP-доставка и работа recovery redirect ещё не проверены."
+      ]
     }
   ],
   "notes": [

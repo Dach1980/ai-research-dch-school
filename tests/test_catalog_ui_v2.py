@@ -77,7 +77,10 @@ class HierarchicalCatalogUITests(unittest.TestCase):
         self.assertEqual(intro["status"], "published")
         self.assertEqual(intro["content_state"], "published")
         self.assertEqual(set(intro["title_i18n"]), {"ru", "en", "zh"})
-        self.assertEqual(intro["url_i18n"]["ru"], "lessons/xai/01-what-and-why.html")
+        self.assertEqual(intro["url_i18n"]["ru"], "lessons/a-4-2-1.html")
+        legacy = (ROOT / "lessons/xai/01-what-and-why.html").read_text(encoding="utf-8")
+        self.assertIn('url="../a-4-2-1.html"', legacy)
+        self.assertIn('window.location.replace("../a-4-2-1"+suffix+".html"', legacy)
 
     def test_xai_lesson_has_live_multilingual_quizzes_and_explanations(self):
         source = (ROOT / "lessons/data/xai-01-what-and-why.js").read_text(encoding="utf-8")

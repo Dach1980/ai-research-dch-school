@@ -43,6 +43,15 @@ class CanonicalXaiLessonTests(unittest.TestCase):
         for marker in ("<svg", "knowledge-check", "quiz-summary", "Самопроверка"):
             self.assertIn(marker, self.data)
 
+    def test_taxonomy_diagram_labels_wrap_inside_cards_in_all_locales(self):
+        for label in ("Контрпример", "Обнаружить · Улучшить", "Counterfactual", "Discover", "反事实", "改进"):
+            with self.subTest(label=label):
+                self.assertIn(label, self.data)
+        self.assertGreaterEqual(self.data.count('dy=\\\"22\\\"'), 12)
+        self.assertNotIn("Вклад · График · Суррогат · Контрпример</text>", self.data)
+        self.assertNotIn("Attribution · Plot · Surrogate · Counterfactual</text>", self.data)
+        self.assertNotIn("归因 · 图表 · 代理模型 · 反事实</text>", self.data)
+
     def test_original_self_check_is_wired_to_the_canonical_page(self):
         for answer in ('q1: "a"', 'q2: "c"', 'q3: "a"', 'q4: "c"', 'q5: "c"', 'q6: "a"', 'q7: "c"', 'q8: "c"'):
             self.assertIn(answer, self.renderer)

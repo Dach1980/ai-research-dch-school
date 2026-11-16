@@ -47,9 +47,10 @@ class PublishedLessonNavigationContractTests(unittest.TestCase):
     def test_1_5_8_is_followed_by_the_macro_12_gate_not_a_provisional_foundation_candidate(self):
         index = self.step_index("1.5.8")
         next_step = self.steps[index + 1]
-        self.assertEqual(next_step["kind"], "module_gate")
+        self.assertEqual(next_step["kind"], "lesson_gate")
         self.assertEqual(next_step["macro_module"], 12)
-        self.assertIn("Линейные интерпретируемые модели", next_step["title"])
+        self.assertEqual(next_step["code"], "4.1.1")
+        self.assertIn("интерпретируемость модели", next_step["title"])
         self.assertEqual(self.sequence["excluded_candidates"][0]["code"], "3.1.6")
         self.assertIn("candidate_only", self.sequence["excluded_candidates"][0]["reason"])
         self.assertIn('nextSoon:"Следующий урок скоро"', self.script)
@@ -60,8 +61,8 @@ class PublishedLessonNavigationContractTests(unittest.TestCase):
 
     def test_xai_4_2_1_follows_macro_16_and_is_not_adjacent_to_1_5_8(self):
         index = self.step_index("4.2.1")
-        self.assertEqual(self.steps[index - 1]["kind"], "module_gate")
-        self.assertEqual(self.steps[index - 1]["macro_module"], 17)
+        self.assertEqual(self.steps[index - 1]["code"], "4.3.5")
+        self.assertEqual(self.lessons[self.steps[index - 1]["lesson_uid"]]["status"], "planned")
         self.assertEqual(self.steps[index + 1]["code"], "4.2.2")
         self.assertEqual(self.lessons[self.steps[index + 1]["lesson_uid"]]["status"], "planned")
         codes = [step.get("code") for step in self.steps]
@@ -75,6 +76,10 @@ class PublishedLessonNavigationContractTests(unittest.TestCase):
             self.assertIn(macro, gates)
         self.assertEqual(gates[14]["title"], "Каузальность и причинная интерпретация")
         self.assertEqual(gates[15]["title"], "Гетерогенные эффекты")
+        lesson_gates = {step["code"]: step for step in self.steps if step["kind"] == "lesson_gate"}
+        self.assertEqual(lesson_gates["4.1.1"]["macro_module"], 12)
+        self.assertEqual(lesson_gates["4.1.2"]["macro_module"], 12)
+        self.assertEqual(lesson_gates["4.1.5"]["macro_module"], 13)
 
     def test_review_and_planned_lessons_are_never_navigation_targets(self):
         for step in self.steps:

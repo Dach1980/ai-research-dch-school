@@ -2389,19 +2389,58 @@
       "published_content_changed": false,
       "existing_uids_reassigned": false,
       "existing_canonical_urls_changed": false,
-      "unresolved_gates": [
-        "4.1.1",
-        "4.1.2",
-        "4.1.5",
-        "4.7.1",
-        "5.1 lesson breakdown",
-        "5.2 lesson breakdown",
-        "5.5 capstone lesson breakdown"
-      ],
+      "unresolved_gates": [],
       "optional_non_blocking_modules": [
         "5.3",
         "5.4"
       ],
+      "catalog_status_remains": "migration_staging",
+      "production_release": false
+    },
+    "content_detail_approval_2026_11_17": {
+      "status": "approved_by_user",
+      "approved_at": "2026-11-17",
+      "scope": [
+        "4.1.1",
+        "4.1.2",
+        "4.1.5",
+        "4.7.1",
+        "5.1",
+        "5.2",
+        "5.5"
+      ],
+      "theme_5_module_breakdowns": {
+        "5.1": 5,
+        "5.2": 5,
+        "5.5": 7
+      },
+      "new_lessons_added": 21,
+      "lesson_uid_range": "les-a-0147-les-a-0167",
+      "all_new_lessons_status": "planned",
+      "all_new_lessons_content_state": "outline_only",
+      "published_content_changed": false,
+      "production_release": false
+    },
+    "catalog_sync_2026_11_17": {
+      "status": "synchronized_draft",
+      "catalog_version": "3.2.0-draft",
+      "catalog_path": "data/catalog/catalog-v3.json",
+      "sequence_path": "data/curriculum-sequence-track-a.json",
+      "new_lessons_added": 21,
+      "theme_4_lessons_added": 4,
+      "theme_5_lessons_added": 17,
+      "total_catalog_modules": 32,
+      "total_catalog_lessons": 167,
+      "published_lessons": 30,
+      "planned_lessons": 137,
+      "sequence_steps": 172,
+      "sequence_lesson_steps": 167,
+      "remaining_unresolved_gates": [],
+      "all_new_lessons_status": "planned",
+      "all_new_lessons_content_state": "outline_only",
+      "published_content_changed": false,
+      "existing_uids_reassigned": false,
+      "existing_canonical_urls_changed": false,
       "catalog_status_remains": "migration_staging",
       "production_release": false
     }

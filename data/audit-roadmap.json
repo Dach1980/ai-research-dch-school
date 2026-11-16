@@ -1141,7 +1141,7 @@
       "title": "Перенести урок XAI 4.2.1 в единую оболочку уроков Track A",
       "status": "in_progress",
       "priority": "high",
-      "decision": "Созданы канонические RU / EN / 中文 страницы lessons/a-4-2-1.html, lessons/a-4-2-1-en.html и lessons/a-4-2-1-zh.html на общей оболочке уроков. Перенесено отображение всех восьми исходных разделов напрямую из сохранённого мультиязычного источника lessons/data/xai-01-what-and-why.js; сохранены исходные section IDs, SVG, мини-лаборатория, источники, словарь и восемь вопросов самопроверки. Добавлен новый renderer и локализованная проверка ответов. UID les-a-0018, code 4.2.1 и status published сохранены; catalog-v3 указывает новые URL. Старый lessons/xai/01-what-and-why.html стал language-aware redirect. Legacy A.1.2.1 в migration manifest не изменялся, migration_status остаётся staging_not_applied; пользовательский прогресс не переносился. Остаются автоматическая CI/Pages проверка и ручная визуальная приёмка трёх локализаций desktop/mobile light/dark. Отдельно добавлены XAI-specific и navigation contract tests в workflow pages.yml; их результат ожидает автоматического прогона GitHub Actions.",
+      "decision": "Созданы канонические RU / EN / 中文 страницы lessons/a-4-2-1.html, lessons/a-4-2-1-en.html и lessons/a-4-2-1-zh.html на общей оболочке уроков. Перенесено отображение всех восьми исходных разделов напрямую из сохранённого мультиязычного источника lessons/data/xai-01-what-and-why.js; сохранены исходные section IDs, SVG, мини-лаборатория, источники, словарь и восемь вопросов самопроверки. Добавлен новый renderer и локализованная проверка ответов. UID les-a-0018, code 4.2.1 и status published сохранены; catalog-v3 указывает новые URL. Старый lessons/xai/01-what-and-why.html стал language-aware redirect. Legacy A.1.2.1 в migration manifest не изменялся, migration_status остаётся staging_not_applied; пользовательский прогресс не переносился. Остаются автоматическая CI/Pages проверка и ручная визуальная приёмка трёх локализаций desktop/mobile light/dark. Отдельно добавлены XAI-specific и navigation contract tests в workflow pages.yml; их результат ожидает автоматического прогона GitHub Actions. 2026-11-16: владелец школы принял урок 4.2.1 по содержанию и оформлению. Редакционная приёмка зафиксирована; техническое закрытие RM остаётся in_progress до успешного CI и подтверждения production-проверки RU/EN/中文. ",
       "acceptance": [
         "RU / EN / 中文 страницы используют общий header, hero, planet banner, article body, footer и lesson navigation.",
         "Все восемь исходных разделов и переводы доступны на каждой локализации.",
@@ -1149,7 +1149,8 @@
         "Catalog UID/code и legacy mapping не изменены; catalog URL указывает на канонические страницы.",
         "Старый URL перенаправляет на новую страницу с учётом выбранного языка.",
         "Пользовательский прогресс не мигрируется без отдельной проверки схемы.",
-        "CI, Pages и ручная визуальная приёмка завершены."
+        "CI, Pages и ручная визуальная приёмка завершены.",
+        "Редакционная приёмка владельцем школы подтверждена 2026-11-16."
       ],
       "source": "lessons/a-4-2-1.html; lessons/a-4-2-1-en.html; lessons/a-4-2-1-zh.html; scripts/xai-canonical-lesson.js; styles/xai-canonical-lesson.css; lessons/data/xai-01-what-and-why.js; lessons/xai/01-what-and-why.html; data/catalog/catalog-v3.json; tests/test_xai_canonical_lesson.py"
     },
@@ -2665,6 +2666,25 @@
         "Ручной визуальный осмотр самой XAI-страницы на desktop/tablet/mobile и в светлой/тёмной темах для RU/EN/中文 не выполнен; автоматические контрактные и общие responsive browser tests прошли.",
         "Строгая schema production catalog v2 не содержит content_state; для legacy v2 публикация выражена полем status=published. Активная UI-запись v3 использует status=published и content_state=published.",
         "migration-manifest-v3.json остаётся staging_not_applied; миграция legacy IDs и пользовательского прогресса не выполнялась. UI readers не переключались в этой работе — они уже читали v3 до неё."
+      ]
+    },
+    {
+      "id": "AUD-105",
+      "date": "2026-11-16",
+      "type": "xai_4_2_1_editorial_acceptance",
+      "title": "Владелец школы принял урок 4.2.1",
+      "result": "Пользователь подтвердил редакционную приёмку урока 4.2.1 «Что такое XAI и зачем нужно объяснять модели?» по содержанию и оформлению. Приёмка относится к RU/EN/中文 версии как к единому учебному материалу. UID les-a-0018, код 4.2.1, status=published и content_state=published сохранены. Редакционная приёмка отделена от технического завершения переноса в общий дизайн.",
+      "evidence": [
+        "Подтверждение пользователя в чате от 2026-11-16",
+        "data/catalog/catalog-v3.json → les-a-0018",
+        "lessons/a-4-2-1.html",
+        "lessons/a-4-2-1-en.html",
+        "lessons/a-4-2-1-zh.html"
+      ],
+      "limitations": [
+        "Validate learning catalog CI ещё выполняется после исправления устаревших контрактных тестов; последняя завершённая попытка до текущего коммита была failure.",
+        "Production-доступность трёх локализаций и legacy redirect на dchai.ru не удалось независимо подтвердить доступным публичным web preview.",
+        "Ручная визуальная проверка desktop/mobile и light/dark всех трёх локализаций не выполнена."
       ]
     }
   ],

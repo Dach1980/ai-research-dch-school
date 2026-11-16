@@ -2,11 +2,11 @@
  const lesson=window.DCH_DEMO_LESSON;
  if(!lesson?.pages?.length)return;
  const i18n={
- ru:{contents:"Содержание",lessonProgress:"Прогресс урока",allLessons:"Все уроки",courseContents:"Содержание модуля",courseLabel:"ВВОДНЫЙ МОДУЛЬ",localProgress:"Прогресс сохраняется в этом браузере",previous:"Предыдущая",next:"Следующая",unavailable:"Перевод этой страницы пока не подготовлен.",themeDark:"☼ Светлая тема",themeLight:"☾ Тёмная тема"},
- en:{contents:"Contents",lessonProgress:"Lesson progress",allLessons:"All lessons",courseContents:"Module contents",courseLabel:"INTRODUCTORY MODULE",localProgress:"Progress is saved in this browser",previous:"Previous",next:"Next",unavailable:"A translation for this page is not available yet.",themeDark:"☼ Light theme",themeLight:"☾ Dark theme"},
- zh:{contents:"目录",lessonProgress:"课程进度",allLessons:"全部课程",courseContents:"模块目录",courseLabel:"导论模块",localProgress:"进度保存在当前浏览器",previous:"上一页",next:"下一页",unavailable:"此页面的翻译尚未准备好。",themeDark:"☼ 浅色主题",themeLight:"☾ 深色主题"}
+ ru:{contents:"Содержание",lessonProgress:"Прогресс урока",allLessons:"Все уроки",courseContents:"Содержание модуля",courseLabel:"ВВОДНЫЙ МОДУЛЬ",localProgress:"Прогресс сохраняется в этом браузере",previous:"Предыдущая",next:"Следующая",unavailable:"Перевод этой страницы пока не подготовлен.",themeDark:"☼ Светлая тема",themeLight:"☾ Тёмная тема",language:"Выбор языка",settings:"Настройки",lessonProgressLabel:"Прогресс текущего урока",lessonProgressBar:"Прогресс урока",themeToggle:"Переключить тему",close:"Закрыть",lessonPages:"Страницы урока",pageNavigation:"Навигация по страницам"},
+ en:{contents:"Contents",lessonProgress:"Lesson progress",allLessons:"All lessons",courseContents:"Module contents",courseLabel:"INTRODUCTORY MODULE",localProgress:"Progress is saved in this browser",previous:"Previous",next:"Next",unavailable:"A translation for this page is not available yet.",themeDark:"☼ Light theme",themeLight:"☾ Dark theme",language:"Language selection",settings:"Settings",lessonProgressLabel:"Current lesson progress",lessonProgressBar:"Lesson progress",themeToggle:"Toggle theme",close:"Close",lessonPages:"Lesson pages",pageNavigation:"Page navigation"},
+ zh:{contents:"目录",lessonProgress:"课程进度",allLessons:"全部课程",courseContents:"模块目录",courseLabel:"导论模块",localProgress:"进度保存在当前浏览器",previous:"上一页",next:"下一页",unavailable:"此页面的翻译尚未准备好。",themeDark:"☼ 浅色主题",themeLight:"☾ 深色主题",language:"语言选择",settings:"设置",lessonProgressLabel:"当前课程进度",lessonProgressBar:"课程进度",themeToggle:"切换主题",close:"关闭",lessonPages:"课程页面",pageNavigation:"页面导航"}
  };
- const answers={q1:"a",q2:"c",q3:"a",q4:"c",q5:"c",q6:"a",q7:"c",q8:"c",q9:"b",q10:"2"};
+ const answers={q1:"a",q2:"c",q3:"a",q4:"c",q5:"c",q6:"a",q7:"c",q8:"c"};
  const explanations={
   ru:[
    "XAI изучает поведение модели и связь входов с прогнозом; сам прогноз не объясняет, как он получен.",
@@ -114,6 +114,7 @@
   language=next;try{localStorage.setItem("dch-language",language);}catch(_){}
   document.documentElement.lang=language==="zh"?"zh-CN":language;
   document.querySelectorAll("[data-i18n]").forEach(el=>{const key=el.dataset.i18n;if(t(key))el.textContent=t(key);});
+  document.querySelectorAll("[data-i18n-aria]").forEach(el=>{const key=el.dataset.i18nAria;if(t(key))el.setAttribute("aria-label",t(key));});
   buttons.forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.lang===language)));
   applyTheme();renderPage(true);
  }
@@ -127,7 +128,7 @@
    if(feedback&&saved.submitted){const result=scoreQuiz(id,saved);renderQuizFeedback(feedback,result);}
   });
   const summary=document.getElementById("quiz-summary");
-  if(summary){const groups=[state.quiz["1"],state.quiz["2"]].filter(Boolean);let correct=0,answered=0;groups.forEach(group=>Object.entries(group).forEach(([key,value])=>{if(!/^q\d+$/.test(key)||value==="")return;answered++;if(key==="q10"?Math.abs(Number(value)-2)<1e-9:String(value)===answers[key])correct++;}));const labels={ru:"Общий результат самопроверки",en:"Overall self-check result",zh:"自测总成绩"};summary.textContent=groups.length===2?labels[language]+": "+correct+" / 10":(language==="ru"?"Выполнено частей: "+groups.length+" из 2 · ответов: "+answered+" из 10":language==="en"?"Parts completed: "+groups.length+" of 2 · answers: "+answered+" of 10":"已完成部分："+groups.length+" / 2 · 已答题目："+answered+" / 10");}
+  if(summary){const groups=[state.quiz["1"],state.quiz["2"]].filter(Boolean);let correct=0,answered=0;groups.forEach(group=>Object.entries(group).forEach(([key,value])=>{if(!Object.prototype.hasOwnProperty.call(answers,key)||value==="")return;answered++;if(String(value)===answers[key])correct++;}));const labels={ru:"Общий результат самопроверки",en:"Overall self-check result",zh:"自测总成绩"};summary.textContent=groups.length===2?labels[language]+": "+correct+" / 8":(language==="ru"?"Выполнено частей: "+groups.length+" из 2 · ответов: "+answered+" из 10":language==="en"?"Parts completed: "+groups.length+" of 2 · answers: "+answered+" of 8":"已完成部分："+groups.length+" / 2 · 已答题目："+answered+" / 8");}
  }
  function renderQuizFeedback(container,result){
   container.replaceChildren();
@@ -137,24 +138,24 @@
   container.append(list);container.classList.add("is-visible");
  }
  function scoreQuiz(id,saved){
-  const fields=id==="1"?["q1","q2","q3","q4","q5"]:["q6","q7","q8","q9","q10"];
+  const fields=id==="1"?["q1","q2","q3","q4","q5"]:["q6","q7","q8"];
   let score=0,answered=0;const details=[];
   const labels={ru:{correct:"Верно",incorrect:"Неверно",total:"Правильных ответов"},en:{correct:"Correct",incorrect:"Not quite",total:"Correct answers"},zh:{correct:"正确",incorrect:"需要复习",total:"正确答案"}};
   fields.forEach(k=>{
    if(saved[k]===undefined||saved[k]==="")return;
    answered++;
-   const correct=k==="q10"?Math.abs(Number(saved[k])-2)<1e-9:String(saved[k]).trim().toLowerCase()===answers[k];
+   const correct=String(saved[k]).trim().toLowerCase()===answers[k];
    if(correct)score++;
    const index=Number(k.slice(1))-1;
    details.push(k.toUpperCase()+" — "+(correct?labels[language].correct:labels[language].incorrect)+". "+explanations[language][index]);
   });
-  return {score,details,text:labels[language].total+": "+score+" / 5"+(answered<5?" · "+(language==="ru"?"Ответьте на все вопросы для полного результата":language==="en"?"Answer all questions for a complete result":"请完成所有题目以获得完整结果"):"")};
+  return {score,details,text:labels[language].total+": "+score+" / "+fields.length+(answered<fields.length?" · "+(language==="ru"?"Ответьте на все вопросы для полного результата":language==="en"?"Answer all questions for a complete result":"请完成所有题目以获得完整结果"):"")};
  }
  document.addEventListener("submit",event=>{
   const form=event.target.closest(".knowledge-check");if(!form)return;event.preventDefault();
-  const id=form.dataset.quiz,fields=id==="1"?["q1","q2","q3","q4","q5"]:["q6","q7","q8","q9","q10"],saved={};
+  const id=form.dataset.quiz,fields=id==="1"?["q1","q2","q3","q4","q5"]:["q6","q7","q8"],saved={};
   fields.forEach(name=>{const el=form.elements.namedItem(name);saved[name]=el?(el.length?[...el].find(x=>x.checked)?.value||"":el.value):"";});
-  if(fields.some(k=>saved[k]==="")){const msg={ru:"Пожалуйста, ответьте на все пять вопросов этой страницы.",en:"Please answer all five questions on this page.",zh:"请回答本页全部五道题。"};form.querySelector(".quiz-feedback").textContent=msg[language];form.querySelector(".quiz-feedback").classList.add("is-visible");return;}
+  if(fields.some(k=>saved[k]==="")){const msg={ru:"Пожалуйста, ответьте на все вопросы этой части.",en:"Please answer all questions in this part.",zh:"请回答本部分的全部问题。"};form.querySelector(".quiz-feedback").textContent=msg[language];form.querySelector(".quiz-feedback").classList.add("is-visible");return;}
   saved.submitted=true;state.quiz[id]=saved;save();const result=scoreQuiz(id,saved),feedback=form.querySelector(".quiz-feedback");
   renderQuizFeedback(feedback,result);
   const btn=form.querySelector(".quiz-submit");btn.textContent=language==="ru"?"Ответы сохранены":language==="en"?"Answers saved":"答案已保存";

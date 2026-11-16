@@ -1,0 +1,6 @@
+.xai-svg-figure{padding:16px 14px;overflow:hidden}
+.xai-svg-figure figcaption{margin-bottom:14px}
+.xai-svg{display:block;width:100%;height:auto;max-width:680px;margin:0 auto;overflow:visible}
+.xai-svg text{font-family:inherit}
+@media(max-width:640px){.xai-svg-figure{padding:12px 8px}.xai-svg{width:100%;max-width:100%}.xai-svg-figure figcaption{font-size:14px;line-height:1.45}}
+@media(prefers-reduced-motion:reduce){.xai-svg *{transition:none!important;animation:none!important}}

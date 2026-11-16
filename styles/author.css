@@ -53,15 +53,20 @@
   font:700 9px/1.2 Manrope,sans-serif;
   letter-spacing:.19em;
 }
+.author-caption-kicker{display:block}
 .author-caption-terms{
-  display:flex;align-items:center;flex-wrap:wrap;
-  gap:8px;
+  display:grid !important;
+  grid-template-columns:max-content 4px max-content 4px max-content;
+  align-items:center;justify-content:start;
+  column-gap:9px;row-gap:0;
+  width:max-content;max-width:100%;
   color:#f1f5ff;
-  font:800 11px/1.35 Manrope,sans-serif;
-  letter-spacing:.085em;
+  font:800 11px/1.5 Manrope,sans-serif;
+  letter-spacing:.07em;
 }
+.author-caption-terms > span{display:block;white-space:nowrap}
 .author-caption-terms i{
-  display:block;width:4px;height:4px;flex:0 0 4px;
+  display:block;width:4px;height:4px;
   border-radius:50%;
   background:linear-gradient(135deg,#65b4ff,#b69aff);
   box-shadow:0 0 9px rgba(132,158,255,.75);

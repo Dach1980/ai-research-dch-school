@@ -32,7 +32,7 @@ class CanonicalXaiLessonTests(unittest.TestCase):
                 self.assertIn('<nav class="lesson-nav"', source)
                 self.assertIn(title, source)
                 self.assertIn("xai-01-what-and-why.js", source)
-                self.assertIn("lesson-assessment.js", source) is False
+                self.assertNotIn("lesson-assessment.js", source)
 
     def test_all_eight_original_sections_and_localizations_are_rendered(self):
         for page_id in ("why", "xai-mi", "applications", "regulation", "terms", "taxonomy", "methods-passport", "summary"):

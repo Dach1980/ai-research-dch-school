@@ -6,7 +6,8 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / "lessons/data/xai-01-what-and-why.js"
-SHELL = ROOT / "lessons/xai/01-what-and-why.html"
+SHELL = ROOT / "lessons/a-4-2-1.html"
+LEGACY = ROOT / "lessons/xai/01-what-and-why.html"
 READER = ROOT / "scripts/lesson-reader.js"
 CSS = ROOT / "styles/xai-lesson.css"
 LOCALES = ("ru", "en", "zh")
@@ -32,6 +33,7 @@ class XaiLessonTests(unittest.TestCase):
         cls.lesson = load_lesson()
         cls.shell = SHELL.read_text(encoding="utf-8")
         cls.reader = READER.read_text(encoding="utf-8")
+        cls.renderer = (ROOT / "scripts/xai-canonical-lesson.js").read_text(encoding="utf-8")
 
     def test_stable_identity_and_complete_locales(self):
         self.assertEqual(self.lesson["id"], "xai-01-what-and-why")
@@ -80,17 +82,18 @@ class XaiLessonTests(unittest.TestCase):
             self.assertNotIn('name="q9"', source)
             self.assertNotIn('name="q10"', source)
         for key in ("q1", "q2", "q3", "q4", "q5", "q6", "q7", "q8"):
-            self.assertIn(f'{key}:"', self.reader)
-        self.assertIn('correct+" / 8"', self.reader)
-        self.assertIn('score+" / "+fields.length', self.reader)
+            self.assertIn(f'{key}: "', self.renderer)
+        self.assertIn('score + " / 8"', self.renderer)
+        self.assertIn('score + " / " + fields.length', self.renderer)
 
     def test_shell_localization_theme_and_mobile_styles(self):
         self.assertIn("styles/xai-lesson.css", self.shell)
         self.assertIn('<nav class="lesson-nav"', self.shell)
-        self.assertIn("../../scripts/lesson-layout.js", self.shell)
-        for key in ("language", "settings", "lessonProgressLabel", "lessonProgressBar", "themeToggle", "lessonPages", "pageNavigation"):
-            self.assertIn(f'data-i18n-aria="{key}"', self.shell)
-            self.assertIn(key+":", self.reader)
+        self.assertIn("../scripts/lesson-layout.js", self.shell)
+        self.assertIn("../scripts/language-switcher.js", self.shell)
+        self.assertIn("../scripts/theme-system.js", self.shell)
+        for key in ("outcomesTitle", "lesson.pages.forEach", "quiz-summary"):
+            self.assertIn(key, self.renderer)
         self.assertIn("@media(max-width:640px)", CSS.read_text(encoding="utf-8"))
         self.assertIn("var(--diagram-box)", self.lesson["pages"][0]["content"]["ru"])
 
@@ -103,12 +106,12 @@ class XaiLessonTests(unittest.TestCase):
         v3 = json.loads((ROOT / "data/catalog/catalog-v3.json").read_text(encoding="utf-8"))
         intro = next(item for item in v3["lessons"] if item["uid"] == "les-a-0018")
         self.assertEqual((intro["status"], intro["content_state"]), ("published", "published"))
-        self.assertEqual(intro["url_i18n"]["ru"], "lessons/xai/01-what-and-why.html")
+        self.assertEqual(intro["url_i18n"]["ru"], "lessons/a-4-2-1.html")
 
     def test_local_practice_link_resolves(self):
         content = next(page["content"]["ru"] for page in self.lesson["pages"] if page["id"] == "methods-passport")
         hrefs = re.findall(r'href="([^"]+)"', content)
-        target = (SHELL.parent / "../practice/xai-a1-2-1-passport.py").resolve()
+        target = (LEGACY.parent / "../practice/xai-a1-2-1-passport.py").resolve()
         self.assertTrue(target.is_file(), f"missing mini-lab script: {target}")
         self.assertIn("../practice/xai-a1-2-1-passport.py", hrefs)
 

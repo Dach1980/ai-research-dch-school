@@ -2433,7 +2433,7 @@
       "total_catalog_lessons": 167,
       "published_lessons": 30,
       "planned_lessons": 137,
-      "sequence_steps": 172,
+      "sequence_steps": 169,
       "sequence_lesson_steps": 167,
       "remaining_unresolved_gates": [],
       "all_new_lessons_status": "planned",
@@ -2442,7 +2442,11 @@
       "existing_uids_reassigned": false,
       "existing_canonical_urls_changed": false,
       "catalog_status_remains": "migration_staging",
-      "production_release": false
+      "production_release": false,
+      "remaining_optional_gates": [
+        "mod-a-05-03",
+        "mod-a-05-04"
+      ]
     }
   }
 }

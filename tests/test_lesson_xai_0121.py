@@ -98,6 +98,10 @@ class XaiLessonTests(unittest.TestCase):
         self.assertEqual(lesson["status"], "published")
         self.assertEqual(set(lesson["languages"]), set(LOCALES))
         self.assertTrue(any(item["lesson_id"] == "A.1.2.1" for item in catalog["planets"]))
+        v3 = json.loads((ROOT / "data/catalog/catalog-v3.json").read_text(encoding="utf-8"))
+        intro = next(item for item in v3["lessons"] if item["uid"] == "les-a-0018")
+        self.assertEqual((intro["status"], intro["content_state"]), ("published", "published"))
+        self.assertEqual(intro["url_i18n"]["ru"], "lessons/xai/01-what-and-why.html")
 
     def test_local_practice_link_resolves(self):
         content = next(page["content"]["ru"] for page in self.lesson["pages"] if page["id"] == "methods-passport")

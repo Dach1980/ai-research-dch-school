@@ -1037,7 +1037,7 @@
       "title": "Завершить и опубликовать урок A.1.2.1 «Что такое XAI и зачем нужно объяснять модели?»",
       "status": "done",
       "priority": "high",
-      "decision": "Существующий мультиязычный урок доработан без смены URL и технического ID. Добавлены четыре SVG-схемы на RU/EN/中文, уточнены определения и ограничения, самопроверка приведена к восьми вопросам. Catalog v2 переведён в published, урок добавлен девятой планетой Knowledge Map. Catalog v3 остался staging. Полный CI, Playwright responsive checks, Supabase migrations и GitHub Pages deployment завершились успешно. Ручная визуальная проверка пользователем всех локалей и тем остаётся отдельным шагом.",
+      "decision": "Существующий мультиязычный урок сохранён под прежним URL и legacy ID A.1.2.1. Проверка исходного кода показала, что scripts/lesson-catalog.js, scripts/planet-map-catalog.js и scripts/home-knowledge-map.js уже читают catalog-v3.json. Без изменения reader и без миграции пользовательских прогрессов обновлена существующая v3-запись les-a-0018 (код 4.2.1), уже являющаяся одним из fragment-mapped targets A.1.2.1: status=published, content_state=published, локализованные title/url. В v2 legacy-запись также published и сохранена планетная проекция planet-A-9. Остальные XAI-уроки остались planned. Migration manifest остаётся staging_not_applied; переключение/миграция идентификаторов не выполнялась.",
       "acceptance": [
         "Сохранены ID xai-01-what-and-why, код A.1.2.1 и URL lessons/xai/01-what-and-why.html.",
         "RU/EN/中文 содержат равнозначную теорию, примеры, практику, ограничения и самопроверку из восьми вопросов.",
@@ -1066,6 +1066,10 @@
         "manual_visual_qa": {
           "status": "pending",
           "note": "Автоматическая Playwright-проверка адаптивности и переполнения прошла. Ручной осмотр desktop/mobile и светлой/тёмной тем всех локалей не выполнен."
+        },
+        "v3_catalog_and_map": {
+          "status": "pending",
+          "note": "Обновлена существующая v3-запись les-a-0018 code 4.2.1, которую уже использует текущий catalogue/map reader; CI и deployment после коммита ожидаются."
         }
       },
       "evidence": [
@@ -1081,7 +1085,7 @@
       "limitations": [
         "Ручная визуальная приёмка всех трёх локализаций на desktop/mobile в светлой/тёмной темах остаётся незавершённой.",
         "Catalog v2 schema не содержит поля content_state и запрещает дополнительные свойства; в production v2 единственным поддерживаемым полем публикационного статуса является status. content_state не добавлялся, чтобы не нарушить схему.",
-        "Catalog v3 остаётся staging и не переключался на production."
+        "Migration manifest v3 остаётся staging_not_applied; пользовательские ID/progress не мигрировались, reader scripts не переключались."
       ]
     }
   ],
@@ -2532,11 +2536,12 @@
         "Аудит: docs/audits/A1_2_1_XAI_AUDIT_2026-11-16.md",
         "CI + Pages deployment: https://github.com/Dach1980/ai-research-dch-school/actions/runs/43787069985",
         "Полная проверка каталога и браузерных тестов: https://github.com/Dach1980/ai-research-dch-school/actions/runs/43787070130",
-        "Production: https://dchai.ru/"
+        "Production: https://dchai.ru/",
+        "v3 catalogue mapping: data/catalog/catalog-v3.json → les-a-0018 (4.2.1)"
       ],
       "limitations": [
         "Ручной визуальный осмотр всех трёх локализаций на desktop/mobile в светлой/тёмной темах не выполнен.",
-        "В строгой схеме production catalog v2 нет content_state; статус published выражается полем status. v3 не изменялся."
+        "Migration manifest остаётся staging_not_applied; reader не переключался, прогресс пользователей не мигрировался."
       ]
     }
   ],

@@ -54,7 +54,7 @@ class HierarchicalCatalogUITests(unittest.TestCase):
             self.assertEqual(page.count("language-switcher.js"), 1, relative)
             self.assertEqual(page.count("theme-system.js"), 1, relative)
 
-    def test_xai_review_lesson_has_multilingual_content_and_primary_sources(self):
+    def test_xai_published_legacy_lesson_maps_to_v3_intro(self):
         source = (ROOT / "lessons/data/xai-01-what-and-why.js").read_text(encoding="utf-8")
         for page_id in ["why", "xai-mi", "applications", "regulation", "terms", "taxonomy", "methods-passport", "summary"]:
             self.assertIn('"id": "' + page_id + '"', source)
@@ -68,9 +68,16 @@ class HierarchicalCatalogUITests(unittest.TestCase):
         ]:
             self.assertIn(reference, source)
         catalog = __import__("json").loads((ROOT / "data/catalog/catalog-v2.json").read_text(encoding="utf-8"))
-        draft = next(item for item in catalog["lessons"] if item["id"] == "A.1.2.1")
-        self.assertEqual(draft["status"], "review")
-        self.assertNotIn("A.1.2.1", {item["lesson_id"] for item in catalog["planets"]})
+        lesson = next(item for item in catalog["lessons"] if item["id"] == "A.1.2.1")
+        self.assertEqual(lesson["status"], "published")
+        self.assertIn("A.1.2.1", {item["lesson_id"] for item in catalog["planets"]})
+        v3 = json.loads((ROOT / "data/catalog/catalog-v3.json").read_text(encoding="utf-8"))
+        intro = next(item for item in v3["lessons"] if item["uid"] == "les-a-0018")
+        self.assertEqual(intro["code"], "4.2.1")
+        self.assertEqual(intro["status"], "published")
+        self.assertEqual(intro["content_state"], "published")
+        self.assertEqual(set(intro["title_i18n"]), {"ru", "en", "zh"})
+        self.assertEqual(intro["url_i18n"]["ru"], "lessons/xai/01-what-and-why.html")
 
     def test_xai_lesson_has_live_multilingual_quizzes_and_explanations(self):
         source = (ROOT / "lessons/data/xai-01-what-and-why.js").read_text(encoding="utf-8")

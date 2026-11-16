@@ -74,7 +74,7 @@
       "number": 4,
       "code": "4",
       "title": "Основы Explainable AI (XAI)",
-      "status": "planned"
+      "status": "in_progress"
     },
     {
       "uid": "thm-a-05",
@@ -208,7 +208,7 @@
       "theme_uid": "thm-a-04",
       "number": 2,
       "title": "Таксономия XAI и важность признаков",
-      "status": "planned"
+      "status": "in_progress"
     },
     {
       "uid": "mod-a-04-03",
@@ -886,13 +886,29 @@
       "theme_uid": "thm-a-04",
       "module_uid": "mod-a-04-02",
       "code": "4.2.1",
-      "title": "Что такое Explainable AI",
-      "status": "planned",
+      "title": "Что такое XAI и зачем нужно объяснять модели?",
+      "status": "published",
       "access": "open",
       "level": "beginner",
       "prerequisite_uids": [],
-      "learning_outcomes": [],
-      "content_state": "outline_only"
+      "learning_outcomes": [
+        "Определять XAI и различать прогноз модели и объяснение её поведения.",
+        "Различать локальные и глобальные объяснения, intrinsic и post-hoc подходы.",
+        "Объяснять рабочее различие interpretability и explainability и связь XAI с Mechanistic Interpretability.",
+        "Подбирать метод анализа под конкретный вопрос к модели.",
+        "Распознавать ограничения объяснений и не отождествлять важность признака с причинным эффектом."
+      ],
+      "content_state": "published",
+      "title_i18n": {
+        "ru": "Что такое XAI и зачем нужно объяснять модели?",
+        "en": "What Is XAI and Why Explain Models?",
+        "zh": "什么是 XAI？为什么要解释模型？"
+      },
+      "url_i18n": {
+        "ru": "lessons/xai/01-what-and-why.html",
+        "en": "lessons/xai/01-what-and-why.html",
+        "zh": "lessons/xai/01-what-and-why.html"
+      }
     },
     {
       "uid": "les-a-0019",

@@ -14,9 +14,9 @@ class Tests(unittest.TestCase):
   x=c.load_catalog(ROOT/"data/catalog/catalog-v2.json");a={z["id"]:z for z in x["lessons"]}
   self.assertEqual(x["themes"][0]["id"],"A.1");self.assertEqual({z["id"] for z in x["modules"]},{"A.1.1","A.1.2"})
   self.assertEqual({z["id"] for z in x["lessons"]},{f"A.1.1.{i}" for i in range(1,7)}|{"A.1.2.1","A.1.1.7","A.1.1.8"})
-  self.assertEqual(a["A.1.2.1"]["status"],"review")
+  self.assertEqual(a["A.1.2.1"]["status"],"published")
   self.assertEqual(a["A.1.2.1"]["prerequisites"],["A.1.1.6"])
-  self.assertNotIn("A.1.2.1",{z["lesson_id"] for z in x["planets"]})
+  self.assertIn("A.1.2.1",{z["lesson_id"] for z in x["planets"]})
   self.assertEqual(c.validate_relationships(x),[])
  def test_crosswalk_and_planets(self):
   a=c.load_catalog(ROOT/"data/catalog");b=c.load_catalog(ROOT/"data/catalog/catalog-v2.json")
@@ -29,6 +29,7 @@ class Tests(unittest.TestCase):
   self.assertTrue(all(new_planets.get(k)==v for k,v in old_planets.items()))
   self.assertEqual(new_planets["planet-A-7"],"A.1.1.7")
   self.assertEqual(new_planets["planet-A-8"],"A.1.1.8")
+  self.assertEqual(new_planets["planet-A-9"],"A.1.2.1")
  def test_missing_parent_rejected(self):
   x=c.load_catalog(ROOT/"data/catalog/catalog-v2.json");x["modules"][0]["theme_id"]="missing"
   self.assertTrue(any("missing theme" in z for z in c.validate_relationships(x)))

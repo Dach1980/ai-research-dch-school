@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-12",
+  "updated_at": "2026-11-16",
   "canonical_decision": {
     "authority": "docs/management/TRACK_A_ARCHITECTURE_PROPOSAL.md",
     "track_a": "The 16 module architecture 11-26 in the approved 2026-11-05 decision is canonical for the XAI/Understanding AI sequence.",
@@ -84,7 +84,7 @@
         "number": 4,
         "code": "4",
         "title": "Основы Explainable AI (XAI)",
-        "status": "planned"
+        "status": "active"
       },
       {
         "uid": "thm-a-05",
@@ -213,7 +213,7 @@
         "theme_uid": "thm-a-04",
         "number": 2,
         "title": "Таксономия XAI и важность признаков",
-        "status": "planned"
+        "status": "active"
       },
       {
         "uid": "mod-a-04-03",
@@ -286,18 +286,18 @@
         "status": "planned"
       }
     ],
-    "lesson_count": 55,
+    "lesson_count": 57,
     "lesson_status_counts": {
-      "published": 15,
-      "review": 1,
-      "planned": 39
+      "published": 30,
+      "review": 0,
+      "planned": 27
     },
     "actual_lesson_counts": {
-      "published": 15,
-      "review": 1,
-      "planned": 39
+      "published": 30,
+      "review": 0,
+      "planned": 27
     },
-    "lessons_with_ru_page": 16
+    "lessons_with_ru_page": 30
   },
   "module_mapping": [
     {
@@ -496,7 +496,9 @@
         "les-a-0048",
         "les-a-0050",
         "les-a-0051",
-        "les-a-0052"
+        "les-a-0052",
+        "les-a-0056",
+        "les-a-0057"
       ],
       "lesson_codes": [
         "1.1.1",
@@ -525,7 +527,9 @@
         "1.5.7",
         "1.2.4",
         "1.1.2",
-        "1.1.4"
+        "1.1.4",
+        "1.2.3",
+        "1.5.8"
       ],
       "lesson_statuses": [
         "published",
@@ -540,25 +544,27 @@
         "published",
         "published",
         "published",
-        "review",
-        "planned",
-        "planned",
-        "planned",
-        "planned",
-        "planned",
-        "planned",
-        "planned",
-        "planned",
-        "planned",
-        "planned",
-        "planned",
+        "published",
+        "published",
+        "published",
+        "published",
+        "published",
+        "published",
+        "published",
+        "published",
+        "published",
+        "published",
+        "published",
+        "published",
+        "published",
+        "published",
         "published",
         "published",
         "published"
       ],
       "mapping_confidence": "medium",
       "catalog_mapping_status": "mapped",
-      "content_coverage_status": "partial_published_core",
+      "content_coverage_status": "published_theme_1_core",
       "mapping_note": "Единый вводный макромодуль 11 покрывается пятью детализированными модулями каталога Theme 1; mapping many-to-many."
     },
     {
@@ -714,7 +720,7 @@
         "4.7.4"
       ],
       "lesson_statuses": [
-        "planned",
+        "published",
         "planned",
         "planned",
         "planned",
@@ -737,7 +743,7 @@
       ],
       "mapping_confidence": "low",
       "catalog_mapping_status": "planned_only",
-      "content_coverage_status": "listed_only_no_published_page",
+      "content_coverage_status": "partial_published_core",
       "mapping_note": "Классические методы XAI; модули 5.3/5.4 трактуются как углублённые лабораторные SHAP и counterfactual, а не отдельные макромодули."
     },
     {

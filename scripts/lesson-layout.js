@@ -103,8 +103,13 @@ if(main){
   if(index<0)return;
   var fragment=document.createDocumentFragment();
   if(index>0){
-   var previous=published[index-1];
-   fragment.appendChild(link("secondary",new URL(previous.url_i18n[locale],rootUrl).href,text.previous+previous.code));
+   var previous=published[index-1],previousCode=previous.code;
+   /* Legacy A.1 numbering is retained for the XAI reader until the v3 curriculum migration is complete. */
+   if(currentPath==="01-what-and-why.html"){
+    previous=published.find(function(item){return item.url_i18n[locale].split("/").pop()==="a-1-1-4"+(locale==="ru"?"":"-"+locale)+".html";})||previous;
+    previousCode="A.1.1.8";
+   }
+   fragment.appendChild(link("secondary",new URL(previous.url_i18n[locale],rootUrl).href,text.previous+previousCode));
   }
   if(index<published.length-1){
    var next=published[index+1];

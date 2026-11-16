@@ -2,7 +2,7 @@
   "schema_version": 1,
   "project": "AI Research DCH School",
   "section": "Аудит и roadmap",
-  "updated_at": "2026-11-15",
+  "updated_at": "2026-11-16",
   "timezone": "Asia/Singapore",
   "principles": [
     "Планетная карта дополняет обычный каталог и не заменяет его.",
@@ -1029,6 +1029,59 @@
         "Каталог остаётся review до прохождения обязательных автоматических проверок.",
         "Ручная визуальная приёмка всех локалей и тем требует отдельного подтверждения.",
         "Переводы EN и 中文 желательно дополнительно вычитать носителям языка."
+      ]
+    },
+    {
+      "id": "RM-LESSON-A121",
+      "date": "2026-11-16",
+      "title": "Завершить и опубликовать урок A.1.2.1 «Что такое XAI и зачем нужно объяснять модели?»",
+      "status": "done",
+      "priority": "high",
+      "decision": "Существующий мультиязычный урок доработан без смены URL и технического ID. Добавлены четыре SVG-схемы на RU/EN/中文, уточнены определения и ограничения, самопроверка приведена к восьми вопросам. Catalog v2 переведён в published, урок добавлен девятой планетой Knowledge Map. Catalog v3 остался staging. Полный CI, Playwright responsive checks, Supabase migrations и GitHub Pages deployment завершились успешно. Ручная визуальная проверка пользователем всех локалей и тем остаётся отдельным шагом.",
+      "acceptance": [
+        "Сохранены ID xai-01-what-and-why, код A.1.2.1 и URL lessons/xai/01-what-and-why.html.",
+        "RU/EN/中文 содержат равнозначную теорию, примеры, практику, ограничения и самопроверку из восьми вопросов.",
+        "Четыре SVG имеют локализованные title/desc/подписи и одинаковую геометрию во всех локалях.",
+        "Новый контрактный тест A.1.2.1, каталоговые проверки, мультиязычная проверка, SVG-аудит и браузерные проверки проходят.",
+        "Catalog v2 status=published; урок присутствует в Knowledge Map; v3 остаётся staging.",
+        "GitHub Pages deployment для опубликованного каталога завершается успешно.",
+        "Ручная визуальная приёмка desktop/mobile и light/dark всех трёх локалей фиксируется отдельно."
+      ],
+      "verification": {
+        "xai_lesson_contract": {
+          "status": "success",
+          "run_id": 43787069985,
+          "commit": "aeb0f5ae20dfd9c984c6c605fe7fca57b2a78661"
+        },
+        "catalog_and_browser_validation": {
+          "status": "success",
+          "run_id": 43787070130,
+          "commit": "aeb0f5ae20dfd9c984c6c605fe7fca57b2a78661"
+        },
+        "pages_deployment": {
+          "status": "success",
+          "run_id": 43787069985,
+          "commit": "aeb0f5ae20dfd9c984c6c605fe7fca57b2a78661"
+        },
+        "manual_visual_qa": {
+          "status": "pending",
+          "note": "Автоматическая Playwright-проверка адаптивности и переполнения прошла. Ручной осмотр desktop/mobile и светлой/тёмной тем всех локалей не выполнен."
+        }
+      },
+      "evidence": [
+        "lessons/xai/01-what-and-why.html",
+        "lessons/data/xai-01-what-and-why.js",
+        "styles/xai-lesson.css",
+        "tests/test_lesson_xai_0121.py",
+        "data/catalog/catalog-v2.json",
+        "docs/audits/A1_2_1_XAI_AUDIT_2026-11-16.md",
+        "https://github.com/Dach1980/ai-research-dch-school/actions/runs/43787069985",
+        "https://github.com/Dach1980/ai-research-dch-school/actions/runs/43787070130"
+      ],
+      "limitations": [
+        "Ручная визуальная приёмка всех трёх локализаций на desktop/mobile в светлой/тёмной темах остаётся незавершённой.",
+        "Catalog v2 schema не содержит поля content_state и запрещает дополнительные свойства; в production v2 единственным поддерживаемым полем публикационного статуса является status. content_state не добавлялся, чтобы не нарушить схему.",
+        "Catalog v3 остаётся staging и не переключался на production."
       ]
     }
   ],
@@ -2463,6 +2516,27 @@
       "limitations": [
         "Подтверждена визуальная приёмка на опубликованной форме восстановления; отдельная проверка переключателя на регистрации/изменении пароля не заявляется.",
         "Signup confirmation flow, Supabase Security Advisor, юридические документы и проверка локализации персональных данных остаются отдельными задачами."
+      ]
+    },
+    {
+      "id": "AUD-072",
+      "date": "2026-11-16",
+      "type": "xai_lesson_a121_publication",
+      "title": "Урок A.1.2.1 доработан, автоматические проверки и GitHub Pages deployment пройдены",
+      "result": "Существующий урок xai-01-what-and-why сохранён под прежним ID и URL. Содержимое дополнено на RU/EN/中文; добавлены четыре локализованные SVG-схемы, расширены объяснения intrinsic/post-hoc, local/global, interpretability/explainability и XAI/Mechanistic Interpretability, добавлен разбор ассоциации/чувствительности/причинности. Самопроверка приведена к восьми вопросам. Catalog v2 status переведён в published, в Knowledge Map добавлена planet-A-9. Основной CI и deployment run 43787069985 — success; полная проверка каталога и браузерных сценариев run 43787070130 — success. Production environment URL: https://dchai.ru/.",
+      "evidence": [
+        "Содержимое: lessons/data/xai-01-what-and-why.js",
+        "Страница: lessons/xai/01-what-and-why.html",
+        "Контрактный тест: tests/test_lesson_xai_0121.py",
+        "Каталог и Knowledge Map: data/catalog/catalog-v2.json",
+        "Аудит: docs/audits/A1_2_1_XAI_AUDIT_2026-11-16.md",
+        "CI + Pages deployment: https://github.com/Dach1980/ai-research-dch-school/actions/runs/43787069985",
+        "Полная проверка каталога и браузерных тестов: https://github.com/Dach1980/ai-research-dch-school/actions/runs/43787070130",
+        "Production: https://dchai.ru/"
+      ],
+      "limitations": [
+        "Ручной визуальный осмотр всех трёх локализаций на desktop/mobile в светлой/тёмной темах не выполнен.",
+        "В строгой схеме production catalog v2 нет content_state; статус published выражается полем status. v3 не изменялся."
       ]
     }
   ],

@@ -92,6 +92,13 @@ class XaiLessonTests(unittest.TestCase):
         self.assertIn("@media(max-width:640px)", CSS.read_text(encoding="utf-8"))
         self.assertIn("var(--diagram-box)", self.lesson["pages"][0]["content"]["ru"])
 
+    def test_catalog_publication_and_knowledge_map(self):
+        catalog = json.loads((ROOT / "data/catalog/catalog-v2.json").read_text(encoding="utf-8"))
+        lesson = next(item for item in catalog["lessons"] if item["id"] == "A.1.2.1")
+        self.assertEqual(lesson["status"], "published")
+        self.assertEqual(set(lesson["languages"]), set(LOCALES))
+        self.assertTrue(any(item["lesson_id"] == "A.1.2.1" for item in catalog["planets"]))
+
     def test_local_practice_link_resolves(self):
         content = next(page["content"]["ru"] for page in self.lesson["pages"] if page["id"] == "methods-passport")
         hrefs = re.findall(r'href="([^"]+)"', content)

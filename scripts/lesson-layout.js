@@ -57,7 +57,7 @@ if(main){
 
 /*
  * Canonical Track A lesson navigation.
- * The complete catalog is the authority for lesson order and publication state;
+ * The explicit curriculum sequence is the authority for lesson order; the catalog owns publication state.
  * this shared normalizer makes legacy page markup render consistently.
  */
 (function(){

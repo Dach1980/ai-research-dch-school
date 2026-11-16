@@ -86,6 +86,8 @@ class XaiLessonTests(unittest.TestCase):
 
     def test_shell_localization_theme_and_mobile_styles(self):
         self.assertIn("styles/xai-lesson.css", self.shell)
+        self.assertIn('<nav class="lesson-nav"', self.shell)
+        self.assertIn("../../scripts/lesson-layout.js", self.shell)
         for key in ("language", "settings", "lessonProgressLabel", "lessonProgressBar", "themeToggle", "lessonPages", "pageNavigation"):
             self.assertIn(f'data-i18n-aria="{key}"', self.shell)
             self.assertIn(key+":", self.reader)

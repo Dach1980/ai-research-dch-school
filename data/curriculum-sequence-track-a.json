@@ -4,7 +4,7 @@
   "updated_at": "2026-11-16",
   "status": "approved_architecture_with_unmapped_gates",
   "authority": "docs/management/TRACK_A_ARCHITECTURE_PROPOSAL.md",
-  "description": "Навигационный порядок следует утверждённым макромодулям Track A 11–26. Внутри каждого макромодуля используется редакционная последовательность его уроков. Незаполненные макромодули представлены блокирующими gate-записями, чтобы опубликованные уроки не перепрыгивали через них.",
+  "description": "Навигационный порядок следует утверждённым макромодулям Track A 11–26. Внутри каждого макромодуля используется редакционная последовательность его уроков. Незаполненные уроковые позиции и макромодули представлены блокирующими gate-записями, чтобы опубликованные уроки не перепрыгивали через них.",
   "steps": [
     {
       "kind": "lesson",
@@ -210,9 +210,17 @@
       "status": "published"
     },
     {
-      "kind": "module_gate",
+      "kind": "lesson_gate",
       "macro_module": 12,
-      "title": "Линейные интерпретируемые модели",
+      "code": "4.1.1",
+      "title": "Что такое интерпретируемость модели",
+      "status": "planned"
+    },
+    {
+      "kind": "lesson_gate",
+      "macro_module": 12,
+      "code": "4.1.2",
+      "title": "Интерпретируемость и объяснимость",
       "status": "planned"
     },
     {
@@ -223,16 +231,17 @@
       "status": "planned"
     },
     {
-      "kind": "module_gate",
-      "macro_module": 13,
-      "title": "Нелинейные интерпретируемые модели",
-      "status": "planned"
-    },
-    {
       "kind": "lesson",
       "macro_module": 13,
       "lesson_uid": "les-a-0017",
       "code": "4.1.4",
+      "status": "planned"
+    },
+    {
+      "kind": "lesson_gate",
+      "macro_module": 13,
+      "code": "4.1.5",
+      "title": "Компромисс между точностью и интерпретируемостью",
       "status": "planned"
     },
     {
@@ -245,12 +254,6 @@
       "kind": "module_gate",
       "macro_module": 15,
       "title": "Гетерогенные эффекты",
-      "status": "planned"
-    },
-    {
-      "kind": "module_gate",
-      "macro_module": 16,
-      "title": "Глобальное и локальное поведение модели: PDP, ICE, ALE",
       "status": "planned"
     },
     {
@@ -279,12 +282,6 @@
       "macro_module": 16,
       "lesson_uid": "les-a-0028",
       "code": "4.3.5",
-      "status": "planned"
-    },
-    {
-      "kind": "module_gate",
-      "macro_module": 17,
-      "title": "Классические методы объяснения моделей",
       "status": "planned"
     },
     {
@@ -428,12 +425,6 @@
       "status": "planned"
     },
     {
-      "kind": "module_gate",
-      "macro_module": 18,
-      "title": "Взаимодействия признаков",
-      "status": "planned"
-    },
-    {
       "kind": "lesson",
       "macro_module": 18,
       "lesson_uid": "les-a-0027",
@@ -498,11 +489,13 @@
   ],
   "notes": [
     "Track A macro-module 11 contains the published Theme 1 sequence.",
-    "Macro-modules 12–13 have planned catalog lessons 4.1.3 and 4.1.4; missing lesson-level records do not get invented here.",
+    "Macro-module 12 includes planned lessons 4.1.3 and 4.1.4; missing 4.1.1 and 4.1.2 are explicit lesson gates, not invented catalog records.",
+    "Macro-module 13 includes 4.1.4 and missing lesson 4.1.5 as a gate.",
     "Macro-modules 14 and 15 are distinct approved modules and currently have no catalog lesson UID; each is a navigation gate.",
-    "Macro-module 16 precedes 17; lesson 4.3.5 belongs to macro 16.",
+    "Macro-module 16 includes lessons 4.3.1, 4.3.2, 4.3.3 and 4.3.5.",
     "Macro-module 17 contains XAI introduction 4.2.1 and its method sequence.",
-    "Lesson 4.3.4 belongs to macro-module 18 and therefore follows macro-module 17, despite its numeric code.",
-    "Macro-modules 19–26 have no confirmed lesson-level mappings and remain gates."
+    "Macro-module 18 contains 4.3.4, after macro-module 17 despite numeric code.",
+    "Macro-modules 19–26 have no confirmed lesson-level mappings and remain gates.",
+    "Foundation lesson 3.1.6 is excluded: mapping to macro-module 08 is candidate_only / low confidence."
   ]
 }

@@ -2686,6 +2686,25 @@
         "Production-доступность трёх локализаций и legacy redirect на dchai.ru не удалось независимо подтвердить доступным публичным web preview.",
         "Ручная визуальная проверка desktop/mobile и light/dark всех трёх локализаций не выполнена."
       ]
+    },
+    {
+      "id": "AUD-106",
+      "date": "2026-11-16",
+      "type": "author_profile_created",
+      "title": "Создана мультиязычная страница знакомства с автором",
+      "result": "Созданы страницы about/author.html, about/author-en.html и about/author-zh.html. Фотография assets/hero.jpg из репозитория Dach1980/cherkashin_ai_site скопирована в assets/author-portrait.jpg школы (совпадает SHA исходного файла). Добавлены авторский адаптивный стиль, переключение языков, ссылки на страницы автора из навигации главной страницы на RU/EN/中文.",
+      "evidence": [
+        "Commit e860491f8c085059355339424fc091e8ce49c415",
+        "assets/author-portrait.jpg",
+        "about/author.html",
+        "about/author-en.html",
+        "about/author-zh.html",
+        "styles/author.css"
+      ],
+      "limitations": [
+        "Не выполнена ручная визуальная проверка в браузере на desktop/mobile и в светлой/тёмной теме.",
+        "Проверка Validate learning catalog на commit e860491 не обнаружена среди workflow runs; предыдущая проверка завершалась с ошибкой из-за устаревшего контракта навигации урока 1.5.3, исправление опубликовано в commit 754eda17432c1dde24e771608005a8cbb5662b17."
+      ]
     }
   ],
   "notes": [

@@ -24,11 +24,36 @@ class BrandAssetTests(unittest.TestCase):
             "lessons/a-3-how-machines-learn-from-data.html",
             "lessons/reader.html", "tracks/understanding-ai.html",
             "learning-map/index.html",
+            "about/author.html", "about/author-en.html", "about/author-zh.html",
         ]
         for relative in pages:
             page = (ROOT / relative).read_text(encoding="utf-8")
             self.assertIn("site-brand-icon.jpg", page, relative)
             self.assertIn("assets/favicon.png", page, relative)
+
+    def test_author_profile_is_multilingual_and_uses_local_portrait(self):
+        portrait = ROOT / "assets/author-portrait.jpg"
+        self.assertTrue(portrait.is_file())
+        self.assertGreater(portrait.stat().st_size, 100_000)
+        pages = {
+            "ru": "about/author.html",
+            "en": "about/author-en.html",
+            "zh": "about/author-zh.html",
+        }
+        for locale, relative in pages.items():
+            page = (ROOT / relative).read_text(encoding="utf-8")
+            self.assertIn(f'<html lang="{locale}">', page)
+            self.assertIn("../assets/author-portrait.jpg", page)
+            self.assertIn("../styles/author.css", page)
+            self.assertIn("../scripts/language-switcher.js", page)
+        for relative, href in (
+            ("index.html", "about/author.html"),
+            ("index-en.html", "about/author-en.html"),
+            ("index-zh.html", "about/author-zh.html"),
+        ):
+            self.assertIn(href, (ROOT / relative).read_text(encoding="utf-8"))
+        switcher = (ROOT / "scripts/language-switcher.js").read_text(encoding="utf-8")
+        self.assertIn('const isAuthor = /^about\\/author\\.html$/.test(relativePage);', switcher)
 
     def test_brand_icon_has_consistent_contrast_backing(self):
         sources = [

@@ -83,30 +83,29 @@ if(main){
   a.textContent=label;
   return a;
  }
- fetch(catalogUrl.href).then(function(response){
-  if(!response.ok)throw new Error("Catalog request failed");
-  return response.json();
- }).then(function(catalog){
-  var allLessons=(catalog.lessons||[]).filter(function(item){
-   return item.track_uid==="trk-a";
-  }).sort(function(a,b){
-   var aa=a.code.split(".").map(Number),bb=b.code.split(".").map(Number);
-   for(var i=0;i<Math.max(aa.length,bb.length);i++){
-    var diff=(aa[i]||0)-(bb[i]||0);if(diff)return diff;
-   }
-   return 0;
-  });
+ Promise.all([fetch(catalogUrl.href),fetch(new URL("../data/curriculum-sequence-track-a.json",scriptUrl).href)]).then(function(responses){
+  if(!responses[0].ok||!responses[1].ok)throw new Error("Catalog or curriculum sequence request failed");
+  return Promise.all(responses.map(function(response){return response.json();}));
+ }).then(function(payload){
+  var catalog=payload[0],sequence=payload[1];
+  var steps=sequence.steps||[];
+  var byUid={};
+  (catalog.lessons||[]).forEach(function(item){byUid[item.uid]=item;});
   var currentPath=window.location.pathname.split("/").pop();
-  var index=allLessons.findIndex(function(item){
-   return item.url_i18n&&item.url_i18n[locale]&&item.url_i18n[locale].split("/").pop()===currentPath;
+  var index=steps.findIndex(function(step){
+   if(step.kind!=="lesson")return false;
+   var item=byUid[step.lesson_uid];
+   return item&&item.url_i18n&&item.url_i18n[locale]&&item.url_i18n[locale].split("/").pop()===currentPath;
   });
   if(index<0)return;
   var fragment=document.createDocumentFragment();
-  var previous=index>0?allLessons[index-1]:null;
+  var previousStep=index>0?steps[index-1]:null;
+  var previous=previousStep&&previousStep.kind==="lesson"?byUid[previousStep.lesson_uid]:null;
   if(previous&&previous.status==="published"&&previous.url_i18n&&previous.url_i18n[locale]){
    fragment.appendChild(link("secondary",new URL(previous.url_i18n[locale],rootUrl).href,text.previous+previous.code));
   }
-  var next=index<allLessons.length-1?allLessons[index+1]:null;
+  var nextStep=index<steps.length-1?steps[index+1]:null;
+  var next=nextStep&&nextStep.kind==="lesson"?byUid[nextStep.lesson_uid]:null;
   if(next&&next.status==="published"&&next.url_i18n&&next.url_i18n[locale]){
    fragment.appendChild(link("primary",new URL(next.url_i18n[locale],rootUrl).href,text.next+next.code+" ↗"));
   }else{

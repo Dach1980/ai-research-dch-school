@@ -1102,7 +1102,7 @@
       "title": "Восстановить последовательную навигацию Track A и синхронизировать учебные документы",
       "status": "completed",
       "priority": "high",
-      "decision": "16 ноября исправлена общая навигация: она рассматривает полный набор записей Track A, включая planned, и не перепрыгивает через неопубликованные уроки. Урок 1.5.8 теперь блокируется ближайшей planned-записью 3.1.6; XAI 4.2.1 не получает переход назад к 1.5.8, поскольку непосредственно предшествует planned 4.1.4, а следующий 4.2.2 также planned. Вместо несуществующей ссылки выводится неактивный CTA «Следующий урок скоро». Удалена legacy-подмена подписи A.1.1.8 при ссылке на 1.1.4. Переписан контрактный тест навигации. Governance snapshot и crosswalk обновлены по каталогу на 2026-11-16: 57 UID, 30 published, 27 planned, 0 review. Полная учебная последовательность и prerequisites общей фундаментальной базы 00–10 остаются частично provisional; это обновление не утверждает их автоматически. Коррекция навигации и синхронизация документов выполнены 16 ноября; автоматический прогон workflow и визуальная приёмка новых страниц остаются отдельными открытыми пунктами.",
+      "decision": "16 ноября исправлена общая навигация и добавлена явная последовательность data/curriculum-sequence-track-a.json по утверждённым макромодулям 11–26. Порядок больше не выводится из сортировки кодов. Незавершённые макромодули представлены блокирующими gate-записями. 3.1.6 исключён как candidate_only mapping к общей базе macro 08 до отдельного решения. 4.3.5 отнесён к macro 16; 4.3.4 — к macro 18 после XAI macro 17. Governance snapshot и crosswalk синхронизированы. Автоматическая CI/Pages проверка и визуальная приёмка остаются отдельными открытыми пунктами.",
       "acceptance": [
         "Навигация не перескакивает через ближайшую запись со статусом planned/review.",
         "Урок 1.5.8 не ведёт непосредственно на XAI 4.2.1.",
@@ -1118,7 +1118,7 @@
       "date": "2026-11-16",
       "type": "track_a_curriculum_sequence_navigation_audit",
       "title": "Обнаружен и устранён переход через незавершённые уроки Track A",
-      "result": "Проверка актуального catalog-v3 выявила, что навигация выбирала ближайший опубликованный урок и пропускала planned-записи. Исправлен алгоритм: порядок берётся из полного каталога, а ссылка создаётся только если соседняя запись опубликована. Удалена специальная подмена предыдущего урока для legacy XAI reader. Контрактные тесты проверяют переходы 1.2.1, 1.5.8 и 4.2.1. Счётчики governance и crosswalk синхронизированы с каталогом: 57 Lesson UID, 30 published, 27 planned, 0 review. Перенос XAI в общий дизайн и полная визуальная приёмка остаются открытыми. После обновления каталога для XAI 4.2.1 добавлены отдельные canonical RU/EN/ZH URL; навигация продолжает использовать полный список, поэтому новый URL не создаёт обходных переходов.",
+      "result": "Проверка catalog-v3 выявила, что старая навигация выбирала ближайший опубликованный урок и пропускала planned-записи. Добавлена явная sequence Track A по утверждённым macro 11–26: навигация использует lesson UID и блокирующие gate-записи, а не числовую сортировку. 3.1.6 исключён как provisional candidate для macro 08; 4.3.5 закреплён за macro16, 4.3.4 — за macro18 после macro17. Удалена legacy-подмена подписи A.1.1.8. Governance snapshot и crosswalk обновлены. Счётчики: 57 UID, 30 published, 27 planned, 0 review.",
       "evidence": [
         "scripts/lesson-layout.js",
         "tests/test_lesson_navigation_contract.py",
@@ -1126,11 +1126,13 @@
         "data/curriculum-governance-2026-11-11.json",
         "docs/management/CURRICULUM_CROSSWALK_2026-11-12.md",
         "71181cefa701a955b509ad49fbdf1e9fed9094ab",
-        "de96cb9332d4b5b0f454debad2fae7fd74e56caa"
+        "de96cb9332d4b5b0f454debad2fae7fd74e56caa",
+        "data/curriculum-sequence-track-a.json"
       ],
       "limitations": [
-        "Реальная последовательность общей базы 00–10 и prerequisites остаются частично provisional и требуют отдельного curriculum decision.",
-        "GitHub Pages workflow для последнего коммита и ручная визуальная приёмка новых страниц пока не подтверждены."
+        "Общая фундаментальная база 00–10 и её prerequisites остаются provisional; mapping 3.1.6 не утверждён.",
+        "Некоторые approved macro modules 14, 15 и 19–26 пока не имеют lesson UID и поэтому представлены блокирующими gates.",
+        "GitHub Pages workflow и ручная визуальная приёмка не подтверждены."
       ]
     },
     {
@@ -1171,6 +1173,25 @@
       "limitations": [
         "GitHub Actions / Pages acceptance is not yet confirmed for the latest commit.",
         "Manual visual QA across RU/EN/中文, desktop/mobile and light/dark themes remains pending."
+      ]
+    },
+    {
+      "id": "AUD-104",
+      "date": "2026-11-16",
+      "type": "approved_macro_sequence_navigation",
+      "title": "Навигация Track A переведена на явную последовательность утверждённых макромодулей",
+      "result": "Создан data/curriculum-sequence-track-a.json с 56 Lesson UID, расположенными по утверждённым макромодулям 11–26. Добавлены 15 gate-записей для модулей, в которых нет завершённых/подтверждённых уроковых записей. Последовательность учитывает, что 4.3.5 относится к макромодулю 16, а 4.3.4 — к макромодулю 18 после XAI макромодуля 17. 3.1.6 исключён из Track A последовательности до подтверждения его provisional mapping к общей базе macro 08. Навигационный renderer теперь использует explicit sequence JSON; тесты проверяют макромодульные переходы и блокировки.",
+      "evidence": [
+        "data/curriculum-sequence-track-a.json",
+        "scripts/lesson-layout.js",
+        "tests/test_lesson_navigation_contract.py",
+        "docs/management/CURRICULUM_CROSSWALK_2026-11-12.md",
+        "data/curriculum-governance-2026-11-11.json",
+        "docs/management/TRACK_A_ARCHITECTURE_PROPOSAL.md"
+      ],
+      "limitations": [
+        "Полная детализация prerequisites общей базы 00–10 и точные зависимости между отдельными уроками требуют отдельной редакционной сверки.",
+        "Workflow CI/Pages и ручная визуальная приёмка новых XAI-страниц пока не подтверждены."
       ]
     }
   ],

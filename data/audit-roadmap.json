@@ -1043,33 +1043,41 @@
         "RU/EN/中文 содержат равнозначную теорию, примеры, практику, ограничения и самопроверку из восьми вопросов.",
         "Четыре SVG имеют локализованные title/desc/подписи и одинаковую геометрию во всех локалях.",
         "Новый контрактный тест A.1.2.1, каталоговые проверки, мультиязычная проверка, SVG-аудит и браузерные проверки проходят.",
-        "Legacy catalog v2: A.1.2.1 status=published and planet-A-9 retained as a compatibility projection; active v3 catalogue: les-a-0018 (4.2.1) status=published/content_state=published and included in the generated Knowledge Map.",
+        "Legacy catalog v2: A.1.2.1 status=published and planet-A-9 retained as a compatibility projection; active UI catalog v3: les-a-0018 (4.2.1) status=published/content_state=published and included in the generated Knowledge Map.",
         "GitHub Pages deployment для опубликованного каталога завершается успешно.",
         "Ручная визуальная приёмка desktop/mobile и light/dark всех трёх локалей фиксируется отдельно."
       ],
       "verification": {
         "xai_lesson_contract": {
           "status": "success",
-          "run_id": 43787069985,
-          "commit": "aeb0f5ae20dfd9c984c6c605fe7fca57b2a78661"
+          "run_id": 43787990002,
+          "commit": "6d1d446565e08ac67a6e24d59dfa71c1195dfb78"
         },
         "catalog_and_browser_validation": {
           "status": "success",
-          "run_id": 43787070130,
-          "commit": "aeb0f5ae20dfd9c984c6c605fe7fca57b2a78661"
+          "run_id": 43787990041,
+          "commit": "6d1d446565e08ac67a6e24d59dfa71c1195dfb78"
+        },
+        "v3_catalog_and_map": {
+          "status": "success",
+          "run_id": 43787990041,
+          "commit": "6d1d446565e08ac67a6e24d59dfa71c1195dfb78"
         },
         "pages_deployment": {
           "status": "success",
-          "run_id": 43787069985,
-          "commit": "aeb0f5ae20dfd9c984c6c605fe7fca57b2a78661"
+          "run_id": 43787989542,
+          "custom_workflow_run": 43787990002,
+          "url": "https://dchai.ru/",
+          "commit": "6d1d446565e08ac67a6e24d59dfa71c1195dfb78"
+        },
+        "supabase_migrations": {
+          "status": "success",
+          "run_id": 43787990002,
+          "commit": "6d1d446565e08ac67a6e24d59dfa71c1195dfb78"
         },
         "manual_visual_qa": {
           "status": "pending",
-          "note": "Автоматическая Playwright-проверка адаптивности и переполнения прошла. Ручной осмотр desktop/mobile и светлой/тёмной тем всех локалей не выполнен."
-        },
-        "v3_catalog_and_map": {
-          "status": "pending",
-          "note": "v3 lesson les-a-0018 is published; map reader now consumes localized module.title_i18n. Final CI and Pages deployment after this patch are pending."
+          "note": "Автоматические контрактные и responsive browser tests пройдены. Ручной визуальный осмотр самой XAI-страницы на desktop/tablet/mobile и в светлой/тёмной темах для RU/EN/中文 ещё не выполнен."
         }
       },
       "evidence": [
@@ -2527,7 +2535,7 @@
       "date": "2026-11-16",
       "type": "xai_lesson_a121_publication",
       "title": "Урок A.1.2.1 доработан, автоматические проверки и GitHub Pages deployment пройдены",
-      "result": "Существующий урок xai-01-what-and-why сохранён под прежним ID и URL. Содержимое дополнено на RU/EN/中文; добавлены четыре локализованные SVG-схемы, расширены объяснения intrinsic/post-hoc, local/global, interpretability/explainability и XAI/Mechanistic Interpretability, добавлен разбор ассоциации/чувствительности/причинности. Самопроверка приведена к восьми вопросам. Catalog v2 status переведён в published, в legacy v2 добавлена planet-A-9 как compatibility projection; активная Knowledge Map генерирует планету из опубликованной v3-записи les-a-0018. Основной CI и deployment run 43787069985 — success; полная проверка каталога и браузерных сценариев run 43787070130 — success. Production environment URL: https://dchai.ru/.",
+      "result": "Урок A.1.2.1 завершён и опубликован. Сохранены legacy ID и URL. В v2 запись A.1.2.1 имеет status=published и planet-A-9 сохранена как compatibility projection. В существующей v3-записи les-a-0018 (код 4.2.1) установлены status=published и content_state=published; текущая Knowledge Map генерирует планету из этой записи. Добавлены четыре локализованные SVG-схемы, уточнены определения XAI и ограничения, самопроверка приведена к восьми вопросам, подключена общая навигация только по опубликованным урокам. Полный Validate learning catalog run 43787990041 — success; основной deploy run 43787990002 — success, включая Supabase migrations; GitHub Pages deployment run 43787989542 — success. Production URL: https://dchai.ru/. Финальный commit: 6d1d446565e08ac67a6e24d59dfa71c1195dfb78.",
       "evidence": [
         "Содержимое: lessons/data/xai-01-what-and-why.js",
         "Страница: lessons/xai/01-what-and-why.html",
@@ -2539,11 +2547,25 @@
         "Production: https://dchai.ru/",
         "v3 catalogue mapping: data/catalog/catalog-v3.json → les-a-0018 (4.2.1)",
         "Localized XAI module metadata: data/catalog/catalog-v3.json → mod-a-04-02.title_i18n",
-        "Knowledge Map localization renderer: scripts/planet-map-catalog.js"
+        "Knowledge Map localization renderer: scripts/planet-map-catalog.js",
+        "data/catalog/catalog-v2.json",
+        "data/catalog/catalog-v3.json",
+        "scripts/planet-map-catalog.js",
+        "scripts/lesson-layout.js",
+        "tests/test_lesson_xai_0121.py",
+        "tests/test_lesson_navigation_contract.py",
+        "tests/test_lesson_layout_overflow.py",
+        "tests/test_locale_grid_theme_parity.py",
+        "tests/test_knowledge_map.py",
+        "https://github.com/Dach1980/ai-research-dch-school/actions/runs/43787990041",
+        "https://github.com/Dach1980/ai-research-dch-school/actions/runs/43787990002",
+        "https://github.com/Dach1980/ai-research-dch-school/actions/runs/43787989542",
+        "Final commit: 6d1d446565e08ac67a6e24d59dfa71c1195dfb78"
       ],
       "limitations": [
-        "Ручной визуальный осмотр всех трёх локализаций на desktop/mobile в светлой/тёмной темах не выполнен.",
-        "Migration manifest остаётся staging_not_applied; reader не переключался, прогресс пользователей не мигрировался."
+        "Ручной визуальный осмотр самой XAI-страницы на desktop/tablet/mobile и в светлой/тёмной темах для RU/EN/中文 не выполнен; автоматические контрактные и общие responsive browser tests прошли.",
+        "Строгая schema production catalog v2 не содержит content_state; для legacy v2 публикация выражена полем status=published. Активная UI-запись v3 использует status=published и content_state=published.",
+        "migration-manifest-v3.json остаётся staging_not_applied; миграция legacy IDs и пользовательского прогресса не выполнялась. UI readers не переключались в этой работе — они уже читали v3 до неё."
       ]
     }
   ],

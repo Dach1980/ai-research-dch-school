@@ -52,6 +52,23 @@ class BrandAssetTests(unittest.TestCase):
             ("index-zh.html", "about/author-zh.html"),
         ):
             self.assertIn(href, (ROOT / relative).read_text(encoding="utf-8"))
+        css = (ROOT / "styles/author.css").read_text(encoding="utf-8")
+        self.assertIn("overflow-x:clip", css)
+        self.assertIn("overflow-y:visible", css)
+        self.assertIn("height:auto", css)
+        self.assertIn("object-fit:contain", css)
+        self.assertIn(".mission-highlight", css)
+        for social_url in (
+            "https://www.youtube.com/@DmitryCherkashin_AI",
+            "https://rutube.ru/channel/54317674/",
+            "https://t.me/DmitryCherkashin_AI",
+            "https://max.ru/channel_dmitrycherkashin_ai",
+            "https://vk.com/dmitrycherkashin_ai",
+            "https://vkvideo.ru/@dmitrycherkashin_ai",
+        ):
+            self.assertIn(social_url, (ROOT / "about/author.html").read_text(encoding="utf-8"))
+        self.assertNotIn("github.com", (ROOT / "about/author.html").read_text(encoding="utf-8"))
+        self.assertIn("ПРОВЕРЯТЬ.", (ROOT / "about/author.html").read_text(encoding="utf-8"))
         switcher = (ROOT / "scripts/language-switcher.js").read_text(encoding="utf-8")
         self.assertIn('const isAuthor = /^about\\/author\\.html$/.test(relativePage);', switcher)
 

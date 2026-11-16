@@ -7,7 +7,8 @@
     "foundation": "Modules 0-10 are shared foundation and remain provisional until outcomes, labs and actual catalog IDs are fully specified.",
     "track_c": "Separate C0-C12 program, not counted among 40 A/B research modules.",
     "hierarchy": "Track → Theme → Module → Lesson. Preserve legacy IDs and URLs; use catalog UID as stable key.",
-    "legacy_spec": "The separate repository CURRICULUM_SPECIFICATION.md is a historical/reconstructed 40-module draft. Its Track A module sequence 11-26 conflicts with approved architecture and must not be treated as canonical."
+    "legacy_spec": "The separate repository CURRICULUM_SPECIFICATION.md is a historical/reconstructed 40-module draft. Its Track A module sequence 11-26 conflicts with approved architecture and must not be treated as canonical.",
+    "navigation_sequence": "Track A navigation is explicitly ordered by approved macro-modules 11–26 in data/curriculum-sequence-track-a.json. Numeric lesson codes are not a global sequence. Foundation lesson 3.1.6 remains excluded because its macro-08 mapping is candidate_only / low confidence. Missing macro modules are represented as blocking gates; no lesson UID is fabricated."
   },
   "catalog_snapshot": {
     "catalog_id": "dch-school-curriculum",
@@ -2262,5 +2263,23 @@
       "listed_only_no_published_page": 6,
       "partial_published_core": 1
     }
+  },
+  "navigation_sequence_snapshot": {
+    "source": "data/curriculum-sequence-track-a.json",
+    "status": "approved_architecture_with_unmapped_gates",
+    "ordered_lesson_uids": 56,
+    "blocking_macro_gates": 15,
+    "excluded_candidates": [
+      {
+        "uid": "les-a-0049",
+        "code": "3.1.6",
+        "reason": "Macro-08 mapping candidate_only; foundation sequence unresolved"
+      }
+    ],
+    "key_ordering_rules": [
+      "Macro 16 precedes macro 17; 4.3.5 belongs to macro 16.",
+      "Macro 17 contains XAI lesson 4.2.1 and methods 4.2.x / 4.5.x / 4.6.x / 4.7.x.",
+      "Macro 18 contains 4.3.4, after macro 17 despite numeric code."
+    ]
   }
 }

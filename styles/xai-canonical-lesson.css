@@ -1,0 +1,20 @@
+.xai-canonical-section{margin:2.8rem 0 0;padding:2rem 0 0;border-top:1px solid var(--border,rgba(120,150,210,.24));min-width:0}
+.xai-canonical-section:first-child{margin-top:1rem}
+.xai-canonical-section-title{margin:0 0 1.25rem;font-size:clamp(1.45rem,2.7vw,2rem);line-height:1.25;letter-spacing:-.02em}
+.xai-canonical-section-content{min-width:0;overflow-wrap:anywhere}
+.xai-canonical-section-content>h2:first-child{margin-top:.4rem}
+.xai-canonical-section-content figure{margin:1.6rem 0;max-width:100%;overflow-x:auto}
+.xai-canonical-section-content figure svg{display:block;max-width:100%;height:auto}
+.xai-canonical-section-content .xai-table-wrap{max-width:100%;overflow-x:auto;margin:1.4rem 0;border:1px solid var(--border,rgba(120,150,210,.24));border-radius:12px}
+.xai-canonical-section-content table{width:100%;border-collapse:collapse}
+.xai-canonical-section-content th,.xai-canonical-section-content td{padding:.7rem .8rem;vertical-align:top;border-bottom:1px solid var(--border,rgba(120,150,210,.18));text-align:left}
+.xai-canonical-section-content .knowledge-check{margin:1.5rem 0;padding:1.2rem;border:1px solid var(--border,rgba(120,150,210,.28));border-radius:14px;background:var(--surface,rgba(120,150,210,.06))}
+.xai-canonical-section-content .knowledge-check fieldset{margin:1rem 0;padding:.9rem;border:1px solid var(--border,rgba(120,150,210,.2));border-radius:10px}
+.xai-canonical-section-content .knowledge-check label{display:flex;gap:.65rem;align-items:flex-start;margin:.55rem 0;cursor:pointer}
+.xai-canonical-section-content .knowledge-check input{margin-top:.35rem;flex:0 0 auto}
+.xai-canonical-section-content .quiz-submit{padding:.7rem 1rem;border:0;border-radius:9px;background:var(--accent,#416fca);color:#fff;font:inherit;font-weight:700;cursor:pointer}
+.xai-canonical-section-content .quiz-feedback{display:none;margin-top:1rem;padding:.8rem 1rem;border-radius:10px;background:var(--surface,rgba(120,150,210,.08))}
+.xai-canonical-section-content .quiz-feedback.is-visible{display:block}
+.xai-canonical-section-content .quiz-summary{margin:1.2rem 0;padding:1rem;border:1px solid var(--border,rgba(120,150,210,.24));border-radius:10px;font-weight:700}
+.xai-canonical-section-content .lesson-callout,.xai-canonical-section-content .definition{margin:1.3rem 0}
+@media(max-width:640px){.xai-canonical-section{margin-top:2rem;padding-top:1.4rem}.xai-canonical-section-content th,.xai-canonical-section-content td{padding:.55rem .6rem}.xai-canonical-section-content .knowledge-check{padding:.8rem}}

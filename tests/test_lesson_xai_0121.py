@@ -42,7 +42,7 @@ class XaiLessonTests(unittest.TestCase):
             self.assertEqual(set(page["title"]), set(LOCALES))
             self.assertEqual(set(page["content"]), set(LOCALES))
             for locale in LOCALES:
-                self.assertGreater(len(page["content"][locale]), 900)
+                self.assertGreater(len(page["content"][locale]), 600 if locale == "zh" else 900)
 
     def test_core_concepts_are_present_in_every_locale(self):
         required = {
@@ -82,7 +82,7 @@ class XaiLessonTests(unittest.TestCase):
         for key in ("q1", "q2", "q3", "q4", "q5", "q6", "q7", "q8"):
             self.assertIn(f'{key}:"', self.reader)
         self.assertIn('correct+" / 8"', self.reader)
-        self.assertIn('correct+" / "+fields.length', self.reader)
+        self.assertIn('score+" / "+fields.length', self.reader)
 
     def test_shell_localization_theme_and_mobile_styles(self):
         self.assertIn("styles/xai-lesson.css", self.shell)

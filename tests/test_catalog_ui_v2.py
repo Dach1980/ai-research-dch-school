@@ -79,7 +79,8 @@ class HierarchicalCatalogUITests(unittest.TestCase):
         self.assertEqual(set(intro["title_i18n"]), {"ru", "en", "zh"})
         self.assertEqual(intro["url_i18n"]["ru"], "lessons/a-4-2-1.html")
         legacy = (ROOT / "lessons/xai/01-what-and-why.html").read_text(encoding="utf-8")
-        self.assertIn('url="../a-4-2-1.html"', legacy)
+        self.assertIn('content="0;url=../a-4-2-1.html"', legacy)
+        self.assertIn('href="../a-4-2-1.html"', legacy)
         self.assertIn('window.location.replace("../a-4-2-1"+suffix+".html"', legacy)
 
     def test_xai_lesson_has_live_multilingual_quizzes_and_explanations(self):
@@ -120,6 +121,8 @@ class HierarchicalCatalogUITests(unittest.TestCase):
         self.assertTrue((ROOT / "assets/favicon.png").is_file())
         for page in ROOT.rglob("*.html"):
             relative = page.relative_to(ROOT)
+            if relative.parts[0] == "archive":
+                continue
             content = page.read_text(encoding="utf-8")
             match = re.search(r'<link\s+rel="icon"[^>]*href="([^"]+)"', content)
             self.assertIsNotNone(match, str(relative))

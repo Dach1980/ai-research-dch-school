@@ -93,6 +93,19 @@ class Lesson158ContractTests(unittest.TestCase):
                 canonical = f'https://dach1980.github.io/ai-research-dch-school/lessons/a-1-5-8{"-"+locale if locale != "ru" else ""}.html'
                 self.assertIn(f'<link rel="canonical" href="{canonical}">', source)
 
+    def test_ece_formula_label_matches_each_locale(self):
+        expected = {
+            "ru": "Ожидаемая ошибка калибровки (ECE)",
+            "en": "Expected calibration error (ECE)",
+            "zh": "期望校准误差（ECE）",
+        }
+        for locale, path in PAGES.items():
+            source = path.read_text(encoding="utf-8")
+            with self.subTest(locale=locale):
+                self.assertIn(f'class="formula-label">{expected[locale]}</div>', source)
+                if locale == "ru":
+                    self.assertNotIn("期望校准误差", source)
+
     def test_formula_svg_theme_and_glossary_layout(self):
         css = (ROOT / "styles/lesson-158.css").read_text(encoding="utf-8")
         for token in ("--lds-surface", "--lds-line", "--lds-ink", "--lds-muted", "--lds-accent", "--lds-good", "--lds-bad"):

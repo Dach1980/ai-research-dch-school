@@ -2323,7 +2323,9 @@
       "status": "planned",
       "access": "open",
       "level": "beginner",
-      "prerequisite_uids": [],
+      "prerequisite_uids": [
+        "les-a-0124"
+      ],
       "learning_outcomes": [],
       "content_state": "outline_only"
     },
@@ -2394,7 +2396,7 @@
       "access": "open",
       "level": "intermediate",
       "prerequisite_uids": [
-        "les-a-0112"
+        "les-a-0114"
       ],
       "learning_outcomes": [],
       "content_state": "outline_only"
@@ -2749,7 +2751,9 @@
       "status": "planned",
       "access": "open",
       "level": "intermediate",
-      "prerequisite_uids": [],
+      "prerequisite_uids": [
+        "les-a-0027"
+      ],
       "learning_outcomes": [],
       "content_state": "outline_only"
     },
@@ -2827,7 +2831,9 @@
       "status": "planned",
       "access": "open",
       "level": "intermediate",
-      "prerequisite_uids": [],
+      "prerequisite_uids": [
+        "les-a-0129"
+      ],
       "learning_outcomes": [],
       "content_state": "outline_only"
     },
@@ -2905,7 +2911,9 @@
       "status": "planned",
       "access": "open",
       "level": "intermediate",
-      "prerequisite_uids": [],
+      "prerequisite_uids": [
+        "les-a-0134"
+      ],
       "learning_outcomes": [],
       "content_state": "outline_only"
     },
@@ -2983,7 +2991,9 @@
       "status": "planned",
       "access": "open",
       "level": "intermediate",
-      "prerequisite_uids": [],
+      "prerequisite_uids": [
+        "les-a-0139"
+      ],
       "learning_outcomes": [],
       "content_state": "outline_only"
     },

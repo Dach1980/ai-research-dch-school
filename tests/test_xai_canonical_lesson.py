@@ -45,10 +45,10 @@ class CanonicalXaiLessonTests(unittest.TestCase):
             self.assertIn(marker, self.data)
 
     def test_taxonomy_diagram_labels_wrap_inside_cards_in_all_locales(self):
-        for label in ("Контрпример", "Обнаружить · Улучшить", "Counterfactual", "Discover", "反事实", "改进"):
+        for label in ("Вклад", "График", "Суррогат", "Контрпример", "Обосновать", "Контролировать", "Обнаружить", "Улучшить", "Attribution", "Plot", "Surrogate", "Counterfactual", "Justify", "Control", "Discover", "Improve", "归因", "图表", "代理模型", "反事实", "说明", "控制", "发现", "改进"):
             with self.subTest(label=label):
                 self.assertIn(label, self.data)
-        self.assertGreaterEqual(self.data.count('dy=\\\"22\\\"'), 12)
+        self.assertGreaterEqual(self.data.count('dy=\\\"18\\\"'), 18)
         self.assertNotIn("Вклад · График · Суррогат · Контрпример</text>", self.data)
         self.assertNotIn("Attribution · Plot · Surrogate · Counterfactual</text>", self.data)
         self.assertNotIn("归因 · 图表 · 代理模型 · 反事实</text>", self.data)
@@ -58,6 +58,12 @@ class CanonicalXaiLessonTests(unittest.TestCase):
             with self.subTest(fragment=fragment):
                 self.assertIn(fragment, self.data)
         self.assertGreaterEqual(self.data.count('dy=\\"20\\"'), 6)
+
+    def test_method_passport_is_compact_and_text_is_not_larger_than_body(self):
+        self.assertIn('.xai-svg-figure{', self.styles)
+        self.assertIn('max-width:640px', self.styles)
+        self.assertIn('font-size=\\\"12\\\"', self.data)
+        self.assertIn('font-size=\\\"15\\\"', self.data)
 
     def test_learning_outcomes_card_keeps_contrast_in_light_theme(self):
         self.assertIn('.lesson #xai-outcomes', self.styles)

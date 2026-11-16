@@ -32,3 +32,20 @@
 
 /* A blocked next lesson is informational, never a navigation target. */
 .lesson-nav .button.is-disabled{opacity:.52;cursor:not-allowed;pointer-events:none;user-select:none}
+
+/* Outcome panel is intentionally dark in both themes: keep all inherited copy
+   high-contrast instead of allowing light-theme ink tokens to turn it dark. */
+.lesson-standard-hero .outcomes{
+  color:#edf3ff;
+}
+.lesson-standard-hero .outcomes p,
+.lesson-standard-hero .outcomes li{
+  color:#d5e0f2;
+}
+.lesson-standard-hero .outcomes h2,
+.lesson-standard-hero .outcomes h3{
+  color:#9fc4ff;
+}
+.lesson-standard-hero .outcomes strong{
+  color:#ffffff;
+}

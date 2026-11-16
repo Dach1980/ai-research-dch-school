@@ -57,7 +57,7 @@ if(main){
 
 /*
  * Canonical Track A lesson navigation.
- * The catalog is the authority for publication state and lesson order;
+ * The complete catalog is the authority for lesson order and publication state;
  * this shared normalizer makes legacy page markup render consistently.
  */
 (function(){
@@ -67,9 +67,9 @@ if(main){
  var lang=(document.documentElement.lang||"ru").toLowerCase();
  var locale=lang.indexOf("zh")===0?"zh":lang.indexOf("en")===0?"en":"ru";
  var labels={
-  ru:{aria:"Навигация по уроку",previous:"← Предыдущий урок ",next:"Следующий урок ",map:"Карта знаний ↗",track:"Программа Track A",all:"Все уроки ↗"},
-  en:{aria:"Lesson navigation",previous:"← Previous lesson ",next:"Next lesson ",map:"Knowledge map ↗",track:"Track A programme",all:"All lessons ↗"},
-  zh:{aria:"课程导航",previous:"← 上一课 ",next:"下一课 ",map:"知识地图 ↗",track:"Track A 学习计划",all:"全部课程 ↗"}
+  ru:{aria:"Навигация по уроку",previous:"← Предыдущий урок ",next:"Следующий урок ",nextSoon:"Следующий урок скоро",map:"Карта знаний ↗",track:"Программа Track A",all:"Все уроки ↗"},
+  en:{aria:"Lesson navigation",previous:"← Previous lesson ",next:"Next lesson ",nextSoon:"Next lesson coming soon",map:"Knowledge map ↗",track:"Track A programme",all:"All lessons ↗"},
+  zh:{aria:"课程导航",previous:"← 上一课 ",next:"下一课 ",nextSoon:"下一课即将推出",map:"知识地图 ↗",track:"Track A 学习计划",all:"全部课程 ↗"}
  };
  var text=labels[locale];
  var script=document.querySelector('script[src$="lesson-layout.js"]');
@@ -87,8 +87,8 @@ if(main){
   if(!response.ok)throw new Error("Catalog request failed");
   return response.json();
  }).then(function(catalog){
-  var published=(catalog.lessons||[]).filter(function(item){
-   return item.track_uid==="trk-a"&&item.status==="published"&&item.url_i18n&&item.url_i18n[locale];
+  var allLessons=(catalog.lessons||[]).filter(function(item){
+   return item.track_uid==="trk-a";
   }).sort(function(a,b){
    var aa=a.code.split(".").map(Number),bb=b.code.split(".").map(Number);
    for(var i=0;i<Math.max(aa.length,bb.length);i++){
@@ -97,23 +97,24 @@ if(main){
    return 0;
   });
   var currentPath=window.location.pathname.split("/").pop();
-  var index=published.findIndex(function(item){
-   return item.url_i18n[locale].split("/").pop()===currentPath;
+  var index=allLessons.findIndex(function(item){
+   return item.url_i18n&&item.url_i18n[locale]&&item.url_i18n[locale].split("/").pop()===currentPath;
   });
   if(index<0)return;
   var fragment=document.createDocumentFragment();
-  if(index>0){
-   var previous=published[index-1],previousCode=previous.code;
-   /* Legacy A.1 numbering is retained for the XAI reader until the v3 curriculum migration is complete. */
-   if(currentPath==="01-what-and-why.html"){
-    previous=published.find(function(item){return item.url_i18n[locale].split("/").pop()==="a-1-1-4"+(locale==="ru"?"":"-"+locale)+".html";})||previous;
-    previousCode="A.1.1.8";
-   }
-   fragment.appendChild(link("secondary",new URL(previous.url_i18n[locale],rootUrl).href,text.previous+previousCode));
+  var previous=index>0?allLessons[index-1]:null;
+  if(previous&&previous.status==="published"&&previous.url_i18n&&previous.url_i18n[locale]){
+   fragment.appendChild(link("secondary",new URL(previous.url_i18n[locale],rootUrl).href,text.previous+previous.code));
   }
-  if(index<published.length-1){
-   var next=published[index+1];
+  var next=index<allLessons.length-1?allLessons[index+1]:null;
+  if(next&&next.status==="published"&&next.url_i18n&&next.url_i18n[locale]){
    fragment.appendChild(link("primary",new URL(next.url_i18n[locale],rootUrl).href,text.next+next.code+" ↗"));
+  }else{
+   var pending=document.createElement("span");
+   pending.className="button primary is-disabled";
+   pending.setAttribute("aria-disabled","true");
+   pending.textContent=text.nextSoon;
+   fragment.appendChild(pending);
   }
   var suffix=locale==="ru"?"":"-"+locale;
   fragment.appendChild(link("secondary",new URL("learning-map/index"+suffix+".html",rootUrl).href,text.map));

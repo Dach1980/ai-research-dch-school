@@ -1,7 +1,7 @@
 {
   "schema_version": 3,
   "catalog_id": "dch-school-curriculum",
-  "catalog_version": "3.1.0-draft",
+  "catalog_version": "3.2.0-draft",
   "status": "migration_staging",
   "tracks": [
     {
@@ -3091,6 +3091,403 @@
         "les-a-0145"
       ],
       "learning_outcomes": [],
+      "content_state": "outline_only"
+    },
+    {
+      "uid": "les-a-0147",
+      "track_uid": "trk-a",
+      "theme_uid": "thm-a-04",
+      "module_uid": "mod-a-04-01",
+      "code": "4.1.1",
+      "title": "Что такое интерпретируемость модели",
+      "status": "planned",
+      "access": "open",
+      "level": "beginner",
+      "prerequisite_uids": [],
+      "learning_outcomes": [
+        "Различает интерпретируемость модели, объяснение отдельного предсказания и анализ поведения системы в целом.",
+        "Объясняет, почему интерпретируемость зависит от модели, задачи и аудитории."
+      ],
+      "content_state": "outline_only"
+    },
+    {
+      "uid": "les-a-0148",
+      "track_uid": "trk-a",
+      "theme_uid": "thm-a-04",
+      "module_uid": "mod-a-04-01",
+      "code": "4.1.2",
+      "title": "Интерпретируемость и объяснимость",
+      "status": "planned",
+      "access": "open",
+      "level": "beginner",
+      "prerequisite_uids": [
+        "les-a-0147"
+      ],
+      "learning_outcomes": [
+        "Различает interpretable-by-design и post-hoc explainability.",
+        "Описывает сильные стороны и ограничения встроенной интерпретируемости и постфактум-объяснений."
+      ],
+      "content_state": "outline_only"
+    },
+    {
+      "uid": "les-a-0149",
+      "track_uid": "trk-a",
+      "theme_uid": "thm-a-04",
+      "module_uid": "mod-a-04-01",
+      "code": "4.1.5",
+      "title": "Компромисс между точностью и интерпретируемостью",
+      "status": "planned",
+      "access": "open",
+      "level": "beginner",
+      "prerequisite_uids": [
+        "les-a-0017"
+      ],
+      "learning_outcomes": [
+        "Сравнивает модели по предсказательному качеству и интерпретируемости.",
+        "Обосновывает выбор модели с учётом цены ошибки, аудита и требований к объяснению."
+      ],
+      "content_state": "outline_only"
+    },
+    {
+      "uid": "les-a-0150",
+      "track_uid": "trk-a",
+      "theme_uid": "thm-a-04",
+      "module_uid": "mod-a-04-07",
+      "code": "4.7.1",
+      "title": "Правила принятия решений и rule-based explanations",
+      "status": "planned",
+      "access": "open",
+      "level": "beginner",
+      "prerequisite_uids": [
+        "les-a-0039"
+      ],
+      "learning_outcomes": [
+        "Объясняет решения через правила, условия и последовательности условий.",
+        "Различает исходную rule-based модель и правила, извлечённые постфактум из сложной модели."
+      ],
+      "content_state": "outline_only"
+    },
+    {
+      "uid": "les-a-0151",
+      "track_uid": "trk-a",
+      "theme_uid": "thm-a-05",
+      "module_uid": "mod-a-05-01",
+      "code": "5.1.1",
+      "title": "От объяснения к экспериментальной проверке",
+      "status": "planned",
+      "access": "open",
+      "level": "beginner",
+      "prerequisite_uids": [
+        "les-a-0146"
+      ],
+      "learning_outcomes": [
+        "Различает наблюдение, perturbation, intervention и причинное утверждение.",
+        "Формулирует проверяемый вопрос для экспериментальной проверки объяснения."
+      ],
+      "content_state": "outline_only"
+    },
+    {
+      "uid": "les-a-0152",
+      "track_uid": "trk-a",
+      "theme_uid": "thm-a-05",
+      "module_uid": "mod-a-05-01",
+      "code": "5.1.2",
+      "title": "Вмешательства в признаки и входные данные",
+      "status": "planned",
+      "access": "open",
+      "level": "intermediate",
+      "prerequisite_uids": [
+        "les-a-0151"
+      ],
+      "learning_outcomes": [
+        "Выбирает удаление, маскирование, замену или изменение признаков для проверки гипотезы.",
+        "Оценивает допустимость и реалистичность изменений входа."
+      ],
+      "content_state": "outline_only"
+    },
+    {
+      "uid": "les-a-0153",
+      "track_uid": "trk-a",
+      "theme_uid": "thm-a-05",
+      "module_uid": "mod-a-05-01",
+      "code": "5.1.3",
+      "title": "Измерение реакции модели на вмешательство",
+      "status": "planned",
+      "access": "open",
+      "level": "intermediate",
+      "prerequisite_uids": [
+        "les-a-0152"
+      ],
+      "learning_outcomes": [
+        "Измеряет изменение предсказания, вероятности или другого выхода модели.",
+        "Сопоставляет реакцию модели с feature importance и другими объяснениями."
+      ],
+      "content_state": "outline_only"
+    },
+    {
+      "uid": "les-a-0154",
+      "track_uid": "trk-a",
+      "theme_uid": "thm-a-05",
+      "module_uid": "mod-a-05-01",
+      "code": "5.1.4",
+      "title": "Контроль эксперимента и альтернативные объяснения",
+      "status": "planned",
+      "access": "open",
+      "level": "intermediate",
+      "prerequisite_uids": [
+        "les-a-0153"
+      ],
+      "learning_outcomes": [
+        "Использует baseline, контрольные изменения и повторные запуски.",
+        "Выявляет влияние корреляций, случайных perturbations и ошибок дизайна эксперимента."
+      ],
+      "content_state": "outline_only"
+    },
+    {
+      "uid": "les-a-0155",
+      "track_uid": "trk-a",
+      "theme_uid": "thm-a-05",
+      "module_uid": "mod-a-05-01",
+      "code": "5.1.5",
+      "title": "Протокол проверки объяснения через вмешательство",
+      "status": "planned",
+      "access": "open",
+      "level": "intermediate",
+      "prerequisite_uids": [
+        "les-a-0154"
+      ],
+      "learning_outcomes": [
+        "Составляет воспроизводимый протокол проверки объяснения.",
+        "Представляет результаты, ограничения и альтернативные интерпретации."
+      ],
+      "content_state": "outline_only"
+    },
+    {
+      "uid": "les-a-0156",
+      "track_uid": "trk-a",
+      "theme_uid": "thm-a-05",
+      "module_uid": "mod-a-05-02",
+      "code": "5.2.1",
+      "title": "Модель угроз для систем объяснения",
+      "status": "planned",
+      "access": "open",
+      "level": "intermediate",
+      "prerequisite_uids": [
+        "les-a-0155"
+      ],
+      "learning_outcomes": [
+        "Определяет объекты, цели и предпосылки атаки на объяснение.",
+        "Формирует threat model и критерии успешной манипуляции."
+      ],
+      "content_state": "outline_only"
+    },
+    {
+      "uid": "les-a-0157",
+      "track_uid": "trk-a",
+      "theme_uid": "thm-a-05",
+      "module_uid": "mod-a-05-02",
+      "code": "5.2.2",
+      "title": "Adversarial perturbations и искажение атрибуций",
+      "status": "planned",
+      "access": "open",
+      "level": "advanced",
+      "prerequisite_uids": [
+        "les-a-0156"
+      ],
+      "learning_outcomes": [
+        "Исследует изменения атрибуций при малых изменениях входа.",
+        "Проверяет, сохраняется ли предсказание при изменении объяснения."
+      ],
+      "content_state": "outline_only"
+    },
+    {
+      "uid": "les-a-0158",
+      "track_uid": "trk-a",
+      "theme_uid": "thm-a-05",
+      "module_uid": "mod-a-05-02",
+      "code": "5.2.3",
+      "title": "Манипуляция правдоподобием объяснений",
+      "status": "planned",
+      "access": "open",
+      "level": "advanced",
+      "prerequisite_uids": [
+        "les-a-0157"
+      ],
+      "learning_outcomes": [
+        "Различает визуальную убедительность объяснения и его faithfulness.",
+        "Выявляет deceptive explanations и вводящие в заблуждение представления важности признаков."
+      ],
+      "content_state": "outline_only"
+    },
+    {
+      "uid": "les-a-0159",
+      "track_uid": "trk-a",
+      "theme_uid": "thm-a-05",
+      "module_uid": "mod-a-05-02",
+      "code": "5.2.4",
+      "title": "Экспериментальная проверка устойчивости к атакам",
+      "status": "planned",
+      "access": "open",
+      "level": "advanced",
+      "prerequisite_uids": [
+        "les-a-0158"
+      ],
+      "learning_outcomes": [
+        "Проводит контролируемый red-team эксперимент над XAI-методом.",
+        "Измеряет последствия атаки и сравнивает исходные и изменённые объяснения."
+      ],
+      "content_state": "outline_only"
+    },
+    {
+      "uid": "les-a-0160",
+      "track_uid": "trk-a",
+      "theme_uid": "thm-a-05",
+      "module_uid": "mod-a-05-02",
+      "code": "5.2.5",
+      "title": "Защита, ограничения и red-team отчёт",
+      "status": "planned",
+      "access": "open",
+      "level": "advanced",
+      "prerequisite_uids": [
+        "les-a-0159"
+      ],
+      "learning_outcomes": [
+        "Описывает меры обнаружения и снижения риска манипуляций.",
+        "Готовит отчёт об атаке, эффективности защиты и остаточных рисках."
+      ],
+      "content_state": "outline_only"
+    },
+    {
+      "uid": "les-a-0161",
+      "track_uid": "trk-a",
+      "theme_uid": "thm-a-05",
+      "module_uid": "mod-a-05-05",
+      "code": "5.5.1",
+      "title": "Карта компетенций и самооценка исследователя",
+      "status": "planned",
+      "access": "open",
+      "level": "beginner",
+      "prerequisite_uids": [
+        "les-a-0160"
+      ],
+      "learning_outcomes": [
+        "Оценивает готовность применить методы Track A к исследовательской задаче.",
+        "Определяет пробелы и обосновывает план итогового проекта."
+      ],
+      "content_state": "outline_only"
+    },
+    {
+      "uid": "les-a-0162",
+      "track_uid": "trk-a",
+      "theme_uid": "thm-a-05",
+      "module_uid": "mod-a-05-05",
+      "code": "5.5.2",
+      "title": "Выбор модели, системы и исследовательского сценария",
+      "status": "planned",
+      "access": "open",
+      "level": "intermediate",
+      "prerequisite_uids": [
+        "les-a-0161"
+      ],
+      "learning_outcomes": [
+        "Выбирает объект, данные и сценарий исследования.",
+        "Описывает аудиторию, ограничения и риски проекта."
+      ],
+      "content_state": "outline_only"
+    },
+    {
+      "uid": "les-a-0163",
+      "track_uid": "trk-a",
+      "theme_uid": "thm-a-05",
+      "module_uid": "mod-a-05-05",
+      "code": "5.5.3",
+      "title": "Исследовательский вопрос и проверяемые гипотезы",
+      "status": "planned",
+      "access": "open",
+      "level": "intermediate",
+      "prerequisite_uids": [
+        "les-a-0162"
+      ],
+      "learning_outcomes": [
+        "Формулирует исследовательские вопросы и проверяемые гипотезы.",
+        "Определяет ожидаемые результаты и альтернативные объяснения."
+      ],
+      "content_state": "outline_only"
+    },
+    {
+      "uid": "les-a-0164",
+      "track_uid": "trk-a",
+      "theme_uid": "thm-a-05",
+      "module_uid": "mod-a-05-05",
+      "code": "5.5.4",
+      "title": "Дизайн эксперимента и выбор методов объяснения",
+      "status": "planned",
+      "access": "open",
+      "level": "intermediate",
+      "prerequisite_uids": [
+        "les-a-0163"
+      ],
+      "learning_outcomes": [
+        "Обосновывает выбор прозрачного и post-hoc метода.",
+        "Определяет baseline, контрольные условия и порядок экспериментов."
+      ],
+      "content_state": "outline_only"
+    },
+    {
+      "uid": "les-a-0165",
+      "track_uid": "trk-a",
+      "theme_uid": "thm-a-05",
+      "module_uid": "mod-a-05-05",
+      "code": "5.5.5",
+      "title": "Проведение исследования и анализ объяснений",
+      "status": "planned",
+      "access": "open",
+      "level": "intermediate",
+      "prerequisite_uids": [
+        "les-a-0164"
+      ],
+      "learning_outcomes": [
+        "Реализует выбранные методы и фиксирует результаты.",
+        "Анализирует объяснения и документирует ограничения."
+      ],
+      "content_state": "outline_only"
+    },
+    {
+      "uid": "les-a-0166",
+      "track_uid": "trk-a",
+      "theme_uid": "thm-a-05",
+      "module_uid": "mod-a-05-05",
+      "code": "5.5.6",
+      "title": "Проверка качества и границ выводов",
+      "status": "planned",
+      "access": "open",
+      "level": "advanced",
+      "prerequisite_uids": [
+        "les-a-0165"
+      ],
+      "learning_outcomes": [
+        "Проверяет fidelity/faithfulness, stability и robustness в рамках выбранного исследования.",
+        "Разделяет наблюдаемое поведение, экспериментальный результат и причинный вывод."
+      ],
+      "content_state": "outline_only"
+    },
+    {
+      "uid": "les-a-0167",
+      "track_uid": "trk-a",
+      "theme_uid": "thm-a-05",
+      "module_uid": "mod-a-05-05",
+      "code": "5.5.7",
+      "title": "Воспроизводимый отчёт и защита результатов",
+      "status": "planned",
+      "access": "open",
+      "level": "intermediate",
+      "prerequisite_uids": [
+        "les-a-0166"
+      ],
+      "learning_outcomes": [
+        "Подготавливает воспроизводимый отчёт с кодом, конфигурацией и версиями.",
+        "Представляет результаты технической и нетехнической аудитории."
+      ],
       "content_state": "outline_only"
     }
   ],

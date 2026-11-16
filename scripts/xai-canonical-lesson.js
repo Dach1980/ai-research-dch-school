@@ -92,7 +92,7 @@
     heading.textContent = (index + 1) + ". " + (page.title[locale] || page.title.ru);
     var body = document.createElement("div");
     body.className = "xai-canonical-section-content";
-    body.innerHTML = page.content[locale] || page.content.ru || "";
+    body.innerHTML = (page.content[locale] || page.content.ru || "").replace(/href="\.\.\/practice\//g, 'href="practice/');
     section.append(heading, body);
     target.appendChild(section);
   });

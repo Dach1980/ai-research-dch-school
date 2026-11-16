@@ -76,3 +76,17 @@
   .author-caption-terms{font-size:9px;gap:6px;letter-spacing:.045em}
   .author-caption-kicker{font-size:8px}
 }
+
+
+/* Light theme: keep dark feature cards readable without changing their surface. */
+html[data-theme="light"] .author-pillar h3,
+html[data-theme="light"] .author-mission h2 .mission-line:not(.mission-highlight){
+  color:#f2f6ff;
+}
+html[data-theme="light"] .author-pillar p,
+html[data-theme="light"] .author-mission>p{
+  color:#b9c9e2;
+}
+html[data-theme="light"] .author-mission .eyebrow{
+  color:#55a8ff;
+}

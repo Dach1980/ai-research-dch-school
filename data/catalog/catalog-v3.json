@@ -74,7 +74,7 @@
       "number": 4,
       "code": "4",
       "title": "Основы Explainable AI (XAI)",
-      "status": "in_progress"
+      "status": "active"
     },
     {
       "uid": "thm-a-05",
@@ -208,7 +208,7 @@
       "theme_uid": "thm-a-04",
       "number": 2,
       "title": "Таксономия XAI и важность признаков",
-      "status": "in_progress"
+      "status": "active"
     },
     {
       "uid": "mod-a-04-03",

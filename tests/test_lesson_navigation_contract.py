@@ -37,6 +37,8 @@ class PublishedLessonNavigationContractTests(unittest.TestCase):
         self.assertIn('var aa=a.code.split(".").map(Number),bb=b.code.split(".").map(Number)', self.script)
         self.assertIn('var currentPath=window.location.pathname.split("/").pop()', self.script)
         self.assertIn('var index=published.findIndex', self.script)
+        self.assertIn('if(currentPath==="01-what-and-why.html")', self.script)
+        self.assertIn('previousCode="A.1.1.8"', self.script)
         self.assertIn('new URL(previous.url_i18n[locale],rootUrl)', self.script)
         self.assertIn('new URL(next.url_i18n[locale],rootUrl)', self.script)
 

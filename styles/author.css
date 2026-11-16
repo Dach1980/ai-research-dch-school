@@ -13,7 +13,7 @@
 .author-connect a{min-width:0;justify-content:flex-start;padding:15px 17px}
 .social-icon{display:inline-grid;place-items:center;width:24px;height:24px;flex:0 0 24px;color:#9dc5ff}
 .social-icon svg{width:22px;height:22px;fill:currentColor}
-.social-telegram{color:#55b8ee}.social-youtube{color:#ff6b73}.social-rutube{color:#ff8b58}.social-max{color:#a78bfa}.social-vk,.social-vkvideo{color:#75aaff}
+.social-telegram{color:#55b8ee}.social-youtube{color:#ff6b73}.social-rutube{color:#ff8b58}.social-max{color:#fff;background:linear-gradient(135deg,#00bfff,#471aff 55%,#9500ff);border-radius:7px}.social-max svg{width:19px;height:19px}.social-vk{color:#75aaff}.social-vkvideo{color:#fff}
 .social-arrow{margin-left:auto;color:var(--muted)}
 @media(max-width:800px){
  .author-hero{grid-template-columns:1fr;gap:38px}

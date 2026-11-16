@@ -2268,7 +2268,7 @@
     "source": "data/curriculum-sequence-track-a.json",
     "status": "approved_architecture_with_unmapped_gates",
     "ordered_lesson_uids": 56,
-    "blocking_macro_gates": 15,
+    "blocking_macro_gates": 10,
     "excluded_candidates": [
       {
         "uid": "les-a-0049",
@@ -2279,7 +2279,10 @@
     "key_ordering_rules": [
       "Macro 16 precedes macro 17; 4.3.5 belongs to macro 16.",
       "Macro 17 contains XAI lesson 4.2.1 and methods 4.2.x / 4.5.x / 4.6.x / 4.7.x.",
-      "Macro 18 contains 4.3.4, after macro 17 despite numeric code."
-    ]
+      "Macro 18 contains 4.3.4, after macro 17 despite numeric code.",
+      "Missing 4.1.1, 4.1.2 and 4.1.5 are explicit lesson gates; no UID is invented."
+    ],
+    "blocking_lesson_gates": 3,
+    "sequence_steps": 69
   }
 }

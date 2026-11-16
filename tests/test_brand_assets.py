@@ -106,6 +106,15 @@ class BrandAssetTests(unittest.TestCase):
         self.assertIn("var(--diagram-text)", palette)
 
 
+    def test_author_dark_feature_cards_keep_contrast_in_light_theme(self):
+        css = (ROOT / "styles/author.css").read_text(encoding="utf-8")
+        self.assertIn('html[data-theme="light"] .author-pillar h3', css)
+        self.assertIn('html[data-theme="light"] .author-mission h2 .mission-line:not(.mission-highlight)', css)
+        self.assertIn('html[data-theme="light"] .author-pillar p', css)
+        self.assertIn('html[data-theme="light"] .author-mission>p', css)
+        self.assertIn('color:#f2f6ff', css)
+        self.assertIn('color:#b9c9e2', css)
+
 
 if __name__ == "__main__":
     unittest.main()

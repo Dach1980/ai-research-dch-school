@@ -17,6 +17,7 @@ class CanonicalXaiLessonTests(unittest.TestCase):
         cls.manifest = json.loads((ROOT / "data/catalog/migration-manifest-v3.json").read_text(encoding="utf-8"))
         cls.data = (ROOT / "lessons/data/xai-01-what-and-why.js").read_text(encoding="utf-8")
         cls.renderer = (ROOT / "scripts/xai-canonical-lesson.js").read_text(encoding="utf-8")
+        cls.styles = (ROOT / "styles/xai-canonical-lesson.css").read_text(encoding="utf-8")
 
     def test_three_canonical_locale_pages_use_the_shared_lesson_shell(self):
         for locale, (suffix, title) in LOCALES.items():
@@ -51,6 +52,12 @@ class CanonicalXaiLessonTests(unittest.TestCase):
         self.assertNotIn("Вклад · График · Суррогат · Контрпример</text>", self.data)
         self.assertNotIn("Attribution · Plot · Surrogate · Counterfactual</text>", self.data)
         self.assertNotIn("归因 · 图表 · 代理模型 · 反事实</text>", self.data)
+
+    def test_learning_outcomes_card_keeps_contrast_in_light_theme(self):
+        self.assertIn('.lesson #xai-outcomes', self.styles)
+        self.assertIn('color:#d5e0f2', self.styles)
+        self.assertIn('color:#9fc4ff', self.styles)
+        self.assertIn('color:#ffffff', self.styles)
 
     def test_original_self_check_is_wired_to_the_canonical_page(self):
         for answer in ('q1: "a"', 'q2: "c"', 'q3: "a"', 'q4: "c"', 'q5: "c"', 'q6: "a"', 'q7: "c"', 'q8: "c"'):

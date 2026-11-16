@@ -602,20 +602,6 @@
       "status": "planned"
     },
     {
-      "kind": "lesson_gate",
-      "macro_module": 12,
-      "code": "4.1.1",
-      "title": "Что такое интерпретируемость модели",
-      "status": "planned"
-    },
-    {
-      "kind": "lesson_gate",
-      "macro_module": 12,
-      "code": "4.1.2",
-      "title": "Интерпретируемость и объяснимость",
-      "status": "planned"
-    },
-    {
       "kind": "lesson",
       "macro_module": 12,
       "lesson_uid": "les-a-0147",
@@ -641,13 +627,6 @@
       "macro_module": 13,
       "lesson_uid": "les-a-0017",
       "code": "4.1.4",
-      "status": "planned"
-    },
-    {
-      "kind": "lesson_gate",
-      "macro_module": 13,
-      "code": "4.1.5",
-      "title": "Компромисс между точностью и интерпретируемостью",
       "status": "planned"
     },
     {
@@ -1148,6 +1127,26 @@
       "status": "planned"
     },
     {
+      "kind": "module_gate",
+      "macro_module": 17,
+      "module_uid": "mod-a-05-03",
+      "title": "Deep Dive в SHAP",
+      "status": "planned",
+      "required": false,
+      "blocking": false,
+      "optional": true
+    },
+    {
+      "kind": "module_gate",
+      "macro_module": 17,
+      "module_uid": "mod-a-05-04",
+      "title": "Deep Dive в Counterfactuals",
+      "status": "planned",
+      "required": false,
+      "blocking": false,
+      "optional": true
+    },
+    {
       "kind": "lesson",
       "macro_module": 26,
       "lesson_uid": "les-a-0161",
@@ -1195,26 +1194,6 @@
       "lesson_uid": "les-a-0167",
       "code": "5.5.7",
       "status": "planned"
-    },
-    {
-      "kind": "module_gate",
-      "macro_module": 17,
-      "module_uid": "mod-a-05-03",
-      "title": "Deep Dive в SHAP",
-      "status": "planned",
-      "required": false,
-      "blocking": false,
-      "optional": true
-    },
-    {
-      "kind": "module_gate",
-      "macro_module": 17,
-      "module_uid": "mod-a-05-04",
-      "title": "Deep Dive в Counterfactuals",
-      "status": "planned",
-      "required": false,
-      "blocking": false,
-      "optional": true
     }
   ],
   "excluded_candidates": [],

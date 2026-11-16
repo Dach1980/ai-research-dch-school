@@ -2370,6 +2370,40 @@
       "published_lessons_changed": false,
       "website_published": false,
       "requires_separate_approval_for_catalog_and_sequence_sync": true
+    },
+    "catalog_sync_2026_11_16": {
+      "status": "synchronized_draft",
+      "catalog_path": "data/catalog/catalog-v3.json",
+      "sequence_path": "data/curriculum-sequence-track-a.json",
+      "theme_2_lessons_added": 42,
+      "theme_3_lessons_added": 13,
+      "theme_3_existing_lesson_retained": "les-a-0049",
+      "theme_4_modules_added": 1,
+      "theme_4_lessons_added": 12,
+      "theme_5_modules_added": 4,
+      "theme_5_lessons_added": 22,
+      "total_catalog_modules": 32,
+      "total_catalog_lessons": 146,
+      "all_new_lessons_status": "planned",
+      "all_new_lessons_content_state": "outline_only",
+      "published_content_changed": false,
+      "existing_uids_reassigned": false,
+      "existing_canonical_urls_changed": false,
+      "unresolved_gates": [
+        "4.1.1",
+        "4.1.2",
+        "4.1.5",
+        "4.7.1",
+        "5.1 lesson breakdown",
+        "5.2 lesson breakdown",
+        "5.5 capstone lesson breakdown"
+      ],
+      "optional_non_blocking_modules": [
+        "5.3",
+        "5.4"
+      ],
+      "catalog_status_remains": "migration_staging",
+      "production_release": false
     }
   }
 }

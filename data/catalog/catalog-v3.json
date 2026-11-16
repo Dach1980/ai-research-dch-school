@@ -1,7 +1,7 @@
 {
   "schema_version": 3,
   "catalog_id": "dch-school-curriculum",
-  "catalog_version": "3.0.0-draft",
+  "catalog_version": "3.1.0-draft",
   "status": "migration_staging",
   "tracks": [
     {
@@ -73,12 +73,12 @@
       "track_uid": "trk-a",
       "number": 4,
       "code": "4",
-      "title": "Основы Explainable AI (XAI)",
+      "title": "Интерпретируемость и классические методы XAI",
       "status": "active",
       "title_i18n": {
-        "ru": "Основы Explainable AI (XAI)",
-        "en": "Explainable AI (XAI) Fundamentals",
-        "zh": "可解释人工智能（XAI）基础"
+        "ru": "Интерпретируемость и классические методы XAI",
+        "en": "Interpretability and Classical XAI Methods",
+        "zh": "可解释性与经典 XAI 方法"
       }
     },
     {
@@ -86,8 +86,13 @@
       "track_uid": "trk-a",
       "number": 5,
       "code": "5",
-      "title": "Продвинутые методы и исследовательская практика XAI",
-      "status": "planned"
+      "title": "Современные методы анализа и научная проверка",
+      "status": "planned",
+      "title_i18n": {
+        "ru": "Современные методы анализа и научная проверка",
+        "en": "Modern Analysis Methods and Scientific Evaluation",
+        "zh": "现代分析方法与科学评估"
+      }
     }
   ],
   "modules": [
@@ -170,14 +175,14 @@
       "uid": "mod-a-02-06",
       "theme_uid": "thm-a-02",
       "number": 6,
-      "title": "Математика: анализ и оптимизация",
+      "title": "Математика: вероятность и статистика",
       "status": "planned"
     },
     {
       "uid": "mod-a-02-07",
       "theme_uid": "thm-a-02",
       "number": 7,
-      "title": "Математика: вероятность и статистика",
+      "title": "Математический анализ и оптимизация",
       "status": "planned"
     },
     {
@@ -256,6 +261,13 @@
       "status": "planned"
     },
     {
+      "uid": "mod-a-04-08",
+      "theme_uid": "thm-a-04",
+      "number": 8,
+      "title": "Гетерогенные эффекты",
+      "status": "planned"
+    },
+    {
       "uid": "mod-a-05-01",
       "theme_uid": "thm-a-05",
       "number": 1,
@@ -289,6 +301,34 @@
       "number": 5,
       "title": "Итоговая самопроверка Track A",
       "status": "planned"
+    },
+    {
+      "uid": "mod-a-05-06",
+      "theme_uid": "thm-a-05",
+      "number": 6,
+      "title": "Анализ CNN и визуальные методы объяснения",
+      "status": "planned"
+    },
+    {
+      "uid": "mod-a-05-07",
+      "theme_uid": "thm-a-05",
+      "number": 7,
+      "title": "Concept-based и attention-based методы объяснения",
+      "status": "planned"
+    },
+    {
+      "uid": "mod-a-05-08",
+      "theme_uid": "thm-a-05",
+      "number": 8,
+      "title": "Анализ LLM и поведения AI-агентов",
+      "status": "planned"
+    },
+    {
+      "uid": "mod-a-05-09",
+      "theme_uid": "thm-a-05",
+      "number": 9,
+      "title": "Оценка качества объяснений и научная проверка",
+      "status": "planned"
     }
   ],
   "lessons": [
@@ -317,6 +357,37 @@
       }
     },
     {
+      "uid": "les-a-0051",
+      "track_uid": "trk-a",
+      "theme_uid": "thm-a-01",
+      "module_uid": "mod-a-01-01",
+      "code": "1.1.2",
+      "title": "История развития искусственного интеллекта",
+      "status": "published",
+      "access": "open",
+      "level": "beginner",
+      "prerequisite_uids": [
+        "les-a-0001"
+      ],
+      "learning_outcomes": [
+        "Объяснять математические и вычислительные предпосылки AI",
+        "Различать ранние предпосылки и формирование AI как дисциплины",
+        "Сравнивать символический, экспертный, статистический и нейросетевой подходы",
+        "Объяснять причины AI winters и условия современных прорывов"
+      ],
+      "content_state": "published",
+      "url_i18n": {
+        "ru": "lessons/a-1-1-2.html",
+        "en": "lessons/a-1-1-2-en.html",
+        "zh": "lessons/a-1-1-2-zh.html"
+      },
+      "title_i18n": {
+        "ru": "История развития искусственного интеллекта",
+        "en": "A Brief History of Artificial Intelligence",
+        "zh": "人工智能发展简史"
+      }
+    },
+    {
       "uid": "les-a-0002",
       "track_uid": "trk-a",
       "theme_uid": "thm-a-01",
@@ -340,6 +411,37 @@
         "ru": "AI, Machine Learning и Deep Learning",
         "en": "AI, Machine Learning and Deep Learning",
         "zh": "人工智能、机器学习与深度学习"
+      }
+    },
+    {
+      "uid": "les-a-0052",
+      "track_uid": "trk-a",
+      "theme_uid": "thm-a-01",
+      "module_uid": "mod-a-01-01",
+      "code": "1.1.4",
+      "title": "Символический AI и машинное обучение",
+      "status": "published",
+      "access": "open",
+      "level": "beginner",
+      "prerequisite_uids": [
+        "les-a-0002"
+      ],
+      "learning_outcomes": [
+        "Объяснять символы, правила, базу знаний и механизм вывода",
+        "Описывать цикл машинного обучения",
+        "Различать явно заданную логику и параметры, найденные по данным",
+        "Распознавать гибридные AI-системы"
+      ],
+      "content_state": "published",
+      "url_i18n": {
+        "ru": "lessons/a-1-1-4.html",
+        "en": "lessons/a-1-1-4-en.html",
+        "zh": "lessons/a-1-1-4-zh.html"
+      },
+      "title_i18n": {
+        "ru": "Символический AI и машинное обучение",
+        "en": "Symbolic AI and Machine Learning",
+        "zh": "符号人工智能与机器学习"
       }
     },
     {
@@ -402,6 +504,69 @@
         "ru": "Объекты, признаки и целевые переменные",
         "en": "Objects, Features, and Target Variables",
         "zh": "对象、特征与目标变量"
+      }
+    },
+    {
+      "uid": "les-a-0056",
+      "track_uid": "trk-a",
+      "theme_uid": "thm-a-01",
+      "module_uid": "mod-a-01-02",
+      "code": "1.2.3",
+      "title": "Типы данных и представление признаков",
+      "status": "published",
+      "access": "open",
+      "level": "beginner",
+      "prerequisite_uids": [
+        "les-a-0004"
+      ],
+      "learning_outcomes": [
+        "Различать числовые, номинальные, порядковые, временные и текстовые признаки.",
+        "Выбирать базовые способы представления и кодирования категорий.",
+        "Объяснять влияние единиц измерения и масштаба признаков.",
+        "Учитывать доступность признаков и предотвращать утечку при подготовке данных.",
+        "Составлять спецификацию признаков перед обучением модели."
+      ],
+      "content_state": "published",
+      "url_i18n": {
+        "ru": "lessons/a-1-2-3.html",
+        "en": "lessons/a-1-2-3-en.html",
+        "zh": "lessons/a-1-2-3-zh.html"
+      },
+      "title_i18n": {
+        "ru": "Типы данных и представление признаков",
+        "en": "Data Types and Feature Representation",
+        "zh": "数据类型与特征表示"
+      }
+    },
+    {
+      "uid": "les-a-0050",
+      "track_uid": "trk-a",
+      "theme_uid": "thm-a-01",
+      "module_uid": "mod-a-01-02",
+      "code": "1.2.4",
+      "title": "Обучающие, проверочные и тестовые данные",
+      "status": "published",
+      "access": "open",
+      "level": "beginner",
+      "prerequisite_uids": [
+        "les-a-0056"
+      ],
+      "learning_outcomes": [
+        "Объяснять роли train, validation и test.",
+        "Выбирать стратегию разделения по структуре данных.",
+        "Различать случайное, стратифицированное, групповое и временное разделение.",
+        "Объяснять, почему предобработка обучается только на train."
+      ],
+      "content_state": "published",
+      "url_i18n": {
+        "ru": "lessons/a-1-2-4.html",
+        "en": "lessons/a-1-2-4-en.html",
+        "zh": "lessons/a-1-2-4-zh.html"
+      },
+      "title_i18n": {
+        "ru": "Обучающие, проверочные и тестовые данные",
+        "en": "Training, Validation, and Test Data",
+        "zh": "训练集、验证集与测试集"
       }
     },
     {
@@ -829,6 +994,169 @@
       }
     },
     {
+      "uid": "les-a-0043",
+      "track_uid": "trk-a",
+      "theme_uid": "thm-a-01",
+      "module_uid": "mod-a-01-05",
+      "code": "1.5.1",
+      "title": "Зачем оценивать качество модели",
+      "status": "published",
+      "access": "open",
+      "level": "beginner",
+      "prerequisite_uids": [
+        "les-a-0014"
+      ],
+      "learning_outcomes": [
+        "Объяснять различие между обучением модели и оценкой её поведения на новых данных.",
+        "Определять критерии успешности на основе сценария применения и последствий ошибок.",
+        "Объяснять назначение метрик и ограничения оценки по одному показателю.",
+        "Описывать роль базовой модели, независимой проверки и фиксации протокола.",
+        "Объяснять, почему результат тестирования не является гарантией качества в любых будущих условиях."
+      ],
+      "content_state": "published",
+      "title_i18n": {
+        "ru": "Зачем оценивать качество модели",
+        "en": "Why Evaluate Model Quality?",
+        "zh": "为什么要评估模型质量？"
+      },
+      "url_i18n": {
+        "ru": "lessons/a-1-5-1.html",
+        "en": "lessons/a-1-5-1-en.html",
+        "zh": "lessons/a-1-5-1-zh.html"
+      }
+    },
+    {
+      "uid": "les-a-0044",
+      "track_uid": "trk-a",
+      "theme_uid": "thm-a-01",
+      "module_uid": "mod-a-01-05",
+      "code": "1.5.2",
+      "title": "Матрица ошибок классификации",
+      "status": "published",
+      "access": "open",
+      "level": "beginner",
+      "prerequisite_uids": [
+        "les-a-0043"
+      ],
+      "learning_outcomes": [
+        "Объяснять назначение матрицы ошибок и правильно читать её строки и столбцы.",
+        "Различать TP, TN, FP и FN с позиции фактического класса и прогноза.",
+        "Строить матрицу по размеченным результатам классификатора и проверять сумму ячеек.",
+        "Интерпретировать ложную тревогу и пропуск в контексте практической задачи.",
+        "Объяснять ограничения матрицы и расширение представления на несколько классов."
+      ],
+      "content_state": "published",
+      "title_i18n": {
+        "ru": "Матрица ошибок классификации",
+        "en": "The Confusion Matrix",
+        "zh": "分类混淆矩阵"
+      },
+      "url_i18n": {
+        "ru": "lessons/a-1-5-2.html",
+        "en": "lessons/a-1-5-2-en.html",
+        "zh": "lessons/a-1-5-2-zh.html"
+      }
+    },
+    {
+      "uid": "les-a-0045",
+      "track_uid": "trk-a",
+      "theme_uid": "thm-a-01",
+      "module_uid": "mod-a-01-05",
+      "code": "1.5.3",
+      "title": "Accuracy, Precision, Recall и F1",
+      "status": "published",
+      "access": "open",
+      "level": "beginner",
+      "prerequisite_uids": [
+        "les-a-0044"
+      ],
+      "learning_outcomes": [
+        "Объяснять, на какой вопрос отвечают Accuracy, Precision, Recall и F1.",
+        "Рассчитывать четыре метрики по TP, TN, FP и FN из матрицы ошибок.",
+        "Различать знаменатели Precision и Recall и интерпретировать влияние FP и FN.",
+        "Объяснять гармоническую природу F1 и ограничения его интерпретации.",
+        "Сравнивать модели и выбирать приоритетную метрику с учётом последствий ошибок."
+      ],
+      "content_state": "published",
+      "title_i18n": {
+        "ru": "Accuracy, Precision, Recall и F1",
+        "en": "Accuracy, Precision, Recall and F1",
+        "zh": "Accuracy、Precision、Recall 与 F1"
+      },
+      "url_i18n": {
+        "ru": "lessons/a-1-5-3.html",
+        "en": "lessons/a-1-5-3-en.html",
+        "zh": "lessons/a-1-5-3-zh.html"
+      }
+    },
+    {
+      "uid": "les-a-0046",
+      "track_uid": "trk-a",
+      "theme_uid": "thm-a-01",
+      "module_uid": "mod-a-01-05",
+      "code": "1.5.4",
+      "title": "ROC-AUC и Precision-Recall AUC",
+      "status": "published",
+      "access": "open",
+      "level": "beginner",
+      "prerequisite_uids": [
+        "les-a-0045"
+      ],
+      "learning_outcomes": [
+        "Объяснять роль порога классификации и почему изменение порога меняет TP, FP, TN и FN.",
+        "Рассчитывать TPR и FPR и интерпретировать ROC-кривую.",
+        "Объяснять ROC-AUC как площадь под ROC-кривой и как вероятностную характеристику ранжирования.",
+        "Интерпретировать Precision–Recall-кривую и базовую линию, связанную с долей положительного класса.",
+        "Различать Average Precision и трапецеидальную PR-AUC и выбирать способ оценки под задачу.",
+        "Сравнивать ROC-AUC и PR-AUC, корректно выбирать порог на validation и сохранять test для финальной оценки."
+      ],
+      "content_state": "published",
+      "title_i18n": {
+        "ru": "ROC-AUC и Precision-Recall AUC",
+        "en": "ROC-AUC and Precision-Recall AUC",
+        "zh": "ROC-AUC 与 Precision-Recall AUC"
+      },
+      "url_i18n": {
+        "ru": "lessons/a-1-5-4.html",
+        "en": "lessons/a-1-5-4-en.html",
+        "zh": "lessons/a-1-5-4-zh.html"
+      }
+    },
+    {
+      "uid": "les-a-0047",
+      "track_uid": "trk-a",
+      "theme_uid": "thm-a-01",
+      "module_uid": "mod-a-01-05",
+      "code": "1.5.5",
+      "title": "Дисбаланс классов",
+      "status": "published",
+      "access": "open",
+      "level": "beginner",
+      "prerequisite_uids": [
+        "les-a-0046"
+      ],
+      "learning_outcomes": [
+        "Определять дисбаланс классов и рассчитывать долю положительного класса.",
+        "Объяснять, почему высокая Accuracy может сочетаться с нулевым Recall.",
+        "Рассчитывать Precision с учётом TPR, FPR и распространённости положительного класса.",
+        "Сравнивать стратифицированное разбиение, oversampling, undersampling и взвешивание классов.",
+        "Объяснять принцип SMOTE и ограничения синтетических примеров.",
+        "Строить протокол, в котором балансировка выполняется только внутри обучающей части.",
+        "Выбирать метрики с учётом исходной распространённости событий."
+      ],
+      "content_state": "published",
+      "title_i18n": {
+        "ru": "Дисбаланс классов",
+        "en": "Class Imbalance",
+        "zh": "类别不平衡"
+      },
+      "url_i18n": {
+        "ru": "lessons/a-1-5-5.html",
+        "en": "lessons/a-1-5-5-en.html",
+        "zh": "lessons/a-1-5-5-zh.html"
+      }
+    },
+    {
       "uid": "les-a-0015",
       "track_uid": "trk-a",
       "theme_uid": "thm-a-01",
@@ -863,6 +1191,969 @@
       }
     },
     {
+      "uid": "les-a-0048",
+      "track_uid": "trk-a",
+      "theme_uid": "thm-a-01",
+      "module_uid": "mod-a-01-05",
+      "code": "1.5.7",
+      "title": "Метрики регрессии: MAE, MSE, RMSE и R²",
+      "status": "published",
+      "access": "open",
+      "level": "beginner",
+      "prerequisite_uids": [
+        "les-a-0015"
+      ],
+      "learning_outcomes": [
+        "Различать регрессию и классификацию по типу прогноза.",
+        "Рассчитывать MAE, MSE и RMSE.",
+        "Объяснять влияние крупных ошибок и единицы измерения.",
+        "Интерпретировать R², включая отрицательные значения.",
+        "Сравнивать модель с baseline на одинаковых данных.",
+        "Выбирать метрику с учётом масштаба и цены ошибки."
+      ],
+      "content_state": "published",
+      "title_i18n": {
+        "ru": "Метрики регрессии: MAE, MSE, RMSE и R²",
+        "en": "Regression Metrics: MAE, MSE, RMSE and R²",
+        "zh": "回归指标：MAE、MSE、RMSE 与 R²"
+      },
+      "url_i18n": {
+        "ru": "lessons/a-1-5-7.html",
+        "en": "lessons/a-1-5-7-en.html",
+        "zh": "lessons/a-1-5-7-zh.html"
+      }
+    },
+    {
+      "uid": "les-a-0057",
+      "track_uid": "trk-a",
+      "theme_uid": "thm-a-01",
+      "module_uid": "mod-a-01-05",
+      "code": "1.5.8",
+      "title": "Калибровка вероятностей и качество вероятностных прогнозов",
+      "status": "published",
+      "access": "open",
+      "level": "beginner",
+      "prerequisite_uids": [
+        "les-a-0048",
+        "les-a-0046"
+      ],
+      "learning_outcomes": [
+        "Различать ранжирование и калибровку вероятностных прогнозов.",
+        "Интерпретировать reliability diagram и calibration curve.",
+        "Рассчитывать и интерпретировать Brier score и log loss.",
+        "Объяснять overconfidence, underconfidence и sharpness.",
+        "Сравнивать Platt scaling, isotonic regression и temperature scaling.",
+        "Строить протокол калибровки без утечки данных и оценивать его на независимом test."
+      ],
+      "content_state": "published",
+      "title_i18n": {
+        "ru": "Калибровка вероятностей и качество вероятностных прогнозов",
+        "en": "Probability Calibration and Probabilistic Prediction Quality",
+        "zh": "概率校准与概率预测质量"
+      },
+      "url_i18n": {
+        "ru": "lessons/a-1-5-8.html",
+        "en": "lessons/a-1-5-8-en.html",
+        "zh": "lessons/a-1-5-8-zh.html"
+      }
+    },
+    {
+      "uid": "les-a-0058",
+      "track_uid": "trk-a",
+      "theme_uid": "thm-a-02",
+      "module_uid": "mod-a-02-01",
+      "code": "2.1.1",
+      "title": "Инструменты исследователя AI",
+      "status": "planned",
+      "access": "open",
+      "level": "beginner",
+      "prerequisite_uids": [
+        "les-a-0057"
+      ],
+      "learning_outcomes": [],
+      "content_state": "outline_only"
+    },
+    {
+      "uid": "les-a-0059",
+      "track_uid": "trk-a",
+      "theme_uid": "thm-a-02",
+      "module_uid": "mod-a-02-01",
+      "code": "2.1.2",
+      "title": "Python, виртуальные окружения и пакеты",
+      "status": "planned",
+      "access": "open",
+      "level": "beginner",
+      "prerequisite_uids": [
+        "les-a-0058"
+      ],
+      "learning_outcomes": [],
+      "content_state": "outline_only"
+    },
+    {
+      "uid": "les-a-0060",
+      "track_uid": "trk-a",
+      "theme_uid": "thm-a-02",
+      "module_uid": "mod-a-02-01",
+      "code": "2.1.3",
+      "title": "Jupyter Notebook и интерактивные эксперименты",
+      "status": "planned",
+      "access": "open",
+      "level": "beginner",
+      "prerequisite_uids": [
+        "les-a-0059"
+      ],
+      "learning_outcomes": [],
+      "content_state": "outline_only"
+    },
+    {
+      "uid": "les-a-0061",
+      "track_uid": "trk-a",
+      "theme_uid": "thm-a-02",
+      "module_uid": "mod-a-02-01",
+      "code": "2.1.4",
+      "title": "Организация исследовательского проекта",
+      "status": "planned",
+      "access": "open",
+      "level": "beginner",
+      "prerequisite_uids": [
+        "les-a-0060"
+      ],
+      "learning_outcomes": [],
+      "content_state": "outline_only"
+    },
+    {
+      "uid": "les-a-0062",
+      "track_uid": "trk-a",
+      "theme_uid": "thm-a-02",
+      "module_uid": "mod-a-02-01",
+      "code": "2.1.5",
+      "title": "Воспроизводимость экспериментов",
+      "status": "planned",
+      "access": "open",
+      "level": "beginner",
+      "prerequisite_uids": [
+        "les-a-0061"
+      ],
+      "learning_outcomes": [],
+      "content_state": "outline_only"
+    },
+    {
+      "uid": "les-a-0063",
+      "track_uid": "trk-a",
+      "theme_uid": "thm-a-02",
+      "module_uid": "mod-a-02-02",
+      "code": "2.2.1",
+      "title": "Переменные, типы данных и операторы",
+      "status": "planned",
+      "access": "open",
+      "level": "beginner",
+      "prerequisite_uids": [
+        "les-a-0062"
+      ],
+      "learning_outcomes": [],
+      "content_state": "outline_only"
+    },
+    {
+      "uid": "les-a-0064",
+      "track_uid": "trk-a",
+      "theme_uid": "thm-a-02",
+      "module_uid": "mod-a-02-02",
+      "code": "2.2.2",
+      "title": "Условия и циклы",
+      "status": "planned",
+      "access": "open",
+      "level": "beginner",
+      "prerequisite_uids": [
+        "les-a-0063"
+      ],
+      "learning_outcomes": [],
+      "content_state": "outline_only"
+    },
+    {
+      "uid": "les-a-0065",
+      "track_uid": "trk-a",
+      "theme_uid": "thm-a-02",
+      "module_uid": "mod-a-02-02",
+      "code": "2.2.3",
+      "title": "Функции и области видимости",
+      "status": "planned",
+      "access": "open",
+      "level": "beginner",
+      "prerequisite_uids": [
+        "les-a-0064"
+      ],
+      "learning_outcomes": [],
+      "content_state": "outline_only"
+    },
+    {
+      "uid": "les-a-0066",
+      "track_uid": "trk-a",
+      "theme_uid": "thm-a-02",
+      "module_uid": "mod-a-02-02",
+      "code": "2.2.4",
+      "title": "Списки, словари и множества",
+      "status": "planned",
+      "access": "open",
+      "level": "beginner",
+      "prerequisite_uids": [
+        "les-a-0065"
+      ],
+      "learning_outcomes": [],
+      "content_state": "outline_only"
+    },
+    {
+      "uid": "les-a-0067",
+      "track_uid": "trk-a",
+      "theme_uid": "thm-a-02",
+      "module_uid": "mod-a-02-02",
+      "code": "2.2.5",
+      "title": "Классы и объектно-ориентированное программирование",
+      "status": "planned",
+      "access": "open",
+      "level": "beginner",
+      "prerequisite_uids": [
+        "les-a-0066"
+      ],
+      "learning_outcomes": [],
+      "content_state": "outline_only"
+    },
+    {
+      "uid": "les-a-0068",
+      "track_uid": "trk-a",
+      "theme_uid": "thm-a-02",
+      "module_uid": "mod-a-02-02",
+      "code": "2.2.6",
+      "title": "Работа с библиотеками и исключениями",
+      "status": "planned",
+      "access": "open",
+      "level": "beginner",
+      "prerequisite_uids": [
+        "les-a-0067"
+      ],
+      "learning_outcomes": [],
+      "content_state": "outline_only"
+    },
+    {
+      "uid": "les-a-0069",
+      "track_uid": "trk-a",
+      "theme_uid": "thm-a-02",
+      "module_uid": "mod-a-02-03",
+      "code": "2.3.1",
+      "title": "Массивы NumPy",
+      "status": "planned",
+      "access": "open",
+      "level": "beginner",
+      "prerequisite_uids": [
+        "les-a-0068"
+      ],
+      "learning_outcomes": [],
+      "content_state": "outline_only"
+    },
+    {
+      "uid": "les-a-0070",
+      "track_uid": "trk-a",
+      "theme_uid": "thm-a-02",
+      "module_uid": "mod-a-02-03",
+      "code": "2.3.2",
+      "title": "Векторизация и операции над массивами",
+      "status": "planned",
+      "access": "open",
+      "level": "beginner",
+      "prerequisite_uids": [
+        "les-a-0069"
+      ],
+      "learning_outcomes": [],
+      "content_state": "outline_only"
+    },
+    {
+      "uid": "les-a-0071",
+      "track_uid": "trk-a",
+      "theme_uid": "thm-a-02",
+      "module_uid": "mod-a-02-03",
+      "code": "2.3.3",
+      "title": "Таблицы pandas",
+      "status": "planned",
+      "access": "open",
+      "level": "beginner",
+      "prerequisite_uids": [
+        "les-a-0070"
+      ],
+      "learning_outcomes": [],
+      "content_state": "outline_only"
+    },
+    {
+      "uid": "les-a-0072",
+      "track_uid": "trk-a",
+      "theme_uid": "thm-a-02",
+      "module_uid": "mod-a-02-03",
+      "code": "2.3.4",
+      "title": "Очистка и преобразование данных",
+      "status": "planned",
+      "access": "open",
+      "level": "beginner",
+      "prerequisite_uids": [
+        "les-a-0071"
+      ],
+      "learning_outcomes": [],
+      "content_state": "outline_only"
+    },
+    {
+      "uid": "les-a-0073",
+      "track_uid": "trk-a",
+      "theme_uid": "thm-a-02",
+      "module_uid": "mod-a-02-03",
+      "code": "2.3.5",
+      "title": "Визуализация данных",
+      "status": "planned",
+      "access": "open",
+      "level": "beginner",
+      "prerequisite_uids": [
+        "les-a-0072"
+      ],
+      "learning_outcomes": [],
+      "content_state": "outline_only"
+    },
+    {
+      "uid": "les-a-0074",
+      "track_uid": "trk-a",
+      "theme_uid": "thm-a-02",
+      "module_uid": "mod-a-02-03",
+      "code": "2.3.6",
+      "title": "Исследовательский анализ данных (EDA)",
+      "status": "planned",
+      "access": "open",
+      "level": "beginner",
+      "prerequisite_uids": [
+        "les-a-0073"
+      ],
+      "learning_outcomes": [],
+      "content_state": "outline_only"
+    },
+    {
+      "uid": "les-a-0075",
+      "track_uid": "trk-a",
+      "theme_uid": "thm-a-02",
+      "module_uid": "mod-a-02-04",
+      "code": "2.4.1",
+      "title": "Переменные, выражения и функции",
+      "status": "planned",
+      "access": "open",
+      "level": "beginner",
+      "prerequisite_uids": [
+        "les-a-0074"
+      ],
+      "learning_outcomes": [],
+      "content_state": "outline_only"
+    },
+    {
+      "uid": "les-a-0076",
+      "track_uid": "trk-a",
+      "theme_uid": "thm-a-02",
+      "module_uid": "mod-a-02-04",
+      "code": "2.4.2",
+      "title": "Линейные и нелинейные функции",
+      "status": "planned",
+      "access": "open",
+      "level": "beginner",
+      "prerequisite_uids": [
+        "les-a-0075"
+      ],
+      "learning_outcomes": [],
+      "content_state": "outline_only"
+    },
+    {
+      "uid": "les-a-0077",
+      "track_uid": "trk-a",
+      "theme_uid": "thm-a-02",
+      "module_uid": "mod-a-02-04",
+      "code": "2.4.3",
+      "title": "Экспоненты и логарифмы",
+      "status": "planned",
+      "access": "open",
+      "level": "beginner",
+      "prerequisite_uids": [
+        "les-a-0076"
+      ],
+      "learning_outcomes": [],
+      "content_state": "outline_only"
+    },
+    {
+      "uid": "les-a-0078",
+      "track_uid": "trk-a",
+      "theme_uid": "thm-a-02",
+      "module_uid": "mod-a-02-04",
+      "code": "2.4.4",
+      "title": "Графики и преобразования функций",
+      "status": "planned",
+      "access": "open",
+      "level": "beginner",
+      "prerequisite_uids": [
+        "les-a-0077"
+      ],
+      "learning_outcomes": [],
+      "content_state": "outline_only"
+    },
+    {
+      "uid": "les-a-0079",
+      "track_uid": "trk-a",
+      "theme_uid": "thm-a-02",
+      "module_uid": "mod-a-02-05",
+      "code": "2.5.1",
+      "title": "Векторы и векторные пространства",
+      "status": "planned",
+      "access": "open",
+      "level": "beginner",
+      "prerequisite_uids": [
+        "les-a-0078"
+      ],
+      "learning_outcomes": [],
+      "content_state": "outline_only"
+    },
+    {
+      "uid": "les-a-0080",
+      "track_uid": "trk-a",
+      "theme_uid": "thm-a-02",
+      "module_uid": "mod-a-02-05",
+      "code": "2.5.2",
+      "title": "Матрицы и матричные операции",
+      "status": "planned",
+      "access": "open",
+      "level": "beginner",
+      "prerequisite_uids": [
+        "les-a-0079"
+      ],
+      "learning_outcomes": [],
+      "content_state": "outline_only"
+    },
+    {
+      "uid": "les-a-0081",
+      "track_uid": "trk-a",
+      "theme_uid": "thm-a-02",
+      "module_uid": "mod-a-02-05",
+      "code": "2.5.3",
+      "title": "Скалярное произведение",
+      "status": "planned",
+      "access": "open",
+      "level": "beginner",
+      "prerequisite_uids": [
+        "les-a-0080"
+      ],
+      "learning_outcomes": [],
+      "content_state": "outline_only"
+    },
+    {
+      "uid": "les-a-0082",
+      "track_uid": "trk-a",
+      "theme_uid": "thm-a-02",
+      "module_uid": "mod-a-02-05",
+      "code": "2.5.4",
+      "title": "Линейные преобразования",
+      "status": "planned",
+      "access": "open",
+      "level": "beginner",
+      "prerequisite_uids": [
+        "les-a-0081"
+      ],
+      "learning_outcomes": [],
+      "content_state": "outline_only"
+    },
+    {
+      "uid": "les-a-0083",
+      "track_uid": "trk-a",
+      "theme_uid": "thm-a-02",
+      "module_uid": "mod-a-02-05",
+      "code": "2.5.5",
+      "title": "Собственные значения и собственные векторы",
+      "status": "planned",
+      "access": "open",
+      "level": "beginner",
+      "prerequisite_uids": [
+        "les-a-0082"
+      ],
+      "learning_outcomes": [],
+      "content_state": "outline_only"
+    },
+    {
+      "uid": "les-a-0084",
+      "track_uid": "trk-a",
+      "theme_uid": "thm-a-02",
+      "module_uid": "mod-a-02-06",
+      "code": "2.6.1",
+      "title": "Основы теории вероятностей",
+      "status": "planned",
+      "access": "open",
+      "level": "beginner",
+      "prerequisite_uids": [
+        "les-a-0083"
+      ],
+      "learning_outcomes": [],
+      "content_state": "outline_only"
+    },
+    {
+      "uid": "les-a-0085",
+      "track_uid": "trk-a",
+      "theme_uid": "thm-a-02",
+      "module_uid": "mod-a-02-06",
+      "code": "2.6.2",
+      "title": "Случайные величины и распределения",
+      "status": "planned",
+      "access": "open",
+      "level": "beginner",
+      "prerequisite_uids": [
+        "les-a-0084"
+      ],
+      "learning_outcomes": [],
+      "content_state": "outline_only"
+    },
+    {
+      "uid": "les-a-0086",
+      "track_uid": "trk-a",
+      "theme_uid": "thm-a-02",
+      "module_uid": "mod-a-02-06",
+      "code": "2.6.3",
+      "title": "Математическое ожидание и дисперсия",
+      "status": "planned",
+      "access": "open",
+      "level": "beginner",
+      "prerequisite_uids": [
+        "les-a-0085"
+      ],
+      "learning_outcomes": [],
+      "content_state": "outline_only"
+    },
+    {
+      "uid": "les-a-0087",
+      "track_uid": "trk-a",
+      "theme_uid": "thm-a-02",
+      "module_uid": "mod-a-02-06",
+      "code": "2.6.4",
+      "title": "Условная вероятность и теорема Байеса",
+      "status": "planned",
+      "access": "open",
+      "level": "beginner",
+      "prerequisite_uids": [
+        "les-a-0086"
+      ],
+      "learning_outcomes": [],
+      "content_state": "outline_only"
+    },
+    {
+      "uid": "les-a-0088",
+      "track_uid": "trk-a",
+      "theme_uid": "thm-a-02",
+      "module_uid": "mod-a-02-06",
+      "code": "2.6.5",
+      "title": "Статистические оценки и доверительные интервалы",
+      "status": "planned",
+      "access": "open",
+      "level": "beginner",
+      "prerequisite_uids": [
+        "les-a-0087"
+      ],
+      "learning_outcomes": [],
+      "content_state": "outline_only"
+    },
+    {
+      "uid": "les-a-0089",
+      "track_uid": "trk-a",
+      "theme_uid": "thm-a-02",
+      "module_uid": "mod-a-02-06",
+      "code": "2.6.6",
+      "title": "Статистическая значимость и проверка гипотез",
+      "status": "planned",
+      "access": "open",
+      "level": "beginner",
+      "prerequisite_uids": [
+        "les-a-0088"
+      ],
+      "learning_outcomes": [],
+      "content_state": "outline_only"
+    },
+    {
+      "uid": "les-a-0090",
+      "track_uid": "trk-a",
+      "theme_uid": "thm-a-02",
+      "module_uid": "mod-a-02-07",
+      "code": "2.7.1",
+      "title": "Пределы и производные",
+      "status": "planned",
+      "access": "open",
+      "level": "beginner",
+      "prerequisite_uids": [
+        "les-a-0089"
+      ],
+      "learning_outcomes": [],
+      "content_state": "outline_only"
+    },
+    {
+      "uid": "les-a-0091",
+      "track_uid": "trk-a",
+      "theme_uid": "thm-a-02",
+      "module_uid": "mod-a-02-07",
+      "code": "2.7.2",
+      "title": "Частные производные",
+      "status": "planned",
+      "access": "open",
+      "level": "beginner",
+      "prerequisite_uids": [
+        "les-a-0090"
+      ],
+      "learning_outcomes": [],
+      "content_state": "outline_only"
+    },
+    {
+      "uid": "les-a-0092",
+      "track_uid": "trk-a",
+      "theme_uid": "thm-a-02",
+      "module_uid": "mod-a-02-07",
+      "code": "2.7.3",
+      "title": "Градиент и направление изменения функции",
+      "status": "planned",
+      "access": "open",
+      "level": "beginner",
+      "prerequisite_uids": [
+        "les-a-0091"
+      ],
+      "learning_outcomes": [],
+      "content_state": "outline_only"
+    },
+    {
+      "uid": "les-a-0093",
+      "track_uid": "trk-a",
+      "theme_uid": "thm-a-02",
+      "module_uid": "mod-a-02-07",
+      "code": "2.7.4",
+      "title": "Градиентный спуск",
+      "status": "planned",
+      "access": "open",
+      "level": "beginner",
+      "prerequisite_uids": [
+        "les-a-0092"
+      ],
+      "learning_outcomes": [],
+      "content_state": "outline_only"
+    },
+    {
+      "uid": "les-a-0094",
+      "track_uid": "trk-a",
+      "theme_uid": "thm-a-02",
+      "module_uid": "mod-a-02-07",
+      "code": "2.7.5",
+      "title": "Оптимизация функции потерь",
+      "status": "planned",
+      "access": "open",
+      "level": "beginner",
+      "prerequisite_uids": [
+        "les-a-0093"
+      ],
+      "learning_outcomes": [],
+      "content_state": "outline_only"
+    },
+    {
+      "uid": "les-a-0095",
+      "track_uid": "trk-a",
+      "theme_uid": "thm-a-02",
+      "module_uid": "mod-a-02-08",
+      "code": "2.8.1",
+      "title": "Научный вопрос и исследовательская гипотеза",
+      "status": "planned",
+      "access": "open",
+      "level": "beginner",
+      "prerequisite_uids": [
+        "les-a-0094"
+      ],
+      "learning_outcomes": [],
+      "content_state": "outline_only"
+    },
+    {
+      "uid": "les-a-0096",
+      "track_uid": "trk-a",
+      "theme_uid": "thm-a-02",
+      "module_uid": "mod-a-02-08",
+      "code": "2.8.2",
+      "title": "Планирование эксперимента",
+      "status": "planned",
+      "access": "open",
+      "level": "beginner",
+      "prerequisite_uids": [
+        "les-a-0095"
+      ],
+      "learning_outcomes": [],
+      "content_state": "outline_only"
+    },
+    {
+      "uid": "les-a-0097",
+      "track_uid": "trk-a",
+      "theme_uid": "thm-a-02",
+      "module_uid": "mod-a-02-08",
+      "code": "2.8.3",
+      "title": "Контрольные группы и базовые модели",
+      "status": "planned",
+      "access": "open",
+      "level": "beginner",
+      "prerequisite_uids": [
+        "les-a-0096"
+      ],
+      "learning_outcomes": [],
+      "content_state": "outline_only"
+    },
+    {
+      "uid": "les-a-0098",
+      "track_uid": "trk-a",
+      "theme_uid": "thm-a-02",
+      "module_uid": "mod-a-02-08",
+      "code": "2.8.4",
+      "title": "Повторяемость и статистическая устойчивость",
+      "status": "planned",
+      "access": "open",
+      "level": "beginner",
+      "prerequisite_uids": [
+        "les-a-0097"
+      ],
+      "learning_outcomes": [],
+      "content_state": "outline_only"
+    },
+    {
+      "uid": "les-a-0099",
+      "track_uid": "trk-a",
+      "theme_uid": "thm-a-02",
+      "module_uid": "mod-a-02-08",
+      "code": "2.8.5",
+      "title": "Интерпретация и представление результатов",
+      "status": "planned",
+      "access": "open",
+      "level": "beginner",
+      "prerequisite_uids": [
+        "les-a-0098"
+      ],
+      "learning_outcomes": [],
+      "content_state": "outline_only"
+    },
+    {
+      "uid": "les-a-0100",
+      "track_uid": "trk-a",
+      "theme_uid": "thm-a-03",
+      "module_uid": "mod-a-03-01",
+      "code": "3.1.1",
+      "title": "Линейная регрессия",
+      "status": "planned",
+      "access": "open",
+      "level": "beginner",
+      "prerequisite_uids": [
+        "les-a-0099"
+      ],
+      "learning_outcomes": [],
+      "content_state": "outline_only"
+    },
+    {
+      "uid": "les-a-0101",
+      "track_uid": "trk-a",
+      "theme_uid": "thm-a-03",
+      "module_uid": "mod-a-03-01",
+      "code": "3.1.2",
+      "title": "Логистическая регрессия",
+      "status": "planned",
+      "access": "open",
+      "level": "beginner",
+      "prerequisite_uids": [
+        "les-a-0100"
+      ],
+      "learning_outcomes": [],
+      "content_state": "outline_only"
+    },
+    {
+      "uid": "les-a-0102",
+      "track_uid": "trk-a",
+      "theme_uid": "thm-a-03",
+      "module_uid": "mod-a-03-01",
+      "code": "3.1.3",
+      "title": "Деревья решений",
+      "status": "planned",
+      "access": "open",
+      "level": "beginner",
+      "prerequisite_uids": [
+        "les-a-0101"
+      ],
+      "learning_outcomes": [],
+      "content_state": "outline_only"
+    },
+    {
+      "uid": "les-a-0103",
+      "track_uid": "trk-a",
+      "theme_uid": "thm-a-03",
+      "module_uid": "mod-a-03-01",
+      "code": "3.1.4",
+      "title": "Метод ближайших соседей и метод опорных векторов",
+      "status": "planned",
+      "access": "open",
+      "level": "beginner",
+      "prerequisite_uids": [
+        "les-a-0102"
+      ],
+      "learning_outcomes": [],
+      "content_state": "outline_only"
+    },
+    {
+      "uid": "les-a-0104",
+      "track_uid": "trk-a",
+      "theme_uid": "thm-a-03",
+      "module_uid": "mod-a-03-01",
+      "code": "3.1.5",
+      "title": "Ансамбли: случайный лес и градиентный бустинг",
+      "status": "planned",
+      "access": "open",
+      "level": "beginner",
+      "prerequisite_uids": [
+        "les-a-0103"
+      ],
+      "learning_outcomes": [],
+      "content_state": "outline_only"
+    },
+    {
+      "uid": "les-a-0049",
+      "track_uid": "trk-a",
+      "theme_uid": "thm-a-03",
+      "module_uid": "mod-a-03-01",
+      "code": "3.1.6",
+      "title": "Сравнение моделей и базовые алгоритмы",
+      "status": "planned",
+      "access": "open",
+      "level": "beginner",
+      "prerequisite_uids": [
+        "les-a-0104"
+      ],
+      "learning_outcomes": [],
+      "content_state": "outline_only"
+    },
+    {
+      "uid": "les-a-0105",
+      "track_uid": "trk-a",
+      "theme_uid": "thm-a-03",
+      "module_uid": "mod-a-03-02",
+      "code": "3.2.1",
+      "title": "Искусственный нейрон",
+      "status": "planned",
+      "access": "open",
+      "level": "beginner",
+      "prerequisite_uids": [
+        "les-a-0049"
+      ],
+      "learning_outcomes": [],
+      "content_state": "outline_only"
+    },
+    {
+      "uid": "les-a-0106",
+      "track_uid": "trk-a",
+      "theme_uid": "thm-a-03",
+      "module_uid": "mod-a-03-02",
+      "code": "3.2.2",
+      "title": "Перцептрон и многослойная нейронная сеть",
+      "status": "planned",
+      "access": "open",
+      "level": "beginner",
+      "prerequisite_uids": [
+        "les-a-0105"
+      ],
+      "learning_outcomes": [],
+      "content_state": "outline_only"
+    },
+    {
+      "uid": "les-a-0107",
+      "track_uid": "trk-a",
+      "theme_uid": "thm-a-03",
+      "module_uid": "mod-a-03-02",
+      "code": "3.2.3",
+      "title": "Функции активации",
+      "status": "planned",
+      "access": "open",
+      "level": "beginner",
+      "prerequisite_uids": [
+        "les-a-0106"
+      ],
+      "learning_outcomes": [],
+      "content_state": "outline_only"
+    },
+    {
+      "uid": "les-a-0108",
+      "track_uid": "trk-a",
+      "theme_uid": "thm-a-03",
+      "module_uid": "mod-a-03-02",
+      "code": "3.2.4",
+      "title": "Прямое распространение сигнала",
+      "status": "planned",
+      "access": "open",
+      "level": "beginner",
+      "prerequisite_uids": [
+        "les-a-0107"
+      ],
+      "learning_outcomes": [],
+      "content_state": "outline_only"
+    },
+    {
+      "uid": "les-a-0109",
+      "track_uid": "trk-a",
+      "theme_uid": "thm-a-03",
+      "module_uid": "mod-a-03-02",
+      "code": "3.2.5",
+      "title": "Функция потерь и обратное распространение ошибки",
+      "status": "planned",
+      "access": "open",
+      "level": "beginner",
+      "prerequisite_uids": [
+        "les-a-0108"
+      ],
+      "learning_outcomes": [],
+      "content_state": "outline_only"
+    },
+    {
+      "uid": "les-a-0110",
+      "track_uid": "trk-a",
+      "theme_uid": "thm-a-03",
+      "module_uid": "mod-a-03-02",
+      "code": "3.2.6",
+      "title": "Обучение нейронной сети в PyTorch",
+      "status": "planned",
+      "access": "open",
+      "level": "beginner",
+      "prerequisite_uids": [
+        "les-a-0109"
+      ],
+      "learning_outcomes": [],
+      "content_state": "outline_only"
+    },
+    {
+      "uid": "les-a-0111",
+      "track_uid": "trk-a",
+      "theme_uid": "thm-a-03",
+      "module_uid": "mod-a-03-02",
+      "code": "3.2.7",
+      "title": "Регуляризация и стабилизация обучения",
+      "status": "planned",
+      "access": "open",
+      "level": "beginner",
+      "prerequisite_uids": [
+        "les-a-0110"
+      ],
+      "learning_outcomes": [],
+      "content_state": "outline_only"
+    },
+    {
+      "uid": "les-a-0112",
+      "track_uid": "trk-a",
+      "theme_uid": "thm-a-03",
+      "module_uid": "mod-a-03-02",
+      "code": "3.2.8",
+      "title": "Основы архитектуры Transformer и механизм внимания",
+      "status": "planned",
+      "access": "open",
+      "level": "beginner",
+      "prerequisite_uids": [
+        "les-a-0111"
+      ],
+      "learning_outcomes": [],
+      "content_state": "outline_only"
+    },
+    {
       "uid": "les-a-0016",
       "track_uid": "trk-a",
       "theme_uid": "thm-a-04",
@@ -887,6 +2178,38 @@
       "access": "open",
       "level": "beginner",
       "prerequisite_uids": [],
+      "learning_outcomes": [],
+      "content_state": "outline_only"
+    },
+    {
+      "uid": "les-a-0113",
+      "track_uid": "trk-a",
+      "theme_uid": "thm-a-04",
+      "module_uid": "mod-a-04-01",
+      "code": "4.1.6",
+      "title": "Нелинейные модели с интерпретируемой структурой",
+      "status": "planned",
+      "access": "open",
+      "level": "intermediate",
+      "prerequisite_uids": [
+        "les-a-0017"
+      ],
+      "learning_outcomes": [],
+      "content_state": "outline_only"
+    },
+    {
+      "uid": "les-a-0114",
+      "track_uid": "trk-a",
+      "theme_uid": "thm-a-04",
+      "module_uid": "mod-a-04-01",
+      "code": "4.1.7",
+      "title": "GAM и EBM: интерпретируемые модели с нелинейными зависимостями",
+      "status": "planned",
+      "access": "open",
+      "level": "intermediate",
+      "prerequisite_uids": [
+        "les-a-0113"
+      ],
       "learning_outcomes": [],
       "content_state": "outline_only"
     },
@@ -1057,6 +2380,86 @@
       "access": "open",
       "level": "beginner",
       "prerequisite_uids": [],
+      "learning_outcomes": [],
+      "content_state": "outline_only"
+    },
+    {
+      "uid": "les-a-0115",
+      "track_uid": "trk-a",
+      "theme_uid": "thm-a-04",
+      "module_uid": "mod-a-04-04",
+      "code": "4.4.1",
+      "title": "Корреляция и причинность",
+      "status": "planned",
+      "access": "open",
+      "level": "intermediate",
+      "prerequisite_uids": [
+        "les-a-0112"
+      ],
+      "learning_outcomes": [],
+      "content_state": "outline_only"
+    },
+    {
+      "uid": "les-a-0116",
+      "track_uid": "trk-a",
+      "theme_uid": "thm-a-04",
+      "module_uid": "mod-a-04-04",
+      "code": "4.4.2",
+      "title": "Причинные графы",
+      "status": "planned",
+      "access": "open",
+      "level": "intermediate",
+      "prerequisite_uids": [
+        "les-a-0115"
+      ],
+      "learning_outcomes": [],
+      "content_state": "outline_only"
+    },
+    {
+      "uid": "les-a-0117",
+      "track_uid": "trk-a",
+      "theme_uid": "thm-a-04",
+      "module_uid": "mod-a-04-04",
+      "code": "4.4.3",
+      "title": "Confounding и скрытые переменные",
+      "status": "planned",
+      "access": "open",
+      "level": "intermediate",
+      "prerequisite_uids": [
+        "les-a-0116"
+      ],
+      "learning_outcomes": [],
+      "content_state": "outline_only"
+    },
+    {
+      "uid": "les-a-0118",
+      "track_uid": "trk-a",
+      "theme_uid": "thm-a-04",
+      "module_uid": "mod-a-04-04",
+      "code": "4.4.4",
+      "title": "Интервенции и контрфактическое мышление",
+      "status": "planned",
+      "access": "open",
+      "level": "intermediate",
+      "prerequisite_uids": [
+        "les-a-0117"
+      ],
+      "learning_outcomes": [],
+      "content_state": "outline_only"
+    },
+    {
+      "uid": "les-a-0119",
+      "track_uid": "trk-a",
+      "theme_uid": "thm-a-04",
+      "module_uid": "mod-a-04-04",
+      "code": "4.4.5",
+      "title": "Причинные объяснения и ограничения XAI",
+      "status": "planned",
+      "access": "open",
+      "level": "intermediate",
+      "prerequisite_uids": [
+        "les-a-0118"
+      ],
       "learning_outcomes": [],
       "content_state": "outline_only"
     },
@@ -1257,376 +2660,428 @@
       "content_state": "outline_only"
     },
     {
-      "uid": "les-a-0043",
+      "uid": "les-a-0120",
       "track_uid": "trk-a",
-      "theme_uid": "thm-a-01",
-      "module_uid": "mod-a-01-05",
-      "code": "1.5.1",
-      "title": "Зачем оценивать качество модели",
-      "status": "published",
-      "access": "open",
-      "level": "beginner",
-      "prerequisite_uids": [
-        "les-a-0014"
-      ],
-      "learning_outcomes": [
-        "Объяснять различие между обучением модели и оценкой её поведения на новых данных.",
-        "Определять критерии успешности на основе сценария применения и последствий ошибок.",
-        "Объяснять назначение метрик и ограничения оценки по одному показателю.",
-        "Описывать роль базовой модели, независимой проверки и фиксации протокола.",
-        "Объяснять, почему результат тестирования не является гарантией качества в любых будущих условиях."
-      ],
-      "content_state": "published",
-      "title_i18n": {
-        "ru": "Зачем оценивать качество модели",
-        "en": "Why Evaluate Model Quality?",
-        "zh": "为什么要评估模型质量？"
-      },
-      "url_i18n": {
-        "ru": "lessons/a-1-5-1.html",
-        "en": "lessons/a-1-5-1-en.html",
-        "zh": "lessons/a-1-5-1-zh.html"
-      }
-    },
-    {
-      "uid": "les-a-0044",
-      "track_uid": "trk-a",
-      "theme_uid": "thm-a-01",
-      "module_uid": "mod-a-01-05",
-      "code": "1.5.2",
-      "title": "Матрица ошибок классификации",
-      "status": "published",
-      "access": "open",
-      "level": "beginner",
-      "prerequisite_uids": [
-        "les-a-0043"
-      ],
-      "learning_outcomes": [
-        "Объяснять назначение матрицы ошибок и правильно читать её строки и столбцы.",
-        "Различать TP, TN, FP и FN с позиции фактического класса и прогноза.",
-        "Строить матрицу по размеченным результатам классификатора и проверять сумму ячеек.",
-        "Интерпретировать ложную тревогу и пропуск в контексте практической задачи.",
-        "Объяснять ограничения матрицы и расширение представления на несколько классов."
-      ],
-      "content_state": "published",
-      "title_i18n": {
-        "ru": "Матрица ошибок классификации",
-        "en": "The Confusion Matrix",
-        "zh": "分类混淆矩阵"
-      },
-      "url_i18n": {
-        "ru": "lessons/a-1-5-2.html",
-        "en": "lessons/a-1-5-2-en.html",
-        "zh": "lessons/a-1-5-2-zh.html"
-      }
-    },
-    {
-      "uid": "les-a-0045",
-      "track_uid": "trk-a",
-      "theme_uid": "thm-a-01",
-      "module_uid": "mod-a-01-05",
-      "code": "1.5.3",
-      "title": "Accuracy, Precision, Recall и F1",
-      "status": "published",
-      "access": "open",
-      "level": "beginner",
-      "prerequisite_uids": [
-        "les-a-0044"
-      ],
-      "learning_outcomes": [
-        "Объяснять, на какой вопрос отвечают Accuracy, Precision, Recall и F1.",
-        "Рассчитывать четыре метрики по TP, TN, FP и FN из матрицы ошибок.",
-        "Различать знаменатели Precision и Recall и интерпретировать влияние FP и FN.",
-        "Объяснять гармоническую природу F1 и ограничения его интерпретации.",
-        "Сравнивать модели и выбирать приоритетную метрику с учётом последствий ошибок."
-      ],
-      "content_state": "published",
-      "title_i18n": {
-        "ru": "Accuracy, Precision, Recall и F1",
-        "en": "Accuracy, Precision, Recall and F1",
-        "zh": "Accuracy、Precision、Recall 与 F1"
-      },
-      "url_i18n": {
-        "ru": "lessons/a-1-5-3.html",
-        "en": "lessons/a-1-5-3-en.html",
-        "zh": "lessons/a-1-5-3-zh.html"
-      }
-    },
-    {
-      "uid": "les-a-0046",
-      "track_uid": "trk-a",
-      "theme_uid": "thm-a-01",
-      "module_uid": "mod-a-01-05",
-      "code": "1.5.4",
-      "title": "ROC-AUC и Precision-Recall AUC",
-      "status": "published",
-      "access": "open",
-      "level": "beginner",
-      "prerequisite_uids": [
-        "les-a-0045"
-      ],
-      "learning_outcomes": [
-        "Объяснять роль порога классификации и почему изменение порога меняет TP, FP, TN и FN.",
-        "Рассчитывать TPR и FPR и интерпретировать ROC-кривую.",
-        "Объяснять ROC-AUC как площадь под ROC-кривой и как вероятностную характеристику ранжирования.",
-        "Интерпретировать Precision–Recall-кривую и базовую линию, связанную с долей положительного класса.",
-        "Различать Average Precision и трапецеидальную PR-AUC и выбирать способ оценки под задачу.",
-        "Сравнивать ROC-AUC и PR-AUC, корректно выбирать порог на validation и сохранять test для финальной оценки."
-      ],
-      "content_state": "published",
-      "title_i18n": {
-        "ru": "ROC-AUC и Precision-Recall AUC",
-        "en": "ROC-AUC and Precision-Recall AUC",
-        "zh": "ROC-AUC 与 Precision-Recall AUC"
-      },
-      "url_i18n": {
-        "ru": "lessons/a-1-5-4.html",
-        "en": "lessons/a-1-5-4-en.html",
-        "zh": "lessons/a-1-5-4-zh.html"
-      }
-    },
-    {
-      "uid": "les-a-0047",
-      "track_uid": "trk-a",
-      "theme_uid": "thm-a-01",
-      "module_uid": "mod-a-01-05",
-      "code": "1.5.5",
-      "title": "Дисбаланс классов",
-      "status": "published",
-      "access": "open",
-      "level": "beginner",
-      "prerequisite_uids": [
-        "les-a-0046"
-      ],
-      "learning_outcomes": [
-        "Определять дисбаланс классов и рассчитывать долю положительного класса.",
-        "Объяснять, почему высокая Accuracy может сочетаться с нулевым Recall.",
-        "Рассчитывать Precision с учётом TPR, FPR и распространённости положительного класса.",
-        "Сравнивать стратифицированное разбиение, oversampling, undersampling и взвешивание классов.",
-        "Объяснять принцип SMOTE и ограничения синтетических примеров.",
-        "Строить протокол, в котором балансировка выполняется только внутри обучающей части.",
-        "Выбирать метрики с учётом исходной распространённости событий."
-      ],
-      "content_state": "published",
-      "title_i18n": {
-        "ru": "Дисбаланс классов",
-        "en": "Class Imbalance",
-        "zh": "类别不平衡"
-      },
-      "url_i18n": {
-        "ru": "lessons/a-1-5-5.html",
-        "en": "lessons/a-1-5-5-en.html",
-        "zh": "lessons/a-1-5-5-zh.html"
-      }
-    },
-    {
-      "uid": "les-a-0048",
-      "track_uid": "trk-a",
-      "theme_uid": "thm-a-01",
-      "module_uid": "mod-a-01-05",
-      "code": "1.5.7",
-      "title": "Метрики регрессии: MAE, MSE, RMSE и R²",
-      "status": "published",
-      "access": "open",
-      "level": "beginner",
-      "prerequisite_uids": [
-        "les-a-0015"
-      ],
-      "learning_outcomes": [
-        "Различать регрессию и классификацию по типу прогноза.",
-        "Рассчитывать MAE, MSE и RMSE.",
-        "Объяснять влияние крупных ошибок и единицы измерения.",
-        "Интерпретировать R², включая отрицательные значения.",
-        "Сравнивать модель с baseline на одинаковых данных.",
-        "Выбирать метрику с учётом масштаба и цены ошибки."
-      ],
-      "content_state": "published",
-      "title_i18n": {
-        "ru": "Метрики регрессии: MAE, MSE, RMSE и R²",
-        "en": "Regression Metrics: MAE, MSE, RMSE and R²",
-        "zh": "回归指标：MAE、MSE、RMSE 与 R²"
-      },
-      "url_i18n": {
-        "ru": "lessons/a-1-5-7.html",
-        "en": "lessons/a-1-5-7-en.html",
-        "zh": "lessons/a-1-5-7-zh.html"
-      }
-    },
-    {
-      "uid": "les-a-0049",
-      "track_uid": "trk-a",
-      "theme_uid": "thm-a-03",
-      "module_uid": "mod-a-03-01",
-      "code": "3.1.6",
-      "title": "Сравнение моделей и базовые алгоритмы",
+      "theme_uid": "thm-a-04",
+      "module_uid": "mod-a-04-08",
+      "code": "4.8.1",
+      "title": "Что такое неоднородность причинного эффекта",
       "status": "planned",
       "access": "open",
-      "level": "beginner",
+      "level": "intermediate",
       "prerequisite_uids": [
-        "les-a-0010",
-        "les-a-0011"
+        "les-a-0119"
       ],
       "learning_outcomes": [],
       "content_state": "outline_only"
     },
     {
-      "uid": "les-a-0050",
+      "uid": "les-a-0121",
       "track_uid": "trk-a",
-      "theme_uid": "thm-a-01",
-      "module_uid": "mod-a-01-02",
-      "code": "1.2.4",
-      "title": "Обучающие, проверочные и тестовые данные",
-      "status": "published",
+      "theme_uid": "thm-a-04",
+      "module_uid": "mod-a-04-08",
+      "code": "4.8.2",
+      "title": "ATE и CATE: средний и условный причинный эффект",
+      "status": "planned",
       "access": "open",
-      "level": "beginner",
+      "level": "intermediate",
       "prerequisite_uids": [
-        "les-a-0056"
+        "les-a-0120"
       ],
-      "learning_outcomes": [
-        "Объяснять роли train, validation и test.",
-        "Выбирать стратегию разделения по структуре данных.",
-        "Различать случайное, стратифицированное, групповое и временное разделение.",
-        "Объяснять, почему предобработка обучается только на train."
-      ],
-      "content_state": "published",
-      "url_i18n": {
-        "ru": "lessons/a-1-2-4.html",
-        "en": "lessons/a-1-2-4-en.html",
-        "zh": "lessons/a-1-2-4-zh.html"
-      },
-      "title_i18n": {
-        "ru": "Обучающие, проверочные и тестовые данные",
-        "en": "Training, Validation, and Test Data",
-        "zh": "训练集、验证集与测试集"
-      }
+      "learning_outcomes": [],
+      "content_state": "outline_only"
     },
     {
-      "uid": "les-a-0051",
+      "uid": "les-a-0122",
       "track_uid": "trk-a",
-      "theme_uid": "thm-a-01",
-      "module_uid": "mod-a-01-01",
-      "code": "1.1.2",
-      "title": "История развития искусственного интеллекта",
-      "status": "published",
+      "theme_uid": "thm-a-04",
+      "module_uid": "mod-a-04-08",
+      "code": "4.8.3",
+      "title": "Групповые и индивидуальные различия эффектов",
+      "status": "planned",
       "access": "open",
-      "level": "beginner",
+      "level": "intermediate",
       "prerequisite_uids": [
-        "les-a-0001"
+        "les-a-0121"
       ],
-      "learning_outcomes": [
-        "Объяснять математические и вычислительные предпосылки AI",
-        "Различать ранние предпосылки и формирование AI как дисциплины",
-        "Сравнивать символический, экспертный, статистический и нейросетевой подходы",
-        "Объяснять причины AI winters и условия современных прорывов"
-      ],
-      "content_state": "published",
-      "url_i18n": {
-        "ru": "lessons/a-1-1-2.html",
-        "en": "lessons/a-1-1-2-en.html",
-        "zh": "lessons/a-1-1-2-zh.html"
-      },
-      "title_i18n": {
-        "ru": "История развития искусственного интеллекта",
-        "en": "A Brief History of Artificial Intelligence",
-        "zh": "人工智能发展简史"
-      }
+      "learning_outcomes": [],
+      "content_state": "outline_only"
     },
     {
-      "uid": "les-a-0052",
+      "uid": "les-a-0123",
       "track_uid": "trk-a",
-      "theme_uid": "thm-a-01",
-      "module_uid": "mod-a-01-01",
-      "code": "1.1.4",
-      "title": "Символический AI и машинное обучение",
-      "status": "published",
+      "theme_uid": "thm-a-04",
+      "module_uid": "mod-a-04-08",
+      "code": "4.8.4",
+      "title": "Meta-learners и методы оценки гетерогенных эффектов",
+      "status": "planned",
       "access": "open",
-      "level": "beginner",
+      "level": "intermediate",
       "prerequisite_uids": [
-        "les-a-0002"
+        "les-a-0122"
       ],
-      "learning_outcomes": [
-        "Объяснять символы, правила, базу знаний и механизм вывода",
-        "Описывать цикл машинного обучения",
-        "Различать явно заданную логику и параметры, найденные по данным",
-        "Распознавать гибридные AI-системы"
-      ],
-      "content_state": "published",
-      "url_i18n": {
-        "ru": "lessons/a-1-1-4.html",
-        "en": "lessons/a-1-1-4-en.html",
-        "zh": "lessons/a-1-1-4-zh.html"
-      },
-      "title_i18n": {
-        "ru": "Символический AI и машинное обучение",
-        "en": "Symbolic AI and Machine Learning",
-        "zh": "符号人工智能与机器学习"
-      }
+      "learning_outcomes": [],
+      "content_state": "outline_only"
     },
     {
-      "uid": "les-a-0056",
+      "uid": "les-a-0124",
       "track_uid": "trk-a",
-      "theme_uid": "thm-a-01",
-      "module_uid": "mod-a-01-02",
-      "code": "1.2.3",
-      "title": "Типы данных и представление признаков",
-      "status": "published",
+      "theme_uid": "thm-a-04",
+      "module_uid": "mod-a-04-08",
+      "code": "4.8.5",
+      "title": "Проверка устойчивости, переобучения и ложных подгрупп",
+      "status": "planned",
       "access": "open",
-      "level": "beginner",
+      "level": "intermediate",
       "prerequisite_uids": [
-        "les-a-0004"
+        "les-a-0123"
       ],
-      "learning_outcomes": [
-        "Различать числовые, номинальные, порядковые, временные и текстовые признаки.",
-        "Выбирать базовые способы представления и кодирования категорий.",
-        "Объяснять влияние единиц измерения и масштаба признаков.",
-        "Учитывать доступность признаков и предотвращать утечку при подготовке данных.",
-        "Составлять спецификацию признаков перед обучением модели."
-      ],
-      "content_state": "published",
-      "url_i18n": {
-        "ru": "lessons/a-1-2-3.html",
-        "en": "lessons/a-1-2-3-en.html",
-        "zh": "lessons/a-1-2-3-zh.html"
-      },
-      "title_i18n": {
-        "ru": "Типы данных и представление признаков",
-        "en": "Data Types and Feature Representation",
-        "zh": "数据类型与特征表示"
-      }
+      "learning_outcomes": [],
+      "content_state": "outline_only"
     },
     {
-      "uid": "les-a-0057",
+      "uid": "les-a-0125",
       "track_uid": "trk-a",
-      "theme_uid": "thm-a-01",
-      "module_uid": "mod-a-01-05",
-      "code": "1.5.8",
-      "title": "Калибровка вероятностей и качество вероятностных прогнозов",
-      "status": "published",
+      "theme_uid": "thm-a-05",
+      "module_uid": "mod-a-05-06",
+      "code": "5.6.1",
+      "title": "CNN как объект исследования: слои, feature maps и receptive fields",
+      "status": "planned",
       "access": "open",
-      "level": "beginner",
+      "level": "intermediate",
+      "prerequisite_uids": [],
+      "learning_outcomes": [],
+      "content_state": "outline_only"
+    },
+    {
+      "uid": "les-a-0126",
+      "track_uid": "trk-a",
+      "theme_uid": "thm-a-05",
+      "module_uid": "mod-a-05-06",
+      "code": "5.6.2",
+      "title": "Градиентные карты чувствительности и saliency maps",
+      "status": "planned",
+      "access": "open",
+      "level": "intermediate",
       "prerequisite_uids": [
-        "les-a-0048",
-        "les-a-0046"
+        "les-a-0125"
       ],
-      "learning_outcomes": [
-        "Различать ранжирование и калибровку вероятностных прогнозов.",
-        "Интерпретировать reliability diagram и calibration curve.",
-        "Рассчитывать и интерпретировать Brier score и log loss.",
-        "Объяснять overconfidence, underconfidence и sharpness.",
-        "Сравнивать Platt scaling, isotonic regression и temperature scaling.",
-        "Строить протокол калибровки без утечки данных и оценивать его на независимом test."
+      "learning_outcomes": [],
+      "content_state": "outline_only"
+    },
+    {
+      "uid": "les-a-0127",
+      "track_uid": "trk-a",
+      "theme_uid": "thm-a-05",
+      "module_uid": "mod-a-05-06",
+      "code": "5.6.3",
+      "title": "Integrated Gradients и SmoothGrad",
+      "status": "planned",
+      "access": "open",
+      "level": "intermediate",
+      "prerequisite_uids": [
+        "les-a-0126"
       ],
-      "content_state": "published",
-      "title_i18n": {
-        "ru": "Калибровка вероятностей и качество вероятностных прогнозов",
-        "en": "Probability Calibration and Probabilistic Prediction Quality",
-        "zh": "概率校准与概率预测质量"
-      },
-      "url_i18n": {
-        "ru": "lessons/a-1-5-8.html",
-        "en": "lessons/a-1-5-8-en.html",
-        "zh": "lessons/a-1-5-8-zh.html"
-      }
+      "learning_outcomes": [],
+      "content_state": "outline_only"
+    },
+    {
+      "uid": "les-a-0128",
+      "track_uid": "trk-a",
+      "theme_uid": "thm-a-05",
+      "module_uid": "mod-a-05-06",
+      "code": "5.6.4",
+      "title": "CAM и Grad-CAM",
+      "status": "planned",
+      "access": "open",
+      "level": "intermediate",
+      "prerequisite_uids": [
+        "les-a-0127"
+      ],
+      "learning_outcomes": [],
+      "content_state": "outline_only"
+    },
+    {
+      "uid": "les-a-0129",
+      "track_uid": "trk-a",
+      "theme_uid": "thm-a-05",
+      "module_uid": "mod-a-05-06",
+      "code": "5.6.5",
+      "title": "Проверка качества визуальных карт объяснения",
+      "status": "planned",
+      "access": "open",
+      "level": "intermediate",
+      "prerequisite_uids": [
+        "les-a-0128"
+      ],
+      "learning_outcomes": [],
+      "content_state": "outline_only"
+    },
+    {
+      "uid": "les-a-0130",
+      "track_uid": "trk-a",
+      "theme_uid": "thm-a-05",
+      "module_uid": "mod-a-05-07",
+      "code": "5.7.1",
+      "title": "Понятие концепта в нейросети",
+      "status": "planned",
+      "access": "open",
+      "level": "intermediate",
+      "prerequisite_uids": [],
+      "learning_outcomes": [],
+      "content_state": "outline_only"
+    },
+    {
+      "uid": "les-a-0131",
+      "track_uid": "trk-a",
+      "theme_uid": "thm-a-05",
+      "module_uid": "mod-a-05-07",
+      "code": "5.7.2",
+      "title": "Concept Activation Vectors и TCAV",
+      "status": "planned",
+      "access": "open",
+      "level": "intermediate",
+      "prerequisite_uids": [
+        "les-a-0130"
+      ],
+      "learning_outcomes": [],
+      "content_state": "outline_only"
+    },
+    {
+      "uid": "les-a-0132",
+      "track_uid": "trk-a",
+      "theme_uid": "thm-a-05",
+      "module_uid": "mod-a-05-07",
+      "code": "5.7.3",
+      "title": "Наборы концептов, coverage и ограничения разметки",
+      "status": "planned",
+      "access": "open",
+      "level": "intermediate",
+      "prerequisite_uids": [
+        "les-a-0131"
+      ],
+      "learning_outcomes": [],
+      "content_state": "outline_only"
+    },
+    {
+      "uid": "les-a-0133",
+      "track_uid": "trk-a",
+      "theme_uid": "thm-a-05",
+      "module_uid": "mod-a-05-07",
+      "code": "5.7.4",
+      "title": "Attention-механизм в Transformer",
+      "status": "planned",
+      "access": "open",
+      "level": "intermediate",
+      "prerequisite_uids": [
+        "les-a-0132"
+      ],
+      "learning_outcomes": [],
+      "content_state": "outline_only"
+    },
+    {
+      "uid": "les-a-0134",
+      "track_uid": "trk-a",
+      "theme_uid": "thm-a-05",
+      "module_uid": "mod-a-05-07",
+      "code": "5.7.5",
+      "title": "Attention maps и ограничения их интерпретации",
+      "status": "planned",
+      "access": "open",
+      "level": "intermediate",
+      "prerequisite_uids": [
+        "les-a-0133"
+      ],
+      "learning_outcomes": [],
+      "content_state": "outline_only"
+    },
+    {
+      "uid": "les-a-0135",
+      "track_uid": "trk-a",
+      "theme_uid": "thm-a-05",
+      "module_uid": "mod-a-05-08",
+      "code": "5.8.1",
+      "title": "Экспериментальный анализ поведения LLM",
+      "status": "planned",
+      "access": "open",
+      "level": "intermediate",
+      "prerequisite_uids": [],
+      "learning_outcomes": [],
+      "content_state": "outline_only"
+    },
+    {
+      "uid": "les-a-0136",
+      "track_uid": "trk-a",
+      "theme_uid": "thm-a-05",
+      "module_uid": "mod-a-05-08",
+      "code": "5.8.2",
+      "title": "Влияние промпта, контекста и параметров генерации",
+      "status": "planned",
+      "access": "open",
+      "level": "intermediate",
+      "prerequisite_uids": [
+        "les-a-0135"
+      ],
+      "learning_outcomes": [],
+      "content_state": "outline_only"
+    },
+    {
+      "uid": "les-a-0137",
+      "track_uid": "trk-a",
+      "theme_uid": "thm-a-05",
+      "module_uid": "mod-a-05-08",
+      "code": "5.8.3",
+      "title": "Сравнение ответов и диагностические эксперименты",
+      "status": "planned",
+      "access": "open",
+      "level": "intermediate",
+      "prerequisite_uids": [
+        "les-a-0136"
+      ],
+      "learning_outcomes": [],
+      "content_state": "outline_only"
+    },
+    {
+      "uid": "les-a-0138",
+      "track_uid": "trk-a",
+      "theme_uid": "thm-a-05",
+      "module_uid": "mod-a-05-08",
+      "code": "5.8.4",
+      "title": "Анализ траекторий действий AI-агента",
+      "status": "planned",
+      "access": "open",
+      "level": "intermediate",
+      "prerequisite_uids": [
+        "les-a-0137"
+      ],
+      "learning_outcomes": [],
+      "content_state": "outline_only"
+    },
+    {
+      "uid": "les-a-0139",
+      "track_uid": "trk-a",
+      "theme_uid": "thm-a-05",
+      "module_uid": "mod-a-05-08",
+      "code": "5.8.5",
+      "title": "Анализ вызовов инструментов, состояния и ошибок агента",
+      "status": "planned",
+      "access": "open",
+      "level": "intermediate",
+      "prerequisite_uids": [
+        "les-a-0138"
+      ],
+      "learning_outcomes": [],
+      "content_state": "outline_only"
+    },
+    {
+      "uid": "les-a-0140",
+      "track_uid": "trk-a",
+      "theme_uid": "thm-a-05",
+      "module_uid": "mod-a-05-09",
+      "code": "5.9.1",
+      "title": "Fidelity и Faithfulness",
+      "status": "planned",
+      "access": "open",
+      "level": "intermediate",
+      "prerequisite_uids": [],
+      "learning_outcomes": [],
+      "content_state": "outline_only"
+    },
+    {
+      "uid": "les-a-0141",
+      "track_uid": "trk-a",
+      "theme_uid": "thm-a-05",
+      "module_uid": "mod-a-05-09",
+      "code": "5.9.2",
+      "title": "Stability и Robustness",
+      "status": "planned",
+      "access": "open",
+      "level": "intermediate",
+      "prerequisite_uids": [
+        "les-a-0140"
+      ],
+      "learning_outcomes": [],
+      "content_state": "outline_only"
+    },
+    {
+      "uid": "les-a-0142",
+      "track_uid": "trk-a",
+      "theme_uid": "thm-a-05",
+      "module_uid": "mod-a-05-09",
+      "code": "5.9.3",
+      "title": "Sanity Checks",
+      "status": "planned",
+      "access": "open",
+      "level": "intermediate",
+      "prerequisite_uids": [
+        "les-a-0141"
+      ],
+      "learning_outcomes": [],
+      "content_state": "outline_only"
+    },
+    {
+      "uid": "les-a-0143",
+      "track_uid": "trk-a",
+      "theme_uid": "thm-a-05",
+      "module_uid": "mod-a-05-09",
+      "code": "5.9.4",
+      "title": "Uncertainty и Sensitivity",
+      "status": "planned",
+      "access": "open",
+      "level": "intermediate",
+      "prerequisite_uids": [
+        "les-a-0142"
+      ],
+      "learning_outcomes": [],
+      "content_state": "outline_only"
+    },
+    {
+      "uid": "les-a-0144",
+      "track_uid": "trk-a",
+      "theme_uid": "thm-a-05",
+      "module_uid": "mod-a-05-09",
+      "code": "5.9.5",
+      "title": "Reproducibility",
+      "status": "planned",
+      "access": "open",
+      "level": "intermediate",
+      "prerequisite_uids": [
+        "les-a-0143"
+      ],
+      "learning_outcomes": [],
+      "content_state": "outline_only"
+    },
+    {
+      "uid": "les-a-0145",
+      "track_uid": "trk-a",
+      "theme_uid": "thm-a-05",
+      "module_uid": "mod-a-05-09",
+      "code": "5.9.6",
+      "title": "Human Utility",
+      "status": "planned",
+      "access": "open",
+      "level": "intermediate",
+      "prerequisite_uids": [
+        "les-a-0144"
+      ],
+      "learning_outcomes": [],
+      "content_state": "outline_only"
+    },
+    {
+      "uid": "les-a-0146",
+      "track_uid": "trk-a",
+      "theme_uid": "thm-a-05",
+      "module_uid": "mod-a-05-09",
+      "code": "5.9.7",
+      "title": "Экспериментальный дизайн и научная отчётность",
+      "status": "planned",
+      "access": "open",
+      "level": "intermediate",
+      "prerequisite_uids": [
+        "les-a-0145"
+      ],
+      "learning_outcomes": [],
+      "content_state": "outline_only"
     }
   ],
   "resources": [],

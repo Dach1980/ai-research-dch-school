@@ -40,6 +40,12 @@ jobs:
         run: python -m unittest discover -s tests -p 'test_lesson_158_contract.py' -v
       - name: Test XAI lesson A.1.2.1 — content, SVG, localization and assessment
         run: python -m unittest discover -s tests -p 'test_lesson_xai_0121.py' -v
+      - name: Test canonical XAI lesson 4.2.1 and legacy redirect
+        run: python -m unittest discover -s tests -p 'test_xai_canonical_lesson.py' -v
+      - name: Test full-catalog Track A navigation and unpublished blockers
+        run: python -m unittest discover -s tests -p 'test_lesson_navigation_contract.py' -v
+      - name: Test v3 catalog identities and legacy compatibility
+        run: python -m unittest discover -s tests -p 'test_catalog_v3.py' -v
       - name: Validate catalog and localized URLs
         run: python scripts/validate-catalog.py
       - name: Audit theme-aware SVG text across all lessons

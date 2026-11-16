@@ -3,8 +3,8 @@
   "id": "dch-track-a-approved-macro-sequence",
   "updated_at": "2026-11-16",
   "status": "approved_architecture_with_unmapped_gates",
-  "authority": "docs/management/TRACK_A_ARCHITECTURE_PROPOSAL.md",
-  "description": "Навигационный порядок следует утверждённым макромодулям Track A 11–26. Внутри каждого макромодуля используется редакционная последовательность его уроков. Незаполненные уроковые позиции и макромодули представлены блокирующими gate-записями, чтобы опубликованные уроки не перепрыгивали через них.",
+  "authority": "docs/education/TRACK_A_MASTER_CURRICULUM.md",
+  "description": "Полный учебный маршрут Track A: Theme 1 → Theme 2 → Theme 3 → Theme 4 → Theme 5. Незаполненные уроковые и модульные позиции представлены явными gates; макро-ID служат аналитической привязкой, но не задают глобальную сортировку.",
   "steps": [
     {
       "kind": "lesson",
@@ -210,6 +210,398 @@
       "status": "published"
     },
     {
+      "kind": "lesson",
+      "macro_module": 1,
+      "lesson_uid": "les-a-0058",
+      "code": "2.1.1",
+      "status": "planned"
+    },
+    {
+      "kind": "lesson",
+      "macro_module": 1,
+      "lesson_uid": "les-a-0059",
+      "code": "2.1.2",
+      "status": "planned"
+    },
+    {
+      "kind": "lesson",
+      "macro_module": 1,
+      "lesson_uid": "les-a-0060",
+      "code": "2.1.3",
+      "status": "planned"
+    },
+    {
+      "kind": "lesson",
+      "macro_module": 1,
+      "lesson_uid": "les-a-0061",
+      "code": "2.1.4",
+      "status": "planned"
+    },
+    {
+      "kind": "lesson",
+      "macro_module": 1,
+      "lesson_uid": "les-a-0062",
+      "code": "2.1.5",
+      "status": "planned"
+    },
+    {
+      "kind": "lesson",
+      "macro_module": 2,
+      "lesson_uid": "les-a-0063",
+      "code": "2.2.1",
+      "status": "planned"
+    },
+    {
+      "kind": "lesson",
+      "macro_module": 2,
+      "lesson_uid": "les-a-0064",
+      "code": "2.2.2",
+      "status": "planned"
+    },
+    {
+      "kind": "lesson",
+      "macro_module": 2,
+      "lesson_uid": "les-a-0065",
+      "code": "2.2.3",
+      "status": "planned"
+    },
+    {
+      "kind": "lesson",
+      "macro_module": 2,
+      "lesson_uid": "les-a-0066",
+      "code": "2.2.4",
+      "status": "planned"
+    },
+    {
+      "kind": "lesson",
+      "macro_module": 2,
+      "lesson_uid": "les-a-0067",
+      "code": "2.2.5",
+      "status": "planned"
+    },
+    {
+      "kind": "lesson",
+      "macro_module": 2,
+      "lesson_uid": "les-a-0068",
+      "code": "2.2.6",
+      "status": "planned"
+    },
+    {
+      "kind": "lesson",
+      "macro_module": 3,
+      "lesson_uid": "les-a-0069",
+      "code": "2.3.1",
+      "status": "planned"
+    },
+    {
+      "kind": "lesson",
+      "macro_module": 3,
+      "lesson_uid": "les-a-0070",
+      "code": "2.3.2",
+      "status": "planned"
+    },
+    {
+      "kind": "lesson",
+      "macro_module": 3,
+      "lesson_uid": "les-a-0071",
+      "code": "2.3.3",
+      "status": "planned"
+    },
+    {
+      "kind": "lesson",
+      "macro_module": 3,
+      "lesson_uid": "les-a-0072",
+      "code": "2.3.4",
+      "status": "planned"
+    },
+    {
+      "kind": "lesson",
+      "macro_module": 3,
+      "lesson_uid": "les-a-0073",
+      "code": "2.3.5",
+      "status": "planned"
+    },
+    {
+      "kind": "lesson",
+      "macro_module": 3,
+      "lesson_uid": "les-a-0074",
+      "code": "2.3.6",
+      "status": "planned"
+    },
+    {
+      "kind": "lesson",
+      "macro_module": 4,
+      "lesson_uid": "les-a-0075",
+      "code": "2.4.1",
+      "status": "planned"
+    },
+    {
+      "kind": "lesson",
+      "macro_module": 4,
+      "lesson_uid": "les-a-0076",
+      "code": "2.4.2",
+      "status": "planned"
+    },
+    {
+      "kind": "lesson",
+      "macro_module": 4,
+      "lesson_uid": "les-a-0077",
+      "code": "2.4.3",
+      "status": "planned"
+    },
+    {
+      "kind": "lesson",
+      "macro_module": 4,
+      "lesson_uid": "les-a-0078",
+      "code": "2.4.4",
+      "status": "planned"
+    },
+    {
+      "kind": "lesson",
+      "macro_module": 5,
+      "lesson_uid": "les-a-0079",
+      "code": "2.5.1",
+      "status": "planned"
+    },
+    {
+      "kind": "lesson",
+      "macro_module": 5,
+      "lesson_uid": "les-a-0080",
+      "code": "2.5.2",
+      "status": "planned"
+    },
+    {
+      "kind": "lesson",
+      "macro_module": 5,
+      "lesson_uid": "les-a-0081",
+      "code": "2.5.3",
+      "status": "planned"
+    },
+    {
+      "kind": "lesson",
+      "macro_module": 5,
+      "lesson_uid": "les-a-0082",
+      "code": "2.5.4",
+      "status": "planned"
+    },
+    {
+      "kind": "lesson",
+      "macro_module": 5,
+      "lesson_uid": "les-a-0083",
+      "code": "2.5.5",
+      "status": "planned"
+    },
+    {
+      "kind": "lesson",
+      "macro_module": 7,
+      "lesson_uid": "les-a-0084",
+      "code": "2.6.1",
+      "status": "planned"
+    },
+    {
+      "kind": "lesson",
+      "macro_module": 7,
+      "lesson_uid": "les-a-0085",
+      "code": "2.6.2",
+      "status": "planned"
+    },
+    {
+      "kind": "lesson",
+      "macro_module": 7,
+      "lesson_uid": "les-a-0086",
+      "code": "2.6.3",
+      "status": "planned"
+    },
+    {
+      "kind": "lesson",
+      "macro_module": 7,
+      "lesson_uid": "les-a-0087",
+      "code": "2.6.4",
+      "status": "planned"
+    },
+    {
+      "kind": "lesson",
+      "macro_module": 7,
+      "lesson_uid": "les-a-0088",
+      "code": "2.6.5",
+      "status": "planned"
+    },
+    {
+      "kind": "lesson",
+      "macro_module": 7,
+      "lesson_uid": "les-a-0089",
+      "code": "2.6.6",
+      "status": "planned"
+    },
+    {
+      "kind": "lesson",
+      "macro_module": 6,
+      "lesson_uid": "les-a-0090",
+      "code": "2.7.1",
+      "status": "planned"
+    },
+    {
+      "kind": "lesson",
+      "macro_module": 6,
+      "lesson_uid": "les-a-0091",
+      "code": "2.7.2",
+      "status": "planned"
+    },
+    {
+      "kind": "lesson",
+      "macro_module": 6,
+      "lesson_uid": "les-a-0092",
+      "code": "2.7.3",
+      "status": "planned"
+    },
+    {
+      "kind": "lesson",
+      "macro_module": 6,
+      "lesson_uid": "les-a-0093",
+      "code": "2.7.4",
+      "status": "planned"
+    },
+    {
+      "kind": "lesson",
+      "macro_module": 6,
+      "lesson_uid": "les-a-0094",
+      "code": "2.7.5",
+      "status": "planned"
+    },
+    {
+      "kind": "lesson",
+      "macro_module": 10,
+      "lesson_uid": "les-a-0095",
+      "code": "2.8.1",
+      "status": "planned"
+    },
+    {
+      "kind": "lesson",
+      "macro_module": 10,
+      "lesson_uid": "les-a-0096",
+      "code": "2.8.2",
+      "status": "planned"
+    },
+    {
+      "kind": "lesson",
+      "macro_module": 10,
+      "lesson_uid": "les-a-0097",
+      "code": "2.8.3",
+      "status": "planned"
+    },
+    {
+      "kind": "lesson",
+      "macro_module": 10,
+      "lesson_uid": "les-a-0098",
+      "code": "2.8.4",
+      "status": "planned"
+    },
+    {
+      "kind": "lesson",
+      "macro_module": 10,
+      "lesson_uid": "les-a-0099",
+      "code": "2.8.5",
+      "status": "planned"
+    },
+    {
+      "kind": "lesson",
+      "macro_module": 8,
+      "lesson_uid": "les-a-0100",
+      "code": "3.1.1",
+      "status": "planned"
+    },
+    {
+      "kind": "lesson",
+      "macro_module": 8,
+      "lesson_uid": "les-a-0101",
+      "code": "3.1.2",
+      "status": "planned"
+    },
+    {
+      "kind": "lesson",
+      "macro_module": 8,
+      "lesson_uid": "les-a-0102",
+      "code": "3.1.3",
+      "status": "planned"
+    },
+    {
+      "kind": "lesson",
+      "macro_module": 8,
+      "lesson_uid": "les-a-0103",
+      "code": "3.1.4",
+      "status": "planned"
+    },
+    {
+      "kind": "lesson",
+      "macro_module": 8,
+      "lesson_uid": "les-a-0104",
+      "code": "3.1.5",
+      "status": "planned"
+    },
+    {
+      "kind": "lesson",
+      "macro_module": 8,
+      "lesson_uid": "les-a-0049",
+      "code": "3.1.6",
+      "status": "planned"
+    },
+    {
+      "kind": "lesson",
+      "macro_module": 9,
+      "lesson_uid": "les-a-0105",
+      "code": "3.2.1",
+      "status": "planned"
+    },
+    {
+      "kind": "lesson",
+      "macro_module": 9,
+      "lesson_uid": "les-a-0106",
+      "code": "3.2.2",
+      "status": "planned"
+    },
+    {
+      "kind": "lesson",
+      "macro_module": 9,
+      "lesson_uid": "les-a-0107",
+      "code": "3.2.3",
+      "status": "planned"
+    },
+    {
+      "kind": "lesson",
+      "macro_module": 9,
+      "lesson_uid": "les-a-0108",
+      "code": "3.2.4",
+      "status": "planned"
+    },
+    {
+      "kind": "lesson",
+      "macro_module": 9,
+      "lesson_uid": "les-a-0109",
+      "code": "3.2.5",
+      "status": "planned"
+    },
+    {
+      "kind": "lesson",
+      "macro_module": 9,
+      "lesson_uid": "les-a-0110",
+      "code": "3.2.6",
+      "status": "planned"
+    },
+    {
+      "kind": "lesson",
+      "macro_module": 9,
+      "lesson_uid": "les-a-0111",
+      "code": "3.2.7",
+      "status": "planned"
+    },
+    {
+      "kind": "lesson",
+      "macro_module": 9,
+      "lesson_uid": "les-a-0112",
+      "code": "3.2.8",
+      "status": "planned"
+    },
+    {
       "kind": "lesson_gate",
       "macro_module": 12,
       "code": "4.1.1",
@@ -245,15 +637,87 @@
       "status": "planned"
     },
     {
-      "kind": "module_gate",
-      "macro_module": 14,
-      "title": "Каузальность и причинная интерпретация",
+      "kind": "lesson",
+      "macro_module": 13,
+      "lesson_uid": "les-a-0113",
+      "code": "4.1.6",
       "status": "planned"
     },
     {
-      "kind": "module_gate",
+      "kind": "lesson",
+      "macro_module": 13,
+      "lesson_uid": "les-a-0114",
+      "code": "4.1.7",
+      "status": "planned"
+    },
+    {
+      "kind": "lesson",
+      "macro_module": 14,
+      "lesson_uid": "les-a-0115",
+      "code": "4.4.1",
+      "status": "planned"
+    },
+    {
+      "kind": "lesson",
+      "macro_module": 14,
+      "lesson_uid": "les-a-0116",
+      "code": "4.4.2",
+      "status": "planned"
+    },
+    {
+      "kind": "lesson",
+      "macro_module": 14,
+      "lesson_uid": "les-a-0117",
+      "code": "4.4.3",
+      "status": "planned"
+    },
+    {
+      "kind": "lesson",
+      "macro_module": 14,
+      "lesson_uid": "les-a-0118",
+      "code": "4.4.4",
+      "status": "planned"
+    },
+    {
+      "kind": "lesson",
+      "macro_module": 14,
+      "lesson_uid": "les-a-0119",
+      "code": "4.4.5",
+      "status": "planned"
+    },
+    {
+      "kind": "lesson",
       "macro_module": 15,
-      "title": "Гетерогенные эффекты",
+      "lesson_uid": "les-a-0120",
+      "code": "4.8.1",
+      "status": "planned"
+    },
+    {
+      "kind": "lesson",
+      "macro_module": 15,
+      "lesson_uid": "les-a-0121",
+      "code": "4.8.2",
+      "status": "planned"
+    },
+    {
+      "kind": "lesson",
+      "macro_module": 15,
+      "lesson_uid": "les-a-0122",
+      "code": "4.8.3",
+      "status": "planned"
+    },
+    {
+      "kind": "lesson",
+      "macro_module": 15,
+      "lesson_uid": "les-a-0123",
+      "code": "4.8.4",
+      "status": "planned"
+    },
+    {
+      "kind": "lesson",
+      "macro_module": 15,
+      "lesson_uid": "les-a-0124",
+      "code": "4.8.5",
       "status": "planned"
     },
     {
@@ -432,70 +896,209 @@
       "status": "planned"
     },
     {
-      "kind": "module_gate",
+      "kind": "lesson",
       "macro_module": 19,
-      "title": "Анализ CNN-based моделей",
+      "lesson_uid": "les-a-0125",
+      "code": "5.6.1",
       "status": "planned"
     },
     {
-      "kind": "module_gate",
+      "kind": "lesson",
       "macro_module": 20,
-      "title": "Градиентные эвристики объяснения",
+      "lesson_uid": "les-a-0126",
+      "code": "5.6.2",
       "status": "planned"
     },
     {
-      "kind": "module_gate",
+      "kind": "lesson",
+      "macro_module": 20,
+      "lesson_uid": "les-a-0127",
+      "code": "5.6.3",
+      "status": "planned"
+    },
+    {
+      "kind": "lesson",
       "macro_module": 21,
-      "title": "Объяснения на основе локализации и CAM",
+      "lesson_uid": "les-a-0128",
+      "code": "5.6.4",
       "status": "planned"
     },
     {
-      "kind": "module_gate",
+      "kind": "lesson",
+      "macro_module": 21,
+      "lesson_uid": "les-a-0129",
+      "code": "5.6.5",
+      "status": "planned"
+    },
+    {
+      "kind": "lesson",
       "macro_module": 22,
-      "title": "Concept-based методы",
+      "lesson_uid": "les-a-0130",
+      "code": "5.7.1",
       "status": "planned"
     },
     {
-      "kind": "module_gate",
+      "kind": "lesson",
+      "macro_module": 22,
+      "lesson_uid": "les-a-0131",
+      "code": "5.7.2",
+      "status": "planned"
+    },
+    {
+      "kind": "lesson",
+      "macro_module": 22,
+      "lesson_uid": "les-a-0132",
+      "code": "5.7.3",
+      "status": "planned"
+    },
+    {
+      "kind": "lesson",
       "macro_module": 23,
-      "title": "Attention-based explainability",
+      "lesson_uid": "les-a-0133",
+      "code": "5.7.4",
       "status": "planned"
     },
     {
-      "kind": "module_gate",
+      "kind": "lesson",
+      "macro_module": 23,
+      "lesson_uid": "les-a-0134",
+      "code": "5.7.5",
+      "status": "planned"
+    },
+    {
+      "kind": "lesson",
       "macro_module": 24,
-      "title": "Applied LLM analysis",
+      "lesson_uid": "les-a-0135",
+      "code": "5.8.1",
       "status": "planned"
     },
     {
-      "kind": "module_gate",
+      "kind": "lesson",
+      "macro_module": 24,
+      "lesson_uid": "les-a-0136",
+      "code": "5.8.2",
+      "status": "planned"
+    },
+    {
+      "kind": "lesson",
+      "macro_module": 24,
+      "lesson_uid": "les-a-0137",
+      "code": "5.8.3",
+      "status": "planned"
+    },
+    {
+      "kind": "lesson",
       "macro_module": 25,
-      "title": "Объяснение поведения AI-агентов",
+      "lesson_uid": "les-a-0138",
+      "code": "5.8.4",
+      "status": "planned"
+    },
+    {
+      "kind": "lesson",
+      "macro_module": 25,
+      "lesson_uid": "les-a-0139",
+      "code": "5.8.5",
+      "status": "planned"
+    },
+    {
+      "kind": "lesson",
+      "macro_module": 26,
+      "lesson_uid": "les-a-0140",
+      "code": "5.9.1",
+      "status": "planned"
+    },
+    {
+      "kind": "lesson",
+      "macro_module": 26,
+      "lesson_uid": "les-a-0141",
+      "code": "5.9.2",
+      "status": "planned"
+    },
+    {
+      "kind": "lesson",
+      "macro_module": 26,
+      "lesson_uid": "les-a-0142",
+      "code": "5.9.3",
+      "status": "planned"
+    },
+    {
+      "kind": "lesson",
+      "macro_module": 26,
+      "lesson_uid": "les-a-0143",
+      "code": "5.9.4",
+      "status": "planned"
+    },
+    {
+      "kind": "lesson",
+      "macro_module": 26,
+      "lesson_uid": "les-a-0144",
+      "code": "5.9.5",
+      "status": "planned"
+    },
+    {
+      "kind": "lesson",
+      "macro_module": 26,
+      "lesson_uid": "les-a-0145",
+      "code": "5.9.6",
+      "status": "planned"
+    },
+    {
+      "kind": "lesson",
+      "macro_module": 26,
+      "lesson_uid": "les-a-0146",
+      "code": "5.9.7",
       "status": "planned"
     },
     {
       "kind": "module_gate",
       "macro_module": 26,
-      "title": "Оценка качества объяснений и научная проверка",
+      "module_uid": "mod-a-05-01",
+      "title": "Объяснение через вмешательство",
+      "status": "planned"
+    },
+    {
+      "kind": "module_gate",
+      "macro_module": 26,
+      "module_uid": "mod-a-05-02",
+      "title": "Атаки на объяснения",
+      "status": "planned"
+    },
+    {
+      "kind": "module_gate",
+      "macro_module": 17,
+      "module_uid": "mod-a-05-03",
+      "title": "Deep Dive в SHAP",
+      "status": "planned",
+      "required": false,
+      "blocking": false,
+      "optional": true
+    },
+    {
+      "kind": "module_gate",
+      "macro_module": 17,
+      "module_uid": "mod-a-05-04",
+      "title": "Deep Dive в Counterfactuals",
+      "status": "planned",
+      "required": false,
+      "blocking": false,
+      "optional": true
+    },
+    {
+      "kind": "module_gate",
+      "macro_module": 26,
+      "module_uid": "mod-a-05-05",
+      "title": "Итоговая самопроверка Track A",
       "status": "planned"
     }
   ],
-  "excluded_candidates": [
-    {
-      "lesson_uid": "les-a-0049",
-      "code": "3.1.6",
-      "reason": "Crosswalk mapping to foundation macro-module 08 is candidate_only / low confidence; the foundation 00–10 sequence and prerequisites are not approved. Excluded from the Track A 11–26 sequence until governance resolves the mapping."
-    }
-  ],
+  "excluded_candidates": [],
   "notes": [
-    "Track A macro-module 11 contains the published Theme 1 sequence.",
-    "Macro-module 12 includes planned lessons 4.1.3 and 4.1.4; missing 4.1.1 and 4.1.2 are explicit lesson gates, not invented catalog records.",
-    "Macro-module 13 includes 4.1.4 and missing lesson 4.1.5 as a gate.",
-    "Macro-modules 14 and 15 are distinct approved modules and currently have no catalog lesson UID; each is a navigation gate.",
-    "Macro-module 16 includes lessons 4.3.1, 4.3.2, 4.3.3 and 4.3.5.",
-    "Macro-module 17 contains XAI introduction 4.2.1 and its method sequence.",
-    "Macro-module 18 contains 4.3.4, after macro-module 17 despite numeric code.",
-    "Macro-modules 19–26 have no confirmed lesson-level mappings and remain gates.",
-    "Foundation lesson 3.1.6 is excluded: mapping to macro-module 08 is candidate_only / low confidence."
+    "Theme 2 проходит полностью: 42 урока в порядке модулей 2.1–2.8; модули 2.6 (вероятность) и 2.7 (анализ) приведены к утверждённым названиям без изменения UID.",
+    "Theme 3 содержит 14 уроков. UID les-a-0049 / 3.1.6 сохранён и помещён после 3.1.1–3.1.5; страница урока в репозитории не найдена, поэтому статус остаётся planned/outline_only.",
+    "4.1.3, 4.1.4 и опубликованный 4.2.1 сохраняют UID. 4.1.1, 4.1.2 и 4.1.5 остаются gates; 4.7.1 не определён и не создавался.",
+    "Theme 4 следует утверждённому порядку: 4.1 → 4.4 → 4.8 → PDP/ICE/ALE → классические XAI → 4.3.4.",
+    "Theme 5 включает 22 новых planned lesson records в модулях 5.6–5.9. 5.1, 5.2 и 5.5 — module gates до утверждения поурочного состава; 5.3/5.4 — optional non-blocking gates.",
+    "Все новые уроки имеют статус planned и content_state outline_only, без URL; публикация страниц не выполнялась.",
+    "Существующие UID и URL не переназначались. Каталог остаётся migration_staging."
   ]
 }

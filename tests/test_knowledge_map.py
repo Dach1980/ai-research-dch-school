@@ -16,6 +16,9 @@ class KnowledgeMapTests(unittest.TestCase):
   lessons=[x for x in c["lessons"] if x.get("track_uid")=="trk-a" and x.get("status")=="published" and x.get("content_state")=="published"]
   self.assertEqual(len(lessons),30)
   self.assertIn("les-a-0018", {lesson["uid"] for lesson in lessons})
+  module=next(x for x in c["modules"] if x["uid"]=="mod-a-04-02")
+  self.assertEqual(set(module["title_i18n"]),{"ru","en","zh"})
+  self.assertIn("e.module.title_i18n?.[locale]||moduleNames",js)
   self.assertIn("les-a-0043", {lesson["uid"] for lesson in lessons})
   self.assertIn("les-a-0044", {lesson["uid"] for lesson in lessons})
   self.assertIn("les-a-0045", {lesson["uid"] for lesson in lessons})

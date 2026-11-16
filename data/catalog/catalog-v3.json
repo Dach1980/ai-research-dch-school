@@ -74,7 +74,12 @@
       "number": 4,
       "code": "4",
       "title": "Основы Explainable AI (XAI)",
-      "status": "active"
+      "status": "active",
+      "title_i18n": {
+        "ru": "Основы Explainable AI (XAI)",
+        "en": "Explainable AI (XAI) Fundamentals",
+        "zh": "可解释人工智能（XAI）基础"
+      }
     },
     {
       "uid": "thm-a-05",
@@ -208,7 +213,12 @@
       "theme_uid": "thm-a-04",
       "number": 2,
       "title": "Таксономия XAI и важность признаков",
-      "status": "active"
+      "status": "active",
+      "title_i18n": {
+        "ru": "Таксономия XAI и важность признаков",
+        "en": "XAI Taxonomy and Feature Importance",
+        "zh": "XAI 分类与特征重要性"
+      }
     },
     {
       "uid": "mod-a-04-03",

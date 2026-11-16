@@ -1043,7 +1043,7 @@
         "RU/EN/中文 содержат равнозначную теорию, примеры, практику, ограничения и самопроверку из восьми вопросов.",
         "Четыре SVG имеют локализованные title/desc/подписи и одинаковую геометрию во всех локалях.",
         "Новый контрактный тест A.1.2.1, каталоговые проверки, мультиязычная проверка, SVG-аудит и браузерные проверки проходят.",
-        "Catalog v2 status=published; урок присутствует в Knowledge Map; v3 остаётся staging.",
+        "Legacy catalog v2: A.1.2.1 status=published and planet-A-9 retained as a compatibility projection; active v3 catalogue: les-a-0018 (4.2.1) status=published/content_state=published and included in the generated Knowledge Map.",
         "GitHub Pages deployment для опубликованного каталога завершается успешно.",
         "Ручная визуальная приёмка desktop/mobile и light/dark всех трёх локалей фиксируется отдельно."
       ],
@@ -1069,7 +1069,7 @@
         },
         "v3_catalog_and_map": {
           "status": "pending",
-          "note": "Обновлена существующая v3-запись les-a-0018 code 4.2.1, которую уже использует текущий catalogue/map reader; CI и deployment после коммита ожидаются."
+          "note": "v3 lesson les-a-0018 is published; map reader now consumes localized module.title_i18n. Final CI and Pages deployment after this patch are pending."
         }
       },
       "evidence": [
@@ -2527,7 +2527,7 @@
       "date": "2026-11-16",
       "type": "xai_lesson_a121_publication",
       "title": "Урок A.1.2.1 доработан, автоматические проверки и GitHub Pages deployment пройдены",
-      "result": "Существующий урок xai-01-what-and-why сохранён под прежним ID и URL. Содержимое дополнено на RU/EN/中文; добавлены четыре локализованные SVG-схемы, расширены объяснения intrinsic/post-hoc, local/global, interpretability/explainability и XAI/Mechanistic Interpretability, добавлен разбор ассоциации/чувствительности/причинности. Самопроверка приведена к восьми вопросам. Catalog v2 status переведён в published, в Knowledge Map добавлена planet-A-9. Основной CI и deployment run 43787069985 — success; полная проверка каталога и браузерных сценариев run 43787070130 — success. Production environment URL: https://dchai.ru/.",
+      "result": "Существующий урок xai-01-what-and-why сохранён под прежним ID и URL. Содержимое дополнено на RU/EN/中文; добавлены четыре локализованные SVG-схемы, расширены объяснения intrinsic/post-hoc, local/global, interpretability/explainability и XAI/Mechanistic Interpretability, добавлен разбор ассоциации/чувствительности/причинности. Самопроверка приведена к восьми вопросам. Catalog v2 status переведён в published, в legacy v2 добавлена planet-A-9 как compatibility projection; активная Knowledge Map генерирует планету из опубликованной v3-записи les-a-0018. Основной CI и deployment run 43787069985 — success; полная проверка каталога и браузерных сценариев run 43787070130 — success. Production environment URL: https://dchai.ru/.",
       "evidence": [
         "Содержимое: lessons/data/xai-01-what-and-why.js",
         "Страница: lessons/xai/01-what-and-why.html",
@@ -2537,7 +2537,9 @@
         "CI + Pages deployment: https://github.com/Dach1980/ai-research-dch-school/actions/runs/43787069985",
         "Полная проверка каталога и браузерных тестов: https://github.com/Dach1980/ai-research-dch-school/actions/runs/43787070130",
         "Production: https://dchai.ru/",
-        "v3 catalogue mapping: data/catalog/catalog-v3.json → les-a-0018 (4.2.1)"
+        "v3 catalogue mapping: data/catalog/catalog-v3.json → les-a-0018 (4.2.1)",
+        "Localized XAI module metadata: data/catalog/catalog-v3.json → mod-a-04-02.title_i18n",
+        "Knowledge Map localization renderer: scripts/planet-map-catalog.js"
       ],
       "limitations": [
         "Ручной визуальный осмотр всех трёх локализаций на desktop/mobile в светлой/тёмной темах не выполнен.",

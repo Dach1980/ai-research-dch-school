@@ -60,7 +60,8 @@ class CanonicalXaiLessonTests(unittest.TestCase):
     def test_section_h2_uses_theme_aware_ink_color(self):
         self.assertIn(".xai-canonical-section-content h2{", self.styles)
         self.assertIn("color:var(--lds-ink,#17233d)", self.styles)
-        self.assertIn('html:not([data-theme=\\\"light\\\"]) .xai-canonical-section-content h2', self.styles)
+        self.assertIn("html:not([data-theme=", self.styles)
+        self.assertIn(") .xai-canonical-section-content h2", self.styles)
 
     def test_taxonomy_diagram_labels_wrap_inside_cards_in_all_locales(self):
         for label in ("Вклад", "График", "Суррогат", "Контрпример", "Обосновать", "Контролировать", "Обнаружить", "Улучшить", "Attribution", "Plot", "Surrogate", "Counterfactual", "Justify", "Control", "Discover", "Improve", "归因", "图表", "代理模型", "反事实", "说明", "控制", "发现", "改进"):

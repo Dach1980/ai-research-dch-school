@@ -1293,7 +1293,7 @@
       "uid": "les-a-0010",
       "code": "1.4.1",
       "title": "Понятие модели и параметров",
-      "status": "review",
+      "status": "published",
       "theme_uid": "thm-a-01",
       "module_uid": "mod-a-01-04",
       "url": "lessons/a-1-4-1.html",
@@ -1308,56 +1308,87 @@
       "uid": "les-a-0011",
       "code": "1.4.2",
       "title": "Обучение модели и функция потерь",
-      "status": "planned",
+      "status": "published",
       "theme_uid": "thm-a-01",
       "module_uid": "mod-a-01-04",
-      "url": null,
-      "prerequisites": [],
-      "languages": []
+      "url": "lessons/a-1-4-2.html",
+      "prerequisites": [
+        "les-a-0010"
+      ],
+      "languages": [
+        "ru",
+        "en",
+        "zh"
+      ]
     },
     {
       "uid": "les-a-0012",
       "code": "1.4.3",
       "title": "Переобучение и недообучение",
-      "status": "planned",
+      "status": "published",
       "theme_uid": "thm-a-01",
       "module_uid": "mod-a-01-04",
-      "url": null,
-      "prerequisites": [],
-      "languages": []
+      "url": "lessons/a-1-4-3.html",
+      "prerequisites": [
+        "les-a-0010",
+        "les-a-0011"
+      ],
+      "languages": [
+        "ru",
+        "en",
+        "zh"
+      ]
     },
     {
       "uid": "les-a-0013",
       "code": "1.4.4",
       "title": "Обобщающая способность модели",
-      "status": "planned",
+      "status": "published",
       "theme_uid": "thm-a-01",
       "module_uid": "mod-a-01-04",
-      "url": null,
-      "prerequisites": [],
-      "languages": []
+      "url": "lessons/a-1-4-4.html",
+      "prerequisites": [
+        "les-a-0012"
+      ],
+      "languages": [
+        "ru",
+        "en",
+        "zh"
+      ]
     },
     {
       "uid": "les-a-0014",
       "code": "1.4.5",
       "title": "Гиперпараметры и настройка модели",
-      "status": "planned",
+      "status": "published",
       "theme_uid": "thm-a-01",
       "module_uid": "mod-a-01-04",
-      "url": null,
-      "prerequisites": [],
-      "languages": []
+      "url": "lessons/a-1-4-5.html",
+      "prerequisites": [
+        "les-a-0013"
+      ],
+      "languages": [
+        "ru",
+        "en",
+        "zh"
+      ]
     },
     {
       "uid": "les-a-0015",
       "code": "1.5.6",
       "title": "Кросс-валидация и устойчивость результатов",
-      "status": "planned",
+      "status": "published",
       "theme_uid": "thm-a-01",
       "module_uid": "mod-a-01-05",
-      "url": null,
-      "prerequisites": [],
-      "languages": []
+      "url": "lessons/a-1-5-6.html",
+      "prerequisites": [
+        "les-a-0047"
+      ],
+      "languages": [
+        "ru",
+        "en",
+        "zh"
+      ]
     },
     {
       "uid": "les-a-0016",
@@ -1366,9 +1397,7 @@
       "status": "planned",
       "theme_uid": "thm-a-04",
       "module_uid": "mod-a-04-01",
-      "url": null,
-      "prerequisites": [],
-      "languages": []
+      "prerequisites": []
     },
     {
       "uid": "les-a-0017",
@@ -1377,20 +1406,22 @@
       "status": "planned",
       "theme_uid": "thm-a-04",
       "module_uid": "mod-a-04-01",
-      "url": null,
-      "prerequisites": [],
-      "languages": []
+      "prerequisites": []
     },
     {
       "uid": "les-a-0018",
       "code": "4.2.1",
-      "title": "Что такое Explainable AI",
-      "status": "planned",
+      "title": "Что такое XAI и зачем нужно объяснять модели?",
+      "status": "published",
       "theme_uid": "thm-a-04",
       "module_uid": "mod-a-04-02",
-      "url": null,
+      "url": "lessons/a-4-2-1.html",
       "prerequisites": [],
-      "languages": []
+      "languages": [
+        "ru",
+        "en",
+        "zh"
+      ]
     },
     {
       "uid": "les-a-0019",
@@ -1399,9 +1430,7 @@
       "status": "planned",
       "theme_uid": "thm-a-04",
       "module_uid": "mod-a-04-02",
-      "url": null,
-      "prerequisites": [],
-      "languages": []
+      "prerequisites": []
     },
     {
       "uid": "les-a-0020",
@@ -1410,9 +1439,7 @@
       "status": "planned",
       "theme_uid": "thm-a-04",
       "module_uid": "mod-a-04-02",
-      "url": null,
-      "prerequisites": [],
-      "languages": []
+      "prerequisites": []
     },
     {
       "uid": "les-a-0021",
@@ -1421,9 +1448,7 @@
       "status": "planned",
       "theme_uid": "thm-a-04",
       "module_uid": "mod-a-04-02",
-      "url": null,
-      "prerequisites": [],
-      "languages": []
+      "prerequisites": []
     },
     {
       "uid": "les-a-0022",
@@ -1432,9 +1457,7 @@
       "status": "planned",
       "theme_uid": "thm-a-04",
       "module_uid": "mod-a-04-02",
-      "url": null,
-      "prerequisites": [],
-      "languages": []
+      "prerequisites": []
     },
     {
       "uid": "les-a-0023",
@@ -1443,9 +1466,7 @@
       "status": "planned",
       "theme_uid": "thm-a-04",
       "module_uid": "mod-a-04-02",
-      "url": null,
-      "prerequisites": [],
-      "languages": []
+      "prerequisites": []
     },
     {
       "uid": "les-a-0024",
@@ -1454,9 +1475,7 @@
       "status": "planned",
       "theme_uid": "thm-a-04",
       "module_uid": "mod-a-04-03",
-      "url": null,
-      "prerequisites": [],
-      "languages": []
+      "prerequisites": []
     },
     {
       "uid": "les-a-0025",
@@ -1465,9 +1484,7 @@
       "status": "planned",
       "theme_uid": "thm-a-04",
       "module_uid": "mod-a-04-03",
-      "url": null,
-      "prerequisites": [],
-      "languages": []
+      "prerequisites": []
     },
     {
       "uid": "les-a-0026",
@@ -1476,9 +1493,7 @@
       "status": "planned",
       "theme_uid": "thm-a-04",
       "module_uid": "mod-a-04-03",
-      "url": null,
-      "prerequisites": [],
-      "languages": []
+      "prerequisites": []
     },
     {
       "uid": "les-a-0027",
@@ -1487,9 +1502,7 @@
       "status": "planned",
       "theme_uid": "thm-a-04",
       "module_uid": "mod-a-04-03",
-      "url": null,
-      "prerequisites": [],
-      "languages": []
+      "prerequisites": []
     },
     {
       "uid": "les-a-0028",
@@ -1498,9 +1511,7 @@
       "status": "planned",
       "theme_uid": "thm-a-04",
       "module_uid": "mod-a-04-03",
-      "url": null,
-      "prerequisites": [],
-      "languages": []
+      "prerequisites": []
     },
     {
       "uid": "les-a-0029",
@@ -1509,9 +1520,7 @@
       "status": "planned",
       "theme_uid": "thm-a-04",
       "module_uid": "mod-a-04-05",
-      "url": null,
-      "prerequisites": [],
-      "languages": []
+      "prerequisites": []
     },
     {
       "uid": "les-a-0030",
@@ -1520,9 +1529,7 @@
       "status": "planned",
       "theme_uid": "thm-a-04",
       "module_uid": "mod-a-04-05",
-      "url": null,
-      "prerequisites": [],
-      "languages": []
+      "prerequisites": []
     },
     {
       "uid": "les-a-0031",
@@ -1531,9 +1538,7 @@
       "status": "planned",
       "theme_uid": "thm-a-04",
       "module_uid": "mod-a-04-05",
-      "url": null,
-      "prerequisites": [],
-      "languages": []
+      "prerequisites": []
     },
     {
       "uid": "les-a-0032",
@@ -1542,9 +1547,7 @@
       "status": "planned",
       "theme_uid": "thm-a-04",
       "module_uid": "mod-a-04-05",
-      "url": null,
-      "prerequisites": [],
-      "languages": []
+      "prerequisites": []
     },
     {
       "uid": "les-a-0033",
@@ -1553,9 +1556,7 @@
       "status": "planned",
       "theme_uid": "thm-a-04",
       "module_uid": "mod-a-04-05",
-      "url": null,
-      "prerequisites": [],
-      "languages": []
+      "prerequisites": []
     },
     {
       "uid": "les-a-0034",
@@ -1564,9 +1565,7 @@
       "status": "planned",
       "theme_uid": "thm-a-04",
       "module_uid": "mod-a-04-06",
-      "url": null,
-      "prerequisites": [],
-      "languages": []
+      "prerequisites": []
     },
     {
       "uid": "les-a-0035",
@@ -1575,9 +1574,7 @@
       "status": "planned",
       "theme_uid": "thm-a-04",
       "module_uid": "mod-a-04-06",
-      "url": null,
-      "prerequisites": [],
-      "languages": []
+      "prerequisites": []
     },
     {
       "uid": "les-a-0036",
@@ -1586,9 +1583,7 @@
       "status": "planned",
       "theme_uid": "thm-a-04",
       "module_uid": "mod-a-04-06",
-      "url": null,
-      "prerequisites": [],
-      "languages": []
+      "prerequisites": []
     },
     {
       "uid": "les-a-0037",
@@ -1597,9 +1592,7 @@
       "status": "planned",
       "theme_uid": "thm-a-04",
       "module_uid": "mod-a-04-06",
-      "url": null,
-      "prerequisites": [],
-      "languages": []
+      "prerequisites": []
     },
     {
       "uid": "les-a-0038",
@@ -1608,9 +1601,7 @@
       "status": "planned",
       "theme_uid": "thm-a-04",
       "module_uid": "mod-a-04-06",
-      "url": null,
-      "prerequisites": [],
-      "languages": []
+      "prerequisites": []
     },
     {
       "uid": "les-a-0039",
@@ -1619,9 +1610,7 @@
       "status": "planned",
       "theme_uid": "thm-a-04",
       "module_uid": "mod-a-04-06",
-      "url": null,
-      "prerequisites": [],
-      "languages": []
+      "prerequisites": []
     },
     {
       "uid": "les-a-0040",
@@ -1630,9 +1619,7 @@
       "status": "planned",
       "theme_uid": "thm-a-04",
       "module_uid": "mod-a-04-07",
-      "url": null,
-      "prerequisites": [],
-      "languages": []
+      "prerequisites": []
     },
     {
       "uid": "les-a-0041",
@@ -1641,9 +1628,7 @@
       "status": "planned",
       "theme_uid": "thm-a-04",
       "module_uid": "mod-a-04-07",
-      "url": null,
-      "prerequisites": [],
-      "languages": []
+      "prerequisites": []
     },
     {
       "uid": "les-a-0042",
@@ -1652,75 +1637,109 @@
       "status": "planned",
       "theme_uid": "thm-a-04",
       "module_uid": "mod-a-04-07",
-      "url": null,
-      "prerequisites": [],
-      "languages": []
+      "prerequisites": []
     },
     {
       "uid": "les-a-0043",
       "code": "1.5.1",
       "title": "Зачем оценивать качество модели",
-      "status": "planned",
+      "status": "published",
       "theme_uid": "thm-a-01",
       "module_uid": "mod-a-01-05",
-      "url": null,
-      "prerequisites": [],
-      "languages": []
+      "url": "lessons/a-1-5-1.html",
+      "prerequisites": [
+        "les-a-0014"
+      ],
+      "languages": [
+        "ru",
+        "en",
+        "zh"
+      ]
     },
     {
       "uid": "les-a-0044",
       "code": "1.5.2",
-      "title": "Confusion Matrix",
-      "status": "planned",
+      "title": "Матрица ошибок классификации",
+      "status": "published",
       "theme_uid": "thm-a-01",
       "module_uid": "mod-a-01-05",
-      "url": null,
-      "prerequisites": [],
-      "languages": []
+      "url": "lessons/a-1-5-2.html",
+      "prerequisites": [
+        "les-a-0043"
+      ],
+      "languages": [
+        "ru",
+        "en",
+        "zh"
+      ]
     },
     {
       "uid": "les-a-0045",
       "code": "1.5.3",
       "title": "Accuracy, Precision, Recall и F1",
-      "status": "planned",
+      "status": "published",
       "theme_uid": "thm-a-01",
       "module_uid": "mod-a-01-05",
-      "url": null,
-      "prerequisites": [],
-      "languages": []
+      "url": "lessons/a-1-5-3.html",
+      "prerequisites": [
+        "les-a-0044"
+      ],
+      "languages": [
+        "ru",
+        "en",
+        "zh"
+      ]
     },
     {
       "uid": "les-a-0046",
       "code": "1.5.4",
       "title": "ROC-AUC и Precision-Recall AUC",
-      "status": "planned",
+      "status": "published",
       "theme_uid": "thm-a-01",
       "module_uid": "mod-a-01-05",
-      "url": null,
-      "prerequisites": [],
-      "languages": []
+      "url": "lessons/a-1-5-4.html",
+      "prerequisites": [
+        "les-a-0045"
+      ],
+      "languages": [
+        "ru",
+        "en",
+        "zh"
+      ]
     },
     {
       "uid": "les-a-0047",
       "code": "1.5.5",
       "title": "Дисбаланс классов",
-      "status": "planned",
+      "status": "published",
       "theme_uid": "thm-a-01",
       "module_uid": "mod-a-01-05",
-      "url": null,
-      "prerequisites": [],
-      "languages": []
+      "url": "lessons/a-1-5-5.html",
+      "prerequisites": [
+        "les-a-0046"
+      ],
+      "languages": [
+        "ru",
+        "en",
+        "zh"
+      ]
     },
     {
       "uid": "les-a-0048",
       "code": "1.5.7",
       "title": "Метрики регрессии: MAE, MSE, RMSE и R²",
-      "status": "planned",
+      "status": "published",
       "theme_uid": "thm-a-01",
       "module_uid": "mod-a-01-05",
-      "url": null,
-      "prerequisites": [],
-      "languages": []
+      "url": "lessons/a-1-5-7.html",
+      "prerequisites": [
+        "les-a-0015"
+      ],
+      "languages": [
+        "ru",
+        "en",
+        "zh"
+      ]
     },
     {
       "uid": "les-a-0049",
@@ -1729,12 +1748,10 @@
       "status": "planned",
       "theme_uid": "thm-a-03",
       "module_uid": "mod-a-03-01",
-      "url": null,
       "prerequisites": [
         "les-a-0010",
         "les-a-0011"
-      ],
-      "languages": []
+      ]
     },
     {
       "uid": "les-a-0050",
@@ -1745,7 +1762,7 @@
       "module_uid": "mod-a-01-02",
       "url": "lessons/a-1-2-4.html",
       "prerequisites": [
-        "les-a-0004"
+        "les-a-0056"
       ],
       "languages": [
         "ru",
@@ -1780,6 +1797,41 @@
       "url": "lessons/a-1-1-4.html",
       "prerequisites": [
         "les-a-0002"
+      ],
+      "languages": [
+        "ru",
+        "en",
+        "zh"
+      ]
+    },
+    {
+      "uid": "les-a-0056",
+      "code": "1.2.3",
+      "title": "Типы данных и представление признаков",
+      "status": "published",
+      "theme_uid": "thm-a-01",
+      "module_uid": "mod-a-01-02",
+      "url": "lessons/a-1-2-3.html",
+      "prerequisites": [
+        "les-a-0004"
+      ],
+      "languages": [
+        "ru",
+        "en",
+        "zh"
+      ]
+    },
+    {
+      "uid": "les-a-0057",
+      "code": "1.5.8",
+      "title": "Калибровка вероятностей и качество вероятностных прогнозов",
+      "status": "published",
+      "theme_uid": "thm-a-01",
+      "module_uid": "mod-a-01-05",
+      "url": "lessons/a-1-5-8.html",
+      "prerequisites": [
+        "les-a-0048",
+        "les-a-0046"
       ],
       "languages": [
         "ru",
@@ -2192,10 +2244,10 @@
   ],
   "coverage_summary": {
     "macro_modules": 40,
-    "catalog_lessons": 55,
-    "published": 15,
-    "review": 1,
-    "planned": 39,
+    "catalog_lessons": 57,
+    "published": 30,
+    "review": 0,
+    "planned": 27,
     "catalog_mapping_statuses": {
       "not_yet_mapped": 1,
       "candidate_only": 10,

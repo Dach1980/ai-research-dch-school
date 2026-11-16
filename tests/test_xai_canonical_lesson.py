@@ -53,6 +53,12 @@ class CanonicalXaiLessonTests(unittest.TestCase):
         self.assertNotIn("Attribution · Plot · Surrogate · Counterfactual</text>", self.data)
         self.assertNotIn("归因 · 图表 · 代理模型 · 反事实</text>", self.data)
 
+    def test_local_global_diagram_captions_wrap_in_all_locales(self):
+        for fragment in ('Локальные выводы нельзя автоматически', 'переносить на всю популяцию.', 'A local finding cannot automatically be', 'generalised to the population.', '不能把局部结论自动推广到', '整个群体。'):
+            with self.subTest(fragment=fragment):
+                self.assertIn(fragment, self.data)
+        self.assertGreaterEqual(self.data.count('dy=\\"20\\"'), 6)
+
     def test_learning_outcomes_card_keeps_contrast_in_light_theme(self):
         self.assertIn('.lesson #xai-outcomes', self.styles)
         self.assertIn('color:#d5e0f2', self.styles)

@@ -18,3 +18,8 @@
 .xai-canonical-section-content .quiz-summary{margin:1.2rem 0;padding:1rem;border:1px solid var(--border,rgba(120,150,210,.24));border-radius:10px;font-weight:700}
 .xai-canonical-section-content .lesson-callout,.xai-canonical-section-content .definition{margin:1.3rem 0}
 @media(max-width:640px){.xai-canonical-section{margin-top:2rem;padding-top:1.4rem}.xai-canonical-section-content th,.xai-canonical-section-content td{padding:.55rem .6rem}.xai-canonical-section-content .knowledge-check{padding:.8rem}}
+/* The XAI learning-outcomes card has a deliberately dark background in both themes. */
+.lesson #xai-outcomes{color:#edf3ff}
+.lesson #xai-outcomes p,.lesson #xai-outcomes li{color:#d5e0f2}
+.lesson #xai-outcomes h2,.lesson #xai-outcomes h3{color:#9fc4ff}
+.lesson #xai-outcomes strong{color:#ffffff}

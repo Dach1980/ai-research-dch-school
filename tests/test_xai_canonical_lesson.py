@@ -44,6 +44,24 @@ class CanonicalXaiLessonTests(unittest.TestCase):
         for marker in ("<svg", "knowledge-check", "quiz-summary", "Самопроверка"):
             self.assertIn(marker, self.data)
 
+    def test_first_section_defines_xai_explicitly_in_all_locales(self):
+        expected = (
+            "Explainable Artificial Intelligence",
+            "Explainable Artificial Intelligence",
+            "Explainable Artificial Intelligence（可解释人工智能）",
+        )
+        first_page = self.data.split('"id": "why"', 1)[1].split('"id": "xai-mi"', 1)[0]
+        for phrase in expected:
+            with self.subTest(phrase=phrase):
+                self.assertIn(phrase, first_page)
+        self.assertIn("XAI</strong> — сокращение от", first_page)
+        self.assertIn("XAI</strong> stands for", first_page)
+
+    def test_section_h2_uses_theme_aware_ink_color(self):
+        self.assertIn(".xai-canonical-section-content h2{", self.styles)
+        self.assertIn("color:var(--lds-ink,#17233d)", self.styles)
+        self.assertIn('html:not([data-theme=\\\"light\\\"]) .xai-canonical-section-content h2', self.styles)
+
     def test_taxonomy_diagram_labels_wrap_inside_cards_in_all_locales(self):
         for label in ("Вклад", "График", "Суррогат", "Контрпример", "Обосновать", "Контролировать", "Обнаружить", "Улучшить", "Attribution", "Plot", "Surrogate", "Counterfactual", "Justify", "Control", "Discover", "Improve", "归因", "图表", "代理模型", "反事实", "说明", "控制", "发现", "改进"):
             with self.subTest(label=label):

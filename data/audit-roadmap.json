@@ -1133,6 +1133,46 @@
         "Ручная визуальная проверка страниц не выполнялась.",
         "Статус CI/Pages deployment для новых изменений ожидает проверки."
       ]
+    },
+    {
+      "id": "RM-LESSON-160",
+      "date": "2026-11-16",
+      "title": "Перенести урок XAI 4.2.1 в единую оболочку уроков Track A",
+      "status": "in_progress",
+      "priority": "high",
+      "decision": "Созданы канонические RU / EN / 中文 страницы lessons/a-4-2-1.html, lessons/a-4-2-1-en.html и lessons/a-4-2-1-zh.html на общей оболочке уроков. Перенесено отображение всех восьми исходных разделов напрямую из сохранённого мультиязычного источника lessons/data/xai-01-what-and-why.js; сохранены исходные section IDs, SVG, мини-лаборатория, источники, словарь и восемь вопросов самопроверки. Добавлен новый renderer и локализованная проверка ответов. UID les-a-0018, code 4.2.1 и status published сохранены; catalog-v3 указывает новые URL. Старый lessons/xai/01-what-and-why.html стал language-aware redirect. Legacy A.1.2.1 в migration manifest не изменялся, migration_status остаётся staging_not_applied; пользовательский прогресс не переносился. Остаются автоматическая CI/Pages проверка и ручная визуальная приёмка трёх локализаций desktop/mobile light/dark.",
+      "acceptance": [
+        "RU / EN / 中文 страницы используют общий header, hero, planet banner, article body, footer и lesson navigation.",
+        "Все восемь исходных разделов и переводы доступны на каждой локализации.",
+        "Сохранены мини-лаборатория, SVG, glossary, sources и восемь вопросов self-check.",
+        "Catalog UID/code и legacy mapping не изменены; catalog URL указывает на канонические страницы.",
+        "Старый URL перенаправляет на новую страницу с учётом выбранного языка.",
+        "Пользовательский прогресс не мигрируется без отдельной проверки схемы.",
+        "CI, Pages и ручная визуальная приёмка завершены."
+      ],
+      "source": "lessons/a-4-2-1.html; lessons/a-4-2-1-en.html; lessons/a-4-2-1-zh.html; scripts/xai-canonical-lesson.js; styles/xai-canonical-lesson.css; lessons/data/xai-01-what-and-why.js; lessons/xai/01-what-and-why.html; data/catalog/catalog-v3.json; tests/test_xai_canonical_lesson.py"
+    },
+    {
+      "id": "AUD-103",
+      "date": "2026-11-16",
+      "type": "xai_lesson_canonical_shell_migration",
+      "title": "Перенесён XAI 4.2.1 в единый дизайн с сохранением мультиязычного содержания",
+      "result": "Созданы отдельные канонические страницы RU / EN / 中文 для 4.2.1. Общий renderer показывает восемь разделов из исходного мультиязычного контента, сохраняя иллюстрации SVG, мини-лабораторию, источники, термины и самопроверку из восьми вопросов. UID les-a-0018 и публичный код 4.2.1 сохранены. catalog-v3 обновлён на новые URL. Старый reader URL оставлен как language-aware redirect. Legacy A.1.2.1 и migration manifest не изменялись; прогресс не переносился.",
+      "evidence": [
+        "lessons/a-4-2-1.html",
+        "lessons/a-4-2-1-en.html",
+        "lessons/a-4-2-1-zh.html",
+        "scripts/xai-canonical-lesson.js",
+        "styles/xai-canonical-lesson.css",
+        "lessons/data/xai-01-what-and-why.js",
+        "lessons/xai/01-what-and-why.html",
+        "data/catalog/catalog-v3.json",
+        "tests/test_xai_canonical_lesson.py"
+      ],
+      "limitations": [
+        "GitHub Actions / Pages acceptance is not yet confirmed for the latest commit.",
+        "Manual visual QA across RU/EN/中文, desktop/mobile and light/dark themes remains pending."
+      ]
     }
   ],
   "audit_log": [

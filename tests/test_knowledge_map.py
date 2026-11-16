@@ -12,6 +12,7 @@ class KnowledgeMapTests(unittest.TestCase):
   for token in ['status!=="published"','content_state!=="published"','aria-label','b.title','generatedPlanet','planet-tooltip','ResizeObserver','2*Math.PI*i/g.points.length']:self.assertIn(token,js)
   for token in ['@keyframes orbit-spin','@keyframes counter-spin',':focus-visible','overflow-wrap:anywhere','prefers-reduced-motion']:self.assertIn(token,css)
  def test_catalog_has_localized_published_lessons(self):
+  js=(ROOT/"scripts/planet-map-catalog.js").read_text(encoding="utf-8")
   c=json.loads((ROOT/"data/catalog/catalog-v3.json").read_text(encoding="utf-8"))
   lessons=[x for x in c["lessons"] if x.get("track_uid")=="trk-a" and x.get("status")=="published" and x.get("content_state")=="published"]
   self.assertEqual(len(lessons),30)

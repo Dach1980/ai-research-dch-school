@@ -74,7 +74,11 @@ class Lesson151PublicationContractTests(unittest.TestCase):
 
     def test_navigation_is_catalog_driven_and_does_not_link_to_unpublished_lessons(self):
         script = (ROOT / "scripts/lesson-layout.js").read_text(encoding="utf-8")
-        self.assertIn('item.track_uid==="trk-a"&&item.status==="published"', script)
+        self.assertIn("The explicit curriculum sequence is the authority for lesson order", script)
+        self.assertIn("steps.findIndex(function(step)", script)
+        self.assertIn('step.kind!=="lesson"', script)
+        self.assertIn('previous.status==="published"', script)
+        self.assertIn('next.status==="published"', script)
         self.assertIn('nav.replaceChildren(fragment)', script)
         for path in PAGES.values():
             source = path.read_text(encoding="utf-8")

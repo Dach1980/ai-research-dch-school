@@ -68,7 +68,8 @@ class PublishedLessonNavigationContractTests(unittest.TestCase):
         for lesson in self.lessons:
             if lesson.get("status") != "published":
                 self.assertNotIn("url_i18n", lesson)
-        self.assertIn('item.status==="published"', self.script)
+        self.assertIn('previous.status==="published"', self.script)
+        self.assertIn('next.status==="published"', self.script)
 
     def test_navigation_actions_are_created_in_canonical_order(self):
         actions = (

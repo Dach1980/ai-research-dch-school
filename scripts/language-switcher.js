@@ -15,7 +15,8 @@
   const isTrack = /^tracks\/(understanding-ai|inside-ai|building-with-ai)\.html$/.test(relativePage);
   const isLesson = /^lessons\/a-[1-6]-.*\.html$/.test(relativePage);
   const isFeedback = relativePage === "feedback/index.html";
-  const isKnownPage = isHome || isLessonsIndex || isMapIndex || isTrack || isLesson || isFeedback;
+  const isAuthor = /^about\/author\.html$/.test(relativePage);
+  const isKnownPage = isHome || isLessonsIndex || isMapIndex || isTrack || isLesson || isFeedback || isAuthor;
   const target = locale => {
     const suffix = locale === "ru" ? "" : "-" + locale;
     if (!isKnownPage) return projectRoot + "index" + suffix + ".html";

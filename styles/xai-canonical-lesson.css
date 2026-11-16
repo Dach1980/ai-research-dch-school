@@ -61,3 +61,12 @@
   .xai-canonical-section-content .formula{margin:1.2rem 0;padding:1rem .85rem;border-radius:13px}
   .xai-canonical-section-content .formula-expression{font-size:1rem}
 }
+
+
+/* Match the light-theme heading treatment of canonical lesson 1.1.1. */
+.xai-canonical-section-content h2{
+  color:var(--lds-ink,#17233d);
+}
+html:not([data-theme="light"]) .xai-canonical-section-content h2{
+  color:var(--lds-ink,#edf3ff);
+}

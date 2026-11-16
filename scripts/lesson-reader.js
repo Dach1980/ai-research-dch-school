@@ -75,6 +75,7 @@
  function renderPage(restore=true){
   const p=lesson.pages[current],html=p.content[language]||"";
   $("sidebar-course-title").textContent=lesson.module[language]||lesson.module.ru;
+  const lessonCode=$("lesson-code");if(lessonCode){const code=lessonCode.dataset.code||"A.1.2.1";lessonCode.textContent=({ru:"УРОК ",en:"LESSON ",zh:"课程 "})[language]+code;}
   $("lesson-module").textContent=(lesson.module[language]||lesson.module.ru).toLocaleUpperCase(language==="zh"?"zh-CN":language);
   $("lesson-duration").textContent=lesson.duration[language]||lesson.duration.ru;
   $("page-title").textContent=title(p);$("page-content").innerHTML=html;

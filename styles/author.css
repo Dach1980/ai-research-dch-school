@@ -25,3 +25,49 @@
  .author-portrait{border-radius:16px}
  .author-connect{grid-template-columns:1fr}
 }
+
+/* Editorial portrait caption: a compact three-part signature. */
+.author-caption{
+  display:grid;
+  gap:8px;
+  width:max-content;
+  max-width:calc(100% - 36px);
+  margin:-48px 18px 0 auto;
+  padding:14px 18px 15px;
+  border:1px solid rgba(139,174,255,.34);
+  border-radius:14px;
+  background:linear-gradient(115deg,rgba(13,25,47,.97),rgba(25,27,57,.96));
+  box-shadow:0 14px 42px rgba(0,0,0,.38),inset 0 1px 0 rgba(255,255,255,.08);
+  backdrop-filter:blur(14px);
+  position:relative;
+}
+.author-caption:before{
+  content:"";
+  position:absolute;
+  left:0;top:14px;bottom:14px;width:3px;
+  border-radius:3px;
+  background:linear-gradient(180deg,#65b4ff,#a78bfa);
+}
+.author-caption-kicker{
+  color:#8fa9d0;
+  font:700 9px/1.2 Manrope,sans-serif;
+  letter-spacing:.19em;
+}
+.author-caption-terms{
+  display:flex;align-items:center;flex-wrap:wrap;
+  gap:8px;
+  color:#f1f5ff;
+  font:800 11px/1.35 Manrope,sans-serif;
+  letter-spacing:.085em;
+}
+.author-caption-terms i{
+  display:block;width:4px;height:4px;flex:0 0 4px;
+  border-radius:50%;
+  background:linear-gradient(135deg,#65b4ff,#b69aff);
+  box-shadow:0 0 9px rgba(132,158,255,.75);
+}
+@media(max-width:480px){
+  .author-caption{margin:-34px 10px 0 auto;padding:12px 13px 13px;max-width:calc(100% - 20px);gap:7px}
+  .author-caption-terms{font-size:9px;gap:6px;letter-spacing:.045em}
+  .author-caption-kicker{font-size:8px}
+}

@@ -69,6 +69,15 @@ class BrandAssetTests(unittest.TestCase):
             self.assertIn(social_url, (ROOT / "about/author.html").read_text(encoding="utf-8"))
         self.assertNotIn("github.com", (ROOT / "about/author.html").read_text(encoding="utf-8"))
         self.assertIn("ПРОВЕРЯТЬ.", (ROOT / "about/author.html").read_text(encoding="utf-8"))
+        for relative in ("about/author.html", "about/author-en.html", "about/author-zh.html"):
+            page = (ROOT / relative).read_text(encoding="utf-8")
+            self.assertIn("social-max", page)
+            self.assertIn("M12 2.25c-5.38 0-9.75 3.42", page)
+            self.assertIn("social-vkvideo", page)
+            self.assertIn("#ff4b55", page)
+            self.assertIn("#3478f6", page)
+        author_css = (ROOT / "styles/author.css").read_text(encoding="utf-8")
+        self.assertIn("linear-gradient(135deg,#00bfff,#471aff 55%,#9500ff)", author_css)
         switcher = (ROOT / "scripts/language-switcher.js").read_text(encoding="utf-8")
         self.assertIn('const isAuthor = /^about\\/author\\.html$/.test(relativePage);', switcher)
 

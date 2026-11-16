@@ -1102,7 +1102,7 @@
       "title": "Восстановить последовательную навигацию Track A и синхронизировать учебные документы",
       "status": "completed",
       "priority": "high",
-      "decision": "16 ноября исправлена общая навигация и добавлена явная последовательность data/curriculum-sequence-track-a.json по утверждённым макромодулям 11–26. Порядок больше не выводится из сортировки кодов. Незавершённые макромодули представлены блокирующими gate-записями. 3.1.6 исключён как candidate_only mapping к общей базе macro 08 до отдельного решения. 4.3.5 отнесён к macro 16; 4.3.4 — к macro 18 после XAI macro 17. Governance snapshot и crosswalk синхронизированы. Автоматическая CI/Pages проверка и визуальная приёмка остаются отдельными открытыми пунктами.",
+      "decision": "16 ноября исправлена общая навигация и добавлена явная последовательность data/curriculum-sequence-track-a.json по утверждённым макромодулям 11–26. Порядок больше не выводится из сортировки кодов. Незавершённые макромодули представлены блокирующими gate-записями для отсутствующих уроковых позиций 4.1.1/4.1.2/4.1.5 и незаполненных макромодулей 14,15,19–26. 3.1.6 исключён как candidate_only mapping к общей базе macro 08 до отдельного решения. 4.3.5 отнесён к macro 16; 4.3.4 — к macro 18 после XAI macro 17. Governance snapshot и crosswalk синхронизированы. Автоматическая CI/Pages проверка и визуальная приёмка остаются отдельными открытыми пунктами.",
       "acceptance": [
         "Навигация не перескакивает через ближайшую запись со статусом planned/review.",
         "Урок 1.5.8 не ведёт непосредственно на XAI 4.2.1.",
@@ -1180,14 +1180,15 @@
       "date": "2026-11-16",
       "type": "approved_macro_sequence_navigation",
       "title": "Навигация Track A переведена на явную последовательность утверждённых макромодулей",
-      "result": "Создан data/curriculum-sequence-track-a.json с 56 Lesson UID, расположенными по утверждённым макромодулям 11–26. Добавлены 15 gate-записей для модулей, в которых нет завершённых/подтверждённых уроковых записей. Последовательность учитывает, что 4.3.5 относится к макромодулю 16, а 4.3.4 — к макромодулю 18 после XAI макромодуля 17. 3.1.6 исключён из Track A последовательности до подтверждения его provisional mapping к общей базе macro 08. Навигационный renderer теперь использует explicit sequence JSON; тесты проверяют макромодульные переходы и блокировки.",
+      "result": "Создан data/curriculum-sequence-track-a.json с 56 Lesson UID, расположенными по утверждённым макромодулям 11–26. Добавлены 13 gate-записей (3 отсутствующие lesson positions и 10 пустых macro modules) для модулей, в которых нет завершённых/подтверждённых уроковых записей. Последовательность учитывает, что 4.3.5 относится к макромодулю 16, а 4.3.4 — к макромодулю 18 после XAI макромодуля 17. 3.1.6 исключён из Track A последовательности до подтверждения его provisional mapping к общей базе macro 08. Навигационный renderer теперь использует explicit sequence JSON; тесты проверяют макромодульные переходы и блокировки.",
       "evidence": [
         "data/curriculum-sequence-track-a.json",
         "scripts/lesson-layout.js",
         "tests/test_lesson_navigation_contract.py",
         "docs/management/CURRICULUM_CROSSWALK_2026-11-12.md",
         "data/curriculum-governance-2026-11-11.json",
-        "docs/management/TRACK_A_ARCHITECTURE_PROPOSAL.md"
+        "docs/management/TRACK_A_ARCHITECTURE_PROPOSAL.md",
+        "Track A curriculum lists missing lesson positions 4.1.1, 4.1.2 and 4.1.5; these are represented as gates, not fabricated catalog records."
       ],
       "limitations": [
         "Полная детализация prerequisites общей базы 00–10 и точные зависимости между отдельными уроками требуют отдельной редакционной сверки.",

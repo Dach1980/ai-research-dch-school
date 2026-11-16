@@ -88,6 +88,7 @@ class XaiLessonTests(unittest.TestCase):
 
     def test_shell_localization_theme_and_mobile_styles(self):
         self.assertIn("styles/xai-lesson.css", self.shell)
+        self.assertIn("styles/xai-canonical-lesson.css", self.shell)
         self.assertIn('<nav class="lesson-nav"', self.shell)
         self.assertIn("../scripts/lesson-layout.js", self.shell)
         self.assertIn("../scripts/language-switcher.js", self.shell)

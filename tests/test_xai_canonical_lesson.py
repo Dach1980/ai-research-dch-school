@@ -67,14 +67,14 @@ class CanonicalXaiLessonTests(unittest.TestCase):
 
     def test_score_equation_uses_the_shared_display_formula_style_in_all_locales(self):
         equation = "score = 0.50 + 0.30 × debt_ratio − 0.10 × employment_norm"
-        self.assertEqual(self.data.count('class=\\\\\\"formula\\\\\\" role=\\\\\\"math\\\\\\"'), 3)
+        self.assertEqual(self.data.count("formula-expression"), 3)
         self.assertEqual(self.data.count(equation), 3)
-        self.assertNotIn('class=\\\\\\"formula-block\\\\\\"', self.data)
-        self.assertIn('.xai-canonical-section-content .formula{', self.styles)
-        self.assertIn('.xai-canonical-section-content .formula-expression{', self.styles)
-        self.assertIn('var(--lds-math-bg)', self.styles)
-        self.assertIn('var(--lds-math-ink)', self.styles)
-        self.assertIn('overflow-x:auto', self.styles)
+        self.assertNotIn("formula-block", self.data)
+        self.assertIn(".xai-canonical-section-content .formula{", self.styles)
+        self.assertIn(".xai-canonical-section-content .formula-expression{", self.styles)
+        self.assertIn("var(--lds-math-bg)", self.styles)
+        self.assertIn("var(--lds-math-ink)", self.styles)
+        self.assertIn("overflow-x:auto", self.styles)
 
     def test_learning_outcomes_card_keeps_contrast_in_light_theme(self):
         self.assertIn('.lesson #xai-outcomes', self.styles)

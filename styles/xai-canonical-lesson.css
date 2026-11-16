@@ -23,3 +23,17 @@
 .lesson #xai-outcomes p,.lesson #xai-outcomes li{color:#d5e0f2}
 .lesson #xai-outcomes h2,.lesson #xai-outcomes h3{color:#9fc4ff}
 .lesson #xai-outcomes strong{color:#ffffff}
+
+/* Keep the six-axis method passport compact and visually subordinate to body text. */
+.xai-svg-figure{
+  max-width:640px;
+  margin:1.1rem auto;
+  overflow:hidden;
+}
+.xai-svg-figure .xai-svg{
+  display:block;
+  width:100%;
+  max-width:640px;
+  height:auto;
+  margin-inline:auto;
+}

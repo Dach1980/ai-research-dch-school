@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="zh">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="理解模型可解释性的含义，区分单次预测解释，并认识可解释性为何取决于任务与受众。">
+<meta property="og:title" content="6.1.1 — 什么是模型可解释性？ · DCH School">
+<meta property="og:description" content="理解模型可解释性的含义，区分单次预测解释，并认识可解释性为何取决于任务与受众。">
+<title>6.1.1 — 什么是模型可解释性？ — AI Research DCH School</title>
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../styles/main.css">
+<link rel="stylesheet" href="../styles/account.css">
+<link rel="stylesheet" href="../styles/lesson-design-system.css">
+<link rel="stylesheet" href="../styles/lesson-content-components.css">
+<link rel="stylesheet" href="../styles/lesson-standard.css">
+<link rel="stylesheet" href="../styles/lesson-reference-111.css">
+<link rel="canonical" href="https://dchai.ru/lessons/a-6-1-1-les-a-0147-zh.html">
+</head>
+<body>
+<header class="site-header">
+  <a class="brand" href="../index.html">
+    <img src="../assets/logo-signature.svg" alt="AI Research DCH School">
+    
+  </a>
+  <button class="menu-toggle" aria-label="打开菜单" aria-expanded="false">☰</button>
+  <nav class="nav">
+    <a href="../index.html#tracks">学习方向</a><a href="index-zh.html">课程</a><a href="../about/author-zh.html">作者</a>
+  </nav>
+</header>
+<main class="container">
+  <section class="track-hero article-hero">
+    <a class="back" href="../tracks/understanding-ai-zh.html">← Track A · XAI 实践者</a>
+    <p class="eyebrow">TRACK A · THEME 6 · MODULE 1 · LESSON 6.1.1</p>
+    <h1>什么是模型可解释性？</h1>
+    <p class="lead">本课讨论模型为何能够被人理解：人们能否检查其结构、联系输入与输出，并验证其决策逻辑。我们将区分模型本身的可解释性与针对单次预测的事后解释。</p>
+    <div class="track-meta"><span>入门</span><span>讲座与实践</span><span>机器学习基础</span></div>
+    <div class="lesson-planet-banner">
+      <div>
+        <span class="planet-label">知识星球 · 6.1.1</span>
+        <p>本课开启“可解释模型”主题。我们将定义理解模型的含义，并区分理解模型行为与解释单次输出。</p>
+        <a class="text-link" href="../learning-map/index-zh.html">知识地图 ↗</a>
+      </div>
+      <div class="lesson-planet-art" aria-hidden="true">
+        <div class="lesson-planet-sphere">6.1.1</div>
+      </div>
+    </div>
+  </section>
+  <article class="article-body">
+    <h2>学习目标</h2>
+    <p>完成本课后，你将能够：</p>
+    <ul><li>区分模型、单次预测和决策系统。</li><li>解释可解释性为何取决于模型、任务和受众。</li><li>区分模型内在可解释性与事后分析。</li><li>区分模型整体理解与单次输出的局部解释。</li><li>从可理解性、忠实性、稳定性和效用评价解释。</li><li>在选择 XAI 方法前明确问题。</li></ul>
+    <div class="lesson-problem"><strong>本课问题</strong>当一项信贷申请被拒绝时，我们究竟想理解什么：模型的一般逻辑、这一次预测的原因，还是整个决策流程？这些是不同的分析对象。</div><nav class="locale-links" aria-label="课程语言"><a href="a-6-1-1-les-a-0147.html">RU</a><a href="a-6-1-1-les-a-0147-en.html">EN</a><a href="a-6-1-1-les-a-0147-zh.html" aria-current="page">中文</a></nav><section id="section-1"><h2>1. 我们所说的模型是什么？</h2><p>在机器学习中，<strong>模型</strong>是经过训练后将输入数据转换为预测、评分或其他输出的计算结构。例如，信用风险模型接收申请信息，并返回违约概率估计。不要将模型与外围系统混为一谈：界面、银行政策、审批阈值、工作人员和申诉流程都可能影响最终结果，但不一定属于模型本身。</p><div class="definition"><span class="definition-term">模型可解释性（Model Interpretability）</span><span class="definition-text">人们理解模型结构，以及其表示、参数或计算如何与可观察行为和输出相关联的程度。</span></div><p>研究者并没有完全统一的定义。因此，实践中必须明确解释对象和目标受众。有人关注透明的系数，有人希望追踪某个决策，还有人希望检验模型在大量案例中的行为。</p></section><section id="section-2"><h2>2. 可解释性与预测解释并不相同</h2><p>比较两个问题：“模型整体如何工作？”以及“为什么它给这份申请分配了较高风险？”前者涉及<strong>全局理解</strong>，后者涉及某次结果的<strong>局部解释</strong>。</p><p>线性模型的结构相对容易理解：特征乘以系数再组合。但解释某位申请者时，仍需单独分析该样本的特征贡献。相反，即使神经网络内部结构难以直接理解，也可以为其构建事后局部解释。</p><figure class="lesson-figure"><svg viewBox="0 0 900 300" role="img" aria-labelledby="gtitle gdesc"><title id="gtitle">全局与局部分析</title><desc id="gdesc">全局分析研究模型整体行为，局部分析解释一次预测。</desc><rect x="10" y="10" width="880" height="280" rx="18" class="svg-box"/><text x="450" y="45" text-anchor="middle" class="svg-title">两个问题——两个分析层次</text><rect x="55" y="75" width="350" height="145" rx="14" class="svg-box2"/><text x="230" y="110" text-anchor="middle" class="svg-label">全局层面</text><text x="230" y="148" text-anchor="middle" class="svg-small">模型整体表现如何？</text><text x="230" y="178" text-anchor="middle" class="svg-small">模型在哪里容易出错？</text><rect x="495" y="75" width="350" height="145" rx="14" class="svg-box3"/><text x="670" y="110" text-anchor="middle" class="svg-label">局部层面</text><text x="670" y="148" text-anchor="middle" class="svg-small">为什么产生这次预测？</text><text x="670" y="178" text-anchor="middle" class="svg-small">解释是否可靠？</text><path d="M405 148 H495" stroke="var(--lds-accent)" stroke-width="3"/><text x="450" y="260" text-anchor="middle" class="svg-small">两个层次不能相互替代</text></svg><figcaption>全局理解与局部解释相互补充，但回答不同的问题。</figcaption></figure><p><strong>事后解释（post-hoc explanation）</strong>是在模型训练完成后对其进行分析。方法可以估计特征贡献、拟合局部近似，或展示输出对输入的敏感性。这是额外的分析过程，并不会自动让原模型变得透明。</p><div class="lesson-note"><strong>关键区别。</strong>可解释性关注模型本身是否容易理解；解释是回答关于模型或其输出的具体问题的一种表示或程序。得到解释并不自动证明我们已经理解模型。</div></section><section id="section-3"><h2>3. 模型内在可解释性与事后分析</h2><p>线性回归、小型决策树或规则数量有限的模型可以直接检查：阅读系数、沿树分支追踪或检验规则。但简单的模型类型不保证具体实现容易理解；大量特征、相关性和复杂预处理都会增加难度。</p><p>对于集成模型、梯度提升模型和神经网络，常使用事后方法。LIME 在样本附近拟合局部替代模型；SHAP 相对于指定背景分布估计特征贡献。结果取决于假设、采样、扰动方案和贡献定义。</p><p>不能说“运行了 SHAP，所以模型可解释”。更准确的说法是：“我们针对该模型和问题生成了 SHAP 事后解释，并单独检查其局限。”</p></section><section id="section-4"><h2>4. 可解释性取决于受众与任务</h2><p>开发者希望调试错误并理解数据转换；风险分析人员希望检验不同群体中的行为；客户需要简洁且可核验的拒绝原因；审计人员需要流程文档、控制和可复现性。</p><div class="lesson-table-wrap"><table class="lesson-table"><thead><tr><th>受众</th><th>主要问题</th><th>有用结果</th></tr></thead><tbody><tr><td>开发者</td><td>模型为何表现异常？</td><td>特征、转换和错误诊断</td></tr><tr><td>分析师</td><td>行为是否符合政策？</td><td>全局模式和群体检查</td></tr><tr><td>客户</td><td>哪些因素影响这次决定？</td><td>简洁且忠实事实的局部解释</td></tr><tr><td>审计人员</td><td>流程能否核验？</td><td>文档、复现和追踪</td></tr></tbody></table></div><p>一种解释形式不一定适合所有人。系数表可能帮助分析师，却无法帮助客户。“收入不足”容易理解，但不能证明模型确实以这种方式使用了收入信息。</p><p>因此，不要只问“模型有多可解释”，还要问“在这些条件下，它对这类受众、针对这项任务有多容易理解”。</p></section><section id="section-5"><h2>5. 贯穿案例：信用风险</h2><p>模型根据债务负担、还款记录、就业年限和收入估计逾期风险。某份申请的风险评分为 0.72。银行使用 0.60 作为阈值，并将申请转入额外审核。</p><ol><li><strong>系统层面。</strong>谁设定阈值？预测之后有哪些规则？工作人员能否复核？这是流程问题，不只是模型问题。</li><li><strong>全局层面。</strong>哪些特征和关系影响整体风险？不同群体的行为是否不同？错误出现在哪里？</li><li><strong>局部层面。</strong>哪些输入与 0.72 的评分相关？在允许的输入变化下，预测如何变化？</li><li><strong>验证。</strong>通过受控变化和稳定性测试，将解释与模型实际行为进行比较。</li></ol><p>如果债务负担被认为是主要因素，也不能证明减少债务就一定获批。模型可能考虑特征交互，阈值也可能不变，建议的变化还可能不现实。与预测相关不等于现实中的因果效应。</p></section><section id="section-6"><h2>6. 如何评价解释质量</h2><ul><li><strong>可理解性。</strong>目标受众能否正确阅读解释？</li><li><strong>忠实性（faithfulness）。</strong>解释是否反映模型真实行为，而不是方便的故事？</li><li><strong>稳定性。</strong>在小幅且允许的变化下，主要结论是否保持？</li><li><strong>范围。</strong>结论适用于单个样本、群体还是整个模型？</li><li><strong>效用。</strong>解释是否有助于调试、审计、决策或沟通？</li><li><strong>可验证性。</strong>分析能否复现并通过实验检查？</li></ul><p>这些标准可能冲突。简短解释容易阅读，却可能遗漏交互；详细解释信息更多，却可能造成负担。稳定不等于忠实：方法可能稳定地重复错误近似。</p></section><section id="section-7"><h2>7. 常见错误与推断边界</h2><ul><li>混淆模型与系统：阈值和人工操作会影响结果。</li><li>把局部解释当成整个模型的描述。</li><li>把可视化或特征排序当成证明。</li><li>把特征重要性等同于因果性。</li><li>忽略受众、模型版本和方法设置。</li></ul><div class="lesson-note"><strong>研究规则。</strong>先明确问题和分析对象，再选择方法，最后解释结果。不要先寻找漂亮的图，再为它编造一个它似乎能够回答的问题。</div></section><section id="section-8"><h2>8. 实践：解释分析简报</h2><div class="lesson-practice"><h3>任务</h3><p>选择信用风险、需求预测、工单分类或缺陷检测模型。在选择 XAI 方法前完成简报：</p><ol><li>说明对象：模型、单次预测或完整系统。</li><li>分别提出一个全局问题和局部问题。</li><li>描述受众及其需要作出的决定。</li><li>提出一种分析方法并说明理由。</li><li>指出两个局限和一种验证方法。</li></ol><h3>自我检查</h3><p>你区分了模型、阈值和流程；区分了全局与局部问题；明确了受众；没有把相关关系说成因果关系；并提出了忠实性或稳定性检查。</p></div><h3>本课总结</h3><p>可解释性不是非有即无的神奇属性，而是模型结构、研究问题、受众和使用条件之间的关系。下一课将更精确地区分 interpretability 与 explainability，然后学习能够直接检查其结构的模型。</p></section>
+  </article>
+  <section class="lesson-sources">
+    <h2>参考资料与延伸阅读</h2>
+    <ul><li><a href="https://arxiv.org/abs/1702.08608" target="_blank" rel="noopener noreferrer">Doshi-Velez & Kim (2017), Towards A Rigorous Science of Interpretable Machine Learning</a></li><li><a href="https://arxiv.org/abs/1606.03490" target="_blank" rel="noopener noreferrer">Lipton (2016), The Mythos of Model Interpretability</a></li><li><a href="https://doi.org/10.1038/s42256-019-0048-x" target="_blank" rel="noopener noreferrer">Rudin (2019), Stop explaining black box machine learning models for high stakes decisions and use interpretable models instead</a></li><li><a href="https://christophm.github.io/interpretable-ml-book/" target="_blank" rel="noopener noreferrer">Molnar, Interpretable Machine Learning — A Guide for Making Black Box Models Explainable</a></li></ul>
+  </section>
+  <nav class="lesson-nav" aria-label="课程导航">
+    <a class="button secondary" href="../tracks/understanding-ai-zh.html">Track A 学习计划</a><a class="button secondary" href="index-zh.html">Track A 全部课程</a>
+  </nav>
+  <div class="lesson-glossary"><h2>核心术语</h2><div class="lesson-glossary"><article class="glossary-entry"><span class="term-index">01</span><strong class="term">可解释性（Interpretability）</strong><p>模型内部逻辑对人类理解的可接近程度。</p></article><article class="glossary-entry"><span class="term-index">02</span><strong class="term">解释（Explanation）</strong><p>用于回答关于模型或输出的具体问题的表示。</p></article><article class="glossary-entry"><span class="term-index">03</span><strong class="term">全局分析</strong><p>描述模型在大量样本上的整体行为。</p></article><article class="glossary-entry"><span class="term-index">04</span><strong class="term">局部解释</strong><p>分析一次预测或样本附近的行为。</p></article><article class="glossary-entry"><span class="term-index">05</span><strong class="term">事后方法（Post-hoc）</strong><p>模型训练完成后用于分析模型的方法。</p></article><article class="glossary-entry"><span class="term-index">06</span><strong class="term">忠实性（Faithfulness）</strong><p>解释与模型真实行为之间的一致程度。</p></article><article class="glossary-entry"><span class="term-index">07</span><strong class="term">透明模型</strong><p>结构和操作可以被直接检查的模型。</p></article></div></div>
+  <section class="lesson-check">
+    <h2>自测</h2>
+    <p>检查你对课程内容的理解。每道题都对应讲义内容。</p><article class="lesson-check-question" data-mode="single" data-correct="a" data-explanation="模型在大量样本上的整体行为如何？"><h3>1. 哪个问题属于对模型的全局理解？</h3><div class="lesson-check-options"><label><input type="checkbox" value="a"><span>模型在大量样本上的整体行为如何？</span></label><label><input type="checkbox" value="b"><span>这证明了因果关系。</span></label><label><input type="checkbox" value="c"><span>所有模型都同样容易理解。</span></label></div><button type="button" class="lesson-check-button">检查答案</button><p class="lesson-check-feedback" aria-live="polite" hidden></p></article><article class="lesson-check-question" data-mode="single" data-correct="a" data-explanation="不会"><h3>2. 事后解释会自动使模型内部结构透明吗？</h3><div class="lesson-check-options"><label><input type="checkbox" value="a"><span>不会</span></label><label><input type="checkbox" value="b"><span>这证明了因果关系。</span></label><label><input type="checkbox" value="c"><span>所有模型都同样容易理解。</span></label></div><button type="button" class="lesson-check-button">检查答案</button><p class="lesson-check-feedback" aria-live="polite" hidden></p></article><article class="lesson-check-question" data-mode="single" data-correct="a" data-explanation="最终用户"><h3>3. 谁可能需要某个具体决策的简明解释？</h3><div class="lesson-check-options"><label><input type="checkbox" value="a"><span>最终用户</span></label><label><input type="checkbox" value="b"><span>这证明了因果关系。</span></label><label><input type="checkbox" value="c"><span>所有模型都同样容易理解。</span></label></div><button type="button" class="lesson-check-button">检查答案</button><p class="lesson-check-feedback" aria-live="polite" hidden></p></article><article class="lesson-check-question" data-mode="single" data-correct="a" data-explanation="只能说明与预测有关，不能证明因果关系"><h3>4. 局部解释中的高特征贡献能够证明什么？</h3><div class="lesson-check-options"><label><input type="checkbox" value="a"><span>只能说明与预测有关，不能证明因果关系</span></label><label><input type="checkbox" value="b"><span>这证明了因果关系。</span></label><label><input type="checkbox" value="c"><span>所有模型都同样容易理解。</span></label></div><button type="button" class="lesson-check-button">检查答案</button><p class="lesson-check-feedback" aria-live="polite" hidden></p></article><article class="lesson-check-question" data-mode="single" data-correct="a" data-explanation="分析对象、问题和受众"><h3>5. 选择 XAI 方法前应先明确什么？</h3><div class="lesson-check-options"><label><input type="checkbox" value="a"><span>分析对象、问题和受众</span></label><label><input type="checkbox" value="b"><span>这证明了因果关系。</span></label><label><input type="checkbox" value="c"><span>所有模型都同样容易理解。</span></label></div><button type="button" class="lesson-check-button">检查答案</button><p class="lesson-check-feedback" aria-live="polite" hidden></p></article>
+  </section>
+</main>
+<footer class="footer">
+  <div class="container">
+    <a class="footer-brand" href="../index.html">AI Research DCH School</a>
+    <p>理解模型。验证解释。探索人工智能。</p>
+    <small>© 2026 AI Research DCH School</small>
+  </div>
+</footer>
+<script src="../scripts/main.js"></script>
+<script src="../scripts/theme-system.js" defer></script>
+<script src="../scripts/code-blocks.js" defer></script>
+<script src="../scripts/lesson-layout.js" defer></script>
+<script src="../scripts/lesson-assessment.js" defer></script>
+<script src="../scripts/language-switcher.js"></script>
+</body>
+</html>

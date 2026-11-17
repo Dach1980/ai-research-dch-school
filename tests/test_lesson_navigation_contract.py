@@ -10,16 +10,16 @@ class PublishedLessonNavigationContractTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         cls.catalog = json.loads((ROOT / "data/catalog/catalog-v3.json").read_text(encoding="utf-8"))
-        cls.sequence = json.loads((ROOT / "data/curriculum-sequence-track-a.json").read_text(encoding="utf-8"))
         cls.lessons = {item["uid"]: item for item in cls.catalog["lessons"]}
-        cls.steps = cls.sequence["steps"]
         cls.script = (ROOT / "scripts/lesson-layout.js").read_text(encoding="utf-8")
 
-    def step_index(self, code):
-        return next(i for i, step in enumerate(self.steps) if step.get("code") == code)
-
     def test_every_published_track_a_page_loads_the_shared_navigation_normalizer(self):
-        published = [item for item in self.catalog["lessons"] if item.get("track_uid") == "trk-a" and item.get("status") == "published"]
+        published = [
+            item for item in self.catalog["lessons"]
+            if item.get("track_uid") == "trk-a"
+            and item.get("status") == "published"
+            and item.get("content_state") == "published"
+        ]
         self.assertTrue(published)
         for lesson in published:
             for locale in LOCALES:
@@ -30,65 +30,40 @@ class PublishedLessonNavigationContractTests(unittest.TestCase):
                     self.assertIn('<nav class="lesson-nav"', source, str(page))
                     self.assertIn("lesson-layout.js", source, str(page))
 
-    def test_normalizer_uses_explicit_macro_sequence_not_numeric_code_sorting(self):
-        self.assertIn('fetch(new URL("../data/curriculum-sequence-track-a.json",scriptUrl).href)', self.script)
-        self.assertIn('var steps=sequence.steps||[]', self.script)
-        self.assertIn('step.kind!=="lesson"', self.script)
-        self.assertNotIn('a.code.split(".").map(Number)', self.script)
-        self.assertNotIn('var allLessons=', self.script)
+    def test_normalizer_uses_catalog_publication_state_and_canonical_localized_urls(self):
+        self.assertIn('var catalogUrl=new URL("../data/catalog/catalog-v3.json",scriptUrl)', self.script)
+        self.assertIn('item.track_uid==="trk-a"', self.script)
+        self.assertIn('item.status==="published"', self.script)
+        self.assertIn('item.content_state==="published"', self.script)
+        self.assertIn('item.url_i18n&&item.url_i18n[locale]', self.script)
+        self.assertIn('published.findIndex(function(item)', self.script)
+        self.assertIn('item.url_i18n[locale].split("/").pop()===currentPath', self.script)
+        self.assertIn('new URL(previous.url_i18n[locale],rootUrl)', self.script)
+        self.assertIn('new URL(next.url_i18n[locale],rootUrl)', self.script)
+        self.assertNotIn("curriculum-sequence-track-a.json", self.script)
+        self.assertNotIn("var steps=sequence.steps", self.script)
 
-    def test_theme_one_sequence_remains_contiguous(self):
-        ordered = [step["code"] for step in self.steps if step.get("macro_module") == 11 and step["kind"] == "lesson"]
-        self.assertEqual(ordered[ordered.index("1.2.1") - 1], "1.1.4")
-        self.assertEqual(ordered[ordered.index("1.2.1") + 1], "1.2.2")
-        self.assertEqual(self.lessons[next(s["lesson_uid"] for s in self.steps if s.get("code") == "1.1.4")]["status"], "published")
-        self.assertEqual(self.lessons[next(s["lesson_uid"] for s in self.steps if s.get("code") == "1.2.2")]["status"], "published")
+    def test_published_navigation_order_follows_canonical_lesson_codes(self):
+        published = [
+            item for item in self.catalog["lessons"]
+            if item.get("track_uid") == "trk-a"
+            and item.get("status") == "published"
+            and item.get("content_state") == "published"
+        ]
+        codes = [item["code"] for item in published]
+        numeric_order = sorted(codes, key=lambda code: tuple(int(part) for part in code.split(".")))
+        self.assertEqual(codes, numeric_order)
+        self.assertIn('"en",{numeric:true}', self.script)
+        self.assertIn('published.sort(function(a,b){return a.code.localeCompare(b.code,"en",{numeric:true});})', self.script)
 
-    def test_1_5_8_is_followed_by_the_macro_12_gate_not_a_provisional_foundation_candidate(self):
-        index = self.step_index("1.5.8")
-        next_step = self.steps[index + 1]
-        self.assertEqual(next_step["kind"], "lesson_gate")
-        self.assertEqual(next_step["macro_module"], 12)
-        self.assertEqual(next_step["code"], "4.1.1")
-        self.assertIn("интерпретируемость модели", next_step["title"])
-        self.assertEqual(self.sequence["excluded_candidates"][0]["code"], "3.1.6")
-        self.assertIn("candidate_only", self.sequence["excluded_candidates"][0]["reason"])
+    def test_unpublished_lessons_are_excluded_and_pending_next_is_not_clickable(self):
+        self.assertIn('item.status==="published"&&item.content_state==="published"', self.script)
+        self.assertIn('pending.className="button primary is-disabled"', self.script)
+        self.assertIn('pending.setAttribute("aria-disabled","true")', self.script)
+        self.assertNotIn("pending.href", self.script)
         self.assertIn('nextSoon:"Следующий урок скоро"', self.script)
         self.assertIn('nextSoon:"Next lesson coming soon"', self.script)
         self.assertIn('nextSoon:"下一课即将推出"', self.script)
-        self.assertIn('pending.setAttribute("aria-disabled","true")', self.script)
-        self.assertNotIn('pending.href', self.script)
-
-    def test_xai_4_2_1_follows_macro_16_and_is_not_adjacent_to_1_5_8(self):
-        index = self.step_index("4.2.1")
-        self.assertEqual(self.steps[index - 1]["code"], "4.3.5")
-        self.assertEqual(self.lessons[self.steps[index - 1]["lesson_uid"]]["status"], "planned")
-        self.assertEqual(self.steps[index + 1]["code"], "4.2.2")
-        self.assertEqual(self.lessons[self.steps[index + 1]["lesson_uid"]]["status"], "planned")
-        codes = [step.get("code") for step in self.steps]
-        self.assertGreater(codes.index("4.2.1"), codes.index("4.3.5"))
-        self.assertGreater(codes.index("4.3.4"), codes.index("4.7.4"))
-        self.assertLess(codes.index("4.3.4"), len(codes))
-
-    def test_approved_macro_gaps_are_explicit_blocking_gates(self):
-        gates = {step["macro_module"]: step for step in self.steps if step["kind"] == "module_gate"}
-        for macro in (14, 15, 19, 20, 21, 22, 23, 24, 25, 26):
-            self.assertIn(macro, gates)
-        self.assertEqual(gates[14]["title"], "Каузальность и причинная интерпретация")
-        self.assertEqual(gates[15]["title"], "Гетерогенные эффекты")
-        lesson_gates = {step["code"]: step for step in self.steps if step["kind"] == "lesson_gate"}
-        self.assertEqual(lesson_gates["4.1.1"]["macro_module"], 12)
-        self.assertEqual(lesson_gates["4.1.2"]["macro_module"], 12)
-        self.assertEqual(lesson_gates["4.1.5"]["macro_module"], 13)
-
-    def test_review_and_planned_lessons_are_never_navigation_targets(self):
-        for step in self.steps:
-            if step["kind"] == "lesson":
-                lesson = self.lessons[step["lesson_uid"]]
-                self.assertEqual(lesson["code"], step["code"])
-                self.assertEqual(lesson["status"], step["status"])
-        self.assertIn('previous.status==="published"', self.script)
-        self.assertIn('next.status==="published"', self.script)
 
     def test_navigation_actions_are_created_in_canonical_order(self):
         actions = (

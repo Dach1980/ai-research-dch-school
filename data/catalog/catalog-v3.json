@@ -57,28 +57,38 @@
       "track_uid": "trk-a",
       "number": 2,
       "code": "2",
-      "title": "Инструменты, программирование и математические основы",
-      "status": "planned"
+      "title": "Данные и признаки",
+      "status": "planned",
+      "title_i18n": {
+        "ru": "Данные и признаки",
+        "en": "Data and Features",
+        "zh": "数据与特征"
+      }
     },
     {
       "uid": "thm-a-03",
       "track_uid": "trk-a",
       "number": 3,
       "code": "3",
-      "title": "Модели машинного обучения и глубокое обучение",
-      "status": "planned"
+      "title": "Основы машинного обучения",
+      "status": "planned",
+      "title_i18n": {
+        "ru": "Основы машинного обучения",
+        "en": "Fundamentals of Machine Learning",
+        "zh": "机器学习基础"
+      }
     },
     {
       "uid": "thm-a-04",
       "track_uid": "trk-a",
       "number": 4,
       "code": "4",
-      "title": "Интерпретируемость и классические методы XAI",
+      "title": "Модели и их качество",
       "status": "active",
       "title_i18n": {
-        "ru": "Интерпретируемость и классические методы XAI",
-        "en": "Interpretability and Classical XAI Methods",
-        "zh": "可解释性与经典 XAI 方法"
+        "ru": "Модели и их качество",
+        "en": "Models and Model Quality",
+        "zh": "模型与模型质量"
       }
     },
     {
@@ -86,12 +96,12 @@
       "track_uid": "trk-a",
       "number": 5,
       "code": "5",
-      "title": "Современные методы анализа и научная проверка",
+      "title": "Метрики и оценка моделей",
       "status": "planned",
       "title_i18n": {
-        "ru": "Современные методы анализа и научная проверка",
-        "en": "Modern Analysis Methods and Scientific Evaluation",
-        "zh": "现代分析方法与科学评估"
+        "ru": "Метрики и оценка моделей",
+        "en": "Metrics and Model Evaluation",
+        "zh": "指标与模型评估"
       }
     },
     {
@@ -138,8 +148,13 @@
       "uid": "mod-a-01-02",
       "theme_uid": "thm-a-01",
       "number": 2,
-      "title": "Данные и признаки",
-      "status": "planned"
+      "title": "Подходы и направления искусственного интеллекта",
+      "status": "planned",
+      "title_i18n": {
+        "ru": "Подходы и направления искусственного интеллекта",
+        "en": "AI Approaches and Paradigms",
+        "zh": "人工智能方法与范式"
+      }
     },
     {
       "uid": "mod-a-01-03",
@@ -166,15 +181,25 @@
       "uid": "mod-a-02-01",
       "theme_uid": "thm-a-02",
       "number": 1,
-      "title": "Исследовательская среда и воспроизводимость",
-      "status": "planned"
+      "title": "Представление данных и признаков",
+      "status": "planned",
+      "title_i18n": {
+        "ru": "Представление данных и признаков",
+        "en": "Data and Feature Representation",
+        "zh": "数据与特征表示"
+      }
     },
     {
       "uid": "mod-a-02-02",
       "theme_uid": "thm-a-02",
       "number": 2,
-      "title": "Python для научных вычислений",
-      "status": "planned"
+      "title": "Подготовка и качество данных",
+      "status": "planned",
+      "title_i18n": {
+        "ru": "Подготовка и качество данных",
+        "en": "Data Preparation and Quality",
+        "zh": "数据准备与质量"
+      }
     },
     {
       "uid": "mod-a-02-03",
@@ -222,33 +247,48 @@
       "uid": "mod-a-03-01",
       "theme_uid": "thm-a-03",
       "number": 1,
-      "title": "Основы машинного обучения",
-      "status": "planned"
+      "title": "Типы машинного обучения",
+      "status": "planned",
+      "title_i18n": {
+        "ru": "Типы машинного обучения",
+        "en": "Types of Machine Learning",
+        "zh": "机器学习类型"
+      }
     },
     {
       "uid": "mod-a-03-02",
       "theme_uid": "thm-a-03",
       "number": 2,
-      "title": "Основы Deep Learning и PyTorch",
-      "status": "planned"
+      "title": "Основные задачи и современные подходы ML",
+      "status": "planned",
+      "title_i18n": {
+        "ru": "Основные задачи и современные подходы ML",
+        "en": "Core ML Tasks and Modern Approaches",
+        "zh": "机器学习核心任务与现代方法"
+      }
     },
     {
       "uid": "mod-a-04-01",
       "theme_uid": "thm-a-04",
       "number": 1,
-      "title": "Интерпретируемые модели машинного обучения",
-      "status": "planned"
+      "title": "Устройство и обучение моделей",
+      "status": "planned",
+      "title_i18n": {
+        "ru": "Устройство и обучение моделей",
+        "en": "Model Structure and Training",
+        "zh": "模型结构与训练"
+      }
     },
     {
       "uid": "mod-a-04-02",
       "theme_uid": "thm-a-04",
       "number": 2,
-      "title": "Таксономия XAI и важность признаков",
+      "title": "Обобщение и настройка моделей",
       "status": "active",
       "title_i18n": {
-        "ru": "Таксономия XAI и важность признаков",
-        "en": "XAI Taxonomy and Feature Importance",
-        "zh": "XAI 分类与特征重要性"
+        "ru": "Обобщение и настройка моделей",
+        "en": "Generalization and Model Tuning",
+        "zh": "泛化与模型调优"
       }
     },
     {
@@ -297,15 +337,25 @@
       "uid": "mod-a-05-01",
       "theme_uid": "thm-a-05",
       "number": 1,
-      "title": "Объяснение через вмешательство",
-      "status": "planned"
+      "title": "Метрики классификации",
+      "status": "planned",
+      "title_i18n": {
+        "ru": "Метрики классификации",
+        "en": "Classification Metrics",
+        "zh": "分类指标"
+      }
     },
     {
       "uid": "mod-a-05-02",
       "theme_uid": "thm-a-05",
       "number": 2,
-      "title": "Атаки на объяснения",
-      "status": "planned"
+      "title": "Дополнительные методы оценки качества",
+      "status": "planned",
+      "title_i18n": {
+        "ru": "Дополнительные методы оценки качества",
+        "en": "Additional Evaluation Methods",
+        "zh": "其他评估方法"
+      }
     },
     {
       "uid": "mod-a-05-03",
@@ -441,7 +491,7 @@
       "uid": "les-a-0002",
       "track_uid": "trk-a",
       "theme_uid": "thm-a-01",
-      "module_uid": "mod-a-01-01",
+      "module_uid": "mod-a-01-02",
       "code": "1.2.1",
       "title": "AI, Machine Learning и Deep Learning",
       "status": "published",
@@ -467,7 +517,7 @@
       "uid": "les-a-0052",
       "track_uid": "trk-a",
       "theme_uid": "thm-a-01",
-      "module_uid": "mod-a-01-01",
+      "module_uid": "mod-a-01-02",
       "code": "1.2.2",
       "title": "Символический AI и машинное обучение",
       "status": "published",
@@ -497,8 +547,8 @@
     {
       "uid": "les-a-0003",
       "track_uid": "trk-a",
-      "theme_uid": "thm-a-01",
-      "module_uid": "mod-a-01-02",
+      "theme_uid": "thm-a-02",
+      "module_uid": "mod-a-02-01",
       "code": "2.1.1",
       "title": "Что такое данные в машинном обучении",
       "status": "published",
@@ -528,8 +578,8 @@
     {
       "uid": "les-a-0004",
       "track_uid": "trk-a",
-      "theme_uid": "thm-a-01",
-      "module_uid": "mod-a-01-02",
+      "theme_uid": "thm-a-02",
+      "module_uid": "mod-a-02-01",
       "code": "2.1.2",
       "title": "Объекты, признаки и целевые переменные",
       "status": "published",
@@ -559,8 +609,8 @@
     {
       "uid": "les-a-0056",
       "track_uid": "trk-a",
-      "theme_uid": "thm-a-01",
-      "module_uid": "mod-a-01-02",
+      "theme_uid": "thm-a-02",
+      "module_uid": "mod-a-02-01",
       "code": "2.1.3",
       "title": "Типы данных и представление признаков",
       "status": "published",
@@ -591,8 +641,8 @@
     {
       "uid": "les-a-0050",
       "track_uid": "trk-a",
-      "theme_uid": "thm-a-01",
-      "module_uid": "mod-a-01-02",
+      "theme_uid": "thm-a-02",
+      "module_uid": "mod-a-02-02",
       "code": "2.2.1",
       "title": "Обучающие, проверочные и тестовые данные",
       "status": "published",
@@ -622,8 +672,8 @@
     {
       "uid": "les-a-0005",
       "track_uid": "trk-a",
-      "theme_uid": "thm-a-01",
-      "module_uid": "mod-a-01-02",
+      "theme_uid": "thm-a-02",
+      "module_uid": "mod-a-02-02",
       "code": "2.2.2",
       "title": "Качество данных, пропуски и выбросы",
       "status": "published",
@@ -653,8 +703,8 @@
     {
       "uid": "les-a-0006",
       "track_uid": "trk-a",
-      "theme_uid": "thm-a-01",
-      "module_uid": "mod-a-01-02",
+      "theme_uid": "thm-a-02",
+      "module_uid": "mod-a-02-02",
       "code": "2.2.3",
       "title": "Корреляция, зависимости и утечка данных",
       "status": "published",
@@ -686,8 +736,8 @@
     {
       "uid": "les-a-0007",
       "track_uid": "trk-a",
-      "theme_uid": "thm-a-01",
-      "module_uid": "mod-a-01-03",
+      "theme_uid": "thm-a-03",
+      "module_uid": "mod-a-03-01",
       "code": "3.1.1",
       "title": "Обучение с учителем — Supervised Learning",
       "status": "published",
@@ -717,8 +767,8 @@
     {
       "uid": "les-a-0008",
       "track_uid": "trk-a",
-      "theme_uid": "thm-a-01",
-      "module_uid": "mod-a-01-03",
+      "theme_uid": "thm-a-03",
+      "module_uid": "mod-a-03-01",
       "code": "3.1.2",
       "title": "Обучение без учителя — Unsupervised Learning",
       "status": "published",
@@ -751,8 +801,8 @@
     {
       "uid": "les-a-0053",
       "track_uid": "trk-a",
-      "theme_uid": "thm-a-01",
-      "module_uid": "mod-a-01-03",
+      "theme_uid": "thm-a-03",
+      "module_uid": "mod-a-03-01",
       "code": "3.1.3",
       "title": "Обучение с подкреплением — Reinforcement Learning",
       "status": "published",
@@ -785,8 +835,8 @@
     {
       "uid": "les-a-0054",
       "track_uid": "trk-a",
-      "theme_uid": "thm-a-01",
-      "module_uid": "mod-a-01-03",
+      "theme_uid": "thm-a-03",
+      "module_uid": "mod-a-03-02",
       "code": "3.2.1",
       "title": "Классификация и регрессия",
       "status": "published",
@@ -818,8 +868,8 @@
     {
       "uid": "les-a-0055",
       "track_uid": "trk-a",
-      "theme_uid": "thm-a-01",
-      "module_uid": "mod-a-01-03",
+      "theme_uid": "thm-a-03",
+      "module_uid": "mod-a-03-02",
       "code": "3.2.2",
       "title": "Кластеризация и снижение размерности",
       "status": "published",
@@ -851,8 +901,8 @@
     {
       "uid": "les-a-0009",
       "track_uid": "trk-a",
-      "theme_uid": "thm-a-01",
-      "module_uid": "mod-a-01-03",
+      "theme_uid": "thm-a-03",
+      "module_uid": "mod-a-03-02",
       "code": "3.2.3",
       "title": "Генеративные модели и другие современные подходы",
       "status": "published",
@@ -886,8 +936,8 @@
     {
       "uid": "les-a-0010",
       "track_uid": "trk-a",
-      "theme_uid": "thm-a-01",
-      "module_uid": "mod-a-01-04",
+      "theme_uid": "thm-a-04",
+      "module_uid": "mod-a-04-01",
       "code": "4.1.1",
       "title": "Понятие модели и параметров",
       "status": "published",
@@ -917,8 +967,8 @@
     {
       "uid": "les-a-0011",
       "track_uid": "trk-a",
-      "theme_uid": "thm-a-01",
-      "module_uid": "mod-a-01-04",
+      "theme_uid": "thm-a-04",
+      "module_uid": "mod-a-04-01",
       "code": "4.1.2",
       "title": "Обучение модели и функция потерь",
       "status": "published",
@@ -947,8 +997,8 @@
     {
       "uid": "les-a-0012",
       "track_uid": "trk-a",
-      "theme_uid": "thm-a-01",
-      "module_uid": "mod-a-01-04",
+      "theme_uid": "thm-a-04",
+      "module_uid": "mod-a-04-01",
       "code": "4.1.3",
       "title": "Переобучение и недообучение",
       "status": "published",
@@ -980,8 +1030,8 @@
     {
       "uid": "les-a-0013",
       "track_uid": "trk-a",
-      "theme_uid": "thm-a-01",
-      "module_uid": "mod-a-01-04",
+      "theme_uid": "thm-a-04",
+      "module_uid": "mod-a-04-02",
       "code": "4.2.1",
       "title": "Обобщающая способность модели",
       "status": "published",
@@ -1013,8 +1063,8 @@
     {
       "uid": "les-a-0014",
       "track_uid": "trk-a",
-      "theme_uid": "thm-a-01",
-      "module_uid": "mod-a-01-04",
+      "theme_uid": "thm-a-04",
+      "module_uid": "mod-a-04-02",
       "code": "4.2.2",
       "title": "Гиперпараметры и настройка модели",
       "status": "published",
@@ -1046,8 +1096,8 @@
     {
       "uid": "les-a-0043",
       "track_uid": "trk-a",
-      "theme_uid": "thm-a-01",
-      "module_uid": "mod-a-01-05",
+      "theme_uid": "thm-a-05",
+      "module_uid": "mod-a-05-01",
       "code": "5.1.1",
       "title": "Зачем оценивать качество модели",
       "status": "published",
@@ -1078,8 +1128,8 @@
     {
       "uid": "les-a-0044",
       "track_uid": "trk-a",
-      "theme_uid": "thm-a-01",
-      "module_uid": "mod-a-01-05",
+      "theme_uid": "thm-a-05",
+      "module_uid": "mod-a-05-01",
       "code": "5.1.2",
       "title": "Матрица ошибок классификации",
       "status": "published",
@@ -1110,8 +1160,8 @@
     {
       "uid": "les-a-0045",
       "track_uid": "trk-a",
-      "theme_uid": "thm-a-01",
-      "module_uid": "mod-a-01-05",
+      "theme_uid": "thm-a-05",
+      "module_uid": "mod-a-05-01",
       "code": "5.1.3",
       "title": "Accuracy, Precision, Recall и F1",
       "status": "published",
@@ -1142,8 +1192,8 @@
     {
       "uid": "les-a-0046",
       "track_uid": "trk-a",
-      "theme_uid": "thm-a-01",
-      "module_uid": "mod-a-01-05",
+      "theme_uid": "thm-a-05",
+      "module_uid": "mod-a-05-01",
       "code": "5.1.4",
       "title": "ROC-AUC и Precision-Recall AUC",
       "status": "published",
@@ -1175,8 +1225,8 @@
     {
       "uid": "les-a-0047",
       "track_uid": "trk-a",
-      "theme_uid": "thm-a-01",
-      "module_uid": "mod-a-01-05",
+      "theme_uid": "thm-a-05",
+      "module_uid": "mod-a-05-02",
       "code": "5.2.1",
       "title": "Дисбаланс классов",
       "status": "published",
@@ -1209,8 +1259,8 @@
     {
       "uid": "les-a-0015",
       "track_uid": "trk-a",
-      "theme_uid": "thm-a-01",
-      "module_uid": "mod-a-01-05",
+      "theme_uid": "thm-a-05",
+      "module_uid": "mod-a-05-02",
       "code": "5.2.2",
       "title": "Кросс-валидация и устойчивость результатов",
       "status": "published",
@@ -1243,8 +1293,8 @@
     {
       "uid": "les-a-0048",
       "track_uid": "trk-a",
-      "theme_uid": "thm-a-01",
-      "module_uid": "mod-a-01-05",
+      "theme_uid": "thm-a-05",
+      "module_uid": "mod-a-05-02",
       "code": "5.2.3",
       "title": "Метрики регрессии: MAE, MSE, RMSE и R²",
       "status": "published",
@@ -1276,8 +1326,8 @@
     {
       "uid": "les-a-0057",
       "track_uid": "trk-a",
-      "theme_uid": "thm-a-01",
-      "module_uid": "mod-a-01-05",
+      "theme_uid": "thm-a-05",
+      "module_uid": "mod-a-05-02",
       "code": "5.2.4",
       "title": "Калибровка вероятностей и качество вероятностных прогнозов",
       "status": "published",

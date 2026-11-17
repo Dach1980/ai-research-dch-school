@@ -1,0 +1,35 @@
+name: Migrate Track A canonical lesson URLs
+
+on:
+  push:
+    paths:
+      - "scripts/migrate_track_a_canonical_urls.py"
+      - ".github/workflows/migrate-track-a-canonical-urls.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  migrate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Apply canonical lesson URL migration
+        run: python scripts/migrate_track_a_canonical_urls.py
+      - name: Commit migration
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add lessons data/catalog/catalog-v3.json data/curriculum-sequence-track-a.json scripts/lesson-layout.js
+          if git diff --cached --quiet; then
+            echo "No migration changes."
+          else
+            git commit -m "Migrate published Track A lessons to canonical URLs"
+            git push origin main
+          fi

@@ -65,15 +65,14 @@ if(sharedScriptUrl){
 })();
 
 
-// Keep the author profile and the fourth learning track reachable from shared headers.
+// Keep author and Track D links in the shared navigation.
 (() => {
   const language = (document.documentElement.lang || "ru").toLowerCase();
-  if (!language.startsWith("ru")) return; // EN/ZH Track D pages will be linked when localized.
+  if (!language.startsWith("ru")) return;
   const nav = document.querySelector(".site-header .nav");
   if (!nav) return;
   const root = sharedScriptUrl ? new URL("../", sharedScriptUrl) : new URL("../", document.baseURI);
-  const currentPath = window.location.pathname;
-  if (!currentPath.endsWith("/about/author.html") && !nav.querySelector('[data-author-link]')) {
+  if (!window.location.pathname.endsWith("/about/author.html") && !nav.querySelector('[data-author-link]')) {
     const author = document.createElement("a");
     author.href = new URL("about/author.html", root).href;
     author.textContent = "Об авторе";
@@ -83,8 +82,11 @@ if(sharedScriptUrl){
   if (!nav.querySelector('[data-track-d-link]')) {
     const track = document.createElement("a");
     track.href = new URL("tracks/mathematical-research-foundations.html", root).href;
-    track.textContent = "Track D · Математические основы";
+    track.textContent = "Track D";
     track.setAttribute("data-track-d-link", "");
-    nav.appendChild(track);
+    const trackC = Array.from(nav.querySelectorAll("a")).find(a => /Track C/.test(a.textContent));
+    if (trackC && trackC.nextSibling) nav.insertBefore(track, trackC.nextSibling);
+    else if (trackC) nav.appendChild(track);
+    else nav.appendChild(track);
   }
 })();

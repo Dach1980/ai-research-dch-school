@@ -65,29 +65,5 @@ if(sharedScriptUrl){
 })();
 
 
-// Keep author and Track D links in the shared navigation.
-(() => {
-  const language = (document.documentElement.lang || "ru").toLowerCase();
-  if (!language.startsWith("ru")) return;
-  const nav = document.querySelector(".site-header .nav");
-  if (!nav) return;
-  const root = sharedScriptUrl ? new URL("../", sharedScriptUrl) : new URL("../", document.baseURI);
-  if (!window.location.pathname.endsWith("/about/author.html") && !nav.querySelector('[data-author-link], a[href*="/about/author.html"], a[href="about/author.html"]')) {
-    const author = document.createElement("a");
-    author.href = new URL("about/author.html", root).href;
-    author.textContent = "Об авторе";
-    author.setAttribute("data-author-link", "");
-    nav.appendChild(author);
-  }
-  let trackLink = nav.querySelector('[data-track-d-link], a[href*="mathematical-research-foundations.html"]');
-  if (!trackLink) {
-    const track = document.createElement("a");
-    track.href = new URL("tracks/mathematical-research-foundations.html", root).href;
-    track.textContent = "Track D";
-    track.setAttribute("data-track-d-link", "");
-    trackLink = track;
-  }
-  const trackC = Array.from(nav.querySelectorAll("a")).find(a => /Track C/.test(a.textContent));
-  if (trackC) nav.insertBefore(trackLink, trackC.nextSibling);
-  else if (!trackLink.isConnected) nav.appendChild(trackLink);
-})();
+// Track navigation belongs to the dedicated Directions / curriculum pages.
+// Do not inject an individual Track D link into the global lesson header.

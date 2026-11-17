@@ -17,8 +17,8 @@ class CatalogV3Tests(unittest.TestCase):
     def test_track_a_has_approved_hierarchy(self):
         a_themes = [x for x in self.catalog["themes"] if x["track_uid"] == "trk-a"]
         self.assertEqual(len(a_themes), 5)
-        self.assertEqual(len(self.catalog["modules"]), 27)
-        self.assertEqual([sum(x["theme_uid"] == t["uid"] for x in self.catalog["modules"]) for t in a_themes], [5, 8, 2, 7, 5])
+        self.assertEqual(len(self.catalog["modules"]), 32)
+        self.assertEqual([sum(x["theme_uid"] == t["uid"] for x in self.catalog["modules"]) for t in a_themes], [5, 8, 2, 8, 9])
 
     def test_uid_is_separate_from_display_code(self):
         rows = self.catalog["tracks"] + self.catalog["themes"] + self.catalog["modules"] + self.catalog["lessons"]
@@ -48,9 +48,9 @@ class CatalogV3Tests(unittest.TestCase):
         self.assertEqual(states["A.5"], "editorial_approved")
         self.assertNotIn("A.4", {x["legacy_id"] for x in self.manifest["unresolved_legacy_mappings"]})
         self.assertNotIn("A.5", {x["legacy_id"] for x in self.manifest["unresolved_legacy_mappings"]})
-        self.assertIn("1.5.7", {x["code"] for x in self.catalog["lessons"]})
+        self.assertIn("4.2.2", {x["code"] for x in self.catalog["lessons"]})
         self.assertIn("3.1.6", {x["code"] for x in self.catalog["lessons"]})
-        self.assertIn("1.2.4", {x["code"] for x in self.catalog["lessons"]})
+        self.assertIn("2.2.1", {x["code"] for x in self.catalog["lessons"]})
 
     def test_supabase_aliases_are_resolve_only_and_many_to_many(self):
         aliases = self.manifest["external_aliases"]
@@ -78,18 +78,18 @@ class CatalogV3Tests(unittest.TestCase):
         self.assertEqual(by_legacy["A.4"]["id"], "A.1.1.4")
         by_new = {x["id"]: x for x in projected["lessons"]}
         self.assertEqual(by_new["A.1.1.7"]["v3_target_codes"], ["1.1.2"])
-        self.assertEqual(by_new["A.1.1.8"]["v3_target_codes"], ["1.1.4"])
+        self.assertEqual(by_new["A.1.1.8"]["v3_target_codes"], ["1.2.2"])
 
     def test_reordered_track_a_lessons_use_canonical_urls_and_prerequisites(self):
         by_uid = {item["uid"]: item for item in self.catalog["lessons"]}
         lesson_113 = by_uid["les-a-0002"]
         lesson_114 = by_uid["les-a-0052"]
-        self.assertEqual(lesson_113["code"], "1.1.3")
-        self.assertEqual(lesson_114["code"], "1.1.4")
+        self.assertEqual(lesson_113["code"], "1.2.1")
+        self.assertEqual(lesson_114["code"], "1.2.2")
         self.assertEqual(lesson_113["prerequisite_uids"], ["les-a-0051"])
         self.assertEqual(lesson_114["prerequisite_uids"], ["les-a-0002"])
-        self.assertEqual(lesson_113["url_i18n"]["ru"], "lessons/a-1-1-3.html")
-        self.assertEqual(lesson_114["url_i18n"]["ru"], "lessons/a-1-1-4.html")
+        self.assertEqual(lesson_113["url_i18n"]["ru"], "lessons/a-1-2-1-les-a-0002.html")
+        self.assertEqual(lesson_114["url_i18n"]["ru"], "lessons/a-1-2-2-les-a-0052.html")
 
     def test_python_native_v3_reader_and_relationships(self):
         loaded = compat.load_catalog_v3(ROOT / "data/catalog/catalog-v3.json")

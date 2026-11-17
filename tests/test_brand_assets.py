@@ -68,7 +68,7 @@ class BrandAssetTests(unittest.TestCase):
         ):
             self.assertIn(social_url, (ROOT / "about/author.html").read_text(encoding="utf-8"))
         self.assertNotIn("github.com", (ROOT / "about/author.html").read_text(encoding="utf-8"))
-        self.assertIn("ПРОВЕРЯТЬ.", (ROOT / "about/author.html").read_text(encoding="utf-8"))
+        self.assertIn("Проверять.", (ROOT / "about/author.html").read_text(encoding="utf-8"))
         for relative in ("about/author.html", "about/author-en.html", "about/author-zh.html"):
             page = (ROOT / relative).read_text(encoding="utf-8")
             self.assertIn("social-max", page)

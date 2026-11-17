@@ -4,9 +4,9 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 FILES = {
-    "ru": ROOT / "lessons/a-1-4-3.html",
-    "en": ROOT / "lessons/a-1-4-3-en.html",
-    "zh": ROOT / "lessons/a-1-4-3-zh.html",
+    "ru": ROOT / "lessons/a-4-1-3-les-a-0012.html",
+    "en": ROOT / "lessons/a-4-1-3-les-a-0012-en.html",
+    "zh": ROOT / "lessons/a-4-1-3-les-a-0012-zh.html",
 }
 TITLES = {"ru":"Переобучение и недообучение","en":"Overfitting and Underfitting","zh":"过拟合与欠拟合"}
 
@@ -44,14 +44,14 @@ class Lesson143Tests(unittest.TestCase):
             self.assertEqual(source.count('class="lesson-check-feedback"'),8)
             self.assertIn("early stopping",source.lower())
             self.assertIn("validation",source.lower())
-            self.assertIn("a-1-4-2",source)
+            self.assertIn("a-4-1-2-les-a-0011",source)
             self.assertIn('aria-live="polite"',source)
 
     def test_catalog_record_is_published_and_localized(self):
         import json
         catalog=json.loads((ROOT/"data/catalog/catalog-v3.json").read_text(encoding="utf-8"))
         item=next(x for x in catalog["lessons"] if x["uid"]=="les-a-0012")
-        self.assertEqual(item["code"],"1.4.3")
+        self.assertEqual(item["code"],"4.1.3")
         self.assertEqual(item["status"],"published")
         self.assertEqual(item["content_state"],"published")
         self.assertEqual(set(item["url_i18n"]),{"ru","en","zh"})

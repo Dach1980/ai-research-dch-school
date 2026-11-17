@@ -4,9 +4,9 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 FILES = {
-    "ru": ROOT / "lessons/a-1-3-2.html",
-    "en": ROOT / "lessons/a-1-3-2-en.html",
-    "zh": ROOT / "lessons/a-1-3-2-zh.html",
+    "ru": ROOT / "lessons/a-3-1-2-les-a-0008.html",
+    "en": ROOT / "lessons/a-3-1-2-les-a-0008-en.html",
+    "zh": ROOT / "lessons/a-3-1-2-les-a-0008-zh.html",
 }
 CLUSTER_LABELS = {
     "ru": ("Компактный кластер", "Вытянутый кластер", "Неоднородная плотность", "Шум"),

@@ -40,7 +40,7 @@ class Lesson156ContractTests(unittest.TestCase):
         catalog = json.loads((ROOT / "data/catalog/catalog-v3.json").read_text(encoding="utf-8"))
         lesson = next(x for x in catalog["lessons"] if x["uid"] == "les-a-0015")
         self.assertEqual((lesson["code"], lesson["track_uid"], lesson["theme_uid"], lesson["module_uid"]),
-                         ("5.2.2", "trk-a", "thm-a-01", "mod-a-01-05"))
+                         ("5.2.2", "trk-a", "thm-a-05", "mod-a-05-02"))
         self.assertEqual(lesson["status"], "published")
         self.assertEqual(lesson["content_state"], "published")
         self.assertEqual(lesson["prerequisite_uids"], ["les-a-0047"])

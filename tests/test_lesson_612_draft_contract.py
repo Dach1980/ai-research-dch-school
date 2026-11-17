@@ -107,6 +107,8 @@ class Lesson612DraftTests(unittest.TestCase):
     def test_shared_assessment_script_handles_radio_controls(self):
         script = (ROOT / "scripts/lesson-assessment.js").read_text(encoding="utf-8")
         self.assertIn('input[type="checkbox"],input[type="radio"]', script)
+        for path in PAGES.values():
+            self.assertIn('<script src="../scripts/language-switcher.js"></script>', path.read_text(encoding="utf-8"))
 
     def test_612_is_published_with_approved_stable_uid_and_localized_urls(self):
         import json

@@ -3,6 +3,250 @@
 var main=document.querySelector("main.lesson");
 var lang=(document.documentElement.lang||"ru").toLowerCase();
 var labels=lang.indexOf("zh")===0?{lesson:"课程",planet:"知识星球"}:lang.indexOf("en")===0?{lesson:"LESSON",planet:"KNOWLEDGE PLANET"}:{lesson:"УРОК",planet:"ПЛАНЕТА ЗНАНИЙ"};
+/* Canonical numbering overlay for the 30 already-published Track A lessons.
+ * Legacy filenames, canonical URLs, lesson UIDs and stored progress remain unchanged.
+ * Mapping source: CANONICAL_LESSON_MIGRATION_CROSSWALK_2026-11-17.csv
+ */
+var canonicalLessonByRoute = {
+  "a-1-1-1.html": {
+    "uid": "les-a-0001",
+    "old": "1.1.1",
+    "code": "1.1.1",
+    "theme": 1,
+    "module": 1
+  },
+  "a-1-1-2.html": {
+    "uid": "les-a-0051",
+    "old": "1.1.2",
+    "code": "1.1.2",
+    "theme": 1,
+    "module": 1
+  },
+  "a-1-1-3.html": {
+    "uid": "les-a-0002",
+    "old": "1.1.3",
+    "code": "1.2.1",
+    "theme": 1,
+    "module": 2
+  },
+  "a-1-1-4.html": {
+    "uid": "les-a-0052",
+    "old": "1.1.4",
+    "code": "1.2.2",
+    "theme": 1,
+    "module": 2
+  },
+  "a-1-2-1.html": {
+    "uid": "les-a-0003",
+    "old": "1.2.1",
+    "code": "2.1.1",
+    "theme": 2,
+    "module": 1
+  },
+  "a-1-2-2.html": {
+    "uid": "les-a-0004",
+    "old": "1.2.2",
+    "code": "2.1.2",
+    "theme": 2,
+    "module": 1
+  },
+  "a-1-2-3.html": {
+    "uid": "les-a-0056",
+    "old": "1.2.3",
+    "code": "2.1.3",
+    "theme": 2,
+    "module": 1
+  },
+  "a-1-2-4.html": {
+    "uid": "les-a-0050",
+    "old": "1.2.4",
+    "code": "2.2.1",
+    "theme": 2,
+    "module": 2
+  },
+  "a-1-2-5.html": {
+    "uid": "les-a-0005",
+    "old": "1.2.5",
+    "code": "2.2.2",
+    "theme": 2,
+    "module": 2
+  },
+  "a-1-2-6.html": {
+    "uid": "les-a-0006",
+    "old": "1.2.6",
+    "code": "2.2.3",
+    "theme": 2,
+    "module": 2
+  },
+  "a-1-3-1.html": {
+    "uid": "les-a-0007",
+    "old": "1.3.1",
+    "code": "3.1.1",
+    "theme": 3,
+    "module": 1
+  },
+  "a-1-3-2.html": {
+    "uid": "les-a-0008",
+    "old": "1.3.2",
+    "code": "3.1.2",
+    "theme": 3,
+    "module": 1
+  },
+  "a-1-3-3.html": {
+    "uid": "les-a-0053",
+    "old": "1.3.3",
+    "code": "3.1.3",
+    "theme": 3,
+    "module": 1
+  },
+  "a-1-3-4.html": {
+    "uid": "les-a-0054",
+    "old": "1.3.4",
+    "code": "3.2.1",
+    "theme": 3,
+    "module": 2
+  },
+  "a-1-3-5.html": {
+    "uid": "les-a-0055",
+    "old": "1.3.5",
+    "code": "3.2.2",
+    "theme": 3,
+    "module": 2
+  },
+  "a-1-3-6.html": {
+    "uid": "les-a-0009",
+    "old": "1.3.6",
+    "code": "3.2.3",
+    "theme": 3,
+    "module": 2
+  },
+  "a-1-4-1.html": {
+    "uid": "les-a-0010",
+    "old": "1.4.1",
+    "code": "4.1.1",
+    "theme": 4,
+    "module": 1
+  },
+  "a-1-4-2.html": {
+    "uid": "les-a-0011",
+    "old": "1.4.2",
+    "code": "4.1.2",
+    "theme": 4,
+    "module": 1
+  },
+  "a-1-4-3.html": {
+    "uid": "les-a-0012",
+    "old": "1.4.3",
+    "code": "4.1.3",
+    "theme": 4,
+    "module": 1
+  },
+  "a-1-4-4.html": {
+    "uid": "les-a-0013",
+    "old": "1.4.4",
+    "code": "4.2.1",
+    "theme": 4,
+    "module": 2
+  },
+  "a-1-4-5.html": {
+    "uid": "les-a-0014",
+    "old": "1.4.5",
+    "code": "4.2.2",
+    "theme": 4,
+    "module": 2
+  },
+  "a-1-5-1.html": {
+    "uid": "les-a-0043",
+    "old": "1.5.1",
+    "code": "5.1.1",
+    "theme": 5,
+    "module": 1
+  },
+  "a-1-5-2.html": {
+    "uid": "les-a-0044",
+    "old": "1.5.2",
+    "code": "5.1.2",
+    "theme": 5,
+    "module": 1
+  },
+  "a-1-5-3.html": {
+    "uid": "les-a-0045",
+    "old": "1.5.3",
+    "code": "5.1.3",
+    "theme": 5,
+    "module": 1
+  },
+  "a-1-5-4.html": {
+    "uid": "les-a-0046",
+    "old": "1.5.4",
+    "code": "5.1.4",
+    "theme": 5,
+    "module": 1
+  },
+  "a-1-5-5.html": {
+    "uid": "les-a-0047",
+    "old": "1.5.5",
+    "code": "5.2.1",
+    "theme": 5,
+    "module": 2
+  },
+  "a-1-5-6.html": {
+    "uid": "les-a-0015",
+    "old": "1.5.6",
+    "code": "5.2.2",
+    "theme": 5,
+    "module": 2
+  },
+  "a-1-5-7.html": {
+    "uid": "les-a-0048",
+    "old": "1.5.7",
+    "code": "5.2.3",
+    "theme": 5,
+    "module": 2
+  },
+  "a-1-5-8.html": {
+    "uid": "les-a-0057",
+    "old": "1.5.8",
+    "code": "5.2.4",
+    "theme": 5,
+    "module": 2
+  },
+  "a-4-2-1.html": {
+    "uid": "les-a-0018",
+    "old": "4.2.1",
+    "code": "7.1.1",
+    "theme": 7,
+    "module": 1
+  }
+};
+var canonicalLessonByUid = {};
+Object.keys(canonicalLessonByRoute).forEach(function(route){
+ var item=canonicalLessonByRoute[route];
+ canonicalLessonByUid[item.uid]=item;
+});
+var currentFile=window.location.pathname.split("/").pop().replace(/-(en|zh)\\.html$/,".html");
+var currentCanonicalLesson=canonicalLessonByRoute[currentFile];
+if(currentCanonicalLesson){
+ var eyebrowForNumbering=main&&main.querySelector(".eyebrow");
+ if(eyebrowForNumbering){
+  eyebrowForNumbering.textContent=eyebrowForNumbering.textContent.replace(/THEME\\s+\\d+\\s+·\\s+MODULE\\s+\\d+\\s+·\\s+LESSON\\s+[\\d.]+/i,
+   "THEME "+currentCanonicalLesson.theme+" · MODULE "+currentCanonicalLesson.module+" · LESSON "+currentCanonicalLesson.code);
+ }
+ var titleElement=document.querySelector("title");
+ if(titleElement&&titleElement.textContent.indexOf(currentCanonicalLesson.old)===0){
+  titleElement.textContent=currentCanonicalLesson.code+titleElement.textContent.slice(currentCanonicalLesson.old.length);
+  document.title=titleElement.textContent;
+ }
+ var ogTitle=document.querySelector('meta[property="og:title"]');
+ if(ogTitle){var ogValue=ogTitle.getAttribute("content")||"";if(ogValue.indexOf(currentCanonicalLesson.old)===0)ogTitle.setAttribute("content",currentCanonicalLesson.code+ogValue.slice(currentCanonicalLesson.old.length));}
+ var description=document.querySelector('meta[name="description"]');
+ if(description){var descriptionValue=description.getAttribute("content")||"";description.setAttribute("content",descriptionValue.replace(/^(Урок|Lesson)\\s+[\\d.]+/i,function(prefix){return prefix.replace(/[\\d.]+$/,currentCanonicalLesson.code);}));}
+ var planetLabel=main&&main.querySelector(".planet-label");
+ if(planetLabel&&planetLabel.textContent.indexOf(currentCanonicalLesson.old)>=0){planetLabel.textContent=planetLabel.textContent.replace(currentCanonicalLesson.old,currentCanonicalLesson.code);}
+ var planetSphere=main&&main.querySelector(".lesson-planet-sphere");
+ if(planetSphere&&planetSphere.textContent.trim()===currentCanonicalLesson.old){planetSphere.textContent=currentCanonicalLesson.code;}
+}
+
 function normalizePlanet(root,code,lead){
  var planet=root.querySelector(".lesson-planet-banner,.planet-banner,.planet");
  if(!planet)return;
@@ -76,6 +320,7 @@ if(main){
  var scriptUrl=script&&script.src?script.src:document.baseURI;
  var catalogUrl=new URL("../data/catalog/catalog-v3.json",scriptUrl);
  var rootUrl=new URL("../",scriptUrl);
+ function displayCode(item){var mapped=item&&canonicalLessonByUid[item.uid];return mapped?mapped.code:item.code;}
  function link(className,href,label){
   var a=document.createElement("a");
   a.className="button "+className;
@@ -102,12 +347,12 @@ if(main){
   var previousStep=index>0?steps[index-1]:null;
   var previous=previousStep&&previousStep.kind==="lesson"?byUid[previousStep.lesson_uid]:null;
   if(previous&&previous.status==="published"&&previous.url_i18n&&previous.url_i18n[locale]){
-   fragment.appendChild(link("secondary",new URL(previous.url_i18n[locale],rootUrl).href,text.previous+previous.code));
+   fragment.appendChild(link("secondary",new URL(previous.url_i18n[locale],rootUrl).href,text.previous+displayCode(previous)));
   }
   var nextStep=index<steps.length-1?steps[index+1]:null;
   var next=nextStep&&nextStep.kind==="lesson"?byUid[nextStep.lesson_uid]:null;
   if(next&&next.status==="published"&&next.url_i18n&&next.url_i18n[locale]){
-   fragment.appendChild(link("primary",new URL(next.url_i18n[locale],rootUrl).href,text.next+next.code+" ↗"));
+   fragment.appendChild(link("primary",new URL(next.url_i18n[locale],rootUrl).href,text.next+displayCode(next)+" ↗"));
   }else{
    var pending=document.createElement("span");
    pending.className="button primary is-disabled";

@@ -19,37 +19,49 @@
     .then(response => { if (!response.ok) throw new Error("HTTP " + response.status); return response.json(); })
     .then(data => {
       if (data.schema_version !== 3) throw new Error("Unsupported catalogue schema");
+      const themes = new Map(data.themes.map(item => [item.uid,item]));
       const modules = new Map(data.modules.map(item => [item.uid,item]));
       const lessons = data.lessons.filter(item => item.track_uid === trackUid &&
         ((item.status === "published" && item.content_state === "published") ||
          (item.status === "review" && item.content_state === "localized")) &&
         item.url_i18n?.[locale]);
       if (!lessons.length) { root.innerHTML = '<p class="muted">' + esc(ui.empty) + '</p>'; return; }
-      const groups = new Map();
+      const themeGroups = new Map();
       lessons.sort((a,b) => a.code.localeCompare(b.code,"en",{numeric:true})).forEach(lesson => {
-        const key = lesson.module_uid;
-        if (!groups.has(key)) groups.set(key,[]);
-        groups.get(key).push(lesson);
+        const themeUid = lesson.theme_uid;
+        if (!themeGroups.has(themeUid)) themeGroups.set(themeUid,new Map());
+        const moduleGroups = themeGroups.get(themeUid);
+        if (!moduleGroups.has(lesson.module_uid)) moduleGroups.set(lesson.module_uid,[]);
+        moduleGroups.get(lesson.module_uid).push(lesson);
       });
-      root.innerHTML = Array.from(groups.entries()).map(([moduleUid,items]) => {
-        const module = modules.get(moduleUid);
-        const moduleTitle = module?.title_i18n?.[locale] || module?.title || "";
-        return '<section class="catalog-module" aria-label="' + esc(moduleTitle) + '">' +
-          '<div class="catalog-module-heading"><span>' + esc(ui.module) + ' ' + esc(module?.number ?? "") +
-          '</span><strong>' + esc(moduleTitle) + '</strong></div>' +
-          '<div class="catalog-lesson-list">' + items.map(lesson => {
-            const href = lesson.url_i18n?.[locale];
-            if (!href) return "";
-            const title = lesson.title_i18n?.[locale] || lesson.title;
-            const level = ui[lesson.level] || lesson.level || "";
-            const access = ui[lesson.access] || lesson.access || "";
-            const underReview = lesson.status === "review";
-            return '<a class="module' + (underReview ? ' module-review' : '') + '" href="' + esc(base + href) + '">' +
-              '<strong>' + esc(ui.lesson) + ' ' + esc(lesson.code) + ' · ' + esc(title) +
-              (underReview ? ' <span class="lesson-status lesson-status-review">' + esc(ui.underReview) + '</span>' :
-                ' <span class="lesson-status lesson-status-published">' + esc(ui.published) + '</span>') + '</strong>' +
-              '<span>' + esc(level) + ' · ' + esc(access) + '</span></a>';
-          }).join("") + '</div></section>';
+      root.innerHTML = Array.from(themeGroups.entries()).map(([themeUid,moduleGroups]) => {
+        const theme = themes.get(themeUid);
+        if (!theme) return "";
+        const themeTitle = theme.title_i18n?.[locale] || theme.title || "";
+        const moduleMarkup = Array.from(moduleGroups.entries()).map(([moduleUid,items]) => {
+          const module = modules.get(moduleUid);
+          if (!module || module.theme_uid !== themeUid) return "";
+          const moduleTitle = module.title_i18n?.[locale] || module.title || "";
+          return '<section class="catalog-module" aria-label="' + esc(moduleTitle) + '">' +
+            '<div class="catalog-module-heading"><span>' + esc(ui.module) + ' ' + esc(module.number ?? "") +
+            '</span><strong>' + esc(moduleTitle) + '</strong></div>' +
+            '<div class="catalog-lesson-list">' + items.map(lesson => {
+              const href = lesson.url_i18n?.[locale];
+              if (!href) return "";
+              const title = lesson.title_i18n?.[locale] || lesson.title;
+              const level = ui[lesson.level] || lesson.level || "";
+              const access = ui[lesson.access] || lesson.access || "";
+              const underReview = lesson.status === "review";
+              return '<a class="module' + (underReview ? ' module-review' : '') + '" href="' + esc(base + href) + '">' +
+                '<strong>' + esc(ui.lesson) + ' ' + esc(lesson.code) + ' · ' + esc(title) +
+                (underReview ? ' <span class="lesson-status lesson-status-review">' + esc(ui.underReview) + '</span>' :
+                  ' <span class="lesson-status lesson-status-published">' + esc(ui.published) + '</span>') + '</strong>' +
+                '<span>' + esc(level) + ' · ' + esc(access) + '</span></a>';
+            }).join("") + '</div></section>';
+        }).join("");
+        return '<section class="catalog-theme" aria-label="' + esc(themeTitle) + '">' +
+          '<header class="catalog-theme-heading"><span>' + esc(ui.theme) + ' ' + esc(theme.number ?? "") +
+          '</span><h3>' + esc(themeTitle) + '</h3></header>' + moduleMarkup + '</section>';
       }).join("");
     })
     .catch(() => { root.innerHTML = '<p class="notice">' + (locale==="ru"?"Не удалось загрузить каталог уроков.":locale==="zh"?"无法加载课程目录。":"Unable to load the lesson catalogue.") + '</p>'; });

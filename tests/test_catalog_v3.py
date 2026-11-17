@@ -91,6 +91,21 @@ class CatalogV3Tests(unittest.TestCase):
         self.assertEqual(lesson_113["url_i18n"]["ru"], "lessons/a-1-2-1-les-a-0002.html")
         self.assertEqual(lesson_114["url_i18n"]["ru"], "lessons/a-1-2-2-les-a-0052.html")
 
+    def test_duplicate_codes_are_rejected_for_visible_lessons_only(self):
+        import copy
+        catalog = copy.deepcopy(self.catalog)
+        self.assertEqual(compat.validate_v3_relationships(catalog), [])
+        original = next(
+            item for item in catalog["lessons"]
+            if item.get("status") == "published" and item.get("content_state") == "published"
+        )
+        duplicate = dict(original)
+        duplicate["uid"] = "test-visible-duplicate-code"
+        duplicate["prerequisite_uids"] = []
+        catalog["lessons"].append(duplicate)
+        errors = compat.validate_v3_relationships(catalog)
+        self.assertTrue(any("Duplicate lesson code" in error for error in errors))
+
     def test_python_native_v3_reader_and_relationships(self):
         loaded = compat.load_catalog_v3(ROOT / "data/catalog/catalog-v3.json")
         self.assertEqual(loaded["schema_version"], 3)

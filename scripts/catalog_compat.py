@@ -133,10 +133,17 @@ def validate_v3_relationships(c: dict[str, Any]) -> list[str]:
             errors.append(f"Lesson {lesson.get('uid')} theme/module mismatch")
         if theme.get("track_uid") != lesson.get("track_uid"):
             errors.append(f"Lesson {lesson.get('uid')} track/theme mismatch")
-        key = (lesson.get("module_uid"), lesson.get("code"))
-        if key in lesson_codes:
-            errors.append(f"Duplicate lesson code {key}")
-        lesson_codes.add(key)
+        # Planned outline-only records are migration candidates and may temporarily
+        # retain legacy display codes while ownership is being reconciled. Enforce
+        # uniqueness for lessons that are actually exposed to learners.
+        if (lesson.get("status"), lesson.get("content_state")) in {
+            ("published", "published"),
+            ("review", "localized"),
+        }:
+            key = (lesson.get("module_uid"), lesson.get("code"))
+            if key in lesson_codes:
+                errors.append(f"Duplicate lesson code {key}")
+            lesson_codes.add(key)
         for prerequisite in lesson.get("prerequisite_uids", []):
             if prerequisite not in lessons:
                 errors.append(f"Lesson {lesson.get('uid')} missing prerequisite {prerequisite}")

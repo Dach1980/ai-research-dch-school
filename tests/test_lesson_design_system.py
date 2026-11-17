@@ -171,7 +171,7 @@ class LessonDesignSystemTests(unittest.TestCase):
                 self.assertEqual(page.count('class="lesson-check-button"'), 4)
                 self.assertEqual(page.count('class="glossary-entry"'), 8)
                 self.assertIn("class=\"lesson-practice\"", page)
-                self.assertIn("class=\"lesson-figure\"", page)
+                self.assertRegex(page, r'class="lesson-figure(?:\\s|\")')
                 self.assertIn('data-correct="', page)
                 self.assertIn('data-explanation="', page)
                 self.assertIn("canonical", page)

@@ -7,9 +7,9 @@ from urllib.parse import urlsplit
 
 ROOT = Path(__file__).resolve().parents[1]
 PAGES = {
-    "ru": ROOT / "lessons/a-1-5-5.html",
-    "en": ROOT / "lessons/a-1-5-5-en.html",
-    "zh": ROOT / "lessons/a-1-5-5-zh.html",
+    "ru": ROOT / "lessons/a-5-2-1-les-a-0047.html",
+    "en": ROOT / "lessons/a-5-2-1-les-a-0047-en.html",
+    "zh": ROOT / "lessons/a-5-2-1-les-a-0047-zh.html",
 }
 
 class StructureParser(HTMLParser):
@@ -40,15 +40,15 @@ class Lesson155ContractTests(unittest.TestCase):
         catalog = json.loads((ROOT / "data/catalog/catalog-v3.json").read_text(encoding="utf-8"))
         lesson = next(x for x in catalog["lessons"] if x["uid"] == "les-a-0047")
         self.assertEqual((lesson["code"], lesson["track_uid"], lesson["theme_uid"], lesson["module_uid"]),
-                         ("1.5.5", "trk-a", "thm-a-01", "mod-a-01-05"))
+                         ("5.2.1", "trk-a", "thm-a-01", "mod-a-01-05"))
         self.assertEqual(lesson["status"], "published")
         self.assertEqual(lesson["content_state"], "published")
         self.assertEqual(lesson["prerequisite_uids"], ["les-a-0046"])
         self.assertEqual(set(lesson["url_i18n"]), {"ru", "en", "zh"})
         self.assertEqual(set(lesson["title_i18n"]), {"ru", "en", "zh"})
-        self.assertEqual(lesson["url_i18n"]["ru"], "lessons/a-1-5-5.html")
-        self.assertEqual(lesson["url_i18n"]["en"], "lessons/a-1-5-5-en.html")
-        self.assertEqual(lesson["url_i18n"]["zh"], "lessons/a-1-5-5-zh.html")
+        self.assertEqual(lesson["url_i18n"]["ru"], "lessons/a-5-2-1-les-a-0047.html")
+        self.assertEqual(lesson["url_i18n"]["en"], "lessons/a-5-2-1-les-a-0047-en.html")
+        self.assertEqual(lesson["url_i18n"]["zh"], "lessons/a-5-2-1-les-a-0047-zh.html")
 
     def test_locales_have_equal_structure_quiz_and_visual_components(self):
         expected_sections = ["section-1","section-2","section-3","section-4","section-5","section-6","section-7","practice"]
@@ -89,7 +89,7 @@ class Lesson155ContractTests(unittest.TestCase):
                 parser.feed(source)
                 self.assertEqual(parser.errors, [])
                 self.assertEqual(parser.stack, [])
-                canonical = f'https://dchai.ru/lessons/a-1-5-5{"-" + locale if locale != "ru" else ""}.html'
+                canonical = f'https://dchai.ru/lessons/a-5-2-1-les-a-0047{"-" + locale if locale != "ru" else ""}.html'
                 self.assertIn(f'<link rel="canonical" href="{canonical}">', source)
 
     def test_examples_formulas_and_concepts_are_present(self):

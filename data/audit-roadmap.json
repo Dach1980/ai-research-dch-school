@@ -627,7 +627,7 @@
         "GitHub Pages build/deployment и deploy workflow завершились успешно (runs 43342318218 и 43342318344).",
         "Ручная desktop/mobile, light/dark, keyboard и screen-reader QA отдельно ожидает проверки."
       ],
-      "source": "lessons/a-1-4-3.html; lessons/a-1-4-3-en.html; lessons/a-1-4-3-zh.html; styles/lesson-143.css; data/catalog/catalog-v3.json; tests/test_lesson_143_multilingual.py; tests/test_knowledge_map.py; tests/test_locale_grid_theme_parity.py"
+      "source": "lessons/a-4-1-3-les-a-0012.html; lessons/a-4-1-3-les-a-0012-en.html; lessons/a-4-1-3-les-a-0012-zh.html; styles/lesson-143.css; data/catalog/catalog-v3.json; tests/test_lesson_143_multilingual.py; tests/test_knowledge_map.py; tests/test_locale_grid_theme_parity.py"
     },
     {
       "id": "RM-31",
@@ -712,7 +712,7 @@
         "SVG используют только цветовые токены дизайн-системы и сохраняют контраст в light/dark через тему --lds-*.",
         "RU / EN / 中文 используют идентичную структуру SVG-классов; тест автоматически сравнивает сигнатуры."
       ],
-      "source": "lessons/a-1-2-4.html; lessons/a-1-2-4-en.html; lessons/a-1-2-4-zh.html; styles/lesson-124.css; tests/test_lesson_124_multilingual.py"
+      "source": "lessons/a-2-2-1-les-a-0050.html; lessons/a-2-2-1-les-a-0050-en.html; lessons/a-2-2-1-les-a-0050-zh.html; styles/lesson-124.css; tests/test_lesson_124_multilingual.py"
     },
     {
       "id": "RM-35",
@@ -749,7 +749,7 @@
         "Навигация формируется scripts/lesson-layout.js только по опубликованным урокам.",
         "Зафиксированы результаты автоматических тестов, CI и Pages; ручная визуальная проверка отмечена отдельно."
       ],
-      "source": "lessons/a-1-5-1.html; lessons/a-1-5-1-en.html; lessons/a-1-5-1-zh.html",
+      "source": "lessons/a-5-1-1-les-a-0043.html; lessons/a-5-1-1-les-a-0043-en.html; lessons/a-5-1-1-les-a-0043-zh.html",
       "verification": {
         "verified_commit": "274db998047d6261167459e65e6421db41f89868",
         "lesson_151_contract": "success",
@@ -781,7 +781,7 @@
         "Навигация создаётся scripts/lesson-layout.js по статусам catalog-v3.json и не содержит жёсткой ссылки на следующий урок.",
         "Автоматические тесты, catalog CI и Pages deployment успешны; ручная визуальная QA отмечена отдельно."
       ],
-      "source": "lessons/a-1-5-2.html; lessons/a-1-5-2-en.html; lessons/a-1-5-2-zh.html; styles/lesson-152.css; tests/test_lesson_152_contract.py",
+      "source": "lessons/a-5-1-2-les-a-0044.html; lessons/a-5-1-2-les-a-0044-en.html; lessons/a-5-1-2-les-a-0044-zh.html; styles/lesson-152.css; tests/test_lesson_152_contract.py",
       "verification": {
         "verified_commit": "a52fcf7eff442c23af971a9b38db24f515ed8373",
         "lesson_152_contract": "success",
@@ -811,7 +811,7 @@
         "Нижняя навигация остаётся catalog-driven и не содержит жёсткой ссылки на planned 1.5.4.",
         "Автоматические тесты, CI и Pages deployment успешны; ручная визуальная QA отмечена отдельно."
       ],
-      "source": "lessons/a-1-5-3.html; lessons/a-1-5-3-en.html; lessons/a-1-5-3-zh.html; styles/lesson-153.css; tests/test_lesson_153_contract.py",
+      "source": "lessons/a-5-1-3-les-a-0045.html; lessons/a-5-1-3-les-a-0045-en.html; lessons/a-5-1-3-les-a-0045-zh.html; styles/lesson-153.css; tests/test_lesson_153_contract.py",
       "verification": {
         "verified_commit": "57ea0fd11d32ded9c582bc2b30f057a55feb1417",
         "lesson_153_contract": "success; Validate learning catalog run 43513220423",
@@ -844,7 +844,7 @@
         "Контрактный тест, browser overflow на 360/390/768/1024/1440 px в light/dark, locale parity, knowledge map, navigation, design system, multilingual validation, CI и Pages deployment должны завершиться успешно.",
         "Ручная визуальная QA RU/EN/中文 в light/dark на desktop/mobile фиксируется отдельно."
       ],
-      "source": "lessons/a-1-5-4.html; lessons/a-1-5-4-en.html; lessons/a-1-5-4-zh.html; styles/lesson-154.css; tests/test_lesson_154_contract.py; data/catalog/catalog-v3.json",
+      "source": "lessons/a-5-1-4-les-a-0046.html; lessons/a-5-1-4-les-a-0046-en.html; lessons/a-5-1-4-les-a-0046-zh.html; styles/lesson-154.css; tests/test_lesson_154_contract.py; data/catalog/catalog-v3.json",
       "verification": {
         "verified_commit": "ea2eefdebefac0e630b9fc8fa896241156cb61a4",
         "lesson_154_contract": "success; Validate learning catalog run 43516508788",
@@ -877,7 +877,7 @@
         "Контрактный тест, catalog CI, браузерный overflow, multilingual validation и Pages deployment должны завершиться успешно.",
         "Ручная визуальная проверка RU/EN/中文 в светлой и тёмной темах на desktop/mobile фиксируется отдельно."
       ],
-      "source": "lessons/a-1-5-5.html; lessons/a-1-5-5-en.html; lessons/a-1-5-5-zh.html; styles/lesson-155.css; tests/test_lesson_155_contract.py; data/catalog/catalog-v3.json",
+      "source": "lessons/a-5-2-1-les-a-0047.html; lessons/a-5-2-1-les-a-0047-en.html; lessons/a-5-2-1-les-a-0047-zh.html; styles/lesson-155.css; tests/test_lesson_155_contract.py; data/catalog/catalog-v3.json",
       "verification": {
         "source_commit": "8b21a9717bf4b38f320d94cd06fd95e129ffcc5e",
         "lesson_155_contract": "success; run 43522512731",
@@ -966,9 +966,9 @@
         }
       },
       "evidence": [
-        "lessons/a-1-5-6.html",
-        "lessons/a-1-5-6-en.html",
-        "lessons/a-1-5-6-zh.html",
+        "lessons/a-5-2-2-les-a-0015.html",
+        "lessons/a-5-2-2-les-a-0015-en.html",
+        "lessons/a-5-2-2-les-a-0015-zh.html",
         "styles/lesson-156.css",
         "tests/test_lesson_156_contract.py",
         "data/catalog/catalog-v3.json",
@@ -985,9 +985,9 @@
       "title": "Пользователь подтвердил приёмку трёх локализаций урока 1.2.3",
       "result": "Пользователь сообщил, что самостоятельно проверил три языковые версии, оформление и тесты урока 1.2.3 и подтвердил отсутствие замечаний. Каталог обновлён: UID les-a-0056, статус published, content_state published. Существующие RU/EN/中文 страницы и prerequisite урока 1.2.4 сохранены.",
       "evidence": [
-        "lessons/a-1-2-3.html",
-        "lessons/a-1-2-3-en.html",
-        "lessons/a-1-2-3-zh.html",
+        "lessons/a-2-1-3-les-a-0056.html",
+        "lessons/a-2-1-3-les-a-0056-en.html",
+        "lessons/a-2-1-3-les-a-0056-zh.html",
         "data/catalog/catalog-v3.json"
       ],
       "limitations": [
@@ -1012,9 +1012,9 @@
         "Ручная визуальная приёмка desktop/mobile и light/dark фиксируется отдельно."
       ],
       "evidence": [
-        "lessons/a-1-5-8.html",
-        "lessons/a-1-5-8-en.html",
-        "lessons/a-1-5-8-zh.html",
+        "lessons/a-5-2-4-les-a-0057.html",
+        "lessons/a-5-2-4-les-a-0057-en.html",
+        "lessons/a-5-2-4-les-a-0057-zh.html",
         "styles/lesson-158.css",
         "tests/test_lesson_158_contract.py",
         "data/catalog/catalog-v3.json",
@@ -1141,7 +1141,7 @@
       "title": "Перенести урок XAI 4.2.1 в единую оболочку уроков Track A",
       "status": "in_progress",
       "priority": "high",
-      "decision": "Созданы канонические RU / EN / 中文 страницы lessons/a-4-2-1.html, lessons/a-4-2-1-en.html и lessons/a-4-2-1-zh.html на общей оболочке уроков. Перенесено отображение всех восьми исходных разделов напрямую из сохранённого мультиязычного источника lessons/data/xai-01-what-and-why.js; сохранены исходные section IDs, SVG, мини-лаборатория, источники, словарь и восемь вопросов самопроверки. Добавлен новый renderer и локализованная проверка ответов. UID les-a-0018, code 4.2.1 и status published сохранены; catalog-v3 указывает новые URL. Старый lessons/xai/01-what-and-why.html стал language-aware redirect. Legacy A.1.2.1 в migration manifest не изменялся, migration_status остаётся staging_not_applied; пользовательский прогресс не переносился. Остаются автоматическая CI/Pages проверка и ручная визуальная приёмка трёх локализаций desktop/mobile light/dark. Отдельно добавлены XAI-specific и navigation contract tests в workflow pages.yml; их результат ожидает автоматического прогона GitHub Actions. 2026-11-16: владелец школы принял урок 4.2.1 по содержанию и оформлению. Редакционная приёмка зафиксирована; техническое закрытие RM остаётся in_progress до успешного CI и подтверждения production-проверки RU/EN/中文. ",
+      "decision": "Созданы канонические RU / EN / 中文 страницы lessons/a-7-1-1-les-a-0018.html, lessons/a-7-1-1-les-a-0018-en.html и lessons/a-7-1-1-les-a-0018-zh.html на общей оболочке уроков. Перенесено отображение всех восьми исходных разделов напрямую из сохранённого мультиязычного источника lessons/data/xai-01-what-and-why.js; сохранены исходные section IDs, SVG, мини-лаборатория, источники, словарь и восемь вопросов самопроверки. Добавлен новый renderer и локализованная проверка ответов. UID les-a-0018, code 4.2.1 и status published сохранены; catalog-v3 указывает новые URL. Старый lessons/xai/01-what-and-why.html стал language-aware redirect. Legacy A.1.2.1 в migration manifest не изменялся, migration_status остаётся staging_not_applied; пользовательский прогресс не переносился. Остаются автоматическая CI/Pages проверка и ручная визуальная приёмка трёх локализаций desktop/mobile light/dark. Отдельно добавлены XAI-specific и navigation contract tests в workflow pages.yml; их результат ожидает автоматического прогона GitHub Actions. 2026-11-16: владелец школы принял урок 4.2.1 по содержанию и оформлению. Редакционная приёмка зафиксирована; техническое закрытие RM остаётся in_progress до успешного CI и подтверждения production-проверки RU/EN/中文. ",
       "acceptance": [
         "RU / EN / 中文 страницы используют общий header, hero, planet banner, article body, footer и lesson navigation.",
         "Все восемь исходных разделов и переводы доступны на каждой локализации.",
@@ -1152,7 +1152,7 @@
         "CI, Pages и ручная визуальная приёмка завершены.",
         "Редакционная приёмка владельцем школы подтверждена 2026-11-16."
       ],
-      "source": "lessons/a-4-2-1.html; lessons/a-4-2-1-en.html; lessons/a-4-2-1-zh.html; scripts/xai-canonical-lesson.js; styles/xai-canonical-lesson.css; lessons/data/xai-01-what-and-why.js; lessons/xai/01-what-and-why.html; data/catalog/catalog-v3.json; tests/test_xai_canonical_lesson.py"
+      "source": "lessons/a-7-1-1-les-a-0018.html; lessons/a-7-1-1-les-a-0018-en.html; lessons/a-7-1-1-les-a-0018-zh.html; scripts/xai-canonical-lesson.js; styles/xai-canonical-lesson.css; lessons/data/xai-01-what-and-why.js; lessons/xai/01-what-and-why.html; data/catalog/catalog-v3.json; tests/test_xai_canonical_lesson.py"
     },
     {
       "id": "AUD-103",
@@ -1161,9 +1161,9 @@
       "title": "Перенесён XAI 4.2.1 в единый дизайн с сохранением мультиязычного содержания",
       "result": "Созданы отдельные канонические страницы RU / EN / 中文 для 4.2.1. Общий renderer показывает восемь разделов из исходного мультиязычного контента, сохраняя иллюстрации SVG, мини-лабораторию, источники, термины и самопроверку из восьми вопросов. UID les-a-0018 и публичный код 4.2.1 сохранены. catalog-v3 обновлён на новые URL. Старый reader URL оставлен как language-aware redirect. Legacy A.1.2.1 и migration manifest не изменялись; прогресс не переносился.",
       "evidence": [
-        "lessons/a-4-2-1.html",
-        "lessons/a-4-2-1-en.html",
-        "lessons/a-4-2-1-zh.html",
+        "lessons/a-7-1-1-les-a-0018.html",
+        "lessons/a-7-1-1-les-a-0018-en.html",
+        "lessons/a-7-1-1-les-a-0018-zh.html",
         "scripts/xai-canonical-lesson.js",
         "styles/xai-canonical-lesson.css",
         "lessons/data/xai-01-what-and-why.js",
@@ -1921,21 +1921,21 @@
       "title": "Созданы пять локализованных уроков раздела 1.2 о данных и признаках",
       "result": "Созданы 15 канонических HTML-страниц RU/EN/中文 для уроков 1.2.1, 1.2.2, 1.2.4, 1.2.5 и 1.2.6. Каждый урок содержит учебные результаты, шесть тематических разделов, оригинальную локализованную схему, практикум, три источника, пять карточек словаря, три интерактивных вопроса и стандартные нижние блоки с навигацией и footer. В catalog-v3 добавлены локализованные заголовки и URL, outcomes и prerequisites; статусы установлены review, content_state=localized. Добавлены отдельные CI-тесты структуры страниц, locale parity и оценочных вопросов. Production UI использует v3 reader и фильтрует уроки по published; новые записи review не попадают в публичные списки/карту. Старые страницы A.3–A.6 сохранены. GitHub Actions Validate learning catalog завершился успешно на commit ce58b919a94e177cc6e846194f520515f49fd5d8; Pages build/deployment и Deploy static website to GitHub Pages также завершились успешно на этом commit.",
       "evidence": [
-        "lessons/a-1-2-1.html",
-        "lessons/a-1-2-1-en.html",
-        "lessons/a-1-2-1-zh.html",
-        "lessons/a-1-2-2.html",
-        "lessons/a-1-2-2-en.html",
-        "lessons/a-1-2-2-zh.html",
-        "lessons/a-1-2-4.html",
-        "lessons/a-1-2-4-en.html",
-        "lessons/a-1-2-4-zh.html",
-        "lessons/a-1-2-5.html",
-        "lessons/a-1-2-5-en.html",
-        "lessons/a-1-2-5-zh.html",
-        "lessons/a-1-2-6.html",
-        "lessons/a-1-2-6-en.html",
-        "lessons/a-1-2-6-zh.html",
+        "lessons/a-2-1-1-les-a-0003.html",
+        "lessons/a-2-1-1-les-a-0003-en.html",
+        "lessons/a-2-1-1-les-a-0003-zh.html",
+        "lessons/a-2-1-2-les-a-0004.html",
+        "lessons/a-2-1-2-les-a-0004-en.html",
+        "lessons/a-2-1-2-les-a-0004-zh.html",
+        "lessons/a-2-2-1-les-a-0050.html",
+        "lessons/a-2-2-1-les-a-0050-en.html",
+        "lessons/a-2-2-1-les-a-0050-zh.html",
+        "lessons/a-2-2-2-les-a-0005.html",
+        "lessons/a-2-2-2-les-a-0005-en.html",
+        "lessons/a-2-2-2-les-a-0005-zh.html",
+        "lessons/a-2-2-3-les-a-0006.html",
+        "lessons/a-2-2-3-les-a-0006-en.html",
+        "lessons/a-2-2-3-les-a-0006-zh.html",
         "data/catalog/catalog-v3.json",
         "tests/test_track_a_data_lessons.py",
         ".github/workflows/validate-catalog.yml",
@@ -1989,19 +1989,19 @@
         "lessons/a-1-1-1.html",
         "lessons/a-1-1-1-en.html",
         "lessons/a-1-1-1-zh.html",
-        "lessons/a-1-2-1.html",
-        "lessons/a-1-2-2.html",
-        "lessons/a-1-2-4.html",
-        "lessons/a-1-2-5.html",
-        "lessons/a-1-2-6.html",
+        "lessons/a-2-1-1-les-a-0003.html",
+        "lessons/a-2-1-2-les-a-0004.html",
+        "lessons/a-2-2-1-les-a-0050.html",
+        "lessons/a-2-2-2-les-a-0005.html",
+        "lessons/a-2-2-3-les-a-0006.html",
         "tests/test_lesson_design_system.py",
         "tests/test_locale_grid_theme_parity.py",
         "templates/lesson-page-template.html",
         "docs/education/LESSON_AUTHORING_TEMPLATE.md",
         "styles/lesson-content-components.css",
         "lessons/a-1-1-2.html",
-        "lessons/a-1-1-3.html",
-        "lessons/a-1-1-4.html",
+        "lessons/a-1-2-1-les-a-0002.html",
+        "lessons/a-1-2-2-les-a-0052.html",
         "tests/test_lessons_112_113.py"
       ],
       "limitations": [
@@ -2027,13 +2027,13 @@
         "styles/lesson-content-components.css",
         "lessons/a-1-1-1.html",
         "lessons/a-1-1-2.html",
-        "lessons/a-1-1-3.html",
-        "lessons/a-1-1-4.html",
-        "lessons/a-1-2-1.html",
-        "lessons/a-1-2-2.html",
-        "lessons/a-1-2-4.html",
-        "lessons/a-1-2-5.html",
-        "lessons/a-1-2-6.html",
+        "lessons/a-1-2-1-les-a-0002.html",
+        "lessons/a-1-2-2-les-a-0052.html",
+        "lessons/a-2-1-1-les-a-0003.html",
+        "lessons/a-2-1-2-les-a-0004.html",
+        "lessons/a-2-2-1-les-a-0050.html",
+        "lessons/a-2-2-2-les-a-0005.html",
+        "lessons/a-2-2-3-les-a-0006.html",
         "tests/test_lesson_design_system.py",
         "tests/test_lessons_112_113.py",
         "tests/test_locale_grid_theme_parity.py"
@@ -2053,9 +2053,9 @@
       "title": "Создан урок 1.3.1 — Supervised Learning в трёх локализациях",
       "result": "Подготовлены RU / EN / 中文 страницы 1.3.1 по единой оболочке 1.1.1. Содержание включает supervised learning, пары (X, y), разметку, регрессию и классификацию, цикл обучения и loss, train/validation/test, baseline, пример энергопотребления здания, практическое задание, 8 терминов и 4 вопроса самопроверки. Каталог v3 обновлён: status=review, content_state=localized, URL и learning outcomes заполнены. Добавлен тест трёх локализаций и структуры.",
       "evidence": [
-        "lessons/a-1-3-1.html",
-        "lessons/a-1-3-1-en.html",
-        "lessons/a-1-3-1-zh.html",
+        "lessons/a-3-1-1-les-a-0007.html",
+        "lessons/a-3-1-1-les-a-0007-en.html",
+        "lessons/a-3-1-1-les-a-0007-zh.html",
         "data/catalog/catalog-v3.json",
         "tests/test_lesson_design_system.py",
         "docs/education/LEGACY_A3_A6_CONTENT_MIGRATION.md"
@@ -2113,9 +2113,9 @@
       "title": "Проведён редакционный аудит урока 1.2.1 в RU / EN / 中文",
       "result": "Проверены три локализации урока 1.2.1: структура, шесть разделов, четыре outcomes, словарь, самопроверка, навигация и источники. Сильные стороны: корректное введение единицы наблюдения, форм данных, происхождения и репрезентативности; прикладной пример с энергопотреблением здания. Выявлены P1 замечания: подпись ссылки Google не соответствует точной странице (ссылка ведёт на раздел о разделении датасета); необходимо точнее разграничить sampling bias и distribution shift; краткий паспорт данных не включает назначение, предобработку, лицензию и приватность. P2: практикуму нужны шаблон и критерии, самопроверке — вопросы на классификацию форм данных и единицы/временной контекст, словарю — полуструктурированные/неструктурированные данные и репрезентативность; обнаружено небольшое расхождение RU и EN/中文 в разделе 1. Урок рекомендован оставить в review до исправления P1. Текст урока в рамках аудита не менялся.",
       "evidence": [
-        "lessons/a-1-2-1.html",
-        "lessons/a-1-2-1-en.html",
-        "lessons/a-1-2-1-zh.html",
+        "lessons/a-2-1-1-les-a-0003.html",
+        "lessons/a-2-1-1-les-a-0003-en.html",
+        "lessons/a-2-1-1-les-a-0003-zh.html",
         "docs/education/LESSON_1_2_1_EDITORIAL_REVIEW.md"
       ],
       "limitations": [
@@ -2134,9 +2134,9 @@
         "scripts/main.js",
         "styles/main.css",
         "templates/lesson-page-template.html",
-        "lessons/a-1-2-1.html",
-        "lessons/a-1-2-1-en.html",
-        "lessons/a-1-2-1-zh.html"
+        "lessons/a-2-1-1-les-a-0003.html",
+        "lessons/a-2-1-1-les-a-0003-en.html",
+        "lessons/a-2-1-1-les-a-0003-zh.html"
       ],
       "limitations": [
         "Визуальная проверка публичного сайта в браузере после деплоя не завершена; фактический вид на разных viewport не подтверждён. Страницы, не загружающие scripts/main.js, могут требовать отдельной проверки."
@@ -2149,9 +2149,9 @@
       "title": "Расширен и синхронизирован урок 1.2.1 в RU / EN / 中文",
       "result": "Урок переписан и расширен до 8 последовательных разделов: природа данных; объект и единица наблюдения; три формы данных; источники, измерения и время; качество и ограничения; репрезентативность, sampling bias и distribution shift; паспорт набора данных; практикум. Добавлены 6 learning outcomes, сравнительные таблицы, практический datasheet из 10 групп полей, 14 терминов RU / 13 EN и 中文, 7 ситуационных вопросов с одним multi-select. Источники Google переименованы по фактическим названиям страниц; добавлены ссылки на характеристики данных и документацию датасетов. Обновлены catalog-v3 learning outcomes и тесты структуры/локализаций. Статус оставлен review до CI.",
       "evidence": [
-        "lessons/a-1-2-1.html",
-        "lessons/a-1-2-1-en.html",
-        "lessons/a-1-2-1-zh.html",
+        "lessons/a-2-1-1-les-a-0003.html",
+        "lessons/a-2-1-1-les-a-0003-en.html",
+        "lessons/a-2-1-1-les-a-0003-zh.html",
         "data/catalog/catalog-v3.json",
         "tests/test_lesson_design_system.py",
         "tests/test_track_a_data_lessons.py",
@@ -2168,9 +2168,9 @@
       "title": "Урок 1.2.1 утверждён и переведён в published",
       "result": "После расширения RU / EN / 中文, синхронизации 8 разделов, обновления 6 learning outcomes, словаря, 7 вопросов самопроверки и паспорта данных, GitHub Actions workflow Validate learning catalog успешно завершился на commit d5bdc40e90d9a03c8a5c99584181b11dd4823fa8. Проверки Track A data lessons, expanded lesson design, locale parity, catalog validation и multilingual pages прошли. В catalog-v3.json для урока 1.2.1 выставлены status=published и content_state=published. Урок утверждён к публикации; итоговый визуальный smoke test после Pages deployment остаётся отдельной проверкой.",
       "evidence": [
-        "lessons/a-1-2-1.html",
-        "lessons/a-1-2-1-en.html",
-        "lessons/a-1-2-1-zh.html",
+        "lessons/a-2-1-1-les-a-0003.html",
+        "lessons/a-2-1-1-les-a-0003-en.html",
+        "lessons/a-2-1-1-les-a-0003-zh.html",
         "data/catalog/catalog-v3.json",
         "tests/test_lesson_design_system.py",
         "tests/test_track_a_data_lessons.py",
@@ -2190,9 +2190,9 @@
       "evidence": [
         "admin/index.html",
         "docs/education/LESSON_DESIGN_SYSTEM.md",
-        "lessons/a-1-2-1.html",
-        "lessons/a-1-2-1-en.html",
-        "lessons/a-1-2-1-zh.html",
+        "lessons/a-2-1-1-les-a-0003.html",
+        "lessons/a-2-1-1-les-a-0003-en.html",
+        "lessons/a-2-1-1-les-a-0003-zh.html",
         "tests/test_track_a_data_lessons.py"
       ],
       "limitations": [
@@ -2209,9 +2209,9 @@
       "evidence": [
         "admin/index.html",
         "docs/education/LESSON_DESIGN_SYSTEM.md",
-        "lessons/a-1-2-1.html",
-        "lessons/a-1-2-1-en.html",
-        "lessons/a-1-2-1-zh.html",
+        "lessons/a-2-1-1-les-a-0003.html",
+        "lessons/a-2-1-1-les-a-0003-en.html",
+        "lessons/a-2-1-1-les-a-0003-zh.html",
         "tests/test_track_a_data_lessons.py"
       ],
       "limitations": [
@@ -2482,9 +2482,9 @@
       "result": "Владелец проекта закрепил выбранный перечень уроков как базу Track A; перечень записан в TRACK_A_CONTENT_BASELINE_2026-11-11.md. Созданы RU/EN/中文 страницы урока 1.3.2 «Обучение без учителя» с объяснением supervised/unsupervised различий, кластеризации (K-means, hierarchical, DBSCAN), оценки кластеров без эталонных меток, PCA и снижения размерности, anomaly detection, практическим кейсом зданий, runnable Python/scikit-learn примером, тремя SVG-иллюстрациями на локаль, пятью источниками, десятью терминами и шестью вопросами самопроверки (включая multi-select). Каталог les-a-0008 обновлён до status=review и content_state=localized; URL и prerequisites внесены.",
       "evidence": [
         "docs/education/TRACK_A_CONTENT_BASELINE_2026-11-11.md",
-        "lessons/a-1-3-2.html",
-        "lessons/a-1-3-2-en.html",
-        "lessons/a-1-3-2-zh.html",
+        "lessons/a-3-1-2-les-a-0008.html",
+        "lessons/a-3-1-2-les-a-0008-en.html",
+        "lessons/a-3-1-2-les-a-0008-zh.html",
         "data/catalog/catalog-v3.json",
         "tests/test_lesson_132_multilingual.py",
         "docs/education/LESSON_1_3_2_EDITORIAL_REVIEW.md"
@@ -2677,9 +2677,9 @@
       "evidence": [
         "Подтверждение пользователя в чате от 2026-11-16",
         "data/catalog/catalog-v3.json → les-a-0018",
-        "lessons/a-4-2-1.html",
-        "lessons/a-4-2-1-en.html",
-        "lessons/a-4-2-1-zh.html"
+        "lessons/a-7-1-1-les-a-0018.html",
+        "lessons/a-7-1-1-les-a-0018-en.html",
+        "lessons/a-7-1-1-les-a-0018-zh.html"
       ],
       "limitations": [
         "Validate learning catalog CI ещё выполняется после исправления устаревших контрактных тестов; последняя завершённая попытка до текущего коммита была failure.",
@@ -2738,9 +2738,9 @@
       "title": "Доработаны иллюстрация кластеризации, темы и локализации урока 1.3.2",
       "result": "Во всех трёх версиях RU / EN / 中文 вторая иллюстрация заменена на схему с тремя различными структурами кластеров: компактной, вытянутой и неправильной формы с неоднородной плотностью; добавлены отдельные точки шума. SVG получил отдельные правила для светлой темы, а на узких экранах диаграмма сохраняет читаемую ширину с горизонтальной прокруткой. Исправлено повторение подписи среды выполнения в практическом примере. Добавлены регрессионные тесты на геометрию, подписи, шум, контраст светлой темы, мобильный breakpoint и равнозначность структуры локализаций. Регрессионный тест урока 1.3.2 включён в CI и прошёл в GitHub Actions run 43129629551; общий Pages build/deployment run 43129628987 завершился success.",
       "evidence": [
-        "lessons/a-1-3-2.html",
-        "lessons/a-1-3-2-en.html",
-        "lessons/a-1-3-2-zh.html",
+        "lessons/a-3-1-2-les-a-0008.html",
+        "lessons/a-3-1-2-les-a-0008-en.html",
+        "lessons/a-3-1-2-les-a-0008-zh.html",
         "styles/lesson-reference-111.css",
         "tests/test_lesson_132_multilingual.py",
         "docs/education/LESSON_1_3_2_EDITORIAL_REVIEW.md"
@@ -2763,9 +2763,9 @@
         "docs/education/TRACK_A_CONTENT_BASELINE_2026-11-11.md",
         "data/catalog/catalog-v3.json",
         "scripts/planet-map-catalog.js",
-        "lessons/a-1-3-3.html",
-        "lessons/a-1-3-3-en.html",
-        "lessons/a-1-3-3-zh.html",
+        "lessons/a-3-1-3-les-a-0053.html",
+        "lessons/a-3-1-3-les-a-0053-en.html",
+        "lessons/a-3-1-3-les-a-0053-zh.html",
         "tests/test_lesson_133_multilingual.py",
         ".github/workflows/validate-catalog.yml"
       ],
@@ -2783,9 +2783,9 @@
       "title": "Исправлены локализованный заголовок и мобильная читаемость диаграмм урока 1.3.3",
       "result": "При дополнительном просмотре исходников обнаружен незаполненный шаблонный заголовок блока learning outcomes; он исправлен на RU «Результаты обучения», EN «Learning outcomes», 中文「学习目标」. Для трёх SVG добавлен отдельный responsive stylesheet: на экранах до 560 px диаграммы сохраняют минимальную ширину 640 px и прокручиваются горизонтально вместо сжатия текста. Добавлены проверки отсутствия undefined, наличия SVG title/desc, применения mobile CSS и локализованной структуры. Итоговый Validate learning catalog run 43135828910 — success; Pages build run 43135829148 — success; Deploy static website to GitHub Pages run 43135830784 — success.",
       "evidence": [
-        "lessons/a-1-3-3.html",
-        "lessons/a-1-3-3-en.html",
-        "lessons/a-1-3-3-zh.html",
+        "lessons/a-3-1-3-les-a-0053.html",
+        "lessons/a-3-1-3-les-a-0053-en.html",
+        "lessons/a-3-1-3-les-a-0053-zh.html",
         "styles/lesson-133.css",
         "tests/test_lesson_133_multilingual.py",
         ".github/workflows/validate-catalog.yml"
@@ -2802,12 +2802,12 @@
       "result": "Проверено наличие 12 существовавших канонических уроков во всех трёх локализациях (36 HTML-страниц). В catalog-v3 шесть записей со статусом review переведены в status=published и content_state=published. Урок 1.3.2 освобождён от meta robots noindex,nofollow во всех локализациях. Записи без готовых страниц, включая 1.3.5 и 1.3.6, оставлены planned. Это решение о публикационном статусе по прямому распоряжению владельца, а не утверждение о завершённой ручной редакторской и браузерной QA.",
       "evidence": [
         "data/catalog/catalog-v3.json",
-        "lessons/a-1-2-2.html",
-        "lessons/a-1-2-4.html",
-        "lessons/a-1-2-5.html",
-        "lessons/a-1-2-6.html",
-        "lessons/a-1-3-1.html",
-        "lessons/a-1-3-2.html",
+        "lessons/a-2-1-2-les-a-0004.html",
+        "lessons/a-2-2-1-les-a-0050.html",
+        "lessons/a-2-2-2-les-a-0005.html",
+        "lessons/a-2-2-3-les-a-0006.html",
+        "lessons/a-3-1-1-les-a-0007.html",
+        "lessons/a-3-1-2-les-a-0008.html",
         "docs/education/TRACK_A_RECONCILIATION_2026-11-12.md"
       ],
       "limitations": [
@@ -2822,9 +2822,9 @@
       "title": "Создан и опубликован урок 1.3.4; подготовлен компактный промпт для новых уроков",
       "result": "Созданы RU / EN / 中文 страницы 1.3.4 «Классификация и регрессия» с разбором постановки задач, целевой переменной, регрессии, бинарной/многоклассовой/многометочной классификации, вероятностных оценок, порогов и цены ошибок. Добавлены локализованная SVG-схема, 8 терминов, 6 вопросов, источники и мобильные правила диаграммы. Каталог обновлён; 1.3.3 ссылается на 1.3.4 во всех локализациях. Большой документ-шаблон заменён компактным рабочим промптом.",
       "evidence": [
-        "lessons/a-1-3-4.html",
-        "lessons/a-1-3-4-en.html",
-        "lessons/a-1-3-4-zh.html",
+        "lessons/a-3-2-1-les-a-0054.html",
+        "lessons/a-3-2-1-les-a-0054-en.html",
+        "lessons/a-3-2-1-les-a-0054-zh.html",
         "styles/lesson-134.css",
         "tests/test_lesson_134_multilingual.py",
         "docs/education/LESSON_PRODUCTION_PROMPT_TEMPLATE.md",
@@ -2844,9 +2844,9 @@
       "title": "Переработана иллюстрация временной последовательности в уроке 1.3.3",
       "result": "Во всех трёх локализациях переработана вторая SVG-схема. Круги получили непрозрачную контрастную заливку, обозначения sₜ, aₜ, sₜ₊₁ и sₜ₊₂ выровнены по центру и размещены поверх заливки, временная линия проходит позади кругов и не пересекает текст. Подписи этапов вынесены над кругами, пояснение о награде и отложенных последствиях — под схемой. Добавлены регрессионные проверки числа залитых кругов и контрастного текста.",
       "evidence": [
-        "lessons/a-1-3-3.html",
-        "lessons/a-1-3-3-en.html",
-        "lessons/a-1-3-3-zh.html",
+        "lessons/a-3-1-3-les-a-0053.html",
+        "lessons/a-3-1-3-les-a-0053-en.html",
+        "lessons/a-3-1-3-les-a-0053-zh.html",
         "tests/test_lesson_133_multilingual.py"
       ],
       "limitations": [
@@ -2861,10 +2861,10 @@
       "result": "Проверены 39 страниц 13 опубликованных уроков во всех локализациях. Для каждой страницы унифицирована нижняя навигация: предыдущий и следующий опубликованные уроки, карта знаний, Track A и каталог. На первом и последнем уроках недоступные переходы скрыты; исправлен пропуск навигации в китайской версии 1.2.2. В 1.3.4 ключевые понятия оформлены восемью блоками .definition в каждой локализации по разделу 16 обязательного Lesson Design System; удалены ad hoc inline-маркеры и необработанные Markdown-обозначения. Короткий промпт требует блоки .definition и корректную последовательную навигацию; регрессионный тест покрывает все локализации.",
       "evidence": [
         "lessons/a-1-1-1.html",
-        "lessons/a-1-2-2-zh.html",
-        "lessons/a-1-3-4.html",
-        "lessons/a-1-3-4-en.html",
-        "lessons/a-1-3-4-zh.html",
+        "lessons/a-2-1-2-les-a-0004-zh.html",
+        "lessons/a-3-2-1-les-a-0054.html",
+        "lessons/a-3-2-1-les-a-0054-en.html",
+        "lessons/a-3-2-1-les-a-0054-zh.html",
         "styles/lesson-reference-111.css",
         "docs/education/LESSON_DESIGN_SYSTEM.md",
         "docs/education/LESSON_PRODUCTION_PROMPT_TEMPLATE.md",
@@ -2886,7 +2886,7 @@
         "tests/test_lesson_navigation_and_concepts.py",
         "tests/test_lesson_134_multilingual.py",
         "https://github.com/Dach1980/ai-research-dch-school/commit/f038032bcab08f1fccd9c16d276ad0374aa8aa37",
-        "https://dach1980.github.io/ai-research-dch-school/lessons/a-1-3-4.html"
+        "https://dach1980.github.io/ai-research-dch-school/lessons/a-3-2-1-les-a-0054.html"
       ],
       "limitations": [
         "Vercel failure build-rate-limit не является результатом GitHub Actions или GitHub Pages.",
@@ -2905,9 +2905,9 @@
         "docs/education/LESSON_DESIGN_SYSTEM.md",
         "docs/education/LESSON_PRODUCTION_PROMPT_TEMPLATE.md",
         "styles/lesson-design-system.css",
-        "lessons/a-1-3-3.html",
-        "lessons/a-1-3-3-en.html",
-        "lessons/a-1-3-3-zh.html",
+        "lessons/a-3-1-3-les-a-0053.html",
+        "lessons/a-3-1-3-les-a-0053-en.html",
+        "lessons/a-3-1-3-les-a-0053-zh.html",
         "tests/test_lesson_133_multilingual.py"
       ],
       "limitations": [
@@ -2922,9 +2922,9 @@
       "title": "Подготовлены три редакционные локализации урока 1.3.5",
       "result": "Созданы RU / EN / 中文 страницы урока 1.3.5 «Кластеризация и снижение размерности». Материал продолжает 1.3.2 без повторения вводных определений: сравнивает алгоритмы и геометрию групп, объясняет стандартизацию, выбор параметров, elbow/silhouette, устойчивость и ARI, PCA, explained variance и ограничения t-SNE/UMAP. Добавлены сквозной пример зданий, самостоятельное задание, Python-пример с NumPy/scikit-learn, три локализованные SVG и 13 блоков определений ключевых понятий, пять источников, десять терминов и восемь вопросов с объяснениями. Сохранён UID les-a-0055; каталог переведён в published/published, страницы имеют index,follow, предыдущая ссылка ведёт на 1.3.4, planned 1.3.6 не указан как следующий опубликованный урок.",
       "evidence": [
-        "lessons/a-1-3-5.html",
-        "lessons/a-1-3-5-en.html",
-        "lessons/a-1-3-5-zh.html",
+        "lessons/a-3-2-2-les-a-0055.html",
+        "lessons/a-3-2-2-les-a-0055-en.html",
+        "lessons/a-3-2-2-les-a-0055-zh.html",
         "styles/lesson-135.css",
         "tests/test_lesson_135_multilingual.py",
         "data/catalog/catalog-v3.json",
@@ -2944,9 +2944,9 @@
       "title": "Переработаны иллюстрации и цветовое оформление определений урока 1.3.5; применено правило публикации",
       "result": "По замечанию владельца проекта полностью переработаны три SVG-схемы во всех локализациях: теперь они показывают три геометрии кластеров с заливкой областей и отдельными шумовыми точками; пятишаговый цикл проверки с разнесёнными подписями и петлёй возврата; понятную схему перехода от исходных признаков к главным компонентам с направляющими проекции. Длинные пояснения вынесены из SVG в подписи под рисунками, чтобы не обрезались и не накладывались на линии. Все 13 определений в RU / EN / 中文 разделены на `.definition-term` и `.definition-text`; общие CSS-токены задают контрастные цвета для светлой и тёмной тем; порядок загрузки стилей проверен, переопределения из эталонной оболочки устранены. Правило внесено в раздел 18 Lesson Design System. Урок 1.3.5 переведён в published/published, страницы индексируемые. В шаблоне новых уроков зафиксирована публикация по умолчанию после успешных автоматических проверок и deployment; незавершённая ручная QA фиксируется отдельно, но не является основанием молча заменять published на review.",
       "evidence": [
-        "lessons/a-1-3-5.html",
-        "lessons/a-1-3-5-en.html",
-        "lessons/a-1-3-5-zh.html",
+        "lessons/a-3-2-2-les-a-0055.html",
+        "lessons/a-3-2-2-les-a-0055-en.html",
+        "lessons/a-3-2-2-les-a-0055-zh.html",
         "styles/lesson-135.css",
         "styles/lesson-design-system.css",
         "docs/education/LESSON_DESIGN_SYSTEM.md",
@@ -2970,9 +2970,9 @@
       "title": "Улучшена схема пяти этапов кластеризации; зафиксирован эталон карточки определения 1.1.1",
       "result": "В RU / EN / 中文 переработана вторая SVG-иллюстрация урока 1.3.5: увеличена ширина схемы, карточки и интервалы; заголовки и подписи разбиты на управляемые строки; номера этапов увеличены до 20 px, круги получили насыщенную заливку, светлую обводку и высокий контраст. Петля обратной связи вынесена в отдельную нижнюю зону. Обновлён раздел 18 Lesson Design System: термин теперь отдельной верхней строкой, определение — отдельным блоком ниже в самостоятельной карточке с фоном, рамкой и скруглением по образцу урока 1.1.1. Общие CSS-правила переведены на блочное отображение; начальные тире удалены из определений 1.3.5 во всех локализациях. Добавлены регрессионные проверки структуры пяти этапов и размера номеров.",
       "evidence": [
-        "lessons/a-1-3-5.html",
-        "lessons/a-1-3-5-en.html",
-        "lessons/a-1-3-5-zh.html",
+        "lessons/a-3-2-2-les-a-0055.html",
+        "lessons/a-3-2-2-les-a-0055-en.html",
+        "lessons/a-3-2-2-les-a-0055-zh.html",
         "styles/lesson-135.css",
         "styles/lesson-design-system.css",
         "docs/education/LESSON_DESIGN_SYSTEM.md",
@@ -2991,9 +2991,9 @@
       "title": "Создан урок 1.3.6 в RU / EN / 中文",
       "result": "Созданы три равнозначные страницы: генеративная и дискриминативная постановки, токены и авторегрессия, VAE, GAN, диффузия, self-supervised learning, foundation models, мультимодальность, prompting/fine-tuning, RAG и оркестрация. Добавлены три локализованные SVG, исполняемый пример символьной bigram-модели на Python 3.10+ без внешних зависимостей, практическое задание для инженерного AI-сервиса, ограничения и риски, семь научных источников, десять терминов и восемь вопросов с объяснениями. Сохранён UID les-a-0009; каталог получил три URL, prerequisites и outcomes; карта знаний и навигация 1.3.5 → 1.3.6 обновлены. Проверки GitHub Actions после исправления регрессионных ожиданий: Validate learning catalog — success (run 43159014077), отдельный тест урока 1.3.6 — success в составе этого workflow, Pages build/deployment — success (run 43159013843), Deploy static website to GitHub Pages и проверка Supabase migrations — success (run 43159014064).",
       "evidence": [
-        "lessons/a-1-3-6.html",
-        "lessons/a-1-3-6-en.html",
-        "lessons/a-1-3-6-zh.html",
+        "lessons/a-3-2-3-les-a-0009.html",
+        "lessons/a-3-2-3-les-a-0009-en.html",
+        "lessons/a-3-2-3-les-a-0009-zh.html",
         "styles/lesson-136.css",
         "tests/test_lesson_136_multilingual.py",
         "data/catalog/catalog-v3.json",
@@ -3043,9 +3043,9 @@
       "title": "Переработаны SVG-иллюстрации урока 1.3.6",
       "result": "Во всех трёх локализациях переработаны три SVG-схемы: добавлены семантические цветовые группы для входа, процесса, данных, инструментов и результата; подписи разбиты на явные строки tspan; увеличены текстовые зоны и выделены отдельные коридоры для стрелок. Обновлён CSS, добавлен регрессионный тест структуры SVG. В Lesson Design System добавлен раздел 19 с обязательными правилами для всех новых иллюстраций.",
       "evidence": [
-        "lessons/a-1-3-6.html",
-        "lessons/a-1-3-6-en.html",
-        "lessons/a-1-3-6-zh.html",
+        "lessons/a-3-2-3-les-a-0009.html",
+        "lessons/a-3-2-3-les-a-0009-en.html",
+        "lessons/a-3-2-3-les-a-0009-zh.html",
         "styles/lesson-136.css",
         "tests/test_lesson_136_multilingual.py",
         "docs/education/LESSON_DESIGN_SYSTEM.md"
@@ -3080,9 +3080,9 @@
       "title": "Опубликован урок 1.4.1 на трёх языках",
       "result": "По подтверждению владельца проекта урок 1.4.1 «Понятие модели и параметров» опубликован в RU / EN / 中文. Для всех трёх страниц удалён noindex,nofollow, canonical URL направлены на https://dchai.ru/lessons/. UID les-a-0010 в catalog-v3 переведён в status=published, content_state=published, access=open. Обновлены регрессионные тесты: проверка локализаций 1.4.1, ожидаемое число опубликованных уроков (16), статус в тесте 1.3.4 и число планет карты знаний. Validate learning catalog завершился успешно (run 43195519377); GitHub Pages build/deployment завершился успешно (run 43195518897).",
       "evidence": [
-        "lessons/a-1-4-1.html",
-        "lessons/a-1-4-1-en.html",
-        "lessons/a-1-4-1-zh.html",
+        "lessons/a-4-1-1-les-a-0010.html",
+        "lessons/a-4-1-1-les-a-0010-en.html",
+        "lessons/a-4-1-1-les-a-0010-zh.html",
         "data/catalog/catalog-v3.json",
         "tests/test_lesson_141_multilingual.py",
         "tests/test_lesson_134_multilingual.py",
@@ -3101,15 +3101,15 @@
       "title": "Опубликован урок 1.4.2 на трёх языках и восстановлена последовательная навигация",
       "result": "Созданы RU / EN / 中文 версии «Обучение модели и функция потерь» / “Model Training and the Loss Function” / «模型训练与损失函数». Сохранён UID les-a-0011. В каталоге урок имеет status=published, content_state=published, access=open, prerequisite les-a-0010 и три канонических URL. Добавлены четыре локализованные SVG, формулы, Python batch gradient descent, самостоятельное задание, 10 определений, 10 терминов и 8 вопросов с объяснениями. Обновлены переходы 1.3.6 → 1.4.1 → 1.4.2. Validate learning catalog run 43331570966 — success; validate-supabase-migrations и deploy job run 43331570993 — success.",
       "evidence": [
-        "lessons/a-1-4-2.html",
-        "lessons/a-1-4-2-en.html",
-        "lessons/a-1-4-2-zh.html",
-        "lessons/a-1-4-1.html",
-        "lessons/a-1-4-1-en.html",
-        "lessons/a-1-4-1-zh.html",
-        "lessons/a-1-3-6.html",
-        "lessons/a-1-3-6-en.html",
-        "lessons/a-1-3-6-zh.html",
+        "lessons/a-4-1-2-les-a-0011.html",
+        "lessons/a-4-1-2-les-a-0011-en.html",
+        "lessons/a-4-1-2-les-a-0011-zh.html",
+        "lessons/a-4-1-1-les-a-0010.html",
+        "lessons/a-4-1-1-les-a-0010-en.html",
+        "lessons/a-4-1-1-les-a-0010-zh.html",
+        "lessons/a-3-2-3-les-a-0009.html",
+        "lessons/a-3-2-3-les-a-0009-en.html",
+        "lessons/a-3-2-3-les-a-0009-zh.html",
         "styles/lesson-142.css",
         "data/catalog/catalog-v3.json",
         "tests/test_lesson_142_multilingual.py",
@@ -3195,9 +3195,9 @@
       "title": "Опубликован урок 1.4.3 на трёх языках",
       "result": "Созданы RU / EN / 中文 версии «Переобучение и недообучение» / “Overfitting and Underfitting” / «过拟合与欠拟合». Сохранён UID les-a-0012. Добавлены 4 локализованные SVG, 4 формулы, Python/scikit-learn пример, практическое задание, 10 терминов и 8 вопросов самопроверки. Catalog v3 переведён в status=published и content_state=published, указаны prerequisites les-a-0010 и les-a-0011 и три канонических URL. Карта знаний строится из обновлённого каталога. Validate learning catalog run 43342318343 — success; GitHub Pages build/deployment run 43342318218 — success; deploy workflow run 43342318344 — success.",
       "evidence": [
-        "lessons/a-1-4-3.html",
-        "lessons/a-1-4-3-en.html",
-        "lessons/a-1-4-3-zh.html",
+        "lessons/a-4-1-3-les-a-0012.html",
+        "lessons/a-4-1-3-les-a-0012-en.html",
+        "lessons/a-4-1-3-les-a-0012-zh.html",
         "styles/lesson-143.css",
         "data/catalog/catalog-v3.json",
         "tests/test_lesson_143_multilingual.py",
@@ -3236,9 +3236,9 @@
       "title": "Подготовлен и внесён в каталог урок 1.4.4 «Обобщающая способность модели»",
       "result": "Созданы три языковые версии с UID les-a-0013, четыре локализованные SVG, четыре формулы, практический Python Pipeline example, 10 терминов и 8 вопросов с объяснениями. Каталог v3 переведён в published/published с prerequisite les-a-0012. Добавлены регрессионные тесты и обновлена последовательная навигация. Первичный Playwright run выявил выход подписи «Обучающие примеры» за границы SVG-узла примерно на 1.5 px; размер шрифта скорректирован. Повторный Validate learning catalog run 43347904955 завершился success; браузерная проверка переполнения прошла на пяти ширинах и двух темах. Pages workflow run 43347904981: validate, validate-supabase-migrations и deploy — success; GitHub Pages deployment run 43347905023 — success.",
       "evidence": [
-        "lessons/a-1-4-4.html",
-        "lessons/a-1-4-4-en.html",
-        "lessons/a-1-4-4-zh.html",
+        "lessons/a-4-2-1-les-a-0013.html",
+        "lessons/a-4-2-1-les-a-0013-en.html",
+        "lessons/a-4-2-1-les-a-0013-zh.html",
         "styles/lesson-144.css",
         "data/catalog/catalog-v3.json",
         "tests/test_lesson_144_multilingual.py",
@@ -3258,9 +3258,9 @@
       "title": "Подготовлены языковые версии и регрессионные проверки урока 1.4.5",
       "result": "Созданы RU / EN / 中文 страницы «Гиперпараметры и настройка модели» / “Hyperparameters and Model Tuning” / «超参数与模型调优» с UID les-a-0014. Добавлены 3 локализованные SVG, 2 формулы, Python/scikit-learn пример с Pipeline и RandomizedSearchCV, практическое задание, 10 терминов и 8 вопросов с объяснениями. Catalog v3 обновлён: prerequisite les-a-0013, три URL, status=published и content_state=published. Добавлен отдельный тест урока, он включён в Validate learning catalog; проверки количества опубликованных уроков, карты знаний, общего дизайн-стандарта, локализаций и последовательной навигации расширены. Исходники и проверки зафиксированы в main. CI и Pages deployment не подтверждены.",
       "evidence": [
-        "lessons/a-1-4-5.html",
-        "lessons/a-1-4-5-en.html",
-        "lessons/a-1-4-5-zh.html",
+        "lessons/a-4-2-2-les-a-0014.html",
+        "lessons/a-4-2-2-les-a-0014-en.html",
+        "lessons/a-4-2-2-les-a-0014-zh.html",
         "styles/lesson-145.css",
         "data/catalog/catalog-v3.json",
         "tests/test_lesson_145_multilingual.py",
@@ -3285,9 +3285,9 @@
       "evidence": [
         "styles/lesson-145.css",
         "tests/test_lesson_layout_overflow.py",
-        "lessons/a-1-4-5.html",
-        "lessons/a-1-4-5-en.html",
-        "lessons/a-1-4-5-zh.html"
+        "lessons/a-4-2-2-les-a-0014.html",
+        "lessons/a-4-2-2-les-a-0014-en.html",
+        "lessons/a-4-2-2-les-a-0014-zh.html"
       ],
       "limitations": [
         "Автоматический CI после исправления должен завершиться; до получения результата браузерная проверка не считается пройденной.",
@@ -3301,9 +3301,9 @@
       "title": "Исправлены SVG-классы и тема оформления иллюстраций урока 1.2.4",
       "result": "В четырёх SVG каждой локали исправлено несоответствие: HTML использовал l124-bg/label/small/arrow, тогда как CSS определял lesson-124-*. Из-за этого подписи и рамки теряли оформление. Классы унифицированы; 13 цветных узлов на каждой локали переведены с жёстких hex fill/stroke на семантические CSS-классы. Палитра узлов и текст теперь наследует --lds-* токены и автоматически меняется между светлой и тёмной темами. Все четыре схемы сохраняют одинаковую структуру классов в RU/EN/中文. Regression test дополнен проверкой каждого графического SVG-элемента: наличие класса и CSS-правила, отсутствие жёстких inline hex-цветов, отсутствие старых классов и паритет локалей.",
       "evidence": [
-        "lessons/a-1-2-4.html",
-        "lessons/a-1-2-4-en.html",
-        "lessons/a-1-2-4-zh.html",
+        "lessons/a-2-2-1-les-a-0050.html",
+        "lessons/a-2-2-1-les-a-0050-en.html",
+        "lessons/a-2-2-1-les-a-0050-zh.html",
         "styles/lesson-124.css",
         "tests/test_lesson_124_multilingual.py",
         "styles/lesson-design-system.css"
@@ -3338,12 +3338,12 @@
       "result": "Общие стили иллюстраций исправлены: светлая тема ранее задавала тёмный цвет SVG-подписям при тёмных заливках контейнеров и блоков. Фон .lesson-figure, svg-box/svg-box2/svg-box3 и подписи переведены на токены --lds-*. В RU/EN/中文 урока 1.2.2 удалены фиксированные заливки SVG-блоков и текста, добавлены классы svg-box/svg-box2/svg-box3/svg-title. В RU/EN/中文 урока 1.3.2 удалён inline fill последней SVG-подписи; использован svg-accent. test_svg_theme_fallback.py проверяет все страницы lessons/ со встроенным SVG, класс у каждого text, отсутствие inline fill/style у текста и theme-aware общие CSS-правила. Создан .github/workflows/lesson-svg-audit.yml с ежедневным расписанием и проверкой при изменении уроков/стилей; Pages workflow запускает regression test до deploy.",
       "evidence": [
         "styles/lesson-reference-111.css",
-        "lessons/a-1-2-2.html",
-        "lessons/a-1-2-2-en.html",
-        "lessons/a-1-2-2-zh.html",
-        "lessons/a-1-3-2.html",
-        "lessons/a-1-3-2-en.html",
-        "lessons/a-1-3-2-zh.html",
+        "lessons/a-2-1-2-les-a-0004.html",
+        "lessons/a-2-1-2-les-a-0004-en.html",
+        "lessons/a-2-1-2-les-a-0004-zh.html",
+        "lessons/a-3-1-2-les-a-0008.html",
+        "lessons/a-3-1-2-les-a-0008-en.html",
+        "lessons/a-3-1-2-les-a-0008-zh.html",
         "tests/test_svg_theme_fallback.py",
         ".github/workflows/lesson-svg-audit.yml",
         ".github/workflows/pages.yml"
@@ -3361,9 +3361,9 @@
       "title": "Создан и опубликован урок 1.5.2 «Матрица ошибок классификации»",
       "result": "Созданы полные RU / EN / 中文 версии для UID les-a-0044, Track A / Theme 1 / Module 5. Урок содержит семь учебных разделов, практическое задание, выводы, три источника, пять карточек глоссария и семь локализованных вопросов с объяснениями. Добавлены две таблицы матрицы, оригинальная SVG-схема четырёх исходов с локализованными title/desc/figcaption и theme-aware CSS через --lds-* токены. Каталог переведён в published; навигация остаётся catalog-driven. Регрессионный тест lesson 1.5.2, браузерный overflow check, locale-grid parity (22 опубликованных урока), knowledge-map tests и multilingual validation прошли. GitHub Actions catalog CI и GitHub Pages deployment завершились успешно на commit a52fcf7eff442c23af971a9b38db24f515ed8373 (catalog CI run 43425303846; Pages deploy run 43425303672).",
       "evidence": [
-        "lessons/a-1-5-2.html",
-        "lessons/a-1-5-2-en.html",
-        "lessons/a-1-5-2-zh.html",
+        "lessons/a-5-1-2-les-a-0044.html",
+        "lessons/a-5-1-2-les-a-0044-en.html",
+        "lessons/a-5-1-2-les-a-0044-zh.html",
         "styles/lesson-152.css",
         "tests/test_lesson_152_contract.py",
         "data/catalog/catalog-v3.json",
@@ -3381,9 +3381,9 @@
       "title": "Создан урок 1.5.3 «Accuracy, Precision, Recall и F1»",
       "result": "Созданы полные RU / EN / 中文 версии для UID les-a-0045, Track A / Theme 1 / Module 5. Урок объясняет Accuracy, Precision, Recall и F1, их разные знаменатели и ограничения; содержит пять формульных карточек (четыре метрики, F1 показан в двух эквивалентных формах) с доступными описаниями, оригинальную SVG-схему, расчёты на данных 1.5.2, сравнение двух моделей и практическое упражнение. Добавлены ровно пять карточек глоссария, три источника и семь вопросов с объяснениями. Каталог опубликован, число опубликованных уроков Track A — 23. Автоматический контрактный тест, browser overflow, locale grid, design system, navigation, knowledge map и multilingual validation завершились успешно; Pages build и deployment успешны на проверенном commit 57ea0fd11d32ded9c582bc2b30f057a55feb1417; browser overflow дополнительно расширен на RU/EN/中文 1.5.2 и 1.5.3. Ручная визуальная QA остаётся pending.",
       "evidence": [
-        "lessons/a-1-5-3.html",
-        "lessons/a-1-5-3-en.html",
-        "lessons/a-1-5-3-zh.html",
+        "lessons/a-5-1-3-les-a-0045.html",
+        "lessons/a-5-1-3-les-a-0045-en.html",
+        "lessons/a-5-1-3-les-a-0045-zh.html",
         "styles/lesson-153.css",
         "tests/test_lesson_153_contract.py",
         "data/catalog/catalog-v3.json",
@@ -3401,9 +3401,9 @@
       "title": "Создан урок 1.5.4 «ROC-AUC и Precision-Recall AUC»",
       "result": "Созданы полные RU / EN / 中文 версии для UID les-a-0046. Урок раскрывает порог классификации, TPR/FPR, ROC-кривую и ROC-AUC, PR-кривую, prevalence, Average Precision и отличие от трапецеидальной PR-AUC, пример с 1% положительного класса и протокол выбора порога на validation. Добавлены три локализованные SVG-схемы, пять формульных блоков, ровно пять карточек глоссария, три источника и семь вопросов с объяснениями. Каталог опубликован; prerequisite для 1.5.5 установлен на les-a-0046; число опубликованных уроков Track A — 24. Контрактный тест, browser overflow, locale parity, design system, navigation, knowledge map и multilingual validation завершились успешно в Validate learning catalog run 43516508788. GitHub Pages build/deployment успешны в run 43516508246 на проверенном commit ea2eefdebefac0e630b9fc8fa896241156cb61a4. Ручная визуальная QA остаётся pending.",
       "evidence": [
-        "lessons/a-1-5-4.html",
-        "lessons/a-1-5-4-en.html",
-        "lessons/a-1-5-4-zh.html",
+        "lessons/a-5-1-4-les-a-0046.html",
+        "lessons/a-5-1-4-les-a-0046-en.html",
+        "lessons/a-5-1-4-les-a-0046-zh.html",
         "styles/lesson-154.css",
         "tests/test_lesson_154_contract.py",
         "data/catalog/catalog-v3.json",
@@ -3436,9 +3436,9 @@
       "evidence": [
         "styles/lesson-145.css",
         "tests/test_lesson_layout_overflow.py",
-        "lessons/a-1-4-5.html",
-        "lessons/a-1-4-5-en.html",
-        "lessons/a-1-4-5-zh.html"
+        "lessons/a-4-2-2-les-a-0014.html",
+        "lessons/a-4-2-2-les-a-0014-en.html",
+        "lessons/a-4-2-2-les-a-0014-zh.html"
       ],
       "limitations": [
         "Проверка опубликованного Pages HTML пока недоступна: внешний URL не удалось получить из используемого канала проверки.",
@@ -3454,9 +3454,9 @@
       "evidence": [
         "styles/lesson-145.css",
         "tests/test_lesson_layout_overflow.py",
-        "lessons/a-1-4-5.html",
-        "lessons/a-1-4-5-en.html",
-        "lessons/a-1-4-5-zh.html"
+        "lessons/a-4-2-2-les-a-0014.html",
+        "lessons/a-4-2-2-les-a-0014-en.html",
+        "lessons/a-4-2-2-les-a-0014-zh.html"
       ],
       "limitations": [
         "Результат браузерного CI ещё не получен; тест считается добавленным, но не пройденным.",
@@ -3471,9 +3471,9 @@
       "title": "Приведена структура словаря 1.4.5 к стандарту урока 1.4.4",
       "result": "Причина различий: при подготовке 1.4.5 была выбрана альтернативная разметка dl/dt/dd вместо принятого в 1.4.4 компонента div.lesson-glossary > div.glossary-entry > strong + span. Это было ненужным отклонением от дизайн-системы. Все три локали 1.4.5 приведены к канонической структуре 1.4.4; каждая содержит 10 карточек, в каждой strong и span. Специальные CSS-переопределения dl/dt/dd удалены. Регрессионный тест проверяет точное соответствие структуры, число записей и визуальную сетку на пяти ширинах и в двух темах.",
       "evidence": [
-        "lessons/a-1-4-5.html",
-        "lessons/a-1-4-5-en.html",
-        "lessons/a-1-4-5-zh.html",
+        "lessons/a-4-2-2-les-a-0014.html",
+        "lessons/a-4-2-2-les-a-0014-en.html",
+        "lessons/a-4-2-2-les-a-0014-zh.html",
         "styles/lesson-145.css",
         "tests/test_lesson_layout_overflow.py"
       ],
@@ -3516,11 +3516,11 @@
       "title": "Создан трёхъязычный урок 1.2.3 «Типы данных и представление признаков»",
       "result": "В main добавлены RU / EN / 中文 страницы урока 1.2.3. Материал закрывает переход от определения объектов и признаков (1.2.2) к разделению выборок (1.2.4): числовые, номинальные и порядковые признаки; one-hot и ordinal encoding; даты и циклические признаки; текст и идентификаторы; масштабирование и безопасная подготовка признаков без утечки. Добавлены результаты обучения, практическое задание, 5 источников, 10 терминов и 8 вопросов с объяснениями на каждой локали. В catalog v3 добавлен уникальный UID les-a-0056 со статусом review/content_state localized; после проверки обнаружен и устранён конфликт UID с уроком 1.1.2. Для 1.2.4 prerequisite изменён на les-a-0056. Навигация RU/EN/中文 уроков 1.2.2 и 1.2.4 обновлена для последовательности 1.2.2 → 1.2.3 → 1.2.4. Добавлен regression test.",
       "evidence": [
-        "lessons/a-1-2-3.html",
-        "lessons/a-1-2-3-en.html",
-        "lessons/a-1-2-3-zh.html",
-        "lessons/a-1-2-2.html",
-        "lessons/a-1-2-4.html",
+        "lessons/a-2-1-3-les-a-0056.html",
+        "lessons/a-2-1-3-les-a-0056-en.html",
+        "lessons/a-2-1-3-les-a-0056-zh.html",
+        "lessons/a-2-1-2-les-a-0004.html",
+        "lessons/a-2-2-1-les-a-0050.html",
         "data/catalog/catalog-v3.json",
         "tests/test_lesson_123_multilingual.py"
       ],
@@ -3543,9 +3543,9 @@
       "title": "Расширен урок 1.2.3: теория, примеры и наглядные схемы",
       "result": "Все три локали урока 1.2.3 расширены с краткого конспекта до 10 теоретических разделов. Добавлены объяснения физических и семантических типов, шкал измерения, непрерывных и дискретных признаков, пропусков и выбросов, номинальных и порядковых категорий, компромиссов one-hot/ordinal/frequency/target encoding, временных и циклических признаков, текстовых представлений и роли идентификаторов, масштабирования, data leakage и воспроизводимого fit/transform workflow. Добавлены 6 встроенных адаптивных SVG-иллюстраций, сравнительная таблица паспорта признаков для задачи энергопотребления, расширенное практическое задание и 8 контрольных вопросов с объяснениями на RU/EN/中文. Создан styles/lesson-123.css с responsive правилами для SVG, таблиц и callout-блоков. Каталог оставлен в review; публикация не заявляется. Дополнительно исправлена структура HTML: устранён хвост старой разметки, который дублировал вопросы после вставки расширенного материала. Восстановлено ровно 8 вопросов на каждой локали; правильные варианты распределены по позициям a/b/c. Тест усилен проверкой числа иллюстраций, разделов, уникальности UID и разнообразия позиций правильных ответов. Правильные варианты самопроверки распределены между позициями a/b/c (а не сосредоточены в первом варианте); тест проверяет наличие всех трёх позиций.",
       "evidence": [
-        "lessons/a-1-2-3.html",
-        "lessons/a-1-2-3-en.html",
-        "lessons/a-1-2-3-zh.html",
+        "lessons/a-2-1-3-les-a-0056.html",
+        "lessons/a-2-1-3-les-a-0056-en.html",
+        "lessons/a-2-1-3-les-a-0056-zh.html",
         "styles/lesson-123.css",
         "tests/test_lesson_123_multilingual.py",
         "data/catalog/catalog-v3.json"
@@ -3579,9 +3579,9 @@
       "title": "Переработан урок 1.2.4 на трёх языках",
       "result": "В RU / EN / 中文 версиях 1.2.4 материал расширен до 10 разделов. Добавлены четыре локализованные схемы с title/desc и ограниченными подписями, сравнительная таблица random/stratified/group/time split, Python пример с GroupShuffleSplit и Pipeline, практическое задание, 10 терминов и 8 вопросов с объяснениями. Вопросы сбалансированы по позициям правильных ответов a/b/c. Исправлены семантическая разметка абзацев и расположение иллюстраций рядом с соответствующими объяснениями. Добавлен styles/lesson-124.css с responsive правилами для схем, таблиц, кода и канонического словаря: внешний grid, внутренняя flex-колонка. Создан regression test test_lesson_124_multilingual.py. Технические проверки исходников выполнены на уровне структуры: по 10 разделов, 4 схемы, 10 терминов и 8 вопросов в каждой локали; вложенные p не обнаружены. Полный pytest/CI и визуальная браузерная проверка ещё не запускались. Для мобильных экранов SVG не сжимаются до нечитаемого размера: предусмотрена горизонтальная прокрутка внутри рамки иллюстрации, минимальная ширина схемы 760px. Удалены устаревшие уведомления о редакционной проверке, которые противоречили статусу урока в каталоге.",
       "evidence": [
-        "lessons/a-1-2-4.html",
-        "lessons/a-1-2-4-en.html",
-        "lessons/a-1-2-4-zh.html",
+        "lessons/a-2-2-1-les-a-0050.html",
+        "lessons/a-2-2-1-les-a-0050-en.html",
+        "lessons/a-2-2-1-les-a-0050-zh.html",
         "styles/lesson-124.css",
         "tests/test_lesson_124_multilingual.py",
         "data/catalog/catalog-v3.json"
@@ -3621,9 +3621,9 @@
       "title": "Исправлены SVG-классы и тема оформления иллюстраций урока 1.2.4",
       "result": "Во всех четырёх SVG RU/EN/中文 исправлено несовпадение имён классов l124-* и lesson-124-*. Узлы больше не содержат жёстких hex-цветов: фон, текст, стрелки, заливки и контуры оформляются через токены --lds-*; цвета узлов используют color-mix с surface и семантическими accent/good/muted/bad токенами. Структура классов всех схем синхронизирована между локалями. Тест расширен проверкой каждого графического элемента, CSS-правил, отсутствия inline hex-цветов и паритета локалей.",
       "evidence": [
-        "lessons/a-1-2-4.html",
-        "lessons/a-1-2-4-en.html",
-        "lessons/a-1-2-4-zh.html",
+        "lessons/a-2-2-1-les-a-0050.html",
+        "lessons/a-2-2-1-les-a-0050-en.html",
+        "lessons/a-2-2-1-les-a-0050-zh.html",
         "styles/lesson-124.css",
         "tests/test_lesson_124_multilingual.py"
       ],
@@ -3656,12 +3656,12 @@
       "result": "Общие стили иллюстраций исправлены: светлая тема ранее задавала тёмный цвет SVG-подписям при тёмных заливках контейнеров и блоков. Фон .lesson-figure, svg-box/svg-box2/svg-box3 и подписи переведены на токены --lds-*. В RU/EN/中文 урока 1.2.2 удалены фиксированные заливки SVG-блоков и текста, добавлены классы svg-box/svg-box2/svg-box3/svg-title. В RU/EN/中文 урока 1.3.2 удалён inline fill последней SVG-подписи; использован svg-accent. test_svg_theme_fallback.py проверяет все страницы lessons/ со встроенным SVG, класс у каждого text, отсутствие inline fill/style у текста и theme-aware общие CSS-правила. Создан .github/workflows/lesson-svg-audit.yml с ежедневным расписанием и проверкой при изменении уроков/стилей; Pages workflow запускает regression test до deploy.",
       "evidence": [
         "styles/lesson-reference-111.css",
-        "lessons/a-1-2-2.html",
-        "lessons/a-1-2-2-en.html",
-        "lessons/a-1-2-2-zh.html",
-        "lessons/a-1-3-2.html",
-        "lessons/a-1-3-2-en.html",
-        "lessons/a-1-3-2-zh.html",
+        "lessons/a-2-1-2-les-a-0004.html",
+        "lessons/a-2-1-2-les-a-0004-en.html",
+        "lessons/a-2-1-2-les-a-0004-zh.html",
+        "lessons/a-3-1-2-les-a-0008.html",
+        "lessons/a-3-1-2-les-a-0008-en.html",
+        "lessons/a-3-1-2-les-a-0008-zh.html",
         "tests/test_svg_theme_fallback.py",
         ".github/workflows/lesson-svg-audit.yml",
         ".github/workflows/pages.yml"
@@ -3689,9 +3689,9 @@
         "Ручная проверка desktop/mobile и light/dark фиксируется отдельно."
       ],
       "evidence": [
-        "lessons/a-1-5-7.html",
-        "lessons/a-1-5-7-en.html",
-        "lessons/a-1-5-7-zh.html",
+        "lessons/a-5-2-3-les-a-0048.html",
+        "lessons/a-5-2-3-les-a-0048-en.html",
+        "lessons/a-5-2-3-les-a-0048-zh.html",
         "styles/lesson-157.css",
         "tests/test_lesson_157_contract.py",
         "data/catalog/catalog-v3.json",

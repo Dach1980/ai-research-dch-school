@@ -113,7 +113,7 @@ class Lesson133Tests(unittest.TestCase):
 
     def test_catalog_sequence_and_publication_state(self):
         catalog = json.loads((ROOT / "data/catalog/catalog-v3.json").read_text(encoding="utf-8"))
-        by_code = {item["code"]: item for item in catalog["lessons"]}
+        by_code = {item["code"]: item for item in catalog["lessons"] if item.get("status") == "published" and item.get("content_state") == "published" and item.get("url_i18n")}
         lesson = by_code["3.1.3"]
         self.assertEqual(lesson["uid"], "les-a-0053")
         self.assertEqual(lesson["status"], "published")

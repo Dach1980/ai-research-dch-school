@@ -3200,7 +3200,7 @@
       "module_uid": "mod-a-06-01",
       "code": "6.1.1",
       "title": "Что такое интерпретируемость модели",
-      "status": "review",
+      "status": "published",
       "access": "open",
       "level": "beginner",
       "prerequisite_uids": [],
@@ -3208,7 +3208,7 @@
         "Различает интерпретируемость модели, объяснение отдельного предсказания и анализ поведения системы в целом.",
         "Объясняет, почему интерпретируемость зависит от модели, задачи и аудитории."
       ],
-      "content_state": "localized",
+      "content_state": "published",
       "url_i18n": {
         "ru": "lessons/a-6-1-1-les-a-0147.html",
         "en": "lessons/a-6-1-1-les-a-0147-en.html",

@@ -28,7 +28,7 @@ class CatalogVisibilityTests(unittest.TestCase):
         self.assertEqual(lesson["code"], "6.1.1")
         self.assertEqual(lesson["theme_uid"], "thm-a-06")
         self.assertEqual(lesson["module_uid"], "mod-a-06-01")
-        self.assertEqual((lesson["status"], lesson["content_state"]), ("review", "localized"))
+        self.assertEqual((lesson["status"], lesson["content_state"]), ("published", "published"))
 
     def test_611_and_711_are_nested_under_their_canonical_themes_and_modules(self):
         themes = {item["uid"]: item for item in self.catalog["themes"]}

@@ -55,6 +55,9 @@ class DchPresentationStandardsTests(unittest.TestCase):
             with self.subTest(page=relative):
                 self.assertTrue(page.is_file(), f"Missing catalog page: {relative}")
                 html = page.read_text(encoding="utf-8")
+                if 'name="robots" content="noindex' in html and "location.replace(" in html:
+                    self.assertIn('rel="canonical"', html)
+                    continue
                 self.assertIn("theme-system.js", html)
                 self.assertIn("code-blocks.js", html)
 

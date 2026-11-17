@@ -2,7 +2,7 @@ import ast,json,re,unittest
 from html.parser import HTMLParser
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
-FILES={"ru":ROOT/"lessons/a-1-3-6.html","en":ROOT/"lessons/a-1-3-6-en.html","zh":ROOT/"lessons/a-1-3-6-zh.html"}
+FILES={"ru":ROOT/"lessons/a-3-2-3-les-a-0009.html","en":ROOT/"lessons/a-3-2-3-les-a-0009-en.html","zh":ROOT/"lessons/a-3-2-3-les-a-0009-zh.html"}
 TITLES={"ru":"Генеративные модели и современные подходы ИИ","en":"Generative Models and Modern AI Approaches","zh":"生成式模型与现代人工智能方法"}
 class Parser(HTMLParser):
  def error(self,message): raise AssertionError(message)
@@ -49,6 +49,6 @@ class Lesson136Tests(unittest.TestCase):
    h=p.read_text(encoding="utf-8");self.assertEqual(re.findall(r'data-correct="([^"]+)"',h),expected);ex=re.findall(r'data-explanation="([^"]+)"',h);self.assertEqual(len(ex),8);self.assertTrue(all(len(x)>25 for x in ex))
  def test_python_and_navigation_catalog(self):
   for lang,p in FILES.items():
-   h=p.read_text(encoding="utf-8");m=re.search(r'<pre class="language-python"><code>(.*?)</code></pre>',h,re.S);self.assertIsNotNone(m);ast.parse(m.group(1).replace("&lt;","<").replace("&gt;",">").replace("&amp;","&"));suf="" if lang=="ru" else "-en" if lang=="en" else "-zh";self.assertIn(f'href="a-1-3-5{suf}.html"',h);self.assertNotIn(f'href="a-1-3-7{suf}.html"',h)
-  c=json.loads((ROOT/"data/catalog/catalog-v3.json").read_text(encoding="utf-8"));x=next(v for v in c["lessons"] if v["code"]=="1.3.6");self.assertEqual(x["uid"],"les-a-0009");self.assertEqual(x["status"],"published");self.assertEqual(x["content_state"],"published");self.assertEqual(x["url_i18n"],{"ru":"lessons/a-1-3-6.html","en":"lessons/a-1-3-6-en.html","zh":"lessons/a-1-3-6-zh.html"})
+   h=p.read_text(encoding="utf-8");m=re.search(r'<pre class="language-python"><code>(.*?)</code></pre>',h,re.S);self.assertIsNotNone(m);ast.parse(m.group(1).replace("&lt;","<").replace("&gt;",">").replace("&amp;","&"));suf="" if lang=="ru" else "-en" if lang=="en" else "-zh";self.assertIn(f'href="a-3-2-2-les-a-0055{suf}.html"',h);self.assertNotIn(f'href="a-4-1-1-les-a-0010{suf}.html"',h)
+  c=json.loads((ROOT/"data/catalog/catalog-v3.json").read_text(encoding="utf-8"));x=next(v for v in c["lessons"] if v["code"]=="3.2.3");self.assertEqual(x["uid"],"les-a-0009");self.assertEqual(x["status"],"published");self.assertEqual(x["content_state"],"published");self.assertEqual(x["url_i18n"],{"ru":"lessons/a-3-2-3-les-a-0009.html","en":"lessons/a-3-2-3-les-a-0009-en.html","zh":"lessons/a-3-2-3-les-a-0009-zh.html"})
 if __name__=="__main__":unittest.main()

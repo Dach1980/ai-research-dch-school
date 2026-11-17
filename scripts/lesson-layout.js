@@ -225,12 +225,12 @@ Object.keys(canonicalLessonByRoute).forEach(function(route){
  canonicalLessonByUid[item.uid]=item;
 });
 window.DCH_CANONICAL_LESSON_BY_UID=canonicalLessonByUid;
-var currentFile=window.location.pathname.split("/").pop().replace(/-(en|zh)\\.html$/,".html");
+var currentFile=window.location.pathname.split("/").pop().replace(/-(en|zh)\.html$/,".html");
 var currentCanonicalLesson=canonicalLessonByRoute[currentFile];
 if(currentCanonicalLesson){
  var eyebrowForNumbering=main&&main.querySelector(".eyebrow");
  if(eyebrowForNumbering){
-  eyebrowForNumbering.textContent=eyebrowForNumbering.textContent.replace(/THEME\\s+\\d+\\s+·\\s+MODULE\\s+\\d+\\s+·\\s+LESSON\\s+[\\d.]+/i,
+  eyebrowForNumbering.textContent=eyebrowForNumbering.textContent.replace(/THEME\s+\d+\s+·\s+MODULE\s+\d+\s+·\s+LESSON\s+[\d.]+/i,
    "THEME "+currentCanonicalLesson.theme+" · MODULE "+currentCanonicalLesson.module+" · LESSON "+currentCanonicalLesson.code);
  }
  var titleElement=document.querySelector("title");
@@ -241,7 +241,7 @@ if(currentCanonicalLesson){
  var ogTitle=document.querySelector('meta[property="og:title"]');
  if(ogTitle){var ogValue=ogTitle.getAttribute("content")||"";if(ogValue.indexOf(currentCanonicalLesson.old)===0)ogTitle.setAttribute("content",currentCanonicalLesson.code+ogValue.slice(currentCanonicalLesson.old.length));}
  var description=document.querySelector('meta[name="description"]');
- if(description){var descriptionValue=description.getAttribute("content")||"";description.setAttribute("content",descriptionValue.replace(/^(Урок|Lesson)\\s+[\\d.]+/i,function(prefix){return prefix.replace(/[\\d.]+$/,currentCanonicalLesson.code);}));}
+ if(description){var descriptionValue=description.getAttribute("content")||"";description.setAttribute("content",descriptionValue.replace(/^(Урок|Lesson)\s+[\d.]+/i,function(prefix){return prefix.replace(/[\d.]+$/,currentCanonicalLesson.code);}));}
  var planetLabel=main&&main.querySelector(".planet-label");
  if(planetLabel&&planetLabel.textContent.indexOf(currentCanonicalLesson.old)>=0){planetLabel.textContent=planetLabel.textContent.replace(currentCanonicalLesson.old,currentCanonicalLesson.code);}
  var planetSphere=main&&main.querySelector(".lesson-planet-sphere");

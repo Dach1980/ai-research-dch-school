@@ -156,3 +156,7 @@ html:not([data-theme="light"]) .lesson-figure-supervised{
   --sl-accent:#9adbd0;--sl-arrow:#8da9d1;--sl-caption:#9fb3d0;
   background:linear-gradient(135deg,rgba(18,35,62,.88),rgba(10,17,32,.92))!important;
 }
+
+/* The heading stays in the outer grid; display:contents exposes glossary cards as grid items. */
+.lesson-glossary > h2{grid-column:1/-1}
+.lesson-glossary-grid{display:contents}

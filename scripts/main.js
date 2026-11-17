@@ -65,5 +65,19 @@ if(sharedScriptUrl){
 })();
 
 
-// Track navigation belongs to the dedicated Directions / curriculum pages.
-// Do not inject an individual Track D link into the global lesson header.
+// Keep the author link available where the page navigation omits it.
+// Track links belong to the dedicated Directions / curriculum pages; never
+// inject an individual Track D link into the global lesson header.
+(() => {
+  const nav = document.querySelector(".site-header .nav");
+  if (!nav) return;
+  const root = sharedScriptUrl ? new URL("../", sharedScriptUrl) : new URL("../", document.baseURI);
+  const authorExists = nav.querySelector('a[href*="/about/author.html"], a[href="about/author.html"]');
+  if (!authorExists) {
+    const author = document.createElement("a");
+    author.href = new URL("about/author.html", root).href;
+    author.textContent = lang === "en" ? "About the author" : lang === "zh" ? "关于作者" : "Об авторе";
+    author.setAttribute("data-author-link", "");
+    nav.appendChild(author);
+  }
+})();

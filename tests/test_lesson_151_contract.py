@@ -5,9 +5,9 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 PAGES = {
-    "ru": ROOT / "lessons/a-1-5-1.html",
-    "en": ROOT / "lessons/a-1-5-1-en.html",
-    "zh": ROOT / "lessons/a-1-5-1-zh.html",
+    "ru": ROOT / "lessons/a-5-1-1-les-a-0043.html",
+    "en": ROOT / "lessons/a-5-1-1-les-a-0043-en.html",
+    "zh": ROOT / "lessons/a-5-1-1-les-a-0043-zh.html",
 }
 
 
@@ -15,7 +15,7 @@ class Lesson151PublicationContractTests(unittest.TestCase):
     def test_catalog_identity_and_localized_urls(self):
         catalog = json.loads((ROOT / "data/catalog/catalog-v3.json").read_text(encoding="utf-8"))
         lesson = next(item for item in catalog["lessons"] if item["uid"] == "les-a-0043")
-        self.assertEqual(lesson["code"], "1.5.1")
+        self.assertEqual(lesson["code"], "5.1.1")
         self.assertEqual(lesson["status"], "published")
         self.assertEqual(lesson["content_state"], "published")
         self.assertEqual(set(lesson["url_i18n"]), {"ru", "en", "zh"})
@@ -74,11 +74,11 @@ class Lesson151PublicationContractTests(unittest.TestCase):
 
     def test_navigation_is_catalog_driven_and_does_not_link_to_unpublished_lessons(self):
         script = (ROOT / "scripts/lesson-layout.js").read_text(encoding="utf-8")
-        self.assertIn("The explicit curriculum sequence is the authority for lesson order", script)
-        self.assertIn("steps.findIndex(function(step)", script)
-        self.assertIn('step.kind!=="lesson"', script)
-        self.assertIn('previous.status==="published"', script)
-        self.assertIn('next.status==="published"', script)
+        self.assertIn('item.track_uid==="trk-a"', script)
+        self.assertIn('item.status==="published"', script)
+        self.assertIn('item.content_state==="published"', script)
+        self.assertIn("published.findIndex(function(item)", script)
+        self.assertIn("published.sort(function(a,b)", script)
         self.assertIn('nav.replaceChildren(fragment)', script)
         for path in PAGES.values():
             source = path.read_text(encoding="utf-8")

@@ -5,7 +5,6 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 LOCALES = ("ru", "en", "zh")
-CODES = ("1.1.1", "1.1.2", "1.1.3", "1.1.4", "1.2.1", "1.2.2", "1.2.4", "1.2.5", "1.2.6", "1.3.1", "1.3.2", "1.3.3", "1.3.4", "1.3.5", "1.3.6", "1.4.1", "1.4.2", "1.4.3", "1.4.4", "1.4.5")
 
 
 class LessonNavigationAndConceptTests(unittest.TestCase):
@@ -14,7 +13,13 @@ class LessonNavigationAndConceptTests(unittest.TestCase):
         cls.catalog = json.loads((ROOT / "data/catalog/catalog-v3.json").read_text(encoding="utf-8"))
         cls.by_code = {item["code"]: item for item in cls.catalog["lessons"]}
         cls.codes = sorted(
-            (code for code in CODES if code in cls.by_code and cls.by_code[code].get("status") == "published"),
+            (
+                item["code"] for item in cls.catalog["lessons"]
+                if item.get("track_uid") == "trk-a"
+                and item.get("status") == "published"
+                and item.get("content_state") == "published"
+                and set(item.get("url_i18n", {})) == set(LOCALES)
+            ),
             key=lambda code: tuple(int(part) for part in code.split(".")),
         )
 
@@ -35,7 +40,7 @@ class LessonNavigationAndConceptTests(unittest.TestCase):
     def test_134_core_concepts_use_shared_definition_blocks_in_all_locales(self):
         for locale in LOCALES:
             with self.subTest(locale=locale):
-                page = self.by_code["1.3.4"]["url_i18n"][locale]
+                page = self.by_code["3.2.1"]["url_i18n"][locale]
                 html = (ROOT / page).read_text(encoding="utf-8")
                 self.assertIn("../styles/lesson-design-system.css", html)
                 self.assertGreaterEqual(html.count('class="definition"'), 8)

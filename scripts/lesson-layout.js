@@ -219,6 +219,7 @@ var canonicalLessonByRoute = {
     "module": 1
   }
 };
+canonicalLessonByRoute["a-1-2-1-les-a-0002.html"] = canonicalLessonByRoute["a-1-1-3.html"];
 var canonicalLessonByUid = {};
 Object.keys(canonicalLessonByRoute).forEach(function(route){
  var item=canonicalLessonByRoute[route];

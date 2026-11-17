@@ -129,7 +129,7 @@ class Lesson133Tests(unittest.TestCase):
         for locale in ("", "-en", "-zh"):
             path = ROOT / f"lessons/a-3-1-2-les-a-0008{locale}.html"
             html = path.read_text(encoding="utf-8")
-            self.assertIn(f'href="a-1-3-3{locale}.html"', html)
+            self.assertIn(f'href="a-3-1-3-les-a-0053{locale}.html"', html)
 
 
 if __name__ == "__main__":

@@ -63,8 +63,11 @@ html[data-theme="light"] .home-planet{background:linear-gradient(145deg,#fff,#ed
 .track-card.amber h3,.track-card.amber .card-icon{color:#f6ae4d}
 
 
-/* Lesson Quality Gate v1: align the shared lesson footer through its inner container. */
-body:has(main.lesson-standard-page) > .footer{display:block;padding:28px 24px}
-body:has(main.lesson-standard-page) > .footer > .container{width:100%;max-width:var(--max);margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
-body:has(main.lesson-standard-page) > .footer > .container p{margin:0}
-@media(max-width:620px){body:has(main.lesson-standard-page) > .footer > .container{align-items:flex-start;flex-direction:column}}
+/* Lesson footer: the semantic footer contains one layout wrapper.
+   The old selector depended on a JS-added main.lesson-standard-page class,
+   which canonical pages using main.container do not receive. */
+.footer:has(> .container){display:block;padding:28px 24px}
+.footer:has(> .container) > .container{width:min(var(--max),calc(100% - 48px));max-width:var(--max);margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.footer:has(> .container) > .container p{margin:0}
+.footer:has(> .container) > .container .footer-brand{font-weight:700;color:var(--text)}
+@media(max-width:620px){.footer:has(> .container) > .container{align-items:flex-start;flex-direction:column}}

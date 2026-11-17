@@ -30,6 +30,39 @@ class CatalogVisibilityTests(unittest.TestCase):
         self.assertEqual(lesson["module_uid"], "mod-a-06-01")
         self.assertEqual((lesson["status"], lesson["content_state"]), ("review", "localized"))
 
+    def test_611_and_711_are_nested_under_their_canonical_themes_and_modules(self):
+        themes = {item["uid"]: item for item in self.catalog["themes"]}
+        modules = {item["uid"]: item for item in self.catalog["modules"]}
+        expected = {
+            "les-a-0147": ("6.1.1", "thm-a-06", "mod-a-06-01", 6, 1),
+            "les-a-0018": ("7.1.1", "thm-a-07", "mod-a-07-01", 7, 1),
+        }
+        for uid, (code, theme_uid, module_uid, theme_number, module_number) in expected.items():
+            lesson = next(item for item in self.lessons if item["uid"] == uid)
+            theme = themes[theme_uid]
+            module = modules[module_uid]
+            with self.subTest(uid=uid):
+                self.assertEqual(lesson["code"], code)
+                self.assertEqual(lesson["theme_uid"], theme_uid)
+                self.assertEqual(lesson["module_uid"], module_uid)
+                self.assertEqual(theme["number"], theme_number)
+                self.assertEqual(module["number"], module_number)
+                self.assertEqual(module["theme_uid"], theme_uid)
+        self.assertEqual(themes["thm-a-07"]["title_i18n"]["ru"], "Основы XAI и важность признаков")
+        self.assertEqual(modules["mod-a-07-01"]["title_i18n"]["ru"], "Основные принципы объяснимого искусственного интеллекта")
+
+    def test_track_catalog_renderer_nests_themes_modules_and_lessons(self):
+        loader = (ROOT / "scripts/lesson-catalog.js").read_text(encoding="utf-8")
+        css = (ROOT / "styles/main.css").read_text(encoding="utf-8")
+        self.assertIn("const themes = new Map(data.themes.map", loader)
+        self.assertIn("const themeGroups = new Map()", loader)
+        self.assertIn("class=\"catalog-theme\"", loader)
+        self.assertIn("class=\"catalog-theme-heading\"", loader)
+        self.assertIn("class=\"catalog-module\"", loader)
+        self.assertIn("module.theme_uid !== themeUid", loader)
+        self.assertIn(".catalog-theme-heading", css)
+        self.assertIn(".catalog-module-heading", css)
+
     def test_611_has_all_three_production_pages(self):
         lesson = next(item for item in self.lessons if item["uid"] == "les-a-0147")
         self.assertEqual(set(lesson["url_i18n"]), set(LOCALES))

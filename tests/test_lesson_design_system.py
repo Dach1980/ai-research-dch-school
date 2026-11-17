@@ -5,15 +5,15 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 LESSONS = {
     "a-1-1-1": 3,
-    "a-1-1-3": 3,
+    "a-2-1-1-les-a-0003-les-a-0002": 3,
     "a-3-how-machines-learn-from-data": 4,
     "a-4-what-is-machine-learning-model": 6,
     "a-5-how-to-evaluate-a-model": 4,
     "a-6-generalization-and-overfitting": 4,
-    "a-1-4-2": 8,
-    "a-1-4-4": 8,
-    "a-1-4-5": 8,
-    "a-1-5-1": 7,
+    "a-4-1-2-les-a-0011": 8,
+    "a-4-2-1-les-a-0013": 8,
+    "a-4-2-2-les-a-0014": 8,
+    "a-5-1-1-les-a-0043": 7,
 }
 
 
@@ -21,8 +21,8 @@ class LessonDesignSystemTests(unittest.TestCase):
     def test_track_a_locales_load_shared_design_assets(self):
         bases = list(LESSONS) + [
             "a-1-1-2",
-            "a-1-1-4",
-            "a-1-3-1",
+            "a-2-1-2-les-a-0004-les-a-0052",
+            "a-3-1-1-les-a-0007",
         ]
         for base in bases:
             for suffix in ("", "-en", "-zh"):
@@ -52,7 +52,7 @@ class LessonDesignSystemTests(unittest.TestCase):
     def test_history_and_symbolic_lessons_keep_source_linked_questions(self):
         for base, expected in (
             ("a-1-1-2", 4),
-            ("a-1-1-4", 8),
+            ("a-2-1-2-les-a-0004-les-a-0052", 8),
         ):
             for suffix in ("", "-en", "-zh"):
                 source = (ROOT / "lessons" / f"{base}{suffix}.html").read_text(encoding="utf-8")
@@ -67,7 +67,7 @@ class LessonDesignSystemTests(unittest.TestCase):
     def test_glossary_card_markup_and_shared_styles_are_present(self):
         for base in (
             "a-1-1-1",
-            "a-1-1-3",
+            "a-2-1-1-les-a-0003-les-a-0002",
             "a-3-how-machines-learn-from-data",
         ):
             for suffix in ("", "-en", "-zh"):
@@ -110,7 +110,7 @@ class LessonDesignSystemTests(unittest.TestCase):
         self.assertIn("../lessons/a-1-1-1-zh.html", admin)
 
     def test_first_data_lessons_use_the_exact_111_page_shell_in_all_locales(self):
-        bases = ("a-1-2-1", "a-1-2-2", "a-1-2-4", "a-1-2-5", "a-1-2-6", "a-1-3-1")
+        bases = ("a-2-1-1-les-a-0003", "a-2-1-2-les-a-0004", "a-2-2-1-les-a-0050", "a-2-2-2-les-a-0005", "a-2-2-3-les-a-0006", "a-3-1-1-les-a-0007")
         for base in bases:
             for suffix, locale in (("", "ru"), ("-en", "en"), ("-zh", "zh")):
                 path = ROOT / "lessons" / f"{base}{suffix}.html"
@@ -140,7 +140,7 @@ class LessonDesignSystemTests(unittest.TestCase):
             "-zh": ("zh", "学习目标", "数据集说明", "自测"),
         }
         for suffix, (locale, outcome_heading, datasheet_heading, quiz_heading) in expected.items():
-            path = ROOT / "lessons" / f"a-1-2-1{suffix}.html"
+            path = ROOT / "lessons" / f"a-2-1-1-les-a-0003{suffix}.html"
             source = path.read_text(encoding="utf-8")
             with self.subTest(locale=locale):
                 self.assertIn(f'<html lang="{locale}"', source)
@@ -163,7 +163,7 @@ class LessonDesignSystemTests(unittest.TestCase):
 
     def test_lesson_131_supervised_learning_is_complete_in_all_locales(self):
         for suffix, locale in (("", "ru"), ("-en", "en"), ("-zh", "zh")):
-            page = (ROOT / f"lessons/a-1-3-1{suffix}.html").read_text(encoding="utf-8")
+            page = (ROOT / f"lessons/a-3-1-1-les-a-0007{suffix}.html").read_text(encoding="utf-8")
             with self.subTest(locale=locale):
                 self.assertIn(f'<html lang="{locale}"', page)
                 self.assertIn("Supervised Learning", page)
@@ -179,8 +179,8 @@ class LessonDesignSystemTests(unittest.TestCase):
 
     def test_all_active_track_a_lessons_share_the_canonical_111_shell(self):
         bases = (
-            "a-1-1-1", "a-1-1-2", "a-1-1-3", "a-1-1-4",
-            "a-1-2-1", "a-1-2-2", "a-1-2-4", "a-1-2-5", "a-1-2-6", "a-1-3-1", "a-1-4-4",
+            "a-1-1-1", "a-1-1-2", "a-2-1-1-les-a-0003-les-a-0002", "a-2-1-2-les-a-0004-les-a-0052",
+            "a-2-1-1-les-a-0003", "a-2-1-2-les-a-0004", "a-2-2-1-les-a-0050", "a-2-2-2-les-a-0005", "a-2-2-3-les-a-0006", "a-3-1-1-les-a-0007", "a-4-2-1-les-a-0013",
         )
         for base in bases:
             for suffix, locale in (("", "ru"), ("-en", "en"), ("-zh", "zh")):
@@ -202,7 +202,7 @@ class LessonDesignSystemTests(unittest.TestCase):
                     self.assertIn("../styles/lesson-reference-111.css", page)
                     self.assertNotIn("<style>", page)
                     self.assertEqual(page.count("<h1>"), 1)
-                    if base in ("a-1-1-2", "a-1-1-3", "a-1-1-4"):
+                    if base in ("a-1-1-2", "a-2-1-1-les-a-0003-les-a-0002", "a-2-1-2-les-a-0004-les-a-0052"):
                         self.assertIn("../styles/lesson-content-components.css", page)
 
     def test_canonical_lesson_111_has_correct_final_section_sequence(self):

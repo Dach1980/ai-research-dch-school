@@ -76,7 +76,7 @@ class Lesson134Tests(unittest.TestCase):
         for locale_path in draft["url_i18n"].values():
             html = (ROOT / locale_path).read_text(encoding="utf-8")
             self.assertNotIn('name="robots" content="noindex,nofollow"', html)
-        lesson = {item["code"]: item for item in catalog["lessons"]}["3.2.1"]
+        lesson = {item["code"]: item for item in catalog["lessons"] if item.get("status") == "published" and item.get("content_state") == "published" and item.get("url_i18n")}["3.2.1"]
         self.assertEqual(lesson["uid"], "les-a-0054")
         self.assertEqual(lesson["url_i18n"]["ru"], "lessons/a-3-2-1-les-a-0054.html")
         self.assertEqual(lesson["url_i18n"]["en"], "lessons/a-3-2-1-les-a-0054-en.html")
@@ -85,7 +85,7 @@ class Lesson134Tests(unittest.TestCase):
     def test_lesson_133_links_to_134_in_every_locale(self):
         for suffix in ("", "-en", "-zh"):
             html = (ROOT / f"lessons/a-3-1-3-les-a-0053{suffix}.html").read_text(encoding="utf-8")
-            self.assertIn(f'href="a-1-3-4{suffix}.html"', html)
+            self.assertIn(f'href="a-3-2-1-les-a-0054{suffix}.html"', html)
 
 
 if __name__ == "__main__":

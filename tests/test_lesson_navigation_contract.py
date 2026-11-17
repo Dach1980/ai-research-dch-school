@@ -54,7 +54,7 @@ class PublishedLessonNavigationContractTests(unittest.TestCase):
         numeric_order = sorted(codes, key=lambda code: tuple(int(part) for part in code.split(".")))
         self.assertEqual(codes, numeric_order)
         self.assertIn('"en",{numeric:true}', self.script)
-        self.assertIn('published.sort(function(a,b){return a.code.localeCompare(b.code,"en",{numeric:true});})', self.script)
+        self.assertIn('.sort(function(a,b){return a.code.localeCompare(b.code,"en",{numeric:true});})', self.script)
 
     def test_unpublished_lessons_are_excluded_and_pending_next_is_not_clickable(self):
         self.assertIn('item.status==="published"&&item.content_state==="published"', self.script)

@@ -35,11 +35,13 @@ for row in changed:
         continue
     for loc in ("ru", "en", "zh"):
         old = ROOT / row[f"source_{loc}_url"]
-        if not old.exists():
-            raise FileNotFoundError(old)
-        text = old.read_text(encoding="utf-8")
+        canonical = ROOT / url_map[uid][loc]
+        source = canonical if canonical.exists() else old
+        if not source.exists():
+            raise FileNotFoundError(source)
+        text = source.read_text(encoding="utf-8")
         if re.search(r"Redirecting to lesson|Урок переехал|课程地址已更新", text[:1000]):
-            raise RuntimeError(f"Expected source content, found redirect: {old}")
+            raise RuntimeError(f"Expected canonical lesson content, found redirect: {source}")
         originals[(uid, loc)] = text
 
 # Update links across the website to the canonical filenames. Historical management

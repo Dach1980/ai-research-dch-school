@@ -26,7 +26,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add lessons data/catalog/catalog-v3.json data/curriculum-sequence-track-a.json scripts/lesson-layout.js
+          git add -A
           if git diff --cached --quiet; then
             echo "No migration changes."
           else

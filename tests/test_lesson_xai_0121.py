@@ -6,7 +6,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / "lessons/data/xai-01-what-and-why.js"
-SHELL = ROOT / "lessons/a-4-2-1.html"
+SHELL = ROOT / "lessons/a-7-1-1-les-a-0018.html"
 LEGACY = ROOT / "lessons/xai/01-what-and-why.html"
 READER = ROOT / "scripts/lesson-reader.js"
 CSS = ROOT / "styles/xai-lesson.css"
@@ -107,7 +107,7 @@ class XaiLessonTests(unittest.TestCase):
         v3 = json.loads((ROOT / "data/catalog/catalog-v3.json").read_text(encoding="utf-8"))
         intro = next(item for item in v3["lessons"] if item["uid"] == "les-a-0018")
         self.assertEqual((intro["status"], intro["content_state"]), ("published", "published"))
-        self.assertEqual(intro["url_i18n"]["ru"], "lessons/a-4-2-1.html")
+        self.assertEqual(intro["url_i18n"]["ru"], "lessons/a-7-1-1-les-a-0018.html")
 
     def test_local_practice_link_resolves(self):
         content = next(page["content"]["ru"] for page in self.lesson["pages"] if page["id"] == "methods-passport")

@@ -187,8 +187,13 @@ class CatalogVisibilityTests(unittest.TestCase):
                 self.assertIn("home-knowledge-map.js", source)
                 self.assertIn("data-home-knowledge-map", source)
 
-    def test_incomplete_drafts_are_not_promoted_to_catalog_surfaces(self):
-        self.assertFalse(any(item.get("code") == "6.1.2" for item in self.lessons))
+    def test_published_612_is_exposed_and_working_drafts_are_retained(self):
+        lesson = next(item for item in self.lessons if item.get("uid") == "les-a-0148")
+        self.assertEqual(lesson.get("code"), "6.1.2")
+        self.assertEqual(lesson.get("status"), "published")
+        self.assertEqual(lesson.get("content_state"), "published")
+        for route in ("a-6-1-2-les-a-0148.html", "a-6-1-2-les-a-0148-en.html", "a-6-1-2-les-a-0148-zh.html"):
+            self.assertTrue((ROOT / "lessons" / route).is_file())
         draft = ROOT / "drafts/lessons/a-6-1-2-ru.html"
         self.assertTrue(draft.is_file())
 

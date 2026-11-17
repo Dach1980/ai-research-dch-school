@@ -268,6 +268,11 @@ function normalizePlanet(root,code,lead){
  if(lead&&!planet.querySelector("p")){var p=document.createElement("p");p.textContent=lead.textContent;planet.appendChild(p);}
 }
 if(main){
+ main.querySelectorAll(".lesson-glossary .lesson-glossary").forEach(function(nested){
+  var parent=nested.parentElement;
+  while(nested.firstChild)parent.insertBefore(nested.firstChild,nested);
+  nested.remove();
+ });
  var existingHero=main.querySelector(":scope > .track-hero");
  if(main.classList.contains("lesson")){
   var eyebrow=main.querySelector(":scope > .eyebrow");
@@ -363,5 +368,13 @@ if(main){
   nav.replaceChildren(fragment);
  }).catch(function(error){
   console.warn("DCH lesson navigation could not be synchronized with the catalog.",error);
+  if(!nav.querySelector("a,span")){
+   var fallback=document.createDocumentFragment();
+   var suffix=locale==="ru"?"":"-"+locale;
+   fallback.appendChild(link("secondary",new URL("learning-map/index"+suffix+".html",rootUrl).href,text.map));
+   fallback.appendChild(link("secondary",new URL("tracks/understanding-ai"+suffix+".html",rootUrl).href,text.track));
+   fallback.appendChild(link("secondary",new URL("lessons/index"+suffix+".html",rootUrl).href,text.all));
+   nav.setAttribute("aria-label",text.aria);nav.replaceChildren(fallback);
+  }
  });
 })();

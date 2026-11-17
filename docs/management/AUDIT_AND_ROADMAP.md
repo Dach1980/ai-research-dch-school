@@ -119,3 +119,12 @@ GitHub Pages — статический хостинг. Вкладка «Ауд�
 В migration crosswalk найден точный кандидат UID les-a-0016 (старое положение 4.1.3, Theme 4 / Module 4.1). Его перенос в каноническое положение 6.1.3 не выполнен: повторное использование UID требует явного подтверждения пользователя. До этого решения страницы остаются в drafts/lessons/, каталог и production URL не меняются.
 
 В первом полном прогоне Deploy static website to GitHub Pages validation, Supabase migrations и deployment завершились успешно; Lesson SVG theme audit также прошёл. Validate learning catalog выявил устаревшие ожидания 31 опубликованного урока в двух регрессионных тестах: после публикации 6.1.2 фактическое число равно 32. Ожидание синхронизируется; повторный прогон полного CI и браузерной адаптивности обязателен. Ручная визуальная приёмка 6.1.3 не проводилась.
+
+
+## Урок 6.1.3 — черновики и автоматическая приёмка — 2026-11-18
+
+Подготовлены RU / EN / 中文 черновики урока «Линейные модели как объяснимые модели». В каждом языке девять разделов, пять результатов обучения, центрированный числовой пример, формулы, определения, локализованная SVG, Python-практика, восемь терминов и семь вопросов самопроверки. Добавлен тестовый контракт и подключён к обоим CI workflow. Browser overflow test расширен на все три draft-страницы.
+
+**Автоматическая проверка на HEAD 7eefa8c8fc4985e79073687d8eefddf9ca4184a6:** Validate learning catalog — success ([44201796425](https://github.com/Dach1980/ai-research-dch-school/actions/runs/44201796425)); Pages validation, Supabase migrations и deployment — success ([44201796528](https://github.com/Dach1980/ai-research-dch-school/actions/runs/44201796528)); Pages build/deployment — success ([44201796042](https://github.com/Dach1980/ai-research-dch-school/actions/runs/44201796042)); SVG theme audit — success ([44201186584](https://github.com/Dach1980/ai-research-dch-school/actions/runs/44201186584)). Контрактный тест 6.1.3, locale grid, lesson design system и responsive browser overflow прошли.
+
+UID `les-a-0016` найден как exact-title candidate для прежнего 4.1.3, но его перенос в 6.1.3 не выполнен без явного согласия пользователя. Поэтому страницы остаются в drafts/lessons/, в каталог и карту не добавлены, production routes не создавались. Ручная визуальная приёмка 6.1.3 не проводилась.

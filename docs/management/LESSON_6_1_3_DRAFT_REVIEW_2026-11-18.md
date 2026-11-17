@@ -40,4 +40,6 @@ The lesson covers unit dependence, standardization, categorical encoding, multic
 - Subject review and requested edits.
 - Promotion to canonical routes `lessons/a-6-1-3.html`, `lessons/a-6-1-3-en.html`, and `lessons/a-6-1-3-zh.html`.
 - Catalog, canonical curriculum, crosswalk, and navigation migration after UID approval.
-- Full CI, SVG audit, browser/mobile and light/dark QA, and GitHub Pages deployment.
+- User approval of UID reuse and any final subject edits.
+- Promotion to canonical production routes and catalog after UID approval.
+- Manual visual review of the production pages by the user; automated responsive browser checks already pass.

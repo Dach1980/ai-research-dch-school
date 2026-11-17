@@ -1,6 +1,6 @@
 """Real-browser regression test for text escaping lesson cards.
 
-Checks localized 1.4.x and 1.5.1–1.5.3 lessons at desktop/tablet/mobile widths in both themes.
+Checks localized 1.4.x, 1.5.x and draft 6.1.3 lessons at desktop/tablet/mobile widths in both themes.
 Intentional horizontal scrollers (math, code and tables) are excluded from the
 no-overflow rule and remain independently scrollable.
 """
@@ -9,7 +9,7 @@ from pathlib import Path
 from playwright.sync_api import sync_playwright
 
 ROOT = Path(__file__).resolve().parents[1]
-LESSONS = sorted([* (ROOT / "lessons").glob("a-1-4-*.html"), * (ROOT / "lessons").glob("a-1-5-1*.html"), * (ROOT / "lessons").glob("a-1-5-2*.html"), * (ROOT / "lessons").glob("a-1-5-3*.html"), * (ROOT / "lessons").glob("a-1-5-4*.html"), * (ROOT / "lessons").glob("a-1-5-5*.html")])
+LESSONS = sorted([* (ROOT / "lessons").glob("a-1-4-*.html"), * (ROOT / "lessons").glob("a-1-5-1*.html"), * (ROOT / "lessons").glob("a-1-5-2*.html"), * (ROOT / "lessons").glob("a-1-5-3*.html"), * (ROOT / "lessons").glob("a-1-5-4*.html"), * (ROOT / "lessons").glob("a-1-5-5*.html"), * (ROOT / "drafts/lessons").glob("a-6-1-3-*.html")])
 VIEWPORTS = (360, 390, 768, 1024, 1440)
 THEMES = ("dark", "light")
 CARD_SELECTOR = (
@@ -135,7 +135,7 @@ class LessonLayoutOverflowTests(unittest.TestCase):
                             )
                         svg_problems = page.evaluate("""() => {
                           const problems = [];
-                          for (const svg of document.querySelectorAll('.lesson-155-figure svg')) {
+                          for (const svg of document.querySelectorAll('.lesson-155-figure svg, svg.coefficient-path')) {
                             const vb = svg.viewBox.baseVal;
                             for (const label of svg.querySelectorAll('text')) {
                               const b = label.getBBox();

@@ -2,7 +2,7 @@
   "schema_version": 1,
   "project": "AI Research DCH School",
   "section": "Аудит и roadmap",
-  "updated_at": "2026-11-17",
+  "updated_at": "2026-11-18",
   "timezone": "Asia/Singapore",
   "principles": [
     "Планетная карта дополняет обычный каталог и не заменяет его.",
@@ -1194,6 +1194,97 @@
       "limitations": [
         "Полная детализация prerequisites общей базы 00–10 и точные зависимости между отдельными уроками требуют отдельной редакционной сверки.",
         "Workflow CI/Pages и ручная визуальная приёмка новых XAI-страниц пока не подтверждены."
+      ]
+    },
+    {
+      "id": "RM-LESSON-161",
+      "date": "2026-11-18",
+      "type": "lesson_creation",
+      "title": "Создать и принять урок 6.1.2 «Интерпретируемость и объяснимость»",
+      "status": "done",
+      "priority": "high",
+      "decision": "Урок 6.1.2 создан на RU / EN / 中文 под UID les-a-0148, который пользователь одобрил к повторному использованию с переносом в Track A / Theme 6 / Module 6.1. Три страницы опубликованы; пользователь подтвердил визуальную приёмку 2026-11-18. Подтверждение внесено в журнал. GitHub Pages deployment успешен.",
+      "acceptance": [
+        "Три полноценные локализации RU / EN / 中文 опубликованы.",
+        "UID les-a-0148 закреплён за кодом 6.1.2 и правильным каноническим владельцем.",
+        "Автоматические проверки и Pages deployment проходят.",
+        "Пользователь подтвердил визуальную приёмку всех трёх версий."
+      ],
+      "evidence": [
+        "lessons/a-6-1-2-les-a-0148.html",
+        "lessons/a-6-1-2-les-a-0148-en.html",
+        "lessons/a-6-1-2-les-a-0148-zh.html",
+        "tests/test_lesson_612_draft_contract.py",
+        "docs/management/LESSON_6_1_2_DRAFT_REVIEW_2026-11-17.md",
+        "07d22872e6a19c740024a6dfe2c5b036abe98a0e"
+      ],
+      "limitations": [
+        "Ручная визуальная приёмка подтверждена пользователем; автоматические проверки и deployment фиксируются отдельно."
+      ]
+    },
+    {
+      "id": "RM-LESSON-162",
+      "date": "2026-11-18",
+      "type": "lesson_creation",
+      "title": "Разработать урок 6.1.3 «Линейные модели как объяснимые модели»",
+      "status": "in_progress",
+      "priority": "high",
+      "decision": "Подготовлены полноценные черновики RU / EN / 中文: девять разделов, пять результатов обучения, пример центрированной модели аренды, пять формул, локализованная SVG, исполняемый Python 3.10+ эксперимент, восемь терминов, пять источников и семь вопросов самопроверки. Контрактные тесты добавлены в validate-catalog.yml и pages.yml. UID не назначен: migration crosswalk предлагает exact-title candidate les-a-0016 из legacy Theme 4 / Module 4.1, но его повторное использование требует явного одобрения пользователя. До решения пользователя каталог и production URL не изменяются.",
+      "acceptance": [
+        "RU / EN / 中文 имеют одинаковые девять учебных разделов, результаты обучения, пример, ограничения, практику и самопроверку.",
+        "Формулы оформлены компонентом .formula с role=math и локализованными aria-label; ключевые понятия — отдельными definition-карточками.",
+        "SVG содержит локализованные title/desc/подписи; мобильный контейнер прокручивается без расширения страницы.",
+        "Python-эксперимент воспроизводим без внешних библиотек и сопровождается ожидаемым результатом.",
+        "Семь вопросов проверяют только содержание урока и имеют локализованную обратную связь.",
+        "UID reuse approved; canonical curriculum, catalog, crosswalk and production navigation updated.",
+        "All CI, SVG, responsive browser tests and Pages deployment pass; manual visual QA recorded separately."
+      ],
+      "evidence": [
+        "drafts/lessons/a-6-1-3-ru.html",
+        "drafts/lessons/a-6-1-3-en.html",
+        "drafts/lessons/a-6-1-3-zh.html",
+        "tests/test_lesson_613_draft_contract.py",
+        "docs/management/LESSON_6_1_3_DRAFT_REVIEW_2026-11-18.md",
+        "cc30b2788d7283021ddab6bf36319f122d22eb72"
+      ],
+      "limitations": [
+        "UID les-a-0016 — только кандидат точного совпадения названия; пользователь ещё не подтвердил перенос.",
+        "Черновики не включены в production catalog и не публикуются как урок.",
+        "Ручная браузерная визуальная приёмка 6.1.3 ещё не проводилась."
+      ]
+    },
+    {
+      "id": "AUD-105",
+      "date": "2026-11-18",
+      "type": "lesson_6_1_2_user_visual_acceptance",
+      "title": "Пользователь подтвердил визуальную приёмку урока 6.1.2",
+      "result": "Пользователь сообщил, что самостоятельно выполнил визуальную приёмку урока 6.1.2 и разрешил публикацию. Три локализованные страницы под UID les-a-0148 опубликованы; подтверждение внесено в review record.",
+      "evidence": [
+        "lessons/a-6-1-2-les-a-0148.html",
+        "lessons/a-6-1-2-les-a-0148-en.html",
+        "lessons/a-6-1-2-les-a-0148-zh.html",
+        "docs/management/LESSON_6_1_2_DRAFT_REVIEW_2026-11-17.md",
+        "07d22872e6a19c740024a6dfe2c5b036abe98a0e"
+      ]
+    },
+    {
+      "id": "AUD-106",
+      "date": "2026-11-18",
+      "type": "lesson_6_1_3_draft_review",
+      "title": "Подготовлены три локализации черновика урока 6.1.3",
+      "result": "Созданы RU / EN / 中文 версии с равной учебной структурой, формулами, определениями, сквозным примером, практическим Python-экспериментом, SVG, словарём и семью вопросами. Добавлены контрактные тесты и включены в два CI workflow. Первый прогон обнаружил устаревшие ожидания 31 опубликованного урока в двух регрессионных тестах: после публикации 6.1.2 фактическое число равно 32. Pages validation, Supabase migrations, deployment и SVG theme audit прошли на commit cc30b27.",
+      "evidence": [
+        "drafts/lessons/a-6-1-3-ru.html",
+        "drafts/lessons/a-6-1-3-en.html",
+        "drafts/lessons/a-6-1-3-zh.html",
+        "tests/test_lesson_613_draft_contract.py",
+        "tests/test_locale_grid_theme_parity.py",
+        "tests/test_knowledge_map.py",
+        "cc30b2788d7283021ddab6bf36319f122d22eb72"
+      ],
+      "limitations": [
+        "Полный Validate learning catalog ожидает повторного прогона после синхронизации ожидаемого числа опубликованных уроков.",
+        "UID reuse и production promotion ещё не утверждены."
       ]
     }
   ],

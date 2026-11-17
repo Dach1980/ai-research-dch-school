@@ -10,7 +10,7 @@ class Lesson613DraftContractTests(unittest.TestCase):
         for lang, path in PAGES.items():
             html = path.read_text(encoding="utf-8")
             self.assertIn(f'<html lang="{lang}">', html)
-            self.assertEqual(len(re.findall(r'<section id="section-\\d+">', html)), 9)
+            self.assertEqual(html.count('<section id="section-'), 9)
             self.assertEqual(html.count('class="lesson-check-question"'), 7)
             self.assertEqual(html.count('class="glossary-entry"'), 8)
             self.assertEqual(html.count('class="lesson-figure"'), 1)

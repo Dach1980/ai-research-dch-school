@@ -93,6 +93,19 @@
         "en": "Modern Analysis Methods and Scientific Evaluation",
         "zh": "现代分析方法与科学评估"
       }
+    },
+    {
+      "uid": "thm-a-06",
+      "track_uid": "trk-a",
+      "number": 6,
+      "code": "6",
+      "title": "Интерпретируемые модели",
+      "status": "active",
+      "title_i18n": {
+        "ru": "Интерпретируемые модели",
+        "en": "Interpretable Models",
+        "zh": "可解释模型"
+      }
     }
   ],
   "modules": [
@@ -329,6 +342,18 @@
       "number": 9,
       "title": "Оценка качества объяснений и научная проверка",
       "status": "planned"
+    },
+    {
+      "uid": "mod-a-06-01",
+      "theme_uid": "thm-a-06",
+      "number": 1,
+      "title": "Основы интерпретируемости моделей",
+      "status": "active",
+      "title_i18n": {
+        "ru": "Основы интерпретируемости моделей",
+        "en": "Fundamentals of Model Interpretability",
+        "zh": "模型可解释性基础"
+      }
     }
   ],
   "lessons": [
@@ -3096,11 +3121,11 @@
     {
       "uid": "les-a-0147",
       "track_uid": "trk-a",
-      "theme_uid": "thm-a-04",
-      "module_uid": "mod-a-04-01",
-      "code": "4.1.1",
+      "theme_uid": "thm-a-06",
+      "module_uid": "mod-a-06-01",
+      "code": "6.1.1",
       "title": "Что такое интерпретируемость модели",
-      "status": "planned",
+      "status": "review",
       "access": "open",
       "level": "beginner",
       "prerequisite_uids": [],
@@ -3108,7 +3133,17 @@
         "Различает интерпретируемость модели, объяснение отдельного предсказания и анализ поведения системы в целом.",
         "Объясняет, почему интерпретируемость зависит от модели, задачи и аудитории."
       ],
-      "content_state": "outline_only"
+      "content_state": "localized",
+      "url_i18n": {
+        "ru": "lessons/a-6-1-1-les-a-0147.html",
+        "en": "lessons/a-6-1-1-les-a-0147-en.html",
+        "zh": "lessons/a-6-1-1-les-a-0147-zh.html"
+      },
+      "title_i18n": {
+        "ru": "Что такое интерпретируемость модели",
+        "en": "What Is Model Interpretability?",
+        "zh": "什么是模型可解释性？"
+      }
     },
     {
       "uid": "les-a-0148",

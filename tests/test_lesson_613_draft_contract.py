@@ -24,6 +24,10 @@ class Lesson613DraftContractTests(unittest.TestCase):
             self.assertIn('scripts/lesson-assessment.js', html)
             self.assertIn('role="math"', html)
             self.assertIn('aria-live="polite"', html)
+            self.assertNotIn('aria-label="Language"', html)
+            if lang == "en":
+                self.assertIn('<strong class="term">Linear model</strong>', html)
+                self.assertIn('<span class="term-en">Russian: Линейная модель</span>', html)
             self.assertNotIn('href="undefined"', html)
             self.assertNotIn('TODO', html)
 

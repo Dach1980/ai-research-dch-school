@@ -6,9 +6,9 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 PAGES = {
-    "ru": ROOT / "lessons/a-1-5-4.html",
-    "en": ROOT / "lessons/a-1-5-4-en.html",
-    "zh": ROOT / "lessons/a-1-5-4-zh.html",
+    "ru": ROOT / "lessons/a-5-1-4-les-a-0046.html",
+    "en": ROOT / "lessons/a-5-1-4-les-a-0046-en.html",
+    "zh": ROOT / "lessons/a-5-1-4-les-a-0046-zh.html",
 }
 
 
@@ -42,7 +42,7 @@ class Lesson154ContractTests(unittest.TestCase):
     def test_catalog_identity_prerequisites_and_localized_routes(self):
         catalog = json.loads((ROOT / "data/catalog/catalog-v3.json").read_text(encoding="utf-8"))
         lesson = next(item for item in catalog["lessons"] if item["uid"] == "les-a-0046")
-        self.assertEqual(lesson["code"], "1.5.4")
+        self.assertEqual(lesson["code"], "5.1.4")
         self.assertEqual(lesson["track_uid"], "trk-a")
         self.assertEqual(lesson["theme_uid"], "thm-a-01")
         self.assertEqual(lesson["module_uid"], "mod-a-01-05")
@@ -102,7 +102,7 @@ class Lesson154ContractTests(unittest.TestCase):
                 parser.feed(source)
                 self.assertEqual(parser.errors, [])
                 self.assertEqual(parser.stack, [], f"unclosed tags: {parser.stack}")
-                self.assertIn(f'<link rel="canonical" href="https://dchai.ru/lessons/a-1-5-4{"-en" if locale=="en" else "-zh" if locale=="zh" else ""}.html">', source)
+                self.assertIn(f'<link rel="canonical" href="https://dchai.ru/lessons/a-5-1-4-les-a-0046{"-en" if locale=="en" else "-zh" if locale=="zh" else ""}.html">', source)
 
     def test_metric_formulas_and_rare_class_example(self):
         required = [

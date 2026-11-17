@@ -51,6 +51,35 @@ class CatalogVisibilityTests(unittest.TestCase):
         self.assertEqual(themes["thm-a-07"]["title_i18n"]["ru"], "Основы XAI и важность признаков")
         self.assertEqual(modules["mod-a-07-01"]["title_i18n"]["ru"], "Основные принципы объяснимого искусственного интеллекта")
 
+    def test_track_a_lessons_1_to_5_are_grouped_under_their_numbered_themes(self):
+        themes = {item["uid"]: item for item in self.catalog["themes"]}
+        modules = {item["uid"]: item for item in self.catalog["modules"]}
+        expected_titles = {
+            2: "Данные и признаки",
+            3: "Основы машинного обучения",
+            4: "Модели и их качество",
+            5: "Метрики и оценка моделей",
+        }
+        for lesson in self.lessons:
+            if lesson.get("track_uid") != "trk-a":
+                continue
+            code = lesson.get("code", "")
+            parts = code.split(".")
+            if len(parts) != 3 or not parts[0].isdigit() or not parts[1].isdigit():
+                continue
+            theme_number, module_number = int(parts[0]), int(parts[1])
+            if theme_number not in range(1, 6):
+                continue
+            theme_uid = f"thm-a-{theme_number:02d}"
+            module_uid = f"mod-a-{theme_number:02d}-{module_number:02d}"
+            with self.subTest(code=code, uid=lesson["uid"]):
+                self.assertEqual(lesson["theme_uid"], theme_uid)
+                self.assertEqual(lesson["module_uid"], module_uid)
+                self.assertEqual(modules[module_uid]["theme_uid"], theme_uid)
+                self.assertEqual(modules[module_uid]["number"], module_number)
+                if theme_number in expected_titles:
+                    self.assertEqual(themes[theme_uid]["title_i18n"]["ru"], expected_titles[theme_number])
+
     def test_track_catalog_renderer_nests_themes_modules_and_lessons(self):
         loader = (ROOT / "scripts/lesson-catalog.js").read_text(encoding="utf-8")
         css = (ROOT / "styles/main.css").read_text(encoding="utf-8")

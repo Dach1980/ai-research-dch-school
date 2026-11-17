@@ -63,8 +63,8 @@ class CatalogVisibilityTests(unittest.TestCase):
 
     def test_planet_map_generates_planets_from_every_ready_catalog_lesson(self):
         loader = (ROOT / "scripts/planet-map-catalog.js").read_text(encoding="utf-8")
-        self.assertIn('x.status === "published" && x.content_state === "published"', loader)
-        self.assertIn('x.status === "review" && x.content_state === "localized"', loader)
+        self.assertIn('x.status==="published"&&x.content_state==="published"', loader)
+        self.assertIn('x.status==="review"&&x.content_state==="localized"', loader)
         self.assertIn("data.lessons", loader)
         self.assertIn("generatedPlanet", loader)
         for page in (

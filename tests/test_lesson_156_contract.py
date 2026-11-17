@@ -7,9 +7,9 @@ from urllib.parse import urlsplit
 
 ROOT = Path(__file__).resolve().parents[1]
 PAGES = {
-    "ru": ROOT / "lessons/a-1-5-6.html",
-    "en": ROOT / "lessons/a-1-5-6-en.html",
-    "zh": ROOT / "lessons/a-1-5-6-zh.html",
+    "ru": ROOT / "lessons/a-5-2-2-les-a-0015.html",
+    "en": ROOT / "lessons/a-5-2-2-les-a-0015-en.html",
+    "zh": ROOT / "lessons/a-5-2-2-les-a-0015-zh.html",
 }
 
 class StructureParser(HTMLParser):
@@ -40,20 +40,20 @@ class Lesson156ContractTests(unittest.TestCase):
         catalog = json.loads((ROOT / "data/catalog/catalog-v3.json").read_text(encoding="utf-8"))
         lesson = next(x for x in catalog["lessons"] if x["uid"] == "les-a-0015")
         self.assertEqual((lesson["code"], lesson["track_uid"], lesson["theme_uid"], lesson["module_uid"]),
-                         ("1.5.6", "trk-a", "thm-a-01", "mod-a-01-05"))
+                         ("5.2.2", "trk-a", "thm-a-01", "mod-a-01-05"))
         self.assertEqual(lesson["status"], "published")
         self.assertEqual(lesson["content_state"], "published")
         self.assertEqual(lesson["prerequisite_uids"], ["les-a-0047"])
         self.assertEqual(set(lesson["url_i18n"]), {"ru", "en", "zh"})
         self.assertEqual(set(lesson["title_i18n"]), {"ru", "en", "zh"})
-        self.assertEqual(lesson["url_i18n"]["ru"], "lessons/a-1-5-6.html")
-        self.assertEqual(lesson["url_i18n"]["en"], "lessons/a-1-5-6-en.html")
-        self.assertEqual(lesson["url_i18n"]["zh"], "lessons/a-1-5-6-zh.html")
-        previous = next(x for x in catalog["lessons"] if x["code"] == "1.5.5")
-        next_lesson = next(x for x in catalog["lessons"] if x["code"] == "1.5.7")
+        self.assertEqual(lesson["url_i18n"]["ru"], "lessons/a-5-2-2-les-a-0015.html")
+        self.assertEqual(lesson["url_i18n"]["en"], "lessons/a-5-2-2-les-a-0015-en.html")
+        self.assertEqual(lesson["url_i18n"]["zh"], "lessons/a-5-2-2-les-a-0015-zh.html")
+        previous = next(x for x in catalog["lessons"] if x["uid"] == "les-a-0047")
+        next_lesson = next(x for x in catalog["lessons"] if x["uid"] == "les-a-0048")
         self.assertEqual(previous["status"], "published")
         self.assertIn(next_lesson["status"], {"planned", "review", "published"})
-        self.assertNotIn("a-1-5-7", "".join(p.read_text(encoding="utf-8") for p in PAGES.values()))
+        self.assertTrue(all("a-1-5-7" not in p.read_text(encoding="utf-8") for p in PAGES.values()))
 
     def test_locales_have_equal_sections_assessment_and_assets(self):
         expected_sections = [f"section-{i}" for i in range(1, 9)] + ["practice"]
@@ -95,7 +95,7 @@ class Lesson156ContractTests(unittest.TestCase):
                 parser.feed(source)
                 self.assertEqual(parser.errors, [])
                 self.assertEqual(parser.stack, [])
-                canonical = f'https://dchai.ru/lessons/a-1-5-6{"-" + locale if locale != "ru" else ""}.html'
+                canonical = f'https://dchai.ru/lessons/a-5-2-2-les-a-0015{"-" + locale if locale != "ru" else ""}.html'
                 self.assertIn(f'<link rel="canonical" href="{canonical}">', source)
                 self.assertIn('<p>Understand AI. Build AI. Research AI.</p>', source)
                 self.assertIn("© 2026 AI Research DCH School", source)

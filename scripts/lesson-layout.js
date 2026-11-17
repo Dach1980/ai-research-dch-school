@@ -330,30 +330,23 @@ if(main){
   a.textContent=label;
   return a;
  }
- Promise.all([fetch(catalogUrl.href),fetch(new URL("../data/curriculum-sequence-track-a.json",scriptUrl).href)]).then(function(responses){
-  if(!responses[0].ok||!responses[1].ok)throw new Error("Catalog or curriculum sequence request failed");
-  return Promise.all(responses.map(function(response){return response.json();}));
- }).then(function(payload){
-  var catalog=payload[0],sequence=payload[1];
-  var steps=sequence.steps||[];
-  var byUid={};
-  (catalog.lessons||[]).forEach(function(item){byUid[item.uid]=item;});
+ fetch(catalogUrl.href).then(function(response){
+  if(!response.ok)throw new Error("Catalog request failed");
+  return response.json();
+ }).then(function(catalog){
+  var published=(catalog.lessons||[]).filter(function(item){
+   return item.track_uid==="trk-a"&&item.status==="published"&&item.content_state==="published"&&item.url_i18n&&item.url_i18n[locale];
+  }).sort(function(a,b){return a.code.localeCompare(b.code,"en",{numeric:true});});
   var currentPath=window.location.pathname.split("/").pop();
-  var index=steps.findIndex(function(step){
-   if(step.kind!=="lesson")return false;
-   var item=byUid[step.lesson_uid];
-   return item&&item.url_i18n&&item.url_i18n[locale]&&item.url_i18n[locale].split("/").pop()===currentPath;
-  });
+  var index=published.findIndex(function(item){return item.url_i18n[locale].split("/").pop()===currentPath;});
   if(index<0)return;
   var fragment=document.createDocumentFragment();
-  var previousStep=index>0?steps[index-1]:null;
-  var previous=previousStep&&previousStep.kind==="lesson"?byUid[previousStep.lesson_uid]:null;
-  if(previous&&previous.status==="published"&&previous.url_i18n&&previous.url_i18n[locale]){
+  var previous=index>0?published[index-1]:null;
+  if(previous&&previous.url_i18n&&previous.url_i18n[locale]){
    fragment.appendChild(link("secondary",new URL(previous.url_i18n[locale],rootUrl).href,text.previous+displayCode(previous)));
   }
-  var nextStep=index<steps.length-1?steps[index+1]:null;
-  var next=nextStep&&nextStep.kind==="lesson"?byUid[nextStep.lesson_uid]:null;
-  if(next&&next.status==="published"&&next.url_i18n&&next.url_i18n[locale]){
+  var next=index<published.length-1?published[index+1]:null;
+  if(next&&next.url_i18n&&next.url_i18n[locale]){
    fragment.appendChild(link("primary",new URL(next.url_i18n[locale],rootUrl).href,text.next+displayCode(next)+" ↗"));
   }else{
    var pending=document.createElement("span");

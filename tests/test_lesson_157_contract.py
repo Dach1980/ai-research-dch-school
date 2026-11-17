@@ -7,9 +7,9 @@ from urllib.parse import urlsplit
 
 ROOT = Path(__file__).resolve().parents[1]
 PAGES = {
-    "ru": ROOT / "lessons/a-1-5-7.html",
-    "en": ROOT / "lessons/a-1-5-7-en.html",
-    "zh": ROOT / "lessons/a-1-5-7-zh.html",
+    "ru": ROOT / "lessons/a-5-2-3-les-a-0048.html",
+    "en": ROOT / "lessons/a-5-2-3-les-a-0048-en.html",
+    "zh": ROOT / "lessons/a-5-2-3-les-a-0048-zh.html",
 }
 class Parser(HTMLParser):
     VOID = {"area","base","br","col","embed","hr","img","input","link","meta","param","source","track","wbr"}
@@ -31,7 +31,7 @@ class Lesson157ContractTests(unittest.TestCase):
     def test_catalog_identity_and_prerequisite(self):
         catalog=json.loads((ROOT/"data/catalog/catalog-v3.json").read_text(encoding="utf-8"))
         lesson=next(x for x in catalog["lessons"] if x["uid"]=="les-a-0048")
-        self.assertEqual((lesson["code"],lesson["track_uid"],lesson["theme_uid"],lesson["module_uid"]),("1.5.7","trk-a","thm-a-01","mod-a-01-05"))
+        self.assertEqual((lesson["code"],lesson["track_uid"],lesson["theme_uid"],lesson["module_uid"]),("5.2.3","trk-a","thm-a-01","mod-a-01-05"))
         self.assertEqual(lesson["prerequisite_uids"],["les-a-0015"])
         self.assertEqual(set(lesson["url_i18n"]),{"ru","en","zh"})
         self.assertEqual(set(lesson["title_i18n"]),{"ru","en","zh"})
@@ -75,7 +75,7 @@ class Lesson157ContractTests(unittest.TestCase):
                     if parts.scheme or href.startswith("#") or not parts.path: continue
                     target=(path.parent/parts.path).resolve()
                     self.assertTrue(target.is_file(),f"{loc}: broken link {href}")
-                canonical=f'https://dchai.ru/lessons/a-1-5-7{"-"+loc if loc!="ru" else ""}.html'
+                canonical=f'https://dchai.ru/lessons/a-5-2-3-les-a-0048{"-"+loc if loc!="ru" else ""}.html'
                 self.assertIn(f'<link rel="canonical" href="{canonical}">',source)
 
     def test_svg_theme_and_formula_contract(self):

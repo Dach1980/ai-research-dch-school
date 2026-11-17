@@ -13,24 +13,24 @@ TRACKS = [
 ]
 MAPS = ["learning-map/index.html", "learning-map/index-en.html", "learning-map/index-zh.html"]
 LESSONS = [
-    "lessons/a-1-4-3.html",
-    "lessons/a-1-4-3-en.html",
-    "lessons/a-1-4-3-zh.html",
-    "lessons/a-1-4-4.html",
-    "lessons/a-1-4-4-en.html",
-    "lessons/a-1-4-4-zh.html",
-    "lessons/a-1-4-5.html",
-    "lessons/a-1-4-5-en.html",
-    "lessons/a-1-4-5-zh.html",
+    "lessons/a-4-1-3-les-a-0012.html",
+    "lessons/a-4-1-3-les-a-0012-en.html",
+    "lessons/a-4-1-3-les-a-0012-zh.html",
+    "lessons/a-4-2-1-les-a-0013.html",
+    "lessons/a-4-2-1-les-a-0013-en.html",
+    "lessons/a-4-2-1-les-a-0013-zh.html",
+    "lessons/a-4-2-2-les-a-0014.html",
+    "lessons/a-4-2-2-les-a-0014-en.html",
+    "lessons/a-4-2-2-les-a-0014-zh.html",
     "lessons/a-1-1-1.html",
     "lessons/a-1-1-1-en.html",
     "lessons/a-1-1-1-zh.html",
-    "lessons/a-1-1-3.html",
-    "lessons/a-1-1-3-en.html",
-    "lessons/a-1-1-3-zh.html",
-    "lessons/a-1-1-4.html",
-    "lessons/a-1-1-4-en.html",
-    "lessons/a-1-1-4-zh.html",
+    "lessons/a-1-2-1-les-a-0002.html",
+    "lessons/a-1-2-1-les-a-0002-en.html",
+    "lessons/a-1-2-1-les-a-0002-zh.html",
+    "lessons/a-1-2-2-les-a-0052.html",
+    "lessons/a-1-2-2-les-a-0052-en.html",
+    "lessons/a-1-2-2-les-a-0052-zh.html",
     "lessons/a-3-how-machines-learn-from-data.html",
     "lessons/a-3-how-machines-learn-from-data-en.html",
     "lessons/a-3-how-machines-learn-from-data-zh.html",
@@ -164,9 +164,9 @@ class LocaleGridThemeParityTests(unittest.TestCase):
     def test_practice_and_final_assessment_counts_match_across_locales(self):
         groups = [
             ([
-                "lessons/a-1-1-3.html",
-                "lessons/a-1-1-3-en.html",
-                "lessons/a-1-1-3-zh.html",
+                "lessons/a-1-2-1-les-a-0002.html",
+                "lessons/a-1-2-1-les-a-0002-en.html",
+                "lessons/a-1-2-1-les-a-0002-zh.html",
             ], "class=\"quiz\"", 5, "class=\"lesson-check-question\"", 3),
             ([
                 "lessons/a-3-how-machines-learn-from-data.html",
@@ -305,8 +305,8 @@ class LocaleGridThemeParityTests(unittest.TestCase):
             with self.subTest(path=path):
                 self.assertIsNone(re.search(r'\\bA\.\d+', page))
         home_ru = (ROOT / "index.html").read_text(encoding="utf-8")
-        self.assertIn("1.1.3 — AI, Machine Learning и Deep Learning", home_ru)
-        self.assertIn('href="lessons/a-1-1-3.html"', home_ru)
+        self.assertIn("1.2.1 — AI, Machine Learning и Deep Learning", home_ru)
+        self.assertIn('href="lessons/a-1-2-1-les-a-0002.html"', home_ru)
         for path in ("scripts/lesson-catalog.js", "scripts/planet-map-catalog.js", "scripts/home-knowledge-map.js"):
             script = (ROOT / path).read_text(encoding="utf-8")
             self.assertIn("catalog-v3.json", script)

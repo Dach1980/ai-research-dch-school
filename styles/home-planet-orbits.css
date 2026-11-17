@@ -50,3 +50,7 @@
 @keyframes track-card-orbit-spin-reverse{to{transform:rotate(-328deg) scaleY(.28)}}
 @media(max-width:620px){.track-planet-orbit{width:74px;height:74px;flex-basis:74px}.track-card .track-planet-icon{width:100%;height:100%}}
 @media(prefers-reduced-motion:reduce){.track-planet-icon,.track-planet-orbit:before,.track-planet-orbit:after{animation:none!important}}
+
+/* Catalog-driven homepage lesson cards: reviewed material remains visibly distinct. */
+.home-planet-review{border-color:rgba(230,166,79,.62)!important}
+.home-planet-status{display:inline-block;width:max-content;padding:3px 7px;border:1px solid rgba(230,166,79,.5);border-radius:999px;color:#e6b96e;background:rgba(230,166,79,.1);font-size:10px;font-weight:700}

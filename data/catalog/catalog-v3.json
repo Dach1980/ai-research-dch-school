@@ -2341,6 +2341,38 @@
       }
     },
     {
+      "uid": "les-a-0148",
+      "track_uid": "trk-a",
+      "theme_uid": "thm-a-06",
+      "module_uid": "mod-a-06-01",
+      "code": "6.1.2",
+      "title": "Интерпретируемость и объяснимость",
+      "status": "published",
+      "access": "open",
+      "level": "beginner",
+      "prerequisite_uids": [
+        "les-a-0147"
+      ],
+      "learning_outcomes": [
+        "Различает интерпретируемость модели, объяснимость и конкретное объяснение, учитывая отсутствие универсальной терминологической стандартизации.",
+        "Сравнивает модели, интерпретируемые по замыслу, и постфактум-методы объяснения уже обученных моделей.",
+        "Объясняет сильные стороны, ограничения и риски интерпретируемых моделей, feature attribution, локальных аппроксимаций и контрфактических объяснений.",
+        "Выбирает стратегию объяснения с учётом объекта анализа, аудитории, цели, цены ошибки и проверяемости.",
+        "Оценивает объяснения по верности поведению модели, устойчивости, области применимости, понятности и воспроизводимости."
+      ],
+      "content_state": "published",
+      "url_i18n": {
+        "ru": "lessons/a-6-1-2-les-a-0148.html",
+        "en": "lessons/a-6-1-2-les-a-0148-en.html",
+        "zh": "lessons/a-6-1-2-les-a-0148-zh.html"
+      },
+      "title_i18n": {
+        "ru": "Интерпретируемость и объяснимость",
+        "en": "Interpretability and Explainability",
+        "zh": "可解释性与可解释说明"
+      }
+    },
+    {
       "uid": "les-a-0018",
       "track_uid": "trk-a",
       "theme_uid": "thm-a-07",
@@ -3218,25 +3250,6 @@
         "les-a-0145"
       ],
       "learning_outcomes": [],
-      "content_state": "outline_only"
-    },
-    {
-      "uid": "les-a-0148",
-      "track_uid": "trk-a",
-      "theme_uid": "thm-a-04",
-      "module_uid": "mod-a-04-01",
-      "code": "4.1.2",
-      "title": "Интерпретируемость и объяснимость",
-      "status": "planned",
-      "access": "open",
-      "level": "beginner",
-      "prerequisite_uids": [
-        "les-a-0147"
-      ],
-      "learning_outcomes": [
-        "Различает interpretable-by-design и post-hoc explainability.",
-        "Описывает сильные стороны и ограничения встроенной интерпретируемости и постфактум-объяснений."
-      ],
       "content_state": "outline_only"
     },
     {

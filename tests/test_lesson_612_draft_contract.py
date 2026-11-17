@@ -5,11 +5,11 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 PAGES = {
-    "ru": ROOT / "drafts/lessons/a-6-1-2-ru.html",
-    "en": ROOT / "drafts/lessons/a-6-1-2-en.html",
-    "zh": ROOT / "drafts/lessons/a-6-1-2-zh.html",
+    "ru": ROOT / "lessons/a-6-1-2-les-a-0148.html",
+    "en": ROOT / "lessons/a-6-1-2-les-a-0148-en.html",
+    "zh": ROOT / "lessons/a-6-1-2-les-a-0148-zh.html",
 }
-ROUTES = {"ru": "a-6-1-2-ru.html", "en": "a-6-1-2-en.html", "zh": "a-6-1-2-zh.html"}
+ROUTES = {"ru": "a-6-1-2-les-a-0148.html", "en": "a-6-1-2-les-a-0148-en.html", "zh": "a-6-1-2-les-a-0148-zh.html"}
 
 
 class TagBalance(HTMLParser):
@@ -61,6 +61,9 @@ class Lesson612DraftTests(unittest.TestCase):
                 self.assertEqual(html.count('class="lesson-check-feedback"'), 5)
                 self.assertEqual(html.count('class="glossary-entry"'), 8)
                 self.assertEqual(html.count('class="lesson-sources"'), 1)
+                self.assertEqual(html.count('class="lesson-figure"'), 1)
+                self.assertIn('<title id="route-title">', html)
+                self.assertIn('<desc id="route-desc">', html)
                 self.assertEqual(len(re.findall(r'<li><a href="https://', html)), 6)
 
     def test_single_choice_questions_use_distinct_radio_groups(self):
@@ -105,10 +108,19 @@ class Lesson612DraftTests(unittest.TestCase):
         script = (ROOT / "scripts/lesson-assessment.js").read_text(encoding="utf-8")
         self.assertIn('input[type="checkbox"],input[type="radio"]', script)
 
-    def test_612_stays_out_of_catalog_until_its_visual_acceptance(self):
+    def test_612_is_published_with_approved_stable_uid_and_localized_urls(self):
         import json
         catalog = json.loads((ROOT / "data/catalog/catalog-v3.json").read_text(encoding="utf-8"))
-        self.assertFalse(any(item.get("code") == "6.1.2" for item in catalog["lessons"]))
+        lesson = next(item for item in catalog["lessons"] if item.get("uid") == "les-a-0148")
+        self.assertEqual(lesson["code"], "6.1.2")
+        self.assertEqual(lesson["status"], "published")
+        self.assertEqual(lesson["content_state"], "published")
+        self.assertEqual(lesson["theme_uid"], "thm-a-06")
+        self.assertEqual(lesson["module_uid"], "mod-a-06-01")
+        self.assertEqual(lesson["url_i18n"]["ru"], "lessons/a-6-1-2-les-a-0148.html")
+        self.assertEqual(lesson["url_i18n"]["en"], "lessons/a-6-1-2-les-a-0148-en.html")
+        self.assertEqual(lesson["url_i18n"]["zh"], "lessons/a-6-1-2-les-a-0148-zh.html")
+        self.assertEqual(catalog["lessons"][catalog["lessons"].index(lesson)-1]["uid"], "les-a-0147")
 
 
 if __name__ == "__main__":

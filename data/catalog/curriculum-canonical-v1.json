@@ -540,14 +540,14 @@
                 {
                   "number": "6.1.2",
                   "title_ru": "Интерпретируемость и объяснимость",
-                  "uid": null,
-                  "legacy_number": null,
-                  "legacy_mapping_status": "not_verified",
-                  "publication_status": "not_asserted",
+                  "uid": "les-a-0148",
+                  "legacy_number": "4.1.2",
+                  "legacy_mapping_status": "verified_exact_title_reuse_and_ownership_migration",
+                  "publication_status": "published",
                   "urls": {
-                    "ru": null,
-                    "en": null,
-                    "zh": null
+                    "ru": "lessons/a-6-1-2-les-a-0148.html",
+                    "en": "lessons/a-6-1-2-les-a-0148-en.html",
+                    "zh": "lessons/a-6-1-2-les-a-0148-zh.html"
                   }
                 },
                 {

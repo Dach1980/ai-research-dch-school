@@ -3,7 +3,7 @@ from html.parser import HTMLParser
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-FILES = {"ru": ROOT/"lessons/a-1-4-5.html", "en": ROOT/"lessons/a-1-4-5-en.html", "zh": ROOT/"lessons/a-1-4-5-zh.html"}
+FILES = {"ru": ROOT/"lessons/a-4-2-2-les-a-0014.html", "en": ROOT/"lessons/a-4-2-2-les-a-0014-en.html", "zh": ROOT/"lessons/a-4-2-2-les-a-0014-zh.html"}
 TITLES = {"ru":"Гиперпараметры и настройка модели","en":"Hyperparameters and Model Tuning","zh":"超参数与模型调优"}
 
 class LinkParser(HTMLParser):
@@ -50,7 +50,7 @@ class Lesson145Tests(unittest.TestCase):
             self.assertNotRegex(source,r'data-explanation="[abc]"')
             nav=source.split('class="lesson-nav"',1)[1].split("</nav>",1)[0]
             self.assertEqual(nav.count('class="button'),5)
-            self.assertIn("a-1-4-4",nav)
+            self.assertIn("a-4-2-1-les-a-0013",nav)
             self.assertIn('class="language-python"',source)
             match=re.search(r'<pre class="language-python"><code>(.*?)</code></pre>',source,re.S)
             self.assertIsNotNone(match)
@@ -58,7 +58,7 @@ class Lesson145Tests(unittest.TestCase):
     def test_catalog_uid_prerequisite_and_publication(self):
         catalog=json.loads((ROOT/"data/catalog/catalog-v3.json").read_text(encoding="utf-8"))
         lesson=next(x for x in catalog["lessons"] if x["uid"]=="les-a-0014")
-        self.assertEqual(lesson["code"],"1.4.5")
+        self.assertEqual(lesson["code"],"4.2.2")
         self.assertEqual(lesson["status"],"published")
         self.assertEqual(lesson["content_state"],"published")
         self.assertEqual(lesson["prerequisite_uids"],["les-a-0013"])

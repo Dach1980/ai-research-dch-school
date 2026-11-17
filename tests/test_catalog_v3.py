@@ -16,9 +16,9 @@ class CatalogV3Tests(unittest.TestCase):
 
     def test_track_a_has_approved_hierarchy(self):
         a_themes = [x for x in self.catalog["themes"] if x["track_uid"] == "trk-a"]
-        self.assertEqual(len(a_themes), 6)
+        self.assertEqual(len(a_themes), 7)
         self.assertEqual(len(self.catalog["modules"]), 33)
-        self.assertEqual([sum(x["theme_uid"] == t["uid"] for x in self.catalog["modules"]) for t in a_themes], [5, 8, 2, 8, 9, 1])
+        self.assertEqual([sum(x["theme_uid"] == t["uid"] for x in self.catalog["modules"]) for t in a_themes], [5, 8, 2, 8, 9, 1, 1])
 
     def test_uid_is_separate_from_display_code(self):
         rows = self.catalog["tracks"] + self.catalog["themes"] + self.catalog["modules"] + self.catalog["lessons"]

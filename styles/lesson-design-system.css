@@ -137,3 +137,22 @@ html:not([data-theme="light"]){--lds-definition-term:#5eead4;--lds-definition-te
    Existing semantic classes (title/label/accent and lesson-specific text classes)
    keep their own higher-specificity theme-aware colors. */
 svg text{fill:var(--lds-ink)}
+
+
+/* Supervised-learning flow diagram: semantic colors adapt to the active theme. */
+.lesson-figure-supervised{
+  --sl-example-fill:#eaf1fb;--sl-example-stroke:#5279ad;
+  --sl-process-fill:#dce9fa;--sl-process-stroke:#5279ad;
+  --sl-model-fill:#d9f2ed;--sl-model-stroke:#278a7d;
+  --sl-text-strong:#18304f;--sl-text-muted:#405875;
+  --sl-accent:#167d73;--sl-arrow:#5279ad;--sl-caption:#526783;
+  background:linear-gradient(135deg,#ffffff,#f5f8fd)!important;
+}
+html:not([data-theme="light"]) .lesson-figure-supervised{
+  --sl-example-fill:#172b49;--sl-example-stroke:#6d91c4;
+  --sl-process-fill:#203b60;--sl-process-stroke:#7e9fcf;
+  --sl-model-fill:#164b49;--sl-model-stroke:#65cbb9;
+  --sl-text-strong:#eaf2ff;--sl-text-muted:#c0d0e7;
+  --sl-accent:#9adbd0;--sl-arrow:#8da9d1;--sl-caption:#9fb3d0;
+  background:linear-gradient(135deg,rgba(18,35,62,.88),rgba(10,17,32,.92))!important;
+}

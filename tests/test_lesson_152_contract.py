@@ -6,9 +6,14 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 PAGES = {
-    "ru": ROOT / "lessons/a-1-5-2.html",
-    "en": ROOT / "lessons/a-1-5-2-en.html",
-    "zh": ROOT / "lessons/a-1-5-2-zh.html",
+    "ru": ROOT / "lessons/a-5-1-2-les-a-0044.html",
+    "en": ROOT / "lessons/a-5-1-2-les-a-0044-en.html",
+    "zh": ROOT / "lessons/a-5-1-2-les-a-0044-zh.html",
+}
+LEGACY_ROUTES = {
+    "ru": "a-1-5-2.html",
+    "en": "a-1-5-2-en.html",
+    "zh": "a-1-5-2-zh.html",
 }
 
 
@@ -43,14 +48,23 @@ class Lesson152ContractTests(unittest.TestCase):
     def test_catalog_identity_and_localized_routes(self):
         catalog = json.loads((ROOT / "data/catalog/catalog-v3.json").read_text(encoding="utf-8"))
         lesson = next(item for item in catalog["lessons"] if item["uid"] == "les-a-0044")
-        self.assertEqual(lesson["code"], "1.5.2")
+        self.assertEqual(lesson["code"], "5.1.2")
         self.assertEqual(lesson["track_uid"], "trk-a")
         self.assertEqual(lesson["module_uid"], "mod-a-01-05")
-        self.assertIn(lesson["status"], {"review", "published"})
-        self.assertIn(lesson["content_state"], {"localized", "published"})
+        self.assertEqual(lesson["status"], "published")
+        self.assertEqual(lesson["content_state"], "published")
         self.assertEqual(lesson["prerequisite_uids"], ["les-a-0043"])
-        self.assertEqual(set(lesson["url_i18n"]), {"ru", "en", "zh"})
+        self.assertEqual(lesson["url_i18n"], {
+            "ru": "lessons/a-5-1-2-les-a-0044.html",
+            "en": "lessons/a-5-1-2-les-a-0044-en.html",
+            "zh": "lessons/a-5-1-2-les-a-0044-zh.html",
+        })
         self.assertEqual(set(lesson["title_i18n"]), {"ru", "en", "zh"})
+        for locale, path in PAGES.items():
+            self.assertTrue(path.is_file(), f"missing canonical {locale} lesson page")
+            legacy = (ROOT / "lessons" / LEGACY_ROUTES[locale]).read_text(encoding="utf-8")
+            self.assertIn(path.name, legacy)
+            self.assertIn("location.replace", legacy)
 
     def test_three_locales_have_equal_learning_components(self):
         expected = {
@@ -75,6 +89,7 @@ class Lesson152ContractTests(unittest.TestCase):
                 self.assertIn('<article class="article-body">', source)
                 self.assertIn('class="lesson-planet-banner"', source)
                 self.assertIn('class="lesson-planet-art"', source)
+                self.assertIn('class="locale-links"', source)
                 self.assertIn('../styles/lesson-reference-111.css', source)
                 self.assertIn('../styles/lesson-124.css', source)
                 self.assertIn('../styles/lesson-152.css', source)
@@ -88,8 +103,9 @@ class Lesson152ContractTests(unittest.TestCase):
                 self.assertIn('data-mode="yesno"', source)
                 self.assertIn('aria-live="polite"', source)
                 self.assertIn('<nav class="lesson-nav"', source)
-                self.assertNotIn('a-1-5-3.html', source)
-                self.assertNotIn('a-1-5-1.html', source.split('<nav class="lesson-nav"', 1)[1].split('</nav>', 1)[0])
+                nav = source.split('<nav class="lesson-nav"', 1)[1].split('</nav>', 1)[0]
+                self.assertNotIn('a-5-1-3-les-a-0045', nav)
+                self.assertNotIn('a-5-1-1-les-a-0043', nav)
                 for component, count in expected.items():
                     self.assertEqual(source.count(f'class="{component}"'), count, component)
                 ids = re.findall(r'<section id="([^"]+)"', source)
@@ -114,17 +130,20 @@ class Lesson152ContractTests(unittest.TestCase):
                 self.assertIn("<strong>AI Research</strong><small>DCH SCHOOL</small>", footer)
 
     def test_matrix_semantics_and_example_are_consistent(self):
-        for path in PAGES.values():
+        for locale, path in PAGES.items():
             source = path.read_text(encoding="utf-8")
-            with self.subTest(path=path.name):
-                self.assertIn("18", source)
-                self.assertIn("168", source)
+            with self.subTest(locale=locale):
+                for value in ("18", "168", "TP", "TN", "FP", "FN"):
+                    self.assertIn(value, source)
                 self.assertIn("18 + 2 + 12 + 168 = 200", source)
-                self.assertIn("cell-tp", source)
-                self.assertIn("cell-tn", source)
-                self.assertIn("cell-fp", source)
-                self.assertIn("cell-fn", source)
-                self.assertIn("Actual", source) if path.name.endswith("-en.html") else None
+                for cell in ("cell-tp", "cell-tn", "cell-fp", "cell-fn"):
+                    self.assertIn(cell, source)
+                if locale == "en":
+                    self.assertIn("Actual", source)
+                elif locale == "zh":
+                    self.assertIn("真实类别", source)
+                else:
+                    self.assertIn("Фактически", source)
 
     def test_glossary_and_svg_use_theme_aware_shared_system(self):
         css = (ROOT / "styles/lesson-124.css").read_text(encoding="utf-8")
@@ -153,12 +172,14 @@ class Lesson152ContractTests(unittest.TestCase):
         self.assertIn("Граница содержания урока 1.5.2", curriculum)
         self.assertIn("1.5.3", curriculum)
         script = (ROOT / "scripts/lesson-layout.js").read_text(encoding="utf-8")
-        self.assertIn("The explicit curriculum sequence is the authority for lesson order", script)
-        self.assertIn("steps.findIndex(function(step)", script)
-        self.assertIn('step.kind!=="lesson"', script)
-        self.assertIn('previous.status==="published"', script)
-        self.assertIn('next.status==="published"', script)
+        self.assertIn("Canonical Track A lesson navigation", script)
+        self.assertIn('item.track_uid==="trk-a"', script)
+        self.assertIn('item.status==="published"', script)
+        self.assertIn('item.content_state==="published"', script)
+        self.assertIn("published.findIndex(function(item)", script)
         self.assertIn("nav.replaceChildren(fragment)", script)
+        self.assertIn('"a-5-1-2-les-a-0044.html"', script)
+        self.assertIn('"code": "5.1.2"', script)
         for path in PAGES.values():
             source = path.read_text(encoding="utf-8")
             self.assertIn('<nav class="lesson-nav"', source)

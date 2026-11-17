@@ -78,7 +78,7 @@ class Lesson151PublicationContractTests(unittest.TestCase):
         self.assertIn('item.status==="published"', script)
         self.assertIn('item.content_state==="published"', script)
         self.assertIn("published.findIndex(function(item)", script)
-        self.assertIn("published.sort(function(a,b)", script)
+        self.assertIn('.sort(function(a,b){return a.code.localeCompare(b.code,"en",{numeric:true});})', script)
         self.assertIn('nav.replaceChildren(fragment)', script)
         for path in PAGES.values():
             source = path.read_text(encoding="utf-8")

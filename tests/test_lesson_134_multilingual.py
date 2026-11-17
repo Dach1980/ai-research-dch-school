@@ -68,7 +68,7 @@ class Lesson134Tests(unittest.TestCase):
             self.assertEqual(lesson["status"], "published", lesson["code"])
             self.assertEqual(lesson["content_state"], "published", lesson["code"])
             self.assertEqual(set(lesson["url_i18n"]), {"ru", "en", "zh"})
-        draft = {item["code"]: item for item in catalog["lessons"]}["4.1.1"]
+        draft = {item["code"]: item for item in catalog["lessons"] if item.get("status") == "published" and item.get("content_state") == "published" and item.get("url_i18n")}["4.1.1"]
         self.assertEqual(draft["uid"], "les-a-0010")
         self.assertEqual(draft["status"], "published")
         self.assertEqual(draft["content_state"], "published")

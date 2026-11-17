@@ -106,6 +106,8 @@ jobs:
         run: node tests/test_catalog_v3_js.cjs
       - name: Test v3 catalog and migration manifest
         run: python -m unittest discover -s tests -p 'test_catalog_v3.py' -v
+      - name: Test automatic lesson visibility across Track A and planet map
+        run: python -m unittest discover -s tests -p 'test_catalog_visibility.py' -v
       - name: Validate staging catalog v3
         run: python scripts/validate-catalog-v3.py
       - name: Test hierarchical catalog UI migration

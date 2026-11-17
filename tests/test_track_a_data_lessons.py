@@ -104,7 +104,10 @@ class TrackADataLessonTests(unittest.TestCase):
                 ]
                 self.assertEqual(positions, sorted(positions), f"{uid}-{locale}")
                 nav = html.split('class="lesson-nav"', 1)[1].split("</nav>", 1)[0]
-                self.assertNotIn('class="button', nav)
+                self.assertEqual(nav.count('class="button'), 5)
+                self.assertIn("learning-map/", nav)
+                self.assertIn("understanding-ai", nav)
+                self.assertIn("index", nav)
         script = (ROOT / "scripts/lesson-layout.js").read_text(encoding="utf-8")
         self.assertIn('item.track_uid==="trk-a"', script)
         self.assertIn('item.status==="published"', script)

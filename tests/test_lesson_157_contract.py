@@ -31,7 +31,7 @@ class Lesson157ContractTests(unittest.TestCase):
     def test_catalog_identity_and_prerequisite(self):
         catalog=json.loads((ROOT/"data/catalog/catalog-v3.json").read_text(encoding="utf-8"))
         lesson=next(x for x in catalog["lessons"] if x["uid"]=="les-a-0048")
-        self.assertEqual((lesson["code"],lesson["track_uid"],lesson["theme_uid"],lesson["module_uid"]),("5.2.3","trk-a","thm-a-01","mod-a-01-05"))
+        self.assertEqual((lesson["code"],lesson["track_uid"],lesson["theme_uid"],lesson["module_uid"]),("5.2.3","trk-a","thm-a-05","mod-a-05-02"))
         self.assertEqual(lesson["prerequisite_uids"],["les-a-0015"])
         self.assertEqual(set(lesson["url_i18n"]),{"ru","en","zh"})
         self.assertEqual(set(lesson["title_i18n"]),{"ru","en","zh"})

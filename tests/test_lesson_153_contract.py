@@ -50,7 +50,7 @@ class Lesson153ContractTests(unittest.TestCase):
         lesson = next(item for item in catalog["lessons"] if item["uid"] == "les-a-0045")
         self.assertEqual(lesson["code"], "5.1.3")
         self.assertEqual(lesson["track_uid"], "trk-a")
-        self.assertEqual(lesson["module_uid"], "mod-a-01-05")
+        self.assertEqual(lesson["module_uid"], "mod-a-05-01")
         self.assertEqual(lesson["status"], "published")
         self.assertEqual(lesson["content_state"], "published")
         self.assertEqual(lesson["prerequisite_uids"], ["les-a-0044"])

@@ -1,7 +1,7 @@
 {
   "schema_version": 3,
   "catalog_id": "dch-school-curriculum",
-  "catalog_version": "3.2.0-draft",
+  "catalog_version": "3.2.1-numbering-overlay",
   "status": "migration_staging",
   "tracks": [
     {
@@ -392,7 +392,7 @@
       "track_uid": "trk-a",
       "theme_uid": "thm-a-01",
       "module_uid": "mod-a-01-01",
-      "code": "1.1.3",
+      "code": "1.2.1",
       "title": "AI, Machine Learning и Deep Learning",
       "status": "published",
       "access": "open",
@@ -403,9 +403,9 @@
       "learning_outcomes": [],
       "content_state": "published",
       "url_i18n": {
-        "ru": "lessons/a-1-1-3.html",
-        "en": "lessons/a-1-1-3-en.html",
-        "zh": "lessons/a-1-1-3-zh.html"
+        "ru": "lessons/a-1-2-1-les-a-0002.html",
+        "en": "lessons/a-1-2-1-les-a-0002-en.html",
+        "zh": "lessons/a-1-2-1-les-a-0002-zh.html"
       },
       "title_i18n": {
         "ru": "AI, Machine Learning и Deep Learning",
@@ -418,7 +418,7 @@
       "track_uid": "trk-a",
       "theme_uid": "thm-a-01",
       "module_uid": "mod-a-01-01",
-      "code": "1.1.4",
+      "code": "1.2.2",
       "title": "Символический AI и машинное обучение",
       "status": "published",
       "access": "open",
@@ -434,9 +434,9 @@
       ],
       "content_state": "published",
       "url_i18n": {
-        "ru": "lessons/a-1-1-4.html",
-        "en": "lessons/a-1-1-4-en.html",
-        "zh": "lessons/a-1-1-4-zh.html"
+        "ru": "lessons/a-1-2-2-les-a-0052.html",
+        "en": "lessons/a-1-2-2-les-a-0052-en.html",
+        "zh": "lessons/a-1-2-2-les-a-0052-zh.html"
       },
       "title_i18n": {
         "ru": "Символический AI и машинное обучение",
@@ -449,7 +449,7 @@
       "track_uid": "trk-a",
       "theme_uid": "thm-a-01",
       "module_uid": "mod-a-01-02",
-      "code": "1.2.1",
+      "code": "2.1.1",
       "title": "Что такое данные в машинном обучении",
       "status": "published",
       "access": "open",
@@ -465,9 +465,9 @@
       ],
       "content_state": "published",
       "url_i18n": {
-        "ru": "lessons/a-1-2-1.html",
-        "en": "lessons/a-1-2-1-en.html",
-        "zh": "lessons/a-1-2-1-zh.html"
+        "ru": "lessons/a-2-1-1-les-a-0003.html",
+        "en": "lessons/a-2-1-1-les-a-0003-en.html",
+        "zh": "lessons/a-2-1-1-les-a-0003-zh.html"
       },
       "title_i18n": {
         "ru": "Что такое данные в машинном обучении",
@@ -480,7 +480,7 @@
       "track_uid": "trk-a",
       "theme_uid": "thm-a-01",
       "module_uid": "mod-a-01-02",
-      "code": "1.2.2",
+      "code": "2.1.2",
       "title": "Объекты, признаки и целевые переменные",
       "status": "published",
       "access": "open",
@@ -496,9 +496,9 @@
       ],
       "content_state": "published",
       "url_i18n": {
-        "ru": "lessons/a-1-2-2.html",
-        "en": "lessons/a-1-2-2-en.html",
-        "zh": "lessons/a-1-2-2-zh.html"
+        "ru": "lessons/a-2-1-2-les-a-0004.html",
+        "en": "lessons/a-2-1-2-les-a-0004-en.html",
+        "zh": "lessons/a-2-1-2-les-a-0004-zh.html"
       },
       "title_i18n": {
         "ru": "Объекты, признаки и целевые переменные",
@@ -511,7 +511,7 @@
       "track_uid": "trk-a",
       "theme_uid": "thm-a-01",
       "module_uid": "mod-a-01-02",
-      "code": "1.2.3",
+      "code": "2.1.3",
       "title": "Типы данных и представление признаков",
       "status": "published",
       "access": "open",
@@ -528,9 +528,9 @@
       ],
       "content_state": "published",
       "url_i18n": {
-        "ru": "lessons/a-1-2-3.html",
-        "en": "lessons/a-1-2-3-en.html",
-        "zh": "lessons/a-1-2-3-zh.html"
+        "ru": "lessons/a-2-1-3-les-a-0056.html",
+        "en": "lessons/a-2-1-3-les-a-0056-en.html",
+        "zh": "lessons/a-2-1-3-les-a-0056-zh.html"
       },
       "title_i18n": {
         "ru": "Типы данных и представление признаков",
@@ -543,7 +543,7 @@
       "track_uid": "trk-a",
       "theme_uid": "thm-a-01",
       "module_uid": "mod-a-01-02",
-      "code": "1.2.4",
+      "code": "2.2.1",
       "title": "Обучающие, проверочные и тестовые данные",
       "status": "published",
       "access": "open",
@@ -559,9 +559,9 @@
       ],
       "content_state": "published",
       "url_i18n": {
-        "ru": "lessons/a-1-2-4.html",
-        "en": "lessons/a-1-2-4-en.html",
-        "zh": "lessons/a-1-2-4-zh.html"
+        "ru": "lessons/a-2-2-1-les-a-0050.html",
+        "en": "lessons/a-2-2-1-les-a-0050-en.html",
+        "zh": "lessons/a-2-2-1-les-a-0050-zh.html"
       },
       "title_i18n": {
         "ru": "Обучающие, проверочные и тестовые данные",
@@ -574,7 +574,7 @@
       "track_uid": "trk-a",
       "theme_uid": "thm-a-01",
       "module_uid": "mod-a-01-02",
-      "code": "1.2.5",
+      "code": "2.2.2",
       "title": "Качество данных, пропуски и выбросы",
       "status": "published",
       "access": "open",
@@ -590,9 +590,9 @@
       ],
       "content_state": "published",
       "url_i18n": {
-        "ru": "lessons/a-1-2-5.html",
-        "en": "lessons/a-1-2-5-en.html",
-        "zh": "lessons/a-1-2-5-zh.html"
+        "ru": "lessons/a-2-2-2-les-a-0005.html",
+        "en": "lessons/a-2-2-2-les-a-0005-en.html",
+        "zh": "lessons/a-2-2-2-les-a-0005-zh.html"
       },
       "title_i18n": {
         "ru": "Качество данных, пропуски и выбросы",
@@ -605,7 +605,7 @@
       "track_uid": "trk-a",
       "theme_uid": "thm-a-01",
       "module_uid": "mod-a-01-02",
-      "code": "1.2.6",
+      "code": "2.2.3",
       "title": "Корреляция, зависимости и утечка данных",
       "status": "published",
       "access": "open",
@@ -623,9 +623,9 @@
       ],
       "content_state": "published",
       "url_i18n": {
-        "ru": "lessons/a-1-2-6.html",
-        "en": "lessons/a-1-2-6-en.html",
-        "zh": "lessons/a-1-2-6-zh.html"
+        "ru": "lessons/a-2-2-3-les-a-0006.html",
+        "en": "lessons/a-2-2-3-les-a-0006-en.html",
+        "zh": "lessons/a-2-2-3-les-a-0006-zh.html"
       },
       "title_i18n": {
         "ru": "Корреляция, зависимости и утечка данных",
@@ -638,7 +638,7 @@
       "track_uid": "trk-a",
       "theme_uid": "thm-a-01",
       "module_uid": "mod-a-01-03",
-      "code": "1.3.1",
+      "code": "3.1.1",
       "title": "Обучение с учителем — Supervised Learning",
       "status": "published",
       "access": "open",
@@ -654,9 +654,9 @@
       ],
       "content_state": "published",
       "url_i18n": {
-        "ru": "lessons/a-1-3-1.html",
-        "en": "lessons/a-1-3-1-en.html",
-        "zh": "lessons/a-1-3-1-zh.html"
+        "ru": "lessons/a-3-1-1-les-a-0007.html",
+        "en": "lessons/a-3-1-1-les-a-0007-en.html",
+        "zh": "lessons/a-3-1-1-les-a-0007-zh.html"
       },
       "title_i18n": {
         "ru": "Обучение с учителем — Supervised Learning",
@@ -669,7 +669,7 @@
       "track_uid": "trk-a",
       "theme_uid": "thm-a-01",
       "module_uid": "mod-a-01-03",
-      "code": "1.3.2",
+      "code": "3.1.2",
       "title": "Обучение без учителя — Unsupervised Learning",
       "status": "published",
       "access": "open",
@@ -688,9 +688,9 @@
       ],
       "content_state": "published",
       "url_i18n": {
-        "ru": "lessons/a-1-3-2.html",
-        "en": "lessons/a-1-3-2-en.html",
-        "zh": "lessons/a-1-3-2-zh.html"
+        "ru": "lessons/a-3-1-2-les-a-0008.html",
+        "en": "lessons/a-3-1-2-les-a-0008-en.html",
+        "zh": "lessons/a-3-1-2-les-a-0008-zh.html"
       },
       "title_i18n": {
         "ru": "Обучение без учителя — Unsupervised Learning",
@@ -703,7 +703,7 @@
       "track_uid": "trk-a",
       "theme_uid": "thm-a-01",
       "module_uid": "mod-a-01-03",
-      "code": "1.3.3",
+      "code": "3.1.3",
       "title": "Обучение с подкреплением — Reinforcement Learning",
       "status": "published",
       "access": "open",
@@ -722,9 +722,9 @@
       ],
       "content_state": "published",
       "url_i18n": {
-        "ru": "lessons/a-1-3-3.html",
-        "en": "lessons/a-1-3-3-en.html",
-        "zh": "lessons/a-1-3-3-zh.html"
+        "ru": "lessons/a-3-1-3-les-a-0053.html",
+        "en": "lessons/a-3-1-3-les-a-0053-en.html",
+        "zh": "lessons/a-3-1-3-les-a-0053-zh.html"
       },
       "title_i18n": {
         "ru": "Обучение с подкреплением — Reinforcement Learning",
@@ -737,7 +737,7 @@
       "track_uid": "trk-a",
       "theme_uid": "thm-a-01",
       "module_uid": "mod-a-01-03",
-      "code": "1.3.4",
+      "code": "3.2.1",
       "title": "Классификация и регрессия",
       "status": "published",
       "access": "open",
@@ -760,9 +760,9 @@
         "zh": "分类与回归"
       },
       "url_i18n": {
-        "ru": "lessons/a-1-3-4.html",
-        "en": "lessons/a-1-3-4-en.html",
-        "zh": "lessons/a-1-3-4-zh.html"
+        "ru": "lessons/a-3-2-1-les-a-0054.html",
+        "en": "lessons/a-3-2-1-les-a-0054-en.html",
+        "zh": "lessons/a-3-2-1-les-a-0054-zh.html"
       }
     },
     {
@@ -770,7 +770,7 @@
       "track_uid": "trk-a",
       "theme_uid": "thm-a-01",
       "module_uid": "mod-a-01-03",
-      "code": "1.3.5",
+      "code": "3.2.2",
       "title": "Кластеризация и снижение размерности",
       "status": "published",
       "access": "open",
@@ -793,9 +793,9 @@
         "zh": "聚类与降维"
       },
       "url_i18n": {
-        "ru": "lessons/a-1-3-5.html",
-        "en": "lessons/a-1-3-5-en.html",
-        "zh": "lessons/a-1-3-5-zh.html"
+        "ru": "lessons/a-3-2-2-les-a-0055.html",
+        "en": "lessons/a-3-2-2-les-a-0055-en.html",
+        "zh": "lessons/a-3-2-2-les-a-0055-zh.html"
       }
     },
     {
@@ -803,7 +803,7 @@
       "track_uid": "trk-a",
       "theme_uid": "thm-a-01",
       "module_uid": "mod-a-01-03",
-      "code": "1.3.6",
+      "code": "3.2.3",
       "title": "Генеративные модели и другие современные подходы",
       "status": "published",
       "access": "open",
@@ -823,9 +823,9 @@
       ],
       "content_state": "published",
       "url_i18n": {
-        "ru": "lessons/a-1-3-6.html",
-        "en": "lessons/a-1-3-6-en.html",
-        "zh": "lessons/a-1-3-6-zh.html"
+        "ru": "lessons/a-3-2-3-les-a-0009.html",
+        "en": "lessons/a-3-2-3-les-a-0009-en.html",
+        "zh": "lessons/a-3-2-3-les-a-0009-zh.html"
       },
       "title_i18n": {
         "ru": "Генеративные модели и современные подходы ИИ",
@@ -838,7 +838,7 @@
       "track_uid": "trk-a",
       "theme_uid": "thm-a-01",
       "module_uid": "mod-a-01-04",
-      "code": "1.4.1",
+      "code": "4.1.1",
       "title": "Понятие модели и параметров",
       "status": "published",
       "access": "open",
@@ -854,9 +854,9 @@
       ],
       "content_state": "published",
       "url_i18n": {
-        "ru": "lessons/a-1-4-1.html",
-        "en": "lessons/a-1-4-1-en.html",
-        "zh": "lessons/a-1-4-1-zh.html"
+        "ru": "lessons/a-4-1-1-les-a-0010.html",
+        "en": "lessons/a-4-1-1-les-a-0010-en.html",
+        "zh": "lessons/a-4-1-1-les-a-0010-zh.html"
       },
       "title_i18n": {
         "ru": "Понятие модели и параметров",
@@ -869,7 +869,7 @@
       "track_uid": "trk-a",
       "theme_uid": "thm-a-01",
       "module_uid": "mod-a-01-04",
-      "code": "1.4.2",
+      "code": "4.1.2",
       "title": "Обучение модели и функция потерь",
       "status": "published",
       "access": "open",
@@ -889,9 +889,9 @@
         "zh": "模型训练与损失函数"
       },
       "url_i18n": {
-        "ru": "lessons/a-1-4-2.html",
-        "en": "lessons/a-1-4-2-en.html",
-        "zh": "lessons/a-1-4-2-zh.html"
+        "ru": "lessons/a-4-1-2-les-a-0011.html",
+        "en": "lessons/a-4-1-2-les-a-0011-en.html",
+        "zh": "lessons/a-4-1-2-les-a-0011-zh.html"
       }
     },
     {
@@ -899,7 +899,7 @@
       "track_uid": "trk-a",
       "theme_uid": "thm-a-01",
       "module_uid": "mod-a-01-04",
-      "code": "1.4.3",
+      "code": "4.1.3",
       "title": "Переобучение и недообучение",
       "status": "published",
       "access": "open",
@@ -922,9 +922,9 @@
         "zh": "过拟合与欠拟合"
       },
       "url_i18n": {
-        "ru": "lessons/a-1-4-3.html",
-        "en": "lessons/a-1-4-3-en.html",
-        "zh": "lessons/a-1-4-3-zh.html"
+        "ru": "lessons/a-4-1-3-les-a-0012.html",
+        "en": "lessons/a-4-1-3-les-a-0012-en.html",
+        "zh": "lessons/a-4-1-3-les-a-0012-zh.html"
       }
     },
     {
@@ -932,7 +932,7 @@
       "track_uid": "trk-a",
       "theme_uid": "thm-a-01",
       "module_uid": "mod-a-01-04",
-      "code": "1.4.4",
+      "code": "4.2.1",
       "title": "Обобщающая способность модели",
       "status": "published",
       "access": "open",
@@ -955,9 +955,9 @@
         "zh": "模型的泛化能力"
       },
       "url_i18n": {
-        "ru": "lessons/a-1-4-4.html",
-        "en": "lessons/a-1-4-4-en.html",
-        "zh": "lessons/a-1-4-4-zh.html"
+        "ru": "lessons/a-4-2-1-les-a-0013.html",
+        "en": "lessons/a-4-2-1-les-a-0013-en.html",
+        "zh": "lessons/a-4-2-1-les-a-0013-zh.html"
       }
     },
     {
@@ -965,7 +965,7 @@
       "track_uid": "trk-a",
       "theme_uid": "thm-a-01",
       "module_uid": "mod-a-01-04",
-      "code": "1.4.5",
+      "code": "4.2.2",
       "title": "Гиперпараметры и настройка модели",
       "status": "published",
       "access": "open",
@@ -988,9 +988,9 @@
         "zh": "超参数与模型调优"
       },
       "url_i18n": {
-        "ru": "lessons/a-1-4-5.html",
-        "en": "lessons/a-1-4-5-en.html",
-        "zh": "lessons/a-1-4-5-zh.html"
+        "ru": "lessons/a-4-2-2-les-a-0014.html",
+        "en": "lessons/a-4-2-2-les-a-0014-en.html",
+        "zh": "lessons/a-4-2-2-les-a-0014-zh.html"
       }
     },
     {
@@ -998,7 +998,7 @@
       "track_uid": "trk-a",
       "theme_uid": "thm-a-01",
       "module_uid": "mod-a-01-05",
-      "code": "1.5.1",
+      "code": "5.1.1",
       "title": "Зачем оценивать качество модели",
       "status": "published",
       "access": "open",
@@ -1020,9 +1020,9 @@
         "zh": "为什么要评估模型质量？"
       },
       "url_i18n": {
-        "ru": "lessons/a-1-5-1.html",
-        "en": "lessons/a-1-5-1-en.html",
-        "zh": "lessons/a-1-5-1-zh.html"
+        "ru": "lessons/a-5-1-1-les-a-0043.html",
+        "en": "lessons/a-5-1-1-les-a-0043-en.html",
+        "zh": "lessons/a-5-1-1-les-a-0043-zh.html"
       }
     },
     {
@@ -1030,7 +1030,7 @@
       "track_uid": "trk-a",
       "theme_uid": "thm-a-01",
       "module_uid": "mod-a-01-05",
-      "code": "1.5.2",
+      "code": "5.1.2",
       "title": "Матрица ошибок классификации",
       "status": "published",
       "access": "open",
@@ -1052,9 +1052,9 @@
         "zh": "分类混淆矩阵"
       },
       "url_i18n": {
-        "ru": "lessons/a-1-5-2.html",
-        "en": "lessons/a-1-5-2-en.html",
-        "zh": "lessons/a-1-5-2-zh.html"
+        "ru": "lessons/a-5-1-2-les-a-0044.html",
+        "en": "lessons/a-5-1-2-les-a-0044-en.html",
+        "zh": "lessons/a-5-1-2-les-a-0044-zh.html"
       }
     },
     {
@@ -1062,7 +1062,7 @@
       "track_uid": "trk-a",
       "theme_uid": "thm-a-01",
       "module_uid": "mod-a-01-05",
-      "code": "1.5.3",
+      "code": "5.1.3",
       "title": "Accuracy, Precision, Recall и F1",
       "status": "published",
       "access": "open",
@@ -1084,9 +1084,9 @@
         "zh": "Accuracy、Precision、Recall 与 F1"
       },
       "url_i18n": {
-        "ru": "lessons/a-1-5-3.html",
-        "en": "lessons/a-1-5-3-en.html",
-        "zh": "lessons/a-1-5-3-zh.html"
+        "ru": "lessons/a-5-1-3-les-a-0045.html",
+        "en": "lessons/a-5-1-3-les-a-0045-en.html",
+        "zh": "lessons/a-5-1-3-les-a-0045-zh.html"
       }
     },
     {
@@ -1094,7 +1094,7 @@
       "track_uid": "trk-a",
       "theme_uid": "thm-a-01",
       "module_uid": "mod-a-01-05",
-      "code": "1.5.4",
+      "code": "5.1.4",
       "title": "ROC-AUC и Precision-Recall AUC",
       "status": "published",
       "access": "open",
@@ -1117,9 +1117,9 @@
         "zh": "ROC-AUC 与 Precision-Recall AUC"
       },
       "url_i18n": {
-        "ru": "lessons/a-1-5-4.html",
-        "en": "lessons/a-1-5-4-en.html",
-        "zh": "lessons/a-1-5-4-zh.html"
+        "ru": "lessons/a-5-1-4-les-a-0046.html",
+        "en": "lessons/a-5-1-4-les-a-0046-en.html",
+        "zh": "lessons/a-5-1-4-les-a-0046-zh.html"
       }
     },
     {
@@ -1127,7 +1127,7 @@
       "track_uid": "trk-a",
       "theme_uid": "thm-a-01",
       "module_uid": "mod-a-01-05",
-      "code": "1.5.5",
+      "code": "5.2.1",
       "title": "Дисбаланс классов",
       "status": "published",
       "access": "open",
@@ -1151,9 +1151,9 @@
         "zh": "类别不平衡"
       },
       "url_i18n": {
-        "ru": "lessons/a-1-5-5.html",
-        "en": "lessons/a-1-5-5-en.html",
-        "zh": "lessons/a-1-5-5-zh.html"
+        "ru": "lessons/a-5-2-1-les-a-0047.html",
+        "en": "lessons/a-5-2-1-les-a-0047-en.html",
+        "zh": "lessons/a-5-2-1-les-a-0047-zh.html"
       }
     },
     {
@@ -1161,7 +1161,7 @@
       "track_uid": "trk-a",
       "theme_uid": "thm-a-01",
       "module_uid": "mod-a-01-05",
-      "code": "1.5.6",
+      "code": "5.2.2",
       "title": "Кросс-валидация и устойчивость результатов",
       "status": "published",
       "access": "open",
@@ -1185,9 +1185,9 @@
         "zh": "交叉验证与结果稳定性"
       },
       "url_i18n": {
-        "ru": "lessons/a-1-5-6.html",
-        "en": "lessons/a-1-5-6-en.html",
-        "zh": "lessons/a-1-5-6-zh.html"
+        "ru": "lessons/a-5-2-2-les-a-0015.html",
+        "en": "lessons/a-5-2-2-les-a-0015-en.html",
+        "zh": "lessons/a-5-2-2-les-a-0015-zh.html"
       }
     },
     {
@@ -1195,7 +1195,7 @@
       "track_uid": "trk-a",
       "theme_uid": "thm-a-01",
       "module_uid": "mod-a-01-05",
-      "code": "1.5.7",
+      "code": "5.2.3",
       "title": "Метрики регрессии: MAE, MSE, RMSE и R²",
       "status": "published",
       "access": "open",
@@ -1218,9 +1218,9 @@
         "zh": "回归指标：MAE、MSE、RMSE 与 R²"
       },
       "url_i18n": {
-        "ru": "lessons/a-1-5-7.html",
-        "en": "lessons/a-1-5-7-en.html",
-        "zh": "lessons/a-1-5-7-zh.html"
+        "ru": "lessons/a-5-2-3-les-a-0048.html",
+        "en": "lessons/a-5-2-3-les-a-0048-en.html",
+        "zh": "lessons/a-5-2-3-les-a-0048-zh.html"
       }
     },
     {
@@ -1228,7 +1228,7 @@
       "track_uid": "trk-a",
       "theme_uid": "thm-a-01",
       "module_uid": "mod-a-01-05",
-      "code": "1.5.8",
+      "code": "5.2.4",
       "title": "Калибровка вероятностей и качество вероятностных прогнозов",
       "status": "published",
       "access": "open",
@@ -1252,9 +1252,9 @@
         "zh": "概率校准与概率预测质量"
       },
       "url_i18n": {
-        "ru": "lessons/a-1-5-8.html",
-        "en": "lessons/a-1-5-8-en.html",
-        "zh": "lessons/a-1-5-8-zh.html"
+        "ru": "lessons/a-5-2-4-les-a-0057.html",
+        "en": "lessons/a-5-2-4-les-a-0057-en.html",
+        "zh": "lessons/a-5-2-4-les-a-0057-zh.html"
       }
     },
     {
@@ -2218,7 +2218,7 @@
       "track_uid": "trk-a",
       "theme_uid": "thm-a-04",
       "module_uid": "mod-a-04-02",
-      "code": "4.2.1",
+      "code": "7.1.1",
       "title": "Что такое XAI и зачем нужно объяснять модели?",
       "status": "published",
       "access": "open",
@@ -2238,9 +2238,9 @@
         "zh": "什么是 XAI？为什么要解释模型？"
       },
       "url_i18n": {
-        "ru": "lessons/a-4-2-1.html",
-        "en": "lessons/a-4-2-1-en.html",
-        "zh": "lessons/a-4-2-1-zh.html"
+        "ru": "lessons/a-7-1-1-les-a-0018.html",
+        "en": "lessons/a-7-1-1-les-a-0018-en.html",
+        "zh": "lessons/a-7-1-1-les-a-0018-zh.html"
       }
     },
     {

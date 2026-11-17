@@ -22,196 +22,196 @@ var canonicalLessonByRoute = {
     "theme": 1,
     "module": 1
   },
-  "a-1-1-3.html": {
+  "a-1-2-1-les-a-0002.html": {
     "uid": "les-a-0002",
     "old": "1.1.3",
     "code": "1.2.1",
     "theme": 1,
     "module": 2
   },
-  "a-1-1-4.html": {
+  "a-1-2-2-les-a-0052.html": {
     "uid": "les-a-0052",
     "old": "1.1.4",
     "code": "1.2.2",
     "theme": 1,
     "module": 2
   },
-  "a-1-2-1.html": {
+  "a-2-1-1-les-a-0003.html": {
     "uid": "les-a-0003",
     "old": "1.2.1",
     "code": "2.1.1",
     "theme": 2,
     "module": 1
   },
-  "a-1-2-2.html": {
+  "a-2-1-2-les-a-0004.html": {
     "uid": "les-a-0004",
     "old": "1.2.2",
     "code": "2.1.2",
     "theme": 2,
     "module": 1
   },
-  "a-1-2-3.html": {
+  "a-2-1-3-les-a-0056.html": {
     "uid": "les-a-0056",
     "old": "1.2.3",
     "code": "2.1.3",
     "theme": 2,
     "module": 1
   },
-  "a-1-2-4.html": {
+  "a-2-2-1-les-a-0050.html": {
     "uid": "les-a-0050",
     "old": "1.2.4",
     "code": "2.2.1",
     "theme": 2,
     "module": 2
   },
-  "a-1-2-5.html": {
+  "a-2-2-2-les-a-0005.html": {
     "uid": "les-a-0005",
     "old": "1.2.5",
     "code": "2.2.2",
     "theme": 2,
     "module": 2
   },
-  "a-1-2-6.html": {
+  "a-2-2-3-les-a-0006.html": {
     "uid": "les-a-0006",
     "old": "1.2.6",
     "code": "2.2.3",
     "theme": 2,
     "module": 2
   },
-  "a-1-3-1.html": {
+  "a-3-1-1-les-a-0007.html": {
     "uid": "les-a-0007",
     "old": "1.3.1",
     "code": "3.1.1",
     "theme": 3,
     "module": 1
   },
-  "a-1-3-2.html": {
+  "a-3-1-2-les-a-0008.html": {
     "uid": "les-a-0008",
     "old": "1.3.2",
     "code": "3.1.2",
     "theme": 3,
     "module": 1
   },
-  "a-1-3-3.html": {
+  "a-3-1-3-les-a-0053.html": {
     "uid": "les-a-0053",
     "old": "1.3.3",
     "code": "3.1.3",
     "theme": 3,
     "module": 1
   },
-  "a-1-3-4.html": {
+  "a-3-2-1-les-a-0054.html": {
     "uid": "les-a-0054",
     "old": "1.3.4",
     "code": "3.2.1",
     "theme": 3,
     "module": 2
   },
-  "a-1-3-5.html": {
+  "a-3-2-2-les-a-0055.html": {
     "uid": "les-a-0055",
     "old": "1.3.5",
     "code": "3.2.2",
     "theme": 3,
     "module": 2
   },
-  "a-1-3-6.html": {
+  "a-3-2-3-les-a-0009.html": {
     "uid": "les-a-0009",
     "old": "1.3.6",
     "code": "3.2.3",
     "theme": 3,
     "module": 2
   },
-  "a-1-4-1.html": {
+  "a-4-1-1-les-a-0010.html": {
     "uid": "les-a-0010",
     "old": "1.4.1",
     "code": "4.1.1",
     "theme": 4,
     "module": 1
   },
-  "a-1-4-2.html": {
+  "a-4-1-2-les-a-0011.html": {
     "uid": "les-a-0011",
     "old": "1.4.2",
     "code": "4.1.2",
     "theme": 4,
     "module": 1
   },
-  "a-1-4-3.html": {
+  "a-4-1-3-les-a-0012.html": {
     "uid": "les-a-0012",
     "old": "1.4.3",
     "code": "4.1.3",
     "theme": 4,
     "module": 1
   },
-  "a-1-4-4.html": {
+  "a-4-2-1-les-a-0013.html": {
     "uid": "les-a-0013",
     "old": "1.4.4",
     "code": "4.2.1",
     "theme": 4,
     "module": 2
   },
-  "a-1-4-5.html": {
+  "a-4-2-2-les-a-0014.html": {
     "uid": "les-a-0014",
     "old": "1.4.5",
     "code": "4.2.2",
     "theme": 4,
     "module": 2
   },
-  "a-1-5-1.html": {
+  "a-5-1-1-les-a-0043.html": {
     "uid": "les-a-0043",
     "old": "1.5.1",
     "code": "5.1.1",
     "theme": 5,
     "module": 1
   },
-  "a-1-5-2.html": {
+  "a-5-1-2-les-a-0044.html": {
     "uid": "les-a-0044",
     "old": "1.5.2",
     "code": "5.1.2",
     "theme": 5,
     "module": 1
   },
-  "a-1-5-3.html": {
+  "a-5-1-3-les-a-0045.html": {
     "uid": "les-a-0045",
     "old": "1.5.3",
     "code": "5.1.3",
     "theme": 5,
     "module": 1
   },
-  "a-1-5-4.html": {
+  "a-5-1-4-les-a-0046.html": {
     "uid": "les-a-0046",
     "old": "1.5.4",
     "code": "5.1.4",
     "theme": 5,
     "module": 1
   },
-  "a-1-5-5.html": {
+  "a-5-2-1-les-a-0047.html": {
     "uid": "les-a-0047",
     "old": "1.5.5",
     "code": "5.2.1",
     "theme": 5,
     "module": 2
   },
-  "a-1-5-6.html": {
+  "a-5-2-2-les-a-0015.html": {
     "uid": "les-a-0015",
     "old": "1.5.6",
     "code": "5.2.2",
     "theme": 5,
     "module": 2
   },
-  "a-1-5-7.html": {
+  "a-5-2-3-les-a-0048.html": {
     "uid": "les-a-0048",
     "old": "1.5.7",
     "code": "5.2.3",
     "theme": 5,
     "module": 2
   },
-  "a-1-5-8.html": {
+  "a-5-2-4-les-a-0057.html": {
     "uid": "les-a-0057",
     "old": "1.5.8",
     "code": "5.2.4",
     "theme": 5,
     "module": 2
   },
-  "a-4-2-1.html": {
+  "a-7-1-1-les-a-0018.html": {
     "uid": "les-a-0018",
     "old": "4.2.1",
     "code": "7.1.1",
@@ -219,7 +219,7 @@ var canonicalLessonByRoute = {
     "module": 1
   }
 };
-canonicalLessonByRoute["a-1-2-1-les-a-0002.html"] = canonicalLessonByRoute["a-1-1-3.html"];
+canonicalLessonByRoute["a-1-2-1-les-a-0002.html"] = canonicalLessonByRoute["a-1-2-1-les-a-0002.html"];
 var canonicalLessonByUid = {};
 Object.keys(canonicalLessonByRoute).forEach(function(route){
  var item=canonicalLessonByRoute[route];

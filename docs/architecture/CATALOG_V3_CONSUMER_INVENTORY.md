@@ -1,15 +1,15 @@
 # Catalog v3 consumer inventory and migration gates
 
-**Date:** 8 November 2026  
+**Date:** 17 November 2026  
 **Status:** three static consumers migrated to the legacy-preserving v3 projection; CI passed; Supabase admin/editor and lesson-reader remain on legacy contracts.
 
 ## Static site consumers
 
 | Consumer | Current contract | v3 action | Cutover status |
 |---|---|---|---|
-| `scripts/lesson-catalog.js` | `DCHCatalogCompat.loadLegacyProjection()`; keeps legacy IDs/status/URLs and adds v3 target UID metadata | Projection is active; published-only filter remains unchanged | Migrated with parity tests |
-| `scripts/home-knowledge-map.js` | `loadLegacyProjection()` with the same v2 presentation fields plus v3 target metadata | Existing published-only filter and links preserved | Migrated |
-| `scripts/planet-map-catalog.js` | `loadLegacyProjection()`; legacy planet IDs/lesson_id remain unchanged | Planet positions, accents and lesson links preserved; v3 metadata is additive | Migrated |
+| `scripts/lesson-catalog.js` | Native v3 catalog; renders lessons by track and locale | Includes published lessons and fully localized review lessons; filters by explicit lifecycle state and localized URL | Active; automatic visibility regression tests |
+| `scripts/home-knowledge-map.js` | Native v3 catalog; homepage knowledge feature | Deliberately remains published-only and currently highlights Theme 1; it is not the complete Track A index | Active; separate editorial scope |
+| `scripts/planet-map-catalog.js` | Native v3 catalog; dynamically creates a planet for each published lesson and each fully localized review lesson | No per-lesson planet record or hand-maintained planet list is required; each lesson is grouped by its catalog module | Active; automatic visibility regression tests |
 | `tracks/understanding-ai*.html`, `lessons/index*.html`, `learning-map/*`, homepage RU/EN/ZH | Load compatibility script before catalogue consumers | Keep v2 loading until parity tests pass; then migrate as a coordinated UI release | Not switched |
 | `scripts/catalog-compat.js` | Browser v1→v2 and v2 normalizers | Native v3 read, relationship validation, and v2-preserving projection added; v1/v2 paths retained | Active |
 | `scripts/catalog_compat.py` | Python v1 split catalog and v2 file loader | Native v3 reader, UID relationship validation, and Python legacy projection added | Active |
@@ -49,4 +49,4 @@ Repository files inspected include:
 - `scripts/admin-management.js`
 - `supabase/migrations/001_learning_access.sql` through `008_catalog_v3_alias_registry.sql`
 
-The three migrated static consumers use a legacy-preserving projection: their existing IDs, statuses, URLs, localized titles, prerequisites and planet associations are retained, while target UID arrays are added. Other consumers remain on legacy contracts until individually migrated. v3 still does not replace the existing Supabase lesson payloads or entitlement model.
+The Track A lesson index and planet map consume the v3 catalog directly and generate their entries from lesson records. A lesson is eligible for those surfaces only when it is either `published` + `published`, or `review` + `localized`, and has a URL for the active locale. The homepage knowledge feature intentionally remains published-only and currently focuses on Theme 1. `tests/test_catalog_visibility.py` verifies localized page existence, all Track A index pages, planet-map generation, and the rule that incomplete drafts are not promoted. v3 still does not replace the existing Supabase lesson payloads or entitlement model.

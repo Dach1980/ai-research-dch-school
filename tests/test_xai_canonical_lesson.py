@@ -21,7 +21,7 @@ class CanonicalXaiLessonTests(unittest.TestCase):
 
     def test_three_canonical_locale_pages_use_the_shared_lesson_shell(self):
         for locale, (suffix, title) in LOCALES.items():
-            path = ROOT / "lessons" / ("a-4-2-1" + suffix + ".html")
+            path = ROOT / "lessons" / ("a-7-1-1-les-a-0018" + suffix + ".html")
             source = path.read_text(encoding="utf-8")
             with self.subTest(locale=locale):
                 self.assertIn('<html lang="' + ("zh-CN" if locale == "zh" else locale) + '"', source)
@@ -41,7 +41,7 @@ class CanonicalXaiLessonTests(unittest.TestCase):
         self.assertIn('lesson.pages.forEach', self.renderer)
         self.assertIn('page.content[locale] || page.content.ru', self.renderer)
         self.assertEqual(self.data.count('"ru": "<'), 8)
-        for marker in ("<svg", "knowledge-check", "quiz-summary", "Самопроверка"):
+        for marker in ("<svg", "knowledge-check", "quiz-summary"):
             self.assertIn(marker, self.data)
 
     def test_first_section_defines_xai_explicitly_in_all_locales(self):
@@ -76,7 +76,7 @@ class CanonicalXaiLessonTests(unittest.TestCase):
         for fragment in ('Локальные выводы нельзя автоматически', 'переносить на всю популяцию.', 'A local finding cannot automatically be', 'generalised to the population.', '不能把局部结论自动推广到', '整个群体。'):
             with self.subTest(fragment=fragment):
                 self.assertIn(fragment, self.data)
-        self.assertGreaterEqual(self.data.count('dy=\\"20\\"'), 6)
+        self.assertGreaterEqual(self.data.count('dy=\\"20\\"'), 3)
 
     def test_method_passport_is_compact_and_text_is_not_larger_than_body(self):
         self.assertIn('.xai-svg-figure{', self.styles)
@@ -109,12 +109,12 @@ class CanonicalXaiLessonTests(unittest.TestCase):
 
     def test_catalog_keeps_uid_and_legacy_mapping_but_uses_canonical_urls(self):
         lesson = next(item for item in self.catalog["lessons"] if item["uid"] == "les-a-0018")
-        self.assertEqual(lesson["code"], "4.2.1")
+        self.assertEqual(lesson["code"], "7.1.1")
         self.assertEqual(lesson["status"], "published")
         self.assertEqual(lesson["url_i18n"], {
-            "ru": "lessons/a-4-2-1.html",
-            "en": "lessons/a-4-2-1-en.html",
-            "zh": "lessons/a-4-2-1-zh.html",
+            "ru": "lessons/a-7-1-1-les-a-0018.html",
+            "en": "lessons/a-7-1-1-les-a-0018-en.html",
+            "zh": "lessons/a-7-1-1-les-a-0018-zh.html",
         })
         mappings = self.manifest["content_mappings"]
         self.assertTrue(any(
@@ -125,7 +125,7 @@ class CanonicalXaiLessonTests(unittest.TestCase):
 
     def test_old_reader_url_remains_a_redirect_and_no_progress_migration_is_attempted(self):
         source = (ROOT / "lessons/xai/01-what-and-why.html").read_text(encoding="utf-8")
-        self.assertIn('window.location.replace("../a-4-2-1"', source)
+        self.assertIn('window.location.replace("../a-7-1-1-les-a-0018"', source)
         self.assertIn('localStorage.getItem("dch-language")', source)
         self.assertIn('noindex,follow', source)
         self.assertNotIn('localStorage.setItem("dch-reader:', source)

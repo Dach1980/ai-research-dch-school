@@ -21,6 +21,7 @@ on:
       - "scripts/planet-map-catalog.js"
       - "styles/knowledge-map.css"
       - "learning-map/**"
+      - "tracks/**"
       - "docs/education/**"
       - "data/audit-roadmap.json"
       - "scripts/theme-system.js"

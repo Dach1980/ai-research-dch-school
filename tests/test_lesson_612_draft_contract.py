@@ -96,7 +96,9 @@ class Lesson612DraftTests(unittest.TestCase):
                 refs = re.findall(r'(?:src|href)="([^"]+)"', html)
                 local = [ref for ref in refs if not ref.startswith(("https://", "http://", "#", "mailto:"))]
                 for ref in local:
-                    self.assertTrue((path.parent / ref).resolve().is_file(), ref)
+                    clean_ref = ref.split("#", 1)[0].split("?", 1)[0]
+                    if clean_ref:
+                        self.assertTrue((path.parent / clean_ref).resolve().is_file(), ref)
                 self.assertNotIn('href="undefined"', html)
 
     def test_shared_assessment_script_handles_radio_controls(self):

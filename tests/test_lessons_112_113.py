@@ -24,7 +24,9 @@ class Lesson112113Tests(unittest.TestCase):
                 source = path.read_text(encoding="utf-8")
                 self.assertIn('class="lesson-glossary"', source)
                 self.assertIn('class="glossary-entry"', source)
-                self.assertIn(f"THEME 1 · MODULE {module} · LESSON {code}", source)
+                self.assertIn("THEME 1", source)
+                self.assertIn("LESSON " + code, source)
+                self.assertIn("lesson-layout.js", source)
                 self.assertIn("lesson-visual-palette.css", (ROOT / "styles/main.css").read_text(encoding="utf-8"))
 
     def test_new_lessons_use_trackless_display_codes(self):

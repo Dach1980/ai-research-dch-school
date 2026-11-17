@@ -91,4 +91,22 @@ GitHub Pages — статический хостинг. Вкладка «Ауд�
 
 Подробная запись, ссылки на страницы и ограничения: [LESSON_6_1_1_VISUAL_ACCEPTANCE_2026-11-17.md](LESSON_6_1_1_VISUAL_ACCEPTANCE_2026-11-17.md).
 
-**Переход к уроку 6.1.2 отложен.** Условия продолжения: исправить legacy-тест 1.4.1 для актуальной схемы URL и получить полный зелёный CI на актуальном HEAD.
+**На момент этой записи переход к уроку 6.1.2 был отложен.** Позднее контрактные тесты были приведены к каноническим URL, а GitHub Actions и GitHub Pages прошли на актуальном HEAD; см. запись AUD-108 ниже. Урок 6.1.2 всё ещё не начат и ожидает отдельного решения пользователя.
+
+
+## Восстановление CI после канонической миграции URL — 2026-11-17
+
+Причина падений `Validate learning catalog` установлена: часть контрактных тестов продолжала использовать старые номера и адреса страниц как действующие страницы после перенумерации. Кроме того, тесты не всегда различали опубликованные записи каталога и planned-записи с повторяющимися кодами, а legacy redirect stubs ошибочно проверялись как полноценные страницы.
+
+Исправлены тестовые контракты: проверки теперь используют канонические URL и UID, отбирают опубликованные записи по `status=published` и `content_state=published`, проверяют catalog-driven navigation и отдельно обрабатывают redirect stubs. Содержательные проверки страниц, локализаций, иллюстраций, глоссариев, тестов знаний, Python-примеров, адаптивности и дизайн-системы сохранены.
+
+**Подтверждённый результат на HEAD `e7bd3bde467435f01e74462c9478536bf3d52689`:**
+- Validate learning catalog — success: [run 44037046837](https://github.com/Dach1980/ai-research-dch-school/actions/runs/44037046837);
+- Deploy static website to GitHub Pages — success, включая проверку Supabase migrations и deploy: [run 44037046770](https://github.com/Dach1980/ai-research-dch-school/actions/runs/44037046770);
+- Pages build and deployment — success: [run 44037046400](https://github.com/Dach1980/ai-research-dch-school/actions/runs/44037046400).
+
+Отдельный Vercel commit status остаётся failure из-за `build-rate-limit`; он не относится к GitHub Pages deployment и не отменяет успешные GitHub Actions.
+
+Подробная машинно-читаемая запись добавлена в [data/audit-roadmap.json](../../data/audit-roadmap.json) как **AUD-108**.
+
+**Урок 6.1.2 не начинался.** Технические блокирующие условия по GitHub Actions и GitHub Pages выполнены; дальнейший переход к разработке урока требует отдельного решения пользователя.

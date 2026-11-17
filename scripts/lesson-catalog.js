@@ -43,8 +43,10 @@
           if (!module || module.theme_uid !== themeUid) return "";
           const moduleTitle = module.title_i18n?.[locale] || module.title || "";
           return '<section class="catalog-module" aria-label="' + esc(moduleTitle) + '">' +
-            '<div class="catalog-module-heading"><span>' + esc(ui.module) + ' ' + esc(module.number ?? "") +
-            '</span><strong>' + esc(moduleTitle) + '</strong></div>' +
+            '<div class="catalog-module-heading">' +
+            '<span class="catalog-module-label">' + esc(ui.module) + '</span>' +
+            '<span class="catalog-module-number">' + esc(module.number ?? "") + '</span>' +
+            '<strong>' + esc(moduleTitle) + '</strong></div>' +
             '<div class="catalog-lesson-list">' + items.map(lesson => {
               const href = lesson.url_i18n?.[locale];
               if (!href) return "";
@@ -60,8 +62,11 @@
             }).join("") + '</div></section>';
         }).join("");
         return '<section class="catalog-theme" aria-label="' + esc(themeTitle) + '">' +
-          '<header class="catalog-theme-heading"><span>' + esc(ui.theme) + ' ' + esc(theme.number ?? "") +
-          '</span><h3>' + esc(themeTitle) + '</h3></header>' + moduleMarkup + '</section>';
+          '<header class="catalog-theme-heading">' +
+          '<span class="catalog-theme-label">' + esc(ui.theme) + '</span>' +
+          '<span class="catalog-theme-number">' + esc(theme.number ?? "") + '</span>' +
+          '<h3>' + esc(themeTitle) + '</h3></header>' +
+          '<div class="catalog-theme-modules">' + moduleMarkup + '</div></section>';
       }).join("");
     })
     .catch(() => { root.innerHTML = '<p class="notice">' + (locale==="ru"?"Не удалось загрузить каталог уроков.":locale==="zh"?"无法加载课程目录。":"Unable to load the lesson catalogue.") + '</p>'; });

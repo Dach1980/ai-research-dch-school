@@ -51,7 +51,7 @@ class Lesson141Tests(unittest.TestCase):
             self.assertIn(f'href="a-4-1-2-les-a-0011{suffix}.html"',h)
         c=json.loads((ROOT/"data/catalog/catalog-v3.json").read_text(encoding="utf-8"))
         x=next(v for v in c["lessons"] if v["uid"]=="les-a-0010")
-        self.assertEqual(x["code"],"1.4.1")
+        self.assertEqual(x["code"],"4.1.1")
         self.assertEqual(x["status"],"published")
         self.assertEqual(x["content_state"],"published")
         self.assertEqual(set(x["url_i18n"]),{"ru","en","zh"})

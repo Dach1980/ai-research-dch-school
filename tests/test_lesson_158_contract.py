@@ -7,9 +7,9 @@ from urllib.parse import urlsplit
 
 ROOT = Path(__file__).resolve().parents[1]
 PAGES = {
-    "ru": ROOT / "lessons/a-1-5-8.html",
-    "en": ROOT / "lessons/a-1-5-8-en.html",
-    "zh": ROOT / "lessons/a-1-5-8-zh.html",
+    "ru": ROOT / "lessons/a-5-2-4-les-a-0057.html",
+    "en": ROOT / "lessons/a-5-2-4-les-a-0057-en.html",
+    "zh": ROOT / "lessons/a-5-2-4-les-a-0057-zh.html",
 }
 
 
@@ -44,7 +44,7 @@ class Lesson158ContractTests(unittest.TestCase):
         catalog = json.loads((ROOT / "data/catalog/catalog-v3.json").read_text(encoding="utf-8"))
         lesson = next(x for x in catalog["lessons"] if x["uid"] == "les-a-0057")
         self.assertEqual((lesson["code"], lesson["track_uid"], lesson["theme_uid"], lesson["module_uid"]),
-                         ("1.5.8", "trk-a", "thm-a-01", "mod-a-01-05"))
+                         ("5.2.4", "trk-a", "thm-a-01", "mod-a-01-05"))
         self.assertEqual(lesson["prerequisite_uids"], ["les-a-0048", "les-a-0046"])
         self.assertEqual(lesson["status"], "published")
         self.assertEqual(lesson["content_state"], "published")
@@ -90,7 +90,7 @@ class Lesson158ContractTests(unittest.TestCase):
                         continue
                     target = (path.parent / parts.path).resolve()
                     self.assertTrue(target.is_file(), f"{locale}: broken link {href}")
-                canonical = f'https://dach1980.github.io/ai-research-dch-school/lessons/a-1-5-8{"-"+locale if locale != "ru" else ""}.html'
+                canonical = f'https://dchai.ru/lessons/a-5-2-4-les-a-0057{"-"+locale if locale != "ru" else ""}.html'
                 self.assertIn(f'<link rel="canonical" href="{canonical}">', source)
 
     def test_ece_formula_label_matches_each_locale(self):

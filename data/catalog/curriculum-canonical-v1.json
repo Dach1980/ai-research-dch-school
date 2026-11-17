@@ -1,0 +1,2787 @@
+{
+  "schema_version": "1.0.0",
+  "curriculum_id": "ai-research-dch-school-canonical-curriculum",
+  "curriculum_version": "2026-11-17",
+  "status": "canonical_target",
+  "language_policy": {
+    "source_language": "ru",
+    "supported_languages": [
+      "ru",
+      "en",
+      "zh"
+    ],
+    "translation_status": "not_defined_in_this_spec"
+  },
+  "hierarchy": [
+    "track",
+    "theme",
+    "module",
+    "lesson"
+  ],
+  "numbering": {
+    "format": "theme.module.lesson",
+    "starts_at": "1.1.1",
+    "resets_per_track": true,
+    "independent_tracks": true
+  },
+  "totals": {
+    "tracks": 4,
+    "themes": 31,
+    "modules": 57,
+    "lessons": 167
+  },
+  "migration_policy": {
+    "catalog_is_not_migrated_by_this_file": true,
+    "published_status_is_not_inferred": true,
+    "legacy_url_is_not_inferred": true,
+    "preserve_existing_uid_and_published_urls": true,
+    "unknown_legacy_mapping_means_unverified_not_unpublished": true,
+    "track_d_is_parallel_independent_track": true,
+    "notes": "This file defines the approved target curriculum only. It does not authorize changes to the live catalog, lesson content, publication state, URLs, access rules, or learner progress."
+  },
+  "tracks": [
+    {
+      "uid": "trk-a",
+      "code": "A",
+      "title_en": "XAI Practitioner",
+      "title_ru": "Практик XAI",
+      "lesson_count": 60,
+      "theme_count": 11,
+      "module_count": 21,
+      "themes": [
+        {
+          "number": 1,
+          "title_ru": "Основы искусственного интеллекта",
+          "modules": [
+            {
+              "number": 1,
+              "title_ru": "Введение в искусственный интеллект",
+              "lessons": [
+                {
+                  "number": "1.1.1",
+                  "title_ru": "Что такое искусственный интеллект",
+                  "uid": "les-a-0001",
+                  "legacy_number": "1.1.1",
+                  "legacy_mapping_status": "known_mapping_requires_publication_url_validation",
+                  "publication_status": "not_asserted",
+                  "urls": {
+                    "ru": null,
+                    "en": null,
+                    "zh": null
+                  }
+                },
+                {
+                  "number": "1.1.2",
+                  "title_ru": "История развития искусственного интеллекта",
+                  "uid": "les-a-0051",
+                  "legacy_number": "1.1.2",
+                  "legacy_mapping_status": "known_mapping_requires_publication_url_validation",
+                  "publication_status": "not_asserted",
+                  "urls": {
+                    "ru": null,
+                    "en": null,
+                    "zh": null
+                  }
+                }
+              ]
+            },
+            {
+              "number": 2,
+              "title_ru": "Подходы и направления искусственного интеллекта",
+              "lessons": [
+                {
+                  "number": "1.2.1",
+                  "title_ru": "AI, Machine Learning и Deep Learning",
+                  "uid": "les-a-0002",
+                  "legacy_number": "1.1.3",
+                  "legacy_mapping_status": "known_mapping_requires_publication_url_validation",
+                  "publication_status": "not_asserted",
+                  "urls": {
+                    "ru": null,
+                    "en": null,
+                    "zh": null
+                  }
+                },
+                {
+                  "number": "1.2.2",
+                  "title_ru": "Символический AI и машинное обучение",
+                  "uid": "les-a-0052",
+                  "legacy_number": "1.1.4",
+                  "legacy_mapping_status": "known_mapping_requires_publication_url_validation",
+                  "publication_status": "not_asserted",
+                  "urls": {
+                    "ru": null,
+                    "en": null,
+                    "zh": null
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "title_ru": "Данные и признаки",
+          "modules": [
+            {
+              "number": 1,
+              "title_ru": "Представление данных и признаков",
+              "lessons": [
+                {
+                  "number": "2.1.1",
+                  "title_ru": "Что такое данные в машинном обучении",
+                  "uid": "les-a-0003",
+                  "legacy_number": "1.2.1",
+                  "legacy_mapping_status": "known_mapping_requires_publication_url_validation",
+                  "publication_status": "not_asserted",
+                  "urls": {
+                    "ru": null,
+                    "en": null,
+                    "zh": null
+                  }
+                },
+                {
+                  "number": "2.1.2",
+                  "title_ru": "Объекты, признаки и целевые переменные",
+                  "uid": "les-a-0004",
+                  "legacy_number": "1.2.2",
+                  "legacy_mapping_status": "known_mapping_requires_publication_url_validation",
+                  "publication_status": "not_asserted",
+                  "urls": {
+                    "ru": null,
+                    "en": null,
+                    "zh": null
+                  }
+                },
+                {
+                  "number": "2.1.3",
+                  "title_ru": "Типы данных и представление признаков",
+                  "uid": "les-a-0056",
+                  "legacy_number": "1.2.3",
+                  "legacy_mapping_status": "known_mapping_requires_publication_url_validation",
+                  "publication_status": "not_asserted",
+                  "urls": {
+                    "ru": null,
+                    "en": null,
+                    "zh": null
+                  }
+                }
+              ]
+            },
+            {
+              "number": 2,
+              "title_ru": "Подготовка и качество данных",
+              "lessons": [
+                {
+                  "number": "2.2.1",
+                  "title_ru": "Обучающие, проверочные и тестовые данные",
+                  "uid": "les-a-0050",
+                  "legacy_number": "1.2.4",
+                  "legacy_mapping_status": "known_mapping_requires_publication_url_validation",
+                  "publication_status": "not_asserted",
+                  "urls": {
+                    "ru": null,
+                    "en": null,
+                    "zh": null
+                  }
+                },
+                {
+                  "number": "2.2.2",
+                  "title_ru": "Качество данных, пропуски и выбросы",
+                  "uid": "les-a-0005",
+                  "legacy_number": "1.2.5",
+                  "legacy_mapping_status": "known_mapping_requires_publication_url_validation",
+                  "publication_status": "not_asserted",
+                  "urls": {
+                    "ru": null,
+                    "en": null,
+                    "zh": null
+                  }
+                },
+                {
+                  "number": "2.2.3",
+                  "title_ru": "Корреляция, зависимости и утечка данных",
+                  "uid": "les-a-0006",
+                  "legacy_number": "1.2.6",
+                  "legacy_mapping_status": "known_mapping_requires_publication_url_validation",
+                  "publication_status": "not_asserted",
+                  "urls": {
+                    "ru": null,
+                    "en": null,
+                    "zh": null
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "title_ru": "Основы машинного обучения",
+          "modules": [
+            {
+              "number": 1,
+              "title_ru": "Типы машинного обучения",
+              "lessons": [
+                {
+                  "number": "3.1.1",
+                  "title_ru": "Обучение с учителем — Supervised Learning",
+                  "uid": "les-a-0007",
+                  "legacy_number": "1.3.1",
+                  "legacy_mapping_status": "known_mapping_requires_publication_url_validation",
+                  "publication_status": "not_asserted",
+                  "urls": {
+                    "ru": null,
+                    "en": null,
+                    "zh": null
+                  }
+                },
+                {
+                  "number": "3.1.2",
+                  "title_ru": "Обучение без учителя — Unsupervised Learning",
+                  "uid": "les-a-0008",
+                  "legacy_number": "1.3.2",
+                  "legacy_mapping_status": "known_mapping_requires_publication_url_validation",
+                  "publication_status": "not_asserted",
+                  "urls": {
+                    "ru": null,
+                    "en": null,
+                    "zh": null
+                  }
+                },
+                {
+                  "number": "3.1.3",
+                  "title_ru": "Обучение с подкреплением — Reinforcement Learning",
+                  "uid": "les-a-0053",
+                  "legacy_number": "1.3.3",
+                  "legacy_mapping_status": "known_mapping_requires_publication_url_validation",
+                  "publication_status": "not_asserted",
+                  "urls": {
+                    "ru": null,
+                    "en": null,
+                    "zh": null
+                  }
+                }
+              ]
+            },
+            {
+              "number": 2,
+              "title_ru": "Основные задачи и современные подходы ML",
+              "lessons": [
+                {
+                  "number": "3.2.1",
+                  "title_ru": "Классификация и регрессия",
+                  "uid": "les-a-0054",
+                  "legacy_number": "1.3.4",
+                  "legacy_mapping_status": "known_mapping_requires_publication_url_validation",
+                  "publication_status": "not_asserted",
+                  "urls": {
+                    "ru": null,
+                    "en": null,
+                    "zh": null
+                  }
+                },
+                {
+                  "number": "3.2.2",
+                  "title_ru": "Кластеризация и снижение размерности",
+                  "uid": "les-a-0055",
+                  "legacy_number": "1.3.5",
+                  "legacy_mapping_status": "known_mapping_requires_publication_url_validation",
+                  "publication_status": "not_asserted",
+                  "urls": {
+                    "ru": null,
+                    "en": null,
+                    "zh": null
+                  }
+                },
+                {
+                  "number": "3.2.3",
+                  "title_ru": "Генеративные модели и другие современные подходы",
+                  "uid": "les-a-0009",
+                  "legacy_number": "1.3.6",
+                  "legacy_mapping_status": "known_mapping_requires_publication_url_validation",
+                  "publication_status": "not_asserted",
+                  "urls": {
+                    "ru": null,
+                    "en": null,
+                    "zh": null
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "title_ru": "Модели и их качество",
+          "modules": [
+            {
+              "number": 1,
+              "title_ru": "Устройство и обучение моделей",
+              "lessons": [
+                {
+                  "number": "4.1.1",
+                  "title_ru": "Понятие модели и параметров",
+                  "uid": "les-a-0010",
+                  "legacy_number": "1.4.1",
+                  "legacy_mapping_status": "known_mapping_requires_publication_url_validation",
+                  "publication_status": "not_asserted",
+                  "urls": {
+                    "ru": null,
+                    "en": null,
+                    "zh": null
+                  }
+                },
+                {
+                  "number": "4.1.2",
+                  "title_ru": "Обучение модели и функция потерь",
+                  "uid": "les-a-0011",
+                  "legacy_number": "1.4.2",
+                  "legacy_mapping_status": "known_mapping_requires_publication_url_validation",
+                  "publication_status": "not_asserted",
+                  "urls": {
+                    "ru": null,
+                    "en": null,
+                    "zh": null
+                  }
+                },
+                {
+                  "number": "4.1.3",
+                  "title_ru": "Переобучение и недообучение",
+                  "uid": "les-a-0012",
+                  "legacy_number": "1.4.3",
+                  "legacy_mapping_status": "known_mapping_requires_publication_url_validation",
+                  "publication_status": "not_asserted",
+                  "urls": {
+                    "ru": null,
+                    "en": null,
+                    "zh": null
+                  }
+                }
+              ]
+            },
+            {
+              "number": 2,
+              "title_ru": "Обобщение и настройка моделей",
+              "lessons": [
+                {
+                  "number": "4.2.1",
+                  "title_ru": "Обобщающая способность модели",
+                  "uid": "les-a-0013",
+                  "legacy_number": "1.4.4",
+                  "legacy_mapping_status": "known_mapping_requires_publication_url_validation",
+                  "publication_status": "not_asserted",
+                  "urls": {
+                    "ru": null,
+                    "en": null,
+                    "zh": null
+                  }
+                },
+                {
+                  "number": "4.2.2",
+                  "title_ru": "Гиперпараметры и настройка модели",
+                  "uid": "les-a-0014",
+                  "legacy_number": "1.4.5",
+                  "legacy_mapping_status": "known_mapping_requires_publication_url_validation",
+                  "publication_status": "not_asserted",
+                  "urls": {
+                    "ru": null,
+                    "en": null,
+                    "zh": null
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "number": 5,
+          "title_ru": "Метрики и оценка моделей",
+          "modules": [
+            {
+              "number": 1,
+              "title_ru": "Метрики классификации",
+              "lessons": [
+                {
+                  "number": "5.1.1",
+                  "title_ru": "Зачем оценивать качество модели",
+                  "uid": "les-a-0043",
+                  "legacy_number": "1.5.1",
+                  "legacy_mapping_status": "known_mapping_requires_publication_url_validation",
+                  "publication_status": "not_asserted",
+                  "urls": {
+                    "ru": null,
+                    "en": null,
+                    "zh": null
+                  }
+                },
+                {
+                  "number": "5.1.2",
+                  "title_ru": "Матрица ошибок классификации",
+                  "uid": "les-a-0044",
+                  "legacy_number": "1.5.2",
+                  "legacy_mapping_status": "known_mapping_requires_publication_url_validation",
+                  "publication_status": "not_asserted",
+                  "urls": {
+                    "ru": null,
+                    "en": null,
+                    "zh": null
+                  }
+                },
+                {
+                  "number": "5.1.3",
+                  "title_ru": "Accuracy, Precision, Recall и F1",
+                  "uid": "les-a-0045",
+                  "legacy_number": "1.5.3",
+                  "legacy_mapping_status": "known_mapping_requires_publication_url_validation",
+                  "publication_status": "not_asserted",
+                  "urls": {
+                    "ru": null,
+                    "en": null,
+                    "zh": null
+                  }
+                },
+                {
+                  "number": "5.1.4",
+                  "title_ru": "ROC-AUC и Precision-Recall AUC",
+                  "uid": "les-a-0046",
+                  "legacy_number": "1.5.4",
+                  "legacy_mapping_status": "known_mapping_requires_publication_url_validation",
+                  "publication_status": "not_asserted",
+                  "urls": {
+                    "ru": null,
+                    "en": null,
+                    "zh": null
+                  }
+                }
+              ]
+            },
+            {
+              "number": 2,
+              "title_ru": "Дополнительные методы оценки качества",
+              "lessons": [
+                {
+                  "number": "5.2.1",
+                  "title_ru": "Дисбаланс классов",
+                  "uid": "les-a-0047",
+                  "legacy_number": "1.5.5",
+                  "legacy_mapping_status": "known_mapping_requires_publication_url_validation",
+                  "publication_status": "not_asserted",
+                  "urls": {
+                    "ru": null,
+                    "en": null,
+                    "zh": null
+                  }
+                },
+                {
+                  "number": "5.2.2",
+                  "title_ru": "Кросс-валидация и устойчивость результатов",
+                  "uid": "les-a-0015",
+                  "legacy_number": "1.5.6",
+                  "legacy_mapping_status": "known_mapping_requires_publication_url_validation",
+                  "publication_status": "not_asserted",
+                  "urls": {
+                    "ru": null,
+                    "en": null,
+                    "zh": null
+                  }
+                },
+                {
+                  "number": "5.2.3",
+                  "title_ru": "Метрики регрессии: MAE, MSE, RMSE и R²",
+                  "uid": "les-a-0048",
+                  "legacy_number": "1.5.7",
+                  "legacy_mapping_status": "known_mapping_requires_publication_url_validation",
+                  "publication_status": "not_asserted",
+                  "urls": {
+                    "ru": null,
+                    "en": null,
+                    "zh": null
+                  }
+                },
+                {
+                  "number": "5.2.4",
+                  "title_ru": "Калибровка вероятностей и качество вероятностных прогнозов",
+                  "uid": "les-a-0057",
+                  "legacy_number": "1.5.8",
+                  "legacy_mapping_status": "known_mapping_requires_publication_url_validation",
+                  "publication_status": "not_asserted",
+                  "urls": {
+                    "ru": null,
+                    "en": null,
+                    "zh": null
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "number": 6,
+          "title_ru": "Интерпретируемые модели",
+          "modules": [
+            {
+              "number": 1,
+              "title_ru": "Основы интерпретируемости моделей",
+              "lessons": [
+                {
+                  "number": "6.1.1",
+                  "title_ru": "Что такое интерпретируемость модели",
+                  "uid": null,
+                  "legacy_number": null,
+                  "legacy_mapping_status": "not_verified",
+                  "publication_status": "not_asserted",
+                  "urls": {
+                    "ru": null,
+                    "en": null,
+                    "zh": null
+                  }
+                },
+                {
+                  "number": "6.1.2",
+                  "title_ru": "Интерпретируемость и объяснимость",
+                  "uid": null,
+                  "legacy_number": null,
+                  "legacy_mapping_status": "not_verified",
+                  "publication_status": "not_asserted",
+                  "urls": {
+                    "ru": null,
+                    "en": null,
+                    "zh": null
+                  }
+                },
+                {
+                  "number": "6.1.3",
+                  "title_ru": "Линейные модели как объяснимые модели",
+                  "uid": null,
+                  "legacy_number": null,
+                  "legacy_mapping_status": "not_verified",
+                  "publication_status": "not_asserted",
+                  "urls": {
+                    "ru": null,
+                    "en": null,
+                    "zh": null
+                  }
+                },
+                {
+                  "number": "6.1.4",
+                  "title_ru": "Интерпретация деревьев решений",
+                  "uid": null,
+                  "legacy_number": null,
+                  "legacy_mapping_status": "not_verified",
+                  "publication_status": "not_asserted",
+                  "urls": {
+                    "ru": null,
+                    "en": null,
+                    "zh": null
+                  }
+                }
+              ]
+            },
+            {
+              "number": 2,
+              "title_ru": "Структурно интерпретируемые модели",
+              "lessons": [
+                {
+                  "number": "6.2.1",
+                  "title_ru": "Компромисс между точностью и интерпретируемостью",
+                  "uid": null,
+                  "legacy_number": null,
+                  "legacy_mapping_status": "not_verified",
+                  "publication_status": "not_asserted",
+                  "urls": {
+                    "ru": null,
+                    "en": null,
+                    "zh": null
+                  }
+                },
+                {
+                  "number": "6.2.2",
+                  "title_ru": "Нелинейные модели с интерпретируемой структурой",
+                  "uid": null,
+                  "legacy_number": null,
+                  "legacy_mapping_status": "not_verified",
+                  "publication_status": "not_asserted",
+                  "urls": {
+                    "ru": null,
+                    "en": null,
+                    "zh": null
+                  }
+                },
+                {
+                  "number": "6.2.3",
+                  "title_ru": "GAM и EBM",
+                  "uid": null,
+                  "legacy_number": null,
+                  "legacy_mapping_status": "not_verified",
+                  "publication_status": "not_asserted",
+                  "urls": {
+                    "ru": null,
+                    "en": null,
+                    "zh": null
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "number": 7,
+          "title_ru": "Основы XAI и важность признаков",
+          "modules": [
+            {
+              "number": 1,
+              "title_ru": "Основные принципы объяснимого искусственного интеллекта",
+              "lessons": [
+                {
+                  "number": "7.1.1",
+                  "title_ru": "Что такое XAI и зачем нужно объяснять модели?",
+                  "uid": "les-a-0018",
+                  "legacy_number": "4.2.1",
+                  "legacy_mapping_status": "known_mapping_requires_publication_url_validation",
+                  "publication_status": "not_asserted",
+                  "urls": {
+                    "ru": null,
+                    "en": null,
+                    "zh": null
+                  }
+                },
+                {
+                  "number": "7.1.2",
+                  "title_ru": "Локальные и глобальные объяснения",
+                  "uid": null,
+                  "legacy_number": null,
+                  "legacy_mapping_status": "not_verified",
+                  "publication_status": "not_asserted",
+                  "urls": {
+                    "ru": null,
+                    "en": null,
+                    "zh": null
+                  }
+                },
+                {
+                  "number": "7.1.3",
+                  "title_ru": "Intrinsic и Post-hoc методы",
+                  "uid": null,
+                  "legacy_number": null,
+                  "legacy_mapping_status": "not_verified",
+                  "publication_status": "not_asserted",
+                  "urls": {
+                    "ru": null,
+                    "en": null,
+                    "zh": null
+                  }
+                }
+              ]
+            },
+            {
+              "number": 2,
+              "title_ru": "Важность признаков и достоверность объяснений",
+              "lessons": [
+                {
+                  "number": "7.2.1",
+                  "title_ru": "Feature Importance",
+                  "uid": null,
+                  "legacy_number": null,
+                  "legacy_mapping_status": "not_verified",
+                  "publication_status": "not_asserted",
+                  "urls": {
+                    "ru": null,
+                    "en": null,
+                    "zh": null
+                  }
+                },
+                {
+                  "number": "7.2.2",
+                  "title_ru": "Permutation Feature Importance",
+                  "uid": null,
+                  "legacy_number": null,
+                  "legacy_mapping_status": "not_verified",
+                  "publication_status": "not_asserted",
+                  "urls": {
+                    "ru": null,
+                    "en": null,
+                    "zh": null
+                  }
+                },
+                {
+                  "number": "7.2.3",
+                  "title_ru": "Faithfulness и ограничения объяснений",
+                  "uid": null,
+                  "legacy_number": null,
+                  "legacy_mapping_status": "not_verified",
+                  "publication_status": "not_asserted",
+                  "urls": {
+                    "ru": null,
+                    "en": null,
+                    "zh": null
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "number": 8,
+          "title_ru": "Анализ зависимости модели от признаков",
+          "modules": [
+            {
+              "number": 1,
+              "title_ru": "Методы анализа зависимости предсказаний от признаков",
+              "lessons": [
+                {
+                  "number": "8.1.1",
+                  "title_ru": "PDP — Partial Dependence Plot",
+                  "uid": null,
+                  "legacy_number": null,
+                  "legacy_mapping_status": "not_verified",
+                  "publication_status": "not_asserted",
+                  "urls": {
+                    "ru": null,
+                    "en": null,
+                    "zh": null
+                  }
+                },
+                {
+                  "number": "8.1.2",
+                  "title_ru": "ICE — Individual Conditional Expectation",
+                  "uid": null,
+                  "legacy_number": null,
+                  "legacy_mapping_status": "not_verified",
+                  "publication_status": "not_asserted",
+                  "urls": {
+                    "ru": null,
+                    "en": null,
+                    "zh": null
+                  }
+                },
+                {
+                  "number": "8.1.3",
+                  "title_ru": "ALE — Accumulated Local Effects",
+                  "uid": null,
+                  "legacy_number": null,
+                  "legacy_mapping_status": "not_verified",
+                  "publication_status": "not_asserted",
+                  "urls": {
+                    "ru": null,
+                    "en": null,
+                    "zh": null
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "number": 9,
+          "title_ru": "LIME",
+          "modules": [
+            {
+              "number": 1,
+              "title_ru": "Принципы и устройство LIME",
+              "lessons": [
+                {
+                  "number": "9.1.1",
+                  "title_ru": "Идея локального объяснения",
+                  "uid": null,
+                  "legacy_number": null,
+                  "legacy_mapping_status": "not_verified",
+                  "publication_status": "not_asserted",
+                  "urls": {
+                    "ru": null,
+                    "en": null,
+                    "zh": null
+                  }
+                },
+                {
+                  "number": "9.1.2",
+                  "title_ru": "Local Surrogate Models",
+                  "uid": null,
+                  "legacy_number": null,
+                  "legacy_mapping_status": "not_verified",
+                  "publication_status": "not_asserted",
+                  "urls": {
+                    "ru": null,
+                    "en": null,
+                    "zh": null
+                  }
+                },
+                {
+                  "number": "9.1.3",
+                  "title_ru": "Как работает LIME",
+                  "uid": null,
+                  "legacy_number": null,
+                  "legacy_mapping_status": "not_verified",
+                  "publication_status": "not_asserted",
+                  "urls": {
+                    "ru": null,
+                    "en": null,
+                    "zh": null
+                  }
+                }
+              ]
+            },
+            {
+              "number": 2,
+              "title_ru": "Практическое применение и ограничения LIME",
+              "lessons": [
+                {
+                  "number": "9.2.1",
+                  "title_ru": "Выбор окрестности и интерпретация результатов",
+                  "uid": null,
+                  "legacy_number": null,
+                  "legacy_mapping_status": "not_verified",
+                  "publication_status": "not_asserted",
+                  "urls": {
+                    "ru": null,
+                    "en": null,
+                    "zh": null
+                  }
+                },
+                {
+                  "number": "9.2.2",
+                  "title_ru": "Ограничения и устойчивость LIME",
+                  "uid": null,
+                  "legacy_number": null,
+                  "legacy_mapping_status": "not_verified",
+                  "publication_status": "not_asserted",
+                  "urls": {
+                    "ru": null,
+                    "en": null,
+                    "zh": null
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "number": 10,
+          "title_ru": "SHAP",
+          "modules": [
+            {
+              "number": 1,
+              "title_ru": "Теоретические основы и локальные объяснения SHAP",
+              "lessons": [
+                {
+                  "number": "10.1.1",
+                  "title_ru": "Теория игр и Shapley Values",
+                  "uid": null,
+                  "legacy_number": null,
+                  "legacy_mapping_status": "not_verified",
+                  "publication_status": "not_asserted",
+                  "urls": {
+                    "ru": null,
+                    "en": null,
+                    "zh": null
+                  }
+                },
+                {
+                  "number": "10.1.2",
+                  "title_ru": "Как работает SHAP",
+                  "uid": null,
+                  "legacy_number": null,
+                  "legacy_mapping_status": "not_verified",
+                  "publication_status": "not_asserted",
+                  "urls": {
+                    "ru": null,
+                    "en": null,
+                    "zh": null
+                  }
+                },
+                {
+                  "number": "10.1.3",
+                  "title_ru": "Локальные объяснения SHAP",
+                  "uid": null,
+                  "legacy_number": null,
+                  "legacy_mapping_status": "not_verified",
+                  "publication_status": "not_asserted",
+                  "urls": {
+                    "ru": null,
+                    "en": null,
+                    "zh": null
+                  }
+                }
+              ]
+            },
+            {
+              "number": 2,
+              "title_ru": "Глобальная интерпретация и визуализация SHAP",
+              "lessons": [
+                {
+                  "number": "10.2.1",
+                  "title_ru": "Глобальная важность признаков",
+                  "uid": null,
+                  "legacy_number": null,
+                  "legacy_mapping_status": "not_verified",
+                  "publication_status": "not_asserted",
+                  "urls": {
+                    "ru": null,
+                    "en": null,
+                    "zh": null
+                  }
+                },
+                {
+                  "number": "10.2.2",
+                  "title_ru": "Summary Plot, Dependence Plot и Waterfall Plot",
+                  "uid": null,
+                  "legacy_number": null,
+                  "legacy_mapping_status": "not_verified",
+                  "publication_status": "not_asserted",
+                  "urls": {
+                    "ru": null,
+                    "en": null,
+                    "zh": null
+                  }
+                },
+                {
+                  "number": "10.2.3",
+                  "title_ru": "Ограничения и предположения SHAP",
+                  "uid": null,
+                  "legacy_number": null,
+                  "legacy_mapping_status": "not_verified",
+                  "publication_status": "not_asserted",
+                  "urls": {
+                    "ru": null,
+                    "en": null,
+                    "zh": null
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "number": 11,
+          "title_ru": "Правила и контрфактические объяснения",
+          "modules": [
+            {
+              "number": 1,
+              "title_ru": "Объяснения на основе правил",
+              "lessons": [
+                {
+                  "number": "11.1.1",
+                  "title_ru": "Rule-based explanations",
+                  "uid": null,
+                  "legacy_number": null,
+                  "legacy_mapping_status": "not_verified",
+                  "publication_status": "not_asserted",
+                  "urls": {
+                    "ru": null,
+                    "en": null,
+                    "zh": null
+                  }
+                },
+                {
+                  "number": "11.1.2",
+                  "title_ru": "Anchors",
+                  "uid": null,
+                  "legacy_number": null,
+                  "legacy_mapping_status": "not_verified",
+                  "publication_status": "not_asserted",
+                  "urls": {
+                    "ru": null,
+                    "en": null,
+                    "zh": null
+                  }
+                }
+              ]
+            },
+            {
+              "number": 2,
+              "title_ru": "Контрфактические объяснения",
+              "lessons": [
+                {
+                  "number": "11.2.1",
+                  "title_ru": "Контрфактические объяснения",
+                  "uid": null,
+                  "legacy_number": null,
+                  "legacy_mapping_status": "not_verified",
+                  "publication_status": "not_asserted",
+                  "urls": {
+                    "ru": null,
+                    "en": null,
+                    "zh": null
+                  }
+                },
+                {
+                  "number": "11.2.2",
+                  "title_ru": "Реализуемость и правдоподобие контрфактов",
+                  "uid": null,
+                  "legacy_number": null,
+                  "legacy_mapping_status": "not_verified",
+                  "publication_status": "not_asserted",
+                  "urls": {
+                    "ru": null,
+                    "en": null,
+                    "zh": null
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "uid": "trk-b",
+      "code": "B",
+      "title_en": "Inside AI",
+      "title_ru": "Внутри ИИ",
+      "lesson_count": 49,
+      "theme_count": 9,
+      "module_count": 15,
+      "themes": [
+        {
+          "number": 1,
+          "title_ru": "Визуальная интерпретация нейросетей",
+          "modules": [
+            {
+              "number": 1,
+              "title_ru": "Устройство CNN и внутренние представления",
+              "lessons": [
+                {
+                  "number": "1.1.1",
+                  "title_ru": "CNN как объект исследования: слои, feature maps и receptive fields",
+                  "uid": null,
+                  "legacy_number": null,
+                  "legacy_mapping_status": "not_verified",
+                  "publication_status": "not_asserted",
+                  "urls": {
+                    "ru": null,
+                    "en": null,
+                    "zh": null
+                  }
+                }
+              ]
+            },
+            {
+              "number": 2,
+              "title_ru": "Методы визуального объяснения нейросетей",
+              "lessons": [
+                {
+                  "number": "1.2.1",
+                  "title_ru": "Градиентные карты чувствительности и saliency maps",
+                  "uid": null,
+                  "legacy_number": null,
+                  "legacy_mapping_status": "not_verified",
+                  "publication_status": "not_asserted",
+                  "urls": {
+                    "ru": null,
+                    "en": null,
+                    "zh": null
+                  }
+                },
+                {
+                  "number": "1.2.2",
+                  "title_ru": "Integrated Gradients и SmoothGrad",
+                  "uid": null,
+                  "legacy_number": null,
+                  "legacy_mapping_status": "not_verified",
+                  "publication_status": "not_asserted",
+                  "urls": {
+                    "ru": null,
+                    "en": null,
+                    "zh": null
+                  }
+                },
+                {
+                  "number": "1.2.3",
+                  "title_ru": "CAM и Grad-CAM",
+                  "uid": null,
+                  "legacy_number": null,
+                  "legacy_mapping_status": "not_verified",
+                  "publication_status": "not_asserted",
+                  "urls": {
+                    "ru": null,
+                    "en": null,
+                    "zh": null
+                  }
+                },
+                {
+                  "number": "1.2.4",
+                  "title_ru": "Проверка качества визуальных карт объяснения",
+                  "uid": null,
+                  "legacy_number": null,
+                  "legacy_mapping_status": "not_verified",
+                  "publication_status": "not_asserted",
+                  "urls": {
+                    "ru": null,
+                    "en": null,
+                    "zh": null
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "title_ru": "Концепты и механизмы внимания",
+          "modules": [
+            {
+              "number": 1,
+              "title_ru": "Концептуальные представления нейросетей",
+              "lessons": [
+                {
+                  "number": "2.1.1",
+                  "title_ru": "Понятие концепта в нейросети",
+                  "uid": null,
+                  "legacy_number": null,
+                  "legacy_mapping_status": "not_verified",
+                  "publication_status": "not_asserted",
+                  "urls": {
+                    "ru": null,
+                    "en": null,
+                    "zh": null
+                  }
+                },
+                {
+                  "number": "2.1.2",
+                  "title_ru": "Concept Activation Vectors и TCAV",
+                  "uid": null,
+                  "legacy_number": null,
+                  "legacy_mapping_status": "not_verified",
+                  "publication_status": "not_asserted",
+                  "urls": {
+                    "ru": null,
+                    "en": null,
+                    "zh": null
+                  }
+                },
+                {
+                  "number": "2.1.3",
+                  "title_ru": "Наборы концептов, coverage и ограничения разметки",
+                  "uid": null,
+                  "legacy_number": null,
+                  "legacy_mapping_status": "not_verified",
+                  "publication_status": "not_asserted",
+                  "urls": {
+                    "ru": null,
+                    "en": null,
+                    "zh": null
+                  }
+                }
+              ]
+            },
+            {
+              "number": 2,
+              "title_ru": "Механизмы внимания Transformer",
+              "lessons": [
+                {
+                  "number": "2.2.1",
+                  "title_ru": "Attention-механизм в Transformer",
+                  "uid": null,
+                  "legacy_number": null,
+                  "legacy_mapping_status": "not_verified",
+                  "publication_status": "not_asserted",
+                  "urls": {
+                    "ru": null,
+                    "en": null,
+                    "zh": null
+                  }
+                },
+                {
+                  "number": "2.2.2",
+                  "title_ru": "Attention maps и ограничения их интерпретации",
+                  "uid": null,
+                  "legacy_number": null,
+                  "legacy_mapping_status": "not_verified",
+                  "publication_status": "not_asserted",
+                  "urls": {
+                    "ru": null,
+                    "en": null,
+                    "zh": null
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "title_ru": "Исследование поведения LLM",
+          "modules": [
+            {
+              "number": 1,
+              "title_ru": "Экспериментальный анализ поведения языковых моделей",
+              "lessons": [
+                {
+                  "number": "3.1.1",
+                  "title_ru": "Экспериментальный анализ поведения LLM",
+                  "uid": null,
+                  "legacy_number": null,
+                  "legacy_mapping_status": "not_verified",
+                  "publication_status": "not_asserted",
+                  "urls": {
+                    "ru": null,
+                    "en": null,
+                    "zh": null
+                  }
+                },
+                {
+                  "number": "3.1.2",
+                  "title_ru": "Влияние промпта, контекста и параметров генерации",
+                  "uid": null,
+                  "legacy_number": null,
+                  "legacy_mapping_status": "not_verified",
+                  "publication_status": "not_asserted",
+                  "urls": {
+                    "ru": null,
+                    "en": null,
+                    "zh": null
+                  }
+                },
+                {
+                  "number": "3.1.3",
+                  "title_ru": "Сравнение ответов и диагностические эксперименты",
+                  "uid": null,
+                  "legacy_number": null,
+                  "legacy_mapping_status": "not_verified",
+                  "publication_status": "not_asserted",
+                  "urls": {
+                    "ru": null,
+                    "en": null,
+                    "zh": null
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "title_ru": "Атаки и уязвимости объяснений",
+          "modules": [
+            {
+              "number": 1,
+              "title_ru": "Атаки на методы объяснения",
+              "lessons": [
+                {
+                  "number": "4.1.1",
+                  "title_ru": "Модель угроз для систем объяснения",
+                  "uid": null,
+                  "legacy_number": null,
+                  "legacy_mapping_status": "not_verified",
+                  "publication_status": "not_asserted",
+                  "urls": {
+                    "ru": null,
+                    "en": null,
+                    "zh": null
+                  }
+                },
+                {
+                  "number": "4.1.2",
+                  "title_ru": "Adversarial perturbations и искажение атрибуций",
+                  "uid": null,
+                  "legacy_number": null,
+                  "legacy_mapping_status": "not_verified",
+                  "publication_status": "not_asserted",
+                  "urls": {
+                    "ru": null,
+                    "en": null,
+                    "zh": null
+                  }
+                },
+                {
+                  "number": "4.1.3",
+                  "title_ru": "Манипуляция правдоподобием объяснений",
+                  "uid": null,
+                  "legacy_number": null,
+                  "legacy_mapping_status": "not_verified",
+                  "publication_status": "not_asserted",
+                  "urls": {
+                    "ru": null,
+                    "en": null,
+                    "zh": null
+                  }
+                }
+              ]
+            },
+            {
+              "number": 2,
+              "title_ru": "Проверка устойчивости и защита",
+              "lessons": [
+                {
+                  "number": "4.2.1",
+                  "title_ru": "Экспериментальная проверка устойчивости к атакам",
+                  "uid": null,
+                  "legacy_number": null,
+                  "legacy_mapping_status": "not_verified",
+                  "publication_status": "not_asserted",
+                  "urls": {
+                    "ru": null,
+                    "en": null,
+                    "zh": null
+                  }
+                },
+                {
+                  "number": "4.2.2",
+                  "title_ru": "Защита, ограничения и red-team отчёт",
+                  "uid": null,
+                  "legacy_number": null,
+                  "legacy_mapping_status": "not_verified",
+                  "publication_status": "not_asserted",
+                  "urls": {
+                    "ru": null,
+                    "en": null,
+                    "zh": null
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "number": 5,
+          "title_ru": "Причинность и причинные эффекты",
+          "modules": [
+            {
+              "number": 1,
+              "title_ru": "Основы причинного анализа",
+              "lessons": [
+                {
+                  "number": "5.1.1",
+                  "title_ru": "Корреляция и причинность",
+                  "uid": null,
+                  "legacy_number": null,
+                  "legacy_mapping_status": "not_verified",
+                  "publication_status": "not_asserted",
+                  "urls": {
+                    "ru": null,
+                    "en": null,
+                    "zh": null
+                  }
+                },
+                {
+                  "number": "5.1.2",
+                  "title_ru": "Причинные графы",
+                  "uid": null,
+                  "legacy_number": null,
+                  "legacy_mapping_status": "not_verified",
+                  "publication_status": "not_asserted",
+                  "urls": {
+                    "ru": null,
+                    "en": null,
+                    "zh": null
+                  }
+                },
+                {
+                  "number": "5.1.3",
+                  "title_ru": "Confounding и скрытые переменные",
+                  "uid": null,
+                  "legacy_number": null,
+                  "legacy_mapping_status": "not_verified",
+                  "publication_status": "not_asserted",
+                  "urls": {
+                    "ru": null,
+                    "en": null,
+                    "zh": null
+                  }
+                },
+                {
+                  "number": "5.1.4",
+                  "title_ru": "Интервенции и контрфактическое мышление",
+                  "uid": null,
+                  "legacy_number": null,
+                  "legacy_mapping_status": "not_verified",
+                  "publication_status": "not_asserted",
+                  "urls": {
+                    "ru": null,
+                    "en": null,
+                    "zh": null
+                  }
+                },
+                {
+                  "number": "5.1.5",
+                  "title_ru": "Причинные объяснения и ограничения XAI",
+                  "uid": null,
+                  "legacy_number": null,
+                  "legacy_mapping_status": "not_verified",
+                  "publication_status": "not_asserted",
+                  "urls": {
+                    "ru": null,
+                    "en": null,
+                    "zh": null
+                  }
+                }
+              ]
+            },
+            {
+              "number": 2,
+              "title_ru": "Неоднородность причинных эффектов",
+              "lessons": [
+                {
+                  "number": "5.2.1",
+                  "title_ru": "Что такое неоднородность причинного эффекта",
+                  "uid": null,
+                  "legacy_number": null,
+                  "legacy_mapping_status": "not_verified",
+                  "publication_status": "not_asserted",
+                  "urls": {
+                    "ru": null,
+                    "en": null,
+                    "zh": null
+                  }
+                },
+                {
+                  "number": "5.2.2",
+                  "title_ru": "ATE и CATE",
+                  "uid": null,
+                  "legacy_number": null,
+                  "legacy_mapping_status": "not_verified",
+                  "publication_status": "not_asserted",
+                  "urls": {
+                    "ru": null,
+                    "en": null,
+                    "zh": null
+                  }
+                },
+                {
+                  "number": "5.2.3",
+                  "title_ru": "Групповые и индивидуальные различия эффектов",
+                  "uid": null,
+                  "legacy_number": null,
+                  "legacy_mapping_status": "not_verified",
+                  "publication_status": "not_asserted",
+                  "urls": {
+                    "ru": null,
+                    "en": null,
+                    "zh": null
+                  }
+                },
+                {
+                  "number": "5.2.4",
+                  "title_ru": "Meta-learners",
+                  "uid": null,
+                  "legacy_number": null,
+                  "legacy_mapping_status": "not_verified",
+                  "publication_status": "not_asserted",
+                  "urls": {
+                    "ru": null,
+                    "en": null,
+                    "zh": null
+                  }
+                },
+                {
+                  "number": "5.2.5",
+                  "title_ru": "Проверка устойчивости, переобучения и ложных подгрупп",
+                  "uid": null,
+                  "legacy_number": null,
+                  "legacy_mapping_status": "not_verified",
+                  "publication_status": "not_asserted",
+                  "urls": {
+                    "ru": null,
+                    "en": null,
+                    "zh": null
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "number": 6,
+          "title_ru": "Экспериментальные вмешательства",
+          "modules": [
+            {
+              "number": 1,
+              "title_ru": "Взаимодействия признаков и анализ эффектов",
+              "lessons": [
+                {
+                  "number": "6.1.1",
+                  "title_ru": "Взаимодействия признаков",
+                  "uid": null,
+                  "legacy_number": null,
+                  "legacy_mapping_status": "not_verified",
+                  "publication_status": "not_asserted",
+                  "urls": {
+                    "ru": null,
+                    "en": null,
+                    "zh": null
+                  }
+                },
+                {
+                  "number": "6.1.2",
+                  "title_ru": "Сравнение PDP, ICE и ALE",
+                  "uid": null,
+                  "legacy_number": null,
+                  "legacy_mapping_status": "not_verified",
+                  "publication_status": "not_asserted",
+                  "urls": {
+                    "ru": null,
+                    "en": null,
+                    "zh": null
+                  }
+                }
+              ]
+            },
+            {
+              "number": 2,
+              "title_ru": "Экспериментальная проверка объяснений",
+              "lessons": [
+                {
+                  "number": "6.2.1",
+                  "title_ru": "От объяснения к экспериментальной проверке",
+                  "uid": null,
+                  "legacy_number": null,
+                  "legacy_mapping_status": "not_verified",
+                  "publication_status": "not_asserted",
+                  "urls": {
+                    "ru": null,
+                    "en": null,
+                    "zh": null
+                  }
+                },
+                {
+                  "number": "6.2.2",
+                  "title_ru": "Вмешательства в признаки и входные данные",
+                  "uid": null,
+                  "legacy_number": null,
+                  "legacy_mapping_status": "not_verified",
+                  "publication_status": "not_asserted",
+                  "urls": {
+                    "ru": null,
+                    "en": null,
+                    "zh": null
+                  }
+                },
+                {
+                  "number": "6.2.3",
+                  "title_ru": "Измерение реакции модели на вмешательство",
+                  "uid": null,
+                  "legacy_number": null,
+                  "legacy_mapping_status": "not_verified",
+                  "publication_status": "not_asserted",
+                  "urls": {
+                    "ru": null,
+                    "en": null,
+                    "zh": null
+                  }
+                },
+                {
+                  "number": "6.2.4",
+                  "title_ru": "Контроль эксперимента и альтернативные объяснения",
+                  "uid": null,
+                  "legacy_number": null,
+                  "legacy_mapping_status": "not_verified",
+                  "publication_status": "not_asserted",
+                  "urls": {
+                    "ru": null,
+                    "en": null,
+                    "zh": null
+                  }
+                },
+                {
+                  "number": "6.2.5",
+                  "title_ru": "Протокол проверки объяснения через вмешательство",
+                  "uid": null,
+                  "legacy_number": null,
+                  "legacy_mapping_status": "not_verified",
+                  "publication_status": "not_asserted",
+                  "urls": {
+                    "ru": null,
+                    "en": null,
+                    "zh": null
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "number": 7,
+          "title_ru": "Исследовательский проект",
+          "modules": [
+            {
+              "number": 1,
+              "title_ru": "Подготовка исследовательского проекта",
+              "lessons": [
+                {
+                  "number": "7.1.1",
+                  "title_ru": "Карта компетенций и самооценка исследователя",
+                  "uid": null,
+                  "legacy_number": null,
+                  "legacy_mapping_status": "not_verified",
+                  "publication_status": "not_asserted",
+                  "urls": {
+                    "ru": null,
+                    "en": null,
+                    "zh": null
+                  }
+                },
+                {
+                  "number": "7.1.2",
+                  "title_ru": "Выбор модели, системы и исследовательского сценария",
+                  "uid": null,
+                  "legacy_number": null,
+                  "legacy_mapping_status": "not_verified",
+                  "publication_status": "not_asserted",
+                  "urls": {
+                    "ru": null,
+                    "en": null,
+                    "zh": null
+                  }
+                },
+                {
+                  "number": "7.1.3",
+                  "title_ru": "Исследовательский вопрос и проверяемые гипотезы",
+                  "uid": null,
+                  "legacy_number": null,
+                  "legacy_mapping_status": "not_verified",
+                  "publication_status": "not_asserted",
+                  "urls": {
+                    "ru": null,
+                    "en": null,
+                    "zh": null
+                  }
+                },
+                {
+                  "number": "7.1.4",
+                  "title_ru": "Дизайн эксперимента и выбор методов объяснения",
+                  "uid": null,
+                  "legacy_number": null,
+                  "legacy_mapping_status": "not_verified",
+                  "publication_status": "not_asserted",
+                  "urls": {
+                    "ru": null,
+                    "en": null,
+                    "zh": null
+                  }
+                }
+              ]
+            },
+            {
+              "number": 2,
+              "title_ru": "Проведение исследования и представление результатов",
+              "lessons": [
+                {
+                  "number": "7.2.1",
+                  "title_ru": "Проведение исследования и анализ объяснений",
+                  "uid": null,
+                  "legacy_number": null,
+                  "legacy_mapping_status": "not_verified",
+                  "publication_status": "not_asserted",
+                  "urls": {
+                    "ru": null,
+                    "en": null,
+                    "zh": null
+                  }
+                },
+                {
+                  "number": "7.2.2",
+                  "title_ru": "Проверка качества и границ выводов",
+                  "uid": null,
+                  "legacy_number": null,
+                  "legacy_mapping_status": "not_verified",
+                  "publication_status": "not_asserted",
+                  "urls": {
+                    "ru": null,
+                    "en": null,
+                    "zh": null
+                  }
+                },
+                {
+                  "number": "7.2.3",
+                  "title_ru": "Воспроизводимый отчёт и защита результатов",
+                  "uid": null,
+                  "legacy_number": null,
+                  "legacy_mapping_status": "not_verified",
+                  "publication_status": "not_asserted",
+                  "urls": {
+                    "ru": null,
+                    "en": null,
+                    "zh": null
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "number": 8,
+          "title_ru": "Достоверность и устойчивость объяснений",
+          "modules": [
+            {
+              "number": 1,
+              "title_ru": "Критерии качества объяснений",
+              "lessons": [
+                {
+                  "number": "8.1.1",
+                  "title_ru": "Fidelity и Faithfulness",
+                  "uid": null,
+                  "legacy_number": null,
+                  "legacy_mapping_status": "not_verified",
+                  "publication_status": "not_asserted",
+                  "urls": {
+                    "ru": null,
+                    "en": null,
+                    "zh": null
+                  }
+                },
+                {
+                  "number": "8.1.2",
+                  "title_ru": "Stability и Robustness",
+                  "uid": null,
+                  "legacy_number": null,
+                  "legacy_mapping_status": "not_verified",
+                  "publication_status": "not_asserted",
+                  "urls": {
+                    "ru": null,
+                    "en": null,
+                    "zh": null
+                  }
+                },
+                {
+                  "number": "8.1.3",
+                  "title_ru": "Sanity Checks",
+                  "uid": null,
+                  "legacy_number": null,
+                  "legacy_mapping_status": "not_verified",
+                  "publication_status": "not_asserted",
+                  "urls": {
+                    "ru": null,
+                    "en": null,
+                    "zh": null
+                  }
+                },
+                {
+                  "number": "8.1.4",
+                  "title_ru": "Uncertainty и Sensitivity",
+                  "uid": null,
+                  "legacy_number": null,
+                  "legacy_mapping_status": "not_verified",
+                  "publication_status": "not_asserted",
+                  "urls": {
+                    "ru": null,
+                    "en": null,
+                    "zh": null
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "number": 9,
+          "title_ru": "Воспроизводимость и научная оценка",
+          "modules": [
+            {
+              "number": 1,
+              "title_ru": "Научная проверка результатов исследования",
+              "lessons": [
+                {
+                  "number": "9.1.1",
+                  "title_ru": "Reproducibility",
+                  "uid": null,
+                  "legacy_number": null,
+                  "legacy_mapping_status": "not_verified",
+                  "publication_status": "not_asserted",
+                  "urls": {
+                    "ru": null,
+                    "en": null,
+                    "zh": null
+                  }
+                },
+                {
+                  "number": "9.1.2",
+                  "title_ru": "Human Utility",
+                  "uid": null,
+                  "legacy_number": null,
+                  "legacy_mapping_status": "not_verified",
+                  "publication_status": "not_asserted",
+                  "urls": {
+                    "ru": null,
+                    "en": null,
+                    "zh": null
+                  }
+                },
+                {
+                  "number": "9.1.3",
+                  "title_ru": "Экспериментальный дизайн и научная отчётность",
+                  "uid": null,
+                  "legacy_number": null,
+                  "legacy_mapping_status": "not_verified",
+                  "publication_status": "not_asserted",
+                  "urls": {
+                    "ru": null,
+                    "en": null,
+                    "zh": null
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "uid": "trk-c",
+      "code": "C",
+      "title_en": "Building with AI",
+      "title_ru": "Создание решений на основе ИИ",
+      "lesson_count": 33,
+      "theme_count": 6,
+      "module_count": 11,
+      "themes": [
+        {
+          "number": 1,
+          "title_ru": "Инструменты и рабочая среда",
+          "modules": [
+            {
+              "number": 1,
+              "title_ru": "Инструменты и организация работы",
+              "lessons": [
+                {
+                  "number": "1.1.1",
+                  "title_ru": "Инструменты исследователя AI",
+                  "uid": null,
+                  "legacy_number": null,
+                  "legacy_mapping_status": "not_verified",
+                  "publication_status": "not_asserted",
+                  "urls": {
+                    "ru": null,
+                    "en": null,
+                    "zh": null
+                  }
+                },
+                {
+                  "number": "1.1.2",
+                  "title_ru": "Python, виртуальные окружения и пакеты",
+                  "uid": null,
+                  "legacy_number": null,
+                  "legacy_mapping_status": "not_verified",
+                  "publication_status": "not_asserted",
+                  "urls": {
+                    "ru": null,
+                    "en": null,
+                    "zh": null
+                  }
+                },
+                {
+                  "number": "1.1.3",
+                  "title_ru": "Jupyter Notebook и интерактивные эксперименты",
+                  "uid": null,
+                  "legacy_number": null,
+                  "legacy_mapping_status": "not_verified",
+                  "publication_status": "not_asserted",
+                  "urls": {
+                    "ru": null,
+                    "en": null,
+                    "zh": null
+                  }
+                }
+              ]
+            },
+            {
+              "number": 2,
+              "title_ru": "Организация исследовательской работы",
+              "lessons": [
+                {
+                  "number": "1.2.1",
+                  "title_ru": "Организация исследовательского проекта",
+                  "uid": null,
+                  "legacy_number": null,
+                  "legacy_mapping_status": "not_verified",
+                  "publication_status": "not_asserted",
+                  "urls": {
+                    "ru": null,
+                    "en": null,
+                    "zh": null
+                  }
+                },
+                {
+                  "number": "1.2.2",
+                  "title_ru": "Воспроизводимость экспериментов",
+                  "uid": null,
+                  "legacy_number": null,
+                  "legacy_mapping_status": "not_verified",
+                  "publication_status": "not_asserted",
+                  "urls": {
+                    "ru": null,
+                    "en": null,
+                    "zh": null
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "title_ru": "Основы Python",
+          "modules": [
+            {
+              "number": 1,
+              "title_ru": "Базовый синтаксис и управление программой",
+              "lessons": [
+                {
+                  "number": "2.1.1",
+                  "title_ru": "Переменные, типы данных и операторы",
+                  "uid": null,
+                  "legacy_number": null,
+                  "legacy_mapping_status": "not_verified",
+                  "publication_status": "not_asserted",
+                  "urls": {
+                    "ru": null,
+                    "en": null,
+                    "zh": null
+                  }
+                },
+                {
+                  "number": "2.1.2",
+                  "title_ru": "Условия и циклы",
+                  "uid": null,
+                  "legacy_number": null,
+                  "legacy_mapping_status": "not_verified",
+                  "publication_status": "not_asserted",
+                  "urls": {
+                    "ru": null,
+                    "en": null,
+                    "zh": null
+                  }
+                },
+                {
+                  "number": "2.1.3",
+                  "title_ru": "Функции и области видимости",
+                  "uid": null,
+                  "legacy_number": null,
+                  "legacy_mapping_status": "not_verified",
+                  "publication_status": "not_asserted",
+                  "urls": {
+                    "ru": null,
+                    "en": null,
+                    "zh": null
+                  }
+                }
+              ]
+            },
+            {
+              "number": 2,
+              "title_ru": "Структуры данных и организация кода",
+              "lessons": [
+                {
+                  "number": "2.2.1",
+                  "title_ru": "Списки, словари и множества",
+                  "uid": null,
+                  "legacy_number": null,
+                  "legacy_mapping_status": "not_verified",
+                  "publication_status": "not_asserted",
+                  "urls": {
+                    "ru": null,
+                    "en": null,
+                    "zh": null
+                  }
+                },
+                {
+                  "number": "2.2.2",
+                  "title_ru": "Классы и ООП",
+                  "uid": null,
+                  "legacy_number": null,
+                  "legacy_mapping_status": "not_verified",
+                  "publication_status": "not_asserted",
+                  "urls": {
+                    "ru": null,
+                    "en": null,
+                    "zh": null
+                  }
+                },
+                {
+                  "number": "2.2.3",
+                  "title_ru": "Работа с библиотеками и исключениями",
+                  "uid": null,
+                  "legacy_number": null,
+                  "legacy_mapping_status": "not_verified",
+                  "publication_status": "not_asserted",
+                  "urls": {
+                    "ru": null,
+                    "en": null,
+                    "zh": null
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "title_ru": "Работа с данными",
+          "modules": [
+            {
+              "number": 1,
+              "title_ru": "Представление и обработка данных",
+              "lessons": [
+                {
+                  "number": "3.1.1",
+                  "title_ru": "Массивы NumPy",
+                  "uid": null,
+                  "legacy_number": null,
+                  "legacy_mapping_status": "not_verified",
+                  "publication_status": "not_asserted",
+                  "urls": {
+                    "ru": null,
+                    "en": null,
+                    "zh": null
+                  }
+                },
+                {
+                  "number": "3.1.2",
+                  "title_ru": "Векторизация и операции над массивами",
+                  "uid": null,
+                  "legacy_number": null,
+                  "legacy_mapping_status": "not_verified",
+                  "publication_status": "not_asserted",
+                  "urls": {
+                    "ru": null,
+                    "en": null,
+                    "zh": null
+                  }
+                },
+                {
+                  "number": "3.1.3",
+                  "title_ru": "Таблицы pandas",
+                  "uid": null,
+                  "legacy_number": null,
+                  "legacy_mapping_status": "not_verified",
+                  "publication_status": "not_asserted",
+                  "urls": {
+                    "ru": null,
+                    "en": null,
+                    "zh": null
+                  }
+                }
+              ]
+            },
+            {
+              "number": 2,
+              "title_ru": "Анализ и визуализация данных",
+              "lessons": [
+                {
+                  "number": "3.2.1",
+                  "title_ru": "Очистка и преобразование данных",
+                  "uid": null,
+                  "legacy_number": null,
+                  "legacy_mapping_status": "not_verified",
+                  "publication_status": "not_asserted",
+                  "urls": {
+                    "ru": null,
+                    "en": null,
+                    "zh": null
+                  }
+                },
+                {
+                  "number": "3.2.2",
+                  "title_ru": "Визуализация данных",
+                  "uid": null,
+                  "legacy_number": null,
+                  "legacy_mapping_status": "not_verified",
+                  "publication_status": "not_asserted",
+                  "urls": {
+                    "ru": null,
+                    "en": null,
+                    "zh": null
+                  }
+                },
+                {
+                  "number": "3.2.3",
+                  "title_ru": "EDA — Exploratory Data Analysis",
+                  "uid": null,
+                  "legacy_number": null,
+                  "legacy_mapping_status": "not_verified",
+                  "publication_status": "not_asserted",
+                  "urls": {
+                    "ru": null,
+                    "en": null,
+                    "zh": null
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "title_ru": "Классическое машинное обучение",
+          "modules": [
+            {
+              "number": 1,
+              "title_ru": "Базовые алгоритмы машинного обучения",
+              "lessons": [
+                {
+                  "number": "4.1.1",
+                  "title_ru": "Линейная регрессия",
+                  "uid": null,
+                  "legacy_number": null,
+                  "legacy_mapping_status": "not_verified",
+                  "publication_status": "not_asserted",
+                  "urls": {
+                    "ru": null,
+                    "en": null,
+                    "zh": null
+                  }
+                },
+                {
+                  "number": "4.1.2",
+                  "title_ru": "Логистическая регрессия",
+                  "uid": null,
+                  "legacy_number": null,
+                  "legacy_mapping_status": "not_verified",
+                  "publication_status": "not_asserted",
+                  "urls": {
+                    "ru": null,
+                    "en": null,
+                    "zh": null
+                  }
+                },
+                {
+                  "number": "4.1.3",
+                  "title_ru": "Деревья решений",
+                  "uid": null,
+                  "legacy_number": null,
+                  "legacy_mapping_status": "not_verified",
+                  "publication_status": "not_asserted",
+                  "urls": {
+                    "ru": null,
+                    "en": null,
+                    "zh": null
+                  }
+                }
+              ]
+            },
+            {
+              "number": 2,
+              "title_ru": "Сравнение и ансамбли моделей",
+              "lessons": [
+                {
+                  "number": "4.2.1",
+                  "title_ru": "Метод ближайших соседей и SVM",
+                  "uid": null,
+                  "legacy_number": null,
+                  "legacy_mapping_status": "not_verified",
+                  "publication_status": "not_asserted",
+                  "urls": {
+                    "ru": null,
+                    "en": null,
+                    "zh": null
+                  }
+                },
+                {
+                  "number": "4.2.2",
+                  "title_ru": "Ансамбли: случайный лес и градиентный бустинг",
+                  "uid": null,
+                  "legacy_number": null,
+                  "legacy_mapping_status": "not_verified",
+                  "publication_status": "not_asserted",
+                  "urls": {
+                    "ru": null,
+                    "en": null,
+                    "zh": null
+                  }
+                },
+                {
+                  "number": "4.2.3",
+                  "title_ru": "Сравнение моделей и базовые алгоритмы",
+                  "uid": null,
+                  "legacy_number": null,
+                  "legacy_mapping_status": "not_verified",
+                  "publication_status": "not_asserted",
+                  "urls": {
+                    "ru": null,
+                    "en": null,
+                    "zh": null
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "number": 5,
+          "title_ru": "Нейронные сети и обучение",
+          "modules": [
+            {
+              "number": 1,
+              "title_ru": "Основы искусственных нейронных сетей",
+              "lessons": [
+                {
+                  "number": "5.1.1",
+                  "title_ru": "Искусственный нейрон",
+                  "uid": null,
+                  "legacy_number": null,
+                  "legacy_mapping_status": "not_verified",
+                  "publication_status": "not_asserted",
+                  "urls": {
+                    "ru": null,
+                    "en": null,
+                    "zh": null
+                  }
+                },
+                {
+                  "number": "5.1.2",
+                  "title_ru": "Перцептрон и многослойная нейронная сеть",
+                  "uid": null,
+                  "legacy_number": null,
+                  "legacy_mapping_status": "not_verified",
+                  "publication_status": "not_asserted",
+                  "urls": {
+                    "ru": null,
+                    "en": null,
+                    "zh": null
+                  }
+                },
+                {
+                  "number": "5.1.3",
+                  "title_ru": "Функции активации",
+                  "uid": null,
+                  "legacy_number": null,
+                  "legacy_mapping_status": "not_verified",
+                  "publication_status": "not_asserted",
+                  "urls": {
+                    "ru": null,
+                    "en": null,
+                    "zh": null
+                  }
+                }
+              ]
+            },
+            {
+              "number": 2,
+              "title_ru": "Обучение и архитектуры нейронных сетей",
+              "lessons": [
+                {
+                  "number": "5.2.1",
+                  "title_ru": "Прямое распространение сигнала",
+                  "uid": null,
+                  "legacy_number": null,
+                  "legacy_mapping_status": "not_verified",
+                  "publication_status": "not_asserted",
+                  "urls": {
+                    "ru": null,
+                    "en": null,
+                    "zh": null
+                  }
+                },
+                {
+                  "number": "5.2.2",
+                  "title_ru": "Функция потерь и обратное распространение ошибки",
+                  "uid": null,
+                  "legacy_number": null,
+                  "legacy_mapping_status": "not_verified",
+                  "publication_status": "not_asserted",
+                  "urls": {
+                    "ru": null,
+                    "en": null,
+                    "zh": null
+                  }
+                },
+                {
+                  "number": "5.2.3",
+                  "title_ru": "Обучение нейронной сети в PyTorch",
+                  "uid": null,
+                  "legacy_number": null,
+                  "legacy_mapping_status": "not_verified",
+                  "publication_status": "not_asserted",
+                  "urls": {
+                    "ru": null,
+                    "en": null,
+                    "zh": null
+                  }
+                },
+                {
+                  "number": "5.2.4",
+                  "title_ru": "Регуляризация и стабилизация обучения",
+                  "uid": null,
+                  "legacy_number": null,
+                  "legacy_mapping_status": "not_verified",
+                  "publication_status": "not_asserted",
+                  "urls": {
+                    "ru": null,
+                    "en": null,
+                    "zh": null
+                  }
+                },
+                {
+                  "number": "5.2.5",
+                  "title_ru": "Основы архитектуры Transformer и механизм внимания",
+                  "uid": null,
+                  "legacy_number": null,
+                  "legacy_mapping_status": "not_verified",
+                  "publication_status": "not_asserted",
+                  "urls": {
+                    "ru": null,
+                    "en": null,
+                    "zh": null
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "number": 6,
+          "title_ru": "AI-агенты и инструменты",
+          "modules": [
+            {
+              "number": 1,
+              "title_ru": "Исследование поведения AI-агентов",
+              "lessons": [
+                {
+                  "number": "6.1.1",
+                  "title_ru": "Анализ траекторий действий AI-агента",
+                  "uid": null,
+                  "legacy_number": null,
+                  "legacy_mapping_status": "not_verified",
+                  "publication_status": "not_asserted",
+                  "urls": {
+                    "ru": null,
+                    "en": null,
+                    "zh": null
+                  }
+                },
+                {
+                  "number": "6.1.2",
+                  "title_ru": "Анализ вызовов инструментов, состояния и ошибок агента",
+                  "uid": null,
+                  "legacy_number": null,
+                  "legacy_mapping_status": "not_verified",
+                  "publication_status": "not_asserted",
+                  "urls": {
+                    "ru": null,
+                    "en": null,
+                    "zh": null
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "uid": "trk-d",
+      "code": "D",
+      "title_en": "Mathematical & Research Foundations",
+      "title_ru": "Математические и исследовательские основы",
+      "lesson_count": 25,
+      "theme_count": 5,
+      "module_count": 10,
+      "themes": [
+        {
+          "number": 1,
+          "title_ru": "Математические функции",
+          "modules": [
+            {
+              "number": 1,
+              "title_ru": "Основы функций",
+              "lessons": [
+                {
+                  "number": "1.1.1",
+                  "title_ru": "Переменные, выражения и функции",
+                  "uid": null,
+                  "legacy_number": null,
+                  "legacy_mapping_status": "not_verified",
+                  "publication_status": "not_asserted",
+                  "urls": {
+                    "ru": null,
+                    "en": null,
+                    "zh": null
+                  }
+                },
+                {
+                  "number": "1.1.2",
+                  "title_ru": "Линейные и нелинейные функции",
+                  "uid": null,
+                  "legacy_number": null,
+                  "legacy_mapping_status": "not_verified",
+                  "publication_status": "not_asserted",
+                  "urls": {
+                    "ru": null,
+                    "en": null,
+                    "zh": null
+                  }
+                }
+              ]
+            },
+            {
+              "number": 2,
+              "title_ru": "Специальные функции и их представление",
+              "lessons": [
+                {
+                  "number": "1.2.1",
+                  "title_ru": "Экспоненты и логарифмы",
+                  "uid": null,
+                  "legacy_number": null,
+                  "legacy_mapping_status": "not_verified",
+                  "publication_status": "not_asserted",
+                  "urls": {
+                    "ru": null,
+                    "en": null,
+                    "zh": null
+                  }
+                },
+                {
+                  "number": "1.2.2",
+                  "title_ru": "Графики и преобразования функций",
+                  "uid": null,
+                  "legacy_number": null,
+                  "legacy_mapping_status": "not_verified",
+                  "publication_status": "not_asserted",
+                  "urls": {
+                    "ru": null,
+                    "en": null,
+                    "zh": null
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "title_ru": "Линейная алгебра",
+          "modules": [
+            {
+              "number": 1,
+              "title_ru": "Векторы и матрицы",
+              "lessons": [
+                {
+                  "number": "2.1.1",
+                  "title_ru": "Векторы и векторные пространства",
+                  "uid": null,
+                  "legacy_number": null,
+                  "legacy_mapping_status": "not_verified",
+                  "publication_status": "not_asserted",
+                  "urls": {
+                    "ru": null,
+                    "en": null,
+                    "zh": null
+                  }
+                },
+                {
+                  "number": "2.1.2",
+                  "title_ru": "Матрицы и матричные операции",
+                  "uid": null,
+                  "legacy_number": null,
+                  "legacy_mapping_status": "not_verified",
+                  "publication_status": "not_asserted",
+                  "urls": {
+                    "ru": null,
+                    "en": null,
+                    "zh": null
+                  }
+                },
+                {
+                  "number": "2.1.3",
+                  "title_ru": "Скалярное произведение",
+                  "uid": null,
+                  "legacy_number": null,
+                  "legacy_mapping_status": "not_verified",
+                  "publication_status": "not_asserted",
+                  "urls": {
+                    "ru": null,
+                    "en": null,
+                    "zh": null
+                  }
+                }
+              ]
+            },
+            {
+              "number": 2,
+              "title_ru": "Линейные преобразования и спектральные свойства",
+              "lessons": [
+                {
+                  "number": "2.2.1",
+                  "title_ru": "Линейные преобразования",
+                  "uid": null,
+                  "legacy_number": null,
+                  "legacy_mapping_status": "not_verified",
+                  "publication_status": "not_asserted",
+                  "urls": {
+                    "ru": null,
+                    "en": null,
+                    "zh": null
+                  }
+                },
+                {
+                  "number": "2.2.2",
+                  "title_ru": "Собственные значения и собственные векторы",
+                  "uid": null,
+                  "legacy_number": null,
+                  "legacy_mapping_status": "not_verified",
+                  "publication_status": "not_asserted",
+                  "urls": {
+                    "ru": null,
+                    "en": null,
+                    "zh": null
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "title_ru": "Вероятность и статистика",
+          "modules": [
+            {
+              "number": 1,
+              "title_ru": "Теория вероятностей и случайные величины",
+              "lessons": [
+                {
+                  "number": "3.1.1",
+                  "title_ru": "Основы теории вероятностей",
+                  "uid": null,
+                  "legacy_number": null,
+                  "legacy_mapping_status": "not_verified",
+                  "publication_status": "not_asserted",
+                  "urls": {
+                    "ru": null,
+                    "en": null,
+                    "zh": null
+                  }
+                },
+                {
+                  "number": "3.1.2",
+                  "title_ru": "Случайные величины и распределения",
+                  "uid": null,
+                  "legacy_number": null,
+                  "legacy_mapping_status": "not_verified",
+                  "publication_status": "not_asserted",
+                  "urls": {
+                    "ru": null,
+                    "en": null,
+                    "zh": null
+                  }
+                },
+                {
+                  "number": "3.1.3",
+                  "title_ru": "Математическое ожидание и дисперсия",
+                  "uid": null,
+                  "legacy_number": null,
+                  "legacy_mapping_status": "not_verified",
+                  "publication_status": "not_asserted",
+                  "urls": {
+                    "ru": null,
+                    "en": null,
+                    "zh": null
+                  }
+                },
+                {
+                  "number": "3.1.4",
+                  "title_ru": "Условная вероятность и теорема Байеса",
+                  "uid": null,
+                  "legacy_number": null,
+                  "legacy_mapping_status": "not_verified",
+                  "publication_status": "not_asserted",
+                  "urls": {
+                    "ru": null,
+                    "en": null,
+                    "zh": null
+                  }
+                }
+              ]
+            },
+            {
+              "number": 2,
+              "title_ru": "Статистический вывод",
+              "lessons": [
+                {
+                  "number": "3.2.1",
+                  "title_ru": "Статистические оценки и доверительные интервалы",
+                  "uid": null,
+                  "legacy_number": null,
+                  "legacy_mapping_status": "not_verified",
+                  "publication_status": "not_asserted",
+                  "urls": {
+                    "ru": null,
+                    "en": null,
+                    "zh": null
+                  }
+                },
+                {
+                  "number": "3.2.2",
+                  "title_ru": "Статистическая значимость и проверка гипотез",
+                  "uid": null,
+                  "legacy_number": null,
+                  "legacy_mapping_status": "not_verified",
+                  "publication_status": "not_asserted",
+                  "urls": {
+                    "ru": null,
+                    "en": null,
+                    "zh": null
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "title_ru": "Математический анализ и оптимизация",
+          "modules": [
+            {
+              "number": 1,
+              "title_ru": "Производные и градиенты",
+              "lessons": [
+                {
+                  "number": "4.1.1",
+                  "title_ru": "Пределы и производные",
+                  "uid": null,
+                  "legacy_number": null,
+                  "legacy_mapping_status": "not_verified",
+                  "publication_status": "not_asserted",
+                  "urls": {
+                    "ru": null,
+                    "en": null,
+                    "zh": null
+                  }
+                },
+                {
+                  "number": "4.1.2",
+                  "title_ru": "Частные производные",
+                  "uid": null,
+                  "legacy_number": null,
+                  "legacy_mapping_status": "not_verified",
+                  "publication_status": "not_asserted",
+                  "urls": {
+                    "ru": null,
+                    "en": null,
+                    "zh": null
+                  }
+                },
+                {
+                  "number": "4.1.3",
+                  "title_ru": "Градиент и направление изменения функции",
+                  "uid": null,
+                  "legacy_number": null,
+                  "legacy_mapping_status": "not_verified",
+                  "publication_status": "not_asserted",
+                  "urls": {
+                    "ru": null,
+                    "en": null,
+                    "zh": null
+                  }
+                }
+              ]
+            },
+            {
+              "number": 2,
+              "title_ru": "Методы оптимизации",
+              "lessons": [
+                {
+                  "number": "4.2.1",
+                  "title_ru": "Градиентный спуск",
+                  "uid": null,
+                  "legacy_number": null,
+                  "legacy_mapping_status": "not_verified",
+                  "publication_status": "not_asserted",
+                  "urls": {
+                    "ru": null,
+                    "en": null,
+                    "zh": null
+                  }
+                },
+                {
+                  "number": "4.2.2",
+                  "title_ru": "Оптимизация функции потерь",
+                  "uid": null,
+                  "legacy_number": null,
+                  "legacy_mapping_status": "not_verified",
+                  "publication_status": "not_asserted",
+                  "urls": {
+                    "ru": null,
+                    "en": null,
+                    "zh": null
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "number": 5,
+          "title_ru": "Исследовательская грамотность",
+          "modules": [
+            {
+              "number": 1,
+              "title_ru": "Постановка и планирование исследования",
+              "lessons": [
+                {
+                  "number": "5.1.1",
+                  "title_ru": "Научный вопрос и исследовательская гипотеза",
+                  "uid": null,
+                  "legacy_number": null,
+                  "legacy_mapping_status": "not_verified",
+                  "publication_status": "not_asserted",
+                  "urls": {
+                    "ru": null,
+                    "en": null,
+                    "zh": null
+                  }
+                },
+                {
+                  "number": "5.1.2",
+                  "title_ru": "Планирование эксперимента",
+                  "uid": null,
+                  "legacy_number": null,
+                  "legacy_mapping_status": "not_verified",
+                  "publication_status": "not_asserted",
+                  "urls": {
+                    "ru": null,
+                    "en": null,
+                    "zh": null
+                  }
+                },
+                {
+                  "number": "5.1.3",
+                  "title_ru": "Контрольные группы и базовые модели",
+                  "uid": null,
+                  "legacy_number": null,
+                  "legacy_mapping_status": "not_verified",
+                  "publication_status": "not_asserted",
+                  "urls": {
+                    "ru": null,
+                    "en": null,
+                    "zh": null
+                  }
+                }
+              ]
+            },
+            {
+              "number": 2,
+              "title_ru": "Надёжность и представление результатов",
+              "lessons": [
+                {
+                  "number": "5.2.1",
+                  "title_ru": "Повторяемость и статистическая устойчивость",
+                  "uid": null,
+                  "legacy_number": null,
+                  "legacy_mapping_status": "not_verified",
+                  "publication_status": "not_asserted",
+                  "urls": {
+                    "ru": null,
+                    "en": null,
+                    "zh": null
+                  }
+                },
+                {
+                  "number": "5.2.2",
+                  "title_ru": "Интерпретация и представление результатов",
+                  "uid": null,
+                  "legacy_number": null,
+                  "legacy_mapping_status": "not_verified",
+                  "publication_status": "not_asserted",
+                  "urls": {
+                    "ru": null,
+                    "en": null,
+                    "zh": null
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -77,6 +77,16 @@ class CatalogVisibilityTests(unittest.TestCase):
                 self.assertIn("planet-map-catalog.js", source)
                 self.assertIn("data-planets-root", source)
 
+    def test_homepage_knowledge_map_also_includes_localized_review_lessons(self):
+        loader = (ROOT / "scripts/home-knowledge-map.js").read_text(encoding="utf-8")
+        self.assertIn('item.status === "review" && item.content_state === "localized"', loader)
+        self.assertIn("home-planet-review", loader)
+        for page in ("index.html", "index-en.html", "index-zh.html"):
+            source = (ROOT / page).read_text(encoding="utf-8")
+            with self.subTest(page=page):
+                self.assertIn("home-knowledge-map.js", source)
+                self.assertIn("data-home-knowledge-map", source)
+
     def test_incomplete_drafts_are_not_promoted_to_catalog_surfaces(self):
         self.assertFalse(any(item.get("code") == "6.1.2" for item in self.lessons))
         draft = ROOT / "drafts/lessons/a-6-1-2-ru.html"

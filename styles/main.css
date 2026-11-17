@@ -70,4 +70,6 @@ html[data-theme="light"] .home-planet{background:linear-gradient(145deg,#fff,#ed
 .footer:has(> .container) > .container{width:min(var(--max),calc(100% - 48px));max-width:var(--max);margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
 .footer:has(> .container) > .container p{margin:0}
 .footer:has(> .container) > .container .footer-brand{font-weight:700;color:var(--text)}
+.footer-brand-logo{display:inline-flex;align-items:center;justify-content:flex-start;flex:0 0 auto;line-height:0}
+.footer-brand-logo img{display:block;width:64px;height:64px;max-width:100%;object-fit:contain}
 @media(max-width:620px){.footer:has(> .container) > .container{align-items:flex-start;flex-direction:column}}

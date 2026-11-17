@@ -2,7 +2,7 @@ import ast,json,re,unittest
 from html.parser import HTMLParser
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
-FILES={"ru":ROOT/"lessons/a-1-4-1.html","en":ROOT/"lessons/a-1-4-1-en.html","zh":ROOT/"lessons/a-1-4-1-zh.html"}
+FILES={"ru":ROOT/"lessons/a-4-1-1-les-a-0010.html","en":ROOT/"lessons/a-4-1-1-les-a-0010-en.html","zh":ROOT/"lessons/a-4-1-1-les-a-0010-zh.html"}
 TITLES={"ru":"Понятие модели и параметров","en":"The Model and Its Parameters","zh":"模型与参数的概念"}
 class Parser(HTMLParser):
     def error(self,message): raise AssertionError(message)
@@ -47,8 +47,8 @@ class Lesson141Tests(unittest.TestCase):
         for lang,p in FILES.items():
             h=p.read_text(encoding="utf-8")
             suffix="" if lang=="ru" else "-en" if lang=="en" else "-zh"
-            self.assertIn(f'href="a-1-3-6{suffix}.html"',h)
-            self.assertIn(f'href="a-1-4-2{suffix}.html"',h)
+            self.assertIn(f'href="a-3-2-3-les-a-0009{suffix}.html"',h)
+            self.assertIn(f'href="a-4-1-2-les-a-0011{suffix}.html"',h)
         c=json.loads((ROOT/"data/catalog/catalog-v3.json").read_text(encoding="utf-8"))
         x=next(v for v in c["lessons"] if v["uid"]=="les-a-0010")
         self.assertEqual(x["code"],"1.4.1")

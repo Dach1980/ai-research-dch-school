@@ -92,6 +92,26 @@ class CatalogVisibilityTests(unittest.TestCase):
         self.assertIn(".catalog-theme-heading", css)
         self.assertIn(".catalog-module-heading", css)
 
+    def test_catalog_visual_standard_is_shared_across_all_four_tracks(self):
+        loader = (ROOT / "scripts/lesson-catalog.js").read_text(encoding="utf-8")
+        css = (ROOT / "styles/main.css").read_text(encoding="utf-8")
+        standard = (ROOT / "docs/management/TRACK_CATALOG_VISUAL_STANDARD_2026-11-17.md").read_text(encoding="utf-8")
+        for track_id, track_uid in (("track-a", "trk-a"), ("track-b", "trk-b"), ("track-c", "trk-c"), ("track-d", "trk-d")):
+            with self.subTest(track=track_id):
+                self.assertIn(f'"{track_id}":"{track_uid}"', loader)
+        for label in ('theme:"ТЕМА"', 'module:"МОДУЛЬ"', 'theme:"THEME"', 'module:"MODULE"', 'theme:"主题"', 'module:"模块"'):
+            self.assertIn(label, loader)
+        for selector in (".catalog-theme", ".catalog-theme-heading", ".catalog-theme-modules",
+                         ".catalog-module", ".catalog-module-heading", ".catalog-lesson-list"):
+            self.assertIn(selector, css)
+        self.assertIn("html[data-theme=\"light\"] .catalog-theme", css)
+        self.assertIn("@media(max-width:620px)", css)
+        self.assertIn(".catalog-lesson-list{grid-template-columns:1fr", css)
+        self.assertIn("Track A", standard)
+        self.assertIn("Track B", standard)
+        self.assertIn("Track C", standard)
+        self.assertIn("Track D", standard)
+
     def test_611_has_all_three_production_pages(self):
         lesson = next(item for item in self.lessons if item["uid"] == "les-a-0147")
         self.assertEqual(set(lesson["url_i18n"]), set(LOCALES))

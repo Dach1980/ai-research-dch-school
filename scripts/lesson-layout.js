@@ -1,6 +1,6 @@
 (function(){
 "use strict";
-var main=document.querySelector("main.lesson");
+var main=document.querySelector("main.lesson, main.container");
 var lang=(document.documentElement.lang||"ru").toLowerCase();
 var labels=lang.indexOf("zh")===0?{lesson:"课程",planet:"知识星球"}:lang.indexOf("en")===0?{lesson:"LESSON",planet:"KNOWLEDGE PLANET"}:{lesson:"УРОК",planet:"ПЛАНЕТА ЗНАНИЙ"};
 /* Canonical numbering overlay for the 30 already-published Track A lessons.

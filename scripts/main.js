@@ -63,3 +63,28 @@ if(sharedScriptUrl){
   link.setAttribute("data-feedback-link", "");
   nav.appendChild(link);
 })();
+
+
+// Keep the author profile and the fourth learning track reachable from shared headers.
+(() => {
+  const language = (document.documentElement.lang || "ru").toLowerCase();
+  if (!language.startsWith("ru")) return; // EN/ZH Track D pages will be linked when localized.
+  const nav = document.querySelector(".site-header .nav");
+  if (!nav) return;
+  const root = sharedScriptUrl ? new URL("../", sharedScriptUrl) : new URL("../", document.baseURI);
+  const currentPath = window.location.pathname;
+  if (!currentPath.endsWith("/about/author.html") && !nav.querySelector('[data-author-link]')) {
+    const author = document.createElement("a");
+    author.href = new URL("about/author.html", root).href;
+    author.textContent = "Об авторе";
+    author.setAttribute("data-author-link", "");
+    nav.appendChild(author);
+  }
+  if (!nav.querySelector('[data-track-d-link]')) {
+    const track = document.createElement("a");
+    track.href = new URL("tracks/mathematical-research-foundations.html", root).href;
+    track.textContent = "Track D · Математические основы";
+    track.setAttribute("data-track-d-link", "");
+    nav.appendChild(track);
+  }
+})();

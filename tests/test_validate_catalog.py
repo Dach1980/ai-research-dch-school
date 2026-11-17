@@ -157,7 +157,7 @@ class PublishedSiteIntegrityTests(unittest.TestCase):
 
     def test_a1_and_a2_have_original_explanatory_diagrams(self):
         a1 = (ROOT / "lessons" / "a-1-1-1.html").read_text(encoding="utf-8")
-        a2 = (ROOT / "lessons" / "a-1-1-3.html").read_text(encoding="utf-8")
+        a2 = (ROOT / "lessons" / "a-1-2-1-les-a-0002.html").read_text(encoding="utf-8")
         self.assertGreaterEqual(a1.count("<svg"), 2)
         self.assertGreaterEqual(a2.count("<svg"), 3)
         self.assertIn("семейство подходов", a1)
@@ -200,12 +200,12 @@ class PublishedSiteIntegrityTests(unittest.TestCase):
             "lessons/a-1-1-2.html",
             "lessons/a-1-1-2-en.html",
             "lessons/a-1-1-2-zh.html",
-            "lessons/a-1-1-3.html",
-            "lessons/a-1-1-3-en.html",
-            "lessons/a-1-1-3-zh.html",
-            "lessons/a-1-1-4.html",
-            "lessons/a-1-1-4-en.html",
-            "lessons/a-1-1-4-zh.html",
+            "lessons/a-1-2-1-les-a-0002.html",
+            "lessons/a-1-2-1-les-a-0002-en.html",
+            "lessons/a-1-2-1-les-a-0002-zh.html",
+            "lessons/a-1-2-2-les-a-0052.html",
+            "lessons/a-1-2-2-les-a-0052-en.html",
+            "lessons/a-1-2-2-les-a-0052-zh.html",
             "lessons/a-3-how-machines-learn-from-data.html",
             "learning-map/index.html",
             "tracks/understanding-ai.html",

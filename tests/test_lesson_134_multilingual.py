@@ -5,9 +5,9 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 FILES = {
-    "ru": ROOT / "lessons/a-1-3-4.html",
-    "en": ROOT / "lessons/a-1-3-4-en.html",
-    "zh": ROOT / "lessons/a-1-3-4-zh.html",
+    "ru": ROOT / "lessons/a-3-2-1-les-a-0054.html",
+    "en": ROOT / "lessons/a-3-2-1-les-a-0054-en.html",
+    "zh": ROOT / "lessons/a-3-2-1-les-a-0054-zh.html",
 }
 TITLES = {
     "ru": "Классификация и регрессия",
@@ -68,7 +68,7 @@ class Lesson134Tests(unittest.TestCase):
             self.assertEqual(lesson["status"], "published", lesson["code"])
             self.assertEqual(lesson["content_state"], "published", lesson["code"])
             self.assertEqual(set(lesson["url_i18n"]), {"ru", "en", "zh"})
-        draft = {item["code"]: item for item in catalog["lessons"]}["1.4.1"]
+        draft = {item["code"]: item for item in catalog["lessons"]}["4.1.1"]
         self.assertEqual(draft["uid"], "les-a-0010")
         self.assertEqual(draft["status"], "published")
         self.assertEqual(draft["content_state"], "published")
@@ -76,15 +76,15 @@ class Lesson134Tests(unittest.TestCase):
         for locale_path in draft["url_i18n"].values():
             html = (ROOT / locale_path).read_text(encoding="utf-8")
             self.assertNotIn('name="robots" content="noindex,nofollow"', html)
-        lesson = {item["code"]: item for item in catalog["lessons"]}["1.3.4"]
+        lesson = {item["code"]: item for item in catalog["lessons"]}["3.2.1"]
         self.assertEqual(lesson["uid"], "les-a-0054")
-        self.assertEqual(lesson["url_i18n"]["ru"], "lessons/a-1-3-4.html")
-        self.assertEqual(lesson["url_i18n"]["en"], "lessons/a-1-3-4-en.html")
-        self.assertEqual(lesson["url_i18n"]["zh"], "lessons/a-1-3-4-zh.html")
+        self.assertEqual(lesson["url_i18n"]["ru"], "lessons/a-3-2-1-les-a-0054.html")
+        self.assertEqual(lesson["url_i18n"]["en"], "lessons/a-3-2-1-les-a-0054-en.html")
+        self.assertEqual(lesson["url_i18n"]["zh"], "lessons/a-3-2-1-les-a-0054-zh.html")
 
     def test_lesson_133_links_to_134_in_every_locale(self):
         for suffix in ("", "-en", "-zh"):
-            html = (ROOT / f"lessons/a-1-3-3{suffix}.html").read_text(encoding="utf-8")
+            html = (ROOT / f"lessons/a-3-1-3-les-a-0053{suffix}.html").read_text(encoding="utf-8")
             self.assertIn(f'href="a-1-3-4{suffix}.html"', html)
 
 

@@ -106,6 +106,19 @@
         "en": "Interpretable Models",
         "zh": "可解释模型"
       }
+    },
+    {
+      "uid": "thm-a-07",
+      "track_uid": "trk-a",
+      "number": 7,
+      "code": "7",
+      "title": "Основы XAI и важность признаков",
+      "status": "active",
+      "title_i18n": {
+        "ru": "Основы XAI и важность признаков",
+        "en": "XAI Fundamentals and Feature Importance",
+        "zh": "XAI基础与特征重要性"
+      }
     }
   ],
   "modules": [
@@ -353,6 +366,18 @@
         "ru": "Основы интерпретируемости моделей",
         "en": "Fundamentals of Model Interpretability",
         "zh": "模型可解释性基础"
+      }
+    },
+    {
+      "uid": "mod-a-07-01",
+      "theme_uid": "thm-a-07",
+      "number": 1,
+      "title": "Основные принципы объяснимого искусственного интеллекта",
+      "status": "active",
+      "title_i18n": {
+        "ru": "Основные принципы объяснимого искусственного интеллекта",
+        "en": "Core Principles of Explainable Artificial Intelligence",
+        "zh": "可解释人工智能的基本原理"
       }
     }
   ],
@@ -2241,8 +2266,8 @@
     {
       "uid": "les-a-0018",
       "track_uid": "trk-a",
-      "theme_uid": "thm-a-04",
-      "module_uid": "mod-a-04-02",
+      "theme_uid": "thm-a-07",
+      "module_uid": "mod-a-07-01",
       "code": "7.1.1",
       "title": "Что такое XAI и зачем нужно объяснять модели?",
       "status": "published",

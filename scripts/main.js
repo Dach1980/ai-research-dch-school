@@ -72,21 +72,22 @@ if(sharedScriptUrl){
   const nav = document.querySelector(".site-header .nav");
   if (!nav) return;
   const root = sharedScriptUrl ? new URL("../", sharedScriptUrl) : new URL("../", document.baseURI);
-  if (!window.location.pathname.endsWith("/about/author.html") && !nav.querySelector('[data-author-link]')) {
+  if (!window.location.pathname.endsWith("/about/author.html") && !nav.querySelector('[data-author-link], a[href*="/about/author.html"], a[href="about/author.html"]')) {
     const author = document.createElement("a");
     author.href = new URL("about/author.html", root).href;
     author.textContent = "Об авторе";
     author.setAttribute("data-author-link", "");
     nav.appendChild(author);
   }
-  if (!nav.querySelector('[data-track-d-link]')) {
+  let trackLink = nav.querySelector('[data-track-d-link], a[href*="mathematical-research-foundations.html"]');
+  if (!trackLink) {
     const track = document.createElement("a");
     track.href = new URL("tracks/mathematical-research-foundations.html", root).href;
     track.textContent = "Track D";
     track.setAttribute("data-track-d-link", "");
-    const trackC = Array.from(nav.querySelectorAll("a")).find(a => /Track C/.test(a.textContent));
-    if (trackC && trackC.nextSibling) nav.insertBefore(track, trackC.nextSibling);
-    else if (trackC) nav.appendChild(track);
-    else nav.appendChild(track);
+    trackLink = track;
   }
+  const trackC = Array.from(nav.querySelectorAll("a")).find(a => /Track C/.test(a.textContent));
+  if (trackC) nav.insertBefore(trackLink, trackC.nextSibling);
+  else if (!trackLink.isConnected) nav.appendChild(trackLink);
 })();

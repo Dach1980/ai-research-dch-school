@@ -8,14 +8,14 @@ for(const path of ["scripts/lesson-catalog.js","scripts/home-knowledge-map.js","
  const source=fs.readFileSync(path,"utf8");
  assert.ok(source.includes("catalog-v3.json"));
  if(path==="scripts/planet-map-catalog.js"){assert.ok(source.includes('x.status==="review"&&x.content_state==="localized"'));assert.ok(source.includes('x.status==="published"&&x.content_state==="published"'));assert.ok(source.includes("reviewNote"));assert.ok(source.includes("planet-review"));assert.ok(source.includes("planetItems"));} 
- if(path==="scripts/lesson-catalog.js"){assert.ok(source.includes('item.status === "review"'));assert.ok(source.includes("lesson-status-review"));assert.doesNotMatch(source,/ui\.theme|themeTitle/);}
+ if(path==="scripts/lesson-catalog.js"){assert.ok(source.includes('item.status === "review"'));assert.ok(source.includes("lesson-status-review"));assert.ok(source.includes("themeTitle"));assert.ok(source.includes("themeGroups"));}
  assert.doesNotMatch(source,/loadLegacyProjection/);
 }
 const normalized=compat.normalizeV3(catalog);
 assert.equal(normalized.schema_version,3);
 assert.equal(normalized.source_schema_version,3);
 assert.equal(normalized.themes.filter(x=>x.track_uid==="trk-a").length,7);
-assert.equal(normalized.modules.length,33);
+assert.equal(normalized.modules.length,34);
 assert.throws(()=>compat.normalizeV3({...catalog,lessons:[{...catalog.lessons[0],module_uid:"missing"}]}),/Unknown lesson parent UID/);
 const projected=compat.projectV3ToLegacy(catalog,legacy,manifest);
 assert.deepEqual(projected.lessons.map(x=>x.id),legacy.lessons.map(x=>x.id));

@@ -124,6 +124,11 @@ class HierarchicalCatalogUITests(unittest.TestCase):
             if relative.parts[0] == "archive":
                 continue
             content = page.read_text(encoding="utf-8")
+            # Legacy noindex redirect stubs are not rendered lesson pages.
+            if 'name="robots" content="noindex' in content and (
+                'http-equiv="refresh"' in content or "location.replace(" in content
+            ):
+                continue
             match = re.search(r'<link\s+rel="icon"[^>]*href="([^"]+)"', content)
             self.assertIsNotNone(match, str(relative))
             icon_path = (page.parent / match.group(1)).resolve()

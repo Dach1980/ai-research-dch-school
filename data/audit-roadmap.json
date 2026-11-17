@@ -2,7 +2,7 @@
   "schema_version": 1,
   "project": "AI Research DCH School",
   "section": "Аудит и roadmap",
-  "updated_at": "2026-11-16",
+  "updated_at": "2026-11-17",
   "timezone": "Asia/Singapore",
   "principles": [
     "Планетная карта дополняет обычный каталог и не заменяет его.",
@@ -2721,6 +2721,49 @@
       ],
       "limitations": [
         "Новый CI и production deployment должны пройти; ручная проверка браузера после публикации ещё требуется."
+      ]
+    },
+    {
+      "id": "AUD-108",
+      "date": "2026-11-17",
+      "type": "canonical_route_test_alignment_and_ci_recovery",
+      "title": "Контрактные тесты приведены к каноническим URL; GitHub Actions и GitHub Pages прошли",
+      "result": "Установлено, что падения Validate learning catalog были вызваны устаревшими тестовыми ожиданиями: после перенумерации опубликованных уроков тесты продолжали открывать legacy URL как активные страницы, ожидали старые коды/порядок и не учитывали redirect stubs и planned-записи с повторяющимися кодами. Контракты обновлены для канонических адресов, UID и опубликованных записей каталога; последовательная навигация проверяется по catalog-v3 и фильтрует status=published/content_state=published. Redirect stubs проверяются отдельно и не должны содержать runtime assets активной страницы. Сохранены содержательные проверки локализаций, структуры, SVG, глоссариев, самопроверки, Python-примеров, адаптивности и дизайн-системы. Проверки на актуальном HEAD e7bd3bde467435f01e74462c9478536bf3d52689 завершились успешно: Validate learning catalog run 44037046837; Deploy static website to GitHub Pages run 44037046770 (включая validate, Supabase migrations и deploy); pages build and deployment run 44037046400. Пользовательская визуальная приёмка оформления урока 6.1.1 ранее зафиксирована отдельно. Урок 6.1.2 не начинался.",
+      "evidence": [
+        "Commit e7bd3bde467435f01e74462c9478536bf3d52689",
+        "https://github.com/Dach1980/ai-research-dch-school/actions/runs/44037046837",
+        "https://github.com/Dach1980/ai-research-dch-school/actions/runs/44037046770",
+        "https://github.com/Dach1980/ai-research-dch-school/actions/runs/44037046400",
+        "tests/test_track_a_data_lessons.py",
+        "tests/test_lesson_navigation_contract.py",
+        "tests/test_lesson_navigation_and_concepts.py",
+        "tests/test_lesson_132_multilingual.py",
+        "tests/test_lesson_133_multilingual.py",
+        "tests/test_lesson_134_multilingual.py",
+        "tests/test_lesson_135_multilingual.py",
+        "tests/test_lesson_136_multilingual.py",
+        "tests/test_lesson_151_contract.py",
+        "tests/test_lesson_152_contract.py",
+        "tests/test_lesson_153_contract.py",
+        "tests/test_lesson_154_contract.py",
+        "tests/test_lesson_155_contract.py",
+        "tests/test_lesson_156_contract.py",
+        "tests/test_lesson_157_contract.py",
+        "tests/test_lesson_158_contract.py",
+        "tests/test_lessons_112_113.py",
+        "tests/test_lesson_143_multilingual.py",
+        "tests/test_lesson_144_multilingual.py",
+        "tests/test_lesson_145_multilingual.py",
+        "tests/test_lesson_design_system.py",
+        "tests/test_locale_grid_theme_parity.py",
+        "tests/test_dch_presentation_standards.py",
+        "tests/test_code_presentation.py",
+        "tests/test_brand_assets.py"
+      ],
+      "limitations": [
+        "Отдельный commit status Vercel остаётся failure с причиной build-rate-limit; это внешний Vercel check и не отменяет успешный GitHub Pages build/deployment.",
+        "Ручная визуальная приёмка урока 6.1.1 ограничена оформлением; содержательная и функциональная приёмка урока отдельно не заявлена.",
+        "Урок 6.1.2 не начат; переход ожидает отдельного решения пользователя."
       ]
     }
   ],

@@ -53,7 +53,7 @@ class Lesson156ContractTests(unittest.TestCase):
         next_lesson = next(x for x in catalog["lessons"] if x["uid"] == "les-a-0048")
         self.assertEqual(previous["status"], "published")
         self.assertIn(next_lesson["status"], {"planned", "review", "published"})
-        self.assertTrue(all("a-1-5-7" not in p.read_text(encoding="utf-8") for p in PAGES.values()))
+        self.assertTrue(all("a-5-2-3-les-a-0048" not in p.read_text(encoding="utf-8") for p in PAGES.values()))
 
     def test_locales_have_equal_sections_assessment_and_assets(self):
         expected_sections = [f"section-{i}" for i in range(1, 9)] + ["practice"]

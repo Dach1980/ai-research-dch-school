@@ -39,6 +39,9 @@ class CodePresentationTests(unittest.TestCase):
         ]
         for relative_path in pages:
             source = (ROOT / relative_path).read_text(encoding="utf-8")
+            if 'name="robots" content="noindex' in source and "location.replace(" in source:
+                self.assertIn('rel="canonical"', source)
+                continue
             self.assertIn("assets/site-brand-icon.jpg", source)
             self.assertIn("assets/favicon.png", source)
 

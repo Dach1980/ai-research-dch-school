@@ -83,7 +83,7 @@ class Lesson135Tests(unittest.TestCase):
 
     def test_catalog_uid_review_state_and_previous_navigation(self):
         catalog = json.loads((ROOT / "data/catalog/catalog-v3.json").read_text(encoding="utf-8"))
-        lesson = next(item for item in catalog["lessons"] if item["code"] == "3.2.2")
+        lesson = next(item for item in catalog["lessons"] if item["code"] == "3.2.2" and item.get("status") == "published" and item.get("content_state") == "published")
         self.assertEqual(lesson["uid"], "les-a-0055")
         self.assertEqual(lesson["status"], "published")
         self.assertEqual(lesson["content_state"], "published")

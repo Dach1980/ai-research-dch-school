@@ -7,9 +7,9 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 FILES = {
-    "ru": ROOT / "lessons/a-1-3-5.html",
-    "en": ROOT / "lessons/a-1-3-5-en.html",
-    "zh": ROOT / "lessons/a-1-3-5-zh.html",
+    "ru": ROOT / "lessons/a-3-2-2-les-a-0055.html",
+    "en": ROOT / "lessons/a-3-2-2-les-a-0055-en.html",
+    "zh": ROOT / "lessons/a-3-2-2-les-a-0055-zh.html",
 }
 EXPECTED = {
     "ru": ("Кластеризация и снижение размерности", "Самостоятельное задание"),
@@ -83,21 +83,21 @@ class Lesson135Tests(unittest.TestCase):
 
     def test_catalog_uid_review_state_and_previous_navigation(self):
         catalog = json.loads((ROOT / "data/catalog/catalog-v3.json").read_text(encoding="utf-8"))
-        lesson = next(item for item in catalog["lessons"] if item["code"] == "1.3.5")
+        lesson = next(item for item in catalog["lessons"] if item["code"] == "3.2.2")
         self.assertEqual(lesson["uid"], "les-a-0055")
         self.assertEqual(lesson["status"], "published")
         self.assertEqual(lesson["content_state"], "published")
         self.assertEqual(lesson["content_state"], "published")
         self.assertEqual(lesson["url_i18n"], {
-            "ru": "lessons/a-1-3-5.html",
-            "en": "lessons/a-1-3-5-en.html",
-            "zh": "lessons/a-1-3-5-zh.html",
+            "ru": "lessons/a-3-2-2-les-a-0055.html",
+            "en": "lessons/a-3-2-2-les-a-0055-en.html",
+            "zh": "lessons/a-3-2-2-les-a-0055-zh.html",
         })
         for locale, path in FILES.items():
             html = path.read_text(encoding="utf-8")
             suffix = "" if locale == "ru" else "-en" if locale == "en" else "-zh"
-            self.assertIn(f'href="a-1-3-4{suffix}.html"', html)
-            self.assertIn(f'href="a-1-3-6{suffix}.html"', html)
+            self.assertIn(f'href="a-3-2-1-les-a-0054{suffix}.html"', html)
+            self.assertIn(f'href="a-3-2-3-les-a-0009{suffix}.html"', html)
 
     def test_mobile_css_and_theme_adaptation(self):
         css = (ROOT / "styles/lesson-135.css").read_text(encoding="utf-8")

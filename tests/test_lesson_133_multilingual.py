@@ -5,9 +5,9 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 FILES = {
-    "ru": ROOT / "lessons/a-1-3-3.html",
-    "en": ROOT / "lessons/a-1-3-3-en.html",
-    "zh": ROOT / "lessons/a-1-3-3-zh.html",
+    "ru": ROOT / "lessons/a-3-1-3-les-a-0053.html",
+    "en": ROOT / "lessons/a-3-1-3-les-a-0053-en.html",
+    "zh": ROOT / "lessons/a-3-1-3-les-a-0053-zh.html",
 }
 TITLES = {
     "ru": "Обучение с подкреплением",
@@ -26,7 +26,7 @@ class Lesson133Tests(unittest.TestCase):
             with self.subTest(locale=locale):
                 html = path.read_text(encoding="utf-8")
                 self.assertIn(f'<html lang="{locale}">', html)
-                self.assertIn("1.3.3", html)
+                self.assertIn("3.1.3", html)
                 self.assertNotIn("<h2>undefined</h2>", html)
                 self.assertNotIn("undefined", html)
                 self.assertIn(TITLES[locale], html)
@@ -109,25 +109,25 @@ class Lesson133Tests(unittest.TestCase):
             self.assertIn("incompleteideas.net/book/the-book-2nd.html", html)
             self.assertIn("gymnasium.farama.org/api/env/", html)
             self.assertIn("spinningup.openai.com/en/latest/spinningup/rl_intro.html", html)
-            self.assertIn('href="a-1-3-4', html)
+            self.assertIn('href="a-3-2-1-les-a-0054', html)
 
     def test_catalog_sequence_and_publication_state(self):
         catalog = json.loads((ROOT / "data/catalog/catalog-v3.json").read_text(encoding="utf-8"))
         by_code = {item["code"]: item for item in catalog["lessons"]}
-        lesson = by_code["1.3.3"]
+        lesson = by_code["3.1.3"]
         self.assertEqual(lesson["uid"], "les-a-0053")
         self.assertEqual(lesson["status"], "published")
         self.assertEqual(lesson["content_state"], "published")
-        self.assertEqual(lesson["url_i18n"]["ru"], "lessons/a-1-3-3.html")
-        self.assertEqual(lesson["url_i18n"]["en"], "lessons/a-1-3-3-en.html")
-        self.assertEqual(lesson["url_i18n"]["zh"], "lessons/a-1-3-3-zh.html")
+        self.assertEqual(lesson["url_i18n"]["ru"], "lessons/a-3-1-3-les-a-0053.html")
+        self.assertEqual(lesson["url_i18n"]["en"], "lessons/a-3-1-3-les-a-0053-en.html")
+        self.assertEqual(lesson["url_i18n"]["zh"], "lessons/a-3-1-3-les-a-0053-zh.html")
         self.assertIn("les-a-0008", lesson["prerequisite_uids"])
-        self.assertEqual(by_code["1.3.4"]["status"], "published")
-        self.assertEqual(by_code["1.3.5"]["status"], "published")
+        self.assertEqual(by_code["3.2.1"]["status"], "published")
+        self.assertEqual(by_code["3.2.2"]["status"], "published")
 
     def test_previous_lesson_links_to_1_3_3_in_all_locales(self):
         for locale in ("", "-en", "-zh"):
-            path = ROOT / f"lessons/a-1-3-2{locale}.html"
+            path = ROOT / f"lessons/a-3-1-2-les-a-0008{locale}.html"
             html = path.read_text(encoding="utf-8")
             self.assertIn(f'href="a-1-3-3{locale}.html"', html)
 

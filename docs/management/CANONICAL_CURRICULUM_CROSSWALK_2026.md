@@ -262,9 +262,9 @@ CSV-файл `CANONICAL_LESSON_OWNER_CROSSWALK_2026.csv` содержит те �
 | les-a-0141 | 5.9.2 | Stability и Robustness | Track A | A4 / Explanation quality and scientific validation | mandatory | planned; outline_only | 26 | retain_owner |
 | les-a-0142 | 5.9.3 | Sanity Checks | Track A | A4 / Explanation quality and scientific validation | mandatory | planned; outline_only | 26 | retain_owner |
 | les-a-0143 | 5.9.4 | Uncertainty и Sensitivity | Track A | A4 / Explanation quality and scientific validation | mandatory | planned; outline_only | 26 | retain_owner |
-| les-a-0144 | 5.9.5 | Reproducibility | Track A | A5 / Explanation quality and scientific validation | elective | planned; outline_only | 26 | mandatory_elective_reclassification |
-| les-a-0145 | 5.9.6 | Human Utility | Track A | A5 / Explanation quality and scientific validation | elective | planned; outline_only | 26 | mandatory_elective_reclassification |
-| les-a-0146 | 5.9.7 | Экспериментальный дизайн и научная отчётность | Track A | A5 / Explanation quality and scientific validation | elective | planned; outline_only | 26 | mandatory_elective_reclassification |
+| les-a-0144 | 5.9.5 | Reproducibility | Track A | A5 / Explanation quality and scientific validation | mandatory | planned; outline_only | 26 | mandatory_elective_reclassification |
+| les-a-0145 | 5.9.6 | Human Utility | Track A | A5 / Explanation quality and scientific validation | mandatory | planned; outline_only | 26 | mandatory_elective_reclassification |
+| les-a-0146 | 5.9.7 | Экспериментальный дизайн и научная отчётность | Track A | A5 / Explanation quality and scientific validation | mandatory | planned; outline_only | 26 | mandatory_elective_reclassification |
 | les-a-0147 | 4.1.1 | Что такое интерпретируемость модели | Track A | A1 / Interpretability and transparent models | mandatory | planned; outline_only | 00,12,13 | retain_owner |
 | les-a-0148 | 4.1.2 | Интерпретируемость и объяснимость | Track A | A1 / Interpretability and transparent models | mandatory | planned; outline_only | 00,12,13 | retain_owner |
 | les-a-0149 | 4.1.5 | Компромисс между точностью и интерпретируемостью | Track A | A1 / Interpretability and transparent models | mandatory | planned; outline_only | 12,13 | retain_owner |

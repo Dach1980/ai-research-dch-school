@@ -2314,6 +2314,33 @@
       "content_state": "outline_only"
     },
     {
+      "uid": "les-a-0147",
+      "track_uid": "trk-a",
+      "theme_uid": "thm-a-06",
+      "module_uid": "mod-a-06-01",
+      "code": "6.1.1",
+      "title": "Что такое интерпретируемость модели",
+      "status": "published",
+      "access": "open",
+      "level": "beginner",
+      "prerequisite_uids": [],
+      "learning_outcomes": [
+        "Различает интерпретируемость модели, объяснение отдельного предсказания и анализ поведения системы в целом.",
+        "Объясняет, почему интерпретируемость зависит от модели, задачи и аудитории."
+      ],
+      "content_state": "published",
+      "url_i18n": {
+        "ru": "lessons/a-6-1-1-les-a-0147.html",
+        "en": "lessons/a-6-1-1-les-a-0147-en.html",
+        "zh": "lessons/a-6-1-1-les-a-0147-zh.html"
+      },
+      "title_i18n": {
+        "ru": "Что такое интерпретируемость модели",
+        "en": "What Is Model Interpretability?",
+        "zh": "什么是模型可解释性？"
+      }
+    },
+    {
       "uid": "les-a-0018",
       "track_uid": "trk-a",
       "theme_uid": "thm-a-07",
@@ -3192,33 +3219,6 @@
       ],
       "learning_outcomes": [],
       "content_state": "outline_only"
-    },
-    {
-      "uid": "les-a-0147",
-      "track_uid": "trk-a",
-      "theme_uid": "thm-a-06",
-      "module_uid": "mod-a-06-01",
-      "code": "6.1.1",
-      "title": "Что такое интерпретируемость модели",
-      "status": "published",
-      "access": "open",
-      "level": "beginner",
-      "prerequisite_uids": [],
-      "learning_outcomes": [
-        "Различает интерпретируемость модели, объяснение отдельного предсказания и анализ поведения системы в целом.",
-        "Объясняет, почему интерпретируемость зависит от модели, задачи и аудитории."
-      ],
-      "content_state": "published",
-      "url_i18n": {
-        "ru": "lessons/a-6-1-1-les-a-0147.html",
-        "en": "lessons/a-6-1-1-les-a-0147-en.html",
-        "zh": "lessons/a-6-1-1-les-a-0147-zh.html"
-      },
-      "title_i18n": {
-        "ru": "Что такое интерпретируемость модели",
-        "en": "What Is Model Interpretability?",
-        "zh": "什么是模型可解释性？"
-      }
     },
     {
       "uid": "les-a-0148",

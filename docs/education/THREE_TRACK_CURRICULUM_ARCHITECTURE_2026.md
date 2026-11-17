@@ -165,7 +165,7 @@
 - 5.7.4–5.7.5: attention/Transformer interpretation — elective C support, если урок рассматривает применение и ограничения attention, а не внутренние circuits.
 - 5.8.4–5.8.5: трассировка поведения AI-агента, вызовы инструментов, состояние и ошибки.
 
-Первые 31 UID (2.1–2.3 и 3.1–3.2) составляют фундаментальную инженерную основу. Два урока 5.8.4–5.8.5 и два 5.7.4–5.7.5 — дополнительные elective/bridge, а не основание объявлять трек завершённым.
+Первые 31 UID (2.1–2.3 и 3.1–3.2) составляют текущую обязательную инженерную основу. Четыре урока 5.7.4–5.7.5 и 5.8.4–5.8.5 — дополнительные elective/bridge. Поэтому до целевого первого маршрута в 35 обязательных уроков Track C пока не хватает четырёх качественно спроектированных обязательных уроков; добавлять их следует только после определения learning outcomes и практических заданий.
 
 ### Недостающие темы, которые нужно спроектировать отдельными уроками
 
@@ -317,13 +317,13 @@
 | les-a-0130 | 5.7.1 | Track B | elective | planned | Понятие концепта в нейросети |
 | les-a-0131 | 5.7.2 | Track B | elective | planned | Concept Activation Vectors и TCAV |
 | les-a-0132 | 5.7.3 | Track B | elective | planned | Наборы концептов, coverage и ограничения разметки |
-| les-a-0133 | 5.7.4 | Track C | mandatory | planned | Attention-механизм в Transformer |
-| les-a-0134 | 5.7.5 | Track C | mandatory | planned | Attention maps и ограничения их интерпретации |
+| les-a-0133 | 5.7.4 | Track C | elective | planned | Attention-механизм в Transformer |
+| les-a-0134 | 5.7.5 | Track C | elective | planned | Attention maps и ограничения их интерпретации |
 | les-a-0135 | 5.8.1 | Track A | elective | planned | Экспериментальный анализ поведения LLM |
 | les-a-0136 | 5.8.2 | Track A | elective | planned | Влияние промпта, контекста и параметров генерации |
 | les-a-0137 | 5.8.3 | Track A | elective | planned | Сравнение ответов и диагностические эксперименты |
-| les-a-0138 | 5.8.4 | Track C | mandatory | planned | Анализ траекторий действий AI-агента |
-| les-a-0139 | 5.8.5 | Track C | mandatory | planned | Анализ вызовов инструментов, состояния и ошибок агента |
+| les-a-0138 | 5.8.4 | Track C | elective | planned | Анализ траекторий действий AI-агента |
+| les-a-0139 | 5.8.5 | Track C | elective | planned | Анализ вызовов инструментов, состояния и ошибок агента |
 | les-a-0140 | 5.9.1 | Track A | mandatory | planned | Fidelity и Faithfulness |
 | les-a-0141 | 5.9.2 | Track A | mandatory | planned | Stability и Robustness |
 | les-a-0142 | 5.9.3 | Track A | mandatory | planned | Sanity Checks |

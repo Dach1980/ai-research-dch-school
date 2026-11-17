@@ -72,6 +72,7 @@ on:
       - "lessons/practice/**"
       - "lessons/*.html"
       - "lessons/**/*.html"
+      - "tracks/**"
       - "scripts/lesson-reader.js"
       - "styles/lesson-reader.css"
       - "scripts/validate-catalog.py"

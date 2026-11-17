@@ -224,6 +224,7 @@ Object.keys(canonicalLessonByRoute).forEach(function(route){
  var item=canonicalLessonByRoute[route];
  canonicalLessonByUid[item.uid]=item;
 });
+window.DCH_CANONICAL_LESSON_BY_UID=canonicalLessonByUid;
 var currentFile=window.location.pathname.split("/").pop().replace(/-(en|zh)\\.html$/,".html");
 var currentCanonicalLesson=canonicalLessonByRoute[currentFile];
 if(currentCanonicalLesson){
@@ -320,7 +321,7 @@ if(main){
  var scriptUrl=script&&script.src?script.src:document.baseURI;
  var catalogUrl=new URL("../data/catalog/catalog-v3.json",scriptUrl);
  var rootUrl=new URL("../",scriptUrl);
- function displayCode(item){var mapped=item&&canonicalLessonByUid[item.uid];return mapped?mapped.code:item.code;}
+ function displayCode(item){var registry=window.DCH_CANONICAL_LESSON_BY_UID||{};var mapped=item&&registry[item.uid];return mapped?mapped.code:item.code;}
  function link(className,href,label){
   var a=document.createElement("a");
   a.className="button "+className;

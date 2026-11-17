@@ -4,7 +4,7 @@
   const base = root.dataset.base || "../";
   const locale = (document.documentElement.lang || "ru").toLowerCase().startsWith("zh") ? "zh" :
     (document.documentElement.lang || "ru").toLowerCase().startsWith("en") ? "en" : "ru";
-  const trackUid = root.dataset.trackUid || ({ "track-a":"trk-a", "track-b":"trk-b", "track-c":"trk-c" }[root.dataset.trackId] || "trk-a");
+  const trackUid = root.dataset.trackUid || ({ "track-a":"trk-a", "track-b":"trk-b", "track-c":"trk-c", "track-d":"trk-d" }[root.dataset.trackId] || "trk-a");
   const labels = {
     ru:{theme:"ТЕМА",module:"МОДУЛЬ",lesson:"Урок",beginner:"Начальный уровень",intermediate:"Средний уровень",advanced:"Продвинутый уровень",open:"Открытый урок",registered:"После регистрации",paid:"Платный урок",empty:"Подготовленных уроков пока нет.",underReview:"На проверке",published:"Опубликовано"},
     en:{theme:"THEME",module:"MODULE",lesson:"Lesson",beginner:"Beginner",intermediate:"Intermediate",advanced:"Advanced",open:"Open lesson",registered:"Registration required",paid:"Paid lesson",empty:"No prepared lessons yet.",underReview:"Under review",published:"Published"},

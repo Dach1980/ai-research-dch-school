@@ -11,15 +11,16 @@ class LessonNavigationAndConceptTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         cls.catalog = json.loads((ROOT / "data/catalog/catalog-v3.json").read_text(encoding="utf-8"))
-        cls.by_code = {item["code"]: item for item in cls.catalog["lessons"]}
+        published = [
+            item for item in cls.catalog["lessons"]
+            if item.get("track_uid") == "trk-a"
+            and item.get("status") == "published"
+            and item.get("content_state") == "published"
+            and set(item.get("url_i18n", {})) == set(LOCALES)
+        ]
+        cls.by_code = {item["code"]: item for item in published}
         cls.codes = sorted(
-            (
-                item["code"] for item in cls.catalog["lessons"]
-                if item.get("track_uid") == "trk-a"
-                and item.get("status") == "published"
-                and item.get("content_state") == "published"
-                and set(item.get("url_i18n", {})) == set(LOCALES)
-            ),
+            cls.by_code,
             key=lambda code: tuple(int(part) for part in code.split(".")),
         )
 

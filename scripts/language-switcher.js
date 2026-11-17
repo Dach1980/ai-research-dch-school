@@ -1,5 +1,6 @@
 (() => {
   const header = document.querySelector(".site-header");
+  document.querySelectorAll("main .locale-links").forEach(node => node.remove());
   if (!header || header.querySelector(".language-switcher")) return;
   const path = window.location.pathname;
   const file = path.split("/").pop() || "index.html";

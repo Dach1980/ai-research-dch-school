@@ -30,6 +30,24 @@ class CatalogVisibilityTests(unittest.TestCase):
         self.assertEqual(lesson["module_uid"], "mod-a-06-01")
         self.assertEqual((lesson["status"], lesson["content_state"]), ("published", "published"))
 
+    def test_611_publication_state_matches_canonical_curriculum(self):
+        lesson = next(item for item in self.lessons if item["uid"] == "les-a-0147")
+        canonical = json.loads((ROOT / "data/catalog/curriculum-canonical-v1.json").read_text(encoding="utf-8"))
+        matches = []
+        def walk(value):
+            if isinstance(value, list):
+                for child in value:
+                    walk(child)
+            elif isinstance(value, dict):
+                if value.get("uid") == "les-a-0147":
+                    matches.append(value)
+                for child in value.values():
+                    walk(child)
+        walk(canonical)
+        self.assertEqual((lesson["status"], lesson["content_state"]), ("published", "published"))
+        self.assertEqual(len(matches), 1)
+        self.assertEqual(matches[0]["publication_status"], "published")
+
     def test_611_and_711_are_nested_under_their_canonical_themes_and_modules(self):
         themes = {item["uid"]: item for item in self.catalog["themes"]}
         modules = {item["uid"]: item for item in self.catalog["modules"]}

@@ -8,9 +8,9 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 FILES = {
-    "ru": ROOT / "lessons/a-1-4-4.html",
-    "en": ROOT / "lessons/a-1-4-4-en.html",
-    "zh": ROOT / "lessons/a-1-4-4-zh.html",
+    "ru": ROOT / "lessons/a-4-2-1-les-a-0013.html",
+    "en": ROOT / "lessons/a-4-2-1-les-a-0013-en.html",
+    "zh": ROOT / "lessons/a-4-2-1-les-a-0013-zh.html",
 }
 TITLES = {
     "ru": "Обобщающая способность модели",
@@ -86,11 +86,11 @@ class Lesson144Tests(unittest.TestCase):
             self.assertIsNotNone(match)
             ast.parse(html.unescape(match.group(1)))
             suffix = "" if locale == "ru" else "-en" if locale == "en" else "-zh"
-            self.assertIn(f'href="a-1-4-3{suffix}.html"', source)
+            self.assertIn(f'href="a-4-1-3-les-a-0012{suffix}.html"', source)
 
         catalog = json.loads((ROOT / "data/catalog/catalog-v3.json").read_text(encoding="utf-8"))
         lesson = next(x for x in catalog["lessons"] if x["uid"] == "les-a-0013")
-        self.assertEqual(lesson["code"], "1.4.4")
+        self.assertEqual(lesson["code"], "4.2.1")
         self.assertEqual(lesson["status"], "published")
         self.assertEqual(lesson["content_state"], "published")
         self.assertEqual(lesson["prerequisite_uids"], ["les-a-0012"])

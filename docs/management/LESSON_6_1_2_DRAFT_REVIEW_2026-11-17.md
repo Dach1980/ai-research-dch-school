@@ -16,4 +16,12 @@ The user approved reuse of UID `les-a-0148`. Its legacy identity 4.1.2 is retain
 
 Navigation links to the previous published lesson 6.1.1 and next published lesson 7.1.1. No link to unpublished 6.1.3 is shown.
 
-Automated contract coverage includes HTML structure, local assets, locale switchers, assessment, SHAP/logistic-regression explanations, localized URLs, UID, publication state, ownership, and sequence. Manual browser QA at desktop/mobile sizes and in light/dark themes remains outstanding and is not claimed as completed.
+Automated contract coverage includes HTML structure, local assets, locale switchers, assessment, SHAP/logistic-regression explanations, localized URLs, UID, publication state, ownership, and sequence. **Manual visual acceptance:** completed by the user on 2026-11-18. The user explicitly confirmed visual acceptance and authorized publication. Lesson 6.1.2 is accepted for publication; its three localized production routes remain the canonical public URLs.
+
+
+## Final acceptance
+
+- User visual acceptance: **passed** (2026-11-18).
+- Publication authorization: **confirmed** (2026-11-18).
+- Production routes: RU / EN / ZH as listed above.
+- Stable UID: `les-a-0148`.

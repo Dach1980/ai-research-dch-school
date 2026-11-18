@@ -61,7 +61,7 @@ class Lesson614ProductionContractTests(unittest.TestCase):
                 self.assertIn(token, html)
             self.assertIn("0,125" if lang == "ru" else "0.125", html)
             self.assertIn("0,375" if lang == "ru" else "0.375", html)
-            self.assertIn("4.0", html)
+            self.assertIn("4,0" if lang == "ru" else "4.0", html)
             self.assertIn("70", html)
 
     def test_quiz_keys_and_explanations_are_complete(self):

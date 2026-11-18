@@ -103,7 +103,7 @@ class CanonicalLessonUIContractTests(unittest.TestCase):
         contract = ROOT / "docs/standards/CANONICAL_LESSON_UI_CONTRACT.md"
         self.assertTrue(template.is_file())
         self.assertTrue(contract.is_file())
-        text = contract.read_text(encoding="utf-8")
+        text = contract.read_text(encoding="utf-8").lower()
         for rule in ("sole owner", "only `scripts/lesson-layout.js`", "Playwright", "status: published"):
         self.assertIn(r"^lessons\/a-[a-z0-9.-]+\.html$", script)
 

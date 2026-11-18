@@ -135,6 +135,41 @@ class CanonicalLessonBrowserAcceptanceTests(unittest.TestCase):
                         )
                 page.close()
 
+    def test_published_canonical_lesson_block_order(self):
+        selectors = [
+            "main.lesson > .lesson-intro",
+            "main.lesson > #lesson-outcomes",
+            "main.lesson > #lesson-sections",
+            "main.lesson > #lesson-practice",
+            "main.lesson > #lesson-sources",
+            "main.lesson > #lesson-navigation",
+            "main.lesson > #lesson-glossary",
+            "main.lesson > #lesson-quiz",
+            "footer.footer",
+        ]
+        for lesson in PUBLISHED_LESSONS:
+            if uid_number(lesson) < 169:
+                continue
+            for locale in ("ru", "en", "zh"):
+                with self.subTest(code=lesson["code"], locale=locale):
+                    page = self.open_page(lesson, locale)
+                    result = page.evaluate("""(selectors) => {
+                      const nodes = selectors.map((selector) => Array.from(document.querySelectorAll(selector)));
+                      return {
+                        counts: nodes.map((items) => items.length),
+                        ordered: nodes.every((items, index) =>
+                          index === 0 || nodes[index - 1][0].compareDocumentPosition(items[0]) & Node.DOCUMENT_POSITION_FOLLOWING
+                        ),
+                        inMain: nodes.slice(0, 8).every((items) => items[0] && items[0].closest("main.lesson")),
+                        footerAfterMain: !!(nodes[8][0] && nodes[8][0].compareDocumentPosition(document.querySelector("main.lesson")) & Node.DOCUMENT_POSITION_PRECEDING)
+                      };
+                    }""", selectors)
+                    self.assertEqual(result["counts"], [1] * 9, f"{lesson['uid']} / {locale}: missing or duplicate block root")
+                    self.assertTrue(result["ordered"], f"{lesson['uid']} / {locale}: incorrect DOM block order")
+                    self.assertTrue(result["inMain"], f"{lesson['uid']} / {locale}: lesson blocks must be inside main.lesson")
+                    self.assertTrue(result["footerAfterMain"], f"{lesson['uid']} / {locale}: footer must follow lesson content")
+                    page.close()
+
     def test_theme_aware_headings_and_responsive_layout(self):
         for lesson in CANONICAL_LESSONS:
             for theme, expected in (("light", "rgb(23, 35, 61)"), ("dark", "rgb(237, 243, 255)")):

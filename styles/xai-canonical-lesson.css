@@ -209,7 +209,10 @@ main.lesson #lesson-quiz .quiz-submit {
   border-radius:10px;
   background:var(--lds-accent);
   color:#fff;
-  font:700  .95rem/1.4 inherit;
+  font-family:inherit;
+  font-size:.95rem;
+  font-weight:700;
+  line-height:1.4;
   cursor:pointer;
 }
 main.lesson #lesson-quiz .quiz-feedback {

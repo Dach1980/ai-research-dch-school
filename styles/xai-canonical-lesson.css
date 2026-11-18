@@ -70,3 +70,194 @@
 html:not([data-theme="light"]) .xai-canonical-section-content h2{
   color:var(--lds-ink,#edf3ff);
 }
+
+/* Canonical roots own their component styles after JavaScript distribution.
+   Do not scope these rules to the original .xai-canonical-section-content:
+   practice, sources and quiz nodes are moved into sibling semantic roots. */
+main.lesson #lesson-sections .xai-canonical-section-content,
+main.lesson #lesson-practice,
+main.lesson #lesson-sources {
+  color:var(--lds-ink,#17233d);
+  font-size:1rem;
+  line-height:1.78;
+}
+main.lesson #lesson-sections .xai-canonical-section-content p,
+main.lesson #lesson-practice p,
+main.lesson #lesson-sources p {
+  margin:.9rem 0;
+  color:inherit;
+  line-height:inherit;
+}
+main.lesson #lesson-sections .xai-canonical-section-content ul,
+main.lesson #lesson-sections .xai-canonical-section-content ol,
+main.lesson #lesson-practice ul,
+main.lesson #lesson-practice ol,
+main.lesson #lesson-sources ul,
+main.lesson #lesson-sources ol {
+  padding-left:1.5rem;
+  margin:.8rem 0 1.1rem;
+}
+main.lesson #lesson-sections .xai-canonical-section-content li,
+main.lesson #lesson-practice li,
+main.lesson #lesson-sources li {
+  margin:.4rem 0;
+  line-height:1.7;
+}
+main.lesson #lesson-sections .xai-canonical-section-content strong,
+main.lesson #lesson-practice strong,
+main.lesson #lesson-sources strong {
+  color:var(--lds-ink,#17233d);
+  font-weight:750;
+}
+main.lesson #lesson-sections .xai-canonical-section-content a,
+main.lesson #lesson-practice a,
+main.lesson #lesson-sources a {
+  color:var(--lds-accent,#246bd6);
+  text-underline-offset:.18em;
+}
+
+/* Display mathematics remains styled wherever its semantic block is placed. */
+main.lesson #lesson-sections .formula,
+main.lesson #lesson-practice .formula,
+main.lesson #lesson-sources .formula {
+  display:grid;
+  gap:.7rem;
+  justify-items:center;
+  width:fit-content;
+  max-width:100%;
+  margin:1.55rem auto;
+  padding:clamp(1rem,2.4vw,1.55rem);
+  border:1px solid var(--lds-math-border);
+  border-left:4px solid var(--lds-math-accent);
+  border-radius:16px;
+  background:linear-gradient(135deg,var(--lds-math-bg),var(--lds-math-bg-end));
+  color:var(--lds-math-ink);
+  box-shadow:0 8px 24px var(--lds-math-shadow);
+  text-align:center;
+  overflow-x:auto;
+  overscroll-behavior-x:contain;
+  -webkit-overflow-scrolling:touch;
+}
+main.lesson #lesson-sections .formula-expression,
+main.lesson #lesson-practice .formula-expression,
+main.lesson #lesson-sources .formula-expression {
+  display:block;
+  min-width:max-content;
+  max-width:none;
+  color:var(--lds-math-ink);
+  font:700 clamp(1.05rem,2.3vw,1.4rem)/1.6 'Cambria Math','STIX Two Math',
+    'DejaVu Sans Mono',ui-monospace,monospace;
+  white-space:nowrap;
+  letter-spacing:.015em;
+}
+
+/* Self-check forms are independent semantic components in #lesson-quiz. */
+main.lesson #lesson-quiz {
+  color:var(--lds-ink,#17233d);
+}
+main.lesson #lesson-quiz .knowledge-check {
+  margin:1.5rem 0;
+  padding:clamp(1rem,2.5vw,1.5rem);
+  border:1px solid var(--lds-line);
+  border-radius:16px;
+  background:var(--lds-surface);
+  color:var(--lds-ink);
+  box-shadow:0 8px 24px var(--lds-math-shadow);
+}
+main.lesson #lesson-quiz .knowledge-check fieldset {
+  min-width:0;
+  margin:1rem 0;
+  padding:1rem;
+  border:1px solid var(--lds-line);
+  border-radius:12px;
+}
+main.lesson #lesson-quiz .knowledge-check legend {
+  max-width:100%;
+  padding:0 .35rem;
+  color:var(--lds-ink);
+  font-weight:750;
+  line-height:1.55;
+}
+main.lesson #lesson-quiz .knowledge-check label {
+  display:flex;
+  align-items:flex-start;
+  gap:.7rem;
+  margin:.65rem 0;
+  color:var(--lds-muted);
+  line-height:1.6;
+  cursor:pointer;
+}
+main.lesson #lesson-quiz .knowledge-check input {
+  flex:0 0 auto;
+  width:1.05rem;
+  height:1.05rem;
+  margin:.2rem 0 0;
+  accent-color:var(--lds-accent);
+}
+main.lesson #lesson-quiz .knowledge-check input:focus-visible,
+main.lesson #lesson-quiz .quiz-submit:focus-visible {
+  outline:3px solid var(--lds-accent);
+  outline-offset:3px;
+}
+main.lesson #lesson-quiz .quiz-submit {
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  margin:.5rem 0 0;
+  padding:.75rem 1.15rem;
+  border:0;
+  border-radius:10px;
+  background:var(--lds-accent);
+  color:#fff;
+  font:700  .95rem/1.4 inherit;
+  cursor:pointer;
+}
+main.lesson #lesson-quiz .quiz-feedback {
+  display:none;
+  margin:1rem 0 0;
+  padding:.9rem 1rem;
+  border:1px solid var(--lds-line);
+  border-radius:12px;
+  background:var(--lds-code);
+  color:var(--lds-ink);
+  line-height:1.65;
+}
+main.lesson #lesson-quiz .quiz-feedback.is-visible {
+  display:block;
+}
+main.lesson #lesson-quiz .quiz-feedback p {
+  margin:.2rem 0 .6rem;
+  color:var(--lds-ink);
+  font-weight:750;
+}
+main.lesson #lesson-quiz .quiz-feedback li {
+  margin:.35rem 0;
+  color:var(--lds-muted);
+}
+main.lesson #lesson-quiz .quiz-summary {
+  margin:1.2rem 0;
+  padding:1rem 1.1rem;
+  border:1px solid var(--lds-math-border);
+  border-left:4px solid var(--lds-accent);
+  border-radius:12px;
+  background:var(--lds-math-bg);
+  color:var(--lds-math-ink);
+  font-weight:750;
+  line-height:1.6;
+}
+@media(max-width:560px) {
+  main.lesson #lesson-practice .formula,
+  main.lesson #lesson-sections .formula,
+  main.lesson #lesson-sources .formula {
+    margin:1.2rem 0;
+    padding:1rem .85rem;
+    border-radius:13px;
+  }
+  main.lesson #lesson-practice .formula-expression,
+  main.lesson #lesson-sections .formula-expression,
+  main.lesson #lesson-sources .formula-expression {
+    font-size:1rem;
+  }
+  main.lesson #lesson-quiz .knowledge-check {padding:.9rem}
+  main.lesson #lesson-quiz .knowledge-check fieldset {padding:.75rem}
+}

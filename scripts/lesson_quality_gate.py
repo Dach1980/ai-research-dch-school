@@ -9,7 +9,7 @@ ROOT = Path(__file__).resolve().parents[1]
 LESSONS = sorted((ROOT / "lessons").glob("*-les-a-*.html"))
 ERRORS = []
 # Legacy lessons use the pre-contract shell; new UID-backed lessons are strict.
-STRICT_UID_MIN = 147
+STRICT_UID_MIN = 169
 
 
 class Audit(HTMLParser):

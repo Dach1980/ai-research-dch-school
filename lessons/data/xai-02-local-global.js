@@ -600,41 +600,49 @@ plt.show()</code></pre>
     },
     questions:[
       {
+        question:{ru:"Какой вопрос относится к локальному объяснению?",en:"Which question is local?",zh:"哪个问题属于局部解释？"},
         options:{ru:["Объяснить один прогноз для выбранного объекта","Описать поведение модели на всей популяции","Сравнить архитектуры моделей"],en:["Explain one prediction for a selected instance","Describe model behaviour across a population","Compare model architectures"],zh:["解释选定样本的一次预测","描述模型在整个总体上的行为","比较模型架构"]},
         answer:0,
         why:{ru:"Локальный анализ имеет единицей один объект или один прогноз.",en:"A local analysis uses one instance or prediction as its unit.",zh:"局部分析以单个样本或单次预测为分析单位。"}
       },
       {
+        question:{ru:"Что обязательно нужно указать, описывая глобальное объяснение?",en:"What must be specified when reporting a global explanation?",zh:"报告全局解释时必须说明什么？"},
         options:{ru:["Одинаковое объяснение для каждого объекта","Зависимость от популяции и области входов","Доказательство причинности"],en:["The same explanation for every instance","Dependence on the population and input region","Proof of causality"],zh:["每个样本都得到相同解释","取决于总体和输入区域","因果关系的证明"]},
         answer:1,
         why:{ru:"Глобальное объяснение всегда относится к определённой выборке, периоду и области применимости.",en:"A global explanation is always relative to a defined sample, period and domain.",zh:"全局解释始终相对于明确的样本、时期和适用范围。"}
       },
       {
+        question:{ru:"Какой метод показывает средний прогноз при фиксированном значении признака?",en:"Which method shows the average prediction at a fixed feature value?",zh:"哪种方法展示特征固定取值时的平均预测？"},
         options:{ru:["PDP","Локальная атрибуция SHAP для одного объекта","Контрфактический поиск"],en:["PDP","A local SHAP attribution for one instance","Counterfactual search"],zh:["PDP","单个样本的局部 SHAP 归因","反事实搜索"]},
         answer:0,
         why:{ru:"PDP усредняет прогнозы при фиксированных значениях признака по выбранным объектам.",en:"PDP averages predictions at fixed feature values over selected instances.",zh:"PDP 对选定样本在特征固定取值下的预测进行平均。"}
       },
       {
+        question:{ru:"Что измеряет permutation importance?",en:"What does permutation importance measure?",zh:"置换重要性衡量什么？"},
         options:{ru:["Насколько ухудшится выбранная метрика после перемешивания признака","Вклад признака в конкретный прогноз","Причинный эффект признака"],en:["How much a selected metric drops after shuffling a feature","The feature's contribution to one prediction","The feature's causal effect"],zh:["打乱特征后指定指标下降多少","特征对某次预测的贡献","特征的因果效应"]},
         answer:0,
         why:{ru:"Permutation importance — глобальная/групповая оценка зависимости качества от признака, а не локальная атрибуция.",en:"Permutation importance measures global or subgroup performance dependence, not a local attribution.",zh:"置换重要性衡量全局或子群体层面的性能依赖，而不是局部归因。"}
       },
       {
+        question:{ru:"Почему среднее локальных вкладов может вводить в заблуждение?",en:"Why can the average of local contributions be misleading?",zh:"为什么局部贡献的平均值可能产生误导？"},
         options:{ru:["У всех объектов одинаковая реакция","Среднее скрывает различия и противоположные направления","Модель перестаёт обучаться"],en:["All instances respond identically","The average hides differences and opposite directions","The model stops training"],zh:["所有样本的响应都相同","平均值掩盖差异和相反方向","模型停止训练"]},
         answer:1,
         why:{ru:"Разные локальные реакции могут компенсироваться при усреднении; нужны распределения и анализ сегментов.",en:"Different local responses can cancel when averaged; inspect distributions and subgroups.",zh:"不同的局部响应在平均时可能相互抵消，因此应检查分布和子群体。"}
       },
       {
+        question:{ru:"Что означает замена признака на медиану в лаборатории?",en:"What does median replacement mean in the lab?",zh:"实验中将特征替换为中位数意味着什么？"},
         options:{ru:["Это SHAP-значение","Это локальная чувствительность к выбранной замене, не причинный эффект","Это глобальная важность"],en:["It is a SHAP value","It is local sensitivity to a chosen replacement, not a causal effect","It is global importance"],zh:["这是 SHAP 值","这是对指定替换的局部敏感性，不是因果效应","这是全局重要性"]},
         answer:1,
         why:{ru:"Замена признака на медиану — простая контролируемая проверка чувствительности; она не распределяет вклад по аксиомам SHAP.",en:"Median replacement is a simple controlled sensitivity check; it does not allocate contributions under SHAP axioms.",zh:"用中位数替换特征是一种简单的受控敏感性检查，并未按照 SHAP 公理分配贡献。"}
       },
       {
+        question:{ru:"Зачем сопоставлять PDP и ICE?",en:"Why compare PDP and ICE?",zh:"为什么要对比 PDP 和 ICE？"},
         options:{ru:["Потому что ICE показывает индивидуальные кривые и неоднородность","Потому что ICE всегда доказывает причинность","Потому что PDP нельзя усреднять"],en:["Because ICE shows individual curves and heterogeneity","Because ICE always proves causality","Because PDP cannot be averaged"],zh:["因为 ICE 展示个体曲线和异质性","因为 ICE 总能证明因果关系","因为 PDP 不能求平均"]},
         answer:0,
         why:{ru:"ICE помогает увидеть разброс и взаимодействия, которые скрываются в средней PDP-кривой.",en:"ICE reveals spread and interactions that can be hidden by an average PDP curve.",zh:"ICE 有助于发现平均 PDP 曲线可能掩盖的离散性和交互作用。"}
       },
       {
+        question:{ru:"Что должно входить в корректный отчёт об объяснении?",en:"What belongs in a responsible explanation report?",zh:"规范的解释报告应包含什么？"},
         options:{ru:["Метод, выборку, метрику, baseline и границы применимости","Только самый высокий вклад","Только скриншот графика"],en:["Method, sample, metric, baseline and scope limitations","Only the largest contribution","Only a screenshot of the plot"],zh:["方法、样本、指标、基准值和适用范围限制","只有最大的贡献值","只有图表截图"]},
         answer:0,
         why:{ru:"Без контекста невозможно понять, к какой популяции и шкале относится объяснение и какие выводы допустимы.",en:"Without context, readers cannot know the population, scale or permissible conclusions.",zh:"缺少上下文，读者无法判断解释对应的总体、尺度以及允许得出的结论。"}

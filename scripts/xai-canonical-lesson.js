@@ -1,7 +1,7 @@
 (function () {
   "use strict";
   var lesson = window.DCH_DEMO_LESSON;
-  var target = document.getElementById("xai-canonical-sections");
+  var target = document.getElementById("lesson-sections");
   if (!lesson || !Array.isArray(lesson.pages) || !target) return;
 
   var locale = (document.documentElement.lang || "ru").toLowerCase();
@@ -64,12 +64,12 @@
   }[locale];
 
   document.title = copy.title + " — AI Research DCH School";
-  var h1 = document.getElementById("xai-lesson-title");
-  var lead = document.getElementById("xai-lesson-lead");
+  var h1 = document.getElementById("lesson-title");
+  var lead = document.getElementById("lesson-lead");
   if (h1) h1.textContent = copy.title;
   if (lead) lead.textContent = copy.lead;
 
-  var outcomes = document.getElementById("xai-outcomes");
+  var outcomes = document.getElementById("lesson-outcomes");
   if (outcomes) {
     var heading = document.createElement("h2");
     heading.textContent = copy.outcomesTitle;
@@ -96,6 +96,42 @@
     section.append(heading, body);
     target.appendChild(section);
   });
+
+  // Distribute existing lesson material into semantic roots in the approved DOM order.
+  var practiceRoot = document.getElementById("lesson-practice");
+  var sourcesRoot = document.getElementById("lesson-sources");
+  var glossaryRoot = document.getElementById("lesson-glossary");
+  var quizRoot = document.getElementById("lesson-quiz");
+  var splitLabels = {
+    ru: { practice: "Мини-лаборатория: разложить один прогноз", sources: "Первоисточники по методам" },
+    en: { practice: "Mini-lab: decompose one prediction", sources: "Primary method references" },
+    zh: { practice: "迷你实验：分解一次预测", sources: "方法的主要文献" }
+  }[locale];
+  if (target && practiceRoot && sourcesRoot && glossaryRoot && quizRoot) {
+    Array.prototype.forEach.call(target.querySelectorAll(".xai-canonical-section-content"), function (contentRoot) {
+      var destination = contentRoot;
+      Array.prototype.forEach.call(Array.from(contentRoot.childNodes), function (node) {
+        if (node.nodeType === Node.ELEMENT_NODE && node.matches("h2") && node.textContent.trim() === splitLabels.practice) {
+          destination = practiceRoot;
+        } else if (node.nodeType === Node.ELEMENT_NODE && node.matches("h3") && node.textContent.trim() === splitLabels.sources) {
+          destination = sourcesRoot;
+        } else if (node.nodeType === Node.ELEMENT_NODE && node.matches("h2") && destination === sourcesRoot) {
+          destination = contentRoot;
+        }
+        if (node.nodeType === Node.ELEMENT_NODE && node.matches("section.lesson-glossary")) {
+          while (node.firstChild) glossaryRoot.appendChild(node.firstChild);
+          node.remove();
+          return;
+        }
+        if (node.nodeType === Node.ELEMENT_NODE && node.matches(".knowledge-check, .quiz-summary")) {
+          quizRoot.appendChild(node);
+          if (node.matches(".quiz-summary")) destination = contentRoot;
+          return;
+        }
+        if (destination !== contentRoot) destination.appendChild(node);
+      });
+    });
+  }
 
   var answers = { q1: "a", q2: "c", q3: "a", q4: "c", q5: "c", q6: "a", q7: "c", q8: "c" };
   var explanations = {

@@ -36,6 +36,31 @@
     content.innerHTML=text(page.content);
     section.append(h,content); body.appendChild(section);
   });
+  // Split the lesson's existing localized content into the canonical semantic roots.
+  const practiceRoot = document.getElementById("lesson-practice");
+  const sourcesRoot = document.getElementById("lesson-sources");
+  const glossaryRoot = document.getElementById("lesson-glossary");
+  if (body && practiceRoot && sourcesRoot && glossaryRoot) {
+    const labelsByLocale = {
+      ru: {practice:"Практическое задание", sources:"Источники и дополнительное чтение"},
+      en: {practice:"Practical assignment", sources:"References and further reading"},
+      zh: {practice:"实践任务", sources:"参考文献与延伸阅读"}
+    }[locale];
+    let destination = body;
+    Array.from(body.childNodes).forEach(node => {
+      if (node.nodeType === Node.ELEMENT_NODE && node.matches("h3")) {
+        const heading = node.textContent.trim();
+        if (heading === labelsByLocale.practice) destination = practiceRoot;
+        if (heading === labelsByLocale.sources) destination = sourcesRoot;
+      }
+      if (node.nodeType === Node.ELEMENT_NODE && node.matches("section.lesson-glossary")) {
+        destination = glossaryRoot;
+        while (node.firstChild) destination.appendChild(node.firstChild);
+        return;
+      }
+      destination.appendChild(node);
+    });
+  }
   if (quizRoot) {
     const q=lesson.quiz, qlabels=q.labels[locale];
     const section=document.createElement("section"); section.className="xai-canonical-section"; section.id="self-check";

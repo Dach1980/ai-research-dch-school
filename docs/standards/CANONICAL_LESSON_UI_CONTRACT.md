@@ -179,6 +179,8 @@ Intentional colored components (e.g. a dark outcomes card, diagram palette, synt
 A lesson cannot be marked `published` until all checks pass:
 
 ### Static checks
+- The canonical shell template contains the nine semantic roots in the exact mandatory order.
+- Every UID-backed Track A lesson at or beyond the canonical boundary that is marked both `status: published` and `content_state: published` has exactly one root for each block, in the required source/DOM order, in RU / EN / 中文. Missing routes, missing roots, duplicate roots or reordered roots fail CI.
 - Exactly one canonical header, main, footer and lesson navigation placeholder.
 - Exactly one load of each required shared script.
 - No local language selector, footer language links, or renderer-owned navigation.

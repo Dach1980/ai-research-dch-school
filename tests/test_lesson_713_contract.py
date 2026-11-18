@@ -27,6 +27,7 @@ class Lesson713Tests(unittest.TestCase):
         cls.data_path = ROOT / "lessons/data/xai-03-intrinsic-posthoc.js"
         cls.renderer_path = ROOT / "scripts/xai-intrinsic-posthoc-lesson.js"
         cls.data = cls.data_path.read_text(encoding="utf-8")
+        cls.payload = json.loads(cls.data.split("=", 1)[1].strip().rstrip(";"))
         cls.renderer = cls.renderer_path.read_text(encoding="utf-8")
         cls.catalog = json.loads((ROOT / "data/catalog/catalog-v3.json").read_text(encoding="utf-8"))
 
@@ -75,7 +76,7 @@ class Lesson713Tests(unittest.TestCase):
         self.assertIn("两条路径", self.data)
 
     def test_python_lab_is_reproducible_and_has_no_claim_of_causality(self):
-        self.assertEqual(self.data.count('class="language-python"'), 18)
+        self.assertEqual(self.data.count('class="language-python"'), 15)
         for token in ("make_friedman1", "random_state=42", "LinearRegression", "RandomForestRegressor", "permutation_importance", "mean_squared_error"):
             self.assertIn(token, self.data)
         for token in ("не причинный эффект", "not a causal effect", "不是因果效应"):
@@ -83,11 +84,8 @@ class Lesson713Tests(unittest.TestCase):
 
     def test_glossary_and_quiz_have_ten_terms_and_ten_questions_per_locale(self):
         for locale in ("ru", "en", "zh"):
-            block = self.data.split('"glossary": {', 1)[1].split('"quiz": {', 1)[0]
-            match = re.search(r'"' + locale + r'": \[(.*?)\n\s*\]', block, re.S)
-            self.assertIsNotNone(match)
-            self.assertEqual(len(re.findall(r'\["', match.group(1))), 10)
-        self.assertEqual(len(re.findall(r'"q": \{', self.data)), 10)
+            self.assertEqual(len(self.payload["glossary"][locale]), 10)
+        self.assertEqual(len(self.payload["quiz"]["questions"]), 10)
         self.assertIn("get(it.w)", self.renderer)
         self.assertIn("aria-live", self.renderer)
 

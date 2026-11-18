@@ -15,11 +15,12 @@ class KnowledgeMapTests(unittest.TestCase):
   js=(ROOT/"scripts/planet-map-catalog.js").read_text(encoding="utf-8")
   c=json.loads((ROOT/"data/catalog/catalog-v3.json").read_text(encoding="utf-8"))
   lessons=[x for x in c["lessons"] if x.get("track_uid")=="trk-a" and x.get("status")=="published" and x.get("content_state")=="published"]
-  self.assertEqual(len(lessons),33)
+  self.assertEqual(len(lessons),34)
   self.assertIn("les-a-0018", {lesson["uid"] for lesson in lessons})
   self.assertIn("les-a-0147", {lesson["uid"] for lesson in lessons})
   self.assertIn("les-a-0148", {lesson["uid"] for lesson in lessons})
   self.assertIn("les-a-0016", {lesson["uid"] for lesson in lessons})
+  self.assertIn("les-a-0168", {lesson["uid"] for lesson in lessons})
   module=next(x for x in c["modules"] if x["uid"]=="mod-a-04-02")
   self.assertEqual(set(module["title_i18n"]),{"ru","en","zh"})
   self.assertIn("e.module.title_i18n?.[locale]||moduleNames",js)

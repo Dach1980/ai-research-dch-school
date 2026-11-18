@@ -26,7 +26,7 @@ jobs:
         run: python scripts/lesson_quality_gate.py
       - name: Run catalog unit tests
         run: python -m unittest discover -s tests -p 'test_validate_catalog.py' -v
-      - name: Test lesson 6.1.3 drafts, localization, formulas and assessment
+      - name: Test published lesson 6.1.3, localization, formulas and assessment
         run: python -m unittest discover -s tests -p 'test_lesson_613_production_contract.py' -v
       - name: Test published lesson 1.4.1 in all locales
         run: python -m unittest discover -s tests -p 'test_lesson_141_multilingual.py' -v

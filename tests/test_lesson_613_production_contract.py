@@ -73,7 +73,7 @@ class Lesson613ProductionContractTests(unittest.TestCase):
             self.assertIn('distance_effect = -1.2 * (distance_km - 1.5)', html)
             self.assertIn('60.7', html)
             self.assertIn('60.1', html)
-            self.assertIn('51.55', html)
+            self.assertIn('51,55' if lang == 'ru' else '51.55', html)
             self.assertIn('0.45', html)
             self.assertIn('4.5', html)
 

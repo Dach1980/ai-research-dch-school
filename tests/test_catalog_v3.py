@@ -32,6 +32,9 @@ class CatalogV3Tests(unittest.TestCase):
         mappings = self.manifest["content_mappings"]
         self.assertTrue(any(x["source_legacy_id"] == "A.3" and len(x["target_lesson_uids"]) > 1 for x in mappings))
         self.assertTrue(any(x["source_legacy_id"] == "A.1.2.1" and len(x["target_lesson_uids"]) > 1 for x in mappings))
+        linear_mapping = next(x for x in mappings if x["mapping_id"] == "map-xai-models")
+        self.assertEqual(linear_mapping["target_codes"][0], "6.1.3")
+        self.assertEqual(linear_mapping["target_lesson_uids"][0], "les-a-0016")
         target_uids = {x["uid"] for x in self.catalog["lessons"]}
         self.assertTrue(all(uid in target_uids for m in mappings for uid in m["target_lesson_uids"]))
 

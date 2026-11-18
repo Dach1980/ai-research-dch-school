@@ -1348,14 +1348,14 @@
       "title": "Создать и принять урок 6.1.4 «Интерпретация деревьев решений»",
       "status": "in_progress",
       "priority": "high",
-      "decision": "Подготовлены RU / EN / 中文 страницы 6.1.4 под новым UID les-a-0168: в canonical curriculum для урока не было UID и legacy mapping, поэтому старый идентификатор не переиспользовался. Созданы девять учебных разделов, локализованная схема, формулы критериев деревьев, карточки определений, словарь и семь вопросов. Catalog v3 и canonical curriculum синхронизированы. GitHub Pages validation, Supabase migrations и deployment прошли; native Pages build/deployment и SVG theme audit успешны. Полный Validate learning catalog ещё выполняет responsive browser stage. Пользовательская визуальная и редакционная приёмка ожидается.",
+      "decision": "Подготовлены RU / EN / 中文 страницы 6.1.4 под новым UID les-a-0168: в canonical curriculum для урока не было UID и legacy mapping, поэтому старый идентификатор не переиспользовался. Созданы девять учебных разделов, локализованная схема, формулы критериев деревьев, карточки определений, словарь и семь вопросов. Catalog v3 и canonical curriculum синхронизированы. GitHub Pages validation, Supabase migrations и deployment прошли; native Pages build/deployment и SVG theme audit успешны. Полный Validate learning catalog ещё выполняет responsive browser stage. Пользовательская визуальная и редакционная приёмка ожидается. Пользователь 2026-11-18 подтвердил приёмку урока 6.1.4 (RU / EN / 中文); редакционная и визуальная приёмка зафиксирована в production review. Единственное оставшееся техническое ограничение — responsive browser stage Validate learning catalog. Следующий учебный шаг разрешён: 6.2.1.",
       "acceptance": [
         "Три полноценные локализации RU / EN / 中文 доступны по каноническим URL.",
         "UID les-a-0168 назначен как новый UID; prerequisites и иерархия Track A / Theme 6 / Module 1 согласованы.",
         "В каждой локализации девять разделов, пять формул, не менее семи definition-карточек, SVG с локализованными title/desc/figcaption, девять терминов и семь вопросов с объяснениями.",
         "Каталог, каноническая программа, карта знаний и динамическая последовательная навигация согласованы.",
         "Контрактные, каталоговые, SVG, multilingual, responsive browser тесты и Pages deployment успешны.",
-        "Пользовательская визуальная и редакционная приёмка зафиксирована отдельно."
+        "Пользователь подтвердил визуальную и редакционную приёмку RU / EN / 中文 2026-11-18; запись внесена в production review."
       ],
       "evidence": [
         "lessons/a-6-1-4.html",
@@ -1377,9 +1377,7 @@
         "https://github.com/Dach1980/ai-research-dch-school/actions/runs/44212868051"
       ],
       "limitations": [
-        "Responsive browser stage Validate learning catalog run 44212868051 ещё выполняется.",
-        "Пользовательская визуальная приёмка RU / EN / 中文 на desktop/mobile и в светлой/тёмной теме ожидается.",
-        "Редакционная приёмка содержания пользователем ожидается."
+        "Responsive browser stage Validate learning catalog run 44213429430 требует отдельного подтверждения завершения; пользовательская приёмка уже подтверждена."
       ]
     }
   ],
@@ -2974,6 +2972,22 @@
       "limitations": [
         "Полный Validate learning catalog responsive browser stage ещё выполняется.",
         "Ручная визуальная и редакционная приёмка пользователем не подтверждена."
+      ]
+    },
+    {
+      "id": "AUD-110",
+      "date": "2026-11-18",
+      "type": "lesson_6_1_4_user_acceptance",
+      "title": "Пользователь принял урок 6.1.4 во всех трёх локализациях",
+      "result": "Пользователь подтвердил приёмку урока 6.1.4 «Интерпретация деревьев решений». Визуальная и редакционная приёмка RU / EN / 中文 зафиксирована. Урок завершён с точки зрения учебного содержания; отдельный responsive browser stage Validate learning catalog остаётся техническим контролем. Следующий учебный шаг — 6.2.1.",
+      "evidence": [
+        "docs/management/LESSON_6_1_4_PRODUCTION_REVIEW_2026-11-18.md",
+        "lessons/a-6-1-4.html",
+        "lessons/a-6-1-4-en.html",
+        "lessons/a-6-1-4-zh.html"
+      ],
+      "limitations": [
+        "Responsive browser stage Validate learning catalog run 44213429430 ещё требует проверки актуального статуса."
       ]
     }
   ],

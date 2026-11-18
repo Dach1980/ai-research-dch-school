@@ -2,7 +2,7 @@
   "schema_version": 1,
   "project": "AI Research DCH School",
   "section": "Аудит и roadmap",
-  "updated_at": "2026-11-18",
+  "updated_at": "2026-11-19",
   "timezone": "Asia/Singapore",
   "principles": [
     "Планетная карта дополняет обычный каталог и не заменяет его.",
@@ -1420,6 +1420,24 @@
         "CI и browser acceptance зелёные; только после этого lesson 7.1.2 можно перевести в published."
       ],
       "source": "docs/standards/CANONICAL_LESSON_UI_CONTRACT.md; templates/lessons/canonical-lesson-shell.html.tmpl; scripts/language-switcher.js; scripts/lesson-layout.js; scripts/xai-local-global-lesson.js; styles/lesson-design-system.css; scripts/lesson_quality_gate.py; tests/test_canonical_lesson_ui_contract.py; tests/test_canonical_lesson_browser.py"
+    },
+    {
+      "id": "RM-LESSON-166",
+      "date": "2026-11-19",
+      "title": "Создать и принять урок 7.1.3 «Intrinsic и Post-hoc методы»",
+      "status": "in_progress",
+      "priority": "high",
+      "decision": "CI main восстановлен на HEAD ccd11e7645c21f84c5de475dda8628c6606ae1ec: Validate learning catalog и GitHub Pages deployment завершились success, включая интерактивную карту. Для урока выделен следующий свободный UID les-a-0170 после проверки каталога (максимальный существовавший UID les-a-0169); повторное использование legacy UID не выполнялось. Созданы локализованные RU/EN/ZH страницы, материалы, SVG-схема, Python-практика, словарь и самопроверка. Урок зарегистрирован в catalog-v3 и canonical curriculum в состоянии review/in_review. Публикация запрещена до прохождения полного CI и браузерной приёмки.",
+      "acceptance": [
+        "RU/EN/ZH имеют одинаковую структуру и глубину содержания.",
+        "DOM соответствует Canonical Lesson UI Contract v1.2.",
+        "UID, URL, prerequisite и каталог согласованы; предыдущий урок 7.1.2 остаётся опубликованным.",
+        "Python-практика воспроизводима и не выдаёт чувствительность за причинность.",
+        "Словарь содержит не менее 10 терминов, самопроверка — не менее 10 вопросов.",
+        "Static, content, localization, Playwright responsive/theme и GitHub Pages deployment проходят.",
+        "После успешной автоматической проверки и отдельной визуальной приёмки статус может быть изменён на published."
+      ],
+      "source": "lessons/a-7-1-3-les-a-0170.html; lessons/data/xai-03-intrinsic-posthoc.js; docs/standards/CANONICAL_LESSON_UI_CONTRACT.md"
     }
   ],
   "audit_log": [
@@ -3066,6 +3084,29 @@
       "limitations": [
         "Публикация 133 оставшихся канонических уроков не подтверждена; кандидаты UID в crosswalk не являются утверждением на повторное использование.",
         "Перед выпуском 6.2.1 необходимо проверить legacy content и получить/зафиксировать решение по UID les-a-0149."
+      ]
+    },
+    {
+      "id": "AUD-113",
+      "date": "2026-11-19",
+      "type": "lesson_7_1_3_multilingual_review_draft",
+      "title": "Создан трёхъязычный урок 7.1.3 и зарегистрирован на проверку",
+      "result": "После успешного восстановления CI (Validate learning catalog run 44411323613 и GitHub Pages deploy run 44411323612 на HEAD ccd11e7645c21f84c5de475dda8628c6606ae1ec) начата реализация 7.1.3. Выделен новый UID les-a-0170 как следующий свободный UID; canonical curriculum обновлён с uid=null на les-a-0170 и статус in_review. Добавлены RU/EN/ZH страницы, локализованный учебный контент, три локализованные SVG-схемы, шесть блоков Python-практики на язык, 10 терминов и 10 вопросов на язык. Catalog-v3 запись находится в status=review и content_state=localized. Полный CI и deployment нового коммита ожидаются.",
+      "evidence": [
+        "https://github.com/Dach1980/ai-research-dch-school/actions/runs/44411323613",
+        "https://github.com/Dach1980/ai-research-dch-school/actions/runs/44411323612",
+        "data/catalog/catalog-v3.json",
+        "data/catalog/curriculum-canonical-v1.json",
+        "lessons/a-7-1-3-les-a-0170.html",
+        "lessons/a-7-1-3-les-a-0170-en.html",
+        "lessons/a-7-1-3-les-a-0170-zh.html",
+        "lessons/data/xai-03-intrinsic-posthoc.js",
+        "tests/test_lesson_713_contract.py"
+      ],
+      "limitations": [
+        "Урок не опубликован: требуется полный CI/browser acceptance и deployment для нового коммита.",
+        "Ручная визуальная приёмка production-страниц на 375/768/1440 px и в светлой/тёмной темах ещё не выполнена.",
+        "UID 7.2.1 и URL следующего урока не назначались; пока он не опубликован, shared navigation должна показывать недоступный следующий урок."
       ]
     }
   ],

@@ -33,6 +33,63 @@ class PageAudit(HTMLParser):
 
 
 class CanonicalLessonUIContractTests(unittest.TestCase):
+    BLOCK_SELECTORS = (
+        ("lesson-intro", lambda tag, attrs, classes: tag == "section" and "lesson-intro" in classes),
+        ("lesson-outcomes", lambda tag, attrs, classes: attrs.get("id") == "lesson-outcomes"),
+        ("lesson-sections", lambda tag, attrs, classes: attrs.get("id") == "lesson-sections"),
+        ("lesson-practice", lambda tag, attrs, classes: attrs.get("id") == "lesson-practice"),
+        ("lesson-sources", lambda tag, attrs, classes: attrs.get("id") == "lesson-sources"),
+        ("lesson-navigation", lambda tag, attrs, classes: attrs.get("id") == "lesson-navigation"),
+        ("lesson-glossary", lambda tag, attrs, classes: attrs.get("id") == "lesson-glossary"),
+        ("lesson-quiz", lambda tag, attrs, classes: attrs.get("id") == "lesson-quiz"),
+        ("footer", lambda tag, attrs, classes: tag == "footer" and "footer" in classes),
+    )
+
+    def assert_canonical_block_order(self, source, label):
+        audit = PageAudit()
+        audit.feed(source)
+        positions = []
+        for name, matches in self.BLOCK_SELECTORS:
+            found = [
+                index for index, (tag, attrs, classes, parents) in enumerate(audit.tags)
+                if matches(tag, attrs, classes)
+            ]
+            self.assertEqual(len(found), 1, f"{label}: expected exactly one {name}, got {len(found)}")
+            positions.append(found[0])
+            if name != "footer":
+                tag, attrs, classes, parents = audit.tags[found[0]]
+                self.assertTrue(
+                    any(parent_tag == "main" and "lesson" in parent_classes
+                        for parent_tag, parent_classes in parents),
+                    f"{label}: {name} must be inside main.lesson",
+                )
+        self.assertEqual(
+            positions, sorted(positions),
+            f"{label}: lesson blocks must follow intro → outcomes → sections → practice → sources → navigation → glossary → quiz → footer",
+        )
+
+    def test_canonical_template_declares_mandatory_block_order(self):
+        template = (ROOT / "templates/lessons/canonical-lesson-shell.html.tmpl").read_text(encoding="utf-8")
+        self.assert_canonical_block_order(template, "canonical shell template")
+
+    def test_published_uid_backed_lessons_cannot_bypass_block_order(self):
+        catalog = json.loads((ROOT / "data/catalog/catalog-v3.json").read_text(encoding="utf-8"))
+        published = [
+            item for item in catalog.get("lessons", [])
+            if item.get("track_uid") == "trk-a"
+            and int(item.get("uid", "0").rsplit("-", 1)[-1]) >= 169
+            and item.get("status") == "published"
+            and item.get("content_state") == "published"
+        ]
+        for lesson in published:
+            for locale in ("ru", "en", "zh"):
+                with self.subTest(uid=lesson["uid"], locale=locale):
+                    route = (lesson.get("url_i18n") or {}).get(locale)
+                    self.assertTrue(route, f"{lesson['uid']}: missing {locale} route")
+                    page = ROOT / route
+                    self.assertTrue(page.is_file(), f"{lesson['uid']}: missing {locale} page {route}")
+                    self.assert_canonical_block_order(page.read_text(encoding="utf-8"), f"{lesson['uid']} / {locale}")
+
     def test_all_locales_use_one_canonical_shell(self):
         for locale, path in PAGES.items():
             with self.subTest(locale=locale):

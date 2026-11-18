@@ -42,7 +42,8 @@ if(sharedScriptUrl){
 // Add a localized, privacy-preserving feedback entry point to every page
 // that uses the shared navigation. The form opens the visitor's own mail app.
 (() => {
-  const lang = document.documentElement.lang === "en" ? "en" : document.documentElement.lang === "zh" ? "zh" : "ru";
+  const documentLang = (document.documentElement.lang || "ru").toLowerCase();
+  const lang = documentLang.startsWith("en") ? "en" : documentLang.startsWith("zh") ? "zh" : "ru";
   const labels = {
     ru: "Вопросы и пожелания",
     en: "Questions & feedback",
@@ -69,6 +70,8 @@ if(sharedScriptUrl){
 // Track links belong to the dedicated Directions / curriculum pages; never
 // inject an individual Track D link into the global lesson header.
 (() => {
+  const documentLang = (document.documentElement.lang || "ru").toLowerCase();
+  const lang = documentLang.startsWith("en") ? "en" : documentLang.startsWith("zh") ? "zh" : "ru";
   const nav = document.querySelector(".site-header .nav");
   if (!nav) return;
   const root = sharedScriptUrl ? new URL("../", sharedScriptUrl) : new URL("../", document.baseURI);

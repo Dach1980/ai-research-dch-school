@@ -402,5 +402,90 @@ class CanonicalLessonBrowserAcceptanceTests(unittest.TestCase):
                     page.close()
 
 
+    def test_outcomes_card_text_contrast_all_locales_both_themes(self):
+        lesson = next(item for item in CANONICAL_LESSONS if item.get("code") == "7.1.3")
+        for locale in ("ru", "en", "zh"):
+            for theme in ("light", "dark"):
+                with self.subTest(locale=locale, theme=theme):
+                    page = self.open_page(lesson, locale, width=1440, theme=theme)
+                    result = page.evaluate("""() => {
+                      const root = document.querySelector("main.lesson > #lesson-outcomes.outcomes");
+                      if (!root) return {missing: true};
+                      const pick = (el) => {
+                        const s = getComputedStyle(el);
+                        return {color:s.color, background:s.backgroundColor, image:s.backgroundImage};
+                      };
+                      const heading = root.querySelector("h2");
+                      const copy = root.querySelector("li, p");
+                      const rgb = (value) => value.match(/[\\d.]+/g).slice(0,3).map(Number);
+                      const luminance = (value) => {
+                        const channels = rgb(value).map(v => {
+                          v /= 255;
+                          return v <= .04045 ? v / 12.92 : Math.pow((v + .055) / 1.055, 2.4);
+                        });
+                        return .2126*channels[0] + .7152*channels[1] + .0722*channels[2];
+                      };
+                      const contrast = (a,b) => {
+                        const x=luminance(a), y=luminance(b);
+                        return (Math.max(x,y)+.05)/(Math.min(x,y)+.05);
+                      };
+                      const bg = pick(root);
+                      const h = pick(heading);
+                      const p = pick(copy);
+                      return {
+                        background:bg.background,
+                        backgroundImage:bg.image,
+                        heading:h.color,
+                        copy:p.color,
+                        headingContrast:contrast(h.color,bg.background),
+                        copyContrast:contrast(p.color,bg.background),
+                        itemCount:root.querySelectorAll("li").length
+                      };
+                    }""")
+                    self.assertNotIn("missing", result, "lesson-outcomes root missing or changed")
+                    self.assertGreaterEqual(result["headingContrast"], 4.5, f"heading contrast {result}")
+                    self.assertGreaterEqual(result["copyContrast"], 4.5, f"body contrast {result}")
+                    self.assertGreater(result["itemCount"], 0)
+                    page.close()
+
+    def test_713_intrinsic_posthoc_diagram_is_complete_and_not_clipped(self):
+        lesson = next(item for item in CANONICAL_LESSONS if item.get("code") == "7.1.3")
+        for locale in ("ru", "en", "zh"):
+            with self.subTest(locale=locale):
+                page = self.open_page(lesson, locale, width=375, theme="light")
+                svg = page.locator("#lesson-sections svg.xai-svg").first
+                svg.wait_for()
+                result = svg.evaluate("""el => {
+                  const vb=el.viewBox.baseVal;
+                  const texts=Array.from(el.querySelectorAll("text")).map(node => {
+                    const b=node.getBBox();
+                    return {x:b.x,y:b.y,right:b.x+b.width,bottom:b.y+b.height,text:node.textContent};
+                  });
+                  const rects=el.querySelectorAll("rect").length;
+                  const arrows=el.querySelectorAll("path").length;
+                  const bounds=el.getBoundingClientRect();
+                  const figure=el.closest("figure");
+                  const fig=figure.getBoundingClientRect();
+                  return {
+                    viewBox:{width:vb.width,height:vb.height},
+                    rects,arrows,texts,
+                    width:bounds.width,figureWidth:fig.width,
+                    clipped:el.scrollWidth>el.clientWidth+1
+                  };
+                }""")
+                self.assertEqual(result["viewBox"], {"width":720,"height":320})
+                self.assertEqual(result["rects"], 4, f"expected source and destination panels: {result}")
+                self.assertEqual(result["arrows"], 2, f"both routes need connecting arrows: {result}")
+                self.assertGreaterEqual(len(result["texts"]), 8)
+                for label in result["texts"]:
+                    self.assertGreaterEqual(label["x"], 0, label)
+                    self.assertGreaterEqual(label["y"], 0, label)
+                    self.assertLessEqual(label["right"], 720, label)
+                    self.assertLessEqual(label["bottom"], 320, label)
+                self.assertLessEqual(result["width"], result["figureWidth"]+1)
+                self.assertFalse(result["clipped"])
+                page.close()
+
+
 if __name__ == "__main__":
     unittest.main()

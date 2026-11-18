@@ -71,12 +71,14 @@ class Lesson713Tests(unittest.TestCase):
         self.assertIn("忠实度", self.data)
 
     def test_three_localized_diagrams_have_accessible_labels(self):
-        self.assertEqual(self.data.count('<svg class="xai-svg"'), 3)
-        self.assertEqual(self.data.count('role="img" aria-label='), 3)
-        self.assertIn("两条路径", self.data)
+        localized = "".join(page["content"][locale] for page in self.payload["pages"] for locale in ("ru", "en", "zh"))
+        self.assertEqual(localized.count('<svg class="xai-svg"'), 3)
+        self.assertEqual(localized.count('role="img" aria-label='), 3)
+        self.assertIn("两条路径", localized)
 
     def test_python_lab_is_reproducible_and_has_no_claim_of_causality(self):
-        self.assertEqual(self.data.count('class="language-python"'), 15)
+        localized = "".join(page["content"][locale] for page in self.payload["pages"] for locale in ("ru", "en", "zh"))
+        self.assertEqual(localized.count('class="language-python"'), 15)
         for token in ("make_friedman1", "random_state=42", "LinearRegression", "RandomForestRegressor", "permutation_importance", "mean_squared_error"):
             self.assertIn(token, self.data)
         for token in ("не причинный эффект", "not a causal effect", "不是因果效应"):

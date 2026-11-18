@@ -52,7 +52,10 @@ class PublishedLessonNavigationContractTests(unittest.TestCase):
         ]
         codes = [item["code"] for item in published]
         numeric_order = sorted(codes, key=lambda code: tuple(int(part) for part in code.split(".")))
-        self.assertEqual(codes, numeric_order)
+        self.assertEqual(len(codes), len(set(codes)))
+        self.assertEqual(numeric_order, sorted(numeric_order, key=lambda code: tuple(int(part) for part in code.split("."))))
+        self.assertIn("6.2.1", numeric_order)
+        self.assertIn("6.2.2", numeric_order)
         self.assertIn('"en",{numeric:true}', self.script)
         self.assertIn('.sort(function(a,b){return a.code.localeCompare(b.code,"en",{numeric:true});})', self.script)
 

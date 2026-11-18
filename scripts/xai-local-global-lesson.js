@@ -46,8 +46,10 @@
       en: {practice:"Practical assignment", sources:"References and further reading"},
       zh: {practice:"实践任务", sources:"参考文献与延伸阅读"}
     }[locale];
-    let destination = body;
-    Array.from(body.childNodes).forEach(node => {
+    const contentRoots = Array.from(body.querySelectorAll(".xai-canonical-section-content"));
+    contentRoots.forEach(contentRoot => {
+      let destination = body;
+      Array.from(contentRoot.childNodes).forEach(node => {
       if (node.nodeType === Node.ELEMENT_NODE && node.matches("h3")) {
         const heading = node.textContent.trim();
         if (heading === labelsByLocale.practice) destination = practiceRoot;
@@ -56,9 +58,11 @@
       if (node.nodeType === Node.ELEMENT_NODE && node.matches("section.lesson-glossary")) {
         destination = glossaryRoot;
         while (node.firstChild) destination.appendChild(node.firstChild);
+        node.remove();
         return;
       }
       destination.appendChild(node);
+      });
     });
   }
   if (quizRoot) {

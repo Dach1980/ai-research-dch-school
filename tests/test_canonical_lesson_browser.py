@@ -272,6 +272,96 @@ class CanonicalLessonBrowserAcceptanceTests(unittest.TestCase):
                         page.close()
 
 
+    def test_reference_lesson_711_visual_components_have_computed_styles(self):
+        lesson = {
+            "code": "7.1.1",
+            "uid": "les-a-0018",
+            "url_i18n": {
+                "ru": "lessons/a-7-1-1-les-a-0018.html",
+                "en": "lessons/a-7-1-1-les-a-0018-en.html",
+                "zh": "lessons/a-7-1-1-les-a-0018-zh.html",
+            },
+        }
+        for locale in ("ru", "en", "zh"):
+            for theme in ("light", "dark"):
+                with self.subTest(locale=locale, theme=theme):
+                    page = self.open_page(lesson, locale, width=1440, theme=theme)
+                    result = page.evaluate("""() => {
+                      const style = (selector) => {
+                        const el = document.querySelector(selector);
+                        if (!el) return null;
+                        const s = getComputedStyle(el);
+                        return {
+                          color: s.color,
+                          background: s.backgroundColor,
+                          borderStyle: s.borderTopStyle,
+                          borderWidth: parseFloat(s.borderTopWidth),
+                          radius: parseFloat(s.borderRadius),
+                          padding: parseFloat(s.paddingTop),
+                          fontSize: parseFloat(s.fontSize),
+                          lineHeight: parseFloat(s.lineHeight),
+                          display: s.display
+                        };
+                      };
+                      return {
+                        body: style("#lesson-sections .xai-canonical-section-content p"),
+                        formula: style("#lesson-practice .formula"),
+                        expression: style("#lesson-practice .formula-expression"),
+                        quiz: style("#lesson-quiz .knowledge-check"),
+                        fieldset: style("#lesson-quiz .knowledge-check fieldset"),
+                        option: style("#lesson-quiz .knowledge-check label"),
+                        button: style("#lesson-quiz .quiz-submit"),
+                        summary: style("#lesson-quiz .quiz-summary"),
+                        counts: {
+                          formula: document.querySelectorAll("#lesson-practice .formula").length,
+                          forms: document.querySelectorAll("#lesson-quiz form.knowledge-check").length,
+                          options: document.querySelectorAll("#lesson-quiz .knowledge-check label").length
+                        }
+                      };
+                    }""")
+                    self.assertIsNotNone(result["body"])
+                    self.assertGreater(result["body"]["fontSize"], 0)
+                    self.assertGreater(result["body"]["lineHeight"], result["body"]["fontSize"])
+                    self.assertIsNotNone(result["formula"])
+                    self.assertGreater(result["formula"]["borderWidth"], 0)
+                    self.assertGreater(result["formula"]["radius"], 0)
+                    self.assertNotEqual(result["formula"]["background"], "rgba(0, 0, 0, 0)")
+                    self.assertIsNotNone(result["expression"])
+                    self.assertGreater(result["expression"]["fontSize"], 0)
+                    self.assertIsNotNone(result["quiz"])
+                    self.assertGreater(result["quiz"]["borderWidth"], 0)
+                    self.assertGreater(result["quiz"]["radius"], 0)
+                    self.assertGreater(result["quiz"]["padding"], 0)
+                    self.assertGreater(result["fieldset"]["borderWidth"], 0)
+                    self.assertEqual(result["option"]["display"], "flex")
+                    self.assertGreater(result["button"]["padding"], 0)
+                    self.assertGreater(result["summary"]["borderWidth"], 0)
+                    self.assertEqual(result["counts"]["formula"], 1)
+                    self.assertEqual(result["counts"]["forms"], 2)
+                    self.assertGreater(result["counts"]["options"], 0)
+                    page.close()
+
+    def test_reference_lesson_711_visual_components_are_responsive(self):
+        lesson = {
+            "code": "7.1.1",
+            "uid": "les-a-0018",
+            "url_i18n": {
+                "ru": "lessons/a-7-1-1-les-a-0018.html",
+                "en": "lessons/a-7-1-1-les-a-0018-en.html",
+                "zh": "lessons/a-7-1-1-les-a-0018-zh.html",
+            },
+        }
+        for locale in ("ru", "en", "zh"):
+            page = self.open_page(lesson, locale, width=375, theme="light")
+            overflow = page.evaluate("document.documentElement.scrollWidth - window.innerWidth")
+            self.assertLessEqual(overflow, 1, f"7.1.1 / {locale}: page overflow {overflow}px")
+            self.assertLessEqual(
+                page.locator("#lesson-practice .formula").evaluate("(el) => el.getBoundingClientRect().width"),
+                375,
+            )
+            self.assertEqual(page.locator("#lesson-quiz form.knowledge-check").count(), 2)
+            page.close()
+
     def test_canonical_dictionary_cards_and_metadata_on_reference_lessons(self):
         cases = [
             ("7.1.1", "lessons/a-7-1-1-les-a-0018.html", 5, "Словарь терминов"),

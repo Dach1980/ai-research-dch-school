@@ -1,7 +1,7 @@
 # DCH School — Canonical Lesson Template & UI Contract
 
 **Status:** mandatory engineering standard  
-**Version:** 1.0  
+**Version:** 1.1  
 **Adopted:** 2026-11-18  
 **Scope:** all newly authored lesson pages in Tracks A–D, all locales (RU / EN / 中文). The current v3 lesson catalogue and automatic browser gate cover Track A; Tracks B–D must be registered in the v3 catalogue with localized routes before their pages can pass the same navigation acceptance.
 
@@ -16,7 +16,7 @@ Do not copy and independently modify a previous lesson's UI. Start from `templat
 ## 2. Canonical references
 
 - **Shared visual shell and global component styles:** `styles/main.css`, `styles/lesson-design-system.css`, `styles/lesson-standard.css`, `styles/lesson-reference-111.css`.
-- **XAI lesson content pattern:** `lessons/a-7-1-1-les-a-0018.html` and its shared renderer.
+- **XAI lesson content pattern:** the corrected lesson 7.1.1 and 7.1.2 multilingual data, using the canonical terminology-card component below.
 - **Shared locale control:** `scripts/language-switcher.js`.
 - **Shared theme control:** `scripts/theme-system.js`.
 - **Shared previous/next lesson navigation:** `scripts/lesson-layout.js`.
@@ -51,6 +51,46 @@ Every locale page must contain, in this order:
 7. Shared scripts loaded once, in the order shown in the template.
 
 The footer must not contain language links. The lesson body must not contain a second language selector.
+
+## 4.1 Required terminology dictionary component
+
+Every complete lesson must use the same terminology dictionary component when lesson-specific terms are defined. The component is part of lesson content, not page chrome.
+
+- The Russian heading is exactly **«Словарь терминов»**.
+- The English heading is exactly **“Key terms”**.
+- The Chinese heading is exactly **“术语词典”**.
+- Do not use alternative headings such as «Глоссарий», “Glossary”, “Short glossary”, «Краткий словарь» or «术语表».
+- The required structure is one `.lesson-glossary` section containing one `h2`, one `.glossary-grid`, and one or more `.glossary-entry` cards.
+- Each card contains a numbered `.term-index`, a `.term` and a concise definition in a paragraph. An optional `.term-en` may show the canonical English term.
+- Use the existing styles in `styles/lesson-design-system.css`; do not recreate the card appearance with raw `ul`, `dl`, tables, inline styles or lesson-specific alternatives.
+- Keep the same term order and meaning in RU / EN / 中文. Translations may differ linguistically but may not add or remove concepts.
+- The dictionary heading and cards must remain legible in both themes and collapse to one column on narrow screens.
+
+Canonical markup:
+
+```html
+<section class="lesson-glossary" aria-labelledby="lesson-glossary-title">
+  <h2 id="lesson-glossary-title">Словарь терминов</h2>
+  <div class="glossary-grid">
+    <article class="glossary-entry">
+      <span class="term-index">01</span>
+      <strong class="term">XAI</strong>
+      <span class="term-en">Explainable Artificial Intelligence</span>
+      <p>Краткое и точное определение термина.</p>
+    </article>
+  </div>
+</section>
+```
+
+## 4.2 Metadata policy — closed by default
+
+Lesson pages must not invent or infer metadata.
+
+- Estimated duration, reading time, difficulty level, audience, format, badges and similar metadata are **not displayed** unless the school owner explicitly approves the field and its value.
+- Do not add a duration field to lesson data or render a duration label from optional data.
+- Learning outcomes are educational content and remain in the designated outcomes component; they are not a place for informal level/format labels.
+- The canonical shell does not contain a duration or level/format badge.
+- If a metadata field is approved in the future, it must first be added to this contract, the shared template/data schema and static/browser acceptance tests. A lesson author cannot introduce it locally.
 
 ## 5. Locale contract
 
@@ -105,6 +145,8 @@ A lesson cannot be marked `published` until all checks pass:
 - No local language selector, footer language links, or renderer-owned navigation.
 - RU / EN / 中文 pages, URLs, UID and catalog fields agree.
 - CSS references and script paths exist.
+- Each complete lesson's RU / EN / 中文 dictionary uses the exact canonical card structure, title and matching term count/order.
+- No unapproved duration, reading-time, difficulty, audience or format metadata is present.
 - JavaScript syntax and lesson content tests pass.
 
 ### Browser checks (Playwright / Chromium)
@@ -118,6 +160,8 @@ Run every new catalog-backed Track A lesson (UID sequence beginning at `les-a-01
 - no broken local resources or uncaught page errors;
 - no page-level horizontal overflow;
 - heading foreground uses theme-aware tokens and remains readable;
+- dictionary renders as styled cards, with two columns on desktop and one on mobile, in both themes;
+- no duration or unapproved metadata badge is rendered;
 - lesson content, tables, code, formulas and SVGs remain within their intended containers.
 
 ### Publication gate

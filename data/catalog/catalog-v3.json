@@ -1,7 +1,7 @@
 {
   "schema_version": 3,
   "catalog_id": "dch-school-curriculum",
-  "catalog_version": "3.2.4-lesson-6-2-1",
+  "catalog_version": "3.2.5-lesson-7-1-2",
   "status": "migration_staging",
   "tracks": [
     {
@@ -3721,6 +3721,38 @@
         "ru": "lessons/a-7-1-1-les-a-0018.html",
         "en": "lessons/a-7-1-1-les-a-0018-en.html",
         "zh": "lessons/a-7-1-1-les-a-0018-zh.html"
+      }
+    },
+    {
+      "uid": "les-a-0169",
+      "track_uid": "trk-a",
+      "theme_uid": "thm-a-07",
+      "module_uid": "mod-a-07-01",
+      "code": "7.1.2",
+      "title": "Локальные и глобальные объяснения",
+      "status": "review",
+      "access": "open",
+      "level": "beginner",
+      "prerequisite_uids": [
+        "les-a-0018"
+      ],
+      "learning_outcomes": [
+        "Различать локальный, групповой и глобальный уровни объяснения и формулировать вопрос для каждого уровня.",
+        "Объяснять, что показывают локальные атрибуции, permutation importance, PDP и ICE.",
+        "Интерпретировать знак, величину и контекст вклада признака без причинных выводов.",
+        "Понимать, почему усреднение локальных объяснений может скрывать неоднородность и взаимодействия.",
+        "Воспроизводить анализ одной модели на обучающей и тестовой выборках с помощью Python и scikit-learn."
+      ],
+      "content_state": "localized",
+      "title_i18n": {
+        "ru": "Локальные и глобальные объяснения",
+        "en": "Local and Global Explanations",
+        "zh": "局部解释与全局解释"
+      },
+      "url_i18n": {
+        "ru": "lessons/a-7-1-2-les-a-0169.html",
+        "en": "lessons/a-7-1-2-les-a-0169-en.html",
+        "zh": "lessons/a-7-1-2-les-a-0169-zh.html"
       }
     }
   ],

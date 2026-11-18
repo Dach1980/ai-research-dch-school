@@ -339,18 +339,27 @@ if(main){
   if(!response.ok)throw new Error("Catalog request failed");
   return response.json();
  }).then(function(catalog){
-  var published=(catalog.lessons||[]).filter(function(item){
-   return item.track_uid==="trk-a"&&item.status==="published"&&item.content_state==="published"&&item.url_i18n&&item.url_i18n[locale];
+  var allLessons=(catalog.lessons||[]).filter(function(item){
+   return item.track_uid==="trk-a"&&item.url_i18n&&item.url_i18n[locale];
   }).sort(function(a,b){return a.code.localeCompare(b.code,"en",{numeric:true});});
+  var published=allLessons.filter(function(item){
+   return item.status==="published"&&item.content_state==="published";
+  });
   var currentPath=window.location.pathname.split("/").pop();
-  var index=published.findIndex(function(item){return item.url_i18n[locale].split("/").pop()===currentPath;});
-  if(index<0)return;
+  var currentLesson=allLessons.find(function(item){return item.url_i18n[locale].split("/").pop()===currentPath;});
+  if(!currentLesson)return;
+  var index=published.findIndex(function(item){return item.uid===currentLesson.uid;});
   var fragment=document.createDocumentFragment();
-  var previous=index>0?published[index-1]:null;
+  var previous=null;
+  if(index>=0){
+   previous=index>0?published[index-1]:null;
+  }else{
+   previous=published.filter(function(item){return item.code.localeCompare(currentLesson.code,"en",{numeric:true})<0;}).pop()||null;
+  }
   if(previous&&previous.url_i18n&&previous.url_i18n[locale]){
    fragment.appendChild(link("secondary",new URL(previous.url_i18n[locale],rootUrl).href,text.previous+displayCode(previous)));
   }
-  var next=index<published.length-1?published[index+1]:null;
+  var next=index>=0&&index<published.length-1?published[index+1]:null;
   if(next&&next.url_i18n&&next.url_i18n[locale]){
    fragment.appendChild(link("primary",new URL(next.url_i18n[locale],rootUrl).href,text.next+displayCode(next)+" ↗"));
   }else{

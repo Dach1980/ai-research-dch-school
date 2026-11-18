@@ -35,6 +35,13 @@ The user approved reuse of `les-a-0016`. The catalog owner was moved from legacy
 
 `tests/test_lesson_613_production_contract.py` checks all three production pages, locale parity, formulas, glossary, SVG accessibility, canonical URLs, switchers, previous-lesson navigation, worked calculations, and absence of draft-only metadata. The responsive browser test now includes all three production pages.
 
+## Automated verification
+
+- Catalog compatibility, v3 catalog validation, migration-manifest checks, lesson contract tests, and the main content test suite passed in Validate learning catalog run [44209136356](https://github.com/Dach1980/ai-research-dch-school/actions/runs/44209136356). The run is still waiting at Playwright Chromium installation before the responsive-browser stage; no failure has been reported in completed steps.
+- Pages validation, catalog unit tests, Supabase migration application on clean PostgreSQL 16, and GitHub Pages deployment passed in run [44209136222](https://github.com/Dach1980/ai-research-dch-school/actions/runs/44209136222).
+- GitHub Pages build and deployment passed in run [44209135796](https://github.com/Dach1980/ai-research-dch-school/actions/runs/44209135796).
+- SVG theme audit passed in run [44208498249](https://github.com/Dach1980/ai-research-dch-school/actions/runs/44208498249); the SVG markup and styles were unchanged in subsequent commits.
+
 ## Manual acceptance
 
-Automated CI and deployment results are recorded separately in Audit & Roadmap. Manual visual review of the published RU / EN / 中文 pages remains pending user confirmation.
+The lesson is published. Manual visual review of the production RU / EN / 中文 pages remains pending user confirmation. The latest Validate learning catalog run has not yet completed its Playwright Chromium installation and responsive-browser stage.

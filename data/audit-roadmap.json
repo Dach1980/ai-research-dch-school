@@ -1227,9 +1227,9 @@
       "date": "2026-11-18",
       "type": "lesson_creation",
       "title": "Разработать урок 6.1.3 «Линейные модели как объяснимые модели»",
-      "status": "in_progress",
+      "status": "done",
       "priority": "high",
-      "decision": "Пользователь 2026-11-18 явно одобрил повторное использование UID les-a-0016 и перенос из legacy 4.1.3. Урок расширен до публикации: добавлены интуитивное объяснение линейности по параметрам, сравнительная таблица трёх квартир с разложением вкладов, эксперимент со сменой единиц, разбор мультиколлинеарности «площадь — число комнат», дополнительная практика и пятишаговый шаблон объяснения коэффициента. Подготовлены production RU / EN / 中文 страницы, обновлены canonical curriculum, catalog, crosswalk, тесты и навигация. CI/deployment выполняются; ручная визуальная приёмка пользователем ещё не проведена.",
+      "decision": "Урок 6.1.3 расширен и опубликован на RU / EN / 中文 под повторно использованным UID les-a-0016 по явному подтверждению пользователя. UID перенесён из legacy 4.1.3 в Track A / Theme 6 / Module 6.1 / Lesson 6.1.3. Canonical curriculum, catalog-v3, migration-manifest-v3, migration crosswalk, locale pages, responsive overflow test scope and navigation order synchronized. Pages validation, catalog unit tests, Supabase migrations and GitHub Pages deployment passed. Main Validate learning catalog completed all steps through production lesson contract and content suite successfully; the final Playwright Chromium installation/responsive-browser stage is still running. Manual visual review by the user remains pending.",
       "acceptance": [
         "RU / EN / 中文 содержат одинаковые девять учебных разделов, шесть результатов обучения, сквозной пример, расширенные практические разборы, ограничения и самопроверку.",
         "Формулы оформлены компонентом .formula с role=math и aria-label; ключевые понятия — отдельными definition-карточками.",
@@ -1243,15 +1243,41 @@
         "lessons/a-6-1-3.html",
         "lessons/a-6-1-3-en.html",
         "lessons/a-6-1-3-zh.html",
+        "data/catalog/curriculum-canonical-v1.json",
+        "data/catalog/catalog-v3.json",
+        "data/catalog/migration-manifest-v3.json",
+        "docs/management/CANONICAL_LESSON_MIGRATION_CROSSWALK_2026-11-17.csv",
         "tests/test_lesson_613_production_contract.py",
-        "docs/management/LESSON_6_1_3_DRAFT_REVIEW_2026-11-18.md"
+        "https://github.com/Dach1980/ai-research-dch-school/actions/runs/44209136222",
+        "https://github.com/Dach1980/ai-research-dch-school/actions/runs/44209135796",
+        "https://github.com/Dach1980/ai-research-dch-school/actions/runs/44209136356"
       ],
       "limitations": [
-        "Ручная визуальная приёмка опубликованных RU / EN / 中文 страниц пользователем ещё не подтверждена."
+        "Ручная визуальная приёмка опубликованных RU / EN / 中文 страниц пользователем ещё не подтверждена.",
+        "Responsive browser stage в Validate learning catalog run 44209136356 пока не завершён; все выполненные до него тесты прошли."
       ],
       "verification": {
-        "status": "pending",
-        "note": "Новые workflow runs будут записаны после завершения GitHub Actions."
+        "pages_validation_supabase_deploy": {
+          "status": "success",
+          "run_id": 44209136222,
+          "commit": "66c48b0c413acf7f953b56bedc9fe89c53257bbe"
+        },
+        "pages_build_deployment": {
+          "status": "success",
+          "run_id": 44209135796,
+          "commit": "66c48b0c413acf7f953b56bedc9fe89c53257bbe"
+        },
+        "lesson_svg_theme_audit": {
+          "status": "success",
+          "run_id": 44208498249,
+          "commit": "c31c1c25f48f4584a6ace45b184f4540c9473f02"
+        },
+        "validate_learning_catalog": {
+          "status": "in_progress",
+          "run_id": 44209136356,
+          "commit": "66c48b0c413acf7f953b56bedc9fe89c53257bbe",
+          "completed_steps": "All steps through production lesson 6.1.3 contract and content tests passed; waiting for Playwright Chromium installation and responsive browser stage."
+        }
       }
     },
     {
@@ -1297,17 +1323,22 @@
       "date": "2026-11-18",
       "type": "lesson_6_1_3_uid_reuse_approval_and_expansion",
       "title": "Одобрено повторное использование UID les-a-0016; урок 6.1.3 расширен и перенесён в production",
-      "result": "Пользователь явно подтвердил перенос UID les-a-0016 из legacy 4.1.3 в каноническое положение 6.1.3. Перед публикацией расширены RU / EN / 中文 материалы: линейность по параметрам, сравнительная таблица трёх объектов, смена единиц измерения, кейс мультиколлинеарности, дополнительная практика и шаблон объяснения коэффициента. Канонический каталог, migration crosswalk и production routes синхронизированы.",
+      "result": "Пользователь явно подтвердил повторное использование UID les-a-0016. Идентификатор перенесён в каноническое положение 6.1.3. Урок расширен на RU / EN / 中文 и опубликован. Pages validation, catalog unit tests, Supabase migrations и GitHub Pages deployment прошли. Все завершённые шаги Validate learning catalog, включая production contract lesson 6.1.3, успешны; responsive browser stage ожидает Playwright Chromium installation. Ручная визуальная приёмка пользователя ожидается.",
       "evidence": [
         "data/catalog/curriculum-canonical-v1.json",
         "data/catalog/catalog-v3.json",
         "docs/management/CANONICAL_LESSON_MIGRATION_CROSSWALK_2026-11-17.csv",
         "lessons/a-6-1-3.html",
         "lessons/a-6-1-3-en.html",
-        "lessons/a-6-1-3-zh.html"
+        "lessons/a-6-1-3-zh.html",
+        "66c48b0c413acf7f953b56bedc9fe89c53257bbe",
+        "https://github.com/Dach1980/ai-research-dch-school/actions/runs/44209136222",
+        "https://github.com/Dach1980/ai-research-dch-school/actions/runs/44209135796",
+        "https://github.com/Dach1980/ai-research-dch-school/actions/runs/44209136356"
       ],
       "limitations": [
-        "Автоматические проверки и deployment фиксируются отдельно; ручная визуальная приёмка пользователем ожидается."
+        "Responsive browser stage Validate learning catalog ещё не завершён.",
+        "Ручная визуальная приёмка пользователем остаётся отдельным шагом."
       ]
     }
   ],

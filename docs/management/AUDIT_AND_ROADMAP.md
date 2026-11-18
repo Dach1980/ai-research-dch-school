@@ -139,3 +139,23 @@ UID `les-a-0016` найден как exact-title candidate для прежнег
 Production routes: `lessons/a-6-1-3.html`, `lessons/a-6-1-3-en.html`, `lessons/a-6-1-3-zh.html`. Страницы включены в published catalog и canonical curriculum; прежние draft-файлы удалены. Навигация использует опубликованный 6.1.2 как предыдущий урок; 6.1.4 не подставляется как доступная ссылка.
 
 Автоматическая проверка нового production commit выполняется. Ручная визуальная приёмка трёх опубликованных локализаций остаётся за пользователем и будет отдельно зафиксирована после подтверждения.
+
+
+## Итог публикации урока 6.1.3 — 2026-11-18
+
+**UID `les-a-0016` повторно использован по прямому подтверждению пользователя.** Запись перенесена из legacy Track A / Theme 4 / Module 4.1 / 4.1.3 в Track A / Theme 6 / Module 6.1 / 6.1.3. Catalog v3 и migration manifest синхронизированы; в migration manifest для `map-xai-models` код UID `les-a-0016` обновлён на 6.1.3. Published catalog упорядочен по каноническому номеру урока.
+
+Урок расширен и опубликован на RU / EN / 中文:
+- [RU — 6.1.3](https://dchai.ru/lessons/a-6-1-3.html)
+- [EN — 6.1.3](https://dchai.ru/lessons/a-6-1-3-en.html)
+- [中文 — 6.1.3](https://dchai.ru/lessons/a-6-1-3-zh.html)
+
+Добавлены пояснение линейности по параметрам, сравнительный расчёт трёх квартир, смена единиц измерения без изменения прогноза, кейс мультиколлинеарности «площадь — число комнат», дополнительная практика и шаблон аккуратного объяснения коэффициента. Каждая локализация содержит 9 учебных разделов, 6 результатов обучения, 7 формульных карточек, 9 терминов, 5 источников и 7 вопросов самопроверки.
+
+**Подтверждённые проверки на commit `66c48b0c413acf7f953b56bedc9fe89c53257bbe`:**
+- Pages validation, все catalog unit tests, Supabase migrations на чистом PostgreSQL 16 и GitHub Pages deploy — success ([run 44209136222](https://github.com/Dach1980/ai-research-dch-school/actions/runs/44209136222));
+- Pages build and deployment — success ([run 44209135796](https://github.com/Dach1980/ai-research-dch-school/actions/runs/44209135796));
+- SVG theme audit — success ([run 44208498249](https://github.com/Dach1980/ai-research-dch-school/actions/runs/44208498249));
+- Validate learning catalog: все завершённые этапы, включая catalog v3, migration manifest, production contract 6.1.3 и тесты контента, успешны; workflow пока ожидает установку Playwright Chromium перед адаптивным browser stage ([run 44209136356](https://github.com/Dach1980/ai-research-dch-school/actions/runs/44209136356)).
+
+Ручная визуальная приёмка опубликованных трёх страниц ещё не подтверждена пользователем и остаётся отдельным шагом.

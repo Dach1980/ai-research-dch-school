@@ -662,14 +662,14 @@
                 {
                   "number": "7.1.3",
                   "title_ru": "Intrinsic и Post-hoc методы",
-                  "uid": null,
+                  "uid": "les-a-0170",
                   "legacy_number": null,
                   "legacy_mapping_status": "not_verified",
-                  "publication_status": "not_asserted",
+                  "publication_status": "in_review",
                   "urls": {
-                    "ru": null,
-                    "en": null,
-                    "zh": null
+                    "ru": "lessons/a-7-1-3-les-a-0170.html",
+                    "en": "lessons/a-7-1-3-les-a-0170-en.html",
+                    "zh": "lessons/a-7-1-3-les-a-0170-zh.html"
                   }
                 }
               ]

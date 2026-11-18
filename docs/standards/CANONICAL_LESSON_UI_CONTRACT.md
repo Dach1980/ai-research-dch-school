@@ -3,7 +3,7 @@
 **Status:** mandatory engineering standard  
 **Version:** 1.0  
 **Adopted:** 2026-11-18  
-**Scope:** all newly authored lesson pages in Tracks A–D, all locales (RU / EN / 中文).
+**Scope:** all newly authored lesson pages in Tracks A–D, all locales (RU / EN / 中文). The current v3 lesson catalogue and automatic browser gate cover Track A; Tracks B–D must be registered in the v3 catalogue with localized routes before their pages can pass the same navigation acceptance.
 
 ## 1. Purpose and non-negotiable rule
 
@@ -54,7 +54,7 @@ The footer must not contain language links. The lesson body must not contain a s
 
 ## 5. Locale contract
 
-- Supported locales are exactly `ru`, `en`, `zh`.
+- Supported locale keys are exactly `ru`, `en`, `zh`; the Chinese document language tag may be `zh-CN`.
 - All three pages share one UID and matching lesson identity.
 - The locale selector is visible only in the site header.
 - Switching locale must preserve the same lesson UID and canonical lesson route; only the locale suffix changes.
@@ -108,7 +108,7 @@ A lesson cannot be marked `published` until all checks pass:
 - JavaScript syntax and lesson content tests pass.
 
 ### Browser checks (Playwright / Chromium)
-Run each locale at 375, 768 and 1440 CSS pixels, in light and dark themes:
+Run every new catalog-backed Track A lesson (UID sequence beginning at `les-a-0169`) in each locale at 375, 768 and 1440 CSS pixels, in light and dark themes. The Playwright suite discovers these lessons from `catalog-v3.json`; adding a new Track A lesson automatically adds it to browser acceptance.
 - exactly one language selector, located inside the site header;
 - exactly one theme control, located inside the site header;
 - no locale selector in main content or footer;

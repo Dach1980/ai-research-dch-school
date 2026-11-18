@@ -1,7 +1,7 @@
 {
   "schema_version": 3,
   "catalog_id": "dch-school-curriculum",
-  "catalog_version": "3.2.2-numbering-overlay",
+  "catalog_version": "3.2.3-lesson-6-1-4",
   "status": "migration_staging",
   "tracks": [
     {
@@ -3600,6 +3600,39 @@
         "ru": "Линейные модели как объяснимые модели",
         "en": "Linear Models as Explainable Models",
         "zh": "线性模型作为可解释模型"
+      }
+    },
+    {
+      "uid": "les-a-0168",
+      "track_uid": "trk-a",
+      "theme_uid": "thm-a-06",
+      "module_uid": "mod-a-06-01",
+      "code": "6.1.4",
+      "title": "Интерпретация деревьев решений",
+      "status": "published",
+      "access": "open",
+      "level": "beginner",
+      "prerequisite_uids": [
+        "les-a-0016"
+      ],
+      "learning_outcomes": [
+        "Объясняет устройство дерева решений и роль корня, внутренних узлов, ветвей и листьев.",
+        "Прослеживает путь отдельного объекта и формулирует локальное объяснение прогноза.",
+        "Различает классификационные и регрессионные деревья и их выходы.",
+        "Объясняет смысл индекса Джини, энтропии и информационного выигрыша.",
+        "Различает локальную трассировку решения и глобальную важность признаков.",
+        "Оценивает влияние глубины, размера листьев, обрезки, нестабильности и переобучения."
+      ],
+      "content_state": "published",
+      "url_i18n": {
+        "ru": "lessons/a-6-1-4.html",
+        "en": "lessons/a-6-1-4-en.html",
+        "zh": "lessons/a-6-1-4-zh.html"
+      },
+      "title_i18n": {
+        "ru": "Интерпретация деревьев решений",
+        "en": "Interpreting Decision Trees",
+        "zh": "决策树的解释"
       }
     },
     {

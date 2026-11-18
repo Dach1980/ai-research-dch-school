@@ -30,6 +30,25 @@ class CatalogVisibilityTests(unittest.TestCase):
         self.assertEqual(lesson["module_uid"], "mod-a-06-01")
         self.assertEqual((lesson["status"], lesson["content_state"]), ("published", "published"))
 
+    def test_614_is_registered_under_canonical_track_hierarchy(self):
+        lesson = next(item for item in self.lessons if item["uid"] == "les-a-0168")
+        self.assertEqual((lesson["code"], lesson["theme_uid"], lesson["module_uid"]), ("6.1.4", "thm-a-06", "mod-a-06-01"))
+        self.assertEqual(lesson["prerequisite_uids"], ["les-a-0016"])
+        self.assertEqual((lesson["status"], lesson["content_state"]), ("published", "published"))
+        self.assertEqual(set(lesson["url_i18n"]), set(LOCALES))
+        canonical = json.loads((ROOT / "data/catalog/curriculum-canonical-v1.json").read_text(encoding="utf-8"))
+        matches = []
+        def walk(value):
+            if isinstance(value, list):
+                for child in value: walk(child)
+            elif isinstance(value, dict):
+                if value.get("number") == "6.1.4": matches.append(value)
+                for child in value.values(): walk(child)
+        walk(canonical)
+        self.assertEqual(len(matches), 1)
+        self.assertEqual(matches[0]["uid"], "les-a-0168")
+        self.assertEqual(matches[0]["publication_status"], "published")
+
     def test_611_publication_state_matches_canonical_curriculum(self):
         lesson = next(item for item in self.lessons if item["uid"] == "les-a-0147")
         canonical = json.loads((ROOT / "data/catalog/curriculum-canonical-v1.json").read_text(encoding="utf-8"))

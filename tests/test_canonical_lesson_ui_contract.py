@@ -120,9 +120,9 @@ class CanonicalLessonUIContractTests(unittest.TestCase):
         page_711 = (ROOT / "lessons/a-7-1-1-les-a-0018.html").read_text(encoding="utf-8")
 
         # Three locales: five cards in 7.1.1 and eight in 7.1.2.
-        self.assertEqual(data_711.count("lesson-glossary"), 3)
+        self.assertEqual(data_711.count("glossary-grid"), 3)
         self.assertEqual(data_711.count("glossary-entry"), 15)
-        self.assertEqual(data_712.count("lesson-glossary"), 3)
+        self.assertEqual(data_712.count("glossary-grid"), 3)
         self.assertEqual(data_712.count("glossary-entry"), 24)
         for source in (data_711, data_712):
             self.assertNotIn("<dl>", source)

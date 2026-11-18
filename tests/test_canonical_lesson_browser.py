@@ -48,7 +48,7 @@ class CanonicalLessonBrowserAcceptanceTests(unittest.TestCase):
         page.add_init_script(f"localStorage.setItem('dch-school-theme', '{theme}');")
         errors = []
         page.on("pageerror", lambda error: errors.append(str(error)))
-        response = page.goto(self.base + PAGE_PATHS[locale], wait_until="networkidle")
+        response = page.goto(self.base + PAGE_PATHS[locale], wait_until="domcontentloaded")
         self.assertEqual(response.status, 200)
         page.locator(".xai-canonical-section-title").first.wait_for()
         page.locator(".lesson-nav a.button").first.wait_for()

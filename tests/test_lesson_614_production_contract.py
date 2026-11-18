@@ -36,7 +36,7 @@ class Lesson614ProductionContractTests(unittest.TestCase):
                 self.assertIn('aria-labelledby="tree-title tree-desc"', html)
                 self.assertIn('<title id="tree-title">', html)
                 self.assertIn('<desc id="tree-desc">', html)
-                self.assertIn('href="../scripts/lesson-layout.js"', html)
+                self.assertIn('src="../scripts/lesson-layout.js"', html)
                 self.assertIn('href="../lessons/a-6-1-3', html)
                 self.assertNotIn('a-6-1-5', html)
 

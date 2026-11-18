@@ -3754,6 +3754,37 @@
         "en": "lessons/a-7-1-2-les-a-0169-en.html",
         "zh": "lessons/a-7-1-2-les-a-0169-zh.html"
       }
+    },
+    {
+      "uid": "les-a-0170",
+      "track_uid": "trk-a",
+      "theme_uid": "thm-a-07",
+      "module_uid": "mod-a-07-01",
+      "code": "7.1.3",
+      "title": "Intrinsic и Post-hoc методы",
+      "status": "review",
+      "access": "open",
+      "level": "beginner",
+      "prerequisite_uids": [
+        "les-a-0169"
+      ],
+      "learning_outcomes": [
+        "Различать intrinsic interpretability и post-hoc explainability.",
+        "Объяснять условия интерпретируемости линейных моделей, деревьев, GAM и списков правил.",
+        "Оценивать fidelity, устойчивость и ограничения post-hoc объяснений.",
+        "Сравнивать прозрачную и сложную модели с помощью воспроизводимого эксперимента Python."
+      ],
+      "content_state": "localized",
+      "title_i18n": {
+        "ru": "Intrinsic и Post-hoc методы",
+        "en": "Intrinsic and Post-hoc Methods",
+        "zh": "内在可解释方法与事后解释方法"
+      },
+      "url_i18n": {
+        "ru": "lessons/a-7-1-3-les-a-0170.html",
+        "en": "lessons/a-7-1-3-les-a-0170-en.html",
+        "zh": "lessons/a-7-1-3-les-a-0170-zh.html"
+      }
     }
   ],
   "resources": [],

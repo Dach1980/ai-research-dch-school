@@ -113,5 +113,36 @@ class CanonicalLessonUIContractTests(unittest.TestCase):
             self.assertIn(rule, contract_text)
 
 
+    def test_reference_and_new_lessons_use_canonical_dictionary_and_metadata(self):
+        data_711 = (ROOT / "lessons/data/xai-01-what-and-why.js").read_text(encoding="utf-8")
+        data_712 = (ROOT / "lessons/data/xai-02-local-global.js").read_text(encoding="utf-8")
+        renderer_712 = (ROOT / "scripts/xai-local-global-lesson.js").read_text(encoding="utf-8")
+        page_711 = (ROOT / "lessons/a-7-1-1-les-a-0018.html").read_text(encoding="utf-8")
+
+        # Three locales: five cards in 7.1.1 and eight in 7.1.2.
+        self.assertEqual(data_711.count("lesson-glossary"), 3)
+        self.assertEqual(data_711.count("glossary-entry"), 15)
+        self.assertEqual(data_712.count("lesson-glossary"), 3)
+        self.assertEqual(data_712.count("glossary-entry"), 24)
+        for source in (data_711, data_712):
+            self.assertNotIn("<dl>", source)
+            self.assertNotRegex(source, r"<h[23]>(?:Глоссарий|Краткий словарь|Glossary|Short glossary|简明术语表|术语表)</h[23]>")
+            for heading in ("Словарь терминов", "Key terms", "术语词典"):
+                self.assertIn(heading, source)
+
+        # No duration estimates or locally invented level/format labels.
+        self.assertNotIn('"duration": {', data_711)
+        self.assertNotIn("duration: {ru:", data_712)
+        self.assertNotIn("lesson.duration", renderer_712)
+        self.assertNotIn("lesson-duration", renderer_712)
+        self.assertNotIn("Продолжительность", renderer_712)
+        self.assertNotIn("Начальный уровень", page_711)
+        self.assertNotIn("мини-лаборатория</p>", page_711)
+
+        design = (ROOT / "styles/lesson-design-system.css").read_text(encoding="utf-8")
+        for selector in (".lesson-glossary", ".glossary-grid", ".glossary-entry", ".term-index", ".term-en"):
+            self.assertIn(selector, design)
+
+
 if __name__ == "__main__":
     unittest.main()

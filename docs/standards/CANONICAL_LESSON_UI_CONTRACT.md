@@ -1,0 +1,144 @@
+# DCH School — Canonical Lesson Template & UI Contract
+
+**Status:** mandatory engineering standard  
+**Version:** 1.0  
+**Adopted:** 2026-11-18  
+**Scope:** all newly authored lesson pages in Tracks A–D, all locales (RU / EN / 中文).
+
+## 1. Purpose and non-negotiable rule
+
+A lesson is a content unit inside the existing DCH School product. It is not a separate website and must not implement its own site chrome, language selector, theme control, lesson navigation, footer, or page-level design system.
+
+**New lessons reuse the canonical shell and shared UI scripts.** Lesson-specific code may render educational content only. Any proposed deviation to the shell, global navigation, locale behavior, theme behavior, typography, colors, or shared components requires explicit approval before implementation.
+
+Do not copy and independently modify a previous lesson's UI. Start from `templates/lessons/canonical-lesson-shell.html` and keep shared components delegated to their owners below.
+
+## 2. Canonical references
+
+- **Shared visual shell and global component styles:** `styles/main.css`, `styles/lesson-design-system.css`, `styles/lesson-standard.css`, `styles/lesson-reference-111.css`.
+- **XAI lesson content pattern:** `lessons/a-7-1-1-les-a-0018.html` and its shared renderer.
+- **Shared locale control:** `scripts/language-switcher.js`.
+- **Shared theme control:** `scripts/theme-system.js`.
+- **Shared previous/next lesson navigation:** `scripts/lesson-layout.js`.
+- **Lesson-specific 7.1.2 regression target:** RU / EN / 中文 pages registered under UID `les-a-0169`.
+
+These references define existing behavior; this standard does not authorize a redesign of the school.
+
+## 3. Component ownership
+
+| UI element | Sole owner | Lesson page responsibility |
+|---|---|---|
+| Site header and primary menu | Shared canonical HTML shell | Keep the canonical header unchanged |
+| RU / EN / 中文 selector | `language-switcher.js` | Load the script once; never render a local selector |
+| Theme control | `theme-system.js` | Load the script once; never render a local theme toggle |
+| Previous / next / map / track links | `lesson-layout.js` | Provide exactly one empty `nav.lesson-nav` placeholder |
+| Footer | Shared canonical HTML shell | Keep canonical footer unchanged |
+| Lesson title, outcomes, sections, quiz | Lesson content renderer | Render only inside the designated lesson content roots |
+| Lesson-specific diagrams and interactions | Lesson renderer and scoped component CSS | Must not alter global shell or shared navigation |
+
+A lesson renderer must never write into `nav.lesson-nav`. It must not create `.language-switcher`, `.locale-links`, or `.lesson-language-links` elements. It must not add a second header, footer, menu, or theme switcher.
+
+## 4. Canonical page structure
+
+Every locale page must contain, in this order:
+
+1. One `header.site-header` with brand, menu button and primary `nav.nav`.
+2. No hard-coded locale selector in the page source; the shared locale script inserts one after the primary navigation.
+3. One `main.container.lesson` (or another explicitly approved canonical main variant).
+4. Lesson metadata, title, lead, learning outcomes and content sections.
+5. Exactly one empty `nav.lesson-nav`; the shared navigation script populates it from catalog state.
+6. One canonical `footer.footer`.
+7. Shared scripts loaded once, in the order shown in the template.
+
+The footer must not contain language links. The lesson body must not contain a second language selector.
+
+## 5. Locale contract
+
+- Supported locales are exactly `ru`, `en`, `zh`.
+- All three pages share one UID and matching lesson identity.
+- The locale selector is visible only in the site header.
+- Switching locale must preserve the same lesson UID and canonical lesson route; only the locale suffix changes.
+- Missing translation pages are a release blocker. Never silently redirect a lesson locale switch to the home page.
+- The locale selector's active state must match `document.documentElement.lang` and the current URL.
+
+## 6. Lesson navigation contract
+
+- The lesson page contains one empty `nav.lesson-nav`.
+- Only `scripts/lesson-layout.js` may populate it.
+- Navigation order is based on canonical lesson codes and the v3 catalog.
+- Only records with `status: published` and `content_state: published` are valid previous/next destinations.
+- A review/draft lesson preview may show the nearest previous published lesson and a disabled “next lesson soon” state. It must not create its own links.
+- A next lesson that is not published is never a clickable destination.
+- The navigation must include the shared links to the knowledge map, Track A programme and all lessons.
+
+## 7. Theme, typography and color contract
+
+Use the existing design tokens from `styles/lesson-design-system.css`:
+
+- Main text and headings: `--lds-ink`.
+- Secondary text: `--lds-muted`.
+- Surface: `--lds-surface`.
+- Borders: `--lds-line`.
+- Accent: `--lds-accent`.
+- Positive / negative states: `--lds-good` / `--lds-bad`.
+
+Do not hard-code text colors in lesson-specific CSS. In particular, never apply a fixed pale blue to all `h2` elements. Heading colors must respond to `data-theme="light"` and dark theme tokens.
+
+Intentional colored components (e.g. a dark outcomes card, diagram palette, syntax highlighting) may use component-scoped colors only when contrast is maintained in both themes. SVG text should use theme-aware CSS variables or accessible fallback colors.
+
+## 8. CSS and JavaScript boundaries
+
+- Shared CSS is loaded in the canonical order from the template.
+- A lesson may add one or more narrowly scoped content stylesheets only when the content requires them and they do not restyle global elements.
+- No lesson-specific rule may target global `header`, `footer`, `.nav`, `.language-switcher`, `.theme-switcher`, `.lesson-nav`, `body`, or global heading selectors.
+- Lesson renderer scripts may populate only their declared content roots.
+- Do not duplicate shared scripts or add alternate implementations of shared behavior.
+- Avoid inline event handlers and global CSS overrides.
+
+## 9. Required acceptance checks
+
+A lesson cannot be marked `published` until all checks pass:
+
+### Static checks
+- Exactly one canonical header, main, footer and lesson navigation placeholder.
+- Exactly one load of each required shared script.
+- No local language selector, footer language links, or renderer-owned navigation.
+- RU / EN / 中文 pages, URLs, UID and catalog fields agree.
+- CSS references and script paths exist.
+- JavaScript syntax and lesson content tests pass.
+
+### Browser checks (Playwright / Chromium)
+Run each locale at 375, 768 and 1440 CSS pixels, in light and dark themes:
+- exactly one language selector, located inside the site header;
+- exactly one theme control, located inside the site header;
+- no locale selector in main content or footer;
+- exactly one lesson navigation block, populated by the shared script;
+- locale links open the same lesson in the selected language;
+- previous/next links match catalog publication state;
+- no broken local resources or uncaught page errors;
+- no page-level horizontal overflow;
+- heading foreground uses theme-aware tokens and remains readable;
+- lesson content, tables, code, formulas and SVGs remain within their intended containers.
+
+### Publication gate
+- `status` and `content_state` must both be `published` only after static and browser acceptance passes.
+- `review` remains the correct state while visual or browser acceptance is outstanding.
+- CI failure blocks GitHub Pages deployment.
+- A passing content-only test is not a substitute for browser acceptance.
+
+## 10. Required workflow for every new lesson
+
+1. Copy the canonical shell template; do not invent page chrome.
+2. Add the lesson content renderer and scoped content CSS only.
+3. Register one UID and three locale URLs in the catalog with `status: review`.
+4. Run static, content, localization and JavaScript tests.
+5. Run browser acceptance in all three locales, both themes and all required widths.
+6. Fix all failures in the shared component owner where appropriate; do not add one-off workarounds to a lesson.
+7. Only after successful acceptance, set both catalog publication fields to `published`.
+8. Verify deployed pages and navigation after Pages deployment.
+
+## 11. Change control
+
+Changes to this contract, canonical shell, shared component ownership, or global design tokens require an explicit user decision. A lesson authoring task does not imply permission to redesign or refactor shared UI.
+
+**Default: preserve the existing school interface. Change lesson content, not the product shell.**

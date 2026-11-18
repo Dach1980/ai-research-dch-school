@@ -576,6 +576,22 @@
       }
     },
     {
+      "uid": "les-a-0058",
+      "track_uid": "trk-a",
+      "theme_uid": "thm-a-02",
+      "module_uid": "mod-a-02-01",
+      "code": "2.1.1",
+      "title": "Инструменты исследователя AI",
+      "status": "planned",
+      "access": "open",
+      "level": "beginner",
+      "prerequisite_uids": [
+        "les-a-0057"
+      ],
+      "learning_outcomes": [],
+      "content_state": "outline_only"
+    },
+    {
       "uid": "les-a-0004",
       "track_uid": "trk-a",
       "theme_uid": "thm-a-02",
@@ -605,6 +621,22 @@
         "en": "Objects, Features, and Target Variables",
         "zh": "对象、特征与目标变量"
       }
+    },
+    {
+      "uid": "les-a-0059",
+      "track_uid": "trk-a",
+      "theme_uid": "thm-a-02",
+      "module_uid": "mod-a-02-01",
+      "code": "2.1.2",
+      "title": "Python, виртуальные окружения и пакеты",
+      "status": "planned",
+      "access": "open",
+      "level": "beginner",
+      "prerequisite_uids": [
+        "les-a-0058"
+      ],
+      "learning_outcomes": [],
+      "content_state": "outline_only"
     },
     {
       "uid": "les-a-0056",
@@ -637,757 +669,6 @@
         "en": "Data Types and Feature Representation",
         "zh": "数据类型与特征表示"
       }
-    },
-    {
-      "uid": "les-a-0050",
-      "track_uid": "trk-a",
-      "theme_uid": "thm-a-02",
-      "module_uid": "mod-a-02-02",
-      "code": "2.2.1",
-      "title": "Обучающие, проверочные и тестовые данные",
-      "status": "published",
-      "access": "open",
-      "level": "beginner",
-      "prerequisite_uids": [
-        "les-a-0056"
-      ],
-      "learning_outcomes": [
-        "Объяснять роли train, validation и test.",
-        "Выбирать стратегию разделения по структуре данных.",
-        "Различать случайное, стратифицированное, групповое и временное разделение.",
-        "Объяснять, почему предобработка обучается только на train."
-      ],
-      "content_state": "published",
-      "url_i18n": {
-        "ru": "lessons/a-2-2-1-les-a-0050.html",
-        "en": "lessons/a-2-2-1-les-a-0050-en.html",
-        "zh": "lessons/a-2-2-1-les-a-0050-zh.html"
-      },
-      "title_i18n": {
-        "ru": "Обучающие, проверочные и тестовые данные",
-        "en": "Training, Validation, and Test Data",
-        "zh": "训练集、验证集与测试集"
-      }
-    },
-    {
-      "uid": "les-a-0005",
-      "track_uid": "trk-a",
-      "theme_uid": "thm-a-02",
-      "module_uid": "mod-a-02-02",
-      "code": "2.2.2",
-      "title": "Качество данных, пропуски и выбросы",
-      "status": "published",
-      "access": "open",
-      "level": "beginner",
-      "prerequisite_uids": [
-        "les-a-0003"
-      ],
-      "learning_outcomes": [
-        "Проверять полноту, типы, диапазоны и дубликаты.",
-        "Различать пропуск, ноль и структурное отсутствие.",
-        "Объяснять стратегии обработки пропусков и их ограничения.",
-        "Отличать ошибку измерения от редкого реального события."
-      ],
-      "content_state": "published",
-      "url_i18n": {
-        "ru": "lessons/a-2-2-2-les-a-0005.html",
-        "en": "lessons/a-2-2-2-les-a-0005-en.html",
-        "zh": "lessons/a-2-2-2-les-a-0005-zh.html"
-      },
-      "title_i18n": {
-        "ru": "Качество данных, пропуски и выбросы",
-        "en": "Data Quality, Missing Values, and Outliers",
-        "zh": "数据质量、缺失值与异常值"
-      }
-    },
-    {
-      "uid": "les-a-0006",
-      "track_uid": "trk-a",
-      "theme_uid": "thm-a-02",
-      "module_uid": "mod-a-02-02",
-      "code": "2.2.3",
-      "title": "Корреляция, зависимости и утечка данных",
-      "status": "published",
-      "access": "open",
-      "level": "beginner",
-      "prerequisite_uids": [
-        "les-a-0004",
-        "les-a-0050",
-        "les-a-0005"
-      ],
-      "learning_outcomes": [
-        "Различать положительную, отрицательную и близкую к нулю линейную корреляцию.",
-        "Объяснять отличие корреляции от причинности.",
-        "Распознавать смешивающие факторы и нелинейные зависимости.",
-        "Выявлять утечку цели, времени, дубликатов и предобработки."
-      ],
-      "content_state": "published",
-      "url_i18n": {
-        "ru": "lessons/a-2-2-3-les-a-0006.html",
-        "en": "lessons/a-2-2-3-les-a-0006-en.html",
-        "zh": "lessons/a-2-2-3-les-a-0006-zh.html"
-      },
-      "title_i18n": {
-        "ru": "Корреляция, зависимости и утечка данных",
-        "en": "Correlation, Relationships, and Data Leakage",
-        "zh": "相关性、变量关系与数据泄漏"
-      }
-    },
-    {
-      "uid": "les-a-0007",
-      "track_uid": "trk-a",
-      "theme_uid": "thm-a-03",
-      "module_uid": "mod-a-03-01",
-      "code": "3.1.1",
-      "title": "Обучение с учителем — Supervised Learning",
-      "status": "published",
-      "access": "open",
-      "level": "beginner",
-      "prerequisite_uids": [],
-      "learning_outcomes": [
-        "Объяснять обучение с учителем и роль известных ответов в обучающих примерах.",
-        "Различать признаки X, целевую переменную y и метки классов.",
-        "Отличать задачи регрессии от классификации.",
-        "Описывать цикл обучения, функцию потерь и настройку параметров на концептуальном уровне.",
-        "Объяснять назначение обучающей, проверочной и тестовой выборок.",
-        "Выявлять риски плохой разметки, смещения выборки, утечки данных и переобучения."
-      ],
-      "content_state": "published",
-      "url_i18n": {
-        "ru": "lessons/a-3-1-1-les-a-0007.html",
-        "en": "lessons/a-3-1-1-les-a-0007-en.html",
-        "zh": "lessons/a-3-1-1-les-a-0007-zh.html"
-      },
-      "title_i18n": {
-        "ru": "Обучение с учителем — Supervised Learning",
-        "en": "Supervised Learning",
-        "zh": "监督学习 — Supervised Learning"
-      }
-    },
-    {
-      "uid": "les-a-0008",
-      "track_uid": "trk-a",
-      "theme_uid": "thm-a-03",
-      "module_uid": "mod-a-03-01",
-      "code": "3.1.2",
-      "title": "Обучение без учителя — Unsupervised Learning",
-      "status": "published",
-      "access": "open",
-      "level": "beginner",
-      "prerequisite_uids": [
-        "les-a-0003",
-        "les-a-0007"
-      ],
-      "learning_outcomes": [
-        "Объяснять отличие обучения без учителя от обучения с учителем.",
-        "Различать матрицу признаков X и отсутствие заранее заданной целевой переменной y.",
-        "Объяснять кластеризацию и сравнивать K-means, иерархическую кластеризацию и DBSCAN.",
-        "Понимать назначение снижения размерности и роль PCA.",
-        "Описывать обнаружение аномалий и ограничения такого результата.",
-        "Выбирать первичные проверки качества и формулировать ограничения найденной структуры."
-      ],
-      "content_state": "published",
-      "url_i18n": {
-        "ru": "lessons/a-3-1-2-les-a-0008.html",
-        "en": "lessons/a-3-1-2-les-a-0008-en.html",
-        "zh": "lessons/a-3-1-2-les-a-0008-zh.html"
-      },
-      "title_i18n": {
-        "ru": "Обучение без учителя — Unsupervised Learning",
-        "en": "Unsupervised Learning",
-        "zh": "无监督学习 — Unsupervised Learning"
-      }
-    },
-    {
-      "uid": "les-a-0053",
-      "track_uid": "trk-a",
-      "theme_uid": "thm-a-03",
-      "module_uid": "mod-a-03-01",
-      "code": "3.1.3",
-      "title": "Обучение с подкреплением — Reinforcement Learning",
-      "status": "published",
-      "access": "open",
-      "level": "beginner",
-      "prerequisite_uids": [
-        "les-a-0007",
-        "les-a-0008"
-      ],
-      "learning_outcomes": [
-        "Объяснять отличие обучения с подкреплением от обучения с учителем и без учителя.",
-        "Различать агента, среду, состояние, действие, награду и эпизод.",
-        "Объяснять политику, функцию ценности и дисконтированный возврат.",
-        "Различать исследование новых действий и эксплуатацию известного опыта.",
-        "Описывать Q-learning, policy-based и actor–critic методы на концептуальном уровне.",
-        "Формулировать учебную RL-задачу и выявлять риски неверной награды и небезопасного исследования."
-      ],
-      "content_state": "published",
-      "url_i18n": {
-        "ru": "lessons/a-3-1-3-les-a-0053.html",
-        "en": "lessons/a-3-1-3-les-a-0053-en.html",
-        "zh": "lessons/a-3-1-3-les-a-0053-zh.html"
-      },
-      "title_i18n": {
-        "ru": "Обучение с подкреплением — Reinforcement Learning",
-        "en": "Reinforcement Learning",
-        "zh": "强化学习 — Reinforcement Learning"
-      }
-    },
-    {
-      "uid": "les-a-0054",
-      "track_uid": "trk-a",
-      "theme_uid": "thm-a-03",
-      "module_uid": "mod-a-03-02",
-      "code": "3.2.1",
-      "title": "Классификация и регрессия",
-      "status": "published",
-      "access": "open",
-      "level": "beginner",
-      "prerequisite_uids": [
-        "les-a-0007"
-      ],
-      "learning_outcomes": [
-        "Отличать регрессию и классификацию по смыслу целевой переменной.",
-        "Формулировать объект прогноза, целевую переменную, единицу измерения и горизонт.",
-        "Различать числовой прогноз, вероятность, оценку модели и итоговое решение.",
-        "Объяснять бинарную, многоклассовую и многометочную классификацию.",
-        "Обосновывать выбор порога с учётом цены ошибок.",
-        "Проверять соответствие типа задачи практическому вопросу."
-      ],
-      "content_state": "published",
-      "title_i18n": {
-        "ru": "Классификация и регрессия",
-        "en": "Classification and Regression",
-        "zh": "分类与回归"
-      },
-      "url_i18n": {
-        "ru": "lessons/a-3-2-1-les-a-0054.html",
-        "en": "lessons/a-3-2-1-les-a-0054-en.html",
-        "zh": "lessons/a-3-2-1-les-a-0054-zh.html"
-      }
-    },
-    {
-      "uid": "les-a-0055",
-      "track_uid": "trk-a",
-      "theme_uid": "thm-a-03",
-      "module_uid": "mod-a-03-02",
-      "code": "3.2.2",
-      "title": "Кластеризация и снижение размерности",
-      "status": "published",
-      "access": "open",
-      "level": "beginner",
-      "prerequisite_uids": [
-        "les-a-0008",
-        "les-a-0054"
-      ],
-      "learning_outcomes": [
-        "Сравнивать K-means, иерархическую кластеризацию и DBSCAN с учётом формы, плотности и масштаба данных.",
-        "Объяснять влияние стандартизации, метрики расстояния и параметров алгоритма на результат.",
-        "Использовать elbow method и silhouette score как диагностические, а не окончательные критерии.",
-        "Проверять устойчивость кластеров при изменении выборки, инициализации и параметров.",
-        "Объяснять PCA, объяснённую дисперсию и ограничения двумерной визуализации."
-      ],
-      "content_state": "published",
-      "title_i18n": {
-        "ru": "Кластеризация и снижение размерности",
-        "en": "Clustering and Dimensionality Reduction",
-        "zh": "聚类与降维"
-      },
-      "url_i18n": {
-        "ru": "lessons/a-3-2-2-les-a-0055.html",
-        "en": "lessons/a-3-2-2-les-a-0055-en.html",
-        "zh": "lessons/a-3-2-2-les-a-0055-zh.html"
-      }
-    },
-    {
-      "uid": "les-a-0009",
-      "track_uid": "trk-a",
-      "theme_uid": "thm-a-03",
-      "module_uid": "mod-a-03-02",
-      "code": "3.2.3",
-      "title": "Генеративные модели и другие современные подходы",
-      "status": "published",
-      "access": "open",
-      "level": "beginner",
-      "prerequisite_uids": [
-        "les-a-0053",
-        "les-a-0054",
-        "les-a-0055"
-      ],
-      "learning_outcomes": [
-        "Различать генеративную и дискриминативную постановки.",
-        "Объяснять принципы авторегрессии, VAE, GAN и диффузионных моделей.",
-        "Понимать роль self-supervised learning и foundation models.",
-        "Отличать генеративную модель от RAG и системы с инструментами.",
-        "Оценивать качество, разнообразие, достоверность и риски результата.",
-        "Проводить эксперимент с простой авторегрессионной моделью."
-      ],
-      "content_state": "published",
-      "url_i18n": {
-        "ru": "lessons/a-3-2-3-les-a-0009.html",
-        "en": "lessons/a-3-2-3-les-a-0009-en.html",
-        "zh": "lessons/a-3-2-3-les-a-0009-zh.html"
-      },
-      "title_i18n": {
-        "ru": "Генеративные модели и современные подходы ИИ",
-        "en": "Generative Models and Modern AI Approaches",
-        "zh": "生成式模型与现代人工智能方法"
-      }
-    },
-    {
-      "uid": "les-a-0010",
-      "track_uid": "trk-a",
-      "theme_uid": "thm-a-04",
-      "module_uid": "mod-a-04-01",
-      "code": "4.1.1",
-      "title": "Понятие модели и параметров",
-      "status": "published",
-      "access": "open",
-      "level": "beginner",
-      "prerequisite_uids": [],
-      "learning_outcomes": [
-        "Объяснять модель как отображение входных данных в выход.",
-        "Различать входные признаки, параметры и прогноз.",
-        "Понимать параметры на примере простой линейной модели.",
-        "Отличать семейство моделей от конкретной обученной модели.",
-        "Различать модель, алгоритм обучения и AI-систему.",
-        "Объяснять, почему параметры сами по себе не доказывают причинную связь."
-      ],
-      "content_state": "published",
-      "url_i18n": {
-        "ru": "lessons/a-4-1-1-les-a-0010.html",
-        "en": "lessons/a-4-1-1-les-a-0010-en.html",
-        "zh": "lessons/a-4-1-1-les-a-0010-zh.html"
-      },
-      "title_i18n": {
-        "ru": "Понятие модели и параметров",
-        "en": "The Model and Its Parameters",
-        "zh": "模型与参数的概念"
-      }
-    },
-    {
-      "uid": "les-a-0011",
-      "track_uid": "trk-a",
-      "theme_uid": "thm-a-04",
-      "module_uid": "mod-a-04-01",
-      "code": "4.1.2",
-      "title": "Обучение модели и функция потерь",
-      "status": "published",
-      "access": "open",
-      "level": "beginner",
-      "prerequisite_uids": [
-        "les-a-0010"
-      ],
-      "learning_outcomes": [
-        "Различать обучение и прогнозирование; объяснять функцию потерь и эмпирический риск.",
-        "Рассчитывать MSE и объяснять градиентный спуск.",
-        "Запускать учебную реализацию обучения линейной модели и критически оценивать ограничения loss."
-      ],
-      "content_state": "published",
-      "title_i18n": {
-        "ru": "Обучение модели и функция потерь",
-        "en": "Model Training and the Loss Function",
-        "zh": "模型训练与损失函数"
-      },
-      "url_i18n": {
-        "ru": "lessons/a-4-1-2-les-a-0011.html",
-        "en": "lessons/a-4-1-2-les-a-0011-en.html",
-        "zh": "lessons/a-4-1-2-les-a-0011-zh.html"
-      }
-    },
-    {
-      "uid": "les-a-0012",
-      "track_uid": "trk-a",
-      "theme_uid": "thm-a-04",
-      "module_uid": "mod-a-04-01",
-      "code": "4.1.3",
-      "title": "Переобучение и недообучение",
-      "status": "published",
-      "access": "open",
-      "level": "beginner",
-      "prerequisite_uids": [
-        "les-a-0010",
-        "les-a-0011"
-      ],
-      "learning_outcomes": [
-        "Различать недообучение, приемлемое обучение и переобучение по ошибкам на обучающих и проверочных данных",
-        "Интерпретировать кривые обучения и разрыв между train loss и validation loss",
-        "Объяснять связь сложности модели с систематической ошибкой и вариативностью результата",
-        "Выбирать обоснованные способы уменьшения недообучения и переобучения",
-        "Описывать корректную роль validation и test выборок при настройке модели"
-      ],
-      "content_state": "published",
-      "title_i18n": {
-        "ru": "Переобучение и недообучение",
-        "en": "Overfitting and Underfitting",
-        "zh": "过拟合与欠拟合"
-      },
-      "url_i18n": {
-        "ru": "lessons/a-4-1-3-les-a-0012.html",
-        "en": "lessons/a-4-1-3-les-a-0012-en.html",
-        "zh": "lessons/a-4-1-3-les-a-0012-zh.html"
-      }
-    },
-    {
-      "uid": "les-a-0013",
-      "track_uid": "trk-a",
-      "theme_uid": "thm-a-04",
-      "module_uid": "mod-a-04-02",
-      "code": "4.2.1",
-      "title": "Обобщающая способность модели",
-      "status": "published",
-      "access": "open",
-      "level": "beginner",
-      "prerequisite_uids": [
-        "les-a-0012"
-      ],
-      "learning_outcomes": [
-        "Объяснять обобщающую способность как качество работы модели на новых примерах из целевой среды.",
-        "Различать эмпирический риск на конечной выборке и ожидаемый риск на неизвестном распределении.",
-        "Интерпретировать разрыв между обучающей и тестовой ошибкой, не превращая его в безусловную гарантию.",
-        "Выбирать схему разбиения с учётом классов, групп и времени.",
-        "Распознавать утечку данных и типы сдвига распределения.",
-        "Описывать ограничения тестовой оценки и необходимость мониторинга после внедрения."
-      ],
-      "content_state": "published",
-      "title_i18n": {
-        "ru": "Обобщающая способность модели",
-        "en": "Model Generalization",
-        "zh": "模型的泛化能力"
-      },
-      "url_i18n": {
-        "ru": "lessons/a-4-2-1-les-a-0013.html",
-        "en": "lessons/a-4-2-1-les-a-0013-en.html",
-        "zh": "lessons/a-4-2-1-les-a-0013-zh.html"
-      }
-    },
-    {
-      "uid": "les-a-0014",
-      "track_uid": "trk-a",
-      "theme_uid": "thm-a-04",
-      "module_uid": "mod-a-04-02",
-      "code": "4.2.2",
-      "title": "Гиперпараметры и настройка модели",
-      "status": "published",
-      "access": "open",
-      "level": "beginner",
-      "prerequisite_uids": [
-        "les-a-0013"
-      ],
-      "learning_outcomes": [
-        "Различать обучаемые параметры модели и гиперпараметры алгоритма.",
-        "Объяснять влияние гиперпараметров на сложность, регуляризацию и процесс обучения.",
-        "Формировать обоснованное пространство поиска с учётом модели, данных и вычислительных ограничений.",
-        "Сравнивать ручную настройку, Grid Search, Random Search и байесовскую оптимизацию.",
-        "Использовать validation или cross-validation для настройки, сохраняя test для финальной оценки.",
-        "Оценивать устойчивость, воспроизводимость и вычислительную стоимость выбранной конфигурации."
-      ],
-      "content_state": "published",
-      "title_i18n": {
-        "ru": "Гиперпараметры и настройка модели",
-        "en": "Hyperparameters and Model Tuning",
-        "zh": "超参数与模型调优"
-      },
-      "url_i18n": {
-        "ru": "lessons/a-4-2-2-les-a-0014.html",
-        "en": "lessons/a-4-2-2-les-a-0014-en.html",
-        "zh": "lessons/a-4-2-2-les-a-0014-zh.html"
-      }
-    },
-    {
-      "uid": "les-a-0043",
-      "track_uid": "trk-a",
-      "theme_uid": "thm-a-05",
-      "module_uid": "mod-a-05-01",
-      "code": "5.1.1",
-      "title": "Зачем оценивать качество модели",
-      "status": "published",
-      "access": "open",
-      "level": "beginner",
-      "prerequisite_uids": [
-        "les-a-0014"
-      ],
-      "learning_outcomes": [
-        "Объяснять различие между обучением модели и оценкой её поведения на новых данных.",
-        "Определять критерии успешности на основе сценария применения и последствий ошибок.",
-        "Объяснять назначение метрик и ограничения оценки по одному показателю.",
-        "Описывать роль базовой модели, независимой проверки и фиксации протокола.",
-        "Объяснять, почему результат тестирования не является гарантией качества в любых будущих условиях."
-      ],
-      "content_state": "published",
-      "title_i18n": {
-        "ru": "Зачем оценивать качество модели",
-        "en": "Why Evaluate Model Quality?",
-        "zh": "为什么要评估模型质量？"
-      },
-      "url_i18n": {
-        "ru": "lessons/a-5-1-1-les-a-0043.html",
-        "en": "lessons/a-5-1-1-les-a-0043-en.html",
-        "zh": "lessons/a-5-1-1-les-a-0043-zh.html"
-      }
-    },
-    {
-      "uid": "les-a-0044",
-      "track_uid": "trk-a",
-      "theme_uid": "thm-a-05",
-      "module_uid": "mod-a-05-01",
-      "code": "5.1.2",
-      "title": "Матрица ошибок классификации",
-      "status": "published",
-      "access": "open",
-      "level": "beginner",
-      "prerequisite_uids": [
-        "les-a-0043"
-      ],
-      "learning_outcomes": [
-        "Объяснять назначение матрицы ошибок и правильно читать её строки и столбцы.",
-        "Различать TP, TN, FP и FN с позиции фактического класса и прогноза.",
-        "Строить матрицу по размеченным результатам классификатора и проверять сумму ячеек.",
-        "Интерпретировать ложную тревогу и пропуск в контексте практической задачи.",
-        "Объяснять ограничения матрицы и расширение представления на несколько классов."
-      ],
-      "content_state": "published",
-      "title_i18n": {
-        "ru": "Матрица ошибок классификации",
-        "en": "The Confusion Matrix",
-        "zh": "分类混淆矩阵"
-      },
-      "url_i18n": {
-        "ru": "lessons/a-5-1-2-les-a-0044.html",
-        "en": "lessons/a-5-1-2-les-a-0044-en.html",
-        "zh": "lessons/a-5-1-2-les-a-0044-zh.html"
-      }
-    },
-    {
-      "uid": "les-a-0045",
-      "track_uid": "trk-a",
-      "theme_uid": "thm-a-05",
-      "module_uid": "mod-a-05-01",
-      "code": "5.1.3",
-      "title": "Accuracy, Precision, Recall и F1",
-      "status": "published",
-      "access": "open",
-      "level": "beginner",
-      "prerequisite_uids": [
-        "les-a-0044"
-      ],
-      "learning_outcomes": [
-        "Объяснять, на какой вопрос отвечают Accuracy, Precision, Recall и F1.",
-        "Рассчитывать четыре метрики по TP, TN, FP и FN из матрицы ошибок.",
-        "Различать знаменатели Precision и Recall и интерпретировать влияние FP и FN.",
-        "Объяснять гармоническую природу F1 и ограничения его интерпретации.",
-        "Сравнивать модели и выбирать приоритетную метрику с учётом последствий ошибок."
-      ],
-      "content_state": "published",
-      "title_i18n": {
-        "ru": "Accuracy, Precision, Recall и F1",
-        "en": "Accuracy, Precision, Recall and F1",
-        "zh": "Accuracy、Precision、Recall 与 F1"
-      },
-      "url_i18n": {
-        "ru": "lessons/a-5-1-3-les-a-0045.html",
-        "en": "lessons/a-5-1-3-les-a-0045-en.html",
-        "zh": "lessons/a-5-1-3-les-a-0045-zh.html"
-      }
-    },
-    {
-      "uid": "les-a-0046",
-      "track_uid": "trk-a",
-      "theme_uid": "thm-a-05",
-      "module_uid": "mod-a-05-01",
-      "code": "5.1.4",
-      "title": "ROC-AUC и Precision-Recall AUC",
-      "status": "published",
-      "access": "open",
-      "level": "beginner",
-      "prerequisite_uids": [
-        "les-a-0045"
-      ],
-      "learning_outcomes": [
-        "Объяснять роль порога классификации и почему изменение порога меняет TP, FP, TN и FN.",
-        "Рассчитывать TPR и FPR и интерпретировать ROC-кривую.",
-        "Объяснять ROC-AUC как площадь под ROC-кривой и как вероятностную характеристику ранжирования.",
-        "Интерпретировать Precision–Recall-кривую и базовую линию, связанную с долей положительного класса.",
-        "Различать Average Precision и трапецеидальную PR-AUC и выбирать способ оценки под задачу.",
-        "Сравнивать ROC-AUC и PR-AUC, корректно выбирать порог на validation и сохранять test для финальной оценки."
-      ],
-      "content_state": "published",
-      "title_i18n": {
-        "ru": "ROC-AUC и Precision-Recall AUC",
-        "en": "ROC-AUC and Precision-Recall AUC",
-        "zh": "ROC-AUC 与 Precision-Recall AUC"
-      },
-      "url_i18n": {
-        "ru": "lessons/a-5-1-4-les-a-0046.html",
-        "en": "lessons/a-5-1-4-les-a-0046-en.html",
-        "zh": "lessons/a-5-1-4-les-a-0046-zh.html"
-      }
-    },
-    {
-      "uid": "les-a-0047",
-      "track_uid": "trk-a",
-      "theme_uid": "thm-a-05",
-      "module_uid": "mod-a-05-02",
-      "code": "5.2.1",
-      "title": "Дисбаланс классов",
-      "status": "published",
-      "access": "open",
-      "level": "beginner",
-      "prerequisite_uids": [
-        "les-a-0046"
-      ],
-      "learning_outcomes": [
-        "Определять дисбаланс классов и рассчитывать долю положительного класса.",
-        "Объяснять, почему высокая Accuracy может сочетаться с нулевым Recall.",
-        "Рассчитывать Precision с учётом TPR, FPR и распространённости положительного класса.",
-        "Сравнивать стратифицированное разбиение, oversampling, undersampling и взвешивание классов.",
-        "Объяснять принцип SMOTE и ограничения синтетических примеров.",
-        "Строить протокол, в котором балансировка выполняется только внутри обучающей части.",
-        "Выбирать метрики с учётом исходной распространённости событий."
-      ],
-      "content_state": "published",
-      "title_i18n": {
-        "ru": "Дисбаланс классов",
-        "en": "Class Imbalance",
-        "zh": "类别不平衡"
-      },
-      "url_i18n": {
-        "ru": "lessons/a-5-2-1-les-a-0047.html",
-        "en": "lessons/a-5-2-1-les-a-0047-en.html",
-        "zh": "lessons/a-5-2-1-les-a-0047-zh.html"
-      }
-    },
-    {
-      "uid": "les-a-0015",
-      "track_uid": "trk-a",
-      "theme_uid": "thm-a-05",
-      "module_uid": "mod-a-05-02",
-      "code": "5.2.2",
-      "title": "Кросс-валидация и устойчивость результатов",
-      "status": "published",
-      "access": "open",
-      "level": "beginner",
-      "prerequisite_uids": [
-        "les-a-0047"
-      ],
-      "learning_outcomes": [
-        "Объяснять назначение кросс-валидации и её отличие от одного holdout-разбиения.",
-        "Описывать k-fold и stratified k-fold cross-validation.",
-        "Выбирать group-aware или time-aware схему для зависимых или временных наблюдений.",
-        "Рассчитывать среднюю метрику и описывать разброс результатов по фолдам.",
-        "Объяснять ограничения стандартного отклонения и зависимость оценок фолдов.",
-        "Предотвращать утечку данных при preprocessing, feature selection и подборе гиперпараметров.",
-        "Проектировать процедуру оценки с отдельным тестовым набором."
-      ],
-      "content_state": "published",
-      "title_i18n": {
-        "ru": "Кросс-валидация и устойчивость результатов",
-        "en": "Cross-Validation and Result Stability",
-        "zh": "交叉验证与结果稳定性"
-      },
-      "url_i18n": {
-        "ru": "lessons/a-5-2-2-les-a-0015.html",
-        "en": "lessons/a-5-2-2-les-a-0015-en.html",
-        "zh": "lessons/a-5-2-2-les-a-0015-zh.html"
-      }
-    },
-    {
-      "uid": "les-a-0048",
-      "track_uid": "trk-a",
-      "theme_uid": "thm-a-05",
-      "module_uid": "mod-a-05-02",
-      "code": "5.2.3",
-      "title": "Метрики регрессии: MAE, MSE, RMSE и R²",
-      "status": "published",
-      "access": "open",
-      "level": "beginner",
-      "prerequisite_uids": [
-        "les-a-0015"
-      ],
-      "learning_outcomes": [
-        "Различать регрессию и классификацию по типу прогноза.",
-        "Рассчитывать MAE, MSE и RMSE.",
-        "Объяснять влияние крупных ошибок и единицы измерения.",
-        "Интерпретировать R², включая отрицательные значения.",
-        "Сравнивать модель с baseline на одинаковых данных.",
-        "Выбирать метрику с учётом масштаба и цены ошибки."
-      ],
-      "content_state": "published",
-      "title_i18n": {
-        "ru": "Метрики регрессии: MAE, MSE, RMSE и R²",
-        "en": "Regression Metrics: MAE, MSE, RMSE and R²",
-        "zh": "回归指标：MAE、MSE、RMSE 与 R²"
-      },
-      "url_i18n": {
-        "ru": "lessons/a-5-2-3-les-a-0048.html",
-        "en": "lessons/a-5-2-3-les-a-0048-en.html",
-        "zh": "lessons/a-5-2-3-les-a-0048-zh.html"
-      }
-    },
-    {
-      "uid": "les-a-0057",
-      "track_uid": "trk-a",
-      "theme_uid": "thm-a-05",
-      "module_uid": "mod-a-05-02",
-      "code": "5.2.4",
-      "title": "Калибровка вероятностей и качество вероятностных прогнозов",
-      "status": "published",
-      "access": "open",
-      "level": "beginner",
-      "prerequisite_uids": [
-        "les-a-0048",
-        "les-a-0046"
-      ],
-      "learning_outcomes": [
-        "Различать ранжирование и калибровку вероятностных прогнозов.",
-        "Интерпретировать reliability diagram и calibration curve.",
-        "Рассчитывать и интерпретировать Brier score и log loss.",
-        "Объяснять overconfidence, underconfidence и sharpness.",
-        "Сравнивать Platt scaling, isotonic regression и temperature scaling.",
-        "Строить протокол калибровки без утечки данных и оценивать его на независимом test."
-      ],
-      "content_state": "published",
-      "title_i18n": {
-        "ru": "Калибровка вероятностей и качество вероятностных прогнозов",
-        "en": "Probability Calibration and Probabilistic Prediction Quality",
-        "zh": "概率校准与概率预测质量"
-      },
-      "url_i18n": {
-        "ru": "lessons/a-5-2-4-les-a-0057.html",
-        "en": "lessons/a-5-2-4-les-a-0057-en.html",
-        "zh": "lessons/a-5-2-4-les-a-0057-zh.html"
-      }
-    },
-    {
-      "uid": "les-a-0058",
-      "track_uid": "trk-a",
-      "theme_uid": "thm-a-02",
-      "module_uid": "mod-a-02-01",
-      "code": "2.1.1",
-      "title": "Инструменты исследователя AI",
-      "status": "planned",
-      "access": "open",
-      "level": "beginner",
-      "prerequisite_uids": [
-        "les-a-0057"
-      ],
-      "learning_outcomes": [],
-      "content_state": "outline_only"
-    },
-    {
-      "uid": "les-a-0059",
-      "track_uid": "trk-a",
-      "theme_uid": "thm-a-02",
-      "module_uid": "mod-a-02-01",
-      "code": "2.1.2",
-      "title": "Python, виртуальные окружения и пакеты",
-      "status": "planned",
-      "access": "open",
-      "level": "beginner",
-      "prerequisite_uids": [
-        "les-a-0058"
-      ],
-      "learning_outcomes": [],
-      "content_state": "outline_only"
     },
     {
       "uid": "les-a-0060",
@@ -1438,6 +719,37 @@
       "content_state": "outline_only"
     },
     {
+      "uid": "les-a-0050",
+      "track_uid": "trk-a",
+      "theme_uid": "thm-a-02",
+      "module_uid": "mod-a-02-02",
+      "code": "2.2.1",
+      "title": "Обучающие, проверочные и тестовые данные",
+      "status": "published",
+      "access": "open",
+      "level": "beginner",
+      "prerequisite_uids": [
+        "les-a-0056"
+      ],
+      "learning_outcomes": [
+        "Объяснять роли train, validation и test.",
+        "Выбирать стратегию разделения по структуре данных.",
+        "Различать случайное, стратифицированное, групповое и временное разделение.",
+        "Объяснять, почему предобработка обучается только на train."
+      ],
+      "content_state": "published",
+      "url_i18n": {
+        "ru": "lessons/a-2-2-1-les-a-0050.html",
+        "en": "lessons/a-2-2-1-les-a-0050-en.html",
+        "zh": "lessons/a-2-2-1-les-a-0050-zh.html"
+      },
+      "title_i18n": {
+        "ru": "Обучающие, проверочные и тестовые данные",
+        "en": "Training, Validation, and Test Data",
+        "zh": "训练集、验证集与测试集"
+      }
+    },
+    {
       "uid": "les-a-0063",
       "track_uid": "trk-a",
       "theme_uid": "thm-a-02",
@@ -1454,6 +766,37 @@
       "content_state": "outline_only"
     },
     {
+      "uid": "les-a-0005",
+      "track_uid": "trk-a",
+      "theme_uid": "thm-a-02",
+      "module_uid": "mod-a-02-02",
+      "code": "2.2.2",
+      "title": "Качество данных, пропуски и выбросы",
+      "status": "published",
+      "access": "open",
+      "level": "beginner",
+      "prerequisite_uids": [
+        "les-a-0003"
+      ],
+      "learning_outcomes": [
+        "Проверять полноту, типы, диапазоны и дубликаты.",
+        "Различать пропуск, ноль и структурное отсутствие.",
+        "Объяснять стратегии обработки пропусков и их ограничения.",
+        "Отличать ошибку измерения от редкого реального события."
+      ],
+      "content_state": "published",
+      "url_i18n": {
+        "ru": "lessons/a-2-2-2-les-a-0005.html",
+        "en": "lessons/a-2-2-2-les-a-0005-en.html",
+        "zh": "lessons/a-2-2-2-les-a-0005-zh.html"
+      },
+      "title_i18n": {
+        "ru": "Качество данных, пропуски и выбросы",
+        "en": "Data Quality, Missing Values, and Outliers",
+        "zh": "数据质量、缺失值与异常值"
+      }
+    },
+    {
       "uid": "les-a-0064",
       "track_uid": "trk-a",
       "theme_uid": "thm-a-02",
@@ -1468,6 +811,39 @@
       ],
       "learning_outcomes": [],
       "content_state": "outline_only"
+    },
+    {
+      "uid": "les-a-0006",
+      "track_uid": "trk-a",
+      "theme_uid": "thm-a-02",
+      "module_uid": "mod-a-02-02",
+      "code": "2.2.3",
+      "title": "Корреляция, зависимости и утечка данных",
+      "status": "published",
+      "access": "open",
+      "level": "beginner",
+      "prerequisite_uids": [
+        "les-a-0004",
+        "les-a-0050",
+        "les-a-0005"
+      ],
+      "learning_outcomes": [
+        "Различать положительную, отрицательную и близкую к нулю линейную корреляцию.",
+        "Объяснять отличие корреляции от причинности.",
+        "Распознавать смешивающие факторы и нелинейные зависимости.",
+        "Выявлять утечку цели, времени, дубликатов и предобработки."
+      ],
+      "content_state": "published",
+      "url_i18n": {
+        "ru": "lessons/a-2-2-3-les-a-0006.html",
+        "en": "lessons/a-2-2-3-les-a-0006-en.html",
+        "zh": "lessons/a-2-2-3-les-a-0006-zh.html"
+      },
+      "title_i18n": {
+        "ru": "Корреляция, зависимости и утечка данных",
+        "en": "Correlation, Relationships, and Data Leakage",
+        "zh": "相关性、变量关系与数据泄漏"
+      }
     },
     {
       "uid": "les-a-0065",
@@ -2030,6 +1406,37 @@
       "content_state": "outline_only"
     },
     {
+      "uid": "les-a-0007",
+      "track_uid": "trk-a",
+      "theme_uid": "thm-a-03",
+      "module_uid": "mod-a-03-01",
+      "code": "3.1.1",
+      "title": "Обучение с учителем — Supervised Learning",
+      "status": "published",
+      "access": "open",
+      "level": "beginner",
+      "prerequisite_uids": [],
+      "learning_outcomes": [
+        "Объяснять обучение с учителем и роль известных ответов в обучающих примерах.",
+        "Различать признаки X, целевую переменную y и метки классов.",
+        "Отличать задачи регрессии от классификации.",
+        "Описывать цикл обучения, функцию потерь и настройку параметров на концептуальном уровне.",
+        "Объяснять назначение обучающей, проверочной и тестовой выборок.",
+        "Выявлять риски плохой разметки, смещения выборки, утечки данных и переобучения."
+      ],
+      "content_state": "published",
+      "url_i18n": {
+        "ru": "lessons/a-3-1-1-les-a-0007.html",
+        "en": "lessons/a-3-1-1-les-a-0007-en.html",
+        "zh": "lessons/a-3-1-1-les-a-0007-zh.html"
+      },
+      "title_i18n": {
+        "ru": "Обучение с учителем — Supervised Learning",
+        "en": "Supervised Learning",
+        "zh": "监督学习 — Supervised Learning"
+      }
+    },
+    {
       "uid": "les-a-0100",
       "track_uid": "trk-a",
       "theme_uid": "thm-a-03",
@@ -2046,6 +1453,40 @@
       "content_state": "outline_only"
     },
     {
+      "uid": "les-a-0008",
+      "track_uid": "trk-a",
+      "theme_uid": "thm-a-03",
+      "module_uid": "mod-a-03-01",
+      "code": "3.1.2",
+      "title": "Обучение без учителя — Unsupervised Learning",
+      "status": "published",
+      "access": "open",
+      "level": "beginner",
+      "prerequisite_uids": [
+        "les-a-0003",
+        "les-a-0007"
+      ],
+      "learning_outcomes": [
+        "Объяснять отличие обучения без учителя от обучения с учителем.",
+        "Различать матрицу признаков X и отсутствие заранее заданной целевой переменной y.",
+        "Объяснять кластеризацию и сравнивать K-means, иерархическую кластеризацию и DBSCAN.",
+        "Понимать назначение снижения размерности и роль PCA.",
+        "Описывать обнаружение аномалий и ограничения такого результата.",
+        "Выбирать первичные проверки качества и формулировать ограничения найденной структуры."
+      ],
+      "content_state": "published",
+      "url_i18n": {
+        "ru": "lessons/a-3-1-2-les-a-0008.html",
+        "en": "lessons/a-3-1-2-les-a-0008-en.html",
+        "zh": "lessons/a-3-1-2-les-a-0008-zh.html"
+      },
+      "title_i18n": {
+        "ru": "Обучение без учителя — Unsupervised Learning",
+        "en": "Unsupervised Learning",
+        "zh": "无监督学习 — Unsupervised Learning"
+      }
+    },
+    {
       "uid": "les-a-0101",
       "track_uid": "trk-a",
       "theme_uid": "thm-a-03",
@@ -2060,6 +1501,40 @@
       ],
       "learning_outcomes": [],
       "content_state": "outline_only"
+    },
+    {
+      "uid": "les-a-0053",
+      "track_uid": "trk-a",
+      "theme_uid": "thm-a-03",
+      "module_uid": "mod-a-03-01",
+      "code": "3.1.3",
+      "title": "Обучение с подкреплением — Reinforcement Learning",
+      "status": "published",
+      "access": "open",
+      "level": "beginner",
+      "prerequisite_uids": [
+        "les-a-0007",
+        "les-a-0008"
+      ],
+      "learning_outcomes": [
+        "Объяснять отличие обучения с подкреплением от обучения с учителем и без учителя.",
+        "Различать агента, среду, состояние, действие, награду и эпизод.",
+        "Объяснять политику, функцию ценности и дисконтированный возврат.",
+        "Различать исследование новых действий и эксплуатацию известного опыта.",
+        "Описывать Q-learning, policy-based и actor–critic методы на концептуальном уровне.",
+        "Формулировать учебную RL-задачу и выявлять риски неверной награды и небезопасного исследования."
+      ],
+      "content_state": "published",
+      "url_i18n": {
+        "ru": "lessons/a-3-1-3-les-a-0053.html",
+        "en": "lessons/a-3-1-3-les-a-0053-en.html",
+        "zh": "lessons/a-3-1-3-les-a-0053-zh.html"
+      },
+      "title_i18n": {
+        "ru": "Обучение с подкреплением — Reinforcement Learning",
+        "en": "Reinforcement Learning",
+        "zh": "强化学习 — Reinforcement Learning"
+      }
     },
     {
       "uid": "les-a-0102",
@@ -2126,6 +1601,39 @@
       "content_state": "outline_only"
     },
     {
+      "uid": "les-a-0054",
+      "track_uid": "trk-a",
+      "theme_uid": "thm-a-03",
+      "module_uid": "mod-a-03-02",
+      "code": "3.2.1",
+      "title": "Классификация и регрессия",
+      "status": "published",
+      "access": "open",
+      "level": "beginner",
+      "prerequisite_uids": [
+        "les-a-0007"
+      ],
+      "learning_outcomes": [
+        "Отличать регрессию и классификацию по смыслу целевой переменной.",
+        "Формулировать объект прогноза, целевую переменную, единицу измерения и горизонт.",
+        "Различать числовой прогноз, вероятность, оценку модели и итоговое решение.",
+        "Объяснять бинарную, многоклассовую и многометочную классификацию.",
+        "Обосновывать выбор порога с учётом цены ошибок.",
+        "Проверять соответствие типа задачи практическому вопросу."
+      ],
+      "content_state": "published",
+      "title_i18n": {
+        "ru": "Классификация и регрессия",
+        "en": "Classification and Regression",
+        "zh": "分类与回归"
+      },
+      "url_i18n": {
+        "ru": "lessons/a-3-2-1-les-a-0054.html",
+        "en": "lessons/a-3-2-1-les-a-0054-en.html",
+        "zh": "lessons/a-3-2-1-les-a-0054-zh.html"
+      }
+    },
+    {
       "uid": "les-a-0105",
       "track_uid": "trk-a",
       "theme_uid": "thm-a-03",
@@ -2142,6 +1650,39 @@
       "content_state": "outline_only"
     },
     {
+      "uid": "les-a-0055",
+      "track_uid": "trk-a",
+      "theme_uid": "thm-a-03",
+      "module_uid": "mod-a-03-02",
+      "code": "3.2.2",
+      "title": "Кластеризация и снижение размерности",
+      "status": "published",
+      "access": "open",
+      "level": "beginner",
+      "prerequisite_uids": [
+        "les-a-0008",
+        "les-a-0054"
+      ],
+      "learning_outcomes": [
+        "Сравнивать K-means, иерархическую кластеризацию и DBSCAN с учётом формы, плотности и масштаба данных.",
+        "Объяснять влияние стандартизации, метрики расстояния и параметров алгоритма на результат.",
+        "Использовать elbow method и silhouette score как диагностические, а не окончательные критерии.",
+        "Проверять устойчивость кластеров при изменении выборки, инициализации и параметров.",
+        "Объяснять PCA, объяснённую дисперсию и ограничения двумерной визуализации."
+      ],
+      "content_state": "published",
+      "title_i18n": {
+        "ru": "Кластеризация и снижение размерности",
+        "en": "Clustering and Dimensionality Reduction",
+        "zh": "聚类与降维"
+      },
+      "url_i18n": {
+        "ru": "lessons/a-3-2-2-les-a-0055.html",
+        "en": "lessons/a-3-2-2-les-a-0055-en.html",
+        "zh": "lessons/a-3-2-2-les-a-0055-zh.html"
+      }
+    },
+    {
       "uid": "les-a-0106",
       "track_uid": "trk-a",
       "theme_uid": "thm-a-03",
@@ -2156,6 +1697,41 @@
       ],
       "learning_outcomes": [],
       "content_state": "outline_only"
+    },
+    {
+      "uid": "les-a-0009",
+      "track_uid": "trk-a",
+      "theme_uid": "thm-a-03",
+      "module_uid": "mod-a-03-02",
+      "code": "3.2.3",
+      "title": "Генеративные модели и другие современные подходы",
+      "status": "published",
+      "access": "open",
+      "level": "beginner",
+      "prerequisite_uids": [
+        "les-a-0053",
+        "les-a-0054",
+        "les-a-0055"
+      ],
+      "learning_outcomes": [
+        "Различать генеративную и дискриминативную постановки.",
+        "Объяснять принципы авторегрессии, VAE, GAN и диффузионных моделей.",
+        "Понимать роль self-supervised learning и foundation models.",
+        "Отличать генеративную модель от RAG и системы с инструментами.",
+        "Оценивать качество, разнообразие, достоверность и риски результата.",
+        "Проводить эксперимент с простой авторегрессионной моделью."
+      ],
+      "content_state": "published",
+      "url_i18n": {
+        "ru": "lessons/a-3-2-3-les-a-0009.html",
+        "en": "lessons/a-3-2-3-les-a-0009-en.html",
+        "zh": "lessons/a-3-2-3-les-a-0009-zh.html"
+      },
+      "title_i18n": {
+        "ru": "Генеративные модели и современные подходы ИИ",
+        "en": "Generative Models and Modern AI Approaches",
+        "zh": "生成式模型与现代人工智能方法"
+      }
     },
     {
       "uid": "les-a-0107",
@@ -2254,36 +1830,97 @@
       "content_state": "outline_only"
     },
     {
-      "uid": "les-a-0016",
+      "uid": "les-a-0010",
       "track_uid": "trk-a",
-      "theme_uid": "thm-a-06",
-      "module_uid": "mod-a-06-01",
-      "code": "6.1.3",
-      "title": "Линейные модели как объяснимые модели",
+      "theme_uid": "thm-a-04",
+      "module_uid": "mod-a-04-01",
+      "code": "4.1.1",
+      "title": "Понятие модели и параметров",
+      "status": "published",
+      "access": "open",
+      "level": "beginner",
+      "prerequisite_uids": [],
+      "learning_outcomes": [
+        "Объяснять модель как отображение входных данных в выход.",
+        "Различать входные признаки, параметры и прогноз.",
+        "Понимать параметры на примере простой линейной модели.",
+        "Отличать семейство моделей от конкретной обученной модели.",
+        "Различать модель, алгоритм обучения и AI-систему.",
+        "Объяснять, почему параметры сами по себе не доказывают причинную связь."
+      ],
+      "content_state": "published",
+      "url_i18n": {
+        "ru": "lessons/a-4-1-1-les-a-0010.html",
+        "en": "lessons/a-4-1-1-les-a-0010-en.html",
+        "zh": "lessons/a-4-1-1-les-a-0010-zh.html"
+      },
+      "title_i18n": {
+        "ru": "Понятие модели и параметров",
+        "en": "The Model and Its Parameters",
+        "zh": "模型与参数的概念"
+      }
+    },
+    {
+      "uid": "les-a-0011",
+      "track_uid": "trk-a",
+      "theme_uid": "thm-a-04",
+      "module_uid": "mod-a-04-01",
+      "code": "4.1.2",
+      "title": "Обучение модели и функция потерь",
       "status": "published",
       "access": "open",
       "level": "beginner",
       "prerequisite_uids": [
-        "les-a-0148"
+        "les-a-0010"
       ],
       "learning_outcomes": [
-        "Записывает линейную модель и объясняет роль признаков, коэффициентов и свободного члена.",
-        "Интерпретирует знак и величину коэффициента при фиксированных остальных признаках и с учётом единиц измерения.",
-        "Разлагает прогноз на опорный уровень и вклады признаков.",
-        "Объясняет влияние масштабирования, кодирования и преобразования признаков на интерпретацию коэффициентов.",
-        "Различает линейность по коэффициентам и линейность зависимости от исходного признака.",
-        "Выявляет мультиколлинеарность, нестабильность, неверную спецификацию и смешение ассоциации с причинностью."
+        "Различать обучение и прогнозирование; объяснять функцию потерь и эмпирический риск.",
+        "Рассчитывать MSE и объяснять градиентный спуск.",
+        "Запускать учебную реализацию обучения линейной модели и критически оценивать ограничения loss."
       ],
       "content_state": "published",
-      "url_i18n": {
-        "ru": "lessons/a-6-1-3.html",
-        "en": "lessons/a-6-1-3-en.html",
-        "zh": "lessons/a-6-1-3-zh.html"
-      },
       "title_i18n": {
-        "ru": "Линейные модели как объяснимые модели",
-        "en": "Linear Models as Explainable Models",
-        "zh": "线性模型作为可解释模型"
+        "ru": "Обучение модели и функция потерь",
+        "en": "Model Training and the Loss Function",
+        "zh": "模型训练与损失函数"
+      },
+      "url_i18n": {
+        "ru": "lessons/a-4-1-2-les-a-0011.html",
+        "en": "lessons/a-4-1-2-les-a-0011-en.html",
+        "zh": "lessons/a-4-1-2-les-a-0011-zh.html"
+      }
+    },
+    {
+      "uid": "les-a-0012",
+      "track_uid": "trk-a",
+      "theme_uid": "thm-a-04",
+      "module_uid": "mod-a-04-01",
+      "code": "4.1.3",
+      "title": "Переобучение и недообучение",
+      "status": "published",
+      "access": "open",
+      "level": "beginner",
+      "prerequisite_uids": [
+        "les-a-0010",
+        "les-a-0011"
+      ],
+      "learning_outcomes": [
+        "Различать недообучение, приемлемое обучение и переобучение по ошибкам на обучающих и проверочных данных",
+        "Интерпретировать кривые обучения и разрыв между train loss и validation loss",
+        "Объяснять связь сложности модели с систематической ошибкой и вариативностью результата",
+        "Выбирать обоснованные способы уменьшения недообучения и переобучения",
+        "Описывать корректную роль validation и test выборок при настройке модели"
+      ],
+      "content_state": "published",
+      "title_i18n": {
+        "ru": "Переобучение и недообучение",
+        "en": "Overfitting and Underfitting",
+        "zh": "过拟合与欠拟合"
+      },
+      "url_i18n": {
+        "ru": "lessons/a-4-1-3-les-a-0012.html",
+        "en": "lessons/a-4-1-3-les-a-0012-en.html",
+        "zh": "lessons/a-4-1-3-les-a-0012-zh.html"
       }
     },
     {
@@ -2298,6 +1935,25 @@
       "level": "beginner",
       "prerequisite_uids": [],
       "learning_outcomes": [],
+      "content_state": "outline_only"
+    },
+    {
+      "uid": "les-a-0149",
+      "track_uid": "trk-a",
+      "theme_uid": "thm-a-04",
+      "module_uid": "mod-a-04-01",
+      "code": "4.1.5",
+      "title": "Компромисс между точностью и интерпретируемостью",
+      "status": "planned",
+      "access": "open",
+      "level": "beginner",
+      "prerequisite_uids": [
+        "les-a-0017"
+      ],
+      "learning_outcomes": [
+        "Сравнивает модели по предсказательному качеству и интерпретируемости.",
+        "Обосновывает выбор модели с учётом цены ошибки, аудита и требований к объяснению."
+      ],
       "content_state": "outline_only"
     },
     {
@@ -2333,92 +1989,69 @@
       "content_state": "outline_only"
     },
     {
-      "uid": "les-a-0147",
+      "uid": "les-a-0013",
       "track_uid": "trk-a",
-      "theme_uid": "thm-a-06",
-      "module_uid": "mod-a-06-01",
-      "code": "6.1.1",
-      "title": "Что такое интерпретируемость модели",
-      "status": "published",
-      "access": "open",
-      "level": "beginner",
-      "prerequisite_uids": [],
-      "learning_outcomes": [
-        "Различает интерпретируемость модели, объяснение отдельного предсказания и анализ поведения системы в целом.",
-        "Объясняет, почему интерпретируемость зависит от модели, задачи и аудитории."
-      ],
-      "content_state": "published",
-      "url_i18n": {
-        "ru": "lessons/a-6-1-1-les-a-0147.html",
-        "en": "lessons/a-6-1-1-les-a-0147-en.html",
-        "zh": "lessons/a-6-1-1-les-a-0147-zh.html"
-      },
-      "title_i18n": {
-        "ru": "Что такое интерпретируемость модели",
-        "en": "What Is Model Interpretability?",
-        "zh": "什么是模型可解释性？"
-      }
-    },
-    {
-      "uid": "les-a-0148",
-      "track_uid": "trk-a",
-      "theme_uid": "thm-a-06",
-      "module_uid": "mod-a-06-01",
-      "code": "6.1.2",
-      "title": "Интерпретируемость и объяснимость",
+      "theme_uid": "thm-a-04",
+      "module_uid": "mod-a-04-02",
+      "code": "4.2.1",
+      "title": "Обобщающая способность модели",
       "status": "published",
       "access": "open",
       "level": "beginner",
       "prerequisite_uids": [
-        "les-a-0147"
+        "les-a-0012"
       ],
       "learning_outcomes": [
-        "Различает интерпретируемость модели, объяснимость и конкретное объяснение, учитывая отсутствие универсальной терминологической стандартизации.",
-        "Сравнивает модели, интерпретируемые по замыслу, и постфактум-методы объяснения уже обученных моделей.",
-        "Объясняет сильные стороны, ограничения и риски интерпретируемых моделей, feature attribution, локальных аппроксимаций и контрфактических объяснений.",
-        "Выбирает стратегию объяснения с учётом объекта анализа, аудитории, цели, цены ошибки и проверяемости.",
-        "Оценивает объяснения по верности поведению модели, устойчивости, области применимости, понятности и воспроизводимости."
+        "Объяснять обобщающую способность как качество работы модели на новых примерах из целевой среды.",
+        "Различать эмпирический риск на конечной выборке и ожидаемый риск на неизвестном распределении.",
+        "Интерпретировать разрыв между обучающей и тестовой ошибкой, не превращая его в безусловную гарантию.",
+        "Выбирать схему разбиения с учётом классов, групп и времени.",
+        "Распознавать утечку данных и типы сдвига распределения.",
+        "Описывать ограничения тестовой оценки и необходимость мониторинга после внедрения."
       ],
       "content_state": "published",
-      "url_i18n": {
-        "ru": "lessons/a-6-1-2-les-a-0148.html",
-        "en": "lessons/a-6-1-2-les-a-0148-en.html",
-        "zh": "lessons/a-6-1-2-les-a-0148-zh.html"
-      },
       "title_i18n": {
-        "ru": "Интерпретируемость и объяснимость",
-        "en": "Interpretability and Explainability",
-        "zh": "可解释性与可解释说明"
+        "ru": "Обобщающая способность модели",
+        "en": "Model Generalization",
+        "zh": "模型的泛化能力"
+      },
+      "url_i18n": {
+        "ru": "lessons/a-4-2-1-les-a-0013.html",
+        "en": "lessons/a-4-2-1-les-a-0013-en.html",
+        "zh": "lessons/a-4-2-1-les-a-0013-zh.html"
       }
     },
     {
-      "uid": "les-a-0018",
+      "uid": "les-a-0014",
       "track_uid": "trk-a",
-      "theme_uid": "thm-a-07",
-      "module_uid": "mod-a-07-01",
-      "code": "7.1.1",
-      "title": "Что такое XAI и зачем нужно объяснять модели?",
+      "theme_uid": "thm-a-04",
+      "module_uid": "mod-a-04-02",
+      "code": "4.2.2",
+      "title": "Гиперпараметры и настройка модели",
       "status": "published",
       "access": "open",
       "level": "beginner",
-      "prerequisite_uids": [],
+      "prerequisite_uids": [
+        "les-a-0013"
+      ],
       "learning_outcomes": [
-        "Определять XAI и различать прогноз модели и объяснение её поведения.",
-        "Различать локальные и глобальные объяснения, intrinsic и post-hoc подходы.",
-        "Объяснять рабочее различие interpretability и explainability и связь XAI с Mechanistic Interpretability.",
-        "Подбирать метод анализа под конкретный вопрос к модели.",
-        "Распознавать ограничения объяснений и не отождествлять важность признака с причинным эффектом."
+        "Различать обучаемые параметры модели и гиперпараметры алгоритма.",
+        "Объяснять влияние гиперпараметров на сложность, регуляризацию и процесс обучения.",
+        "Формировать обоснованное пространство поиска с учётом модели, данных и вычислительных ограничений.",
+        "Сравнивать ручную настройку, Grid Search, Random Search и байесовскую оптимизацию.",
+        "Использовать validation или cross-validation для настройки, сохраняя test для финальной оценки.",
+        "Оценивать устойчивость, воспроизводимость и вычислительную стоимость выбранной конфигурации."
       ],
       "content_state": "published",
       "title_i18n": {
-        "ru": "Что такое XAI и зачем нужно объяснять модели?",
-        "en": "What Is XAI and Why Explain Models?",
-        "zh": "什么是 XAI？为什么要解释模型？"
+        "ru": "Гиперпараметры и настройка модели",
+        "en": "Hyperparameters and Model Tuning",
+        "zh": "超参数与模型调优"
       },
       "url_i18n": {
-        "ru": "lessons/a-7-1-1-les-a-0018.html",
-        "en": "lessons/a-7-1-1-les-a-0018-en.html",
-        "zh": "lessons/a-7-1-1-les-a-0018-zh.html"
+        "ru": "lessons/a-4-2-2-les-a-0014.html",
+        "en": "lessons/a-4-2-2-les-a-0014-en.html",
+        "zh": "lessons/a-4-2-2-les-a-0014-zh.html"
       }
     },
     {
@@ -2798,6 +2431,25 @@
       "content_state": "outline_only"
     },
     {
+      "uid": "les-a-0150",
+      "track_uid": "trk-a",
+      "theme_uid": "thm-a-04",
+      "module_uid": "mod-a-04-07",
+      "code": "4.7.1",
+      "title": "Правила принятия решений и rule-based explanations",
+      "status": "planned",
+      "access": "open",
+      "level": "beginner",
+      "prerequisite_uids": [
+        "les-a-0039"
+      ],
+      "learning_outcomes": [
+        "Объясняет решения через правила, условия и последовательности условий.",
+        "Различает исходную rule-based модель и правила, извлечённые постфактум из сложной модели."
+      ],
+      "content_state": "outline_only"
+    },
+    {
       "uid": "les-a-0040",
       "track_uid": "trk-a",
       "theme_uid": "thm-a-04",
@@ -2917,6 +2569,593 @@
         "les-a-0123"
       ],
       "learning_outcomes": [],
+      "content_state": "outline_only"
+    },
+    {
+      "uid": "les-a-0043",
+      "track_uid": "trk-a",
+      "theme_uid": "thm-a-05",
+      "module_uid": "mod-a-05-01",
+      "code": "5.1.1",
+      "title": "Зачем оценивать качество модели",
+      "status": "published",
+      "access": "open",
+      "level": "beginner",
+      "prerequisite_uids": [
+        "les-a-0014"
+      ],
+      "learning_outcomes": [
+        "Объяснять различие между обучением модели и оценкой её поведения на новых данных.",
+        "Определять критерии успешности на основе сценария применения и последствий ошибок.",
+        "Объяснять назначение метрик и ограничения оценки по одному показателю.",
+        "Описывать роль базовой модели, независимой проверки и фиксации протокола.",
+        "Объяснять, почему результат тестирования не является гарантией качества в любых будущих условиях."
+      ],
+      "content_state": "published",
+      "title_i18n": {
+        "ru": "Зачем оценивать качество модели",
+        "en": "Why Evaluate Model Quality?",
+        "zh": "为什么要评估模型质量？"
+      },
+      "url_i18n": {
+        "ru": "lessons/a-5-1-1-les-a-0043.html",
+        "en": "lessons/a-5-1-1-les-a-0043-en.html",
+        "zh": "lessons/a-5-1-1-les-a-0043-zh.html"
+      }
+    },
+    {
+      "uid": "les-a-0151",
+      "track_uid": "trk-a",
+      "theme_uid": "thm-a-05",
+      "module_uid": "mod-a-05-01",
+      "code": "5.1.1",
+      "title": "От объяснения к экспериментальной проверке",
+      "status": "planned",
+      "access": "open",
+      "level": "beginner",
+      "prerequisite_uids": [
+        "les-a-0146"
+      ],
+      "learning_outcomes": [
+        "Различает наблюдение, perturbation, intervention и причинное утверждение.",
+        "Формулирует проверяемый вопрос для экспериментальной проверки объяснения."
+      ],
+      "content_state": "outline_only"
+    },
+    {
+      "uid": "les-a-0044",
+      "track_uid": "trk-a",
+      "theme_uid": "thm-a-05",
+      "module_uid": "mod-a-05-01",
+      "code": "5.1.2",
+      "title": "Матрица ошибок классификации",
+      "status": "published",
+      "access": "open",
+      "level": "beginner",
+      "prerequisite_uids": [
+        "les-a-0043"
+      ],
+      "learning_outcomes": [
+        "Объяснять назначение матрицы ошибок и правильно читать её строки и столбцы.",
+        "Различать TP, TN, FP и FN с позиции фактического класса и прогноза.",
+        "Строить матрицу по размеченным результатам классификатора и проверять сумму ячеек.",
+        "Интерпретировать ложную тревогу и пропуск в контексте практической задачи.",
+        "Объяснять ограничения матрицы и расширение представления на несколько классов."
+      ],
+      "content_state": "published",
+      "title_i18n": {
+        "ru": "Матрица ошибок классификации",
+        "en": "The Confusion Matrix",
+        "zh": "分类混淆矩阵"
+      },
+      "url_i18n": {
+        "ru": "lessons/a-5-1-2-les-a-0044.html",
+        "en": "lessons/a-5-1-2-les-a-0044-en.html",
+        "zh": "lessons/a-5-1-2-les-a-0044-zh.html"
+      }
+    },
+    {
+      "uid": "les-a-0152",
+      "track_uid": "trk-a",
+      "theme_uid": "thm-a-05",
+      "module_uid": "mod-a-05-01",
+      "code": "5.1.2",
+      "title": "Вмешательства в признаки и входные данные",
+      "status": "planned",
+      "access": "open",
+      "level": "intermediate",
+      "prerequisite_uids": [
+        "les-a-0151"
+      ],
+      "learning_outcomes": [
+        "Выбирает удаление, маскирование, замену или изменение признаков для проверки гипотезы.",
+        "Оценивает допустимость и реалистичность изменений входа."
+      ],
+      "content_state": "outline_only"
+    },
+    {
+      "uid": "les-a-0045",
+      "track_uid": "trk-a",
+      "theme_uid": "thm-a-05",
+      "module_uid": "mod-a-05-01",
+      "code": "5.1.3",
+      "title": "Accuracy, Precision, Recall и F1",
+      "status": "published",
+      "access": "open",
+      "level": "beginner",
+      "prerequisite_uids": [
+        "les-a-0044"
+      ],
+      "learning_outcomes": [
+        "Объяснять, на какой вопрос отвечают Accuracy, Precision, Recall и F1.",
+        "Рассчитывать четыре метрики по TP, TN, FP и FN из матрицы ошибок.",
+        "Различать знаменатели Precision и Recall и интерпретировать влияние FP и FN.",
+        "Объяснять гармоническую природу F1 и ограничения его интерпретации.",
+        "Сравнивать модели и выбирать приоритетную метрику с учётом последствий ошибок."
+      ],
+      "content_state": "published",
+      "title_i18n": {
+        "ru": "Accuracy, Precision, Recall и F1",
+        "en": "Accuracy, Precision, Recall and F1",
+        "zh": "Accuracy、Precision、Recall 与 F1"
+      },
+      "url_i18n": {
+        "ru": "lessons/a-5-1-3-les-a-0045.html",
+        "en": "lessons/a-5-1-3-les-a-0045-en.html",
+        "zh": "lessons/a-5-1-3-les-a-0045-zh.html"
+      }
+    },
+    {
+      "uid": "les-a-0153",
+      "track_uid": "trk-a",
+      "theme_uid": "thm-a-05",
+      "module_uid": "mod-a-05-01",
+      "code": "5.1.3",
+      "title": "Измерение реакции модели на вмешательство",
+      "status": "planned",
+      "access": "open",
+      "level": "intermediate",
+      "prerequisite_uids": [
+        "les-a-0152"
+      ],
+      "learning_outcomes": [
+        "Измеряет изменение предсказания, вероятности или другого выхода модели.",
+        "Сопоставляет реакцию модели с feature importance и другими объяснениями."
+      ],
+      "content_state": "outline_only"
+    },
+    {
+      "uid": "les-a-0046",
+      "track_uid": "trk-a",
+      "theme_uid": "thm-a-05",
+      "module_uid": "mod-a-05-01",
+      "code": "5.1.4",
+      "title": "ROC-AUC и Precision-Recall AUC",
+      "status": "published",
+      "access": "open",
+      "level": "beginner",
+      "prerequisite_uids": [
+        "les-a-0045"
+      ],
+      "learning_outcomes": [
+        "Объяснять роль порога классификации и почему изменение порога меняет TP, FP, TN и FN.",
+        "Рассчитывать TPR и FPR и интерпретировать ROC-кривую.",
+        "Объяснять ROC-AUC как площадь под ROC-кривой и как вероятностную характеристику ранжирования.",
+        "Интерпретировать Precision–Recall-кривую и базовую линию, связанную с долей положительного класса.",
+        "Различать Average Precision и трапецеидальную PR-AUC и выбирать способ оценки под задачу.",
+        "Сравнивать ROC-AUC и PR-AUC, корректно выбирать порог на validation и сохранять test для финальной оценки."
+      ],
+      "content_state": "published",
+      "title_i18n": {
+        "ru": "ROC-AUC и Precision-Recall AUC",
+        "en": "ROC-AUC and Precision-Recall AUC",
+        "zh": "ROC-AUC 与 Precision-Recall AUC"
+      },
+      "url_i18n": {
+        "ru": "lessons/a-5-1-4-les-a-0046.html",
+        "en": "lessons/a-5-1-4-les-a-0046-en.html",
+        "zh": "lessons/a-5-1-4-les-a-0046-zh.html"
+      }
+    },
+    {
+      "uid": "les-a-0154",
+      "track_uid": "trk-a",
+      "theme_uid": "thm-a-05",
+      "module_uid": "mod-a-05-01",
+      "code": "5.1.4",
+      "title": "Контроль эксперимента и альтернативные объяснения",
+      "status": "planned",
+      "access": "open",
+      "level": "intermediate",
+      "prerequisite_uids": [
+        "les-a-0153"
+      ],
+      "learning_outcomes": [
+        "Использует baseline, контрольные изменения и повторные запуски.",
+        "Выявляет влияние корреляций, случайных perturbations и ошибок дизайна эксперимента."
+      ],
+      "content_state": "outline_only"
+    },
+    {
+      "uid": "les-a-0155",
+      "track_uid": "trk-a",
+      "theme_uid": "thm-a-05",
+      "module_uid": "mod-a-05-01",
+      "code": "5.1.5",
+      "title": "Протокол проверки объяснения через вмешательство",
+      "status": "planned",
+      "access": "open",
+      "level": "intermediate",
+      "prerequisite_uids": [
+        "les-a-0154"
+      ],
+      "learning_outcomes": [
+        "Составляет воспроизводимый протокол проверки объяснения.",
+        "Представляет результаты, ограничения и альтернативные интерпретации."
+      ],
+      "content_state": "outline_only"
+    },
+    {
+      "uid": "les-a-0047",
+      "track_uid": "trk-a",
+      "theme_uid": "thm-a-05",
+      "module_uid": "mod-a-05-02",
+      "code": "5.2.1",
+      "title": "Дисбаланс классов",
+      "status": "published",
+      "access": "open",
+      "level": "beginner",
+      "prerequisite_uids": [
+        "les-a-0046"
+      ],
+      "learning_outcomes": [
+        "Определять дисбаланс классов и рассчитывать долю положительного класса.",
+        "Объяснять, почему высокая Accuracy может сочетаться с нулевым Recall.",
+        "Рассчитывать Precision с учётом TPR, FPR и распространённости положительного класса.",
+        "Сравнивать стратифицированное разбиение, oversampling, undersampling и взвешивание классов.",
+        "Объяснять принцип SMOTE и ограничения синтетических примеров.",
+        "Строить протокол, в котором балансировка выполняется только внутри обучающей части.",
+        "Выбирать метрики с учётом исходной распространённости событий."
+      ],
+      "content_state": "published",
+      "title_i18n": {
+        "ru": "Дисбаланс классов",
+        "en": "Class Imbalance",
+        "zh": "类别不平衡"
+      },
+      "url_i18n": {
+        "ru": "lessons/a-5-2-1-les-a-0047.html",
+        "en": "lessons/a-5-2-1-les-a-0047-en.html",
+        "zh": "lessons/a-5-2-1-les-a-0047-zh.html"
+      }
+    },
+    {
+      "uid": "les-a-0156",
+      "track_uid": "trk-a",
+      "theme_uid": "thm-a-05",
+      "module_uid": "mod-a-05-02",
+      "code": "5.2.1",
+      "title": "Модель угроз для систем объяснения",
+      "status": "planned",
+      "access": "open",
+      "level": "intermediate",
+      "prerequisite_uids": [
+        "les-a-0155"
+      ],
+      "learning_outcomes": [
+        "Определяет объекты, цели и предпосылки атаки на объяснение.",
+        "Формирует threat model и критерии успешной манипуляции."
+      ],
+      "content_state": "outline_only"
+    },
+    {
+      "uid": "les-a-0015",
+      "track_uid": "trk-a",
+      "theme_uid": "thm-a-05",
+      "module_uid": "mod-a-05-02",
+      "code": "5.2.2",
+      "title": "Кросс-валидация и устойчивость результатов",
+      "status": "published",
+      "access": "open",
+      "level": "beginner",
+      "prerequisite_uids": [
+        "les-a-0047"
+      ],
+      "learning_outcomes": [
+        "Объяснять назначение кросс-валидации и её отличие от одного holdout-разбиения.",
+        "Описывать k-fold и stratified k-fold cross-validation.",
+        "Выбирать group-aware или time-aware схему для зависимых или временных наблюдений.",
+        "Рассчитывать среднюю метрику и описывать разброс результатов по фолдам.",
+        "Объяснять ограничения стандартного отклонения и зависимость оценок фолдов.",
+        "Предотвращать утечку данных при preprocessing, feature selection и подборе гиперпараметров.",
+        "Проектировать процедуру оценки с отдельным тестовым набором."
+      ],
+      "content_state": "published",
+      "title_i18n": {
+        "ru": "Кросс-валидация и устойчивость результатов",
+        "en": "Cross-Validation and Result Stability",
+        "zh": "交叉验证与结果稳定性"
+      },
+      "url_i18n": {
+        "ru": "lessons/a-5-2-2-les-a-0015.html",
+        "en": "lessons/a-5-2-2-les-a-0015-en.html",
+        "zh": "lessons/a-5-2-2-les-a-0015-zh.html"
+      }
+    },
+    {
+      "uid": "les-a-0157",
+      "track_uid": "trk-a",
+      "theme_uid": "thm-a-05",
+      "module_uid": "mod-a-05-02",
+      "code": "5.2.2",
+      "title": "Adversarial perturbations и искажение атрибуций",
+      "status": "planned",
+      "access": "open",
+      "level": "advanced",
+      "prerequisite_uids": [
+        "les-a-0156"
+      ],
+      "learning_outcomes": [
+        "Исследует изменения атрибуций при малых изменениях входа.",
+        "Проверяет, сохраняется ли предсказание при изменении объяснения."
+      ],
+      "content_state": "outline_only"
+    },
+    {
+      "uid": "les-a-0048",
+      "track_uid": "trk-a",
+      "theme_uid": "thm-a-05",
+      "module_uid": "mod-a-05-02",
+      "code": "5.2.3",
+      "title": "Метрики регрессии: MAE, MSE, RMSE и R²",
+      "status": "published",
+      "access": "open",
+      "level": "beginner",
+      "prerequisite_uids": [
+        "les-a-0015"
+      ],
+      "learning_outcomes": [
+        "Различать регрессию и классификацию по типу прогноза.",
+        "Рассчитывать MAE, MSE и RMSE.",
+        "Объяснять влияние крупных ошибок и единицы измерения.",
+        "Интерпретировать R², включая отрицательные значения.",
+        "Сравнивать модель с baseline на одинаковых данных.",
+        "Выбирать метрику с учётом масштаба и цены ошибки."
+      ],
+      "content_state": "published",
+      "title_i18n": {
+        "ru": "Метрики регрессии: MAE, MSE, RMSE и R²",
+        "en": "Regression Metrics: MAE, MSE, RMSE and R²",
+        "zh": "回归指标：MAE、MSE、RMSE 与 R²"
+      },
+      "url_i18n": {
+        "ru": "lessons/a-5-2-3-les-a-0048.html",
+        "en": "lessons/a-5-2-3-les-a-0048-en.html",
+        "zh": "lessons/a-5-2-3-les-a-0048-zh.html"
+      }
+    },
+    {
+      "uid": "les-a-0158",
+      "track_uid": "trk-a",
+      "theme_uid": "thm-a-05",
+      "module_uid": "mod-a-05-02",
+      "code": "5.2.3",
+      "title": "Манипуляция правдоподобием объяснений",
+      "status": "planned",
+      "access": "open",
+      "level": "advanced",
+      "prerequisite_uids": [
+        "les-a-0157"
+      ],
+      "learning_outcomes": [
+        "Различает визуальную убедительность объяснения и его faithfulness.",
+        "Выявляет deceptive explanations и вводящие в заблуждение представления важности признаков."
+      ],
+      "content_state": "outline_only"
+    },
+    {
+      "uid": "les-a-0057",
+      "track_uid": "trk-a",
+      "theme_uid": "thm-a-05",
+      "module_uid": "mod-a-05-02",
+      "code": "5.2.4",
+      "title": "Калибровка вероятностей и качество вероятностных прогнозов",
+      "status": "published",
+      "access": "open",
+      "level": "beginner",
+      "prerequisite_uids": [
+        "les-a-0048",
+        "les-a-0046"
+      ],
+      "learning_outcomes": [
+        "Различать ранжирование и калибровку вероятностных прогнозов.",
+        "Интерпретировать reliability diagram и calibration curve.",
+        "Рассчитывать и интерпретировать Brier score и log loss.",
+        "Объяснять overconfidence, underconfidence и sharpness.",
+        "Сравнивать Platt scaling, isotonic regression и temperature scaling.",
+        "Строить протокол калибровки без утечки данных и оценивать его на независимом test."
+      ],
+      "content_state": "published",
+      "title_i18n": {
+        "ru": "Калибровка вероятностей и качество вероятностных прогнозов",
+        "en": "Probability Calibration and Probabilistic Prediction Quality",
+        "zh": "概率校准与概率预测质量"
+      },
+      "url_i18n": {
+        "ru": "lessons/a-5-2-4-les-a-0057.html",
+        "en": "lessons/a-5-2-4-les-a-0057-en.html",
+        "zh": "lessons/a-5-2-4-les-a-0057-zh.html"
+      }
+    },
+    {
+      "uid": "les-a-0159",
+      "track_uid": "trk-a",
+      "theme_uid": "thm-a-05",
+      "module_uid": "mod-a-05-02",
+      "code": "5.2.4",
+      "title": "Экспериментальная проверка устойчивости к атакам",
+      "status": "planned",
+      "access": "open",
+      "level": "advanced",
+      "prerequisite_uids": [
+        "les-a-0158"
+      ],
+      "learning_outcomes": [
+        "Проводит контролируемый red-team эксперимент над XAI-методом.",
+        "Измеряет последствия атаки и сравнивает исходные и изменённые объяснения."
+      ],
+      "content_state": "outline_only"
+    },
+    {
+      "uid": "les-a-0160",
+      "track_uid": "trk-a",
+      "theme_uid": "thm-a-05",
+      "module_uid": "mod-a-05-02",
+      "code": "5.2.5",
+      "title": "Защита, ограничения и red-team отчёт",
+      "status": "planned",
+      "access": "open",
+      "level": "advanced",
+      "prerequisite_uids": [
+        "les-a-0159"
+      ],
+      "learning_outcomes": [
+        "Описывает меры обнаружения и снижения риска манипуляций.",
+        "Готовит отчёт об атаке, эффективности защиты и остаточных рисках."
+      ],
+      "content_state": "outline_only"
+    },
+    {
+      "uid": "les-a-0161",
+      "track_uid": "trk-a",
+      "theme_uid": "thm-a-05",
+      "module_uid": "mod-a-05-05",
+      "code": "5.5.1",
+      "title": "Карта компетенций и самооценка исследователя",
+      "status": "planned",
+      "access": "open",
+      "level": "beginner",
+      "prerequisite_uids": [
+        "les-a-0160"
+      ],
+      "learning_outcomes": [
+        "Оценивает готовность применить методы Track A к исследовательской задаче.",
+        "Определяет пробелы и обосновывает план итогового проекта."
+      ],
+      "content_state": "outline_only"
+    },
+    {
+      "uid": "les-a-0162",
+      "track_uid": "trk-a",
+      "theme_uid": "thm-a-05",
+      "module_uid": "mod-a-05-05",
+      "code": "5.5.2",
+      "title": "Выбор модели, системы и исследовательского сценария",
+      "status": "planned",
+      "access": "open",
+      "level": "intermediate",
+      "prerequisite_uids": [
+        "les-a-0161"
+      ],
+      "learning_outcomes": [
+        "Выбирает объект, данные и сценарий исследования.",
+        "Описывает аудиторию, ограничения и риски проекта."
+      ],
+      "content_state": "outline_only"
+    },
+    {
+      "uid": "les-a-0163",
+      "track_uid": "trk-a",
+      "theme_uid": "thm-a-05",
+      "module_uid": "mod-a-05-05",
+      "code": "5.5.3",
+      "title": "Исследовательский вопрос и проверяемые гипотезы",
+      "status": "planned",
+      "access": "open",
+      "level": "intermediate",
+      "prerequisite_uids": [
+        "les-a-0162"
+      ],
+      "learning_outcomes": [
+        "Формулирует исследовательские вопросы и проверяемые гипотезы.",
+        "Определяет ожидаемые результаты и альтернативные объяснения."
+      ],
+      "content_state": "outline_only"
+    },
+    {
+      "uid": "les-a-0164",
+      "track_uid": "trk-a",
+      "theme_uid": "thm-a-05",
+      "module_uid": "mod-a-05-05",
+      "code": "5.5.4",
+      "title": "Дизайн эксперимента и выбор методов объяснения",
+      "status": "planned",
+      "access": "open",
+      "level": "intermediate",
+      "prerequisite_uids": [
+        "les-a-0163"
+      ],
+      "learning_outcomes": [
+        "Обосновывает выбор прозрачного и post-hoc метода.",
+        "Определяет baseline, контрольные условия и порядок экспериментов."
+      ],
+      "content_state": "outline_only"
+    },
+    {
+      "uid": "les-a-0165",
+      "track_uid": "trk-a",
+      "theme_uid": "thm-a-05",
+      "module_uid": "mod-a-05-05",
+      "code": "5.5.5",
+      "title": "Проведение исследования и анализ объяснений",
+      "status": "planned",
+      "access": "open",
+      "level": "intermediate",
+      "prerequisite_uids": [
+        "les-a-0164"
+      ],
+      "learning_outcomes": [
+        "Реализует выбранные методы и фиксирует результаты.",
+        "Анализирует объяснения и документирует ограничения."
+      ],
+      "content_state": "outline_only"
+    },
+    {
+      "uid": "les-a-0166",
+      "track_uid": "trk-a",
+      "theme_uid": "thm-a-05",
+      "module_uid": "mod-a-05-05",
+      "code": "5.5.6",
+      "title": "Проверка качества и границ выводов",
+      "status": "planned",
+      "access": "open",
+      "level": "advanced",
+      "prerequisite_uids": [
+        "les-a-0165"
+      ],
+      "learning_outcomes": [
+        "Проверяет fidelity/faithfulness, stability и robustness в рамках выбранного исследования.",
+        "Разделяет наблюдаемое поведение, экспериментальный результат и причинный вывод."
+      ],
+      "content_state": "outline_only"
+    },
+    {
+      "uid": "les-a-0167",
+      "track_uid": "trk-a",
+      "theme_uid": "thm-a-05",
+      "module_uid": "mod-a-05-05",
+      "code": "5.5.7",
+      "title": "Воспроизводимый отчёт и защита результатов",
+      "status": "planned",
+      "access": "open",
+      "level": "intermediate",
+      "prerequisite_uids": [
+        "les-a-0166"
+      ],
+      "learning_outcomes": [
+        "Подготавливает воспроизводимый отчёт с кодом, конфигурацией и версиями.",
+        "Представляет результаты технической и нетехнической аудитории."
+      ],
       "content_state": "outline_only"
     },
     {
@@ -3272,365 +3511,126 @@
       "content_state": "outline_only"
     },
     {
-      "uid": "les-a-0149",
+      "uid": "les-a-0147",
       "track_uid": "trk-a",
-      "theme_uid": "thm-a-04",
-      "module_uid": "mod-a-04-01",
-      "code": "4.1.5",
-      "title": "Компромисс между точностью и интерпретируемостью",
-      "status": "planned",
+      "theme_uid": "thm-a-06",
+      "module_uid": "mod-a-06-01",
+      "code": "6.1.1",
+      "title": "Что такое интерпретируемость модели",
+      "status": "published",
+      "access": "open",
+      "level": "beginner",
+      "prerequisite_uids": [],
+      "learning_outcomes": [
+        "Различает интерпретируемость модели, объяснение отдельного предсказания и анализ поведения системы в целом.",
+        "Объясняет, почему интерпретируемость зависит от модели, задачи и аудитории."
+      ],
+      "content_state": "published",
+      "url_i18n": {
+        "ru": "lessons/a-6-1-1-les-a-0147.html",
+        "en": "lessons/a-6-1-1-les-a-0147-en.html",
+        "zh": "lessons/a-6-1-1-les-a-0147-zh.html"
+      },
+      "title_i18n": {
+        "ru": "Что такое интерпретируемость модели",
+        "en": "What Is Model Interpretability?",
+        "zh": "什么是模型可解释性？"
+      }
+    },
+    {
+      "uid": "les-a-0148",
+      "track_uid": "trk-a",
+      "theme_uid": "thm-a-06",
+      "module_uid": "mod-a-06-01",
+      "code": "6.1.2",
+      "title": "Интерпретируемость и объяснимость",
+      "status": "published",
       "access": "open",
       "level": "beginner",
       "prerequisite_uids": [
-        "les-a-0017"
+        "les-a-0147"
       ],
       "learning_outcomes": [
-        "Сравнивает модели по предсказательному качеству и интерпретируемости.",
-        "Обосновывает выбор модели с учётом цены ошибки, аудита и требований к объяснению."
+        "Различает интерпретируемость модели, объяснимость и конкретное объяснение, учитывая отсутствие универсальной терминологической стандартизации.",
+        "Сравнивает модели, интерпретируемые по замыслу, и постфактум-методы объяснения уже обученных моделей.",
+        "Объясняет сильные стороны, ограничения и риски интерпретируемых моделей, feature attribution, локальных аппроксимаций и контрфактических объяснений.",
+        "Выбирает стратегию объяснения с учётом объекта анализа, аудитории, цели, цены ошибки и проверяемости.",
+        "Оценивает объяснения по верности поведению модели, устойчивости, области применимости, понятности и воспроизводимости."
       ],
-      "content_state": "outline_only"
+      "content_state": "published",
+      "url_i18n": {
+        "ru": "lessons/a-6-1-2-les-a-0148.html",
+        "en": "lessons/a-6-1-2-les-a-0148-en.html",
+        "zh": "lessons/a-6-1-2-les-a-0148-zh.html"
+      },
+      "title_i18n": {
+        "ru": "Интерпретируемость и объяснимость",
+        "en": "Interpretability and Explainability",
+        "zh": "可解释性与可解释说明"
+      }
     },
     {
-      "uid": "les-a-0150",
+      "uid": "les-a-0016",
       "track_uid": "trk-a",
-      "theme_uid": "thm-a-04",
-      "module_uid": "mod-a-04-07",
-      "code": "4.7.1",
-      "title": "Правила принятия решений и rule-based explanations",
-      "status": "planned",
+      "theme_uid": "thm-a-06",
+      "module_uid": "mod-a-06-01",
+      "code": "6.1.3",
+      "title": "Линейные модели как объяснимые модели",
+      "status": "published",
       "access": "open",
       "level": "beginner",
       "prerequisite_uids": [
-        "les-a-0039"
+        "les-a-0148"
       ],
       "learning_outcomes": [
-        "Объясняет решения через правила, условия и последовательности условий.",
-        "Различает исходную rule-based модель и правила, извлечённые постфактум из сложной модели."
+        "Записывает линейную модель и объясняет роль признаков, коэффициентов и свободного члена.",
+        "Интерпретирует знак и величину коэффициента при фиксированных остальных признаках и с учётом единиц измерения.",
+        "Разлагает прогноз на опорный уровень и вклады признаков.",
+        "Объясняет влияние масштабирования, кодирования и преобразования признаков на интерпретацию коэффициентов.",
+        "Различает линейность по коэффициентам и линейность зависимости от исходного признака.",
+        "Выявляет мультиколлинеарность, нестабильность, неверную спецификацию и смешение ассоциации с причинностью."
       ],
-      "content_state": "outline_only"
+      "content_state": "published",
+      "url_i18n": {
+        "ru": "lessons/a-6-1-3.html",
+        "en": "lessons/a-6-1-3-en.html",
+        "zh": "lessons/a-6-1-3-zh.html"
+      },
+      "title_i18n": {
+        "ru": "Линейные модели как объяснимые модели",
+        "en": "Linear Models as Explainable Models",
+        "zh": "线性模型作为可解释模型"
+      }
     },
     {
-      "uid": "les-a-0151",
+      "uid": "les-a-0018",
       "track_uid": "trk-a",
-      "theme_uid": "thm-a-05",
-      "module_uid": "mod-a-05-01",
-      "code": "5.1.1",
-      "title": "От объяснения к экспериментальной проверке",
-      "status": "planned",
+      "theme_uid": "thm-a-07",
+      "module_uid": "mod-a-07-01",
+      "code": "7.1.1",
+      "title": "Что такое XAI и зачем нужно объяснять модели?",
+      "status": "published",
       "access": "open",
       "level": "beginner",
-      "prerequisite_uids": [
-        "les-a-0146"
-      ],
+      "prerequisite_uids": [],
       "learning_outcomes": [
-        "Различает наблюдение, perturbation, intervention и причинное утверждение.",
-        "Формулирует проверяемый вопрос для экспериментальной проверки объяснения."
+        "Определять XAI и различать прогноз модели и объяснение её поведения.",
+        "Различать локальные и глобальные объяснения, intrinsic и post-hoc подходы.",
+        "Объяснять рабочее различие interpretability и explainability и связь XAI с Mechanistic Interpretability.",
+        "Подбирать метод анализа под конкретный вопрос к модели.",
+        "Распознавать ограничения объяснений и не отождествлять важность признака с причинным эффектом."
       ],
-      "content_state": "outline_only"
-    },
-    {
-      "uid": "les-a-0152",
-      "track_uid": "trk-a",
-      "theme_uid": "thm-a-05",
-      "module_uid": "mod-a-05-01",
-      "code": "5.1.2",
-      "title": "Вмешательства в признаки и входные данные",
-      "status": "planned",
-      "access": "open",
-      "level": "intermediate",
-      "prerequisite_uids": [
-        "les-a-0151"
-      ],
-      "learning_outcomes": [
-        "Выбирает удаление, маскирование, замену или изменение признаков для проверки гипотезы.",
-        "Оценивает допустимость и реалистичность изменений входа."
-      ],
-      "content_state": "outline_only"
-    },
-    {
-      "uid": "les-a-0153",
-      "track_uid": "trk-a",
-      "theme_uid": "thm-a-05",
-      "module_uid": "mod-a-05-01",
-      "code": "5.1.3",
-      "title": "Измерение реакции модели на вмешательство",
-      "status": "planned",
-      "access": "open",
-      "level": "intermediate",
-      "prerequisite_uids": [
-        "les-a-0152"
-      ],
-      "learning_outcomes": [
-        "Измеряет изменение предсказания, вероятности или другого выхода модели.",
-        "Сопоставляет реакцию модели с feature importance и другими объяснениями."
-      ],
-      "content_state": "outline_only"
-    },
-    {
-      "uid": "les-a-0154",
-      "track_uid": "trk-a",
-      "theme_uid": "thm-a-05",
-      "module_uid": "mod-a-05-01",
-      "code": "5.1.4",
-      "title": "Контроль эксперимента и альтернативные объяснения",
-      "status": "planned",
-      "access": "open",
-      "level": "intermediate",
-      "prerequisite_uids": [
-        "les-a-0153"
-      ],
-      "learning_outcomes": [
-        "Использует baseline, контрольные изменения и повторные запуски.",
-        "Выявляет влияние корреляций, случайных perturbations и ошибок дизайна эксперимента."
-      ],
-      "content_state": "outline_only"
-    },
-    {
-      "uid": "les-a-0155",
-      "track_uid": "trk-a",
-      "theme_uid": "thm-a-05",
-      "module_uid": "mod-a-05-01",
-      "code": "5.1.5",
-      "title": "Протокол проверки объяснения через вмешательство",
-      "status": "planned",
-      "access": "open",
-      "level": "intermediate",
-      "prerequisite_uids": [
-        "les-a-0154"
-      ],
-      "learning_outcomes": [
-        "Составляет воспроизводимый протокол проверки объяснения.",
-        "Представляет результаты, ограничения и альтернативные интерпретации."
-      ],
-      "content_state": "outline_only"
-    },
-    {
-      "uid": "les-a-0156",
-      "track_uid": "trk-a",
-      "theme_uid": "thm-a-05",
-      "module_uid": "mod-a-05-02",
-      "code": "5.2.1",
-      "title": "Модель угроз для систем объяснения",
-      "status": "planned",
-      "access": "open",
-      "level": "intermediate",
-      "prerequisite_uids": [
-        "les-a-0155"
-      ],
-      "learning_outcomes": [
-        "Определяет объекты, цели и предпосылки атаки на объяснение.",
-        "Формирует threat model и критерии успешной манипуляции."
-      ],
-      "content_state": "outline_only"
-    },
-    {
-      "uid": "les-a-0157",
-      "track_uid": "trk-a",
-      "theme_uid": "thm-a-05",
-      "module_uid": "mod-a-05-02",
-      "code": "5.2.2",
-      "title": "Adversarial perturbations и искажение атрибуций",
-      "status": "planned",
-      "access": "open",
-      "level": "advanced",
-      "prerequisite_uids": [
-        "les-a-0156"
-      ],
-      "learning_outcomes": [
-        "Исследует изменения атрибуций при малых изменениях входа.",
-        "Проверяет, сохраняется ли предсказание при изменении объяснения."
-      ],
-      "content_state": "outline_only"
-    },
-    {
-      "uid": "les-a-0158",
-      "track_uid": "trk-a",
-      "theme_uid": "thm-a-05",
-      "module_uid": "mod-a-05-02",
-      "code": "5.2.3",
-      "title": "Манипуляция правдоподобием объяснений",
-      "status": "planned",
-      "access": "open",
-      "level": "advanced",
-      "prerequisite_uids": [
-        "les-a-0157"
-      ],
-      "learning_outcomes": [
-        "Различает визуальную убедительность объяснения и его faithfulness.",
-        "Выявляет deceptive explanations и вводящие в заблуждение представления важности признаков."
-      ],
-      "content_state": "outline_only"
-    },
-    {
-      "uid": "les-a-0159",
-      "track_uid": "trk-a",
-      "theme_uid": "thm-a-05",
-      "module_uid": "mod-a-05-02",
-      "code": "5.2.4",
-      "title": "Экспериментальная проверка устойчивости к атакам",
-      "status": "planned",
-      "access": "open",
-      "level": "advanced",
-      "prerequisite_uids": [
-        "les-a-0158"
-      ],
-      "learning_outcomes": [
-        "Проводит контролируемый red-team эксперимент над XAI-методом.",
-        "Измеряет последствия атаки и сравнивает исходные и изменённые объяснения."
-      ],
-      "content_state": "outline_only"
-    },
-    {
-      "uid": "les-a-0160",
-      "track_uid": "trk-a",
-      "theme_uid": "thm-a-05",
-      "module_uid": "mod-a-05-02",
-      "code": "5.2.5",
-      "title": "Защита, ограничения и red-team отчёт",
-      "status": "planned",
-      "access": "open",
-      "level": "advanced",
-      "prerequisite_uids": [
-        "les-a-0159"
-      ],
-      "learning_outcomes": [
-        "Описывает меры обнаружения и снижения риска манипуляций.",
-        "Готовит отчёт об атаке, эффективности защиты и остаточных рисках."
-      ],
-      "content_state": "outline_only"
-    },
-    {
-      "uid": "les-a-0161",
-      "track_uid": "trk-a",
-      "theme_uid": "thm-a-05",
-      "module_uid": "mod-a-05-05",
-      "code": "5.5.1",
-      "title": "Карта компетенций и самооценка исследователя",
-      "status": "planned",
-      "access": "open",
-      "level": "beginner",
-      "prerequisite_uids": [
-        "les-a-0160"
-      ],
-      "learning_outcomes": [
-        "Оценивает готовность применить методы Track A к исследовательской задаче.",
-        "Определяет пробелы и обосновывает план итогового проекта."
-      ],
-      "content_state": "outline_only"
-    },
-    {
-      "uid": "les-a-0162",
-      "track_uid": "trk-a",
-      "theme_uid": "thm-a-05",
-      "module_uid": "mod-a-05-05",
-      "code": "5.5.2",
-      "title": "Выбор модели, системы и исследовательского сценария",
-      "status": "planned",
-      "access": "open",
-      "level": "intermediate",
-      "prerequisite_uids": [
-        "les-a-0161"
-      ],
-      "learning_outcomes": [
-        "Выбирает объект, данные и сценарий исследования.",
-        "Описывает аудиторию, ограничения и риски проекта."
-      ],
-      "content_state": "outline_only"
-    },
-    {
-      "uid": "les-a-0163",
-      "track_uid": "trk-a",
-      "theme_uid": "thm-a-05",
-      "module_uid": "mod-a-05-05",
-      "code": "5.5.3",
-      "title": "Исследовательский вопрос и проверяемые гипотезы",
-      "status": "planned",
-      "access": "open",
-      "level": "intermediate",
-      "prerequisite_uids": [
-        "les-a-0162"
-      ],
-      "learning_outcomes": [
-        "Формулирует исследовательские вопросы и проверяемые гипотезы.",
-        "Определяет ожидаемые результаты и альтернативные объяснения."
-      ],
-      "content_state": "outline_only"
-    },
-    {
-      "uid": "les-a-0164",
-      "track_uid": "trk-a",
-      "theme_uid": "thm-a-05",
-      "module_uid": "mod-a-05-05",
-      "code": "5.5.4",
-      "title": "Дизайн эксперимента и выбор методов объяснения",
-      "status": "planned",
-      "access": "open",
-      "level": "intermediate",
-      "prerequisite_uids": [
-        "les-a-0163"
-      ],
-      "learning_outcomes": [
-        "Обосновывает выбор прозрачного и post-hoc метода.",
-        "Определяет baseline, контрольные условия и порядок экспериментов."
-      ],
-      "content_state": "outline_only"
-    },
-    {
-      "uid": "les-a-0165",
-      "track_uid": "trk-a",
-      "theme_uid": "thm-a-05",
-      "module_uid": "mod-a-05-05",
-      "code": "5.5.5",
-      "title": "Проведение исследования и анализ объяснений",
-      "status": "planned",
-      "access": "open",
-      "level": "intermediate",
-      "prerequisite_uids": [
-        "les-a-0164"
-      ],
-      "learning_outcomes": [
-        "Реализует выбранные методы и фиксирует результаты.",
-        "Анализирует объяснения и документирует ограничения."
-      ],
-      "content_state": "outline_only"
-    },
-    {
-      "uid": "les-a-0166",
-      "track_uid": "trk-a",
-      "theme_uid": "thm-a-05",
-      "module_uid": "mod-a-05-05",
-      "code": "5.5.6",
-      "title": "Проверка качества и границ выводов",
-      "status": "planned",
-      "access": "open",
-      "level": "advanced",
-      "prerequisite_uids": [
-        "les-a-0165"
-      ],
-      "learning_outcomes": [
-        "Проверяет fidelity/faithfulness, stability и robustness в рамках выбранного исследования.",
-        "Разделяет наблюдаемое поведение, экспериментальный результат и причинный вывод."
-      ],
-      "content_state": "outline_only"
-    },
-    {
-      "uid": "les-a-0167",
-      "track_uid": "trk-a",
-      "theme_uid": "thm-a-05",
-      "module_uid": "mod-a-05-05",
-      "code": "5.5.7",
-      "title": "Воспроизводимый отчёт и защита результатов",
-      "status": "planned",
-      "access": "open",
-      "level": "intermediate",
-      "prerequisite_uids": [
-        "les-a-0166"
-      ],
-      "learning_outcomes": [
-        "Подготавливает воспроизводимый отчёт с кодом, конфигурацией и версиями.",
-        "Представляет результаты технической и нетехнической аудитории."
-      ],
-      "content_state": "outline_only"
+      "content_state": "published",
+      "title_i18n": {
+        "ru": "Что такое XAI и зачем нужно объяснять модели?",
+        "en": "What Is XAI and Why Explain Models?",
+        "zh": "什么是 XAI？为什么要解释模型？"
+      },
+      "url_i18n": {
+        "ru": "lessons/a-7-1-1-les-a-0018.html",
+        "en": "lessons/a-7-1-1-les-a-0018-en.html",
+        "zh": "lessons/a-7-1-1-les-a-0018-zh.html"
+      }
     }
   ],
   "resources": [],

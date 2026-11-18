@@ -3730,7 +3730,7 @@
       "module_uid": "mod-a-07-01",
       "code": "7.1.2",
       "title": "Локальные и глобальные объяснения",
-      "status": "review",
+      "status": "published",
       "access": "open",
       "level": "beginner",
       "prerequisite_uids": [
@@ -3743,7 +3743,7 @@
         "Понимать, почему усреднение локальных объяснений может скрывать неоднородность и взаимодействия.",
         "Воспроизводить анализ одной модели на обучающей и тестовой выборках с помощью Python и scikit-learn."
       ],
-      "content_state": "localized",
+      "content_state": "published",
       "title_i18n": {
         "ru": "Локальные и глобальные объяснения",
         "en": "Local and Global Explanations",

@@ -158,8 +158,8 @@ jobs:
         run: python -m unittest discover -s tests -p 'test_lesson_712_contract.py' -v
       - name: Install Playwright Chromium for responsive lesson checks
         run: |
-          python -m pip install playwright==1.56.0
-          python -m playwright install chromium
+          python -m pip install playwright==1.65.0
+          python -m playwright install --with-deps chromium
       - name: Test canonical lesson UI browser acceptance
         run: python -m unittest discover -s tests -p 'test_canonical_lesson_browser.py' -v
       - name: Test canonical lesson UI contract

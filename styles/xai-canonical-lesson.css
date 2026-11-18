@@ -18,11 +18,19 @@
 .xai-canonical-section-content .quiz-summary{margin:1.2rem 0;padding:1rem;border:1px solid var(--border,rgba(120,150,210,.24));border-radius:10px;font-weight:700}
 .xai-canonical-section-content .lesson-callout,.xai-canonical-section-content .definition{margin:1.3rem 0}
 @media(max-width:640px){.xai-canonical-section{margin-top:2rem;padding-top:1.4rem}.xai-canonical-section-content th,.xai-canonical-section-content td{padding:.55rem .6rem}.xai-canonical-section-content .knowledge-check{padding:.8rem}}
-/* The XAI learning-outcomes card has a deliberately dark background in both themes. */
-.lesson #xai-outcomes{color:#edf3ff}
-.lesson #xai-outcomes p,.lesson #xai-outcomes li{color:#d5e0f2}
-.lesson #xai-outcomes h2,.lesson #xai-outcomes h3{color:#9fc4ff}
-.lesson #xai-outcomes strong{color:#ffffff}
+/* The 7.1.3 shell uses #lesson-outcomes (not the legacy #xai-outcomes id).
+   Keep this intentionally dark card readable in BOTH colour themes. */
+main.lesson > #lesson-outcomes.outcomes{
+  color:#edf3ff;
+  background:linear-gradient(135deg,#172f50,#142743);
+  border:1px solid #46658f;
+  border-radius:16px;
+}
+main.lesson > #lesson-outcomes.outcomes p,
+main.lesson > #lesson-outcomes.outcomes li{color:#d5e0f2}
+main.lesson > #lesson-outcomes.outcomes h2,
+main.lesson > #lesson-outcomes.outcomes h3{color:#b9d5ff}
+main.lesson > #lesson-outcomes.outcomes strong{color:#ffffff}
 
 /* Keep the six-axis method passport compact and visually subordinate to body text. */
 .xai-svg-figure{

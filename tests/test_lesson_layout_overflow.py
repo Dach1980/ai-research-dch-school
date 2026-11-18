@@ -87,10 +87,25 @@ class LessonLayoutOverflowTests(unittest.TestCase):
                                 clientWidth: card.clientWidth
                               });
                             }
+                            // Intentional horizontal scrollers keep their own viewport.
+                            // Their inner text may extend beyond the card by design; test the
+                            // scroller's box against the card, then let the scroller own its content.
+                            for (const scroller of card.querySelectorAll('.lesson-table-wrap, .formula, .lesson-code-block')) {
+                              const scrollerBox = scroller.getBoundingClientRect();
+                              if (scrollerBox.left < box.left - 1 || scrollerBox.right > box.right + 1) {
+                                problems.push({
+                                  type: 'scroll-container-outside-card',
+                                  className: scroller.className,
+                                  left: scrollerBox.left, right: scrollerBox.right,
+                                  cardLeft: box.left, cardRight: box.right
+                                });
+                              }
+                            }
                             const walker = document.createTreeWalker(card, NodeFilter.SHOW_TEXT);
                             let node;
                             while ((node = walker.nextNode())) {
                               if (!node.nodeValue.trim()) continue;
+                              if (node.parentElement?.closest('.lesson-table-wrap, .formula, .lesson-code-block')) continue;
                               const range = document.createRange();
                               range.selectNodeContents(node);
                               for (const rect of range.getClientRects()) {

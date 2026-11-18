@@ -22,7 +22,7 @@
    Keep this intentionally dark card readable in BOTH colour themes. */
 main.lesson > #lesson-outcomes.outcomes{
   color:#edf3ff;
-  background:linear-gradient(135deg,#172f50,#142743);
+  background-color:#172f50;
   border:1px solid #46658f;
   border-radius:16px;
 }

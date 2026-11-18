@@ -10,14 +10,13 @@
   const outcomes = document.getElementById("lesson-outcomes");
   const body = document.getElementById("lesson-sections");
   const quizRoot = document.getElementById("lesson-quiz");
-  const nav = document.getElementById("lesson-navigation");
   if (title) title.textContent = text(lesson.title);
   if (lead) lead.textContent = text(lesson.lead);
   document.title = lesson.code + " — " + text(lesson.title) + " — AI Research DCH School";
   const labels = {
-    ru:{outcomes:"Результаты обучения",duration:"Продолжительность",quiz:"Самопроверка",previous:"Предыдущий урок · 7.1.1",track:"К теме 7 · Track A",language:"Язык"},
-    en:{outcomes:"Learning outcomes",duration:"Duration",quiz:"Self-check",previous:"Previous lesson · 7.1.1",track:"Track A · Theme 7",language:"Language"},
-    zh:{outcomes:"学习目标",duration:"学习时长",quiz:"自我检查",previous:"上一课 · 7.1.1",track:"返回 Track A · 主题 7",language:"语言"}
+    ru:{outcomes:"Результаты обучения",duration:"Продолжительность",quiz:"Самопроверка"},
+    en:{outcomes:"Learning outcomes",duration:"Duration",quiz:"Self-check"},
+    zh:{outcomes:"学习目标",duration:"学习时长",quiz:"自我检查"}
   }[locale];
   if (outcomes) {
     const h = document.createElement("h2"); h.textContent = labels.outcomes;
@@ -79,17 +78,5 @@
       button.textContent=qlabels.saved;
     });
     section.append(form,summary); quizRoot.appendChild(section);
-  }
-  if(nav){
-    const previous=locale==="en"?"a-7-1-1-les-a-0018-en.html":locale==="zh"?"a-7-1-1-les-a-0018-zh.html":"a-7-1-1-les-a-0018.html";
-    const track=locale==="en"?"../tracks/understanding-ai-en.html":locale==="zh"?"../tracks/understanding-ai-zh.html":"../tracks/understanding-ai.html";
-    const languages=[
-      ["ru","Русский","a-7-1-2-les-a-0169.html"],
-      ["en","English","a-7-1-2-les-a-0169-en.html"],
-      ["zh","中文","a-7-1-2-les-a-0169-zh.html"]
-    ];
-    nav.innerHTML='<a href="'+previous+'">'+labels.previous+'</a><a href="'+track+'">'+labels.track+'</a><div class="lesson-language-links" aria-label="'+labels.language+'"></div>';
-    const links=nav.querySelector(".lesson-language-links");
-    languages.forEach(([code,name,url])=>{const a=document.createElement("a");a.href=url;a.lang=code;a.textContent=name;if(code===locale)a.setAttribute("aria-current","page");links.appendChild(a);});
   }
 })();

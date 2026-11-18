@@ -47,6 +47,7 @@ class CanonicalLessonUIContractTests(unittest.TestCase):
                 self.assertEqual(sum(t == "main" and "lesson" in c for t, a, c, p in tags), 1)
                 self.assertEqual(sum(t == "nav" and "lesson-nav" in c for t, a, c, p in tags), 1)
                 self.assertEqual(sum(t == "nav" and "nav" in c for t, a, c, p in tags), 1)
+                self.assertTrue(any(t == "div" and "container" in c and any("footer" in parent_classes for _, parent_classes in parents) for t, a, c, parents in tags))
                 self.assertNotIn('class="language-switcher"', source)
                 self.assertNotIn("locale-links", source)
                 self.assertNotIn("lesson-language-links", source)

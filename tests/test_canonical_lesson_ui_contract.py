@@ -4,6 +4,11 @@ from html.parser import HTMLParser
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
+PAGES_711 = {
+    "ru": ROOT / "lessons/a-7-1-1-les-a-0018.html",
+    "en": ROOT / "lessons/a-7-1-1-les-a-0018-en.html",
+    "zh": ROOT / "lessons/a-7-1-1-les-a-0018-zh.html",
+}
 PAGES = {
     "ru": ROOT / "lessons/a-7-1-2-les-a-0169.html",
     "en": ROOT / "lessons/a-7-1-2-les-a-0169-en.html",
@@ -90,6 +95,11 @@ class CanonicalLessonUIContractTests(unittest.TestCase):
                     page = ROOT / route
                     self.assertTrue(page.is_file(), f"{lesson['uid']}: missing {locale} page {route}")
                     self.assert_canonical_block_order(page.read_text(encoding="utf-8"), f"{lesson['uid']} / {locale}")
+
+    def test_published_reference_lesson_711_uses_mandatory_block_order_in_all_locales(self):
+        for locale, path in PAGES_711.items():
+            with self.subTest(locale=locale):
+                self.assert_canonical_block_order(path.read_text(encoding="utf-8"), f"7.1.1 / {locale}")
 
     def test_review_lesson_712_uses_mandatory_block_order_in_all_locales(self):
         for locale, path in PAGES.items():

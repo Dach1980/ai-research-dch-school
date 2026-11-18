@@ -154,6 +154,8 @@ jobs:
         run: python -m unittest discover -s tests -p 'test_lesson_613_production_contract.py' -v
       - name: Test published lesson 6.1.4, localization, decision paths and assessment
         run: python -m unittest discover -s tests -p 'test_lesson_614_production_contract.py' -v
+      - name: Test complete lesson 7.1.2 in RU, EN and Chinese
+        run: python -m unittest discover -s tests -p 'test_lesson_712_contract.py' -v
       - name: Install Playwright Chromium for responsive lesson checks
         run: |
           python -m pip install playwright==1.56.0
@@ -179,7 +181,7 @@ jobs:
       - name: Check theme and code scripts syntax
         run: node --check scripts/main.js && node --check scripts/theme-system.js && node --check scripts/code-blocks.js && node --check scripts/lesson-layout.js
       - name: Check browser catalogue scripts syntax
-        run: node --check scripts/catalog-compat.js && node --check scripts/lesson-catalog.js && node --check scripts/planet-map-catalog.js && node --check scripts/home-knowledge-map.js && node --check scripts/lesson-reader.js && node --check lessons/data/xai-01-what-and-why.js
+        run: node --check scripts/catalog-compat.js && node --check scripts/lesson-catalog.js && node --check scripts/planet-map-catalog.js && node --check scripts/home-knowledge-map.js && node --check scripts/lesson-reader.js && node --check lessons/data/xai-01-what-and-why.js && node --check scripts/xai-local-global-lesson.js && node --check lessons/data/xai-02-local-global.js
       - name: Validate production hierarchical catalog v2
         run: python scripts/validate-catalog-v2.py
       - name: Test lesson 1.3.2 multilingual diagrams, themes, and mobile layout

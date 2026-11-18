@@ -24,6 +24,14 @@ jobs:
         run: python -m pip install -r requirements-catalog.txt
       - name: Run Lesson Quality Gate v1 structural checks
         run: python scripts/lesson_quality_gate.py
+      - name: Install Playwright Chromium for canonical lesson UI acceptance
+        run: |
+          python -m pip install playwright==1.56.0
+          python -m playwright install --with-deps chromium
+      - name: Test canonical lesson UI contract
+        run: python -m unittest discover -s tests -p 'test_canonical_lesson_ui_contract.py' -v
+      - name: Test canonical lesson browser acceptance
+        run: python -m unittest discover -s tests -p 'test_canonical_lesson_browser.py' -v
       - name: Test complete lesson 7.1.2 in RU, EN and Chinese
         run: python -m unittest discover -s tests -p 'test_lesson_712_contract.py' -v
       - name: Check lesson 7.1.2 JavaScript syntax

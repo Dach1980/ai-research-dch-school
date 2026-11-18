@@ -19,24 +19,46 @@
 <section id="section-2"><h2>2. 我们究竟在比较什么？</h2><p>人们常把“准确率”当作模型质量的统称，但 Accuracy 只是一个指标。对于二分类任务，应检查混淆矩阵，并根据不同错误的成本选择指标。</p><div class="lesson-table-wrap"><table class="lesson-table"><thead><tr><th>评估维度</th><th>需要回答的问题</th><th>可用的评估方式</th></tr></thead><tbody><tr><td>预测性能</td><td>模型在未见样本上的表现如何？</td><td>Accuracy、Precision、Recall、F1、ROC-AUC、PR-AUC；回归任务可用 MAE、RMSE</td></tr><tr><td>复杂度</td><td>模型结构有多复杂？</td><td>特征、系数、节点和树层数的数量；集成模型的组件数量</td></tr><tr><td>可解释性</td><td>人能否理解模型逻辑？</td><td>规则是否清晰、预测路径能否追踪、特征影响是否易于理解</td></tr><tr><td>稳定性</td><td>数据变化时模型行为改变多少？</td><td>指标波动、重复训练时结构和预测的稳定程度</td></tr><tr><td>可审计性</td><td>能否检查并记录系统运行过程？</td><td>可复现性、日志、数据与模型版本、可验证的约束</td></tr><tr><td>实际成本</td><td>错误和运行会带来什么代价？</td><td>漏报故障、误报、延迟、检查和维护成本</td></tr></tbody></table></div><p>当正类很少时，Accuracy 可能产生误导。如果只有 1% 的泵会发生故障，一个始终预测“不会故障”的分类器也能获得 99% 的 Accuracy，却无法发现任何故障。因此，指标必须服从任务目标。</p><p>Recall 表示实际正类中被发现的比例。Precision 表示所有正类预测中真正正确的比例。F1 使用调和平均数综合 Precision 与 Recall。上述指标都不能替代对错误后果的分析。</p><div class="formula" role="math" aria-label="Accuracy = (TP + TN) / (TP + TN + FP + FN)"><span class="formula-label">Accuracy</span><span class="formula-expression">Accuracy = (TP + TN) / (TP + TN + FP + FN)</span><span class="formula-note">TP：真正例；TN：真负例；FP：假正例；FN：假负例。</span></div><div class="formula" role="math" aria-label="Precision = TP / (TP + FP)"><span class="formula-label">Precision</span><span class="formula-expression">Precision = TP / (TP + FP)</span><span class="formula-note">正确的正类预测数占全部正类预测数的比例。</span></div><div class="formula" role="math" aria-label="Recall = TP / (TP + FN)"><span class="formula-label">Recall</span><span class="formula-expression">Recall = TP / (TP + FN)</span><span class="formula-note">被发现的正类样本数占全部真实正类样本数的比例。</span></div><div class="formula" role="math" aria-label="F1 = 2 × Precision × Recall / (Precision + Recall)"><span class="formula-label">F1-score</span><span class="formula-expression">F1 = 2 × Precision × Recall / (Precision + Recall)</span><span class="formula-note">Precision 与 Recall 的调和平均数；它不会直接反映错误成本。</span></div></section>
 <section id="section-3"><h2>3. 设计本身可解释与事后解释</h2><p>有些模型通过参数或规则直接展示其逻辑。例如，线性模型将特征加权求和，小型决策树则依次应用一系列条件。这类模型通常称为“设计本身可解释”（interpretable by design）。</p><p>另一些模型，例如大型集成模型或神经网络，内部结构更复杂。可以使用事后方法（post-hoc），例如特征重要性、局部解释或代理模型来研究它们。但这些解释不会自动让原模型变得透明。</p><div class="lesson-table-wrap"><table class="lesson-table"><thead><tr><th>模型类型</th><th>可以直接检查什么</th><th>典型局限</th></tr></thead><tbody><tr><td>线性／逻辑回归</td><td>在设定合理时检查系数和特征影响方向</td><td>非线性与交互可能需要额外特征；系数受尺度和相关性影响</td></tr><tr><td>小型决策树</td><td>从根节点到叶节点的规则路径</td><td>树过深后难以阅读，也可能不稳定</td></tr><tr><td>GAM／EBM</td><td>各特征的影响函数，以及部分模型中的交互项</td><td>特征和交互项过多时，检查难度会上升</td></tr><tr><td>随机森林／梯度提升</td><td>集成模型的汇总信息，以及可用的单棵树</td><td>整体预测由许多组件共同形成</td></tr><tr><td>神经网络</td><td>可以从技术层面检查网络架构和参数</td><td>通常无法直接从权重得到人容易理解的单次预测理由</td></tr></tbody></table></div><p>不要混淆模型可解释性与某一个解释的质量。特征重要性图不会自动证明因果关系。局部解释可以描述模型在某个样本附近的行为，却不保证代表整个模型。</p><div class="lesson-note"><strong>理解检查：</strong>如果我们用 SHAP 或 LIME 解释复杂模型，模型是否因此变成了设计本身可解释？不是。我们只是增加了分析模型行为的工具，并没有改变模型内部结构。</div></section>
 <section id="section-4"><h2>4. 帕累托前沿：无法同时改善所有指标时</h2><p>假设我们从两个维度比较多个模型：预测质量和可解释性。有些模型更准确，另一些模型更容易理解。某些方案可能无法在不牺牲另一个指标的前提下继续改善其中一个指标。这些非支配方案构成帕累托前沿。</p><div class="definition"><strong class="definition-term">帕累托支配（Pareto dominance）</strong><span class="definition-text">如果模型 X 在所有被比较的指标上都不差于模型 Y，并且至少有一个指标严格优于 Y，那么 X 支配 Y。</span></div><figure class="lesson-figure">
-<svg viewBox="0 0 960 590" role="img" aria-labelledby="pareto-title pareto-desc">
+<svg viewBox="0 0 960 630" role="img" aria-labelledby="pareto-title pareto-desc">
 <title id="pareto-title">帕累托前沿：预测性能与可解释性之间的权衡</title>
-<desc id="pareto-desc">蓝色点 A–D 构成示意性帕累托前沿。灰色点 E–H 分别被 A–D 支配：对应的蓝色模型在两个指标上都不差，并且至少一个指标更好。箭头展示支配关系示例。</desc>
-<defs><marker id="pareto-arrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0 0 L6 3 L0 6" fill="none" stroke="#8794a7" stroke-width="1.2"/></marker></defs>
-<rect x="12" y="12" width="936" height="566" rx="18" class="svg-box"/>
-<path d="M125 430 V92 M125 430 H865" stroke="currentColor" stroke-width="2" fill="none"/>
-<path d="M125 345 H865 M125 260 H865 M125 175 H865" stroke="currentColor" stroke-opacity=".14" stroke-dasharray="5 7"/>
-<text x="495" y="486" text-anchor="middle" class="svg-label">可解释性 — 向右逐渐提高 →</text>
-<text x="48" y="260" text-anchor="middle" class="svg-label" transform="rotate(-90 48 260)">预测性能 — 向上逐渐提高 →</text>
-<path d="M205 365 C315 326 390 274 485 226 S680 142 790 112" fill="none" stroke="var(--lds-accent)" stroke-width="4" stroke-dasharray="10 7"/>
-<text x="610" y="91" class="svg-small" fill="var(--lds-accent)">帕累托前沿</text>
-<g stroke="#8794a7" stroke-width="1.7" stroke-dasharray="4 5" fill="none" marker-end="url(#pareto-arrow)"><path d="M205 390 Q210 365 238 348"/><path d="M355 338 Q370 305 400 276"/><path d="M505 300 Q520 260 548 236"/><path d="M650 276 Q680 220 712 174"/></g>
-<g fill="#8b929b" stroke="var(--surface-1,#fff)" stroke-width="3"><circle cx="205" cy="390" r="9"/><circle cx="355" cy="338" r="9"/><circle cx="505" cy="300" r="9"/><circle cx="650" cy="276" r="9"/></g>
-<g fill="var(--lds-accent)" stroke="var(--surface-1,#fff)" stroke-width="3"><circle cx="250" cy="340" r="11"/><circle cx="410" cy="270" r="11"/><circle cx="555" cy="225" r="11"/><circle cx="720" cy="160" r="11"/></g>
-<g class="svg-small" font-weight="600"><text x="250" y="319" text-anchor="middle">A</text><text x="410" y="249" text-anchor="middle">B</text><text x="555" y="204" text-anchor="middle">C</text><text x="720" y="139" text-anchor="middle">D</text><text x="205" y="414" text-anchor="middle">E</text><text x="355" y="362" text-anchor="middle">F</text><text x="505" y="324" text-anchor="middle">G</text><text x="650" y="300" text-anchor="middle">H</text></g>
-<g transform="translate(155 520)"><circle cx="8" cy="0" r="7" fill="var(--lds-accent)"/><text x="23" y="5" class="svg-small">A–D：非支配方案</text><circle cx="350" cy="0" r="7" fill="#8b929b"/><text x="365" y="5" class="svg-small">E–H：被支配方案</text><path d="M690 0 h36" stroke="#8794a7" stroke-width="1.7" stroke-dasharray="4 4" marker-end="url(#pareto-arrow)"/><text x="735" y="5" class="svg-small">支配关系示例</text></g>
+<desc id="pareto-desc">蓝色点 A–D 构成示意性帕累托前沿。灰色点 E–H 分别被对应的蓝色点支配。每个点的字母都放在独立的高对比度标签中，图例完整位于图形范围内。</desc>
+<defs><marker id="pareto-arrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0 0 L6 3 L0 6" fill="none" stroke="#8794a7" stroke-width="1.3"/></marker></defs>
+<rect x="12" y="12" width="936" height="606" rx="18" class="svg-box"/>
+<path d="M125 420 V92 M125 420 H865" stroke="currentColor" stroke-width="2" fill="none"/>
+<path d="M125 338 H865 M125 256 H865 M125 174 H865" stroke="currentColor" stroke-opacity=".14" stroke-dasharray="5 7"/>
+<text x="495" y="466" text-anchor="middle" class="svg-label">可解释性 — 向右逐渐提高 →</text>
+<text x="48" y="255" text-anchor="middle" class="svg-label" transform="rotate(-90 48 255)">预测性能 — 向上逐渐提高 →</text>
+<path d="M205 355 C315 316 390 264 485 222 S680 142 790 112" fill="none" stroke="var(--lds-accent)" stroke-width="4" stroke-dasharray="10 7"/>
+<text x="610" y="91" class="svg-small" font-size="14" fill="var(--lds-accent)">帕累托前沿</text>
+<g stroke="#8794a7" stroke-width="1.7" stroke-dasharray="4 5" fill="none" marker-end="url(#pareto-arrow)">
+<path d="M205 382 Q210 354 238 337"/><path d="M355 330 Q370 296 400 263"/><path d="M505 292 Q520 253 548 229"/><path d="M650 268 Q680 214 712 168"/>
+</g>
+<g fill="#8b929b" stroke="var(--surface-1,#fff)" stroke-width="3">
+<circle cx="205" cy="382" r="10"/><circle cx="355" cy="330" r="10"/><circle cx="505" cy="292" r="10"/><circle cx="650" cy="268" r="10"/>
+</g>
+<g fill="var(--lds-accent)" stroke="var(--surface-1,#fff)" stroke-width="3">
+<circle cx="250" cy="337" r="12"/><circle cx="410" cy="263" r="12"/><circle cx="555" cy="222" r="12"/><circle cx="720" cy="160" r="12"/>
+</g>
+<g font-family="inherit" font-size="14" font-weight="700" text-anchor="middle" fill="#26364a">
+<rect x="238" y="305" width="24" height="21" rx="6" fill="#fff" fill-opacity=".94"/><text x="250" y="320">A</text>
+<rect x="398" y="231" width="24" height="21" rx="6" fill="#fff" fill-opacity=".94"/><text x="410" y="246">B</text>
+<rect x="543" y="190" width="24" height="21" rx="6" fill="#fff" fill-opacity=".94"/><text x="555" y="205">C</text>
+<rect x="708" y="128" width="24" height="21" rx="6" fill="#fff" fill-opacity=".94"/><text x="720" y="143">D</text>
+<rect x="193" y="397" width="24" height="21" rx="6" fill="#fff" fill-opacity=".94"/><text x="205" y="412">E</text>
+<rect x="343" y="345" width="24" height="21" rx="6" fill="#fff" fill-opacity=".94"/><text x="355" y="360">F</text>
+<rect x="493" y="307" width="24" height="21" rx="6" fill="#fff" fill-opacity=".94"/><text x="505" y="322">G</text>
+<rect x="638" y="283" width="24" height="21" rx="6" fill="#fff" fill-opacity=".94"/><text x="650" y="298">H</text>
+</g>
+<g transform="translate(150 510)">
+<circle cx="8" cy="0" r="7" fill="var(--lds-accent)"/><text x="23" y="5" class="svg-small" font-size="13">A–D：非支配方案</text>
+<circle cx="420" cy="0" r="7" fill="#8b929b"/><text x="435" y="5" class="svg-small" font-size="13">E–H：被支配方案</text>
+</g>
+<g transform="translate(365 558)">
+<path d="M0 0 h34" stroke="#8794a7" stroke-width="1.7" stroke-dasharray="4 4" marker-end="url(#pareto-arrow)"/>
+<text x="45" y="5" class="svg-small" font-size="13">支配关系示例</text>
+</g>
 </svg>
-<figcaption>概念示意图，并非实验结果。每个灰色点都被对应的蓝色点支配：蓝色模型在两个指标上都不差，并且至少一个指标严格更好。蓝色点表示不同的权衡方案：可解释性提高时，预测性能相应降低。帕累托前沿用于识别非支配方案，但不会自动选出最佳模型；最终选择取决于具体任务的要求。</figcaption>
+<figcaption>概念示意图，并非实验结果。每个灰色点都被对应的蓝色点支配：蓝色模型在两个指标上都不差，并且至少一个指标严格更好。蓝色点展示不同的权衡方案。帕累托前沿用于识别非支配方案，但不会自动选出最佳模型；最终选择取决于具体任务的要求。</figcaption>
 </figure><p>帕累托前沿不会替我们选出最终模型。它帮助排除明显被支配的方案，并展示真正值得权衡的候选项。之后还要设定约束，例如最低 Recall、响应时间上限、解释要求、维护预算和可接受风险。</p><p>实际项目通常不止两个指标，还可能考虑性能、可解释性、成本、延迟、稳定性和公平性。二维图只是简化表达，并非完整的决策模型。</p></section>
 <section id="section-5"><h2>5. 错误成本会改变模型选择</h2><p>在泵故障预测任务中，需要区分两类错误：</p><ul><li><strong>False Negative（FN，假负例）：</strong>故障实际发生，但模型没有发出警报。这可能导致停机、设备损坏或安全风险。</li><li><strong>False Positive（FP，假正例）：</strong>模型发出故障警报，但故障并未发生。这可能造成不必要的检查、费用或生产中断。</li></ul><p>如果 FN 的代价远高于 FP，即使误报增加，也可能更重视较高的 Recall。如果每次检查都很昂贵，就需要平衡 Recall 和 Precision。分类阈值和后续处置策略应由业务流程负责人共同确定，而不应只通过最大化 F1 自动决定。</p><div class="formula" role="math" aria-label="错误成本 = C_FP × FP + C_FN × FN"><span class="formula-label">简化错误成本</span><span class="formula-expression">Cost = C_FP × FP + C_FN × FN</span><span class="formula-note">C_FP 和 C_FN 分别是假正例与假负例的成本。必要时还可加入检查、维护和延迟成本。</span></div><p>成本估算必须有领域依据。如果后果无法合理地用金钱衡量，可以设置约束或风险等级。不能机械地把安全、人权和信任简化成任意的货币数字。</p><p>当专家需要复核或质疑模型建议，或者向审计人员解释决策时，可解释性尤其重要。但透明本身并不保证安全：清晰的规则也可能错误、过时，或建立在有偏差的数据之上。</p></section>
 <section id="section-6"><h2>6. 实践实验：比较四种泵故障预测模型</h2><p>现在，我们在同一任务上比较四类模型。这是教学实验方案，不是已发表的基准测试。下表数字为示意值，用于练习分析；真实实验必须用统一评估流程得到的结果替换这些数字。</p><h3>6.1. 实验设置</h3><p>目标是预测泵在未来七天内是否发生故障。一个观测样本代表某台泵在特定时间段的状态。特征可以包括振动、温度、压力、运行时长和维护历史。目标变量记录指定时间窗口内是否发生故障。</p><ol><li>按时间将数据划分为训练集、验证集和测试集，避免用未来信息预测过去。</li><li>排除目标泄漏，以及只有故障发生后才会知道的特征。</li><li>为所有候选模型固定相同的可用特征和测试时间段。</li><li>只使用训练集和验证集调整超参数。</li><li>在留出的测试集上评估；对于罕见故障，还要检查 Precision–Recall 和混淆矩阵。</li><li>在多个时间窗口重复评估，以检查稳定性。</li></ol><h3>6.2. 示意性结果</h3><div class="lesson-table-wrap"><table class="lesson-table"><thead><tr><th>模型</th><th>Recall</th><th>Precision</th><th>F1</th><th>示意性可解释性</th><th>主要权衡</th></tr></thead><tbody><tr><td>逻辑回归</td><td>0.78</td><td>0.70</td><td>0.74</td><td>设定合理时较高</td><td>形式简单，但若无特征变换和交互项，灵活性有限</td></tr><tr><td>小型决策树</td><td>0.74</td><td>0.76</td><td>0.75</td><td>树较浅时较高</td><td>规则容易追踪，但可能不稳定或损失预测质量</td></tr><tr><td>随机森林</td><td>0.84</td><td>0.75</td><td>0.79</td><td>从整体模型看为中等或较低</td><td>能够捕捉复杂关系，但由许多树共同组成</td></tr><tr><td>梯度提升</td><td>0.87</td><td>0.78</td><td>0.82</td><td>若无额外分析工具则较低</td><td>示意性 F1 最高，但整体行为更难审计</td></tr></tbody></table></div><p>在这个例子中，梯度提升的 F1 最高，但这并不意味着它一定应该部署。如果最低 Recall 要求为 0.85，它满足这一示意性约束，而其他模型不满足。但如果每次决策都必须通过简短、易读的规则来解释，就可能需要选择其他模型，或增加额外的审查流程。</p><h3>6.3. 如何解读结果</h3><ul><li>不要比较使用不同测试集或不同数据处理规则评估的模型。</li><li>不要只根据一个指标得出结论。</li><li>如果数据量允许，应检查置信区间或指标波动。</li><li>针对重要运行条件和设备群体分别检查错误。</li><li>记录模型用户能够看到哪些解释，以及这些解释的可靠程度。</li></ul><div class="lesson-note"><strong>实验结论：</strong>不要只根据某个单一指标的排名选择模型。首先检查强制要求，然后比较非支配方案，并评估实际使用后果。</div></section>

@@ -1340,6 +1340,47 @@
         "Responsive browser stage Validate learning catalog ещё не завершён.",
         "Ручная визуальная приёмка пользователем остаётся отдельным шагом."
       ]
+    },
+    {
+      "id": "RM-LESSON-163",
+      "date": "2026-11-18",
+      "type": "lesson_creation",
+      "title": "Создать и принять урок 6.1.4 «Интерпретация деревьев решений»",
+      "status": "in_progress",
+      "priority": "high",
+      "decision": "Подготовлены RU / EN / 中文 страницы 6.1.4 под новым UID les-a-0168: в canonical curriculum для урока не было UID и legacy mapping, поэтому старый идентификатор не переиспользовался. Созданы девять учебных разделов, локализованная схема, формулы критериев деревьев, карточки определений, словарь и семь вопросов. Catalog v3 и canonical curriculum синхронизированы. GitHub Pages validation, Supabase migrations и deployment прошли; native Pages build/deployment и SVG theme audit успешны. Полный Validate learning catalog ещё выполняет responsive browser stage. Пользовательская визуальная и редакционная приёмка ожидается.",
+      "acceptance": [
+        "Три полноценные локализации RU / EN / 中文 доступны по каноническим URL.",
+        "UID les-a-0168 назначен как новый UID; prerequisites и иерархия Track A / Theme 6 / Module 1 согласованы.",
+        "В каждой локализации девять разделов, пять формул, не менее семи definition-карточек, SVG с локализованными title/desc/figcaption, девять терминов и семь вопросов с объяснениями.",
+        "Каталог, каноническая программа, карта знаний и динамическая последовательная навигация согласованы.",
+        "Контрактные, каталоговые, SVG, multilingual, responsive browser тесты и Pages deployment успешны.",
+        "Пользовательская визуальная и редакционная приёмка зафиксирована отдельно."
+      ],
+      "evidence": [
+        "lessons/a-6-1-4.html",
+        "lessons/a-6-1-4-en.html",
+        "lessons/a-6-1-4-zh.html",
+        "data/catalog/catalog-v3.json",
+        "data/catalog/curriculum-canonical-v1.json",
+        "tests/test_lesson_614_production_contract.py",
+        "tests/test_catalog_visibility.py",
+        "tests/test_knowledge_map.py",
+        "tests/test_locale_grid_theme_parity.py",
+        "tests/test_lesson_layout_overflow.py",
+        "styles/lesson-design-system.css",
+        "tests/test_glossary_layout_contract.py",
+        "docs/management/LESSON_6_1_4_PRODUCTION_REVIEW_2026-11-18.md",
+        "https://github.com/Dach1980/ai-research-dch-school/actions/runs/44212868068",
+        "https://github.com/Dach1980/ai-research-dch-school/actions/runs/44212867534",
+        "https://github.com/Dach1980/ai-research-dch-school/actions/runs/44212859480",
+        "https://github.com/Dach1980/ai-research-dch-school/actions/runs/44212868051"
+      ],
+      "limitations": [
+        "Responsive browser stage Validate learning catalog run 44212868051 ещё выполняется.",
+        "Пользовательская визуальная приёмка RU / EN / 中文 на desktop/mobile и в светлой/тёмной теме ожидается.",
+        "Редакционная приёмка содержания пользователем ожидается."
+      ]
     }
   ],
   "audit_log": [
@@ -2909,6 +2950,30 @@
         "Отдельный commit status Vercel остаётся failure с причиной build-rate-limit; это внешний Vercel check и не отменяет успешный GitHub Pages build/deployment.",
         "Ручная визуальная приёмка урока 6.1.1 ограничена оформлением; содержательная и функциональная приёмка урока отдельно не заявлена.",
         "Урок 6.1.2 не начат; переход ожидает отдельного решения пользователя."
+      ]
+    },
+    {
+      "id": "AUD-109",
+      "date": "2026-11-18",
+      "type": "lesson_6_1_4_multilingual_creation",
+      "title": "Созданы три локализации урока 6.1.4 «Интерпретация деревьев решений»",
+      "result": "Созданы полноценные RU / EN / 中文 версии урока 6.1.4 под новым UID les-a-0168, так как canonical curriculum не содержал legacy mapping и UID для этой позиции. В каждой версии девять учебных разделов, шесть результатов обучения, пять формульных карточек, семь definition-блоков, одна локализованная SVG-схема, девять терминов и семь вопросов с объяснениями. Каталог и canonical curriculum обновлены. GitHub Pages validation, Supabase migrations и deployment прошли (run 44212868068); native Pages build/deployment прошёл (run 44212867534); SVG theme audit прошёл (run 44212859480). Полный Validate learning catalog run 44212868051 завершил все шаги до установки Playwright Chromium; responsive browser stage ещё выполняется.",
+      "evidence": [
+        "lessons/a-6-1-4.html",
+        "lessons/a-6-1-4-en.html",
+        "lessons/a-6-1-4-zh.html",
+        "data/catalog/catalog-v3.json",
+        "data/catalog/curriculum-canonical-v1.json",
+        "tests/test_lesson_614_production_contract.py",
+        "docs/management/LESSON_6_1_4_PRODUCTION_REVIEW_2026-11-18.md",
+        "https://github.com/Dach1980/ai-research-dch-school/actions/runs/44212868068",
+        "https://github.com/Dach1980/ai-research-dch-school/actions/runs/44212867534",
+        "https://github.com/Dach1980/ai-research-dch-school/actions/runs/44212859480",
+        "https://github.com/Dach1980/ai-research-dch-school/actions/runs/44212868051"
+      ],
+      "limitations": [
+        "Полный Validate learning catalog responsive browser stage ещё выполняется.",
+        "Ручная визуальная и редакционная приёмка пользователем не подтверждена."
       ]
     }
   ],

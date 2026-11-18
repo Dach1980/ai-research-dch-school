@@ -1,4 +1,3 @@
-import re
 import unittest
 from html.parser import HTMLParser
 from pathlib import Path
@@ -47,7 +46,11 @@ class CanonicalLessonUIContractTests(unittest.TestCase):
                 self.assertEqual(sum(t == "main" and "lesson" in c for t, a, c, p in tags), 1)
                 self.assertEqual(sum(t == "nav" and "lesson-nav" in c for t, a, c, p in tags), 1)
                 self.assertEqual(sum(t == "nav" and "nav" in c for t, a, c, p in tags), 1)
-                self.assertTrue(any(t == "div" and "container" in c and any("footer" in parent_classes for _, parent_classes in parents) for t, a, c, parents in tags))
+                self.assertTrue(any(
+                    t == "div" and "container" in c
+                    and any("footer" in parent_classes for _, parent_classes in parents)
+                    for t, a, c, parents in tags
+                ))
                 self.assertNotIn('class="language-switcher"', source)
                 self.assertNotIn("locale-links", source)
                 self.assertNotIn("lesson-language-links", source)
@@ -73,7 +76,7 @@ class CanonicalLessonUIContractTests(unittest.TestCase):
 
     def test_locale_switcher_accepts_all_lesson_number_sequences(self):
         script = (ROOT / "scripts/language-switcher.js").read_text(encoding="utf-8")
-            self.assertIn(rule, text)
+        self.assertIn(r"^lessons\/a-[a-z0-9.-]+\.html$", script)
         for route in (
             "lessons/a-1-1-1.html",
             "lessons/a-6-1-3.html",
@@ -104,9 +107,9 @@ class CanonicalLessonUIContractTests(unittest.TestCase):
         contract = ROOT / "docs/standards/CANONICAL_LESSON_UI_CONTRACT.md"
         self.assertTrue(template.is_file())
         self.assertTrue(contract.is_file())
-        text = contract.read_text(encoding="utf-8").lower()
+        contract_text = contract.read_text(encoding="utf-8").lower()
         for rule in ("sole owner", "only `scripts/lesson-layout.js`", "playwright", "status: published"):
-            self.assertIn(rule, text)
+            self.assertIn(rule, contract_text)
 
 
 if __name__ == "__main__":

@@ -168,6 +168,57 @@ class CanonicalLessonBrowserAcceptanceTests(unittest.TestCase):
                     self.assertTrue(result["footerAfterMain"], f"{lesson['uid']} / {locale}: footer must follow lesson content")
                     page.close()
 
+    def test_reference_lesson_711_block_order_all_locales(self):
+        lesson = {
+            "code": "7.1.1",
+            "uid": "les-a-0018",
+            "status": "published",
+            "content_state": "published",
+            "url_i18n": {
+                "ru": "lessons/a-7-1-1-les-a-0018.html",
+                "en": "lessons/a-7-1-1-les-a-0018-en.html",
+                "zh": "lessons/a-7-1-1-les-a-0018-zh.html",
+            },
+        }
+        selectors = [
+            "main.lesson > .lesson-intro",
+            "main.lesson > #lesson-outcomes",
+            "main.lesson > #lesson-sections",
+            "main.lesson > #lesson-practice",
+            "main.lesson > #lesson-sources",
+            "main.lesson > #lesson-navigation",
+            "main.lesson > #lesson-glossary",
+            "main.lesson > #lesson-quiz",
+            "footer.footer",
+        ]
+        for locale in ("ru", "en", "zh"):
+            with self.subTest(code=lesson["code"], locale=locale):
+                page = self.open_page(lesson, locale)
+                result = page.evaluate("""(selectors) => {
+                  const nodes = selectors.map((selector) => Array.from(document.querySelectorAll(selector)));
+                  return {
+                    counts: nodes.map((items) => items.length),
+                    ordered: nodes.every((items, index) =>
+                      index === 0 || !!(nodes[index - 1][0].compareDocumentPosition(items[0]) & Node.DOCUMENT_POSITION_FOLLOWING)
+                    ),
+                    inMain: nodes.slice(0, 8).every((items) => items[0] && items[0].closest("main.lesson")),
+                    footerAfterMain: !!(nodes[8][0] && nodes[8][0].compareDocumentPosition(document.querySelector("main.lesson")) & Node.DOCUMENT_POSITION_PRECEDING),
+                    practiceHasLab: !!document.querySelector("#lesson-practice h2"),
+                    sourcesHasHeading: !!document.querySelector("#lesson-sources h3"),
+                    glossaryCards: document.querySelectorAll("#lesson-glossary .glossary-entry").length,
+                    quizForms: document.querySelectorAll("#lesson-quiz form.knowledge-check").length
+                  };
+                }""", selectors)
+                self.assertEqual(result["counts"], [1] * 9, f"7.1.1 / {locale}: missing or duplicate block root")
+                self.assertTrue(result["ordered"], f"7.1.1 / {locale}: incorrect DOM block order")
+                self.assertTrue(result["inMain"], f"7.1.1 / {locale}: lesson blocks must be inside main.lesson")
+                self.assertTrue(result["footerAfterMain"], f"7.1.1 / {locale}: footer must follow lesson content")
+                self.assertTrue(result["practiceHasLab"], f"7.1.1 / {locale}: mini-lab missing from practice root")
+                self.assertTrue(result["sourcesHasHeading"], f"7.1.1 / {locale}: references missing from sources root")
+                self.assertEqual(result["glossaryCards"], 5, f"7.1.1 / {locale}: expected five glossary cards")
+                self.assertEqual(result["quizForms"], 2, f"7.1.1 / {locale}: expected two self-check forms")
+                page.close()
+
     def test_published_canonical_lesson_block_order(self):
         selectors = [
             "main.lesson > .lesson-intro",

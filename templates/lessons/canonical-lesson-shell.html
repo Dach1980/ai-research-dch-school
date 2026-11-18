@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="{{LOCALE}}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="{{META_DESCRIPTION}}">
+  <meta property="og:title" content="{{LESSON_CODE}} — {{LESSON_TITLE}} · DCH School">
+  <meta property="og:description" content="{{META_DESCRIPTION}}">
+  <title>{{LESSON_CODE}} — {{LESSON_TITLE}} — AI Research DCH School</title>
+  <link rel="canonical" href="{{CANONICAL_URL}}">
+  <link rel="icon" href="../assets/favicon.svg">
+  <link rel="stylesheet" href="../styles/main.css">
+  <link rel="stylesheet" href="../styles/lesson-design-system.css">
+  <link rel="stylesheet" href="../styles/lesson-standard.css">
+  <link rel="stylesheet" href="../styles/lesson-reference-111.css">
+  <!-- Add only scoped lesson-content stylesheets when required. -->
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="../index{{LOCALE_SUFFIX}}.html">
+      <img src="../assets/logo-signature.svg" alt="AI Research DCH School">
+    </a>
+    <button class="menu-toggle" aria-label="{{MENU_LABEL}}" aria-expanded="false">☰</button>
+    <nav class="nav">
+      <a href="../tracks/understanding-ai{{LOCALE_SUFFIX}}.html">Track A</a>
+      <a href="../tracks/inside-ai{{LOCALE_SUFFIX}}.html">Track B</a>
+      <a href="../tracks/building-with-ai{{LOCALE_SUFFIX}}.html">Track C</a>
+      <a href="index{{LOCALE_SUFFIX}}.html">{{ALL_LESSONS_LABEL}}</a>
+    </nav>
+    <!-- language-switcher.js inserts the only locale selector here. -->
+    <!-- theme-system.js inserts the only theme control here. -->
+  </header>
+
+  <main class="container lesson">
+    <p class="eyebrow">{{TRACK_AND_LESSON_BREADCRUMB}}</p>
+    <h1 id="lesson-title">{{LESSON_TITLE}}</h1>
+    <p class="lead" id="lesson-lead">{{LESSON_LEAD}}</p>
+    <section class="outcomes" id="lesson-outcomes"></section>
+    <div id="lesson-sections"></div>
+    <div id="lesson-quiz"></div>
+    <!-- Keep this placeholder empty. lesson-layout.js owns its contents. -->
+    <nav class="lesson-nav" id="lesson-navigation" aria-label="{{LESSON_NAV_LABEL}}"></nav>
+  </main>
+
+  <footer class="footer">
+    <a class="brand" href="../index{{LOCALE_SUFFIX}}.html">
+      <img src="../assets/logo-signature.svg" alt="AI Research DCH School">
+    </a>
+    <p>{{FOOTER_TAGLINE}}</p>
+    <span>© 2026 AI Research DCH School</span>
+  </footer>
+
+  <script src="../scripts/main.js"></script>
+  <script src="../scripts/supabase-config.js"></script>
+  <script type="module" src="../scripts/account-ui.js"></script>
+  <script src="../scripts/language-switcher.js"></script>
+  <script src="../scripts/theme-system.js" defer></script>
+  <script src="../scripts/code-blocks.js" defer></script>
+  <script src="data/{{LESSON_DATA_FILE}}.js" defer></script>
+  <script src="../scripts/{{LESSON_RENDERER}}.js" defer></script>
+  <script src="../scripts/lesson-layout.js" defer></script>
+</body>
+</html>

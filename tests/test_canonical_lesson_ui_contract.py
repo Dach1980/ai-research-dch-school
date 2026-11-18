@@ -100,7 +100,7 @@ class CanonicalLessonUIContractTests(unittest.TestCase):
         self.assertIn(".lesson h2{margin-top:2.4em;color:#a9caff}", legacy)
 
     def test_canonical_template_and_contract_exist(self):
-        template = ROOT / "templates/lessons/canonical-lesson-shell.html"
+        template = ROOT / "templates/lessons/canonical-lesson-shell.html.tmpl"
         contract = ROOT / "docs/standards/CANONICAL_LESSON_UI_CONTRACT.md"
         self.assertTrue(template.is_file())
         self.assertTrue(contract.is_file())

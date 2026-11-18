@@ -1985,25 +1985,41 @@
     {
       "uid": "les-a-0113",
       "track_uid": "trk-a",
-      "theme_uid": "thm-a-04",
-      "module_uid": "mod-a-04-01",
-      "code": "4.1.6",
+      "theme_uid": "thm-a-06",
+      "module_uid": "mod-a-06-02",
+      "code": "6.2.2",
       "title": "Нелинейные модели с интерпретируемой структурой",
-      "status": "planned",
+      "status": "published",
       "access": "open",
       "level": "intermediate",
       "prerequisite_uids": [
-        "les-a-0017"
+        "les-a-0149"
       ],
-      "learning_outcomes": [],
-      "content_state": "outline_only"
+      "learning_outcomes": [
+        "Объясняет, почему линейная зависимость может быть недостаточной для описания реального процесса.",
+        "Различает способы представить нелинейность: пороговые правила, деревья, наборы правил и преобразования признаков.",
+        "Читает структуру неглубокого дерева и объясняет прогноз через путь условий.",
+        "Оценивает влияние глубины, числа правил и взаимодействий на понятность и устойчивость модели.",
+        "Выбирает проверяемую нелинейную модель с учётом качества, ограничений и контекста применения."
+      ],
+      "content_state": "published",
+      "url_i18n": {
+        "ru": "lessons/a-6-2-2-les-a-0113.html",
+        "en": "lessons/a-6-2-2-les-a-0113-en.html",
+        "zh": "lessons/a-6-2-2-les-a-0113-zh.html"
+      },
+      "title_i18n": {
+        "ru": "Нелинейные модели с интерпретируемой структурой",
+        "en": "Nonlinear Models with Interpretable Structures",
+        "zh": "具有可解释结构的非线性模型"
+      }
     },
     {
       "uid": "les-a-0114",
       "track_uid": "trk-a",
-      "theme_uid": "thm-a-04",
-      "module_uid": "mod-a-04-01",
-      "code": "4.1.7",
+      "theme_uid": "thm-a-06",
+      "module_uid": "mod-a-06-02",
+      "code": "6.2.3",
       "title": "GAM и EBM: интерпретируемые модели с нелинейными зависимостями",
       "status": "planned",
       "access": "open",

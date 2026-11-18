@@ -1348,7 +1348,7 @@
       "title": "Создать и принять урок 6.1.4 «Интерпретация деревьев решений»",
       "status": "in_progress",
       "priority": "high",
-      "decision": "Подготовлены RU / EN / 中文 страницы 6.1.4 под новым UID les-a-0168: в canonical curriculum для урока не было UID и legacy mapping, поэтому старый идентификатор не переиспользовался. Созданы девять учебных разделов, локализованная схема, формулы критериев деревьев, карточки определений, словарь и семь вопросов. Catalog v3 и canonical curriculum синхронизированы. GitHub Pages validation, Supabase migrations и deployment прошли; native Pages build/deployment и SVG theme audit успешны. Полный Validate learning catalog ещё выполняет responsive browser stage. Пользовательская визуальная и редакционная приёмка ожидается. Пользователь 2026-11-18 подтвердил приёмку урока 6.1.4 (RU / EN / 中文); редакционная и визуальная приёмка зафиксирована в production review. Единственное оставшееся техническое ограничение — responsive browser stage Validate learning catalog. Следующий учебный шаг разрешён: 6.2.1.",
+      "decision": "Подготовлены RU / EN / 中文 страницы 6.1.4 под новым UID les-a-0168: в canonical curriculum для урока не было UID и legacy mapping, поэтому старый идентификатор не переиспользовался. Созданы девять учебных разделов, локализованная схема, формулы критериев деревьев, карточки определений, словарь и семь вопросов. Catalog v3 и canonical curriculum синхронизированы. GitHub Pages validation, Supabase migrations и deployment прошли; native Pages build/deployment и SVG theme audit успешны. Полный Validate learning catalog ещё выполняет responsive browser stage. Пользовательская визуальная и редакционная приёмка ожидается. Пользователь 2026-11-18 подтвердил приёмку урока 6.1.4 (RU / EN / 中文); редакционная и визуальная приёмка зафиксирована в production review. Единственное оставшееся техническое ограничение — responsive browser stage Validate learning catalog. Следующий учебный шаг разрешён: 6.2.1. После приёмки проверен run 44213429430: контракт 6.1.4 успешен, но общий browser overflow test завершился failure из-за широкой таблицы в уроке 6.1.3 (360/390/768 px, light/dark, RU/EN/中文).",
       "acceptance": [
         "Три полноценные локализации RU / EN / 中文 доступны по каноническим URL.",
         "UID les-a-0168 назначен как новый UID; prerequisites и иерархия Track A / Theme 6 / Module 1 согласованы.",
@@ -1377,7 +1377,7 @@
         "https://github.com/Dach1980/ai-research-dch-school/actions/runs/44212868051"
       ],
       "limitations": [
-        "Responsive browser stage Validate learning catalog run 44213429430 требует отдельного подтверждения завершения; пользовательская приёмка уже подтверждена."
+        "Общий responsive browser test run 44213429430 выявил переполнение таблицы в уроке 6.1.3; это соседний регрессионный дефект, не дефект контрактного теста 6.1.4. Требуется отдельное исправление и повторная проверка."
       ]
     }
   ],
@@ -2979,7 +2979,7 @@
       "date": "2026-11-18",
       "type": "lesson_6_1_4_user_acceptance",
       "title": "Пользователь принял урок 6.1.4 во всех трёх локализациях",
-      "result": "Пользователь подтвердил приёмку урока 6.1.4 «Интерпретация деревьев решений». Визуальная и редакционная приёмка RU / EN / 中文 зафиксирована. Урок завершён с точки зрения учебного содержания; отдельный responsive browser stage Validate learning catalog остаётся техническим контролем. Следующий учебный шаг — 6.2.1.",
+      "result": "Пользователь подтвердил приёмку урока 6.1.4 «Интерпретация деревьев решений». Визуальная и редакционная приёмка RU / EN / 中文 зафиксирована. Урок завершён с точки зрения учебного содержания; отдельный responsive browser stage Validate learning catalog остаётся техническим контролем. Следующий учебный шаг — 6.2.1. Дополнительная проверка run 44213429430: контракт 6.1.4 прошёл; общий browser overflow test обнаружил таблицу, выходящую за границы карточки в 6.1.3 на 360/390/768 px в light/dark для RU/EN/中文.",
       "evidence": [
         "docs/management/LESSON_6_1_4_PRODUCTION_REVIEW_2026-11-18.md",
         "lessons/a-6-1-4.html",
@@ -2987,7 +2987,24 @@
         "lessons/a-6-1-4-zh.html"
       ],
       "limitations": [
-        "Responsive browser stage Validate learning catalog run 44213429430 ещё требует проверки актуального статуса."
+        "Нужно исправить responsive overflow таблицы в 6.1.3 и повторить browser regression; это не отменяет пользовательскую приёмку 6.1.4."
+      ]
+    },
+    {
+      "id": "AUD-111",
+      "date": "2026-11-18",
+      "type": "lesson_6_1_3_responsive_regression",
+      "title": "Обнаружено переполнение таблицы в уроке 6.1.3 при browser regression",
+      "result": "Validate learning catalog run 44213429430: все проверки до browser overflow прошли, включая production contract 6.1.4. Browser check завершился failure на широкой таблице-примере внутри .lesson-problem в RU/EN/中文 урока 6.1.3 на ширинах 360, 390 и 768 px в светлой и тёмной темах. Требуется сделать таблицу адаптивной (например, локальная горизонтальная прокрутка либо корректная перестройка) и повторить проверку.",
+      "evidence": [
+        "tests/test_lesson_layout_overflow.py",
+        "lessons/a-6-1-3.html",
+        "lessons/a-6-1-3-en.html",
+        "lessons/a-6-1-3-zh.html",
+        "https://github.com/Dach1980/ai-research-dch-school/actions/runs/44213429430"
+      ],
+      "limitations": [
+        "Дефект относится к уроку 6.1.3, а не к контрактному тесту урока 6.1.4."
       ]
     }
   ],

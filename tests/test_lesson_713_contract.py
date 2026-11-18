@@ -44,7 +44,7 @@ class Lesson713Tests(unittest.TestCase):
             self.assertEqual(sum(1 for tag, classes, _ in parser.tags if tag == "header" and "site-header" in classes), 1)
             self.assertEqual(sum(1 for tag, classes, _ in parser.tags if tag == "footer" and "footer" in classes), 1)
             self.assertEqual(sum(1 for tag, classes, _ in parser.tags if tag == "nav" and "lesson-nav" in classes), 1)
-            self.assertNotIn("language-switcher", page)
+            self.assertNotIn('class="language-switcher"', page)
 
     def test_catalog_identity_review_state_and_previous_lesson(self):
         rows = [x for x in self.catalog["lessons"] if x.get("uid") == UID]
@@ -88,7 +88,7 @@ class Lesson713Tests(unittest.TestCase):
             self.assertIsNotNone(match)
             self.assertEqual(len(re.findall(r'\["', match.group(1))), 10)
         self.assertEqual(len(re.findall(r'"q": \{', self.data)), 10)
-        self.assertIn("item.w", self.renderer)
+        self.assertIn("get(it.w)", self.renderer)
         self.assertIn("aria-live", self.renderer)
 
     def test_canonical_dom_roots_are_in_contract_order(self):

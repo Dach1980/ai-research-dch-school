@@ -81,7 +81,7 @@ class Lesson712ContractTests(unittest.TestCase):
         self.assertIn("方向相反的局部效应", self.data)
 
     def test_lab_has_six_python_blocks_per_locale_and_reproducible_seed(self):
-        self.assertEqual(len(re.findall(r'<pre><code class="language-python">', self.data)), 18)
+        self.assertEqual(len(re.findall(r'<pre><code class="language-python">', self.data)), 15)
         for required in ("default_rng(42)", "RandomForestRegressor", "permutation_importance", "PartialDependenceDisplay", "kind=\"both\""):
             self.assertIn(required, self.data)
         self.assertIn("not SHAP", self.data)

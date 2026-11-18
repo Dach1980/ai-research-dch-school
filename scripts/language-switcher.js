@@ -29,6 +29,7 @@
   box.setAttribute("aria-label", "Language");
   [["RU", "ru"], ["EN", "en"], ["中文", "zh"]].forEach(([label, locale]) => {
     const link = document.createElement("a");
+    link.lang = locale;
     link.href = target(locale);
     link.textContent = label;
     if (active === locale) {

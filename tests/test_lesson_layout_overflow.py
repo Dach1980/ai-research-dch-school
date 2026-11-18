@@ -1,6 +1,6 @@
 """Real-browser regression test for text escaping lesson cards.
 
-Checks localized 1.4.x, 1.5.x and published 6.1.3 lessons at desktop/tablet/mobile widths in both themes.
+Checks localized 1.4.x, 1.5.x and published 6.1.3 and 6.1.4 lessons at desktop/tablet/mobile widths in both themes.
 Intentional horizontal scrollers (math, code and tables) are excluded from the
 no-overflow rule and remain independently scrollable.
 """
@@ -9,7 +9,7 @@ from pathlib import Path
 from playwright.sync_api import sync_playwright
 
 ROOT = Path(__file__).resolve().parents[1]
-LESSONS = sorted([* (ROOT / "lessons").glob("a-1-4-*.html"), * (ROOT / "lessons").glob("a-1-5-1*.html"), * (ROOT / "lessons").glob("a-1-5-2*.html"), * (ROOT / "lessons").glob("a-1-5-3*.html"), * (ROOT / "lessons").glob("a-1-5-4*.html"), * (ROOT / "lessons").glob("a-1-5-5*.html"), * (ROOT / "lessons").glob("a-6-1-3*.html")])
+LESSONS = sorted([* (ROOT / "lessons").glob("a-1-4-*.html"), * (ROOT / "lessons").glob("a-1-5-1*.html"), * (ROOT / "lessons").glob("a-1-5-2*.html"), * (ROOT / "lessons").glob("a-1-5-3*.html"), * (ROOT / "lessons").glob("a-1-5-4*.html"), * (ROOT / "lessons").glob("a-1-5-5*.html"), * (ROOT / "lessons").glob("a-6-1-3*.html"), * (ROOT / "lessons").glob("a-6-1-4*.html")])
 VIEWPORTS = (360, 390, 768, 1024, 1440)
 THEMES = ("dark", "light")
 CARD_SELECTOR = (

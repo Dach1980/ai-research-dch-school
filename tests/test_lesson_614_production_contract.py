@@ -59,8 +59,8 @@ class Lesson614ProductionContractTests(unittest.TestCase):
             html = path.read_text(encoding="utf-8")
             for token in expected[lang]:
                 self.assertIn(token, html)
-            self.assertIn("0.125", html)
-            self.assertIn("0.375", html)
+            self.assertIn("0,125" if lang == "ru" else "0.125", html)
+            self.assertIn("0,375" if lang == "ru" else "0.375", html)
             self.assertIn("4.0", html)
             self.assertIn("70", html)
 

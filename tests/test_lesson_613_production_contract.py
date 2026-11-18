@@ -66,7 +66,7 @@ class Lesson613ProductionContractTests(unittest.TestCase):
             self.assertIn('aria-labelledby="coef-title coef-desc"', html)
 
     def test_worked_example_and_code_are_consistent(self):
-        for path in PAGES.values():
+        for lang, path in PAGES.items():
             html = path.read_text(encoding="utf-8")
             self.assertIn('def predict(area_m2, distance_km):', html)
             self.assertIn('area_effect = 0.45 * (area_m2 - 50)', html)

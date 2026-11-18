@@ -14,16 +14,15 @@
   if (lead) lead.textContent = text(lesson.lead);
   document.title = lesson.code + " — " + text(lesson.title) + " — AI Research DCH School";
   const labels = {
-    ru:{outcomes:"Результаты обучения",duration:"Продолжительность",quiz:"Самопроверка"},
-    en:{outcomes:"Learning outcomes",duration:"Duration",quiz:"Self-check"},
-    zh:{outcomes:"学习目标",duration:"学习时长",quiz:"自我检查"}
+    ru:{outcomes:"Результаты обучения",quiz:"Самопроверка"},
+    en:{outcomes:"Learning outcomes",quiz:"Self-check"},
+    zh:{outcomes:"学习目标",quiz:"自我检查"}
   }[locale];
   if (outcomes) {
     const h = document.createElement("h2"); h.textContent = labels.outcomes;
-    const p = document.createElement("p"); p.className = "lesson-duration"; p.textContent = labels.duration + ": " + text(lesson.duration);
     const ul = document.createElement("ul");
     lesson.outcomes[locale].forEach(item => { const li=document.createElement("li"); li.textContent=item; ul.appendChild(li); });
-    outcomes.append(h,p,ul);
+    outcomes.append(h,ul);
   }
   if (body) lesson.pages.forEach((page,index) => {
     const section=document.createElement("section");

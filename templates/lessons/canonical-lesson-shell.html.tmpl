@@ -36,7 +36,9 @@
     <p class="eyebrow">{{TRACK_AND_LESSON_BREADCRUMB}}</p>
     <h1 id="lesson-title">{{LESSON_TITLE}}</h1>
     <p class="lead" id="lesson-lead">{{LESSON_LEAD}}</p>
+    <!-- Educational content only: do not insert estimated duration, level or format badges. -->
     <section class="outcomes" id="lesson-outcomes"></section>
+    <!-- Lesson renderer owns sections and must use the canonical terminology-card component. -->
     <div id="lesson-sections"></div>
     <div id="lesson-quiz"></div>
     <!-- Keep this placeholder empty. lesson-layout.js owns its contents. -->

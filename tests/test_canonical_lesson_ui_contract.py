@@ -73,7 +73,7 @@ class CanonicalLessonUIContractTests(unittest.TestCase):
 
     def test_locale_switcher_accepts_all_lesson_number_sequences(self):
         script = (ROOT / "scripts/language-switcher.js").read_text(encoding="utf-8")
-        self.assertIn(r"^lessons\/a-[a-z0-9.-]+\.html$", script)
+            self.assertIn(rule, text)
         for route in (
             "lessons/a-1-1-1.html",
             "lessons/a-6-1-3.html",
@@ -106,7 +106,7 @@ class CanonicalLessonUIContractTests(unittest.TestCase):
         self.assertTrue(contract.is_file())
         text = contract.read_text(encoding="utf-8").lower()
         for rule in ("sole owner", "only `scripts/lesson-layout.js`", "playwright", "status: published"):
-        self.assertIn(r"^lessons\/a-[a-z0-9.-]+\.html$", script)
+            self.assertIn(rule, text)
 
 
 if __name__ == "__main__":

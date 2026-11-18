@@ -153,5 +153,44 @@ class CanonicalLessonBrowserAcceptanceTests(unittest.TestCase):
                         page.close()
 
 
+    def test_canonical_dictionary_cards_and_metadata_on_reference_lessons(self):
+        cases = [
+            ("7.1.1", "lessons/a-7-1-1-les-a-0018.html", 5, "Словарь терминов"),
+            ("7.1.1-en", "lessons/a-7-1-1-les-a-0018-en.html", 5, "Key terms"),
+            ("7.1.1-zh", "lessons/a-7-1-1-les-a-0018-zh.html", 5, "术语词典"),
+            ("7.1.2", "lessons/a-7-1-2-les-a-0169.html", 8, "Словарь терминов"),
+            ("7.1.2-en", "lessons/a-7-1-2-les-a-0169-en.html", 8, "Key terms"),
+            ("7.1.2-zh", "lessons/a-7-1-2-les-a-0169-zh.html", 8, "术语词典"),
+        ]
+        for label, route, expected_cards, expected_heading in cases:
+            for width, theme in ((375, "light"), (768, "dark"), (1440, "light")):
+                with self.subTest(lesson=label, width=width, theme=theme):
+                    page = self.browser.new_page(viewport={"width": width, "height": 1000})
+                    page.add_init_script(f"localStorage.setItem('dch-school-theme', '{theme}');")
+                    page.route("**/scripts/account-ui.js", lambda route: route.fulfill(status=200, content_type="application/javascript", body="/* isolated account UI */"))
+                    errors = []
+                    page.on("pageerror", lambda error: errors.append(str(error)))
+                    response = page.goto(self.base + "/" + route, wait_until="domcontentloaded")
+                    self.assertEqual(response.status, 200)
+                    glossary = page.locator("section.lesson-glossary")
+                    glossary.wait_for()
+                    self.assertEqual(glossary.locator(":scope > h2").inner_text(), expected_heading)
+                    self.assertEqual(glossary.locator(".glossary-grid").count(), 1)
+                    cards = glossary.locator(".glossary-entry")
+                    self.assertEqual(cards.count(), expected_cards)
+                    self.assertEqual(glossary.locator(".term-index").count(), expected_cards)
+                    self.assertEqual(page.locator(".lesson-duration").count(), 0)
+                    self.assertNotRegex(glossary.inner_text(), r"(?i)glossary|глоссарий|краткий словарь|简明术语表|术语表")
+                    card = cards.first
+                    self.assertEqual(card.evaluate("(el) => getComputedStyle(el).display"), "flex")
+                    self.assertNotEqual(card.evaluate("(el) => getComputedStyle(el).backgroundColor"), "rgba(0, 0, 0, 0)")
+                    self.assertGreater(card.evaluate("(el) => parseFloat(getComputedStyle(el).borderRadius)"), 0)
+                    columns = glossary.locator(".glossary-grid").evaluate("(el) => getComputedStyle(el).gridTemplateColumns.split(' ').length")
+                    self.assertEqual(columns, 1 if width == 375 else 2)
+                    self.assertLessEqual(page.evaluate("document.documentElement.scrollWidth - window.innerWidth"), 1)
+                    self.assertEqual(errors, [])
+                    page.close()
+
+
 if __name__ == "__main__":
     unittest.main()

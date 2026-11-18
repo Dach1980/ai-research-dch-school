@@ -382,9 +382,26 @@
 - [x] Каталог v3 содержит RU/EN/中文 URL и `status: review`, `content_state: localized`; статус опубликованного урока не присваивался преждевременно.
 - [x] GitHub Pages build и deploy завершились успешно для коммита `b6dcf91`.
 - [x] Структурный quality gate, локальный контрактный тест 7.1.2, синтаксическая проверка JS и основные multilingual/каталожные проверки прошли в Pages validation.
-- [ ] Дождаться завершения полного Validate learning catalog workflow, включая Playwright browser overflow checks.
-- [ ] Провести визуальную приёмку трёх языковых страниц, проверить навигацию/переключение языка и мобильные ширины.
-- [ ] После приёмки изменить статус записи каталога на `published`, синхронизировать canonical curriculum / roadmap и пересчитать счётчик публикаций.
+- [x] Исправлена конкурирующая навигация: renderer 7.1.2 больше не создаёт собственные языковые ссылки и не заполняет общий `lesson-nav`.
+- [x] Исправлено распознавание locale-switcher для lesson routes всех тем, не только 1–6.
+- [x] Добавлена единая theme-aware окраска заголовков через `--lds-ink`.
+- [x] Страницы RU/EN/中文 приведены к canonical shell.
+- [ ] Дождаться успешного CI с Playwright browser acceptance (три языка, две темы, 375/768/1440 px).
+- [ ] Проверить результат browser acceptance и устранить возможные регрессии.
+- [ ] После успешной приёмки изменить запись каталога на `published`, синхронизировать canonical curriculum / roadmap и пересчитать счётчик публикаций.
+
+### Обязательный стандарт интерфейса уроков: Canonical Lesson Template & UI Contract (18 ноября 2026)
+
+- [x] Создан обязательный стандарт `docs/standards/CANONICAL_LESSON_UI_CONTRACT.md`: зафиксированы владельцы шапки, языкового переключателя, переключателя темы, навигации урока и подвала.
+- [x] Создан переиспользуемый шаблон `templates/lessons/canonical-lesson-shell.html`.
+- [x] Установлено правило: renderer урока отвечает только за учебное содержимое; он не создаёт переключатели языков, тему, шапку, подвал или навигацию.
+- [x] Удалён дублирующий переключатель языков и конкурирующая навигация из renderer 7.1.2.
+- [x] Исправлен общий locale route matcher для уроков всех тем.
+- [x] Усилен `scripts/lesson_quality_gate.py`: canonical shell, пустой nav placeholder, footer wrapper, shared scripts и отсутствие локального переключателя проверяются до публикации.
+- [x] Добавлены статические тесты `tests/test_canonical_lesson_ui_contract.py` и браузерные Playwright тесты `tests/test_canonical_lesson_browser.py`.
+- [x] Pages deployment и Validate learning catalog workflows дополнены обязательными проверками UI Contract.
+- [ ] Подтвердить зелёный результат обоих CI workflows и browser acceptance на RU/EN/中文, light/dark и ширинах 375/768/1440 px.
+- [ ] После подтверждения использовать этот шаблон для всех следующих новых уроков Track A–D.
 
 ### Зафиксированная техническая задача: урок 6.1.3
 

@@ -294,6 +294,7 @@ class CanonicalLessonBrowserAcceptanceTests(unittest.TestCase):
                         return {
                           color: s.color,
                           background: s.backgroundColor,
+                          backgroundImage: s.backgroundImage,
                           borderStyle: s.borderTopStyle,
                           borderWidth: parseFloat(s.borderTopWidth),
                           radius: parseFloat(s.borderRadius),
@@ -325,7 +326,7 @@ class CanonicalLessonBrowserAcceptanceTests(unittest.TestCase):
                     self.assertIsNotNone(result["formula"])
                     self.assertGreater(result["formula"]["borderWidth"], 0)
                     self.assertGreater(result["formula"]["radius"], 0)
-                    self.assertNotEqual(result["formula"]["background"], "rgba(0, 0, 0, 0)")
+                    self.assertNotEqual(result["formula"]["backgroundImage"], "none")
                     self.assertIsNotNone(result["expression"])
                     self.assertGreater(result["expression"]["fontSize"], 0)
                     self.assertIsNotNone(result["quiz"])

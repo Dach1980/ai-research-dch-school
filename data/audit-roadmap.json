@@ -1229,66 +1229,29 @@
       "title": "Разработать урок 6.1.3 «Линейные модели как объяснимые модели»",
       "status": "in_progress",
       "priority": "high",
-      "decision": "Подготовлены полноценные черновики RU / EN / 中文: девять разделов, пять результатов обучения, пример центрированной модели аренды, пять формул, локализованная SVG, исполняемый Python 3.10+ эксперимент, восемь терминов, пять источников и семь вопросов самопроверки. Контрактные тесты подключены к validate-catalog.yml и pages.yml. На HEAD 7eefa8c полный Validate learning catalog прошёл; draft contract, responsive browser overflow, locale grid, design-system tests, Pages validation, Supabase migrations, GitHub Pages deployment и SVG theme audit — success. UID не назначен: crosswalk предлагает exact-title candidate les-a-0016 из legacy Theme 4 / Module 4.1, но его повторное использование требует явного одобрения пользователя. До решения пользователя каталог и production URL не изменяются.",
+      "decision": "Пользователь 2026-11-18 явно одобрил повторное использование UID les-a-0016 и перенос из legacy 4.1.3. Урок расширен до публикации: добавлены интуитивное объяснение линейности по параметрам, сравнительная таблица трёх квартир с разложением вкладов, эксперимент со сменой единиц, разбор мультиколлинеарности «площадь — число комнат», дополнительная практика и пятишаговый шаблон объяснения коэффициента. Подготовлены production RU / EN / 中文 страницы, обновлены canonical curriculum, catalog, crosswalk, тесты и навигация. CI/deployment выполняются; ручная визуальная приёмка пользователем ещё не проведена.",
       "acceptance": [
-        "RU / EN / 中文 имеют одинаковые девять учебных разделов, результаты обучения, пример, ограничения, практику и самопроверку.",
-        "Формулы оформлены компонентом .formula с role=math и локализованными aria-label; ключевые понятия — отдельными definition-карточками.",
-        "SVG содержит локализованные title/desc/подписи; мобильный контейнер прокручивается без расширения страницы.",
+        "RU / EN / 中文 содержат одинаковые девять учебных разделов, шесть результатов обучения, сквозной пример, расширенные практические разборы, ограничения и самопроверку.",
+        "Формулы оформлены компонентом .formula с role=math и aria-label; ключевые понятия — отдельными definition-карточками.",
+        "SVG содержит локализованные title/desc/подписи; таблица и математические блоки адаптивны.",
         "Python-эксперимент воспроизводим без внешних библиотек и сопровождается ожидаемым результатом.",
         "Семь вопросов проверяют только содержание урока и имеют локализованную обратную связь.",
-        "UID reuse approved; canonical curriculum, catalog, crosswalk and production navigation updated.",
-        "CI, SVG audit, responsive browser tests and Pages deployment pass; user visual QA remains separately pending."
+        "UID les-a-0016 reuse explicitly approved; canonical curriculum, catalog, crosswalk and production routes updated.",
+        "All CI, responsive browser tests and GitHub Pages deployment pass; manual visual QA recorded separately."
       ],
       "evidence": [
-        "drafts/lessons/a-6-1-3-ru.html",
-        "drafts/lessons/a-6-1-3-en.html",
-        "drafts/lessons/a-6-1-3-zh.html",
-        "tests/test_lesson_613_draft_contract.py",
-        "docs/management/LESSON_6_1_3_DRAFT_REVIEW_2026-11-18.md",
-        "cc30b2788d7283021ddab6bf36319f122d22eb72"
+        "lessons/a-6-1-3.html",
+        "lessons/a-6-1-3-en.html",
+        "lessons/a-6-1-3-zh.html",
+        "tests/test_lesson_613_production_contract.py",
+        "docs/management/LESSON_6_1_3_DRAFT_REVIEW_2026-11-18.md"
       ],
       "limitations": [
-        "UID les-a-0016 — только кандидат точного совпадения названия; пользователь ещё не подтвердил перенос.",
-        "Черновики не включены в production catalog и не публикуются как урок.",
-        "Ручная визуальная приёмка 6.1.3 пользователем ещё не проводилась; автоматические responsive browser tests прошли."
+        "Ручная визуальная приёмка опубликованных RU / EN / 中文 страниц пользователем ещё не подтверждена."
       ],
       "verification": {
-        "validate_catalog": {
-          "status": "success",
-          "run_id": 44201796425,
-          "commit": "7eefa8c8fc4985e79073687d8eefddf9ca4184a6"
-        },
-        "lesson_613_contract": {
-          "status": "success",
-          "workflow_runs": [
-            44201796425,
-            44201796528
-          ]
-        },
-        "responsive_browser_overflow": {
-          "status": "success",
-          "run_id": 44201796425,
-          "includes_draft_locales": [
-            "ru",
-            "en",
-            "zh"
-          ]
-        },
-        "pages_validation_and_supabase": {
-          "status": "success",
-          "run_id": 44201796528,
-          "commit": "7eefa8c8fc4985e79073687d8eefddf9ca4184a6"
-        },
-        "github_pages_deployment": {
-          "status": "success",
-          "run_id": 44201796042,
-          "commit": "7eefa8c8fc4985e79073687d8eefddf9ca4184a6"
-        },
-        "svg_theme_audit": {
-          "status": "success",
-          "run_id": 44201186584,
-          "commit": "cc30b2788d7283021ddab6bf36319f122d22eb72"
-        }
+        "status": "pending",
+        "note": "Новые workflow runs будут записаны после завершения GitHub Actions."
       }
     },
     {
@@ -1327,6 +1290,24 @@
       "limitations": [
         "UID reuse les-a-0016 и production promotion требуют подтверждения пользователя.",
         "Ручная визуальная приёмка трёх локализаций ещё не проводилась."
+      ]
+    },
+    {
+      "id": "AUD-107",
+      "date": "2026-11-18",
+      "type": "lesson_6_1_3_uid_reuse_approval_and_expansion",
+      "title": "Одобрено повторное использование UID les-a-0016; урок 6.1.3 расширен и перенесён в production",
+      "result": "Пользователь явно подтвердил перенос UID les-a-0016 из legacy 4.1.3 в каноническое положение 6.1.3. Перед публикацией расширены RU / EN / 中文 материалы: линейность по параметрам, сравнительная таблица трёх объектов, смена единиц измерения, кейс мультиколлинеарности, дополнительная практика и шаблон объяснения коэффициента. Канонический каталог, migration crosswalk и production routes синхронизированы.",
+      "evidence": [
+        "data/catalog/curriculum-canonical-v1.json",
+        "data/catalog/catalog-v3.json",
+        "docs/management/CANONICAL_LESSON_MIGRATION_CROSSWALK_2026-11-17.csv",
+        "lessons/a-6-1-3.html",
+        "lessons/a-6-1-3-en.html",
+        "lessons/a-6-1-3-zh.html"
+      ],
+      "limitations": [
+        "Автоматические проверки и deployment фиксируются отдельно; ручная визуальная приёмка пользователем ожидается."
       ]
     }
   ],

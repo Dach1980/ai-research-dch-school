@@ -1,7 +1,7 @@
 {
   "schema_version": 3,
   "catalog_id": "dch-school-curriculum",
-  "catalog_version": "3.2.1-numbering-overlay",
+  "catalog_version": "3.2.2-numbering-overlay",
   "status": "migration_staging",
   "tracks": [
     {
@@ -2256,16 +2256,35 @@
     {
       "uid": "les-a-0016",
       "track_uid": "trk-a",
-      "theme_uid": "thm-a-04",
-      "module_uid": "mod-a-04-01",
-      "code": "4.1.3",
+      "theme_uid": "thm-a-06",
+      "module_uid": "mod-a-06-01",
+      "code": "6.1.3",
       "title": "Линейные модели как объяснимые модели",
-      "status": "planned",
+      "status": "published",
       "access": "open",
       "level": "beginner",
-      "prerequisite_uids": [],
-      "learning_outcomes": [],
-      "content_state": "outline_only"
+      "prerequisite_uids": [
+        "les-a-0148"
+      ],
+      "learning_outcomes": [
+        "Записывает линейную модель и объясняет роль признаков, коэффициентов и свободного члена.",
+        "Интерпретирует знак и величину коэффициента при фиксированных остальных признаках и с учётом единиц измерения.",
+        "Разлагает прогноз на опорный уровень и вклады признаков.",
+        "Объясняет влияние масштабирования, кодирования и преобразования признаков на интерпретацию коэффициентов.",
+        "Различает линейность по коэффициентам и линейность зависимости от исходного признака.",
+        "Выявляет мультиколлинеарность, нестабильность, неверную спецификацию и смешение ассоциации с причинностью."
+      ],
+      "content_state": "published",
+      "url_i18n": {
+        "ru": "lessons/a-6-1-3.html",
+        "en": "lessons/a-6-1-3-en.html",
+        "zh": "lessons/a-6-1-3-zh.html"
+      },
+      "title_i18n": {
+        "ru": "Линейные модели как объяснимые модели",
+        "en": "Linear Models as Explainable Models",
+        "zh": "线性模型作为可解释模型"
+      }
     },
     {
       "uid": "les-a-0017",

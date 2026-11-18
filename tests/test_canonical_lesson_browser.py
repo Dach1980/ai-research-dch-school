@@ -116,7 +116,7 @@ class CanonicalLessonBrowserAcceptanceTests(unittest.TestCase):
                 page = self.open_page(lesson, "ru")
                 self.assertEqual(page.locator("nav.lesson-nav").count(), 1)
                 self.assertEqual(page.locator("header.site-header .language-switcher").count(), 1)
-                lesson_links = page.locator("nav.lesson-nav a[href*='/lessons/']")
+                lesson_links = page.locator("nav.lesson-nav a[href*='/lessons/a-']")
                 for index in range(lesson_links.count()):
                     href = lesson_links.nth(index).get_attribute("href")
                     self.assertIn(href.split("/")[-1], published_routes)

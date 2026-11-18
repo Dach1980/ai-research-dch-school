@@ -14,7 +14,7 @@
   const isLessonsIndex = relativePage === "lessons/index.html";
   const isMapIndex = relativePage === "learning-map/index.html";
   const isTrack = /^tracks\/(understanding-ai|inside-ai|building-with-ai)\.html$/.test(relativePage);
-  const isLesson = /^lessons\/a-[1-6]-.*\.html$/.test(relativePage);
+  const isLesson = /^lessons\/a-[a-z0-9.-]+\.html$/i.test(relativePage);
   const isFeedback = relativePage === "feedback/index.html";
   const isAuthor = /^about\/author\.html$/.test(relativePage);
   const isKnownPage = isHome || isLessonsIndex || isMapIndex || isTrack || isLesson || isFeedback || isAuthor;

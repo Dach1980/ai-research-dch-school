@@ -77,6 +77,7 @@ class CanonicalLessonUIContractTests(unittest.TestCase):
     def test_locale_switcher_accepts_all_lesson_number_sequences(self):
         script = (ROOT / "scripts/language-switcher.js").read_text(encoding="utf-8")
         self.assertIn(r"^lessons\/a-[a-z0-9.-]+\.html$", script)
+        self.assertIn("link.lang = locale;", script)
         for route in (
             "lessons/a-1-1-1.html",
             "lessons/a-6-1-3.html",

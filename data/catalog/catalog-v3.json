@@ -1,7 +1,7 @@
 {
   "schema_version": 3,
   "catalog_id": "dch-school-curriculum",
-  "catalog_version": "3.2.3-lesson-6-1-4",
+  "catalog_version": "3.2.4-lesson-6-2-1",
   "status": "migration_staging",
   "tracks": [
     {
@@ -428,6 +428,18 @@
         "ru": "Основные принципы объяснимого искусственного интеллекта",
         "en": "Core Principles of Explainable Artificial Intelligence",
         "zh": "可解释人工智能的基本原理"
+      }
+    },
+    {
+      "uid": "mod-a-06-02",
+      "theme_uid": "thm-a-06",
+      "number": 2,
+      "title": "Компромисс между точностью и интерпретируемостью",
+      "status": "active",
+      "title_i18n": {
+        "ru": "Компромисс между точностью и интерпретируемостью",
+        "en": "The Trade-off Between Predictive Performance and Interpretability",
+        "zh": "预测性能与可解释性之间的权衡"
       }
     }
   ],
@@ -1940,21 +1952,35 @@
     {
       "uid": "les-a-0149",
       "track_uid": "trk-a",
-      "theme_uid": "thm-a-04",
-      "module_uid": "mod-a-04-01",
-      "code": "4.1.5",
+      "theme_uid": "thm-a-06",
+      "module_uid": "mod-a-06-02",
+      "code": "6.2.1",
       "title": "Компромисс между точностью и интерпретируемостью",
-      "status": "planned",
+      "status": "published",
       "access": "open",
       "level": "beginner",
       "prerequisite_uids": [
-        "les-a-0017"
+        "les-a-0168"
       ],
       "learning_outcomes": [
         "Сравнивает модели по предсказательному качеству и интерпретируемости.",
-        "Обосновывает выбор модели с учётом цены ошибки, аудита и требований к объяснению."
+        "Обосновывает выбор модели с учётом цены ошибки, аудита и требований к объяснению.",
+        "Различает интерпретируемость по устройству модели и объяснения постфактум.",
+        "Объясняет возможный компромисс между качеством прогноза и сложностью модели, не считая его универсальным законом.",
+        "Интерпретирует границу Парето при сравнении моделей.",
+        "Выбирает модель с учётом контекста применения, ограничений данных и последствий ошибок."
       ],
-      "content_state": "outline_only"
+      "content_state": "published",
+      "url_i18n": {
+        "ru": "lessons/a-6-2-1-les-a-0149.html",
+        "en": "lessons/a-6-2-1-les-a-0149-en.html",
+        "zh": "lessons/a-6-2-1-les-a-0149-zh.html"
+      },
+      "title_i18n": {
+        "ru": "Компромисс между точностью и интерпретируемостью",
+        "en": "The Trade-off Between Predictive Performance and Interpretability",
+        "zh": "预测性能与可解释性之间的权衡"
+      }
     },
     {
       "uid": "les-a-0113",

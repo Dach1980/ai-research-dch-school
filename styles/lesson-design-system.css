@@ -116,7 +116,8 @@ html:not([data-theme="light"]){--lds-definition-term:#5eead4;--lds-definition-te
 
 /* Canonical glossary contract: two-column outer grid, vertical flex cards.
    Keep this rule more specific than the legacy .glossary-entry grid above. */
-.lesson-glossary > .glossary-entry{
+.lesson-glossary > .glossary-entry,
+.lesson-glossary > .glossary-grid > .glossary-entry{
   display:flex;
   flex-direction:column;
   align-items:stretch;
@@ -126,7 +127,9 @@ html:not([data-theme="light"]){--lds-definition-term:#5eead4;--lds-definition-te
   overflow-wrap:anywhere;
 }
 .lesson-glossary > .glossary-entry > strong,
-.lesson-glossary > .glossary-entry > span{
+.lesson-glossary > .glossary-entry > span,
+.lesson-glossary > .glossary-grid > .glossary-entry > strong,
+.lesson-glossary > .glossary-grid > .glossary-entry > span{
   display:block;
   min-width:0;
   max-width:100%;

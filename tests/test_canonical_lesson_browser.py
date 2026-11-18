@@ -417,7 +417,7 @@ class CanonicalLessonBrowserAcceptanceTests(unittest.TestCase):
                       };
                       const heading = root.querySelector("h2");
                       const copy = root.querySelector("li, p");
-                      const rgb = (value) => value.match(/[\\d.]+/g).slice(0,3).map(Number);
+                      const rgb = (value) => value.match(/[0-9.]+/g).slice(0,3).map(Number);
                       const luminance = (value) => {
                         const channels = rgb(value).map(v => {
                           v /= 255;

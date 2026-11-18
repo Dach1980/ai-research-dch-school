@@ -1399,6 +1399,27 @@
         "Playwright browser regression и визуальная приёмка RU/EN/中文 выполнены; только после этого урок переводится в published."
       ],
       "source": "lessons/data/xai-02-local-global.js; lessons/a-7-1-2-les-a-0169*.html; scripts/xai-local-global-lesson.js; tests/test_lesson_712_contract.py; docs/management/AI_RESEARCH_DCH_SCHOOL_CURRICULUM_2026.md"
+    },
+    {
+      "id": "RM-LESSON-165",
+      "date": "2026-11-18",
+      "title": "Ввести обязательный Canonical Lesson Template & UI Contract",
+      "status": "in_progress",
+      "priority": "critical",
+      "decision": "Зафиксирован обязательный стандарт docs/standards/CANONICAL_LESSON_UI_CONTRACT.md и шаблон templates/lessons/canonical-lesson-shell.html. Закреплено единоличное владение общими компонентами: language-switcher.js управляет локалями только в header; theme-system.js — темой; lesson-layout.js — предыдущим/следующим уроком, картой и ссылками программы; renderer урока отвечает только за учебное содержимое. Устранён второй переключатель языков и конкурирующая навигация из scripts/xai-local-global-lesson.js. Расширен распознаватель маршрутов уроков на темы 1–11 и далее; lesson-layout.js поддерживает review preview без фиктивной публикации. Три страницы 7.1.2 приведены к общей структуре shell. Добавлены theme-aware заголовки на --lds-ink, static contract tests, Playwright browser acceptance tests, усилен lesson_quality_gate.py; оба Pages/catalog CI workflow включают проверки. Остаётся дождаться CI и проверить фактическую browser acceptance в RU/EN/中文, светлой/тёмной темах и 375/768/1440px. Не присваивать 7.1.2 статус published до успешной приёмки.",
+      "acceptance": [
+        "Единый обязательный UI Contract и reusable HTML shell сохранены в репозитории.",
+        "Header, locale selector, theme control, lesson navigation и footer имеют единственных владельцев.",
+        "Renderer 7.1.2 больше не создаёт локальный переключатель языков и не заполняет lesson-nav.",
+        "language-switcher.js распознаёт уроки независимо от номера темы.",
+        "lesson-layout.js безопасно строит preview-навигацию для review урока и навигацию для published урока.",
+        "Цвета заголовков используют theme-aware design tokens.",
+        "Static UI contract tests проходят.",
+        "Playwright проверяет RU/EN/中文, расположение переключателей, переходы, темы, адаптивность и отсутствие page-level overflow.",
+        "Lesson Quality Gate и GitHub Pages workflow блокируют deploy при нарушении shell contract.",
+        "CI и browser acceptance зелёные; только после этого lesson 7.1.2 можно перевести в published."
+      ],
+      "source": "docs/standards/CANONICAL_LESSON_UI_CONTRACT.md; templates/lessons/canonical-lesson-shell.html; scripts/language-switcher.js; scripts/lesson-layout.js; scripts/xai-local-global-lesson.js; styles/lesson-design-system.css; scripts/lesson_quality_gate.py; tests/test_canonical_lesson_ui_contract.py; tests/test_canonical_lesson_browser.py"
     }
   ],
   "audit_log": [

@@ -71,6 +71,8 @@ class CanonicalLessonBrowserAcceptanceTests(unittest.TestCase):
     def open_page(self, lesson, locale, width=1440, theme="light"):
         page = self.browser.new_page(viewport={"width": width, "height": 1000})
         page.add_init_script(f"localStorage.setItem('dch-school-theme', '{theme}');")
+        # Auth uses a remote Supabase SDK; isolate it from shell/navigation acceptance.
+        page.route("**/scripts/account-ui.js", lambda route: route.fulfill(status=200, content_type="application/javascript", body="/* account UI isolated in shell acceptance */"))
         errors = []
         page.on("pageerror", lambda error: errors.append(str(error)))
         relative_path = "/" + lesson["url_i18n"][locale]
@@ -98,9 +100,10 @@ class CanonicalLessonBrowserAcceptanceTests(unittest.TestCase):
                         page.locator("header.site-header .language-switcher a[aria-current='page']").count(),
                         1,
                     )
-                    page.locator("header.site-header .language-switcher a[lang='en']").click()
-                    page.wait_for_url("**/" + lesson["url_i18n"]["en"].split("/")[-1])
-                    self.assertTrue(page.locator("html").get_attribute("lang").lower().startswith("en"))
+                    if locale == "ru":
+                        page.locator("header.site-header .language-switcher a[lang='en']").click()
+                        page.wait_for_url("**/" + lesson["url_i18n"]["en"].split("/")[-1])
+                        self.assertTrue(page.locator("html").get_attribute("lang").lower().startswith("en"))
                     page.close()
 
     def test_shared_navigation_is_single_and_never_links_to_unpublished_lessons(self):

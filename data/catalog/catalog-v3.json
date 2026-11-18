@@ -2021,14 +2021,30 @@
       "module_uid": "mod-a-06-02",
       "code": "6.2.3",
       "title": "GAM и EBM: интерпретируемые модели с нелинейными зависимостями",
-      "status": "planned",
+      "status": "published",
       "access": "open",
       "level": "intermediate",
       "prerequisite_uids": [
         "les-a-0113"
       ],
-      "learning_outcomes": [],
-      "content_state": "outline_only"
+      "learning_outcomes": [
+        "Объяснять структуру GAM и роль link-функции, свободного члена и функций отдельных признаков.",
+        "Интерпретировать графики функций формы и отличать вклад признака от причинного эффекта.",
+        "Объяснять, как EBM сочетает аддитивную структуру, бустинг, bagging и ограниченные парные взаимодействия.",
+        "Различать глобальное объяснение модели и локальное объяснение отдельного прогноза.",
+        "Оценивать качество, устойчивость, сложность и ограничения GAM/EBM перед практическим применением."
+      ],
+      "content_state": "published",
+      "url_i18n": {
+        "ru": "lessons/a-6-2-3-les-a-0114.html",
+        "en": "lessons/a-6-2-3-les-a-0114-en.html",
+        "zh": "lessons/a-6-2-3-les-a-0114-zh.html"
+      },
+      "title_i18n": {
+        "ru": "GAM и EBM: интерпретируемые модели с нелинейными зависимостями",
+        "en": "GAM and EBM: Interpretable Models with Nonlinear Relationships",
+        "zh": "GAM 与 EBM：具有非线性关系的可解释模型"
+      }
     },
     {
       "uid": "les-a-0013",

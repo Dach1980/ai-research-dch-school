@@ -11,7 +11,7 @@ A lesson is a content unit inside the existing DCH School product. It is not a s
 
 **New lessons reuse the canonical shell and shared UI scripts.** Lesson-specific code may render educational content only. Any proposed deviation to the shell, global navigation, locale behavior, theme behavior, typography, colors, or shared components requires explicit approval before implementation.
 
-Do not copy and independently modify a previous lesson's UI. Start from `templates/lessons/canonical-lesson-shell.html` and keep shared components delegated to their owners below.
+Do not copy and independently modify a previous lesson's UI. Start from `templates/lessons/canonical-lesson-shell.html.tmpl` and keep shared components delegated to their owners below.
 
 ## 2. Canonical references
 

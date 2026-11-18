@@ -1,7 +1,7 @@
 # DCH School — Canonical Lesson Template & UI Contract
 
 **Status:** mandatory engineering standard  
-**Version:** 1.1  
+**Version:** 1.2  
 **Adopted:** 2026-11-18  
 **Scope:** all newly authored lesson pages in Tracks A–D, all locales (RU / EN / 中文). The current v3 lesson catalogue and automatic browser gate cover Track A; Tracks B–D must be registered in the v3 catalogue with localized routes before their pages can pass the same navigation acceptance.
 
@@ -40,17 +40,56 @@ A lesson renderer must never write into `nav.lesson-nav`. It must not create `.l
 
 ## 4. Canonical page structure
 
-Every locale page must contain, in this order:
+Every locale page must contain the following page-level structure:
 
 1. One `header.site-header` with brand, menu button and primary `nav.nav`.
 2. No hard-coded locale selector in the page source; the shared locale script inserts one after the primary navigation.
 3. One `main.container.lesson` (or another explicitly approved canonical main variant).
-4. Lesson metadata, title, lead, learning outcomes and content sections.
-5. Exactly one empty `nav.lesson-nav`; the shared navigation script populates it from catalog state.
-6. One canonical `footer.footer`.
-7. Shared scripts loaded once, in the order shown in the template.
+4. The nine lesson-content blocks in the exact order defined in §4.3.
+5. One canonical `footer.footer` after the complete lesson content.
+6. Shared scripts loaded once, in the order shown in the template.
 
 The footer must not contain language links. The lesson body must not contain a second language selector.
+
+## 4.3 Mandatory order of lesson-content blocks
+
+**The following sequence is mandatory for every lesson in every track and every locale (RU / EN / 中文). It preserves the original DCH School lesson structure and is not a per-lesson preference. No block may be moved before or after another block, omitted, or merged into a neighboring block to work around the order.**
+
+1. **Lesson title and description** — the lesson heading and introductory lead.
+2. **Learning outcomes** — the outcomes section.
+3. **Main educational sections** — the complete lesson explanation, concepts, diagrams and examples.
+4. **Practical assignments** — all practical tasks, labs and applied exercises.
+5. **Sources and literature** — references and further reading.
+6. **Lesson navigation panel** — the single empty `nav.lesson-nav` placeholder, populated only by `scripts/lesson-layout.js`.
+7. **Terminology dictionary** — the canonical `.lesson-glossary` card component defined in §4.1.
+8. **Self-check** — the lesson quiz / knowledge-check component.
+9. **Site footer** — the single canonical `footer.footer`, after the entire lesson content.
+
+The order is a DOM-order requirement, not merely a visual/CSS order. CSS positioning, grid/flex `order`, absolute positioning, or JavaScript relocation must not be used to disguise an incorrect source/DOM order. The navigation panel must be after sources and before the dictionary. The dictionary must be after navigation and before self-check. The footer must follow self-check.
+
+Each block must have a distinct, identifiable semantic root so static and browser tests can verify its position. A renderer may populate a designated root, but it must not move roots across the sequence or write into `nav.lesson-nav`. If a lesson has no practical assignment or sources, the corresponding section must still be represented by an explicit empty/appropriate state only if the curriculum owner has approved that absence; otherwise the lesson is incomplete and cannot be published. The dictionary and self-check remain required for complete lessons.
+
+Canonical main-content skeleton:
+
+```html
+<main class="container lesson">
+  <section class="lesson-intro">
+    <p class="eyebrow">...</p>
+    <h1 id="lesson-title">...</h1>
+    <p class="lead" id="lesson-lead">...</p>
+  </section>
+  <section class="outcomes" id="lesson-outcomes"></section>
+  <div id="lesson-sections"></div>
+  <section id="lesson-practice"></section>
+  <section id="lesson-sources"></section>
+  <nav class="lesson-nav" id="lesson-navigation" aria-label="..."></nav>
+  <section class="lesson-glossary" id="lesson-glossary"></section>
+  <section id="lesson-quiz"></section>
+</main>
+<footer class="footer">...</footer>
+```
+
+The skeleton defines structural positions and ownership boundaries. Existing lesson content may use different internal markup, but each block must map unambiguously to one of these ordered roots. This rule does not authorize changes to lesson wording, visual design, colors, navigation labels or curriculum content.
 
 ## 4.1 Required terminology dictionary component
 

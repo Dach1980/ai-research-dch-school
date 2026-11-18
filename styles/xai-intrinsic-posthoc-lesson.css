@@ -1,0 +1,17 @@
+/* Scoped styles for lesson 7.1.3 content only. */
+#lesson-sections,#lesson-practice,#lesson-sources,#lesson-glossary,#lesson-quiz{min-width:0}
+#lesson-sections .xai-canonical-section-content pre{max-width:100%;overflow:auto}
+#lesson-sections .xai-canonical-section-content pre code{white-space:pre}
+#lesson-sections .xai-canonical-section-content .xai-table-wrap{max-width:100%;overflow-x:auto;overscroll-behavior-x:contain;-webkit-overflow-scrolling:touch}
+#lesson-sections .xai-canonical-section-content table{min-width:620px;border-collapse:collapse}
+#lesson-sections .xai-canonical-section-content th,#lesson-sections .xai-canonical-section-content td{padding:.7rem;border:1px solid var(--lds-line);text-align:left}
+#lesson-sections .xai-canonical-section-content figure{max-width:100%;overflow-x:auto}
+#lesson-sections .xai-canonical-section-content figure svg{display:block;width:100%;height:auto;min-width:0}
+#lesson-quiz .knowledge-check{margin:1.5rem 0;padding:1.2rem;border:1px solid var(--lds-line);border-radius:14px;background:var(--lds-surface)}
+#lesson-quiz fieldset{margin:1rem 0;padding:.9rem;border:1px solid var(--lds-line);border-radius:10px}
+#lesson-quiz label{display:flex;gap:.65rem;align-items:flex-start;margin:.55rem 0;cursor:pointer}
+#lesson-quiz input{margin-top:.35rem;flex:0 0 auto}
+#lesson-quiz .quiz-submit{padding:.7rem 1rem;border:0;border-radius:9px;background:var(--lds-accent);color:#fff;font:inherit;font-weight:700;cursor:pointer}
+#lesson-quiz .quiz-feedback{display:none;margin-top:1rem;padding:.8rem 1rem;border-radius:10px;background:var(--lds-surface)}
+#lesson-quiz .quiz-feedback.is-visible{display:block}
+@media(max-width:640px){#lesson-quiz .knowledge-check{padding:.8rem}}

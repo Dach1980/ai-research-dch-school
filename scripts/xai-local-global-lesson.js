@@ -48,7 +48,7 @@
     }[locale];
     const contentRoots = Array.from(body.querySelectorAll(".xai-canonical-section-content"));
     contentRoots.forEach(contentRoot => {
-      let destination = body;
+      let destination = contentRoot;
       Array.from(contentRoot.childNodes).forEach(node => {
       if (node.nodeType === Node.ELEMENT_NODE && node.matches("h3")) {
         const heading = node.textContent.trim();
@@ -61,7 +61,7 @@
         node.remove();
         return;
       }
-      destination.appendChild(node);
+      if (destination !== contentRoot) destination.appendChild(node);
       });
     });
   }

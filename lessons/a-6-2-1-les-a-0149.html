@@ -84,26 +84,39 @@
 <div class="definition"><strong class="definition-term">Доминирование по Парето (Pareto dominance)</strong><span class="definition-text">Модель A доминирует модель B, если A не хуже B по всем выбранным критериям и строго лучше хотя бы по одному.</span></div>
 <p>Если модель A точнее и не сложнее модели B, а по остальным важным критериям не уступает ей, модель B можно исключить из дальнейшего рассмотрения. Но если одна модель точнее, а другая понятнее, ни одна не доминирует другую: выбор зависит от требований задачи.</p>
 <figure class="lesson-figure">
-<svg viewBox="0 0 900 470" role="img" aria-labelledby="pareto-title pareto-desc">
-<title id="pareto-title">Условная граница Парето для качества и интерпретируемости</title>
-<desc id="pareto-desc">На горизонтальной оси показана интерпретируемость, на вертикальной — качество прогноза. Недоминируемые решения образуют условную границу.</desc>
-<rect x="12" y="12" width="876" height="446" rx="18" class="svg-box"/>
-<path d="M112 370 V70 M112 370 H810" stroke="currentColor" stroke-width="2" fill="none"/>
-<path d="M112 145 H810 M112 220 H810 M112 295 H810" stroke="currentColor" stroke-opacity=".14" stroke-dasharray="5 6"/>
-<text x="460" y="425" text-anchor="middle" class="svg-label">Интерпретируемость →</text>
-<text x="42" y="220" text-anchor="middle" class="svg-label" transform="rotate(-90 42 220)">Качество прогноза →</text>
-<path d="M180 310 C300 270 400 210 500 180 S680 120 760 105" fill="none" stroke="var(--lds-accent)" stroke-width="4" stroke-dasharray="9 7"/>
+<svg viewBox="0 0 960 590" role="img" aria-labelledby="pareto-title pareto-desc">
+<title id="pareto-title">Граница Парето: компромисс между качеством прогноза и интерпретируемостью</title>
+<desc id="pareto-desc">Синие точки A–D образуют условную границу Парето. Серые точки E–H доминируются соответственно точками A–D: для каждой серой точки существует синяя модель, которая не хуже по обоим критериям и лучше хотя бы по одному. Стрелки показывают примеры такого доминирования.</desc>
+<defs>
+<marker id="pareto-arrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0 0 L6 3 L0 6" fill="none" stroke="#8794a7" stroke-width="1.2"/></marker>
+</defs>
+<rect x="12" y="12" width="936" height="566" rx="18" class="svg-box"/>
+<path d="M125 430 V92 M125 430 H865" stroke="currentColor" stroke-width="2" fill="none"/>
+<path d="M125 345 H865 M125 260 H865 M125 175 H865" stroke="currentColor" stroke-opacity=".14" stroke-dasharray="5 7"/>
+<text x="495" y="486" text-anchor="middle" class="svg-label">Интерпретируемость — выше вправо →</text>
+<text x="48" y="260" text-anchor="middle" class="svg-label" transform="rotate(-90 48 260)">Качество прогноза — выше вверх →</text>
+<path d="M205 365 C315 326 390 274 485 226 S680 142 790 112" fill="none" stroke="var(--lds-accent)" stroke-width="4" stroke-dasharray="10 7"/>
+<text x="610" y="91" class="svg-small" fill="var(--lds-accent)">Граница Парето</text>
+<g stroke="#8794a7" stroke-width="1.7" stroke-dasharray="4 5" fill="none" marker-end="url(#pareto-arrow)">
+<path d="M205 390 Q210 365 238 348"/><path d="M355 338 Q370 305 400 276"/><path d="M505 300 Q520 260 548 236"/><path d="M650 276 Q680 220 712 174"/>
+</g>
+<g fill="#8b929b" stroke="var(--surface-1,#fff)" stroke-width="3">
+<circle cx="205" cy="390" r="9"/><circle cx="355" cy="338" r="9"/><circle cx="505" cy="300" r="9"/><circle cx="650" cy="276" r="9"/>
+</g>
 <g fill="var(--lds-accent)" stroke="var(--surface-1,#fff)" stroke-width="3">
-<circle cx="205" cy="300" r="10"/><circle cx="345" cy="245" r="10"/><circle cx="500" cy="180" r="10"/><circle cx="680" cy="125" r="10"/>
+<circle cx="250" cy="340" r="11"/><circle cx="410" cy="270" r="11"/><circle cx="555" cy="225" r="11"/><circle cx="720" cy="160" r="11"/>
 </g>
-<g fill="#8b929b" stroke="var(--surface-1,#fff)" stroke-width="2">
-<circle cx="270" cy="345" r="8"/><circle cx="420" cy="300" r="8"/><circle cx="570" cy="250" r="8"/><circle cx="720" cy="220" r="8"/>
+<g class="svg-small" font-weight="600">
+<text x="250" y="319" text-anchor="middle">A</text><text x="410" y="249" text-anchor="middle">B</text><text x="555" y="204" text-anchor="middle">C</text><text x="720" y="139" text-anchor="middle">D</text>
+<text x="205" y="414" text-anchor="middle">E</text><text x="355" y="362" text-anchor="middle">F</text><text x="505" y="324" text-anchor="middle">G</text><text x="650" y="300" text-anchor="middle">H</text>
 </g>
-<g class="svg-small"><text x="205" y="282" text-anchor="middle">A</text><text x="345" y="227" text-anchor="middle">B</text><text x="500" y="162" text-anchor="middle">C</text><text x="680" y="107" text-anchor="middle">D</text><text x="270" y="366" text-anchor="middle">E</text><text x="420" y="321" text-anchor="middle">F</text><text x="570" y="271" text-anchor="middle">G</text><text x="720" y="241" text-anchor="middle">H</text></g>
-<text x="565" y="62" class="svg-small">Условная граница Парето</text>
-<text x="140" y="395" class="svg-small">Ниже — хуже по качеству</text>
+<g transform="translate(155 520)">
+<circle cx="8" cy="0" r="7" fill="var(--lds-accent)"/><text x="23" y="5" class="svg-small">A–D: недоминируемые варианты</text>
+<circle cx="350" cy="0" r="7" fill="#8b929b"/><text x="365" y="5" class="svg-small">E–H: доминируемые варианты</text>
+<path d="M690 0 h36" stroke="#8794a7" stroke-width="1.7" stroke-dasharray="4 4" marker-end="url(#pareto-arrow)"/><text x="735" y="5" class="svg-small">пример доминирования</text>
+</g>
 </svg>
-<figcaption>Концептуальная схема: точки не являются результатами реального эксперимента. Положение моделей и форма границы зависят от выбранных метрик.</figcaption>
+<figcaption>Концептуальная схема, не результаты эксперимента. Каждая серая точка доминируется синей: соответствующая синяя модель одновременно не хуже по обоим критериям и лучше хотя бы по одному. Синие точки образуют набор компромиссных решений: переход к большей интерпретируемости сопровождается снижением качества прогноза. Граница показывает недоминируемые варианты, но сама по себе не выбирает лучший — решение зависит от требований задачи.</figcaption>
 </figure>
 <p>Граница Парето не говорит, какую модель нужно выбрать. Она помогает убрать заведомо проигрывающие варианты и увидеть реальные альтернативы. После этого нужно задать ограничения: минимально допустимый Recall, предельное время ответа, требования к объяснению, бюджет сопровождения и допустимый риск.</p>
 <p>В реальных проектах критериев обычно больше двух. Можно учитывать качество, интерпретируемость, стоимость, задержку, устойчивость и справедливость. Визуализация двух осей — упрощение, а не полная модель принятия решения.</p>

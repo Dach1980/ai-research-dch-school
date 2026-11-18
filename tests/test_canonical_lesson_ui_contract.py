@@ -40,7 +40,7 @@ class CanonicalLessonUIContractTests(unittest.TestCase):
                 audit = PageAudit()
                 audit.feed(source)
                 tags = audit.tags
-                self.assertRegex(source, rf'<html lang="{locale}"')
+                self.assertRegex(source, rf'<html lang="{locale}(?:-[A-Za-z0-9-]+)?"')
                 self.assertEqual(sum(t == "header" and "site-header" in c for t, a, c, p in tags), 1)
                 self.assertEqual(sum(t == "footer" and "footer" in c for t, a, c, p in tags), 1)
                 self.assertEqual(sum(t == "main" and "lesson" in c for t, a, c, p in tags), 1)

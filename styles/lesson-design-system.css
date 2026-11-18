@@ -171,6 +171,7 @@ html:not([data-theme="light"]) .lesson-figure-supervised{
 .article-body .lesson-table-wrap{
   display:block;
   width:100%;
+  contain:inline-size;
   max-width:100%;
   min-width:0;
   margin:18px 0;

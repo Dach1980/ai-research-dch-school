@@ -193,3 +193,32 @@ html:not([data-theme="light"]) .lesson-figure-supervised{
 .article-body .lesson-table-wrap > .lesson-comparison-table td{
   min-width:140px;
 }
+
+/* Canonical lesson heading contract.
+   Text headings use theme-aware design tokens; fixed colors are reserved for
+   intentionally colored surfaces (for example the dark learning-outcomes card). */
+main.lesson h1,
+main.lesson h2,
+main.lesson h3,
+main.lesson h4,
+main.lesson .xai-canonical-section-title,
+main.lesson .xai-canonical-section-content h2,
+main.lesson .xai-canonical-section-content h3,
+main.lesson .xai-canonical-section-content h4 {
+  color: var(--lds-ink, #17233d);
+}
+main.lesson .lesson-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 42px 0 70px;
+}
+main.lesson .lesson-nav a {
+  text-decoration: none;
+}
+main.lesson .lesson-nav .button {
+  color: var(--text, var(--lds-ink));
+}
+main.lesson .lesson-nav .button.primary {
+  color: #fff;
+}

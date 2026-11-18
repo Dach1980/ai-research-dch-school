@@ -18,6 +18,4 @@
 #lesson-quiz .quiz-feedback{display:none;margin-top:1rem;padding:.8rem 1rem;border-radius:10px;background:var(--surface,rgba(120,150,210,.08))}
 #lesson-quiz .quiz-feedback.is-visible{display:block}
 #lesson-quiz .quiz-summary{margin:1.2rem 0;padding:1rem;border:1px solid var(--border,rgba(120,150,210,.24));border-radius:10px;font-weight:700}
-.lesson-language-links{display:flex;gap:.75rem;flex-wrap:wrap;margin-top:1rem}
-.lesson-language-links a[aria-current="page"]{font-weight:800;text-decoration:underline}
 @media(max-width:640px){#lesson-sections .xai-canonical-section-content table{min-width:680px}#lesson-quiz .knowledge-check{padding:.8rem}}

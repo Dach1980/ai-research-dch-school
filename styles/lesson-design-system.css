@@ -165,3 +165,31 @@ html:not([data-theme="light"]) .lesson-figure-supervised{
 .lesson-glossary > h2{margin-top:0}
 .lesson-glossary > .glossary-grid{grid-column:1/-1;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;min-width:0}
 @media(max-width:650px){.lesson-glossary > .glossary-grid{grid-template-columns:1fr}}
+
+
+/* Responsive comparison table: keep horizontal scrolling inside its own viewport. */
+.article-body .lesson-table-wrap{
+  display:block;
+  width:100%;
+  max-width:100%;
+  min-width:0;
+  margin:18px 0;
+  overflow-x:auto;
+  overflow-y:hidden;
+  overscroll-behavior-x:contain;
+  -webkit-overflow-scrolling:touch;
+  border:1px solid var(--lds-line);
+  border-radius:12px;
+}
+.article-body .lesson-table-wrap > .lesson-comparison-table{
+  display:table;
+  width:max-content;
+  min-width:100%;
+  max-width:none;
+  margin:0;
+  border-collapse:collapse;
+}
+.article-body .lesson-table-wrap > .lesson-comparison-table th,
+.article-body .lesson-table-wrap > .lesson-comparison-table td{
+  min-width:140px;
+}

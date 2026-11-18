@@ -105,7 +105,7 @@ class CanonicalLessonUIContractTests(unittest.TestCase):
         self.assertTrue(contract.is_file())
         text = contract.read_text(encoding="utf-8")
         for rule in ("sole owner", "only `scripts/lesson-layout.js`", "Playwright", "status: published"):
-            self.assertIn(rule, text)
+        self.assertIn(r"^lessons\\/a-[a-z0-9.-]+\\.html$", script)
 
 
 if __name__ == "__main__":

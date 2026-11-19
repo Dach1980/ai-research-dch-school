@@ -120,3 +120,8 @@ The supplied screenshot confirmed that text clipping was resolved, but exposed t
 ## Contrast gate failure and root-cause correction (2026-11-20)
 
 The first full browser contrast gate on `9e3c883` failed in both themes: computed accent foreground was inherited as normal ink rather than `--lds-accent-ink` (3.09:1 light, 1.91:1 dark). The cause was SVG text fill being overridden in the cascade. Commit `db68f49` sets the accent fill as an explicit inline important style in the shared renderer, so the computed SVG foreground must follow the theme-aware accent token. The contrast gate remains strict at 4.5:1; no threshold was weakened. Full CI and visual acceptance must be rerun on the correction.
+
+
+## Final CI and Pages deployment verification (2026-11-20)
+
+Latest main revision `43a422804f7bad3b03ab0c1e862cbaafa3f9cc77` passed the complete `Validate learning catalog` workflow (run `44639788457`), including `Test lesson 7.2.2 PFI content, locales and Python lab`, `Test SVG node label containment`, and `Test canonical lesson UI browser acceptance`. `Deploy static website to GitHub Pages` (run `44639788541`) and `pages build and deployment` (run `44639788469`) both completed successfully. This confirms automated browser acceptance and deployment, but does not replace human visual review of production screenshots. Direct production fetch was unavailable in this verification session. Keep mass migration of existing lessons blocked until both diagrams are visually reviewed in the deployed page across the required locales/themes.

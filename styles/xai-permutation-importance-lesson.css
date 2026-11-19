@@ -49,3 +49,9 @@ main.lesson > #lesson-quiz {
 main.lesson > #lesson-outcomes.outcomes{background:var(--lds-surface)!important;color:var(--lds-ink)!important;border:1px solid var(--lds-line);border-radius:16px}
 main.lesson > #lesson-outcomes.outcomes h2,main.lesson > #lesson-outcomes.outcomes li{color:var(--lds-ink)!important}
 main.lesson > #lesson-outcomes.outcomes li{background:var(--lds-surface)}
+
+/* Shared SVG renderer: intrinsic geometry is preserved; only the figure viewport scrolls. */
+.pfi-figure--shared{overflow:visible}
+.pfi-figure--shared .pfi-diagram-viewport{max-width:100%;overflow-x:auto;overflow-y:hidden;overscroll-behavior-x:contain;-webkit-overflow-scrolling:touch}
+.pfi-figure--shared svg{display:block;width:auto;max-width:none;height:auto}
+.pfi-figure--shared .pfi-diagram-viewport:focus-visible{outline:2px solid var(--lds-accent);outline-offset:3px}

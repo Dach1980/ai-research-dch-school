@@ -734,5 +734,41 @@ class CanonicalLessonBrowserAcceptanceTests(unittest.TestCase):
                         page.close()
 
 
+
+    def test_722_svg_renderer_node_geometry_and_diagram_identity(self):
+        lesson = next(item for item in CANONICAL_LESSONS if item.get("code") == "7.2.2")
+        expected = ["pfi-workflow", "pfi-correlation"]
+        for locale in ("ru", "en", "zh"):
+            for theme in ("light", "dark"):
+                for width in (375, 768, 1440):
+                    with self.subTest(locale=locale, theme=theme, width=width):
+                        page = self.open_page(lesson, locale, width=width, theme=theme)
+                        result = page.evaluate("""() => Array.from(document.querySelectorAll('#lesson-sections svg[data-diagram-renderer="shared-v1"]')).map(svg => {
+                          const vb=svg.viewBox.baseVal;
+                          const nodes=Array.from(svg.querySelectorAll('[data-node-id]')).map(node => {
+                            const rect=node.querySelector('rect').getBBox();
+                            const texts=Array.from(node.querySelectorAll('[data-role="node-text"]')).map(text => {
+                              const b=text.getBBox();
+                              return {x:b.x,y:b.y,right:b.x+b.width,bottom:b.y+b.height,font:parseFloat(getComputedStyle(text).fontSize)};
+                            });
+                            return {rect:{x:rect.x,y:rect.y,right:rect.x+rect.width,bottom:rect.y+rect.height},texts};
+                          });
+                          return {type:svg.dataset.diagramType,viewBox:{right:vb.x+vb.width,bottom:vb.y+vb.height},nodes,
+                            viewport:svg.closest('.pfi-diagram-viewport')?.clientWidth,svgWidth:svg.getBoundingClientRect().width};
+                        })""")
+                        self.assertEqual([x["type"] for x in result], expected, str(result))
+                        self.assertEqual(len(result), 2, str(result))
+                        for diagram in result:
+                            for node in diagram["nodes"]:
+                                r=node["rect"]
+                                for label in node["texts"]:
+                                    self.assertGreaterEqual(label["x"],r["x"]+5,str(diagram))
+                                    self.assertGreaterEqual(label["y"],r["y"],str(diagram))
+                                    self.assertLessEqual(label["right"],r["right"]-5,str(diagram))
+                                    self.assertLessEqual(label["bottom"],r["bottom"]-5,str(diagram))
+                                    self.assertGreaterEqual(label["font"],13.5,str(diagram))
+                        page.close()
+
+
 if __name__ == "__main__":
     unittest.main()

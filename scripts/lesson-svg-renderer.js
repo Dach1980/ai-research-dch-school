@@ -1,7 +1,7 @@
 (function(global){
 "use strict";
 const NS="http://www.w3.org/2000/svg";
-const MIN_FONT=14, LINE=21, PAD_X=18, PAD_Y=16, GAP=28, MARGIN=24;
+const MIN_FONT=14, LINE=21, PAD_X=12, PAD_Y=14, GAP=24, MARGIN=24;
 function svgEl(name,attrs={},text){
  const el=document.createElementNS(NS,name);
  Object.entries(attrs).forEach(([k,v])=>el.setAttribute(k,String(v)));
@@ -16,7 +16,7 @@ function measureContext(){
 }
 function wrap(ctx,text,maxWidth,font){
  ctx.font=font;
- const words=String(text).split(/\s+/);
+ const words=String(text).split(/\s+/).flatMap(word=>{ if(ctx.measureText(word).width<=maxWidth)return [word]; const chars=Array.from(word),parts=[];let part=""; for(const char of chars){const next=part+char;if(part&&ctx.measureText(next).width>maxWidth){parts.push(part);part=char;}else part=next;} if(part)parts.push(part);return parts; });
  const lines=[];let line="";
  for(const word of words){
   const candidate=line?line+" "+word:word;
@@ -27,7 +27,7 @@ function wrap(ctx,text,maxWidth,font){
  return lines.length?lines:[""];
 }
 function prepareNode(ctx,node,width){
- const titleFont="700 16px system-ui, sans-serif";
+ const titleFont="700 15px system-ui, sans-serif";
  const bodyFont="14px system-ui, sans-serif";
  const title=wrap(ctx,node.title,width-PAD_X*2,titleFont);
  const body=node.detail?wrap(ctx,node.detail,width-PAD_X*2,bodyFont):[];
@@ -35,12 +35,12 @@ function prepareNode(ctx,node,width){
  return {...node,width,height,titleLines:title,bodyLines:body};
 }
 function addTextLines(group,lines,x,y,fontSize,weight,color,lineHeight){
- lines.forEach((line,i)=>group.append(svgEl("text",{x,y:y+i*lineHeight,"font-size":fontSize,"font-weight":weight,fill:color},line)));
+ lines.forEach((line,i)=>group.append(svgEl("text",{x,y:y+i*lineHeight,"font-size":fontSize,"font-weight":weight,fill:color,"data-role":"node-text"},line)));
 }
 function render(spec){
  if(!spec||!["flow","grid"].includes(spec.layout)||!Array.isArray(spec.nodes)||!spec.nodes.length)throw new TypeError("Invalid typed SVG diagram specification");
  const ctx=measureContext();
- const nodeWidth=spec.layout==="flow"?190:300;
+ const nodeWidth=spec.layout==="flow"?142:300;
  const nodes=spec.nodes.map(n=>prepareNode(ctx,n,nodeWidth));
  let positions=[];
  if(spec.layout==="flow"){
@@ -63,14 +63,14 @@ function render(spec){
  return compose(spec,nodes,positions,width,height,ctx);
 }
 function compose(spec,nodes,positions,width,height){
- const root=svgEl("svg",{viewBox:`0 0 ${Math.ceil(width)} ${Math.ceil(height)}`,role:"img","aria-labelledby":spec.id+"-title "+spec.id+"-desc",width:"100%",height:"auto","data-diagram-type":spec.type,"data-diagram-renderer":"shared-v1"});
+ const root=svgEl("svg",{viewBox:`0 0 ${Math.ceil(width)} ${Math.ceil(height)}`,role:"img","aria-labelledby":spec.id+"-title "+spec.id+"-desc",width:String(Math.ceil(width))+"px",height:"auto","data-diagram-type":spec.type,"data-diagram-renderer":"shared-v1"});
  root.append(svgEl("title",{id:spec.id+"-title"},spec.title),svgEl("desc",{id:spec.id+"-desc"},spec.description));
  const colors={surface:"var(--lds-surface)",line:"var(--lds-line)",ink:"var(--lds-ink)",muted:"var(--lds-muted)",accent:"var(--lds-accent)",good:"var(--lds-good)",bad:"var(--lds-bad)"};
  positions.forEach(({x,y,node},i)=>{
   const group=svgEl("g",{"data-node-id":node.id,"data-node-bounds":`${x},${y},${node.width},${node.height}`});
   group.append(svgEl("rect",{x,y,width:node.width,height:node.height,rx:12,fill:node.tone==="bad"?colors.bad:node.tone==="accent"?colors.accent:colors.surface,stroke:colors.line,"stroke-width":1.5}));
   const titleY=y+PAD_Y+16;
-  addTextLines(group,node.titleLines,x+PAD_X,titleY,16,700,colors.ink,LINE);
+  addTextLines(group,node.titleLines,x+PAD_X,titleY,15,700,colors.ink,LINE);
   if(node.bodyLines.length)addTextLines(group,node.bodyLines,x+PAD_X,titleY+node.titleLines.length*LINE+8,14,400,colors.muted,19);
   root.append(group);
   if(spec.layout==="flow"&&i<positions.length-1){

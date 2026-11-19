@@ -49,7 +49,7 @@ pfi = pd.DataFrame({
 
 mdi = pd.Series(model.feature_importances_, index=X.columns, name="MDI")
 comparison = pfi.set_index("feature").join(mdi).sort_values("mean", ascending=False)
-print("\\nPFI (mean ± std) and MDI:")
+print("\nPFI (mean ± std) and MDI:")
 print(comparison.round(4))
 
 ax = comparison[["mean", "MDI"]].plot.barh(figsize=(9, 5))

@@ -547,7 +547,7 @@ class CanonicalLessonBrowserAcceptanceTests(unittest.TestCase):
 
     def test_721_content_depth_localisation_and_quiz_interaction(self):
         lesson = next(item for item in CANONICAL_LESSONS if item.get("code") == "7.2.1")
-        expected = {"outcomes":5,"sections":6,"terms":12,"questions":10}
+        expected = {"outcomes":5,"sections":6,"terms":14,"questions":10}
         for locale in ("ru", "en", "zh"):
             with self.subTest(locale=locale):
                 page = self.open_page(lesson, locale, width=1440, theme="light")
@@ -562,7 +562,7 @@ class CanonicalLessonBrowserAcceptanceTests(unittest.TestCase):
                 }""")
                 self.assertEqual({k:result[k] for k in expected}, expected, str(result))
                 self.assertEqual(result["renderedQuestions"], 10)
-                self.assertEqual(result["glossaryCards"], 12)
+                self.assertEqual(result["glossaryCards"], 14)
                 page.locator("#lesson-quiz .quiz-submit").click()
                 self.assertTrue(page.locator("#lesson-quiz .quiz-feedback.is-visible").is_visible())
                 self.assertIn("0 / 10", page.locator("#lesson-quiz .quiz-feedback").inner_text())

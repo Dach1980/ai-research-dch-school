@@ -74,7 +74,12 @@ class CanonicalLessonBrowserAcceptanceTests(unittest.TestCase):
         # Auth uses a remote Supabase SDK; isolate it from shell/navigation acceptance.
         page.route("**/scripts/account-ui.js", lambda route: route.fulfill(status=200, content_type="application/javascript", body="/* account UI isolated in shell acceptance */"))
         errors = []
-        page.on("pageerror", lambda error: errors.append({"message": str(error), "stack": getattr(error, "stack", None)}))
+        page.on("pageerror", lambda error: errors.append({"kind": "pageerror", "message": str(error), "stack": getattr(error, "stack", None)}))
+        page.on("console", lambda message: errors.append({
+            "kind": "console",
+            "message": message.text,
+            "location": message.location,
+        }) if message.type == "error" else None)
         relative_path = "/" + lesson["url_i18n"][locale]
         response = page.goto(self.base + relative_path, wait_until="domcontentloaded")
         self.assertEqual(response.status, 200)

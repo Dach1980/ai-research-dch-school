@@ -217,5 +217,17 @@ class CanonicalLessonUIContractTests(unittest.TestCase):
             self.assertIn(selector, design)
 
 
+    def test_learning_outcomes_have_shared_automatic_card_component(self):
+        design = (ROOT / "styles/lesson-design-system.css").read_text(encoding="utf-8")
+        template = (ROOT / "templates/lessons/canonical-lesson-shell.html.tmpl").read_text(encoding="utf-8")
+        self.assertIn('class="outcomes" id="lesson-outcomes"', template)
+        self.assertIn("Canonical learning-outcomes cards.", design)
+        self.assertIn("main.lesson #lesson-outcomes > ul", design)
+        self.assertIn("counter(lesson-outcome, decimal-leading-zero)", design)
+        self.assertIn("@media (max-width: 650px)", design)
+        self.assertIn("var(--lds-surface)", design)
+        self.assertIn("var(--lds-ink)", design)
+
+
 if __name__ == "__main__":
     unittest.main()

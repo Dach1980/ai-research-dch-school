@@ -651,5 +651,53 @@ class CanonicalLessonBrowserAcceptanceTests(unittest.TestCase):
                 page.close()
 
 
+    def test_learning_outcomes_render_as_theme_aware_responsive_cards(self):
+        for lesson in CANONICAL_LESSONS:
+            for locale in ("ru", "en", "zh"):
+                for theme in ("light", "dark"):
+                    for width in (375, 768, 1440):
+                        with self.subTest(code=lesson["code"], locale=locale, theme=theme, width=width):
+                            page = self.open_page(lesson, locale, width=width, theme=theme)
+                            result = page.evaluate("""() => {
+                              const root = document.querySelector("main.lesson #lesson-outcomes, main.lesson .outcomes");
+                              const list = root && root.querySelector(":scope > ul, :scope > ol");
+                              const cards = list ? Array.from(list.children) : [];
+                              const first = cards[0];
+                              const last = cards[cards.length - 1];
+                              const style = first ? getComputedStyle(first) : null;
+                              const listStyle = list ? getComputedStyle(list) : null;
+                              return {
+                                heading: !!(root && root.querySelector(":scope > h2")),
+                                count: cards.length,
+                                display: listStyle && listStyle.display,
+                                columns: listStyle && listStyle.gridTemplateColumns,
+                                cardDisplay: style && style.display,
+                                cardBackground: style && style.backgroundColor,
+                                cardBorder: style && style.borderTopStyle,
+                                cardRadius: style && parseFloat(style.borderRadius),
+                                number: first && getComputedStyle(first, "::before").content,
+                                lastSpan: last && getComputedStyle(last).gridColumn,
+                                overflow: document.documentElement.scrollWidth - window.innerWidth
+                              };
+                            }""")
+                            self.assertTrue(result["heading"], f"{lesson['uid']} / {locale}: outcomes heading missing")
+                            self.assertGreaterEqual(result["count"], 1, f"{lesson['uid']} / {locale}: outcomes missing")
+                            self.assertEqual(result["display"], "grid")
+                            self.assertEqual(result["cardDisplay"], "flex")
+                            self.assertNotEqual(result["cardBackground"], "rgba(0, 0, 0, 0)")
+                            self.assertEqual(result["cardBorder"], "solid")
+                            self.assertGreater(result["cardRadius"], 0)
+                            self.assertTrue(result["number"] and result["number"] != "none")
+                            self.assertLessEqual(result["overflow"], 1)
+                            if width <= 650:
+                                self.assertEqual(len(result["columns"].split()), 1)
+                                self.assertEqual(result["lastSpan"], "auto")
+                            else:
+                                self.assertGreaterEqual(len(result["columns"].split()), 2)
+                                if result["count"] % 2:
+                                    self.assertEqual(result["lastSpan"], "1 / -1")
+                            page.close()
+
+
 if __name__ == "__main__":
     unittest.main()

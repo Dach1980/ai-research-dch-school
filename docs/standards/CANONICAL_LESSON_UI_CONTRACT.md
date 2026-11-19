@@ -121,6 +121,19 @@ Canonical markup:
 </section>
 ```
 
+
+## 4.4 Canonical learning-outcomes cards
+
+The learning-outcomes block uses the shared automatic card presentation from `styles/lesson-design-system.css`. Lesson authors and renderers must provide a semantic `ul` or `ol` inside the canonical `.outcomes` / `#lesson-outcomes` root; they must not hand-code individual cards, icons, numbering, or responsive layout.
+
+- The shared stylesheet automatically converts each list item visually into a numbered card while preserving the semantic list in the DOM.
+- Desktop and tablet layouts use two columns; an unpaired final card spans both columns. Narrow screens (650 CSS px and below) use one column.
+- Card surfaces, borders, text and numbering use the shared `--lds-*` theme tokens and must remain legible in light and dark themes.
+- The same structure and item order must be preserved across RU / EN / 中文.
+- New lessons created from the canonical shell inherit the component automatically because the shell already loads `lesson-design-system.css`.
+- Browser acceptance must verify computed styles, responsive columns, numbering, theme contrast tokens and absence of horizontal overflow in every locale.
+
+
 ## 4.2 Metadata policy — closed by default
 
 Lesson pages must not invent or infer metadata.

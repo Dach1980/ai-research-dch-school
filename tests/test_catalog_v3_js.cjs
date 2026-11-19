@@ -15,7 +15,7 @@ const normalized=compat.normalizeV3(catalog);
 assert.equal(normalized.schema_version,3);
 assert.equal(normalized.source_schema_version,3);
 assert.equal(normalized.themes.filter(x=>x.track_uid==="trk-a").length,7);
-assert.equal(normalized.modules.length,35);
+assert.equal(normalized.modules.length,36);
 assert.throws(()=>compat.normalizeV3({...catalog,lessons:[{...catalog.lessons[0],module_uid:"missing"}]}),/Unknown lesson parent UID/);
 const projected=compat.projectV3ToLegacy(catalog,legacy,manifest);
 assert.deepEqual(projected.lessons.map(x=>x.id),legacy.lessons.map(x=>x.id));

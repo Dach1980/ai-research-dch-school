@@ -44,3 +44,27 @@ main.lesson > #lesson-outcomes.outcomes p{
 }
 
 .feature-importance-svg .fi-zero{stroke:var(--lds-line);stroke-width:2;stroke-dasharray:4 4}
+
+/* Compact outcomes card: cancel the legacy .lesson h2 top margin. */
+main.lesson > #lesson-outcomes.outcomes{
+  padding:14px 20px;
+}
+main.lesson > #lesson-outcomes.outcomes h2{
+  margin:0 0 .65rem;
+  font-size:1.12rem;
+  line-height:1.35;
+}
+main.lesson > #lesson-outcomes.outcomes ul{
+  margin:0;
+  padding-left:1.35rem;
+}
+main.lesson > #lesson-outcomes.outcomes li{
+  margin:.28rem 0;
+  line-height:1.5;
+}
+.feature-importance-svg .fi-axis{stroke:var(--lds-muted);stroke-width:1.2}
+.feature-importance-svg .fi-axis-label{fill:var(--lds-muted);font-size:13px}
+.feature-importance-svg .fi-context{fill:var(--lds-muted);font-size:14px}
+@media(max-width:560px){
+  main.lesson > #lesson-outcomes.outcomes{padding:12px 15px}
+}

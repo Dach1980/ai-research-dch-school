@@ -3762,7 +3762,7 @@
       "module_uid": "mod-a-07-01",
       "code": "7.1.3",
       "title": "Intrinsic и Post-hoc методы",
-      "status": "review",
+      "status": "published",
       "access": "open",
       "level": "beginner",
       "prerequisite_uids": [
@@ -3774,7 +3774,7 @@
         "Оценивать fidelity, устойчивость и ограничения post-hoc объяснений.",
         "Сравнивать прозрачную и сложную модели с помощью воспроизводимого эксперимента Python."
       ],
-      "content_state": "localized",
+      "content_state": "published",
       "title_i18n": {
         "ru": "Intrinsic и Post-hoc методы",
         "en": "Intrinsic and Post-hoc Methods",

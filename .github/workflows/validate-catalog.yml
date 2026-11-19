@@ -31,6 +31,8 @@ on:
       - "scripts/theme-system.js"
       - "scripts/code-blocks.js"
       - "scripts/lesson-layout.js"
+      - "scripts/xai-feature-importance-lesson.js"
+      - "lessons/data/xai-04-feature-importance.js"
       - "styles/lesson-standard.css"
       - "styles/lesson-design-system.css"
       - "styles/lesson-reference-111.css"
@@ -185,7 +187,7 @@ jobs:
       - name: Test DCH brand assets
         run: python -m unittest discover -s tests -p 'test_brand_assets.py' -v
       - name: Check theme and code scripts syntax
-        run: node --check scripts/main.js && node --check scripts/theme-system.js && node --check scripts/code-blocks.js && node --check scripts/lesson-layout.js && node --check lessons/data/xai-03-intrinsic-posthoc.js && node --check scripts/xai-intrinsic-posthoc-lesson.js
+        run: node --check scripts/main.js && node --check scripts/theme-system.js && node --check scripts/code-blocks.js && node --check scripts/lesson-layout.js && node --check lessons/data/xai-04-feature-importance.js && node --check scripts/xai-feature-importance-lesson.js && node --check lessons/data/xai-03-intrinsic-posthoc.js && node --check scripts/xai-intrinsic-posthoc-lesson.js
       - name: Check browser catalogue scripts syntax
         run: node --check scripts/catalog-compat.js && node --check scripts/lesson-catalog.js && node --check scripts/planet-map-catalog.js && node --check scripts/home-knowledge-map.js && node --check scripts/lesson-reader.js && node --check lessons/data/xai-01-what-and-why.js && node --check scripts/xai-local-global-lesson.js && node --check lessons/data/xai-02-local-global.js && node --check lessons/data/xai-03-intrinsic-posthoc.js && node --check scripts/xai-intrinsic-posthoc-lesson.js
       - name: Validate production hierarchical catalog v2

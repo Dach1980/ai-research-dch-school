@@ -527,12 +527,13 @@ class CanonicalLessonBrowserAcceptanceTests(unittest.TestCase):
                           const figure=el.closest("figure");
                           const box=el.getBoundingClientRect(), fig=figure.getBoundingClientRect();
                           return {viewBox:{width:vb.width,height:vb.height},panels:el.querySelectorAll(".fi-panel").length,
-                            bars:el.querySelectorAll(".fi-bar,.fi-negative").length,texts,labelFontSize:getComputedStyle(el.querySelector(".fi-label")).fontSize,
+                            bars:el.querySelectorAll(".fi-bar,.fi-negative").length,zeroAxis:el.querySelectorAll(".fi-zero").length,texts,labelFontSize:getComputedStyle(el.querySelector(".fi-label")).fontSize,
                             width:box.width,figureWidth:fig.width,scrollWidth:el.scrollWidth,clientWidth:el.clientWidth};
                         }""")
                         self.assertEqual(result["viewBox"], {"width":720,"height":340})
                         self.assertEqual(result["panels"], 2, str(result))
                         self.assertEqual(result["bars"], 6, str(result))
+                        self.assertEqual(result["zeroAxis"], 1, str(result))
                         self.assertGreaterEqual(len(result["texts"]), 18, str(result))
                         self.assertGreaterEqual(float(result["labelFontSize"].replace("px","")), 20, str(result))
                         for label in result["texts"]:

@@ -6,18 +6,16 @@ const code = String.raw`import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 
-from sklearn.datasets import make_regression
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.inspection import permutation_importance
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import r2_score
 
-# Reproducible signal plus a correlated proxy and an independent noise feature.
+# Reproducible synthetic target with a strong signal and a correlated proxy.
 rng = np.random.default_rng(42)
-X_base, y = make_regression(
-    n_samples=1600, n_features=5, n_informative=3,
-    noise=12.0, random_state=42
-)
+X_base = rng.normal(size=(1600, 5))
+y = 8 * X_base[:, 0] + 5 * X_base[:, 1] - 3 * X_base[:, 2] + rng.normal(0, 1.2, 1600)
+
 df = pd.DataFrame(X_base, columns=[f"x{i}" for i in range(5)])
 df["signal"] = df["x0"]
 df["signal_proxy"] = 0.92 * df["x0"] + rng.normal(0, 0.12, len(df))
@@ -36,9 +34,7 @@ baseline = r2_score(y_test, model.predict(X_test))
 print(f"Baseline test R²: {baseline:.3f}")
 
 result = permutation_importance(
-    model,
-    X_test,
-    y_test,
+    model, X_test, y_test,
     scoring="r2",
     n_repeats=30,
     random_state=11,
@@ -63,8 +59,7 @@ ax.invert_yaxis()
 plt.tight_layout()
 plt.show()
 
-# Grouped permutation: shuffle both correlated columns using the same row order.
-# This preserves their relationship to each other while breaking their link to y.
+# Jointly permute the correlated pair using the same row order.
 X_group = X_test.copy()
 group_rng = np.random.default_rng(123)
 group_drops = []
@@ -79,8 +74,8 @@ for _ in range(30):
 print(f"Grouped PFI for signal pair: {np.mean(group_drops):.3f} "
       f"± {np.std(group_drops, ddof=1):.3f}")
 
-# Interpretation: individual marginal PFI can be shared by correlated proxies.
-# Group PFI asks how much the model relies on the pair jointly; it is not causal.
+# Individual marginal PFI can be shared by correlated proxies.
+# Group PFI measures joint reliance; neither is a causal effect.
 `;
 window.DCH_PERMUTATION_IMPORTANCE_LESSON = {
  code: "7.2.2",

@@ -7,17 +7,14 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 
-from sklearn.datasets import make_regression
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.inspection import permutation_importance
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import r2_score
 
 rng = np.random.default_rng(42)
-X_base, y = make_regression(
-    n_samples=1600, n_features=5, n_informative=3,
-    noise=12.0, random_state=42
-)
+X_base = rng.normal(size=(1600, 5))
+y = 8 * X_base[:, 0] + 5 * X_base[:, 1] - 3 * X_base[:, 2] + rng.normal(0, 1.2, 1600)
 df = pd.DataFrame(X_base, columns=[f"x{i}" for i in range(5)])
 df["signal"] = df["x0"]
 df["signal_proxy"] = 0.92 * df["x0"] + rng.normal(0, 0.12, len(df))

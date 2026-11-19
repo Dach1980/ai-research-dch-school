@@ -543,5 +543,29 @@ class CanonicalLessonBrowserAcceptanceTests(unittest.TestCase):
                     page.close()
 
 
+    def test_721_content_depth_localisation_and_quiz_interaction(self):
+        lesson = next(item for item in CANONICAL_LESSONS if item.get("code") == "7.2.1")
+        expected = {"outcomes":5,"sections":6,"terms":12,"questions":10}
+        for locale in ("ru", "en", "zh"):
+            with self.subTest(locale=locale):
+                page = self.open_page(lesson, locale, width=1440, theme="light")
+                result = page.evaluate("""() => {
+                  const data=window.DCH_FEATURE_IMPORTANCE_LESSON;
+                  return {outcomes:data.outcomes[document.documentElement.lang.startsWith('zh')?'zh':document.documentElement.lang.startsWith('en')?'en':'ru'].length,
+                    sections:data.pages.length,
+                    terms:data.glossary[document.documentElement.lang.startsWith('zh')?'zh':document.documentElement.lang.startsWith('en')?'en':'ru'].length,
+                    questions:data.quiz.length,
+                    renderedQuestions:document.querySelectorAll('#lesson-quiz fieldset').length,
+                    glossaryCards:document.querySelectorAll('#lesson-glossary .glossary-entry').length};
+                }""")
+                self.assertEqual({k:result[k] for k in expected}, expected, str(result))
+                self.assertEqual(result["renderedQuestions"], 10)
+                self.assertEqual(result["glossaryCards"], 12)
+                page.locator("#lesson-quiz .quiz-submit").click()
+                self.assertTrue(page.locator("#lesson-quiz .quiz-feedback.is-visible").is_visible())
+                self.assertIn("0 / 10", page.locator("#lesson-quiz .quiz-feedback").inner_text())
+                page.close()
+
+
 if __name__ == "__main__":
     unittest.main()

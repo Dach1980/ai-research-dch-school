@@ -14,7 +14,7 @@
       else if(BUILTINS.has(t))cls="function";
       else if(/^[A-Z][A-Za-z0-9_]*$/.test(t))cls="class";
       else if(/^[A-Za-z_]\w*$/.test(t)&&/\s*\(/.test(line.slice(m.index+t.length)))cls="function";
-      else if(/^[+*/%=<>!&|^~:-]+$/.test(t))cls="operator";
+      else if(/^[+*\\/%=<>!&|^~:-]+$/.test(t))cls="operator";
       else cls="identifier";
       out+='<span class="code-token-'+cls+'">'+esc(t)+'</span>';last=token.lastIndex;
     }

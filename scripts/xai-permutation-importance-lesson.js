@@ -17,7 +17,7 @@ lesson.sections[locale].forEach((s,i)=>{
  const section=document.createElement("section");section.className="xai-canonical-section";section.id="pfi-"+s[0];
  const h=document.createElement("h2");h.className="xai-canonical-section-title";h.textContent=s[1];
  const body=document.createElement("div");body.className="xai-canonical-section-content";
- const parts=s.slice(2).filter(x=>x!=="diagram"&&x!=="diagram2"&&x!=="formula");
+ const formulaAt=s.indexOf("formula");const parts=s.slice(2).filter((x,i)=>x!=="diagram"&&x!=="diagram2"&&x!=="formula"&&!(formulaAt>=0&&i+2===formulaAt+1));
  parts.forEach((p,j)=>{const node=document.createElement("p");node.innerHTML=p;body.append(node)});
  if(s.includes("formula")){const box=document.createElement("div");box.className="formula";const expr=document.createElement("div");expr.className="formula-expression";expr.innerHTML=s[s.indexOf("formula")+1];box.append(expr);body.append(box)}
  if(s.includes("diagram"))body.insertAdjacentHTML("beforeend",svg(false));
@@ -30,7 +30,7 @@ practice.querySelector("code").textContent=p.code;
 const sources=el("lesson-sources");sources.innerHTML='<h2>'+labels.sources+'</h2>';
 const sl=document.createElement("ul");lesson.sources[locale].forEach(s=>{const li=document.createElement("li");const a=document.createElement("a");a.href=s[1];a.target="_blank";a.rel="noopener noreferrer";a.textContent=s[0];li.append(a);sl.append(li)});sources.append(sl);
 const nav=el("lesson-navigation");nav.className="lesson-nav";nav.setAttribute("aria-label",locale==="ru"?"Навигация по уроку":locale==="en"?"Lesson navigation":"课程导航");
-nav.innerHTML='<a class="button button-secondary" href="a-7-2-1-les-a-0171'+(locale==="ru"?"":locale==="en"?"-en":"-zh")+'.html">← '+labels.previous+'</a><a class="button button-primary" href="a-7-2-3-les-a-0173'+(locale==="ru"?"":locale==="en"?"-en":"-zh")+'.html">'+labels.next+' →</a>';
+nav.innerHTML='<a class="button button-secondary" href="a-7-2-1-les-a-0171'+(locale==="ru"?"":locale==="en"?"-en":"-zh")+'.html">← '+labels.previous+'</a><span class="button is-disabled" aria-disabled="true">'+labels.next+' · 7.2.3</span>';
 const glossary=el("lesson-glossary");glossary.innerHTML='<h2>'+labels.terms+'</h2>';const dl=document.createElement("dl");lesson.glossary[locale].forEach(t=>{const dt=document.createElement("dt");dt.textContent=t[0];const dd=document.createElement("dd");dd.textContent=t[1];dl.append(dt,dd)});glossary.append(dl);
 const quiz=el("lesson-quiz");quiz.innerHTML='<h2>'+labels.quiz+'</h2>';const form=document.createElement("form");form.className="knowledge-check";const feedback=document.createElement("div");feedback.className="quiz-feedback";feedback.setAttribute("aria-live","polite");
 lesson.quiz[locale].forEach((q,i)=>{const field=document.createElement("fieldset");const legend=document.createElement("legend");legend.textContent=(i+1)+". "+q.q;field.append(legend);q.o.forEach((o,j)=>{const label=document.createElement("label");const input=document.createElement("input");input.type="radio";input.name="q"+i;input.value=String(j);const span=document.createElement("span");span.textContent=o;label.append(input,span);field.append(label)});form.append(field)});

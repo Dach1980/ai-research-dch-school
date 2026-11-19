@@ -33,6 +33,8 @@ class CodePresentationTests(unittest.TestCase):
     def test_feature_importance_lesson_loads_branded_python_renderer_in_all_locales(self):
         data = (ROOT / "lessons/data/xai-04-feature-importance.js").read_text(encoding="utf-8")
         self.assertEqual(data.count("<pre class='language-python'><code>"), 3)
+        main_css = (ROOT / "styles/main.css").read_text(encoding="utf-8")
+        self.assertIn("@import url('./code-blocks.css')", main_css)
         renderer = (ROOT / "scripts/code-blocks.js").read_text(encoding="utf-8")
         stylesheet = (ROOT / "styles/code-blocks.css").read_text(encoding="utf-8")
         self.assertIn("code-token-keyword", stylesheet)
@@ -40,7 +42,7 @@ class CodePresentationTests(unittest.TestCase):
         self.assertIn("code-token-keyword", renderer)
         for suffix in ("", "-en", "-zh"):
             page = (ROOT / f"lessons/a-7-2-1-les-a-0171{suffix}.html").read_text(encoding="utf-8")
-            self.assertIn("../styles/code-blocks.css", page)
+            self.assertIn("../styles/main.css", page)
             self.assertIn("../scripts/code-blocks.js", page)
 
 

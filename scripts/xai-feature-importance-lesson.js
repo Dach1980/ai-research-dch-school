@@ -78,7 +78,7 @@ if (quizRoot) {
    const legend = document.createElement("legend"); legend.textContent = (i+1)+". "+pick(item.q); field.appendChild(legend);
    item.o[locale].forEach((option, j) => {
      const label = document.createElement("label");
-     const input = document.createElement("input"); input.type="radio"; input.name="q"+i; input.value=String(j); input.required=true;
+     const input = document.createElement("input"); input.type="radio"; input.name="q"+i; input.value=String(j);
      const span = document.createElement("span"); span.textContent=option;
      label.append(input, span); field.appendChild(label);
    });

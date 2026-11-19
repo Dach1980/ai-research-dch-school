@@ -290,7 +290,8 @@ class CanonicalLessonBrowserAcceptanceTests(unittest.TestCase):
                         self.assertEqual(page.locator("header.site-header [data-dch-theme-control]").count(), 1)
                         self.assertEqual(page.locator("header.site-header .language-switcher").count(), 1)
                         overflow = page.evaluate("document.documentElement.scrollWidth - window.innerWidth")
-                        self.assertLessEqual(overflow, 1, f"page-level horizontal overflow {overflow}px at {width}px")
+                        offenders = page.evaluate("Array.from(document.querySelectorAll('body *')).filter(el => el.getBoundingClientRect().right > window.innerWidth + 1).map(el => [el.tagName, el.id, String(el.className || ''), Math.round(el.getBoundingClientRect().right)]).slice(0, 10)")
+                        self.assertLessEqual(overflow, 1, "page-level overflow " + str(overflow) + "; offenders=" + repr(offenders))
                         page.close()
 
 
@@ -677,7 +678,7 @@ class CanonicalLessonBrowserAcceptanceTests(unittest.TestCase):
                                 cardRadius: style && parseFloat(style.borderRadius),
                                 number: first && getComputedStyle(first, "::before").content,
                                 lastSpan: last && getComputedStyle(last).gridColumn,
-                                overflow: document.documentElement.scrollWidth - window.innerWidth
+                                overflow: document.documentElement.scrollWidth - window.innerWidth, offenders: Array.from(document.querySelectorAll("body *")).map(el => [el.tagName, el.id, String(el.className || ""), Math.round(el.getBoundingClientRect().right)]).filter(x => x[3] > window.innerWidth + 1).slice(0, 10)
                               };
                             }""")
                             self.assertTrue(result["heading"], f"{lesson['uid']} / {locale}: outcomes heading missing")
@@ -688,7 +689,7 @@ class CanonicalLessonBrowserAcceptanceTests(unittest.TestCase):
                             self.assertEqual(result["cardBorder"], "solid")
                             self.assertGreater(result["cardRadius"], 0)
                             self.assertTrue(result["number"] and result["number"] != "none")
-                            self.assertLessEqual(result["overflow"], 1)
+                            self.assertLessEqual(result["overflow"], 1, "offenders=" + repr(result["offenders"]))
                             if width <= 650:
                                 self.assertEqual(len(result["columns"].split()), 1)
                                 self.assertEqual(result["lastSpan"], "auto")

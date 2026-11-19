@@ -29,3 +29,16 @@
 #lesson-quiz .quiz-feedback.is-visible{display:block}
 #lesson-quiz .quiz-feedback li{margin:.5rem 0}
 @media(max-width:560px){.feature-importance-figure{margin:1rem 0;padding:0}#lesson-practice pre{font-size:.82rem}}
+
+/* Theme-aware outcomes surface: keep heading and copy on shared design tokens. */
+main.lesson > #lesson-outcomes.outcomes{
+  background:var(--lds-surface);
+  color:var(--lds-ink);
+  border:1px solid var(--lds-line);
+  border-radius:16px;
+}
+main.lesson > #lesson-outcomes.outcomes h2,
+main.lesson > #lesson-outcomes.outcomes li,
+main.lesson > #lesson-outcomes.outcomes p{
+  color:var(--lds-ink);
+}

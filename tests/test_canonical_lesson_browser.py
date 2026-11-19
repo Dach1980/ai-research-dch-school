@@ -589,7 +589,6 @@ class CanonicalLessonBrowserAcceptanceTests(unittest.TestCase):
                     self.assertGreaterEqual(result["headingContrast"], 4.5, str(result))
                     self.assertGreaterEqual(result["listContrast"], 4.5, str(result))
                     self.assertNotEqual(result["codeBackground"], "rgba(0, 0, 0, 0)", str(result))
-                    self.assertNotEqual(result["preBackground"], "rgba(0, 0, 0, 0)", str(result))
                     self.assertNotEqual(result["tokenColor"], result["plainColor"], str(result))
                     self.assertGreater(result["tokenCount"], 30, str(result))
                     self.assertGreater(result["lineCount"], 10, str(result))

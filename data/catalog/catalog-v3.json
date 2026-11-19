@@ -3818,7 +3818,7 @@
         "Сравнивать рейтинги, не трактуя важность как причинный эффект.",
         "Воспроизводить анализ на Python и формулировать ограничения."
       ],
-      "content_state": "review",
+      "content_state": "localized",
       "title_i18n": {
         "ru": "Важность признаков (Feature Importance)",
         "en": "Feature Importance",

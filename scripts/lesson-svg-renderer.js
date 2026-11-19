@@ -44,8 +44,8 @@ function render(spec){
  const nodes=spec.nodes.map(n=>prepareNode(ctx,n,nodeWidth));
  let positions=[];
  if(spec.layout==="flow"){
-  let x=MARGIN,maxH=0;
-  nodes.forEach(n=>{positions.push({x,y:MARGIN,node:n});x+=nodeWidth+GAP;maxH=Math.max(maxH,n.height);});
+  let x=MARGIN;const maxH=Math.max(...nodes.map(n=>n.height));
+  nodes.forEach(n=>{positions.push({x,y:MARGIN,node:{...n,height:maxH}});x+=nodeWidth+GAP;});
   const width=x-GAP+MARGIN,height=maxH+MARGIN*2;
   return compose(spec,nodes,positions,width,height,ctx);
  }
@@ -69,12 +69,16 @@ function compose(spec,nodes,positions,width,height){
  positions.forEach(({x,y,node},i)=>{
   const group=svgEl("g",{"data-node-id":node.id,"data-node-bounds":`${x},${y},${node.width},${node.height}`,"data-tone":node.tone||"surface"});
   group.append(svgEl("rect",{x,y,width:node.width,height:node.height,rx:12,fill:node.tone==="bad"?colors.bad:node.tone==="accent"?colors.accent:colors.surface,stroke:colors.line,"stroke-width":1.5}));
-  const titleY=y+PAD_Y+16;
-  addTextLines(group,node.titleLines,x+PAD_X,titleY,15,700,colors.ink,LINE);
-  if(node.bodyLines.length)addTextLines(group,node.bodyLines,x+PAD_X,titleY+node.titleLines.length*LINE+8,14,400,colors.muted,19);
+  const titleBlock=node.titleLines.length*LINE,bodyBlock=node.bodyLines.length?8+node.bodyLines.length*19:0;
+  const contentHeight=titleBlock+bodyBlock;
+  const titleY=y+(node.height-contentHeight)/2+16;
+  const textInk=node.tone==="accent"?"var(--lds-accent-ink)":colors.ink;
+  const textMuted=node.tone==="accent"?"var(--lds-accent-ink)":colors.muted;
+  addTextLines(group,node.titleLines,x+PAD_X,titleY,15,700,textInk,LINE);
+  if(node.bodyLines.length)addTextLines(group,node.bodyLines,x+PAD_X,titleY+titleBlock+8,14,400,textMuted,19);
   root.append(group);
   if(spec.layout==="flow"&&i<positions.length-1){
-   const next=positions[i+1],midY=y+node.height/2;
+   const next=positions[i+1],midY=MARGIN+node.height/2;
    root.append(svgEl("path",{d:`M ${x+node.width+5} ${midY} H ${next.x-8} m -8 -7 l 8 7 -8 7`,fill:"none",stroke:colors.accent,"stroke-width":2,"stroke-linecap":"round","stroke-linejoin":"round"}));
   }
  });

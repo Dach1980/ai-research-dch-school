@@ -769,7 +769,11 @@ class CanonicalLessonBrowserAcceptanceTests(unittest.TestCase):
                         self.assertEqual(len({round(x["height"],2) for x in flow["rects"]}),1,str(flow))
                         if flow["arrows"]:
                             self.assertLess(max(flow["arrows"])-min(flow["arrows"]),1.5,str(flow))
-                        self.assertIn("individual",flow["caption"].lower() if locale=="en" else flow["caption"].lower())
+                        caption=flow["caption"].lower()
+                        self.assertTrue(any(token in caption for token in ("individual","индивидуаль","单个特征")),str(flow))
+                        self.assertNotIn("group permutation",caption)
+                        self.assertNotIn("групповой перестановки",caption)
+                        self.assertNotIn("联合置换",caption)
                         for item in flow["fills"]:
                             if item["tone"]=="accent":
                                 self.assertGreaterEqual(item["ratio"],4.5,str(item))

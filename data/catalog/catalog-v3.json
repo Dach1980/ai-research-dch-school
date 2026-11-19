@@ -1,7 +1,7 @@
 {
   "schema_version": 3,
   "catalog_id": "dch-school-curriculum",
-  "catalog_version": "3.2.7-lesson-7-2-2-review",
+  "catalog_version": "3.2.8-lessons-7-2-1-7-2-2-published",
   "status": "migration_staging",
   "tracks": [
     {
@@ -3805,7 +3805,7 @@
       "module_uid": "mod-a-07-02",
       "code": "7.2.1",
       "title": "Важность признаков (Feature Importance)",
-      "status": "review",
+      "status": "published",
       "access": "open",
       "level": "beginner",
       "prerequisite_uids": [
@@ -3818,7 +3818,7 @@
         "Сравнивать рейтинги, не трактуя важность как причинный эффект.",
         "Воспроизводить анализ на Python и формулировать ограничения."
       ],
-      "content_state": "localized",
+      "content_state": "published",
       "title_i18n": {
         "ru": "Важность признаков (Feature Importance)",
         "en": "Feature Importance",
@@ -3837,7 +3837,7 @@
       "module_uid": "mod-a-07-02",
       "code": "7.2.2",
       "title": "Permutation Feature Importance",
-      "status": "review",
+      "status": "published",
       "access": "open",
       "level": "intermediate",
       "prerequisite_uids": [
@@ -3850,7 +3850,7 @@
         "Объяснять влияние коррелирующих признаков и отличать маргинальную перестановку от условной или групповой проверки.",
         "Сопоставлять PFI с MDI, выявлять ограничения и воспроизводить анализ с помощью scikit-learn."
       ],
-      "content_state": "localized",
+      "content_state": "published",
       "title_i18n": {
         "ru": "Permutation Feature Importance",
         "en": "Permutation Feature Importance",

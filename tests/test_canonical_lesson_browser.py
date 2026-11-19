@@ -70,7 +70,19 @@ class CanonicalLessonBrowserAcceptanceTests(unittest.TestCase):
 
     def open_page(self, lesson, locale, width=1440, theme="light"):
         page = self.browser.new_page(viewport={"width": width, "height": 1000})
-        page.add_init_script(f"localStorage.setItem('dch-school-theme', '{theme}');")
+        page.add_init_script(f"""
+            localStorage.setItem('dch-school-theme', '{theme}');
+            window.__dchScriptErrors = [];
+            window.addEventListener('error', function (event) {{
+                window.__dchScriptErrors.push({{
+                    message: event.message,
+                    filename: event.filename,
+                    lineno: event.lineno,
+                    colno: event.colno,
+                    target: event.target && event.target.src ? event.target.src : null
+                }});
+            }}, true);
+        """)
         # Auth uses a remote Supabase SDK; isolate it from shell/navigation acceptance.
         page.route("**/scripts/account-ui.js", lambda route: route.fulfill(status=200, content_type="application/javascript", body="/* account UI isolated in shell acceptance */"))
         errors = []
@@ -85,7 +97,12 @@ class CanonicalLessonBrowserAcceptanceTests(unittest.TestCase):
         self.assertEqual(response.status, 200)
         page.locator("main.lesson h1").wait_for()
         page.locator("nav.lesson-nav a.button").first.wait_for()
-        self.assertEqual(errors, [], f"uncaught browser errors on {lesson['code']} / {locale}: {errors}")
+        script_errors = page.evaluate("window.__dchScriptErrors || []")
+        self.assertEqual(
+            errors + script_errors,
+            [],
+            f"uncaught browser errors on {lesson['code']} / {locale}; page/console={errors}; script locations={script_errors}",
+        )
         return page
 
     def test_locale_switcher_is_in_header_only_and_preserves_each_lesson(self):

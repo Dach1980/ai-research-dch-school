@@ -47,13 +47,13 @@ class Lesson713Tests(unittest.TestCase):
             self.assertEqual(sum(1 for tag, classes, _ in parser.tags if tag == "nav" and "lesson-nav" in classes), 1)
             self.assertNotIn('class="language-switcher"', page)
 
-    def test_catalog_identity_review_state_and_previous_lesson(self):
+    def test_catalog_identity_published_state_and_previous_lesson(self):
         rows = [x for x in self.catalog["lessons"] if x.get("uid") == UID]
         self.assertEqual(len(rows), 1)
         item = rows[0]
         self.assertEqual(item["code"], "7.1.3")
-        self.assertEqual(item["status"], "review")
-        self.assertEqual(item["content_state"], "localized")
+        self.assertEqual(item["status"], "published")
+        self.assertEqual(item["content_state"], "published")
         self.assertEqual(item["prerequisite_uids"], ["les-a-0169"])
         self.assertEqual(item["url_i18n"], ROUTES)
         previous = next(x for x in self.catalog["lessons"] if x["uid"] == "les-a-0169")

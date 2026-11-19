@@ -527,13 +527,17 @@ class CanonicalLessonBrowserAcceptanceTests(unittest.TestCase):
                           const figure=el.closest("figure");
                           const box=el.getBoundingClientRect(), fig=figure.getBoundingClientRect();
                           return {viewBox:{width:vb.width,height:vb.height},panels:el.querySelectorAll(".fi-panel").length,
-                            bars:el.querySelectorAll(".fi-bar,.fi-negative").length,zeroAxis:el.querySelectorAll(".fi-zero").length,texts,labelFontSize:getComputedStyle(el.querySelector(".fi-label")).fontSize,
+                            bars:el.querySelectorAll(".fi-bar,.fi-negative").length,zeroAxis:el.querySelectorAll(".fi-zero").length,axisLabels:el.querySelectorAll(".fi-axis-label").length,contextLabels:el.querySelectorAll(".fi-context").length,panelsBottom:Array.from(el.querySelectorAll(".fi-panel")).map(n=>{const b=n.getBBox();return b.y+b.height}),texts,labelFontSize:getComputedStyle(el.querySelector(".fi-label")).fontSize,
                             width:box.width,figureWidth:fig.width,scrollWidth:el.scrollWidth,clientWidth:el.clientWidth};
                         }""")
-                        self.assertEqual(result["viewBox"], {"width":720,"height":340})
+                        self.assertEqual(result["viewBox"], {"width":720,"height":370})
                         self.assertEqual(result["panels"], 2, str(result))
                         self.assertEqual(result["bars"], 6, str(result))
                         self.assertEqual(result["zeroAxis"], 1, str(result))
+                        self.assertEqual(result["axisLabels"], 6, str(result))
+                        self.assertEqual(result["contextLabels"], 2, str(result))
+                        self.assertEqual(len(result["panelsBottom"]), 2, str(result))
+                        self.assertLessEqual(max(result["panelsBottom"]), 370, str(result))
                         self.assertGreaterEqual(len(result["texts"]), 18, str(result))
                         self.assertGreaterEqual(float(result["labelFontSize"].replace("px","")), 20, str(result))
                         for label in result["texts"]:
@@ -544,6 +548,54 @@ class CanonicalLessonBrowserAcceptanceTests(unittest.TestCase):
                         self.assertLessEqual(result["width"], result["figureWidth"]+1, str(result))
                         self.assertLessEqual(result["scrollWidth"], result["clientWidth"]+1, str(result))
                         page.close()
+
+
+    def test_721_outcomes_spacing_and_branded_python_code_render_in_browser(self):
+        lesson = next(item for item in CANONICAL_LESSONS if item.get("code") == "7.2.1")
+        for locale in ("ru", "en", "zh"):
+            for theme in ("light", "dark"):
+                with self.subTest(locale=locale, theme=theme):
+                    page = self.open_page(lesson, locale, width=375, theme=theme)
+                    page.wait_for_selector("#lesson-practice .lesson-code-block pre[data-code-enhanced='1']")
+                    result = page.evaluate("""() => {
+                      const card=document.querySelector('#lesson-outcomes');
+                      const heading=card.querySelector('h2');
+                      const list=card.querySelector('li');
+                      const code=document.querySelector('#lesson-practice .lesson-code-block');
+                      const pre=code.querySelector('pre');
+                      const token=pre.querySelector('.code-token-keyword');
+                      const rgb=s=>s.match(/[\\d.]+/g).slice(0,3).map(Number);
+                      const luminance=s=>{const c=rgb(s).map(v=>{v/=255;return v<=.04045?v/12.92:((v+.055)/1.055)**2.4});return .2126*c[0]+.7152*c[1]+.0722*c[2]};
+                      const contrast=(a,b)=>{const x=luminance(a),y=luminance(b);return (Math.max(x,y)+.05)/(Math.min(x,y)+.05)};
+                      const hs=getComputedStyle(heading),ls=getComputedStyle(list),cs=getComputedStyle(code),ts=getComputedStyle(token),ps=getComputedStyle(pre);
+                      return {
+                        paddingTop:parseFloat(getComputedStyle(card).paddingTop),
+                        headingMarginTop:parseFloat(hs.marginTop),
+                        cardBackground:getComputedStyle(card).backgroundColor,
+                        headingColor:hs.color,listColor:ls.color,
+                        headingContrast:contrast(hs.color,getComputedStyle(card).backgroundColor),
+                        listContrast:contrast(ls.color,getComputedStyle(card).backgroundColor),
+                        codeBackground:cs.backgroundColor,preBackground:ps.backgroundColor,
+                        tokenColor:ts.color,plainColor:getComputedStyle(pre.querySelector('.code-token-identifier')).color,
+                        tokenCount:pre.querySelectorAll('[class^="code-token-"]').length,
+                        lineCount:pre.querySelectorAll('.lesson-code-line').length,
+                        copyButtons:code.querySelectorAll('.lesson-code-copy').length,
+                        codeScrollWidth:pre.scrollWidth,codeClientWidth:pre.clientWidth,
+                        pageScrollWidth:document.documentElement.scrollWidth,viewportWidth:innerWidth
+                      };
+                    }""")
+                    self.assertLessEqual(result["paddingTop"], 16, str(result))
+                    self.assertLessEqual(result["headingMarginTop"], 1, str(result))
+                    self.assertGreaterEqual(result["headingContrast"], 4.5, str(result))
+                    self.assertGreaterEqual(result["listContrast"], 4.5, str(result))
+                    self.assertNotEqual(result["codeBackground"], "rgba(0, 0, 0, 0)", str(result))
+                    self.assertNotEqual(result["preBackground"], "rgba(0, 0, 0, 0)", str(result))
+                    self.assertNotEqual(result["tokenColor"], result["plainColor"], str(result))
+                    self.assertGreater(result["tokenCount"], 30, str(result))
+                    self.assertGreater(result["lineCount"], 10, str(result))
+                    self.assertEqual(result["copyButtons"], 1, str(result))
+                    self.assertLessEqual(result["pageScrollWidth"], result["viewportWidth"], str(result))
+                    page.close()
 
 
     def test_721_content_depth_localisation_and_quiz_interaction(self):

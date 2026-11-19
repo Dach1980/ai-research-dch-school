@@ -1463,7 +1463,7 @@
       "title": "Внедрить общий генератор полноразмерных SVG-иллюстраций с проверкой геометрии",
       "status": "in_progress",
       "priority": "critical",
-      "decision": "Реализация начата: общий renderer создан, типизированная диспетчеризация и проверки геометрии интегрируются с 7.2.2. Полное принятие зависит от полного CI и визуальной приёмки.",
+      "decision": "Этап 1 реализован и прошёл полный CI/deploy на 581e977e7cd7e6fdbb07599c10a3072e108b2326. Общий renderer подключён к 7.2.2 и canonical shell; browser geometry acceptance RU/EN/中文 × light/dark × 375/768/1440 успешен. Остались screenshot baseline/image-diff regression, production visual review и план миграции существующих диаграмм.",
       "acceptance": [
         "Диаграммы задаются типизированными декларативными объектами с whitelist типов и локализованными узлами/связями.",
         "Ровно одна ожидаемая схема вставляется в соответствующую секцию; нет substring dispatch.",
@@ -1475,7 +1475,15 @@
         "Screenshot regression сохраняет контрольные изображения по локалям/темам/ширинам и блокирует неожиданные визуальные регрессии.",
         "Новый генератор включён в canonical authoring template и применяется ко всем новым урокам."
       ],
-      "source": "docs/reports/2026-11-20-lesson-quality-system/ILLUSTRATION_GENERATION_AUDIT_2026-11-20.md; scripts/xai-permutation-importance-lesson.js; tests/test_canonical_lesson_browser.py"
+      "source": "docs/reports/2026-11-20-lesson-quality-system/ILLUSTRATION_GENERATION_AUDIT_2026-11-20.md; scripts/xai-permutation-importance-lesson.js; tests/test_canonical_lesson_browser.py",
+      "commits": [
+        "337db7ce9dc73e7942a167ef408668f034d4a1fc",
+        "7c91b69c4599d00d9c78e453c87b06e7a3413706",
+        "b5290de9bf91c3a043e23fd84da486fd71460f6e",
+        "3e395b26162546056f9e5008a406a37f2f201b05",
+        "8cfd6a6e5640962a5d037b366f8cce9c8024d957",
+        "581e977e7cd7e6fdbb07599c10a3072e108b2326"
+      ]
     }
   ],
   "audit_log": [
@@ -3178,7 +3186,7 @@
       "date": "2026-11-20",
       "type": "lesson_illustration_generation_audit",
       "title": "Аудит генерации SVG: повторная вставка схемы и отсутствие контроля компоновки текста",
-      "result": "В scripts/xai-permutation-importance-lesson.js подтверждена ошибка: условие s.includes('diagram') срабатывает и для маркера 'diagram2', поэтому в секции второй схемы renderer вставляет также первую. SVG-схемы используют фиксированные координаты и одиночные text labels без измерения текста/переноса/пересчёта размеров панелей. Текущий browser test проверяет общую границу viewBox, но не проверяет text-in-node, коллизии с соседними объектами, соответствие типа схемы месту и минимальный размер шрифта. Подготовлена целевая архитектура: типизированные diagram specs, общий SVG layout engine с text measurement/wrapping, динамический viewBox, node containment/collision detection, responsive mobile flow/scroll и screenshot regression RU/EN/中文 × light/dark × 375/768/1440. Код генератора в этом аудите не менялся. Реализация первого этапа начата в 337db7ce: создан scripts/lesson-svg-renderer.js, урок 7.2.2 подключён к нему; marker dispatch заменён на точное определение типа диаграммы. Добавлены проверки геометрии узлов в browser acceptance и отдельный тест точной идентичности двух схем для всех RU/EN/ZH × light/dark × 375/768/1440. Реализация начата: общий renderer добавлен и подключён к RU/EN/中文; marker dispatch заменён на точное определение типа. Browser acceptance проверяет идентичность двух схем и containment текста внутри узлов.",
+      "result": "Подтверждена ошибка substring dispatch: marker diagram2 запускал обе схемы; фиксированные подписи не измерялись и не переносились. Реализован общий SVG renderer с точной типизированной диспетчеризацией, Canvas text measurement, CJK wrapping, динамической геометрией узлов/viewBox и node-level browser checks. Подключён к уроку 7.2.2 RU/EN/中文 и canonical shell. Полный CI/deploy run 44634512054 на SHA 581e977e7cd7e6fdbb07599c10a3072e108b2326 завершился success; browser acceptance по локалям, темам и трём ширинам прошёл. Screenshot regression и ручная production visual acceptance остаются открытыми.",
       "evidence": [
         "docs/reports/2026-11-20-lesson-quality-system/ILLUSTRATION_GENERATION_AUDIT_2026-11-20.md",
         "scripts/xai-permutation-importance-lesson.js",
@@ -3188,9 +3196,9 @@
         "tests/test_lesson_722_permutation_importance.py"
       ],
       "limitations": [
-        "Аудит выполнен по исходникам и тестам; pixel-level production screenshot review не заявляется.",
-        "Исправление генератора не выполнялось; обе схемы требуют отдельной визуальной перепроверки.",
-        "Урок 7.2.2 остаётся review до пользовательской приёмки."
+        "Screenshot baseline/image-diff regression ещё не реализованы.",
+        "Ручная визуальная приёмка production не выполнена; прямое открытие dchai.ru через web preview недоступно.",
+        "Урок 7.2.2 остаётся review до явной пользовательской приёмки."
       ]
     }
   ],

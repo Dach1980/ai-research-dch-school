@@ -51,3 +51,12 @@
 `site-header → track-hero article-hero → lesson-planet-banner → article-body → lesson-sources → lesson-nav → lesson-glossary → lesson-check → footer`.
 
 Если для новой темы нужен компонент, которого нет в общей системе, сначала добавьте его в общий stylesheet/компоненты и тесты. Не создавайте новый вариант оболочки страницы.
+
+
+## Обязательные общие UI-компоненты (2026-11-20)
+
+- Словарь: подключить `scripts/lesson-glossary.js` до renderer урока и вызывать `window.DCHLessonComponents.renderGlossary(root, localizedTerms, localizedHeading)`. Не создавать собственные `dl/dt/dd` или карточки.
+- Результаты обучения: передавать семантический список в `#lesson-outcomes`; визуальные карточки, цвета, номера и сетка принадлежат `lesson-design-system.css`.
+- SVG не обрезать через `overflow:hidden`; на мобильном использовать горизонтально прокручиваемую область, если масштабирование делает подписи нечитаемыми. Проверять границы текста относительно `viewBox`.
+- Проверять RU/EN/中文, light/dark и 375/768/1440 px; контраст измерять относительно фона каждой карточки.
+- Каждый аудит сохранять в `docs/reports/`, индексировать в `data/audit-roadmap.json` и показывать в административной вкладке Audit & Roadmap.

@@ -126,6 +126,7 @@ print(result)  # 11</code></pre></div><p>Нумерация строк, подс
 <script>
 (()=>{const tabs=[...document.querySelectorAll('.admin-tabs [role="tab"]')];const panels=tabs.map(t=>document.getElementById(t.getAttribute('aria-controls')));tabs.forEach((tab,i)=>tab.addEventListener('click',()=>{tabs.forEach((t,j)=>{t.setAttribute('aria-selected',String(i===j));if(panels[j])panels[j].hidden=i!==j;});}));})();
 </script>
+<script src="../scripts/admin-roadmap.js"></script>
 <script src="../scripts/admin-ais-reference.js"></script>
 <script type="module" src="../scripts/admin-auth.js"></script>
 </body>

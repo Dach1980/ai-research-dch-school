@@ -240,3 +240,13 @@ Run every new catalog-backed Track A lesson (UID sequence beginning at `les-a-01
 Changes to this contract, canonical shell, shared component ownership, or global design tokens require an explicit user decision. A lesson authoring task does not imply permission to redesign or refactor shared UI.
 
 **Default: preserve the existing school interface. Change lesson content, not the product shell.**
+
+
+## 12. Shared component enforcement (2026-11-20)
+
+- New lesson renderers must use `scripts/lesson-glossary.js` and `window.DCHLessonComponents.renderGlossary(root, localizedTerms, localizedHeading)`. The renderer owns `.glossary-grid → .glossary-entry → .term-index / .term / p`; lesson renderers must not emit `dl/dt/dd` or hand-build glossary cards.
+- Outcomes renderers provide only a semantic list. Shared design-system styles own card surface, foreground, numbering and responsive layout. Lesson CSS must not apply a contrasting parent foreground to nested cards.
+- SVG illustrations must not be clipped with `overflow:hidden`. Dense diagrams may use an accessible horizontal scroll viewport on narrow screens. Browser acceptance checks SVG text bounding boxes against `viewBox` and confirms all diagram content is reachable at 375 / 768 / 1440 px.
+- Contrast is measured between each visible text node and its actual rendered surface, including nested cards. Parent-container contrast alone is insufficient.
+- Every substantive audit is stored under `docs/reports/`, indexed in `data/audit-roadmap.json`, and rendered in the admin Audit & Roadmap tab. CI, Pages deployment, production verification and user visual acceptance are separate evidence states.
+- These rules are mandatory for new lesson pages across all tracks.

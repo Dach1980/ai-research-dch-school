@@ -60,6 +60,8 @@ class Lesson722Tests(unittest.TestCase):
         renderer = (ROOT / 'scripts/xai-permutation-importance-lesson.js').read_text(encoding='utf-8')
         self.assertIn('role="img"', renderer)
         self.assertIn('aria-labelledby', renderer)
+        self.assertIn('renderGlossary(glossary,lesson.glossary[locale],labels.terms)', renderer)
+        self.assertIn('scripts/lesson-glossary.js', (ROOT / 'lessons/a-7-2-2-les-a-0172.html').read_text(encoding='utf-8'))
         self.assertIn('class="button is-disabled"', renderer)
         self.assertIn('aria-disabled="true"', renderer)
         self.assertIn('a-7-1-3-les-a-0170', renderer)

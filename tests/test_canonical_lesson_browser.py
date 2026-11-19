@@ -700,5 +700,39 @@ class CanonicalLessonBrowserAcceptanceTests(unittest.TestCase):
                             page.close()
 
 
+    def test_722_outcomes_glossary_and_svg_are_readable_and_unclipped(self):
+        lesson = next(item for item in CANONICAL_LESSONS if item.get("code") == "7.2.2")
+        for locale in ("ru", "en", "zh"):
+            for theme in ("light", "dark"):
+                for width in (375, 768, 1440):
+                    with self.subTest(locale=locale, theme=theme, width=width):
+                        page = self.open_page(lesson, locale, width=width, theme=theme)
+                        result = page.evaluate("""() => {
+                          const root=document.querySelector("#lesson-outcomes"),card=root?.querySelector("li");
+                          const glossary=document.querySelector("#lesson-glossary"),grid=glossary?.querySelector(".glossary-grid");
+                          const rgb=v=>v.match(/[\\d.]+/g).slice(0,3).map(Number);
+                          const lum=v=>rgb(v).map(x=>{x/=255;return x<=.04045?x/12.92:Math.pow((x+.055)/1.055,2.4)}).reduce((a,x,i)=>a+x*[.2126,.7152,.0722][i],0);
+                          const ratio=(a,b)=>(Math.max(lum(a),lum(b))+.05)/(Math.min(lum(a),lum(b))+.05);
+                          const svgs=Array.from(document.querySelectorAll("#lesson-sections .pfi-figure svg"));
+                          return {count:root?.querySelectorAll("li").length||0,contrast:card?ratio(getComputedStyle(card).color,getComputedStyle(card).backgroundColor):0,
+                            cards:grid?.querySelectorAll(".glossary-entry").length||0,legacy:glossary?.querySelectorAll("dl,dt,dd").length||0,
+                            svgs:svgs.map(svg=>{const b=svg.viewBox.baseVal;return {right:b.x+b.width,bottom:b.y+b.height,text:Array.from(svg.querySelectorAll("text")).map(t=>{const x=t.getBBox();return [x.x,x.y,x.x+x.width,x.y+x.height]})}}),
+                            overflow:document.documentElement.scrollWidth-window.innerWidth};
+                        }""")
+                        self.assertGreaterEqual(result["count"],5,str(result))
+                        self.assertGreaterEqual(result["contrast"],4.5,str(result))
+                        self.assertEqual(result["cards"],10,str(result))
+                        self.assertEqual(result["legacy"],0,str(result))
+                        self.assertEqual(len(result["svgs"]),2,str(result))
+                        self.assertLessEqual(result["overflow"],1,str(result))
+                        for svg in result["svgs"]:
+                            for x,y,r,b in svg["text"]:
+                                self.assertGreaterEqual(x,-1,str(svg))
+                                self.assertGreaterEqual(y,-1,str(svg))
+                                self.assertLessEqual(r,svg["right"]+1,str(svg))
+                                self.assertLessEqual(b,svg["bottom"]+1,str(svg))
+                        page.close()
+
+
 if __name__ == "__main__":
     unittest.main()

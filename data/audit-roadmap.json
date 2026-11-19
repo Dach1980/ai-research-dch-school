@@ -2,7 +2,7 @@
   "schema_version": 1,
   "project": "AI Research DCH School",
   "section": "Аудит и roadmap",
-  "updated_at": "2026-11-19",
+  "updated_at": "2026-11-20",
   "timezone": "Asia/Singapore",
   "principles": [
     "Планетная карта дополняет обычный каталог и не заменяет его.",
@@ -1438,6 +1438,24 @@
         "После успешной автоматической проверки и отдельной визуальной приёмки статус может быть изменён на published."
       ],
       "source": "lessons/a-7-1-3-les-a-0170.html; lessons/data/xai-03-intrinsic-posthoc.js; docs/standards/CANONICAL_LESSON_UI_CONTRACT.md"
+    },
+    {
+      "id": "RM-LESSON-167",
+      "date": "2026-11-20",
+      "title": "Системно устранить повторяющиеся UI-дефекты новых уроков",
+      "status": "in_progress",
+      "priority": "critical",
+      "decision": "Аудит 7.2.2 выявил конфликт контраста outcomes, нестандартный DOM глоссария, риск обрезки SVG и отсутствие подключения Audit & Roadmap renderer в admin/index.html. Начат общий рефакторинг: shared glossary renderer, проверки контраста/DOM/SVG, усиление канонического контракта и шаблона. CI и production-приёмка ведутся отдельно; 7.2.2 остаётся review.",
+      "acceptance": [
+        "RU/EN/中文 используют единый renderer glossary и canonical card DOM.",
+        "Контраст текста карточек не ниже WCAG AA относительно фактической поверхности в обеих темах.",
+        "SVG text bounding boxes находятся внутри viewBox; схема доступна на 375/768/1440 px без page overflow.",
+        "Browser acceptance покрывает три локали, две темы и три ширины.",
+        "Общие компоненты и правила добавлены в стандарт и authoring template.",
+        "Каждый аудит сохранён в docs/reports, индексирован в data/audit-roadmap.json и виден в admin Audit & Roadmap.",
+        "Существующие уроки проходят regression; 7.2.2 остаётся review до приёмки."
+      ],
+      "source": "docs/reports/2026-11-20-lesson-quality-system/LESSON_UI_AUDIT_AND_REFACTOR_2026-11-20.md; scripts/lesson-glossary.js; tests/test_canonical_lesson_browser.py; docs/standards/CANONICAL_LESSON_UI_CONTRACT.md"
     }
   ],
   "audit_log": [
@@ -3107,6 +3125,32 @@
         "Урок не опубликован: требуется полный CI/browser acceptance и deployment для нового коммита.",
         "Ручная визуальная приёмка production-страниц на 375/768/1440 px и в светлой/тёмной темах ещё не выполнена.",
         "UID 7.2.1 и URL следующего урока не назначались; пока он не опубликован, shared navigation должна показывать недоступный следующий урок."
+      ]
+    },
+    {
+      "id": "AUD-114",
+      "date": "2026-11-20",
+      "type": "canonical_lesson_ui_quality_audit",
+      "title": "Аудит 7.2.2 выявил повторяющиеся дефекты UI и пробелы quality gate",
+      "result": "В RU-версии 7.2.2 обнаружены нечитаемый текст outcomes в светлой теме, нестандартный DOM глоссария (dl/dt/dd вместо glossary-entry карточек), риск обрезки SVG из-за overflow:hidden. Также admin/index.html не подключал scripts/admin-roadmap.js, поэтому журнал data/audit-roadmap.json не был гарантированно виден. Начат системный рефакторинг: общий glossary renderer, исправление outcomes theme tokens, горизонтально доступная SVG viewport, browser acceptance RU/EN/中文 × light/dark × 375/768/1440, дополнение канонического контракта и authoring template. Новый CI и production deployment ещё не подтверждены.",
+      "evidence": [
+        "docs/reports/2026-11-20-lesson-quality-system/LESSON_UI_AUDIT_AND_REFACTOR_2026-11-20.md",
+        "data/audit-roadmap.json",
+        "admin/index.html",
+        "scripts/admin-roadmap.js",
+        "scripts/lesson-glossary.js",
+        "scripts/xai-permutation-importance-lesson.js",
+        "styles/xai-permutation-importance-lesson.css",
+        "tests/test_canonical_lesson_browser.py",
+        "tests/test_lesson_722_permutation_importance.py",
+        "docs/standards/CANONICAL_LESSON_UI_CONTRACT.md",
+        "docs/education/LESSON_AUTHORING_TEMPLATE.md"
+      ],
+      "limitations": [
+        "CI и Playwright нового коммита ещё не подтверждены.",
+        "Production RU/EN/中文 не проверены после изменений.",
+        "Отображение аудита в админке требует проверки после deployment.",
+        "Урок 7.2.2 остаётся review до явной пользовательской приёмки."
       ]
     }
   ],

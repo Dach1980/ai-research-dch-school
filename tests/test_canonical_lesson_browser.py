@@ -568,6 +568,10 @@ class CanonicalLessonBrowserAcceptanceTests(unittest.TestCase):
                 self.assertEqual(download.count(), 1)
                 download_url = page.evaluate("(href) => new URL(href, location.href).href", download.get_attribute("href"))
                 self.assertEqual(page.request.get(download_url).status, 200)
+                locale_suffix = "" if locale == "ru" else "-" + locale
+                previous_name = "a-7-1-3-les-a-0170" + locale_suffix + ".html"
+                self.assertEqual(page.locator("#lesson-navigation a[href$='" + previous_name + "']").count(), 1)
+                self.assertEqual(page.locator("#lesson-navigation [aria-disabled='true']").count(), 1)
                 page.locator("#lesson-quiz .quiz-submit").click()
                 self.assertTrue(page.locator("#lesson-quiz .quiz-feedback.is-visible").is_visible())
                 self.assertIn("0 / 10", page.locator("#lesson-quiz .quiz-feedback").inner_text())

@@ -115,3 +115,8 @@ Renderer выбирает схему по точному `type` из whitelist. 
 ## Follow-up review of the corrected PFI workflow illustration
 
 The supplied screenshot confirmed that text clipping was resolved, but exposed three remaining issues: flow nodes had inconsistent heights and arrow centerlines, the accent node used insufficient text contrast, and the first diagram caption incorrectly described individual-versus-group permutation although the diagram showed only the single-feature workflow. The shared renderer now equalizes flow-node heights, vertically centers text and arrows, and uses theme-aware accent foreground tokens. The PFI lesson now has distinct localized captions for the workflow and correlation diagrams. Browser CI now checks node-height equality, arrow alignment and computed accent contrast (WCAG 4.5:1) across RU/EN/中文, light/dark and 375/768/1440 px.
+
+
+## Contrast gate failure and root-cause correction (2026-11-20)
+
+The first full browser contrast gate on `9e3c883` failed in both themes: computed accent foreground was inherited as normal ink rather than `--lds-accent-ink` (3.09:1 light, 1.91:1 dark). The cause was SVG text fill being overridden in the cascade. Commit `db68f49` sets the accent fill as an explicit inline important style in the shared renderer, so the computed SVG foreground must follow the theme-aware accent token. The contrast gate remains strict at 4.5:1; no threshold was weakened. Full CI and visual acceptance must be rerun on the correction.

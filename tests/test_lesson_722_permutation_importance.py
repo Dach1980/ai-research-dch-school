@@ -16,8 +16,8 @@ class Lesson722Tests(unittest.TestCase):
     def test_catalog_uid_status_and_locales(self):
         self.assertIsNotNone(self.lesson)
         self.assertEqual(self.lesson['code'], '7.2.2')
-        self.assertEqual(self.lesson['status'], 'review')
-        self.assertEqual(self.lesson['content_state'], 'localized')
+        self.assertEqual(self.lesson['status'], 'published')
+        self.assertEqual(self.lesson['content_state'], 'published')
         self.assertEqual(set(self.lesson['url_i18n']), set(LOCALES))
         self.assertEqual(self.lesson['prerequisite_uids'], ['les-a-0171'])
         for locale, route in self.lesson['url_i18n'].items():

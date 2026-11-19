@@ -35,7 +35,8 @@ function prepareNode(ctx,node,width){
  return {...node,width,height,titleLines:title,bodyLines:body};
 }
 function addTextLines(group,lines,x,y,fontSize,weight,color,lineHeight){
- lines.forEach((line,i)=>group.append(svgEl("text",{x,y:y+i*lineHeight,"font-size":fontSize,"font-weight":weight,fill:color,"data-role":"node-text"},line)));
+ const accent=String(color).includes("--lds-accent-ink");
+ lines.forEach((line,i)=>group.append(svgEl("text",{x,y:y+i*lineHeight,"font-size":fontSize,"font-weight":weight,style:`fill:${color}${accent?" !important":""}`,"data-role":"node-text"},line)));
 }
 function render(spec){
  if(!spec||!["flow","grid"].includes(spec.layout)||!Array.isArray(spec.nodes)||!spec.nodes.length)throw new TypeError("Invalid typed SVG diagram specification");

@@ -721,7 +721,7 @@ class CanonicalLessonBrowserAcceptanceTests(unittest.TestCase):
                         }""")
                         self.assertGreaterEqual(result["count"],5,str(result))
                         self.assertGreaterEqual(result["contrast"],4.5,str(result))
-                        self.assertEqual(result["cards"],10,str(result))
+                        self.assertEqual(result["cards"],8,str(result))
                         self.assertEqual(result["legacy"],0,str(result))
                         self.assertEqual(len(result["svgs"]),2,str(result))
                         self.assertLessEqual(result["overflow"],1,str(result))

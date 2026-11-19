@@ -88,9 +88,9 @@ window.DCH_PERMUTATION_IMPORTANCE_LESSON = {
  glossary: Object.fromEntries(Object.entries(L).map(([k,v])=>[k,v.glossary])),
  quiz: Object.fromEntries(Object.entries(L).map(([k,v])=>[k,v.quiz.map(q=>({q:q[0],o:q[1],a:q[2],e:q[3]}))])),
  labels:{
-  ru:{outcomes:"Результаты обучения",practice:"Практическая работа",sources:"Источники и дополнительное чтение",terms:"Глоссарий",quiz:"Проверьте себя",submit:"Проверить ответы",correct:"Верно",incorrect:"Неверно",score:"Результат",previous:"Предыдущий урок",next:"Следующий урок"},
-  en:{outcomes:"Learning outcomes",practice:"Practical lab",sources:"References and further reading",terms:"Glossary",quiz:"Knowledge check",submit:"Check answers",correct:"Correct",incorrect:"Incorrect",score:"Score",previous:"Previous lesson",next:"Next lesson"},
-  zh:{outcomes:"学习目标",practice:"实践实验",sources:"参考资料与延伸阅读",terms:"术语表",quiz:"知识检测",submit:"检查答案",correct:"正确",incorrect:"不正确",score:"得分",previous:"上一课",next:"下一课"}
+  ru:{outcomes:"Результаты обучения",practice:"Практическая работа",sources:"Источники и дополнительное чтение",terms:"Словарь терминов",quiz:"Проверьте себя",submit:"Проверить ответы",correct:"Верно",incorrect:"Неверно",score:"Результат",previous:"Предыдущий урок",next:"Следующий урок"},
+  en:{outcomes:"Learning outcomes",practice:"Practical lab",sources:"References and further reading",terms:"Key terms",quiz:"Knowledge check",submit:"Check answers",correct:"Correct",incorrect:"Incorrect",score:"Score",previous:"Previous lesson",next:"Next lesson"},
+  zh:{outcomes:"学习目标",practice:"实践实验",sources:"参考资料与延伸阅读",terms:"术语词典",quiz:"知识检测",submit:"检查答案",correct:"正确",incorrect:"不正确",score:"得分",previous:"上一课",next:"下一课"}
  }
 };
 })();

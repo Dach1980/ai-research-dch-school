@@ -171,3 +171,9 @@ html[data-theme="light"] .catalog-lesson-list>.module{background:#fff;border-col
   .catalog-module-heading strong{flex-basis:100%;font-size:14px}
   .catalog-lesson-list{grid-template-columns:1fr;gap:8px}
 }
+
+
+/* Keep theme numbers readable in the light palette. The generic
+   .catalog-theme-heading span rule has higher specificity than the
+   standalone number class, so explicitly target the number element. */
+.catalog-theme-heading .catalog-theme-number{color:#fff}

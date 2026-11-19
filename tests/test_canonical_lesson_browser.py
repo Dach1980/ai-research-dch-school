@@ -753,7 +753,7 @@ class CanonicalLessonBrowserAcceptanceTests(unittest.TestCase):
                             });
                             return {rect:{x:rect.x,y:rect.y,right:rect.x+rect.width,bottom:rect.y+rect.height},texts};
                           });
-                          const rects=Array.from(svg.querySelectorAll('[data-node-id] rect')).map(x=>x.getBBox());
+                          const rects=Array.from(svg.querySelectorAll('[data-node-id] rect')).map(x=>{const b=x.getBBox();return {x:b.x,y:b.y,width:b.width,height:b.height};});
                           const arrows=Array.from(svg.querySelectorAll('path')).map(x=>{const b=x.getBBox();return b.y+b.height/2;});
                           const fills=Array.from(svg.querySelectorAll('[data-node-id]')).map(n=>({tone:n.dataset.tone,bg:getComputedStyle(n.querySelector('rect')).fill,fg:getComputedStyle(n.querySelector('text')).fill}));
                           const caption=svg.closest('figure')?.querySelector('figcaption')?.textContent||'';

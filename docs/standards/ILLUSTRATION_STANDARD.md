@@ -20,3 +20,20 @@ Illustrations must teach a concept and remain readable in both site themes and o
 
 ## Review checklist
 Light theme: foreground, background, caption and labels readable. Dark theme: same. Meaning is not color-only. Mobile labels remain legible and content is not clipped. Every node label has a matching annotation pair and passes the automated text-fit test. Screen-reader description communicates the diagram's point.
+
+
+## Shared SVG renderer (required for new lessons)
+
+New lessons must load `scripts/lesson-svg-renderer.js` from the canonical shell and create diagrams through `window.DCHLessonSVG.render(spec)`. The renderer accepts a typed specification with a stable `type`, `layout` (`flow` or `grid`), accessible `title` / `description`, a localized `caption`, and structured `nodes` (`id`, `title`, optional `detail`, optional semantic `tone`). Do not generate SVG markup by concatenating localized strings.
+
+The shared renderer measures text with Canvas using the selected font, wraps whitespace-separated labels and long CJK runs, calculates node heights and the complete viewBox, and emits accessible SVG. It must preserve a minimum readable font size; if content cannot fit, expand the diagram or use a scrollable viewport rather than shrinking text or clipping it.
+
+Every diagram must pass browser checks for:
+- exact type and expected diagram count;
+- every text bounding box inside its own node with visible padding;
+- every visible element inside the viewBox;
+- no text/node/arrow collisions;
+- light/dark contrast and readable computed font size;
+- RU / EN / 中文 at 375 / 768 / 1440 CSS px.
+
+Do not weaken geometry assertions to make a failing diagram pass. Fix the shared layout or the diagram specification.

@@ -77,6 +77,7 @@ class CanonicalLessonUIContractTests(unittest.TestCase):
     def test_canonical_template_declares_mandatory_block_order(self):
         template = (ROOT / "templates/lessons/canonical-lesson-shell.html.tmpl").read_text(encoding="utf-8")
         self.assert_canonical_block_order(template, "canonical shell template")
+        self.assertIn('scripts/lesson-svg-renderer.js', template)
 
     def test_published_uid_backed_lessons_cannot_bypass_block_order(self):
         catalog = json.loads((ROOT / "data/catalog/catalog-v3.json").read_text(encoding="utf-8"))

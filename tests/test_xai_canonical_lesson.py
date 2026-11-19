@@ -96,9 +96,9 @@ class CanonicalXaiLessonTests(unittest.TestCase):
         self.assertIn("overflow-x:auto", self.styles)
 
     def test_learning_outcomes_card_keeps_contrast_in_light_theme(self):
-        self.assertIn('.lesson #xai-outcomes', self.styles)
+        self.assertIn('main.lesson > #lesson-outcomes.outcomes', self.styles)
         self.assertIn('color:#d5e0f2', self.styles)
-        self.assertIn('color:#9fc4ff', self.styles)
+        self.assertIn('color:#b9d5ff', self.styles)
         self.assertIn('color:#ffffff', self.styles)
 
     def test_original_self_check_is_wired_to_the_canonical_page(self):

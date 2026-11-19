@@ -58,8 +58,14 @@ class Lesson722Tests(unittest.TestCase):
 
     def test_svg_accessibility_and_review_navigation(self):
         renderer = (ROOT / 'scripts/xai-permutation-importance-lesson.js').read_text(encoding='utf-8')
-        self.assertIn('role="img"', renderer)
-        self.assertIn('aria-labelledby', renderer)
+        self.assertIn('DCHLessonSVG.render', renderer)
+        shared = (ROOT / 'scripts/lesson-svg-renderer.js').read_text(encoding='utf-8')
+        self.assertIn('role:"img"', shared)
+        self.assertIn('aria-labelledby', shared)
+        self.assertIn('data-diagram-type', shared)
+        self.assertIn('data-node-bounds', shared)
+        self.assertIn('measureText', shared)
+        self.assertNotIn('s.includes("diagram")', renderer)
         self.assertIn('renderGlossary(glossary,lesson.glossary[locale],labels.terms)', renderer)
         self.assertIn('scripts/lesson-glossary.js', (ROOT / 'lessons/a-7-2-2-les-a-0172.html').read_text(encoding='utf-8'))
         self.assertIn('class="button is-disabled"', renderer)

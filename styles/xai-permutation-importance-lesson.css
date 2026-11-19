@@ -20,3 +20,28 @@
 #lesson-quiz .quiz-feedback.is-visible{display:block}
 #lesson-quiz .quiz-feedback li{margin:.5rem 0}
 @media(max-width:560px){.pfi-figure{margin:1rem 0}#lesson-practice pre{font-size:.82rem}#lesson-glossary dl{grid-template-columns:1fr;gap:.2rem}#lesson-glossary dd{margin-bottom:.75rem}}
+
+/* Keep every canonical block inside the mobile lesson column. */
+main.lesson > #lesson-outcomes,
+main.lesson > #lesson-sections,
+main.lesson > #lesson-practice,
+main.lesson > #lesson-sources,
+main.lesson > #lesson-navigation,
+main.lesson > #lesson-glossary,
+main.lesson > #lesson-quiz {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+}
+#lesson-practice, #lesson-sources, #lesson-glossary, #lesson-navigation {
+  overflow-wrap: anywhere;
+}
+#lesson-navigation .button {
+  max-width: 100%;
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+#lesson-practice pre {
+  width: 100%;
+  max-width: 100%;
+}

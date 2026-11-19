@@ -38,7 +38,7 @@ class Lesson722Tests(unittest.TestCase):
         for token in ('Permutation Feature Importance', 'correlated features', '相关特征', 'n_repeats', 'max_samples', 'causal'):
             self.assertIn(token.lower(), data.lower())
         for section in ('question', 'definition', 'metric', 'repeats', 'correlation', 'limits', 'compare'):
-            self.assertGreaterEqual(data.count('[' + repr(section)), 1)
+            self.assertIn('["' + section + '"', data)
         self.assertIn('outcomes:', data)
 
     def test_semantic_outcomes_use_shared_card_styles(self):

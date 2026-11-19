@@ -513,9 +513,10 @@ class CanonicalLessonBrowserAcceptanceTests(unittest.TestCase):
     def test_721_feature_importance_illustration_is_complete_and_responsive(self):
         lesson = next(item for item in CANONICAL_LESSONS if item.get("code") == "7.2.1")
         for locale in ("ru", "en", "zh"):
-            for width in (375, 768, 1440):
-                with self.subTest(locale=locale, width=width):
-                    page = self.open_page(lesson, locale, width=width, theme="light")
+            for theme in ("light", "dark"):
+                for width in (375, 768, 1440):
+                    with self.subTest(locale=locale, theme=theme, width=width):
+                        page = self.open_page(lesson, locale, width=width, theme=theme)
                     svg = page.locator("#lesson-sections svg.feature-importance-svg")
                     svg.wait_for()
                     result = svg.evaluate("""el => {

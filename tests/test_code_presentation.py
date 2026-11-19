@@ -1,5 +1,4 @@
 from pathlib import Path
-import re
 import unittest
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -37,14 +36,18 @@ class CodePresentationTests(unittest.TestCase):
         self.assertIn("@import url('./code-blocks.css')", main_css)
         renderer = (ROOT / "scripts/code-blocks.js").read_text(encoding="utf-8")
         stylesheet = (ROOT / "styles/code-blocks.css").read_text(encoding="utf-8")
-        self.assertIn("code-token-keyword", stylesheet)
+        # The renderer builds token class names dynamically from the token type;
+        # checking the prefix + keyword classifier is more accurate than looking
+        # for a fully expanded class name in the JavaScript source.
+        self.assertIn('class="code-token-"+cls', renderer)
+        self.assertIn('cls="keyword"', renderer)
+        self.assertIn("KEYWORDS.has(t)", renderer)
+        self.assertIn(".code-token-keyword", stylesheet)
         self.assertIn("lesson-code-toolbar", stylesheet)
-        self.assertIn("code-token-keyword", renderer)
         for suffix in ("", "-en", "-zh"):
             page = (ROOT / f"lessons/a-7-2-1-les-a-0171{suffix}.html").read_text(encoding="utf-8")
             self.assertIn("../styles/main.css", page)
             self.assertIn("../scripts/code-blocks.js", page)
-
 
     def test_site_brand_uses_the_canonical_favicon_asset(self):
         pages = [

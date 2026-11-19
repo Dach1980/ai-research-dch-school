@@ -36,10 +36,8 @@ class CodePresentationTests(unittest.TestCase):
         self.assertIn("@import url('./code-blocks.css')", main_css)
         renderer = (ROOT / "scripts/code-blocks.js").read_text(encoding="utf-8")
         stylesheet = (ROOT / "styles/code-blocks.css").read_text(encoding="utf-8")
-        # The renderer builds token class names dynamically from the token type;
-        # checking the prefix + keyword classifier is more accurate than looking
-        # for a fully expanded class name in the JavaScript source.
-        self.assertIn('class="code-token-"+cls', renderer)
+        # The renderer builds token class names dynamically from the token type.
+        self.assertIn("code-token-'+cls+'", renderer)
         self.assertIn('cls="keyword"', renderer)
         self.assertIn("KEYWORDS.has(t)", renderer)
         self.assertIn(".code-token-keyword", stylesheet)

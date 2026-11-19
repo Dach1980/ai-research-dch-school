@@ -1,0 +1,22 @@
+/* Scoped presentation for Track A lesson 7.2.2; global tokens only. */
+#lesson-sections,#lesson-practice,#lesson-sources,#lesson-glossary,#lesson-quiz{min-width:0}
+#lesson-sections .xai-canonical-section-content{min-width:0;overflow-wrap:anywhere;line-height:1.78}
+#lesson-sections .xai-canonical-section-content p{margin:.9rem 0}
+#lesson-sections .formula{display:grid;gap:.6rem;max-width:100%;margin:1.4rem auto;padding:1.1rem;border:1px solid var(--lds-math-border);border-left:4px solid var(--lds-math-accent);border-radius:14px;background:var(--lds-math-bg);color:var(--lds-math-ink);text-align:center;overflow-x:auto}
+#lesson-sections .formula-expression{font:700 clamp(1rem,2.2vw,1.3rem)/1.6 ui-monospace,monospace;white-space:nowrap}
+.pfi-figure{max-width:720px;margin:1.4rem auto;overflow:hidden}.pfi-figure svg{display:block;width:100%;height:auto}.pfi-figure figcaption{margin-top:.5rem;color:var(--lds-muted);font-size:.9rem}
+#lesson-practice,#lesson-sources{color:var(--lds-ink);line-height:1.75}
+#lesson-practice pre{max-width:100%;overflow:auto;padding:1rem;border-radius:12px;background:var(--lds-code);color:var(--lds-ink)}
+#lesson-practice pre code{white-space:pre}
+#lesson-glossary dl{display:grid;grid-template-columns:minmax(10rem, .35fr) 1fr;gap:.55rem 1rem}
+#lesson-glossary dt{font-weight:750;color:var(--lds-ink)}#lesson-glossary dd{margin:0;color:var(--lds-muted)}
+#lesson-quiz .knowledge-check{margin:1.3rem 0;padding:clamp(.8rem,2vw,1.2rem);border:1px solid var(--lds-line);border-radius:14px;background:var(--lds-surface);color:var(--lds-ink)}
+#lesson-quiz fieldset{min-width:0;margin:1rem 0;padding:.9rem;border:1px solid var(--lds-line);border-radius:10px}
+#lesson-quiz legend{max-width:100%;font-weight:750;line-height:1.55}
+#lesson-quiz label{display:flex;gap:.65rem;align-items:flex-start;margin:.6rem 0;line-height:1.55;cursor:pointer}
+#lesson-quiz input{flex:0 0 auto;margin-top:.25rem;accent-color:var(--lds-accent)}
+#lesson-quiz .quiz-submit{padding:.7rem 1rem;border:0;border-radius:9px;background:var(--lds-accent);color:#fff;font:inherit;font-weight:700;cursor:pointer}
+#lesson-quiz .quiz-feedback{display:none;margin-top:1rem;padding:.9rem 1rem;border:1px solid var(--lds-line);border-radius:10px;background:var(--lds-code);color:var(--lds-ink)}
+#lesson-quiz .quiz-feedback.is-visible{display:block}
+#lesson-quiz .quiz-feedback li{margin:.5rem 0}
+@media(max-width:560px){.pfi-figure{margin:1rem 0}#lesson-practice pre{font-size:.82rem}#lesson-glossary dl{grid-template-columns:1fr;gap:.2rem}#lesson-glossary dd{margin-bottom:.75rem}}

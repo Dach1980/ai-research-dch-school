@@ -1,7 +1,7 @@
 {
   "schema_version": 3,
   "catalog_id": "dch-school-curriculum",
-  "catalog_version": "3.2.6-lesson-7-2-1-review",
+  "catalog_version": "3.2.7-lesson-7-2-2-review",
   "status": "migration_staging",
   "tracks": [
     {
@@ -3828,6 +3828,38 @@
         "ru": "lessons/a-7-2-1-les-a-0171.html",
         "en": "lessons/a-7-2-1-les-a-0171-en.html",
         "zh": "lessons/a-7-2-1-les-a-0171-zh.html"
+      }
+    },
+    {
+      "uid": "les-a-0172",
+      "track_uid": "trk-a",
+      "theme_uid": "thm-a-07",
+      "module_uid": "mod-a-07-02",
+      "code": "7.2.2",
+      "title": "Permutation Feature Importance",
+      "status": "review",
+      "access": "open",
+      "level": "intermediate",
+      "prerequisite_uids": [
+        "les-a-0171"
+      ],
+      "learning_outcomes": [
+        "Объяснять логику PFI и вычислять важность как изменение выбранной метрики после перестановки одного признака.",
+        "Выбирать метрику и независимую оценочную выборку в соответствии с задачей и целью анализа.",
+        "Интерпретировать среднюю важность и разброс по повторным перестановкам, не скрывая отрицательные значения.",
+        "Объяснять влияние коррелирующих признаков и отличать маргинальную перестановку от условной или групповой проверки.",
+        "Сопоставлять PFI с MDI, выявлять ограничения и воспроизводить анализ с помощью scikit-learn."
+      ],
+      "content_state": "localized",
+      "title_i18n": {
+        "ru": "Permutation Feature Importance",
+        "en": "Permutation Feature Importance",
+        "zh": "Permutation Feature Importance（置换特征重要性）"
+      },
+      "url_i18n": {
+        "ru": "lessons/a-7-2-2-les-a-0172.html",
+        "en": "lessons/a-7-2-2-les-a-0172-en.html",
+        "zh": "lessons/a-7-2-2-les-a-0172-zh.html"
       }
     }
   ],

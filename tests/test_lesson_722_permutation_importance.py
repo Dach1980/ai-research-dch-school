@@ -62,7 +62,7 @@ class Lesson722Tests(unittest.TestCase):
         self.assertIn('aria-labelledby', renderer)
         self.assertIn('class="button is-disabled"', renderer)
         self.assertIn('aria-disabled="true"', renderer)
-        self.assertIn('a-7-2-1-les-a-0171', renderer)
+        self.assertIn('a-7-1-3-les-a-0170', renderer)
         self.assertNotIn('a-7-2-3-les-a-0173', renderer)
 
 if __name__ == '__main__':

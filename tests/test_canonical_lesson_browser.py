@@ -517,31 +517,31 @@ class CanonicalLessonBrowserAcceptanceTests(unittest.TestCase):
                 for width in (375, 768, 1440):
                     with self.subTest(locale=locale, theme=theme, width=width):
                         page = self.open_page(lesson, locale, width=width, theme=theme)
-                    svg = page.locator("#lesson-sections svg.feature-importance-svg")
-                    svg.wait_for()
-                    result = svg.evaluate("""el => {
-                      const vb=el.viewBox.baseVal;
-                      const texts=Array.from(el.querySelectorAll("text")).map(node => {
-                        const b=node.getBBox(); return {x:b.x,y:b.y,right:b.x+b.width,bottom:b.y+b.height,text:node.textContent};
-                      });
-                      const figure=el.closest("figure");
-                      const box=el.getBoundingClientRect(), fig=figure.getBoundingClientRect();
-                      return {viewBox:{width:vb.width,height:vb.height},panels:el.querySelectorAll(".fi-panel").length,
-                        bars:el.querySelectorAll(".fi-bar,.fi-negative").length,texts,
-                        width:box.width,figureWidth:fig.width,scrollWidth:el.scrollWidth,clientWidth:el.clientWidth};
-                    }""")
-                    self.assertEqual(result["viewBox"], {"width":720,"height":340})
-                    self.assertEqual(result["panels"], 2, str(result))
-                    self.assertEqual(result["bars"], 6, str(result))
-                    self.assertGreaterEqual(len(result["texts"]), 18, str(result))
-                    for label in result["texts"]:
-                        self.assertGreaterEqual(label["x"], 0, str(label))
-                        self.assertGreaterEqual(label["y"], 0, str(label))
-                        self.assertLessEqual(label["right"], 720, str(label))
-                        self.assertLessEqual(label["bottom"], 340, str(label))
-                    self.assertLessEqual(result["width"], result["figureWidth"]+1, str(result))
-                    self.assertLessEqual(result["scrollWidth"], result["clientWidth"]+1, str(result))
-                    page.close()
+                        svg = page.locator("#lesson-sections svg.feature-importance-svg")
+                        svg.wait_for()
+                        result = svg.evaluate("""el => {
+                          const vb=el.viewBox.baseVal;
+                          const texts=Array.from(el.querySelectorAll("text")).map(node => {
+                            const b=node.getBBox(); return {x:b.x,y:b.y,right:b.x+b.width,bottom:b.y+b.height,text:node.textContent};
+                          });
+                          const figure=el.closest("figure");
+                          const box=el.getBoundingClientRect(), fig=figure.getBoundingClientRect();
+                          return {viewBox:{width:vb.width,height:vb.height},panels:el.querySelectorAll(".fi-panel").length,
+                            bars:el.querySelectorAll(".fi-bar,.fi-negative").length,texts,
+                            width:box.width,figureWidth:fig.width,scrollWidth:el.scrollWidth,clientWidth:el.clientWidth};
+                        }""")
+                        self.assertEqual(result["viewBox"], {"width":720,"height":340})
+                        self.assertEqual(result["panels"], 2, str(result))
+                        self.assertEqual(result["bars"], 6, str(result))
+                        self.assertGreaterEqual(len(result["texts"]), 18, str(result))
+                        for label in result["texts"]:
+                            self.assertGreaterEqual(label["x"], 0, str(label))
+                            self.assertGreaterEqual(label["y"], 0, str(label))
+                            self.assertLessEqual(label["right"], 720, str(label))
+                            self.assertLessEqual(label["bottom"], 340, str(label))
+                        self.assertLessEqual(result["width"], result["figureWidth"]+1, str(result))
+                        self.assertLessEqual(result["scrollWidth"], result["clientWidth"]+1, str(result))
+                        page.close()
 
 
     def test_721_content_depth_localisation_and_quiz_interaction(self):

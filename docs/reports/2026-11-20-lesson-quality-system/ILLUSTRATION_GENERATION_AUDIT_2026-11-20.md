@@ -110,3 +110,8 @@ Renderer выбирает схему по точному `type` из whitelist. 
 ## 6. Принятое решение и следующий этап
 
 Системный подход согласован пользователем. Общий renderer, типизированная диспетчеризация, node-level containment browser checks и подключение в canonical shell реализованы и прошли CI. Следующий этап: screenshot baseline / image-diff regression, проверка реальных production screenshots и постепенная миграция других существующих диаграмм. Новые уроки обязаны использовать общий renderer.
+
+
+## Follow-up review of the corrected PFI workflow illustration
+
+The supplied screenshot confirmed that text clipping was resolved, but exposed three remaining issues: flow nodes had inconsistent heights and arrow centerlines, the accent node used insufficient text contrast, and the first diagram caption incorrectly described individual-versus-group permutation although the diagram showed only the single-feature workflow. The shared renderer now equalizes flow-node heights, vertically centers text and arrows, and uses theme-aware accent foreground tokens. The PFI lesson now has distinct localized captions for the workflow and correlation diagrams. Browser CI now checks node-height equality, arrow alignment and computed accent contrast (WCAG 4.5:1) across RU/EN/中文, light/dark and 375/768/1440 px.

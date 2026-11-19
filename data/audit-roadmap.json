@@ -1463,7 +1463,7 @@
       "title": "Внедрить общий генератор полноразмерных SVG-иллюстраций с проверкой геометрии",
       "status": "in_progress",
       "priority": "critical",
-      "decision": "Этап 1 реализован и прошёл полный CI/deploy на 581e977e7cd7e6fdbb07599c10a3072e108b2326. Общий renderer подключён к 7.2.2 и canonical shell; browser geometry acceptance RU/EN/中文 × light/dark × 375/768/1440 успешен. Остались screenshot baseline/image-diff regression, production visual review и план миграции существующих диаграмм.",
+      "decision": "Этап 1 реализован и прошёл полный CI/deploy на 581e977e7cd7e6fdbb07599c10a3072e108b2326. Общий renderer подключён к 7.2.2 и canonical shell; browser geometry acceptance RU/EN/中文 × light/dark × 375/768/1440 успешен. Остались screenshot baseline/image-diff regression, production visual review и план миграции существующих диаграмм. Follow-up fixes for alignment, accent contrast and diagram-specific captions implemented; waiting for full CI/deployment and screenshot review.",
       "acceptance": [
         "Диаграммы задаются типизированными декларативными объектами с whitelist типов и локализованными узлами/связями.",
         "Ровно одна ожидаемая схема вставляется в соответствующую секцию; нет substring dispatch.",
@@ -3186,7 +3186,7 @@
       "date": "2026-11-20",
       "type": "lesson_illustration_generation_audit",
       "title": "Аудит генерации SVG: повторная вставка схемы и отсутствие контроля компоновки текста",
-      "result": "Подтверждена ошибка substring dispatch: marker diagram2 запускал обе схемы; фиксированные подписи не измерялись и не переносились. Реализован общий SVG renderer с точной типизированной диспетчеризацией, Canvas text measurement, CJK wrapping, динамической геометрией узлов/viewBox и node-level browser checks. Подключён к уроку 7.2.2 RU/EN/中文 и canonical shell. Полный CI/deploy run 44634512054 на SHA 581e977e7cd7e6fdbb07599c10a3072e108b2326 завершился success; browser acceptance по локалям, темам и трём ширинам прошёл. Screenshot regression и ручная production visual acceptance остаются открытыми.",
+      "result": "Подтверждена ошибка substring dispatch: marker diagram2 запускал обе схемы; фиксированные подписи не измерялись и не переносились. Реализован общий SVG renderer с точной типизированной диспетчеризацией, Canvas text measurement, CJK wrapping, динамической геометрией узлов/viewBox и node-level browser checks. Подключён к уроку 7.2.2 RU/EN/中文 и canonical shell. Полный CI/deploy run 44634512054 на SHA 581e977e7cd7e6fdbb07599c10a3072e108b2326 завершился success; browser acceptance по локалям, темам и трём ширинам прошёл. Screenshot regression и ручная production visual acceptance остаются открытыми. Follow-up screenshot review: fixed flow-node equal heights, vertical text centering and common arrow axis; added theme-aware accent text token and 4.5:1 contrast assertion; corrected distinct localized captions for individual PFI workflow vs group-correlation diagram. Browser CI extended for geometry, arrow alignment and computed contrast.",
       "evidence": [
         "docs/reports/2026-11-20-lesson-quality-system/ILLUSTRATION_GENERATION_AUDIT_2026-11-20.md",
         "scripts/xai-permutation-importance-lesson.js",

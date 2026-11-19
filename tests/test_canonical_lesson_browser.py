@@ -753,11 +753,27 @@ class CanonicalLessonBrowserAcceptanceTests(unittest.TestCase):
                             });
                             return {rect:{x:rect.x,y:rect.y,right:rect.x+rect.width,bottom:rect.y+rect.height},texts};
                           });
-                          return {type:svg.dataset.diagramType,viewBox:{right:vb.x+vb.width,bottom:vb.y+vb.height},nodes,
+                          const rects=Array.from(svg.querySelectorAll('[data-node-id] rect')).map(x=>x.getBBox());
+                          const arrows=Array.from(svg.querySelectorAll('path')).map(x=>{const b=x.getBBox();return b.y+b.height/2;});
+                          const fills=Array.from(svg.querySelectorAll('[data-node-id]')).map(n=>({tone:n.dataset.tone,bg:getComputedStyle(n.querySelector('rect')).fill,fg:getComputedStyle(n.querySelector('text')).fill}));
+                          const caption=svg.closest('figure')?.querySelector('figcaption')?.textContent||'';
+                          const lum=c=>{const v=c.match(/[\\d.]+/g).slice(0,3).map(Number).map(x=>x/255).map(x=>x<=.04045?x/12.92:Math.pow((x+.055)/1.055,2.4));return v[0]*.2126+v[1]*.7152+v[2]*.0722;};
+                          const contrast=(a,b)=>(Math.max(lum(a),lum(b))+.05)/(Math.min(lum(a),lum(b))+.05);
+                          fills.forEach(x=>x.ratio=contrast(x.fg,x.bg));
+                          return {type:svg.dataset.diagramType,viewBox:{right:vb.x+vb.width,bottom:vb.y+vb.height},nodes,rects,arrows,fills,caption,
                             viewport:svg.closest('.pfi-diagram-viewport')?.clientWidth,svgWidth:svg.getBoundingClientRect().width};
                         })""")
                         self.assertEqual([x["type"] for x in result], expected, str(result))
                         self.assertEqual(len(result), 2, str(result))
+                        flow=result[0]
+                        self.assertEqual(len({round(x["height"],2) for x in flow["rects"]}),1,str(flow))
+                        if flow["arrows"]:
+                            self.assertLess(max(flow["arrows"])-min(flow["arrows"]),1.5,str(flow))
+                        self.assertIn("individual",flow["caption"].lower() if locale=="en" else flow["caption"].lower())
+                        for item in flow["fills"]:
+                            if item["tone"]=="accent":
+                                self.assertGreaterEqual(item["ratio"],4.5,str(item))
+                        self.assertTrue(result[1]["caption"],str(result))
                         for diagram in result:
                             for node in diagram["nodes"]:
                                 r=node["rect"]

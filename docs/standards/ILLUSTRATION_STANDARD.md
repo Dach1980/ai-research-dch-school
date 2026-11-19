@@ -37,3 +37,7 @@ Every diagram must pass browser checks for:
 - RU / EN / 中文 at 375 / 768 / 1440 CSS px.
 
 Do not weaken geometry assertions to make a failing diagram pass. Fix the shared layout or the diagram specification.
+
+## Flow layout, accent contrast and semantic captions
+
+Flow diagrams use a shared node height equal to the tallest node in the row; node text is vertically centered and every connector arrow shares the row centerline. Accent nodes must use the theme-aware `--lds-accent-ink` foreground token (white on the light-theme blue accent, dark ink on the light-blue dark-theme accent). Browser acceptance computes actual SVG foreground/background contrast and requires at least 4.5:1 for normal text. Captions must describe the actual diagram type: an individual PFI workflow must not claim to compare group permutation; a correlation/group diagram must explicitly describe the individual-versus-group comparison. Keep captions localized.

@@ -42,3 +42,5 @@ main.lesson > #lesson-outcomes.outcomes li,
 main.lesson > #lesson-outcomes.outcomes p{
   color:var(--lds-ink);
 }
+
+.feature-importance-svg .fi-zero{stroke:var(--lds-line);stroke-width:2;stroke-dasharray:4 4}

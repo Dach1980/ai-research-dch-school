@@ -1456,6 +1456,26 @@
         "Существующие уроки проходят regression; 7.2.2 остаётся review до приёмки."
       ],
       "source": "docs/reports/2026-11-20-lesson-quality-system/LESSON_UI_AUDIT_AND_REFACTOR_2026-11-20.md; scripts/lesson-glossary.js; tests/test_canonical_lesson_browser.py; docs/standards/CANONICAL_LESSON_UI_CONTRACT.md"
+    },
+    {
+      "id": "RM-LESSON-168",
+      "date": "2026-11-20",
+      "title": "Внедрить общий генератор полноразмерных SVG-иллюстраций с проверкой геометрии",
+      "status": "proposed",
+      "priority": "critical",
+      "decision": "Аудит AUD-115 подтвердил, что diagram2 ошибочно проходит проверку diagram по подстроке и запускает обе схемы; фиксированные SVG text labels не переносятся и не измеряются. Предлагается заменить marker substring на типизированные diagram specs, построить общий SVG layout/text-wrapping helper с динамическим viewBox, node containment/collision checks и screenshot regression. Это архитектурное предложение; реализация ожидает отдельного согласования.",
+      "acceptance": [
+        "Диаграммы задаются типизированными декларативными объектами с whitelist типов и локализованными узлами/связями.",
+        "Ровно одна ожидаемая схема вставляется в соответствующую секцию; нет substring dispatch.",
+        "Каждая подпись измеряется в браузере, переносится по словам и остаётся внутри собственного узла с padding.",
+        "Нет пересечений текста с узлами, стрелками и другими подписями, кроме явно разрешённых.",
+        "viewBox рассчитывается по полным границам всех элементов.",
+        "Минимальный размер шрифта и WCAG AA контраст подтверждены для каждой локали и темы.",
+        "RU/EN/中文 проходят 375/768/1440 px без page overflow; сложная mobile схема доступна через явный scroll viewport либо вертикальный layout.",
+        "Screenshot regression сохраняет контрольные изображения по локалям/темам/ширинам и блокирует неожиданные визуальные регрессии.",
+        "Новый генератор включён в canonical authoring template и применяется ко всем новым урокам."
+      ],
+      "source": "docs/reports/2026-11-20-lesson-quality-system/ILLUSTRATION_GENERATION_AUDIT_2026-11-20.md; scripts/xai-permutation-importance-lesson.js; tests/test_canonical_lesson_browser.py"
     }
   ],
   "audit_log": [
@@ -3151,6 +3171,26 @@
         "Production RU/EN/中文 не проверены после изменений.",
         "Отображение аудита в админке требует проверки после deployment.",
         "Урок 7.2.2 остаётся review до явной пользовательской приёмки."
+      ]
+    },
+    {
+      "id": "AUD-115",
+      "date": "2026-11-20",
+      "type": "lesson_illustration_generation_audit",
+      "title": "Аудит генерации SVG: повторная вставка схемы и отсутствие контроля компоновки текста",
+      "result": "В scripts/xai-permutation-importance-lesson.js подтверждена ошибка: условие s.includes('diagram') срабатывает и для маркера 'diagram2', поэтому в секции второй схемы renderer вставляет также первую. SVG-схемы используют фиксированные координаты и одиночные text labels без измерения текста/переноса/пересчёта размеров панелей. Текущий browser test проверяет общую границу viewBox, но не проверяет text-in-node, коллизии с соседними объектами, соответствие типа схемы месту и минимальный размер шрифта. Подготовлена целевая архитектура: типизированные diagram specs, общий SVG layout engine с text measurement/wrapping, динамический viewBox, node containment/collision detection, responsive mobile flow/scroll и screenshot regression RU/EN/中文 × light/dark × 375/768/1440. Код генератора в этом аудите не менялся.",
+      "evidence": [
+        "docs/reports/2026-11-20-lesson-quality-system/ILLUSTRATION_GENERATION_AUDIT_2026-11-20.md",
+        "scripts/xai-permutation-importance-lesson.js",
+        "lessons/data/xai-05-permutation-importance.js",
+        "styles/xai-permutation-importance-lesson.css",
+        "tests/test_canonical_lesson_browser.py",
+        "tests/test_lesson_722_permutation_importance.py"
+      ],
+      "limitations": [
+        "Аудит выполнен по исходникам и тестам; pixel-level production screenshot review не заявляется.",
+        "Исправление генератора не выполнялось; обе схемы требуют отдельной визуальной перепроверки.",
+        "Урок 7.2.2 остаётся review до пользовательской приёмки."
       ]
     }
   ],

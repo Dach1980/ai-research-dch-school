@@ -487,5 +487,61 @@ class CanonicalLessonBrowserAcceptanceTests(unittest.TestCase):
                 page.close()
 
 
+    def test_721_outcomes_contrast_all_locales_both_themes(self):
+        lesson = next(item for item in CANONICAL_LESSONS if item.get("code") == "7.2.1")
+        for locale in ("ru", "en", "zh"):
+            for theme in ("light", "dark"):
+                with self.subTest(locale=locale, theme=theme):
+                    page = self.open_page(lesson, locale, width=1440, theme=theme)
+                    result = page.evaluate("""() => {
+                      const root = document.querySelector("main.lesson > #lesson-outcomes.outcomes");
+                      if (!root) return {missing:true};
+                      const color = el => getComputedStyle(el).color;
+                      const bg = getComputedStyle(root).backgroundColor;
+                      const rgb = value => value.match(/[0-9.]+/g).slice(0,3).map(Number);
+                      const lum = value => rgb(value).map(v => {v/=255;return v<=.04045?v/12.92:Math.pow((v+.055)/1.055,2.4);}).reduce((a,v,i)=>a+v*[.2126,.7152,.0722][i],0);
+                      const contrast = (a,b) => (Math.max(lum(a),lum(b))+.05)/(Math.min(lum(a),lum(b))+.05);
+                      const heading=root.querySelector("h2"), copy=root.querySelector("li,p");
+                      return {bg,heading:color(heading),copy:color(copy),headingRatio:contrast(color(heading),bg),copyRatio:contrast(color(copy),bg),items:root.querySelectorAll("li").length};
+                    }""")
+                    self.assertNotIn("missing", result)
+                    self.assertGreaterEqual(result["headingRatio"], 4.5, str(result))
+                    self.assertGreaterEqual(result["copyRatio"], 4.5, str(result))
+                    self.assertGreaterEqual(result["items"], 5)
+                    page.close()
+
+    def test_721_feature_importance_illustration_is_complete_and_responsive(self):
+        lesson = next(item for item in CANONICAL_LESSONS if item.get("code") == "7.2.1")
+        for locale in ("ru", "en", "zh"):
+            for width in (375, 768, 1440):
+                with self.subTest(locale=locale, width=width):
+                    page = self.open_page(lesson, locale, width=width, theme="light")
+                    svg = page.locator("#lesson-sections svg.feature-importance-svg")
+                    svg.wait_for()
+                    result = svg.evaluate("""el => {
+                      const vb=el.viewBox.baseVal;
+                      const texts=Array.from(el.querySelectorAll("text")).map(node => {
+                        const b=node.getBBox(); return {x:b.x,y:b.y,right:b.x+b.width,bottom:b.y+b.height,text:node.textContent};
+                      });
+                      const figure=el.closest("figure");
+                      const box=el.getBoundingClientRect(), fig=figure.getBoundingClientRect();
+                      return {viewBox:{width:vb.width,height:vb.height},panels:el.querySelectorAll(".fi-panel").length,
+                        bars:el.querySelectorAll(".fi-bar,.fi-negative").length,texts,
+                        width:box.width,figureWidth:fig.width,scrollWidth:el.scrollWidth,clientWidth:el.clientWidth};
+                    }""")
+                    self.assertEqual(result["viewBox"], {"width":720,"height":340})
+                    self.assertEqual(result["panels"], 2, str(result))
+                    self.assertEqual(result["bars"], 6, str(result))
+                    self.assertGreaterEqual(len(result["texts"]), 18, str(result))
+                    for label in result["texts"]:
+                        self.assertGreaterEqual(label["x"], 0, str(label))
+                        self.assertGreaterEqual(label["y"], 0, str(label))
+                        self.assertLessEqual(label["right"], 720, str(label))
+                        self.assertLessEqual(label["bottom"], 340, str(label))
+                    self.assertLessEqual(result["width"], result["figureWidth"]+1, str(result))
+                    self.assertLessEqual(result["scrollWidth"], result["clientWidth"]+1, str(result))
+                    page.close()
+
+
 if __name__ == "__main__":
     unittest.main()

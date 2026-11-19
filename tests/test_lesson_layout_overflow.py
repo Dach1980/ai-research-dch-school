@@ -9,11 +9,11 @@ from pathlib import Path
 from playwright.sync_api import sync_playwright
 
 ROOT = Path(__file__).resolve().parents[1]
-LESSONS = sorted([* (ROOT / "lessons").glob("a-1-4-*.html"), * (ROOT / "lessons").glob("a-1-5-1*.html"), * (ROOT / "lessons").glob("a-1-5-2*.html"), * (ROOT / "lessons").glob("a-1-5-3*.html"), * (ROOT / "lessons").glob("a-1-5-4*.html"), * (ROOT / "lessons").glob("a-1-5-5*.html"), * (ROOT / "lessons").glob("a-6-1-3*.html"), * (ROOT / "lessons").glob("a-6-1-4*.html")])
+LESSONS = sorted([* (ROOT / "lessons").glob("a-1-4-*.html"), * (ROOT / "lessons").glob("a-1-5-1*.html"), * (ROOT / "lessons").glob("a-1-5-2*.html"), * (ROOT / "lessons").glob("a-1-5-3*.html"), * (ROOT / "lessons").glob("a-1-5-4*.html"), * (ROOT / "lessons").glob("a-1-5-5*.html"), * (ROOT / "lessons").glob("a-6-1-3*.html"), * (ROOT / "lessons").glob("a-6-1-4*.html"), * (ROOT / "lessons").glob("a-7-2-1-les-a-0171*.html")])
 VIEWPORTS = (360, 390, 768, 1024, 1440)
 THEMES = ("dark", "light")
 CARD_SELECTOR = (
-    ".lesson-callout, .lesson-practice, .lesson-note, .lesson-outcomes, "
+    ".lesson-callout, .lesson-practice, .lesson-note, .lesson-outcomes, .outcomes, "
     ".lesson-problem, .definition, .glossary-entry, .lesson-check, "
     ".lesson-check-question, .lesson-check-option, .lesson-planet-banner, "
     ".lesson-hero-card, .learning-box, .reflection-box, .quiz-item"

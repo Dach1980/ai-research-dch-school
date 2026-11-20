@@ -1,7 +1,7 @@
 {
   "schema_version": 3,
   "catalog_id": "dch-school-curriculum",
-  "catalog_version": "3.2.8-lessons-7-2-1-7-2-2-published",
+  "catalog_version": "3.2.9-lesson-7-2-3-review",
   "status": "migration_staging",
   "tracks": [
     {
@@ -3860,6 +3860,38 @@
         "ru": "lessons/a-7-2-2-les-a-0172.html",
         "en": "lessons/a-7-2-2-les-a-0172-en.html",
         "zh": "lessons/a-7-2-2-les-a-0172-zh.html"
+      }
+    },
+    {
+      "uid": "les-a-0173",
+      "track_uid": "trk-a",
+      "theme_uid": "thm-a-07",
+      "module_uid": "mod-a-07-02",
+      "code": "7.2.3",
+      "title": "Faithfulness and Limitations of Explanations",
+      "status": "review",
+      "access": "open",
+      "level": "advanced",
+      "prerequisite_uids": [
+        "les-a-0172"
+      ],
+      "learning_outcomes": [
+        "Различать faithfulness, plausibility и interpretability.",
+        "Объяснять логику perturbation-based evaluation, deletion, insertion и sanity checks.",
+        "Выявлять влияние корреляций, метрик и распределения данных на оценку объяснений.",
+        "Проводить воспроизводимый Feature Deletion / Insertion Test и интерпретировать его ограничения.",
+        "Формулировать обоснованный вывод о качестве объяснения с указанием условий и неопределённости."
+      ],
+      "content_state": "localized",
+      "title_i18n": {
+        "ru": "Faithfulness и ограничения объяснений",
+        "en": "Faithfulness and Limitations of Explanations",
+        "zh": "解释忠实性与解释的局限性"
+      },
+      "url_i18n": {
+        "ru": "lessons/a-7-2-3-les-a-0173.html",
+        "en": "lessons/a-7-2-3-les-a-0173-en.html",
+        "zh": "lessons/a-7-2-3-les-a-0173-zh.html"
       }
     }
   ],

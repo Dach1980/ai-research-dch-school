@@ -645,7 +645,9 @@ class CanonicalLessonBrowserAcceptanceTests(unittest.TestCase):
                 locale_suffix = "" if locale == "ru" else "-" + locale
                 previous_name = "a-7-1-3-les-a-0170" + locale_suffix + ".html"
                 self.assertEqual(page.locator("#lesson-navigation a[href$='" + previous_name + "']").count(), 1)
-                self.assertEqual(page.locator("#lesson-navigation [aria-disabled='true']").count(), 1)
+                next_name = "a-7-2-2-les-a-0172" + locale_suffix + ".html"
+                self.assertEqual(page.locator("#lesson-navigation a[href$='" + next_name + "']").count(), 1)
+                self.assertEqual(page.locator("#lesson-navigation [aria-disabled='true']").count(), 0)
                 page.locator("#lesson-quiz .quiz-submit").click()
                 self.assertTrue(page.locator("#lesson-quiz .quiz-feedback.is-visible").is_visible())
                 self.assertIn("0 / 10", page.locator("#lesson-quiz .quiz-feedback").inner_text())
@@ -792,3 +794,57 @@ class CanonicalLessonBrowserAcceptanceTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+    def test_723_faithfulness_diagrams_are_complete_and_responsive(self):
+        lesson = next(item for item in CANONICAL_LESSONS if item.get("code") == "7.2.3")
+        expected = ["faithfulness-plausibility", "faithfulness-deletion", "faithfulness-pipeline"]
+        for locale in ("ru", "en", "zh"):
+            for theme in ("light", "dark"):
+                for width in (375, 768, 1440):
+                    with self.subTest(locale=locale, theme=theme, width=width):
+                        page = self.open_page(lesson, locale, width=width, theme=theme)
+                        result = page.evaluate("""() => {
+                          const root=document.querySelector("#lesson-outcomes");
+                          const cards=root?.querySelectorAll("li").length||0;
+                          const glossary=document.querySelectorAll("#lesson-glossary .glossary-entry").length;
+                          const svgs=Array.from(document.querySelectorAll("#lesson-sections svg[data-diagram-renderer='shared-v1']")).map(svg=>{
+                            const vb=svg.viewBox.baseVal;
+                            const nodes=Array.from(svg.querySelectorAll("[data-node-id]")).map(node=>{
+                              const r=node.querySelector("rect").getBBox();
+                              const texts=Array.from(node.querySelectorAll("[data-role='node-text']")).map(t=>{
+                                const b=t.getBBox();return {x:b.x,y:b.y,right:b.x+b.width,bottom:b.y+b.height,font:parseFloat(getComputedStyle(t).fontSize)};
+                              });
+                              return {rect:{x:r.x,y:r.y,right:r.x+r.width,bottom:r.y+r.height},texts};
+                            });
+                            return {type:svg.dataset.diagramType,right:vb.x+vb.width,bottom:vb.y+vb.height,nodes,
+                              viewport:svg.closest(".pfi-diagram-viewport")?.clientWidth};
+                          });
+                          return {cards,glossary,svgs,overflow:document.documentElement.scrollWidth-window.innerWidth};
+                        }""")
+                        self.assertEqual(result["cards"], 5, str(result))
+                        self.assertEqual(result["glossary"], 12, str(result))
+                        self.assertEqual([x["type"] for x in result["svgs"]], expected, str(result))
+                        self.assertLessEqual(result["overflow"], 1, str(result))
+                        for svg in result["svgs"]:
+                            for node in svg["nodes"]:
+                                r=node["rect"]
+                                for label in node["texts"]:
+                                    self.assertGreaterEqual(label["x"],r["x"]+5,str(svg))
+                                    self.assertGreaterEqual(label["y"],r["y"],str(svg))
+                                    self.assertLessEqual(label["right"],r["right"]-5,str(svg))
+                                    self.assertLessEqual(label["bottom"],r["bottom"]-5,str(svg))
+                                    self.assertGreaterEqual(label["font"],13.5,str(svg))
+                        page.close()
+
+    def test_723_quiz_explains_correct_and_incorrect_options_in_all_locales(self):
+        lesson = next(item for item in CANONICAL_LESSONS if item.get("code") == "7.2.3")
+        for locale in ("ru", "en", "zh"):
+            with self.subTest(locale=locale):
+                page = self.open_page(lesson, locale, width=1440, theme="light")
+                self.assertEqual(page.locator("#lesson-quiz fieldset").count(), 12)
+                page.locator("#lesson-quiz .quiz-submit").click()
+                self.assertTrue(page.locator("#lesson-quiz .quiz-feedback.is-visible").is_visible())
+                self.assertEqual(page.locator("#lesson-quiz .quiz-feedback li").count(), 12)
+                self.assertEqual(page.locator("#lesson-quiz .quiz-feedback ul").count(), 12)
+                page.close()

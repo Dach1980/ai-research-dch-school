@@ -1486,6 +1486,24 @@
         "db68f49f62e93c2d8ae501cb45250f28c07d0d1f",
         "43a422804f7bad3b03ab0c1e862cbaafa3f9cc77"
       ]
+    },
+    {
+      "id": "RM-LESSON-723",
+      "date": "2026-11-20",
+      "title": "Разработать урок 7.2.3 — Faithfulness и ограничения объяснений",
+      "status": "in_progress",
+      "priority": "high",
+      "decision": "Создана RU/EN/ZH редакция урока 7.2.3 с UID les-a-0173 и тремя маршрутами. Каталог сохраняет status=review и content_state=localized. Реализованы Python-лаборатория с Feature Deletion/Insertion и sanity check, три локализованные схемы через общий SVG renderer, общий glossary renderer, 12 вопросов с пояснениями. Исправлено устаревшее ожидание browser test 7.2.1: теперь он проверяет опубликованный следующий урок 7.2.2. Публикация запрещена до browser acceptance, CI, production verification и приёмки пользователем.",
+      "acceptance": [
+        "UID les-a-0173 зарегистрирован в Track A / Theme 7 / Module 7.2.",
+        "RU/EN/ZH страницы и URL зарегистрированы в catalog-v3 со статусом review.",
+        "Три языковые версии содержат эквивалентные семь разделов, пять результатов, лабораторию, источники, 12 терминов и 12 вопросов.",
+        "Три схемы используют общий DCHLessonSVG renderer; словарь использует общий DCHLessonComponents renderer.",
+        "Python-лаборатория синтаксически корректна и воспроизводима.",
+        "Исправлен устаревший browser acceptance тест навигации 7.2.1 → 7.2.2.",
+        "Остались browser acceptance, полный CI, production verification и визуальная приёмка."
+      ],
+      "source": "docs/reports/LESSON_723_FAITHFULNESS_IMPLEMENTATION_AUDIT_2026-11-20.md"
     }
   ],
   "audit_log": [

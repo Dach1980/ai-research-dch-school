@@ -1,7 +1,7 @@
 {
   "schema_version": 3,
   "catalog_id": "dch-school-curriculum",
-  "catalog_version": "3.2.9-lesson-7-2-3-review",
+  "catalog_version": "3.2.10-lesson-7-2-3-published",
   "status": "migration_staging",
   "tracks": [
     {
@@ -3869,7 +3869,7 @@
       "module_uid": "mod-a-07-02",
       "code": "7.2.3",
       "title": "Faithfulness and Limitations of Explanations",
-      "status": "review",
+      "status": "published",
       "access": "open",
       "level": "intermediate",
       "prerequisite_uids": [
@@ -3882,7 +3882,7 @@
         "Проводить воспроизводимый Feature Deletion / Insertion Test и интерпретировать его ограничения.",
         "Формулировать обоснованный вывод о качестве объяснения с указанием условий и неопределённости."
       ],
-      "content_state": "localized",
+      "content_state": "published",
       "title_i18n": {
         "ru": "Faithfulness и ограничения объяснений",
         "en": "Faithfulness and Limitations of Explanations",

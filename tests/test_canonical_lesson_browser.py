@@ -845,6 +845,6 @@ if __name__ == "__main__":
                 self.assertEqual(page.locator("#lesson-quiz fieldset").count(), 12)
                 page.locator("#lesson-quiz .quiz-submit").click()
                 self.assertTrue(page.locator("#lesson-quiz .quiz-feedback.is-visible").is_visible())
-                self.assertEqual(page.locator("#lesson-quiz .quiz-feedback li").count(), 12)
+                self.assertEqual(page.locator("#lesson-quiz .quiz-feedback > ol > li").count(), 12)
                 self.assertEqual(page.locator("#lesson-quiz .quiz-feedback ul").count(), 12)
                 page.close()

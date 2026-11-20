@@ -138,9 +138,42 @@ en:[["Friedman (2001): foundational work on gradient boosting and partial depend
 zh:[["Friedman (2001)：梯度提升与部分依赖的基础研究。","https://doi.org/10.1214/aos/1013203451"],["scikit-learn 用户指南：PDP 与 ICE。","https://scikit-learn.org/stable/modules/partial_dependence.html"],["PartialDependenceDisplay.from_estimator API。","https://scikit-learn.org/stable/modules/generated/sklearn.inspection.PartialDependenceDisplay.html"],["Goldstein 等 (2015)：ICE 方法。","https://doi.org/10.1080/10618600.2014.907095"],["Apley 与 Zhu (2020)：ALE 方法及 PDP 局限性。","https://doi.org/10.1111/rssb.12377"]]
 };
 const outcomes={
-ru:["Объяснять величину, оцениваемую PDP, и отличать её от индивидуального предсказания.","Записывать и интерпретировать одномерное и двумерное определения частичной зависимости.","Оценивать влияние опорной выборки, сетки и корреляции на результат.","Строить PDP в scikit-learn и сопоставлять его с ICE и ALE."],
-en:["Explain the quantity estimated by PDP and distinguish it from an individual prediction.","Write and interpret one-way and two-way partial dependence definitions.","Assess how the reference sample, grid, and feature correlation affect results.","Build PDPs with scikit-learn and compare them with ICE and ALE."],
-zh:["解释 PDP 估计的量，并将其与个体预测区分。","写出并解释一维和二维部分依赖定义。","评估参考样本、网格和特征相关性对结果的影响。","使用 scikit-learn 构建 PDP，并与 ICE、ALE 比较。"]
+ru:[
+"Объяснять, какой вопрос о поведении обученной модели помогает исследовать PDP.",
+"Отличать среднее предсказание PDP от фактических значений цели и индивидуальных прогнозов.",
+"Записывать математическое определение одномерной частичной зависимости и объяснять каждый символ.",
+"Воспроизводить эмпирический алгоритм вычисления PDP на конечной опорной выборке.",
+"Объяснять, как выбор опорной выборки, сетки и процентильного диапазона влияет на результат.",
+"Интерпретировать возрастающие, убывающие, плоские и нелинейные участки кривой с учётом единиц отклика.",
+"Объяснять двумерное определение PDP и читать поверхность, контуры или тепловую карту.",
+"Выявлять риск нереалистичных комбинаций при зависимости признаков и объяснять проблему off-manifold.",
+"Сравнивать PDP, ICE и ALE по вопросу, преимуществам и ограничениям каждого метода.",
+"Строить PDP в scikit-learn и формулировать выводы без причинных или индивидуальных переобобщений."
+],
+en:[
+"Explain the model-behaviour question that a PDP is designed to investigate.",
+"Distinguish the PDP average prediction from observed targets and individual predictions.",
+"Write the one-way partial dependence definition and explain each symbol.",
+"Reproduce the empirical PDP algorithm on a finite reference sample.",
+"Explain how the reference sample, evaluation grid, and percentile range affect the result.",
+"Interpret increasing, decreasing, flat, and nonlinear curve regions in the units of the response.",
+"Explain the two-way PDP definition and read a surface, contour plot, or heatmap.",
+"Identify the risk of unrealistic combinations under feature dependence and explain off-manifold evaluation.",
+"Compare PDP, ICE, and ALE by their questions, strengths, and limitations.",
+"Build PDPs with scikit-learn and state conclusions without causal or individual overclaims."
+],
+zh:[
+"解释 PDP 用于研究已训练模型的哪类行为问题。",
+"区分 PDP 的平均预测、观测目标值和个体预测。",
+"写出一维部分依赖定义并解释其中的每个符号。",
+"在有限参考样本上复现 PDP 的经验计算流程。",
+"解释参考样本、评估网格和百分位范围如何影响结果。",
+"结合响应变量单位解读上升、下降、平坦和非线性曲线区域。",
+"解释二维 PDP 定义，并读取曲面、等高线图或热力图。",
+"识别特征依赖条件下不现实组合的风险，并解释分布外评估。",
+"根据研究问题、优势和局限比较 PDP、ICE 与 ALE。",
+"使用 scikit-learn 构建 PDP，并避免因果性或个体层面的过度推断。"
+]
 };
 const content={};
 for(const lang of ["ru","en","zh"]){

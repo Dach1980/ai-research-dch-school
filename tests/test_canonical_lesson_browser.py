@@ -500,8 +500,9 @@ class CanonicalLessonBrowserAcceptanceTests(unittest.TestCase):
                         backgroundImage:bg.image,
                         heading:h.color,
                         copy:p.color,
+                        cardBackground:p.background,
                         headingContrast:contrast(h.color,bg.background),
-                        copyContrast:contrast(p.color,bg.background),
+                        copyContrast:contrast(p.color,p.background),
                         itemCount:root.querySelectorAll("li").length
                       };
                     }""")

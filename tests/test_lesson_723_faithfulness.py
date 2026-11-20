@@ -52,6 +52,10 @@ class Lesson723FaithfulnessTests(unittest.TestCase):
         required = ["Faithfulness", "Plausibility", "Interpretability", "Feature Deletion", "Feature Insertion", "Distribution Shift", "Out-of-Distribution", "Sanity Checks"]
         self.assertIn("Faithfulness", self.data)
         self.assertEqual(self.data.count("D(k) = S(f, X, y)"), 3)
+        self.assertEqual(self.data.count('formula:"Δf = f(x) − f(x′)"'), 3)
+        self.assertEqual(self.data.count("formulaNote:"), 3)
+        self.assertNotIn("Δf = f(x) − f(x′) measures", self.data)
+        self.assertIn('note.className="formula-note"', self.renderer)
         for token in required:
             self.assertIn(token.lower(), self.data.lower())
         self.assertIn('type:"faithfulness-"+kind', self.renderer)
@@ -86,6 +90,16 @@ class Lesson723FaithfulnessTests(unittest.TestCase):
         self.assertNotIn("createElementNS", self.renderer)
         self.assertNotIn("<svg", self.renderer)
         self.assertIn('pre.dataset.language="python"', self.renderer)
+
+    def test_shared_display_math_styles_allow_wrapping(self):
+        canonical_css = (ROOT / "styles/xai-canonical-lesson.css").read_text(encoding="utf-8")
+        shared_css = (ROOT / "styles/lesson-design-system.css").read_text(encoding="utf-8")
+        for css in (canonical_css, shared_css):
+            self.assertIn("min-width:0;", css)
+            self.assertIn("white-space:normal;", css)
+            self.assertIn("overflow-wrap:anywhere;", css)
+            self.assertIn(".formula-note", css)
+        self.assertNotIn("min-width:max-content", canonical_css[canonical_css.index("Responsive display mathematics"):])
 
     def test_published_predecessor_is_unchanged_and_new_lesson_is_not_published(self):
         previous = next(x for x in self.catalog["lessons"] if x["uid"] == "les-a-0172")

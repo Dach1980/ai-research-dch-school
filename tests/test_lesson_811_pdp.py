@@ -53,8 +53,14 @@ class Lesson811PDPTests(unittest.TestCase):
             self.assertEqual(self.data.count(token), 3, token)
 
     def test_twelve_glossary_terms_and_twelve_quiz_questions_per_locale(self):
-        self.assertEqual(self.data.count('glossary:['), 3)
-        self.assertEqual(self.data.count('quiz:['), 3)
+        glossary_block = self.data.split("const glossary = {", 1)[1].split("const commonSources=", 1)[0]
+        quiz_block = self.data.split("const sharedQuiz = {", 1)[1].split("const sections =", 1)[0]
+        for block in (glossary_block, quiz_block):
+            for locale, next_locale in (("ru", "en"), ("en", "zh"), ("zh", None)):
+                localized = block.split(locale + ":[", 1)[1]
+                if next_locale:
+                    localized = localized.split("\\n" + next_locale + ":[", 1)[0]
+                self.assertEqual(localized.count('["'), 12, locale)
         self.assertIn("График частичной зависимости", self.data)
         self.assertIn("Partial Dependence Plot", self.data)
         self.assertIn("部分依赖图", self.data)

@@ -63,7 +63,7 @@ class Lesson811PDPTests(unittest.TestCase):
                 localized = block.split(locale + ":[", 1)[1]
                 if next_locale:
                     localized = localized.split("\n" + next_locale + ":[", 1)[0]
-                self.assertEqual(localized.count('\\n["'), 12, locale)
+                self.assertEqual(localized.count('\n["'), 12, locale)
         self.assertIn("График частичной зависимости", self.data)
         self.assertIn("Partial Dependence Plot", self.data)
         self.assertIn("部分依赖图", self.data)

@@ -314,10 +314,12 @@ main.lesson #lesson-sources .formula-note {
 }
 
 
-/* PDP learning outcomes use white cards on a dark panel: the card copy must
-   stay dark in BOTH themes. The panel heading remains light on navy. */
-main.lesson > #lesson-outcomes.outcomes li {
+/* Outcome-card copy follows the card surface in each theme. */
+html[data-theme="light"] main.lesson > #lesson-outcomes.outcomes li {
   color: #334155 !important;
+}
+html:not([data-theme="light"]) main.lesson > #lesson-outcomes.outcomes li {
+  color: #d5e0f2 !important;
 }
 main.lesson > #lesson-outcomes.outcomes li::marker {
   color: #246bd6;

@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0.0",
   "curriculum_id": "ai-research-dch-school-canonical-curriculum",
-  "curriculum_version": "2026-11-19",
+  "curriculum_version": "2026-11-20",
   "status": "canonical_target",
   "language_policy": {
     "source_language": "ru",
@@ -732,7 +732,7 @@
                 {
                   "number": "8.1.1",
                   "title_ru": "PDP — Partial Dependence Plot",
-                  "uid": null,
+                  "uid": "les-a-0174",
                   "legacy_number": null,
                   "legacy_mapping_status": "not_verified",
                   "publication_status": "not_asserted",

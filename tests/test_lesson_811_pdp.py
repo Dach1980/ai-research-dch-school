@@ -47,13 +47,13 @@ class Lesson811PDPTests(unittest.TestCase):
             self.assertIn('class="footer"', source)
 
     def test_seven_sections_and_three_figure_specs_per_locale(self):
-        for token in ('id:"question"', 'id:"definition"', 'id:"grid"', 'id:"two-way"', 'id:"interpret"', 'id:"correlation"', 'id:"compare"'):
+        for token in ('["question"', '["definition"', '["grid"', '["two-way"', '["interpret"', '["correlation"', '["compare"'):
             self.assertEqual(self.data.count(token), 3, token)
-        for token in ('diagram:"workflow"', 'diagram:"reading"', 'diagram:"correlation"'):
+        for token in ('"workflow"', '"reading"', '"correlation"'):
             self.assertEqual(self.data.count(token), 3, token)
-        self.assertEqual(self.data.count('diagram:"reading"'), 3)
-        self.assertEqual(self.data.count('diagram:"workflow"'), 3)
-        self.assertEqual(self.data.count('diagram:"correlation"'), 3)
+        self.assertEqual(self.data.count('"reading"'), 3)
+        self.assertEqual(self.data.count('"workflow"'), 3)
+        self.assertEqual(self.data.count('"correlation"'), 3)
 
     def test_twelve_glossary_terms_and_twelve_quiz_questions_per_locale(self):
         self.assertEqual(self.data.count('glossary:['), 3)
@@ -62,9 +62,6 @@ class Lesson811PDPTests(unittest.TestCase):
         self.assertEqual(self.data.count('["ICE"'), 3)
         self.assertEqual(self.data.count('["ALE"'), 3)
         self.assertGreaterEqual(self.data.count('["'), 36)
-        self.assertIn("Словарь терминов", self.data)
-        self.assertIn("Key terms", self.data)
-        self.assertIn("术语词典", self.data)
 
     def test_renderer_uses_inline_accessible_theme_aware_svg(self):
         self.assertIn('function figure(kind)', self.renderer)

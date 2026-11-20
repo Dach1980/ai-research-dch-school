@@ -98,6 +98,11 @@ class Lesson811PDPTests(unittest.TestCase):
         self.assertIn('var(--lds-ink)', self.svg_renderer)
         self.assertIn('var(--lds-surface)', self.svg_renderer)
 
+    def test_one_way_and_two_way_pdp_equations_are_explicit(self):
+        self.assertIn("PDⱼ(z) = E_{X₋ⱼ}[f(z, X₋ⱼ)]", self.renderer)
+        self.assertIn("PD̂ⱼ(z) = (1/n) Σᵢ f(z, xᵢ,₋ⱼ)", self.renderer)
+        self.assertIn("PDⱼ,ₖ(zⱼ,zₖ) = E_{X₋(ⱼ,ₖ)}[f(zⱼ, zₖ, X₋(ⱼ,ₖ))]", self.renderer)
+
     def test_python_practice_syntax_and_supported_api(self):
         ast.parse(self.python)
         for token in ("RANDOM_STATE = 42", "RandomForestRegressor", "PartialDependenceDisplay.from_estimator", 'features=["area_m2"]', 'features=[("area_m2", "rooms")]', 'method="brute"', "train_test_split", "r2_score", "corr("):

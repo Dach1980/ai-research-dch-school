@@ -20,6 +20,7 @@ class Lesson811PDPTests(unittest.TestCase):
         cls.lesson = next((x for x in cls.catalog["lessons"] if x["uid"] == UID), None)
         cls.data = (ROOT / "lessons/data/xai-08-pdp.js").read_text(encoding="utf-8")
         cls.renderer = (ROOT / "scripts/xai-pdp-lesson.js").read_text(encoding="utf-8")
+        cls.styles = (ROOT / "styles/xai-canonical-lesson.css").read_text(encoding="utf-8")
         cls.svg_renderer = (ROOT / "scripts/lesson-svg-renderer.js").read_text(encoding="utf-8")
         cls.python = (ROOT / "lessons/practice/a-8-1-1-partial-dependence.py").read_text(encoding="utf-8")
 
@@ -54,6 +55,10 @@ class Lesson811PDPTests(unittest.TestCase):
         self.assertIn('outcomes.classList.add("outcomes")', self.renderer)
         self.assertIn('h("p","formula-note",locale==="ru"?', self.renderer)
         self.assertNotIn('h("p","formula-note",ru?', self.renderer)
+
+    def test_outcomes_cards_have_dark_text_on_white_cards(self):
+        self.assertIn('outcomes.classList.add("outcomes")', self.renderer)
+        self.assertIn('main.lesson > #lesson-outcomes.outcomes li {\n  color: #334155 !important;', self.styles)
 
     def test_ten_learning_outcomes_per_locale(self):
         block = self.data.split("const outcomes={", 1)[1].split("const content={", 1)[0]

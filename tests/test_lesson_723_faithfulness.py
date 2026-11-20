@@ -23,14 +23,14 @@ class Lesson723FaithfulnessTests(unittest.TestCase):
         cls.renderer = (ROOT / "scripts/xai-faithfulness-lesson.js").read_text(encoding="utf-8")
         cls.python = (ROOT / "lessons/practice/a-7-2-3-faithfulness.py").read_text(encoding="utf-8")
 
-    def test_catalog_registration_keeps_review_gate(self):
+    def test_catalog_registration_reflects_explicit_acceptance(self):
         self.assertIsNotNone(self.lesson)
         self.assertEqual(self.lesson["code"], "7.2.3")
         self.assertEqual(self.lesson["track_uid"], "trk-a")
         self.assertEqual(self.lesson["theme_uid"], "thm-a-07")
         self.assertEqual(self.lesson["module_uid"], "mod-a-07-02")
-        self.assertEqual(self.lesson["status"], "review")
-        self.assertEqual(self.lesson["content_state"], "localized")
+        self.assertEqual(self.lesson["status"], "published")
+        self.assertEqual(self.lesson["content_state"], "published")
         self.assertEqual(self.lesson["prerequisite_uids"], ["les-a-0172"])
         self.assertEqual(set(self.lesson["url_i18n"]), set(LOCALES))
         for locale, route in ROUTES.items():
@@ -101,11 +101,11 @@ class Lesson723FaithfulnessTests(unittest.TestCase):
             self.assertIn(".formula-note", css)
         self.assertNotIn("min-width:max-content", canonical_css[canonical_css.index("Responsive display mathematics"):])
 
-    def test_published_predecessor_is_unchanged_and_new_lesson_is_not_published(self):
+    def test_published_predecessor_and_accepted_lesson_remain_published(self):
         previous = next(x for x in self.catalog["lessons"] if x["uid"] == "les-a-0172")
         self.assertEqual(previous["status"], "published")
         self.assertEqual(previous["url_i18n"]["ru"], "lessons/a-7-2-2-les-a-0172.html")
-        self.assertEqual(self.lesson["status"], "review")
+        self.assertEqual(self.lesson["status"], "published")
 
 
 if __name__ == "__main__":

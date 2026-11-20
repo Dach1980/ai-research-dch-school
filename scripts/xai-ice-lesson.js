@@ -42,7 +42,7 @@ data.sections.forEach(s=>{
  if(s[0]==="definition"){
   const f=make("div","formula");f.append(make("div","formula-expression",L.formula),make("p","formula-note",L.formulaNote));body.append(f);
  }
- if(["algorithm","reading","centered"].includes(s[0]))body.append(diagram(s[0]==="algorithm"?"family":s[0]==="reading"?"family":"center"));
+ if(["algorithm","centered"].includes(s[0]))body.append(diagram(s[0]==="algorithm"?"family":"center"));
  if(s[0]==="motivation")body.append(diagram("one"));
  section.append(body);sections.append(section);
 });

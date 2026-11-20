@@ -29,8 +29,8 @@ class Lesson811PDPTests(unittest.TestCase):
         self.assertEqual(self.lesson["code"], "8.1.1")
         self.assertEqual(self.lesson["theme_uid"], "thm-a-08")
         self.assertEqual(self.lesson["module_uid"], "mod-a-08-01")
-        self.assertEqual(self.lesson["status"], "review")
-        self.assertEqual(self.lesson["content_state"], "localized")
+        self.assertEqual(self.lesson["status"], "published")
+        self.assertEqual(self.lesson["content_state"], "published")
         canonical = next(x for x in self.curriculum["tracks"] if x["uid"] == "trk-a")["themes"][7]["modules"][0]["lessons"][0]
         self.assertEqual(canonical["uid"], UID)
         self.assertEqual(self.lesson["prerequisite_uids"], ["les-a-0173"])
@@ -122,7 +122,7 @@ class Lesson811PDPTests(unittest.TestCase):
         for token in ("10.1214/aos/1013203451", "10.1080/10618600.2014.907095", "10.1111/rssb.12377", "scikit-learn.org/stable/modules/partial_dependence.html"):
             self.assertIn(token, self.data)
         self.assertEqual(self.lesson["status"], "review")
-        self.assertEqual(self.lesson["content_state"], "localized")
+        self.assertEqual(self.lesson["content_state"], "published")
 
     def test_previous_lesson_remains_published(self):
         previous = next(x for x in self.catalog["lessons"] if x["uid"] == "les-a-0173")

@@ -19,36 +19,59 @@ data.outcomes.forEach(x=>list.append(h("li","",x)));outcomes.append(list);
 const NS="http://www.w3.org/2000/svg";
 function se(tag,attrs,text){const n=document.createElementNS(NS,tag);Object.entries(attrs||{}).forEach(([k,v])=>n.setAttribute(k,String(v)));if(text!==undefined)n.textContent=text;return n;}
 function figure(kind){
+ if(!window.DCHLessonSVG||typeof window.DCHLessonSVG.render!=="function")throw new Error("Shared SVG renderer is not loaded");
  const ru=locale==="ru",zh=locale==="zh";
- const words=ru?{workflow:"Как вычисляется PDP",ref:"Опорные строки",grid:"Сетка z",replace:"Замена признака",predict:"Прогнозы f",avg:"Среднее → PDP",curve:"Чтение кривой PDP",rise:"Средний прогноз растёт",level:"Рост замедляется",sparse:"Мало наблюдений",observed:"Наблюдаемые пары",synthetic:"Синтетические пары",area:"Площадь",rooms:"Комнаты",caption:"Схематичная иллюстрация; проверяйте область поддержки по реальным данным."}:zh?{workflow:"PDP 计算流程",ref:"参考样本行",grid:"网格 z",replace:"替换特征",predict:"模型预测 f",avg:"求平均 → PDP",curve:"读取 PDP 曲线",rise:"平均预测上升",level:"增长减缓",sparse:"观测稀疏",observed:"观测组合",synthetic:"合成组合",area:"房屋面积",rooms:"房间数",caption:"示意图；请根据真实数据检查支持区域。"}:{workflow:"How PDP is computed",ref:"Reference rows",grid:"Grid z",replace:"Replace feature",predict:"Predictions f",avg:"Average → PDP",curve:"Reading a PDP curve",rise:"Average prediction rises",level:"Growth slows",sparse:"Sparse observations",observed:"Observed pairs",synthetic:"Synthetic pairs",area:"Floor area",rooms:"Rooms",caption:"Conceptual illustration; inspect data support in the actual dataset."};
- const svg=se("svg",{viewBox:"0 0 760 420",role:"img",class:"pdp-svg","aria-labelledby":"pdp-"+locale+"-"+kind+"-title"});
- const title=se("title",{id:"pdp-"+locale+"-"+kind+"-title"},kind==="workflow"?words.workflow:kind==="reading"?words.curve:words.caption);svg.append(title,se("desc",{},words.caption));
- const ink="var(--lds-ink)",line="var(--lds-line)",surface="var(--lds-surface)",accent="var(--lds-accent)",good="var(--lds-good)",bad="var(--lds-bad)";
+ const words=ru?{
+  workflow:"Как вычисляется PDP",ref:"Опорные строки",grid:"Сетка значений z",replace:"Заменить признак",predict:"Получить прогнозы",average:"Усреднить → PDP",
+  curve:"Как читать PDP",rise:"Средний прогноз растёт",slow:"Прирост ослабевает",sparse:"Мало наблюдений",
+  observed:"Наблюдаемые пары",synthetic:"Синтетические пары",area:"Площадь",rooms:"Число комнат",
+  caption1:"Для каждого значения сетки модель прогнозирует все опорные строки; затем результаты усредняются.",
+  caption2:"Кривая описывает средний отклик модели, а не реакцию каждого отдельного объекта.",
+  caption3:"Независимая замена площади может нарушить наблюдаемую связь с числом комнат."
+ }:zh?{
+  workflow:"PDP 的计算流程",ref:"参考样本行",grid:"取值网格 z",replace:"替换特征",predict:"生成模型预测",average:"求平均 → PDP",
+  curve:"如何读取 PDP",rise:"平均预测上升",slow:"增幅逐渐减小",sparse:"观测稀疏",
+  observed:"观测组合",synthetic:"合成组合",area:"房屋面积",rooms:"房间数",
+  caption1:"对于网格中的每个取值，模型预测所有参考样本行，然后计算平均值。",
+  caption2:"曲线描述模型的平均响应，而不是每个个体的响应。",
+  caption3:"独立替换面积可能破坏面积与房间数之间的观测关系。"
+ }:{
+  workflow:"How PDP is computed",ref:"Reference rows",grid:"Value grid z",replace:"Replace feature",predict:"Model predictions",average:"Average → PDP",
+  curve:"How to read a PDP",rise:"Average prediction rises",slow:"Increase becomes smaller",sparse:"Sparse observations",
+  observed:"Observed pairs",synthetic:"Synthetic pairs",area:"Floor area",rooms:"Room count",
+  caption1:"At each grid value, the model predicts all reference rows; those predictions are then averaged.",
+  caption2:"The curve describes the model's average response, not every individual observation.",
+  caption3:"Replacing area independently can break its observed relationship with room count."
+ };
+ let spec;
  if(kind==="workflow"){
-  const boxes=[[25,110,145,95,words.ref],[215,110,125,95,words.grid],[385,110,150,95,words.replace],[580,110,155,95,words.predict]];
-  boxes.forEach((b,i)=>{svg.append(se("rect",{x:b[0],y:b[1],width:b[2],height:b[3],rx:13,fill:i===2?accent:surface,stroke:line,"stroke-width":2}));svg.append(se("text",{x:b[0]+b[2]/2,y:164,"text-anchor":"middle",fill:i===2?"var(--lds-accent-ink)":ink,"font-size":18,"font-weight":650},b[4]));});
-  [[170,157,215],[340,157,385],[535,157,580]].forEach(a=>svg.append(se("path",{d:"M"+a[0]+" "+a[1]+" H"+(a[2]-10)+" l-10 -7 m10 7 l-10 7",stroke:accent,"stroke-width":3,fill:"none"})));
-  svg.append(se("path",{d:"M655 205 V275 H380",stroke:accent,"stroke-width":3,fill:"none"}));svg.append(se("rect",{x:245,y:275,width:270,height:65,rx:12,fill:surface,stroke:line,"stroke-width":2}));svg.append(se("text",{x:380,y:315,"text-anchor":"middle",fill:ink,"font-size":19,"font-weight":650},words.avg));
+  spec={type:"pdp-workflow",layout:"flow",id:"pdp-"+locale+"-workflow",title:words.workflow,description:words.caption1,caption:words.caption1,scrollLabel:words.workflow,nodes:[
+   {id:"reference",title:words.ref,detail:ru?"Данные для усреднения":zh?"用于平均的数据":"Rows used for averaging"},
+   {id:"grid",title:words.grid,detail:ru?"Набор значений z":zh?"候选特征值":"Candidate feature values"},
+   {id:"replace",title:words.replace,detail:ru?"Остальные столбцы сохраняются":zh?"保留其余列":"Keep other columns"},
+   {id:"predict",title:words.predict,detail:"f(z, xᵢ,₋ⱼ)"},
+   {id:"average",title:words.average,detail:ru?"Одна точка кривой":zh?"曲线上的一个点":"One point on the curve"}
+  ]};
  }else if(kind==="reading"){
-  svg.append(se("path",{d:"M95 45 V330 H700",stroke:ink,"stroke-width":2.5,fill:"none"}));
-  [110,190,270].forEach(y=>svg.append(se("path",{d:"M95 "+y+" H700",stroke:line,"stroke-dasharray":"5 7"})));
-  svg.append(se("path",{d:"M110 295 C190 275 225 230 300 205 S410 155 485 145 S590 140 680 138",stroke:accent,"stroke-width":5,fill:"none","stroke-linecap":"round"}));
-  [[300,205],[590,140]].forEach(p=>svg.append(se("circle",{cx:p[0],cy:p[1],r:8,fill:good})));
-  svg.append(se("rect",{x:125,y:55,width:235,height:48,rx:9,fill:surface,stroke:line}));svg.append(se("text",{x:242,y:85,"text-anchor":"middle",fill:ink,"font-size":17},words.rise));
-  svg.append(se("rect",{x:425,y:55,width:250,height:48,rx:9,fill:surface,stroke:line}));svg.append(se("text",{x:550,y:85,"text-anchor":"middle",fill:ink,"font-size":17},words.level));
-  svg.append(se("text",{x:395,y:370,"text-anchor":"middle",fill:ink,"font-size":18},ru?"Значение признака":zh?"特征取值":"Feature value"));
-  svg.append(se("text",{x:25,y:205,transform:"rotate(-90 25 205)","text-anchor":"middle",fill:ink,"font-size":17},ru?"Средний прогноз":zh?"平均预测":"Average prediction"));
-  svg.append(se("text",{x:590,y:305,fill:"var(--lds-muted)","font-size":15},words.sparse));
+  spec={type:"pdp-curve-reading",layout:"plot",id:"pdp-"+locale+"-reading",title:words.curve,description:words.caption2,caption:words.caption2,scrollLabel:words.curve,
+   xLabel:ru?"Значение признака":zh?"特征取值":"Feature value",
+   yLabel:ru?"Средний прогноз":zh?"平均预测":"Average prediction",
+   points:[[.02,.08],[.16,.18],[.29,.39],[.43,.56],[.58,.69],[.72,.75],[.86,.77],[.98,.78]],
+   annotations:[{x:.08,y:.91,text:words.rise},{x:.63,y:.91,text:words.slow}],sparseLabel:words.sparse};
  }else{
-  svg.append(se("path",{d:"M95 45 V330 H700",stroke:ink,"stroke-width":2.5,fill:"none"}));
-  svg.append(se("path",{d:"M110 300 L675 85",stroke:line,"stroke-width":2,"stroke-dasharray":"7 7",fill:"none"}));
-  for(let i=0;i<46;i++){const x=120+(i*37%500),y=Math.max(95,Math.min(315,285-(x-120)*.38+((i*71)%90)-45));svg.append(se("circle",{cx:x,cy:y,r:5,fill:good,opacity:.7}));}
-  for(let x=145;x<670;x+=85)svg.append(se("circle",{cx:x,cy:165,r:6,fill:bad}));
-  svg.append(se("rect",{x:115,y:55,width:245,height:48,rx:9,fill:surface,stroke:line}));svg.append(se("circle",{cx:135,cy:79,r:6,fill:good}));svg.append(se("text",{x:150,y:85,fill:ink,"font-size":16},words.observed));
-  svg.append(se("rect",{x:390,y:55,width:260,height:48,rx:9,fill:surface,stroke:line}));svg.append(se("circle",{cx:410,cy:79,r:6,fill:bad}));svg.append(se("text",{x:425,y:85,fill:ink,"font-size":16},words.synthetic));
-  svg.append(se("text",{x:395,y:375,"text-anchor":"middle",fill:ink,"font-size":18},words.area));svg.append(se("text",{x:25,y:205,transform:"rotate(-90 25 205)","text-anchor":"middle",fill:ink,"font-size":18},words.rooms));
+  spec={type:"pdp-feature-dependence",layout:"scatter",id:"pdp-"+locale+"-correlation",title:words.caption3,description:words.caption3,caption:words.caption3,scrollLabel:words.caption3,
+   xLabel:words.area,yLabel:words.rooms,observedLabel:words.observed,syntheticLabel:words.synthetic,
+   observed:[[.08,.14],[.13,.2],[.2,.25],[.25,.31],[.31,.35],[.38,.4],[.43,.48],[.49,.52],[.55,.57],[.61,.63],[.68,.7],[.74,.73],[.81,.81],[.88,.87],[.94,.92]],
+   synthetic:[[.12,.83],[.2,.7],[.3,.9],[.4,.16],[.5,.12],[.6,.92],[.7,.2],[.8,.12],[.9,.18],[.96,.75],[.18,.55],[.78,.45],[.35,.78],[.62,.28]]
+  };
  }
- const fig=h("figure","pdp-figure"),view=h("div","pdp-figure-viewport");view.setAttribute("role","region");view.setAttribute("aria-label",words.caption);view.tabIndex=0;view.append(svg);fig.append(view,h("figcaption","",words.caption));return fig;
+ const figure=window.DCHLessonSVG.render(spec);
+ figure.classList.add("pdp-figure");
+ const viewport=figure.querySelector(".pfi-diagram-viewport");
+ if(viewport)viewport.classList.add("pdp-figure-viewport");
+ const svg=figure.querySelector("svg");
+ if(svg)svg.classList.add("pdp-svg");
+ return figure;
 }
 const sections=el("lesson-sections");
 data.sections.forEach(s=>{const section=h("section","xai-canonical-section");section.id="pdp-"+s.id;section.append(h("h2","xai-canonical-section-title",s.title));const body=h("div","xai-canonical-section-content");s.paragraphs.forEach(text=>body.append(h("p","",text)));if(s.id==="definition"||s.id==="two-way"){const f=h("div","formula");f.append(h("div","formula-expression",s.id==="definition"?"PDⱼ(z) = E[f(z, X₋ⱼ)]   |   PD̂ⱼ(z) = (1/n) Σᵢ f(z, xᵢ,₋ⱼ)":"PDⱼ,ₖ(zⱼ,zₖ) = E[f(zⱼ, zₖ, X₋(ⱼ,ₖ))]"));f.append(h("p","formula-note",ru?"Усреднение выполняется по опорной выборке; оно не является причинным эффектом.":zh?"平均值来自参考样本，并非因果效应。":"The average is over the reference sample; it is not a causal effect."));body.append(f);}if(s.diagram&&s.diagram!=="formula")body.append(figure(s.diagram));section.append(body);sections.append(section);});

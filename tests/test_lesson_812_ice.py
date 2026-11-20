@@ -22,7 +22,7 @@ class Lesson812ICETests(unittest.TestCase):
         if not match:
             raise AssertionError("Could not extract localized ICE data")
         cls.data = json.loads(match.group(1))
-        code_match = re.search(r"const practiceCode=(.*);\nwindow\\.DCH_ICE_812", cls.data_source, re.S)
+        code_match = re.search(r"const practiceCode=(.*);\nwindow\.DCH_ICE_812", cls.data_source, re.S)
         cls.python = json.loads(code_match.group(1)) if code_match else ""
         cls.renderer = (ROOT / "scripts/xai-ice-lesson.js").read_text(encoding="utf-8")
 
@@ -67,8 +67,8 @@ class Lesson812ICETests(unittest.TestCase):
         self.assertIn("DCHLessonSVG.render", self.renderer)
         self.assertIn("let diagramSequence=0", self.renderer)
         self.assertIn('diagram("one")', self.renderer)
-        self.assertIn('diagram("family")', self.renderer)
-        self.assertIn('diagram("center")', self.renderer)
+        self.assertIn('?"family":"center"', self.renderer)
+        self.assertIn('?"family":"center"', self.renderer)
         self.assertNotIn("createElementNS", self.renderer)
 
     def test_python_lab_syntax_and_ice_calculation(self):

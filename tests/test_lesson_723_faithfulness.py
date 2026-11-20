@@ -53,7 +53,7 @@ class Lesson723FaithfulnessTests(unittest.TestCase):
         self.assertIn("Faithfulness", self.data)
         for token in required:
             self.assertIn(token.lower(), self.data.lower())
-        self.assertIn("faithfulness-pipeline", self.renderer)
+        self.assertIn('type:"faithfulness-"+kind', self.renderer)
         self.assertIn("DCHLessonSVG.render", self.renderer)
         self.assertIn("renderGlossary", self.renderer)
         self.assertEqual(self.data.count('id:"plausibility"'), 1)
@@ -84,7 +84,7 @@ class Lesson723FaithfulnessTests(unittest.TestCase):
         self.assertIn("DCHLessonComponents.renderGlossary", self.renderer)
         self.assertNotIn("createElementNS", self.renderer)
         self.assertNotIn("<svg", self.renderer)
-        self.assertIn("data-language=\"python\"", self.renderer)
+        self.assertIn('pre.dataset.language="python"', self.renderer)
 
     def test_published_predecessor_is_unchanged_and_new_lesson_is_not_published(self):
         previous = next(x for x in self.catalog["lessons"] if x["uid"] == "les-a-0172")

@@ -75,9 +75,45 @@ zh:[
 ]}
 };
 const glossary = {
-ru:[["Partial Dependence Plot","График частичной зависимости","Глобальная визуализация среднего отклика модели."],["Partial dependence","Частичная зависимость","Ожидаемое предсказание по распределению остальных признаков."],["Feature of interest","Исследуемый признак","Признак, значения которого задаются на сетке."],["Complement features","Остальные признаки","Все входы, кроме выбранных для PDP."],["Reference dataset","Опорная выборка","Строки, по которым усредняют прогнозы."],["Empirical estimator","Эмпирическая оценка","Конечная выборочная аппроксимация ожидания."],["Grid resolution","Разрешение сетки","Число точек, в которых вычисляют PDP."],["ICE","Индивидуальное условное ожидание","Отдельная кривая модельного отклика для наблюдения."],["ALE","Накопленные локальные эффекты","Накопление локальных изменений в наблюдаемых интервалах."],["Feature dependence","Зависимость признаков","Статистическая связь входных признаков."],["Off-manifold combination","Комбинация вне области данных","Редкое или отсутствующее совместное сочетание входов."],["Model response","Отклик модели","Выход модели, например цена или вероятность."]],
-en:[["Partial Dependence Plot","Partial Dependence Plot","A global view of the model's average response."],["Partial dependence","Partial dependence","Expected prediction over the distribution of remaining features."],["Feature of interest","Feature of interest","The feature varied along the evaluation grid."],["Complement features","Complement features","All inputs except those selected for PDP."],["Reference dataset","Reference dataset","Rows over which predictions are averaged."],["Empirical estimator","Empirical estimator","A finite-sample approximation of an expectation."],["Grid resolution","Grid resolution","Number of feature values evaluated for PDP."],["ICE","Individual Conditional Expectation","An individual model-response curve for one observation."],["ALE","Accumulated Local Effects","Accumulation of local changes in observed intervals."],["Feature dependence","Feature dependence","A statistical relationship between input features."],["Off-manifold combination","Off-manifold combination","A rare or absent joint combination of inputs."],["Model response","Model response","A model output such as price or probability."]],
-zh:[["Partial Dependence Plot","部分依赖图","模型平均响应的全局可视化。"],["Partial dependence","部分依赖","关于其余特征分布的期望预测。"],["Feature of interest","关注特征","在评估网格上变化的特征。"],["Complement features","其余特征","除 PDP 选定特征之外的所有输入。"],["Reference dataset","参考数据集","用于对预测求平均的数据行。"],["Empirical estimator","经验估计量","对期望的有限样本近似。"],["Grid resolution","网格分辨率","计算 PDP 时评估的特征值数量。"],["ICE","个体条件期望","单个观测样本的模型响应曲线。"],["ALE","累积局部效应","在观测区间中累积局部变化。"],["Feature dependence","特征依赖","输入特征之间的统计关系。"],["Off-manifold combination","分布外组合","罕见或不存在的联合输入组合。"],["Model response","模型响应","模型输出，例如价格或概率。"]]
+ru:[
+["График частичной зависимости","Глобальная визуализация среднего отклика модели при варьировании выбранных признаков."],
+["Частичная зависимость","Математическое ожидание предсказания по распределению остальных признаков."],
+["Исследуемый признак","Признак, значения которого задаются на сетке PDP."],
+["Остальные признаки","Все входные признаки, кроме выбранных для анализа."],
+["Опорная выборка","Строки данных, по которым усредняются прогнозы."],
+["Эмпирическая оценка","Конечная выборочная аппроксимация математического ожидания."],
+["Разрешение сетки","Число точек признака, в которых вычисляется PDP."],
+["Индивидуальное условное ожидание (ICE)","Отдельная кривая модельного отклика для каждого наблюдения."],
+["Накопленные локальные эффекты (ALE)","Метод накопления локальных изменений предсказания в наблюдаемых интервалах."],
+["Зависимость признаков","Статистическая связь между входными признаками."],
+["Комбинация вне области данных","Редкое или отсутствующее совместное сочетание входных признаков."],
+["Отклик модели","Выход модели, например прогноз цены или вероятность класса."]],
+en:[
+["Partial Dependence Plot","A global visualization of the model's average response as selected features vary."],
+["Partial dependence","The expected prediction over the distribution of the remaining features."],
+["Feature of interest","The feature whose values are set along the PDP evaluation grid."],
+["Complement features","All input features except those selected for the analysis."],
+["Reference dataset","Rows over which model predictions are averaged."],
+["Empirical estimator","A finite-sample approximation of a mathematical expectation."],
+["Grid resolution","The number of feature values evaluated by the PDP."],
+["Individual Conditional Expectation (ICE)","A separate model-response curve for each observation."],
+["Accumulated Local Effects (ALE)","A method that accumulates local prediction changes in observed intervals."],
+["Feature dependence","A statistical relationship between input features."],
+["Off-manifold combination","A rare or absent joint combination of input features."],
+["Model response","A model output such as a price prediction or class probability."]],
+zh:[
+["部分依赖图","展示所选特征变化时模型平均响应的全局图形。"],
+["部分依赖","关于其余特征分布的期望预测。"],
+["关注特征","在 PDP 评估网格上设置取值的特征。"],
+["其余特征","除分析所选特征之外的所有输入特征。"],
+["参考数据集","用于对模型预测求平均的数据行集合。"],
+["经验估计量","对数学期望的有限样本近似。"],
+["网格分辨率","计算 PDP 时评估的特征值数量。"],
+["个体条件期望（ICE）","针对每个观测样本绘制的模型响应曲线。"],
+["累积局部效应（ALE）","在有观测支持的区间中累积局部预测变化的方法。"],
+["特征依赖","输入特征之间的统计关系。"],
+["分布外组合","在观测数据中罕见或不存在的联合特征组合。"],
+["模型响应","模型输出的量，例如价格预测或类别概率。"]]
 };
 const commonSources=[
 ["Friedman, J. H. (2001). Greedy Function Approximation: A Gradient Boosting Machine. Annals of Statistics, 29(5), 1189–1232. DOI: 10.1214/aos/1013203451.","https://doi.org/10.1214/aos/1013203451"],

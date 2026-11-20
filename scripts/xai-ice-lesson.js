@@ -15,7 +15,9 @@ const make=(tag,cls,text)=>{const n=document.createElement(tag);if(cls)n.classNa
 document.title="8.1.2 — "+data.title+" — AI Research DCH School";
 byId("lesson-title").textContent=data.title;byId("lesson-lead").textContent=data.lead;
 const out=byId("lesson-outcomes");out.append(make("h2","",L.outcomes));const ul=make("ul");data.outcomes.forEach(x=>ul.append(make("li","",x)));out.append(ul);
+let diagramSequence=0;
 function diagram(kind){
+ const diagramId=++diagramSequence;
  const ru=locale==="ru",zh=locale==="zh";
  const words=kind==="one"?
   (ru?["Один объект","ICEᵢⱼ(z)","Другие признаки фиксированы","Индивидуальный прогноз"]:zh?["单个样本","ICEᵢⱼ(z)","其余特征固定","个体预测"]:["One observation","ICEᵢⱼ(z)","Other features fixed","Individual prediction"]):
@@ -25,10 +27,10 @@ function diagram(kind){
  if(!window.DCHLessonSVG||typeof window.DCHLessonSVG.render!=="function")throw new Error("Shared SVG renderer is unavailable");
  if(kind==="one"||kind==="center"){
   const points=kind==="one"?[[.02,.08],[.18,.17],[.34,.29],[.5,.45],[.68,.63],[.84,.76],[.98,.9]]:[[.02,.12],[.18,.22],[.34,.35],[.5,.5],[.68,.61],[.84,.78],[.98,.9]];
-  const spec={type:"ice-single-"+kind,layout:"plot",id:"ice-"+locale+"-"+kind,title:kind==="one"?L.one:L.center,description:words.join(". "),caption:words.join(" → "),scrollLabel:words.join(" "),xLabel:L.x,yLabel:kind==="center"?(ru?"Изменение прогноза":zh?"预测变化":"Prediction change"):L.y,points,annotations:kind==="center"?[{x:.5,y:.87,text:"z₀"}]:[]};
+  const spec={type:"ice-single-"+kind,layout:"plot",id:"ice-"+locale+"-"+kind+"-"+diagramId,title:kind==="one"?L.one:L.center,description:words.join(". "),caption:words.join(" → "),scrollLabel:words.join(" "),xLabel:L.x,yLabel:kind==="center"?(ru?"Изменение прогноза":zh?"预测变化":"Prediction change"):L.y,points,annotations:kind==="center"?[{x:.5,y:.87,text:"z₀"}]:[]};
   return window.DCHLessonSVG.render(spec);
  }
- const spec={type:"ice-family-pdp",layout:"flow",id:"ice-"+locale+"-family",title:L.family,description:words.join(". "),caption:words.join(" → "),scrollLabel:L.family,nodes:words.map((w,i)=>({id:"step-"+i,title:w,detail:i===1?(ru?"Разные наклоны и уровни":zh?"不同斜率与水平":"Different slopes and levels"):i===2?(ru?"Среднее в каждой точке z":zh?"每个 z 处求平均":"Average at each z"): "",tone:i===3?"accent":"surface"}))};
+ const spec={type:"ice-family-pdp",layout:"flow",id:"ice-"+locale+"-family-"+diagramId,title:L.family,description:words.join(". "),caption:words.join(" → "),scrollLabel:L.family,nodes:words.map((w,i)=>({id:"step-"+i,title:w,detail:i===1?(ru?"Разные наклоны и уровни":zh?"不同斜率与水平":"Different slopes and levels"):i===2?(ru?"Среднее в каждой точке z":zh?"每个 z 处求平均":"Average at each z"): "",tone:i===3?"accent":"surface"}))};
  return window.DCHLessonSVG.render(spec);
 }
 const sections=byId("lesson-sections");

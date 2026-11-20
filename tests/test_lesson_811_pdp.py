@@ -16,6 +16,7 @@ class Lesson811PDPTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         cls.catalog = json.loads((ROOT / "data/catalog/catalog-v3.json").read_text(encoding="utf-8"))
+        cls.curriculum = json.loads((ROOT / "data/catalog/curriculum-canonical-v1.json").read_text(encoding="utf-8"))
         cls.lesson = next((x for x in cls.catalog["lessons"] if x["uid"] == UID), None)
         cls.data = (ROOT / "lessons/data/xai-08-pdp.js").read_text(encoding="utf-8")
         cls.renderer = (ROOT / "scripts/xai-pdp-lesson.js").read_text(encoding="utf-8")
@@ -28,6 +29,8 @@ class Lesson811PDPTests(unittest.TestCase):
         self.assertEqual(self.lesson["module_uid"], "mod-a-08-01")
         self.assertEqual(self.lesson["status"], "review")
         self.assertEqual(self.lesson["content_state"], "localized")
+        canonical = next(x for x in self.curriculum["tracks"] if x["uid"] == "trk-a")["themes"][7]["modules"][0]["lessons"][0]
+        self.assertEqual(canonical["uid"], UID)
         self.assertEqual(self.lesson["prerequisite_uids"], ["les-a-0173"])
         self.assertEqual(set(self.lesson["url_i18n"]), {"ru", "en", "zh"})
         for locale, route in ROUTES.items():

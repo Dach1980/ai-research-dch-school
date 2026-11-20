@@ -51,6 +51,7 @@ class Lesson723FaithfulnessTests(unittest.TestCase):
     def test_three_locale_content_has_equal_depth(self):
         required = ["Faithfulness", "Plausibility", "Interpretability", "Feature Deletion", "Feature Insertion", "Distribution Shift", "Out-of-Distribution", "Sanity Checks"]
         self.assertIn("Faithfulness", self.data)
+        self.assertEqual(self.data.count("D(k) = S(f, X, y)"), 3)
         for token in required:
             self.assertIn(token.lower(), self.data.lower())
         self.assertIn('type:"faithfulness-"+kind', self.renderer)

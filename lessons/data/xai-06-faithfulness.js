@@ -33,7 +33,7 @@ ru: {
  "<strong>Sensitivity Analysis</strong> изучает, насколько объяснение или предсказание меняется при малых допустимых изменениях входа. Чрезмерная чувствительность может указывать на нестабильность; полная нечувствительность тоже не всегда желательна.",
  "<strong>Model Randomization Sanity Checks</strong> сравнивают объяснения исходной модели с объяснениями модели после рандомизации параметров или меток. Если объяснение почти не реагирует на разрушение выученной структуры, оно может отражать prior данных или процедуру визуализации, а не знания модели.",
  "Ни deletion, ни insertion, ни sanity check не дают универсального сертификата. Надёжнее сочетать несколько тестов, обосновывать perturbation и проверять результаты на целевой области данных."
- ],diagram:"deletion"},
+ ],formula:"D(k) = S(f, X, y) − S(f, T_k(X), y). Здесь S — метрика, где большее значение лучше; T_k заменяет первые k признаков в порядке объяснения. Положительное D(k) означает ухудшение выбранной метрики после удаления этих признаков.",diagram:"deletion"},
  {id:"pfi",title:"4. Связь с Feature Importance и Permutation Feature Importance",paragraphs:[
  "Feature Importance и Permutation Feature Importance (PFI) оценивают разные аспекты поведения модели. PFI измеряет изменение выбранной метрики после перестановки столбца у фиксированной модели. Это оценка зависимости качества от доступности информации признака на конкретной выборке, а не причинный вклад.",
  "При коррелирующих признаках модель может использовать взаимозаменяемые сигналы. Перестановка одного столбца оставляет proxy-признак на месте, поэтому индивидуальная PFI может быть небольшой. Одновременно независимая перестановка способна создать комбинации, отсутствующие в реальных данных.",
@@ -134,7 +134,7 @@ en: {
  "<strong>Sensitivity Analysis</strong> studies how predictions or explanations change under small, valid input changes. Excessive sensitivity may indicate instability; complete insensitivity is not always desirable either.",
  "<strong>Model Randomization Sanity Checks</strong> compare explanations for an original model with explanations after model parameters or labels are randomized. If explanations barely react to destroying learned structure, they may reflect data priors or visualization procedures rather than model knowledge.",
  "No deletion, insertion, or sanity check is a universal certificate. Stronger evidence combines tests, justifies perturbations, and evaluates results on the target data region."
- ],diagram:"deletion"},
+ ],formula:"D(k) = S(f, X, y) − S(f, T_k(X), y). Here S is a higher-is-better metric, and T_k replaces the first k features in the explanation order. Positive D(k) means the selected score decreased after deletion.",diagram:"deletion"},
  {id:"pfi",title:"4. Connection to Feature Importance and Permutation Feature Importance",paragraphs:[
  "Feature Importance and Permutation Feature Importance (PFI) measure different aspects of model behaviour. PFI measures the change in a selected metric after permuting one column for a fixed model. It estimates performance dependence on feature information in a particular sample—not a causal contribution.",
  "With correlated features, a model may use interchangeable signals. Permuting one column leaves its proxy intact, so individual PFI can be small. At the same time, independent permutation may create combinations absent from real data.",
@@ -235,7 +235,7 @@ zh: {
  "<strong>敏感性分析</strong>研究预测或解释在输入发生小幅、有效变化时如何改变。过高的敏感性可能意味着不稳定；完全不敏感也不一定理想。",
  "<strong>模型随机化合理性检查</strong>比较原始模型与参数或标签被随机化后的模型所产生的解释。如果破坏已学习结构后解释几乎不变，那么解释可能反映了数据先验或可视化流程，而不是模型知识。",
  "删除、插入或合理性检查都不是通用证书。更可靠的证据来自多种测试的组合、对扰动方式的合理说明，以及在目标数据区域上的评估。"
- ],diagram:"deletion"},
+ ],formula:"D(k) = S(f, X, y) − S(f, T_k(X), y)。其中 S 是数值越高越好的指标；T_k 按解释给出的顺序替换前 k 个特征。D(k) 为正表示删除这些特征后所选指标下降。",diagram:"deletion"},
  {id:"pfi",title:"4. 与特征重要性和置换特征重要性的联系",paragraphs:[
  "Feature Importance 和 Permutation Feature Importance（PFI）衡量模型行为的不同方面。PFI 测量固定模型在某一列被置换后，指定评价指标的变化。它估计的是特定样本中模型对特征信息的性能依赖，而不是因果贡献。",
  "当特征相关时，模型可能使用可互换的信号。置换一列后，代理特征仍然保留，因此单个特征的 PFI 可能很小。同时，独立置换也可能产生真实数据中不存在的组合。",

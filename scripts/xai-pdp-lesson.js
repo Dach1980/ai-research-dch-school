@@ -6,9 +6,9 @@ const lang=(document.documentElement.lang||"ru").toLowerCase();
 const locale=lang.startsWith("zh")?"zh":lang.startsWith("en")?"en":"ru";
 const data=lesson.content[locale];
 const labels={
-ru:{outcomes:"Результаты обучения",practice:"Практическая работа",sources:"Источники и дополнительное чтение",quiz:"Проверка знаний",submit:"Проверить ответы",correct:"Верно",incorrect:"Неверно",why:"Пояснение",score:"Результат",install:"Установка",run:"Запуск"},
-en:{outcomes:"Learning outcomes",practice:"Practical lab",sources:"Sources and further reading",quiz:"Knowledge check",submit:"Check answers",correct:"Correct",incorrect:"Incorrect",why:"Explanation",score:"Score",install:"Install",run:"Run"},
-zh:{outcomes:"学习成果",practice:"实践实验",sources:"参考资料与延伸阅读",quiz:"知识检测",submit:"检查答案",correct:"正确",incorrect:"错误",why:"解释",score:"得分",install:"安装",run:"运行"}
+ru:{outcomes:"Результаты обучения",practice:"Практическая работа",sources:"Источники и дополнительное чтение",quiz:"Проверка знаний",submit:"Проверить ответы",correct:"Верно",incorrect:"Неверно",why:"Пояснение",score:"Результат",install:"Установка",run:"Запуск",glossary:"Словарь терминов"},
+en:{outcomes:"Learning outcomes",practice:"Practical lab",sources:"Sources and further reading",quiz:"Knowledge check",submit:"Check answers",correct:"Correct",incorrect:"Incorrect",why:"Explanation",score:"Score",install:"Install",run:"Run",glossary:"Key terms"},
+zh:{outcomes:"学习成果",practice:"实践实验",sources:"参考资料与延伸阅读",quiz:"知识检测",submit:"检查答案",correct:"正确",incorrect:"错误",why:"解释",score:"得分",install:"安装",run:"运行",glossary:"术语词典"}
 }[locale];
 const el=id=>document.getElementById(id);
 el("lesson-title").textContent=data.title;el("lesson-lead").textContent=data.lead;
@@ -22,7 +22,7 @@ function figure(kind){
  const ru=locale==="ru",zh=locale==="zh";
  const words=ru?{workflow:"Как вычисляется PDP",ref:"Опорные строки",grid:"Сетка z",replace:"Замена признака",predict:"Прогнозы f",avg:"Среднее → PDP",curve:"Чтение кривой PDP",rise:"Средний прогноз растёт",level:"Рост замедляется",sparse:"Мало наблюдений",observed:"Наблюдаемые пары",synthetic:"Синтетические пары",area:"Площадь",rooms:"Комнаты",caption:"Схематичная иллюстрация; проверяйте область поддержки по реальным данным."}:zh?{workflow:"PDP 计算流程",ref:"参考样本行",grid:"网格 z",replace:"替换特征",predict:"模型预测 f",avg:"求平均 → PDP",curve:"读取 PDP 曲线",rise:"平均预测上升",level:"增长减缓",sparse:"观测稀疏",observed:"观测组合",synthetic:"合成组合",area:"房屋面积",rooms:"房间数",caption:"示意图；请根据真实数据检查支持区域。"}:{workflow:"How PDP is computed",ref:"Reference rows",grid:"Grid z",replace:"Replace feature",predict:"Predictions f",avg:"Average → PDP",curve:"Reading a PDP curve",rise:"Average prediction rises",level:"Growth slows",sparse:"Sparse observations",observed:"Observed pairs",synthetic:"Synthetic pairs",area:"Floor area",rooms:"Rooms",caption:"Conceptual illustration; inspect data support in the actual dataset."};
  const svg=se("svg",{viewBox:"0 0 760 420",role:"img",class:"pdp-svg","aria-labelledby":"pdp-"+locale+"-"+kind+"-title"});
- const title=se("title",{id:"pdp-"+locale+"-"+kind+"-title"},kind==="workflow"?words.workflow:kind==="reading"?words.curve:words.caption);svg.append(title);
+ const title=se("title",{id:"pdp-"+locale+"-"+kind+"-title"},kind==="workflow"?words.workflow:kind==="reading"?words.curve:words.caption);svg.append(title,se("desc",{},words.caption));
  const ink="var(--lds-ink)",line="var(--lds-line)",surface="var(--lds-surface)",accent="var(--lds-accent)",good="var(--lds-good)",bad="var(--lds-bad)";
  if(kind==="workflow"){
   const boxes=[[25,110,145,95,words.ref],[215,110,125,95,words.grid],[385,110,150,95,words.replace],[580,110,155,95,words.predict]];

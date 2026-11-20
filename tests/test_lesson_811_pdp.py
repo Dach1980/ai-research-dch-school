@@ -58,10 +58,16 @@ class Lesson811PDPTests(unittest.TestCase):
     def test_twelve_glossary_terms_and_twelve_quiz_questions_per_locale(self):
         self.assertEqual(self.data.count('glossary:['), 3)
         self.assertEqual(self.data.count('quiz:['), 3)
-        self.assertEqual(self.data.count('["Partial Dependence Plot"'), 3)
-        self.assertEqual(self.data.count('["ICE"'), 3)
-        self.assertEqual(self.data.count('["ALE"'), 3)
+        self.assertIn("График частичной зависимости", self.data)
+        self.assertIn("Partial Dependence Plot", self.data)
+        self.assertIn("部分依赖图", self.data)
+        self.assertIn("Накопленные локальные эффекты", self.data)
+        self.assertIn("Accumulated Local Effects", self.data)
+        self.assertIn("累积局部效应", self.data)
         self.assertGreaterEqual(self.data.count('["'), 36)
+        self.assertIn('glossary:"Словарь терминов"', self.renderer)
+        self.assertIn('glossary:"Key terms"', self.renderer)
+        self.assertIn('glossary:"术语词典"', self.renderer)
 
     def test_renderer_uses_inline_accessible_theme_aware_svg(self):
         self.assertIn('function figure(kind)', self.renderer)

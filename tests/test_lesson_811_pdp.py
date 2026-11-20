@@ -50,6 +50,11 @@ class Lesson811PDPTests(unittest.TestCase):
                 self.assertIn(script, source)
             self.assertIn('class="footer"', source)
 
+    def test_runtime_renderer_sets_outcomes_theme_class_and_uses_scoped_locale(self):
+        self.assertIn('outcomes.classList.add("outcomes")', self.renderer)
+        self.assertIn('h("p","formula-note",locale==="ru"?', self.renderer)
+        self.assertNotIn('h("p","formula-note",ru?', self.renderer)
+
     def test_ten_learning_outcomes_per_locale(self):
         block = self.data.split("const outcomes={", 1)[1].split("const content={", 1)[0]
         for locale, next_locale in (("ru", "en"), ("en", "zh"), ("zh", None)):

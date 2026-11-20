@@ -48,7 +48,7 @@ data.sections.forEach(sectionData=>{
  if(sectionData.formula){
   const formula=document.createElement("div");formula.className="formula";
   const expression=document.createElement("div");expression.className="formula-expression";
-  expression.textContent=sectionData.formula;formula.append(expression);body.append(formula);
+  expression.textContent=sectionData.formula;formula.append(expression);if(sectionData.formulaNote){const note=document.createElement("p");note.className="formula-note";note.textContent=sectionData.formulaNote;formula.append(note);}body.append(formula);
  }
  if(sectionData.diagram)body.append(diagram(sectionData.diagram));
  section.append(heading,body);sections.append(section);

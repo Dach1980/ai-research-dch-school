@@ -89,6 +89,8 @@ class Lesson811PDPTests(unittest.TestCase):
         self.assertIn("DCHLessonSVG.render", self.renderer)
         self.assertNotIn("createElementNS", self.renderer)
         self.assertIn("DCHLessonComponents.renderGlossary", self.renderer)
+        for diagram_type in ('type:"pdp-workflow"', 'type:"pdp-curve-reading"', 'type:"pdp-feature-dependence"'):
+            self.assertIn(diagram_type, self.renderer)
         self.assertIn('"plot"', self.svg_renderer)
         self.assertIn('"scatter"', self.svg_renderer)
         self.assertIn('data-diagram-renderer', self.svg_renderer)

@@ -276,6 +276,46 @@ class CanonicalLessonBrowserAcceptanceTests(unittest.TestCase):
                     self.assertTrue(result["footerAfterMain"], f"{lesson['uid']} / {locale}: footer must follow lesson content")
                     page.close()
 
+    def test_faithfulness_display_math_wraps_without_horizontal_page_scroll(self):
+        lesson = next((item for item in CANONICAL_LESSONS if item.get("uid") == "les-a-0173"), None)
+        self.assertIsNotNone(lesson, "Faithfulness lesson must be included in canonical browser acceptance")
+        for locale in ("ru", "en", "zh"):
+            for theme in ("light", "dark"):
+                for width in (375, 768, 1440):
+                    with self.subTest(locale=locale, theme=theme, width=width):
+                        page = self.open_page(lesson, locale, width=width, theme=theme)
+                        result = page.evaluate("""() => {
+                          const formulas = [...document.querySelectorAll(
+                            '#lesson-sections .formula, #lesson-practice .formula, #lesson-sources .formula'
+                          )];
+                          return {
+                            viewportWidth: window.innerWidth,
+                            documentWidth: document.documentElement.scrollWidth,
+                            bodyWidth: document.body.scrollWidth,
+                            formulas: formulas.map((formula) => {
+                              const expression = formula.querySelector('.formula-expression');
+                              return {
+                                width: formula.clientWidth,
+                                scrollWidth: formula.scrollWidth,
+                                expressionWidth: expression ? expression.clientWidth : 0,
+                                expressionScrollWidth: expression ? expression.scrollWidth : 0,
+                                whiteSpace: expression ? getComputedStyle(expression).whiteSpace : null,
+                                noteCount: formula.querySelectorAll('.formula-note').length
+                              };
+                            })
+                          };
+                        }""")
+                        self.assertGreaterEqual(len(result["formulas"]), 2, f"{locale}: expected both display equations")
+                        self.assertLessEqual(result["documentWidth"], result["viewportWidth"] + 1, result)
+                        self.assertLessEqual(result["bodyWidth"], result["viewportWidth"] + 1, result)
+                        for formula in result["formulas"]:
+                            self.assertGreater(formula["width"], 0, result)
+                            self.assertLessEqual(formula["scrollWidth"], formula["width"] + 1, result)
+                            self.assertLessEqual(formula["expressionScrollWidth"], formula["expressionWidth"] + 1, result)
+                            self.assertEqual(formula["whiteSpace"], "normal", result)
+                        self.assertEqual(result["formulas"][0]["noteCount"], 1, result)
+                        page.close()
+
     def test_theme_aware_headings_and_responsive_layout(self):
         for lesson in CANONICAL_LESSONS:
             for theme, expected in (("light", "rgb(23, 35, 61)"), ("dark", "rgb(237, 243, 255)")):

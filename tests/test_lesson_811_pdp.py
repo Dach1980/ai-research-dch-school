@@ -20,6 +20,7 @@ class Lesson811PDPTests(unittest.TestCase):
         cls.lesson = next((x for x in cls.catalog["lessons"] if x["uid"] == UID), None)
         cls.data = (ROOT / "lessons/data/xai-08-pdp.js").read_text(encoding="utf-8")
         cls.renderer = (ROOT / "scripts/xai-pdp-lesson.js").read_text(encoding="utf-8")
+        cls.svg_renderer = (ROOT / "scripts/lesson-svg-renderer.js").read_text(encoding="utf-8")
         cls.python = (ROOT / "lessons/practice/a-8-1-1-partial-dependence.py").read_text(encoding="utf-8")
 
     def test_catalog_registration_and_review_gate(self):
@@ -84,14 +85,16 @@ class Lesson811PDPTests(unittest.TestCase):
         self.assertIn('glossary:"Key terms"', self.renderer)
         self.assertIn('glossary:"术语词典"', self.renderer)
 
-    def test_renderer_uses_inline_accessible_theme_aware_svg(self):
-        self.assertIn('function figure(kind)', self.renderer)
-        self.assertIn('viewBox:"0 0 760 420"', self.renderer)
-        self.assertIn('role:"img"', self.renderer)
-        self.assertIn('pdp-svg', self.renderer)
-        self.assertIn('var(--lds-ink)', self.renderer)
-        self.assertIn('var(--lds-surface)', self.renderer)
+    def test_renderer_uses_shared_accessible_theme_aware_svg(self):
+        self.assertIn("DCHLessonSVG.render", self.renderer)
+        self.assertNotIn("createElementNS", self.renderer)
         self.assertIn("DCHLessonComponents.renderGlossary", self.renderer)
+        self.assertIn('"plot"', self.svg_renderer)
+        self.assertIn('"scatter"', self.svg_renderer)
+        self.assertIn('data-diagram-renderer', self.svg_renderer)
+        self.assertIn('aria-labelledby', self.svg_renderer)
+        self.assertIn('var(--lds-ink)', self.svg_renderer)
+        self.assertIn('var(--lds-surface)', self.svg_renderer)
 
     def test_python_practice_syntax_and_supported_api(self):
         ast.parse(self.python)

@@ -508,6 +508,7 @@ class CanonicalLessonBrowserAcceptanceTests(unittest.TestCase):
                     }""")
                     self.assertNotIn("missing", result, "lesson-outcomes root missing or changed")
                     self.assertGreaterEqual(result["headingContrast"], 4.5, f"heading contrast {result}")
+                    self.assertNotEqual(result["cardBackground"], "rgba(0, 0, 0, 0)", f"outcome card surface must be explicit {result}")
                     self.assertGreaterEqual(result["copyContrast"], 4.5, f"body contrast {result}")
                     self.assertGreater(result["itemCount"], 0)
                     page.close()

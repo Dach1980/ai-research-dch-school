@@ -319,3 +319,37 @@ main.lesson #lesson-outcomes > ol > li:last-child:nth-child(odd) {
     grid-column: auto;
   }
 }
+ 
+/* Display equations must adapt to the available column width. Keep inline math
+   atomic, but let block equations wrap and keep explanatory notes readable. */
+.article-body .formula {
+  display:grid;
+  grid-template-columns:minmax(0,1fr);
+  justify-items:stretch;
+  width:100%;
+  min-width:0;
+  max-width:100%;
+  box-sizing:border-box;
+  overflow-x:clip;
+}
+.article-body .formula-expression {
+  display:block;
+  width:100%;
+  min-width:0;
+  max-width:100%;
+  white-space:normal;
+  overflow-wrap:anywhere;
+  word-break:normal;
+  text-align:center;
+}
+.article-body .formula-note {
+  width:100%;
+  min-width:0;
+  max-width:100%;
+  margin:.15rem 0 0;
+  color:var(--lds-muted);
+  font-size:.92rem;
+  line-height:1.65;
+  text-align:left;
+  overflow-wrap:anywhere;
+}

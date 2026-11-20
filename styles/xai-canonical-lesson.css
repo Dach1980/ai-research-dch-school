@@ -272,3 +272,43 @@ main.lesson #lesson-quiz .quiz-summary {
   main.lesson #lesson-quiz .knowledge-check {padding:.9rem}
   main.lesson #lesson-quiz .knowledge-check fieldset {padding:.75rem}
 }
+ 
+/* Responsive display mathematics: equations wrap instead of widening the page.
+   Explanatory prose is rendered as a separate block by the lesson renderer. */
+main.lesson #lesson-sections .formula,
+main.lesson #lesson-practice .formula,
+main.lesson #lesson-sources .formula {
+  display:grid;
+  grid-template-columns:minmax(0,1fr);
+  justify-items:stretch;
+  width:100%;
+  min-width:0;
+  max-width:100%;
+  box-sizing:border-box;
+  overflow-x:clip;
+}
+main.lesson #lesson-sections .formula-expression,
+main.lesson #lesson-practice .formula-expression,
+main.lesson #lesson-sources .formula-expression {
+  display:block;
+  width:100%;
+  min-width:0;
+  max-width:100%;
+  white-space:normal;
+  overflow-wrap:anywhere;
+  word-break:normal;
+  text-align:center;
+}
+main.lesson #lesson-sections .formula-note,
+main.lesson #lesson-practice .formula-note,
+main.lesson #lesson-sources .formula-note {
+  width:100%;
+  min-width:0;
+  max-width:100%;
+  margin:.15rem 0 0;
+  color:var(--lds-muted);
+  font-size:.92rem;
+  line-height:1.65;
+  text-align:left;
+  overflow-wrap:anywhere;
+}

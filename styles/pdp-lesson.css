@@ -1,0 +1,12 @@
+/* Scoped responsive figures for Track A lesson 8.1.1. */
+.pdp-figure{margin:1.5rem 0;padding:1rem;border:1px solid var(--lds-line);border-radius:1rem;background:var(--lds-surface);min-width:0}
+.pdp-figure-viewport{width:100%;overflow-x:auto;overscroll-behavior-inline:contain;border-radius:.75rem}
+.pdp-svg{display:block;width:100%;height:auto;min-width:640px;max-width:100%;font-family:inherit}
+.pdp-figure figcaption{margin-top:.75rem;color:var(--lds-muted);font-size:.92rem;line-height:1.55}
+#lesson-practice pre{max-width:100%;overflow-x:auto;white-space:pre}
+#lesson-practice code{font-size:.84rem}
+#lesson-sources li{overflow-wrap:anywhere;margin:.55rem 0}
+#lesson-sections .formula{max-width:100%;padding:1rem;border:1px solid var(--lds-line);border-radius:.75rem;background:var(--lds-surface);overflow-wrap:anywhere}
+#lesson-sections .formula-expression{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:1rem;line-height:1.7;white-space:normal;overflow-wrap:anywhere;color:var(--lds-ink)}
+#lesson-sections .formula-note{margin:.75rem 0 0;color:var(--lds-muted);font-size:.94rem;line-height:1.6;overflow-wrap:anywhere}
+@media(max-width:650px){.pdp-figure{padding:.6rem;margin:1rem 0}.pdp-figure figcaption{font-size:.88rem}#lesson-practice code{font-size:.76rem}}

@@ -26,10 +26,10 @@ class Lesson812ICETests(unittest.TestCase):
         cls.python = json.loads(code_match.group(1)) if code_match else ""
         cls.renderer = (ROOT / "scripts/xai-ice-lesson.js").read_text(encoding="utf-8")
 
-    def test_catalog_registration_and_review_gate(self):
+    def test_catalog_registration_and_publication(self):
         self.assertEqual(self.lesson["code"], "8.1.2")
-        self.assertEqual(self.lesson["status"], "review")
-        self.assertEqual(self.lesson["content_state"], "localized")
+        self.assertEqual(self.lesson["status"], "published")
+        self.assertEqual(self.lesson["content_state"], "published")
         self.assertEqual(self.lesson["prerequisite_uids"], ["les-a-0174"])
         self.assertEqual(set(self.lesson["url_i18n"]), {"ru", "en", "zh"})
         self.assertEqual(len([x["uid"] for x in self.catalog["lessons"]]), len(set(x["uid"] for x in self.catalog["lessons"])))

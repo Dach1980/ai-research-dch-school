@@ -3957,7 +3957,7 @@
       "module_uid": "mod-a-08-01",
       "code": "8.1.2",
       "title": "ICE — Individual Conditional Expectation",
-      "status": "review",
+      "status": "published",
       "access": "open",
       "level": "intermediate",
       "prerequisite_uids": [
@@ -3975,7 +3975,7 @@
         "Строить ICE и PDP средствами scikit-learn и вычислять c-ICE вручную.",
         "Выбирать PDP, ICE, c-ICE или ALE в соответствии с исследовательским вопросом."
       ],
-      "content_state": "localized",
+      "content_state": "published",
       "title_i18n": {
         "ru": "ICE — Individual Conditional Expectation",
         "en": "ICE — Individual Conditional Expectation",

@@ -49,6 +49,15 @@ class Lesson811PDPTests(unittest.TestCase):
                 self.assertIn(script, source)
             self.assertIn('class="footer"', source)
 
+    def test_ten_learning_outcomes_per_locale(self):
+        block = self.data.split("const outcomes={", 1)[1].split("const content={", 1)[0]
+        for locale, next_locale in (("ru", "en"), ("en", "zh"), ("zh", None)):
+            localized = block.split(locale + ":[", 1)[1]
+            if next_locale:
+                localized = localized.split("\n" + next_locale + ":[", 1)[0]
+            count = sum(1 for line in localized.splitlines() if line.strip().startswith('"'))
+            self.assertEqual(count, 10, locale)
+
     def test_seven_sections_and_three_figure_specs_per_locale(self):
         for token in ('["question"', '["definition"', '["grid"', '["two-way"', '["interpret"', '["correlation"', '["compare"'):
             self.assertEqual(self.data.count(token), 3, token)

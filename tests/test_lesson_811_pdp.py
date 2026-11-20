@@ -121,7 +121,7 @@ class Lesson811PDPTests(unittest.TestCase):
     def test_sources_and_status(self):
         for token in ("10.1214/aos/1013203451", "10.1080/10618600.2014.907095", "10.1111/rssb.12377", "scikit-learn.org/stable/modules/partial_dependence.html"):
             self.assertIn(token, self.data)
-        self.assertEqual(self.lesson["status"], "review")
+        self.assertEqual(self.lesson["status"], "published")
         self.assertEqual(self.lesson["content_state"], "published")
 
     def test_previous_lesson_remains_published(self):

@@ -1,7 +1,7 @@
 {
   "schema_version": 3,
   "catalog_id": "dch-school-curriculum",
-  "catalog_version": "3.2.11-lesson-8-1-1-review",
+  "catalog_version": "3.2.12-lesson-8-1-2-ice-review",
   "status": "migration_staging",
   "tracks": [
     {
@@ -3948,6 +3948,43 @@
         "ru": "lessons/a-8-1-1-les-a-0174.html",
         "en": "lessons/a-8-1-1-les-a-0174-en.html",
         "zh": "lessons/a-8-1-1-les-a-0174-zh.html"
+      }
+    },
+    {
+      "uid": "les-a-0175",
+      "track_uid": "trk-a",
+      "theme_uid": "thm-a-08",
+      "module_uid": "mod-a-08-01",
+      "code": "8.1.2",
+      "title": "ICE — Individual Conditional Expectation",
+      "status": "review",
+      "access": "open",
+      "level": "intermediate",
+      "prerequisite_uids": [
+        "les-a-0174"
+      ],
+      "learning_outcomes": [
+        "Объяснять, на какой вопрос отвечает ICE и чем он отличается от PDP.",
+        "Записывать формулу ICEᵢⱼ(z) = f(z, xᵢ,₋ⱼ) и интерпретировать её обозначения.",
+        "Строить индивидуальную кривую, изменяя один признак и сохраняя остальные характеристики объекта.",
+        "Выбирать опорные объекты, диапазон и сетку значений для ICE.",
+        "Интерпретировать наклон, форму, параллельность, расхождение и пересечение ICE-кривых.",
+        "Объяснять, как усреднение ICE-кривых образует PDP и что при этом теряется.",
+        "Строить centered ICE и объяснять роль базового значения z₀.",
+        "Оценивать визуальную перегрузку, вычислительную стоимость и риск нереалистичных сочетаний признаков.",
+        "Строить ICE и PDP средствами scikit-learn и вычислять c-ICE вручную.",
+        "Выбирать PDP, ICE, c-ICE или ALE в соответствии с исследовательским вопросом."
+      ],
+      "content_state": "localized",
+      "title_i18n": {
+        "ru": "ICE — Individual Conditional Expectation",
+        "en": "ICE — Individual Conditional Expectation",
+        "zh": "ICE — 个体条件期望"
+      },
+      "url_i18n": {
+        "ru": "lessons/a-8-1-2-les-a-0175.html",
+        "en": "lessons/a-8-1-2-les-a-0175-en.html",
+        "zh": "lessons/a-8-1-2-les-a-0175-zh.html"
       }
     }
   ],

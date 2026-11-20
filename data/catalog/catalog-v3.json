@@ -3926,7 +3926,7 @@
       "module_uid": "mod-a-08-01",
       "code": "8.1.1",
       "title": "PDP — Partial Dependence Plot",
-      "status": "review",
+      "status": "published",
       "access": "open",
       "level": "intermediate",
       "prerequisite_uids": [
@@ -3938,7 +3938,7 @@
         "Оценивать влияние опорной выборки, сетки значений и зависимости признаков на интерпретацию.",
         "Строить PDP с помощью scikit-learn и сопоставлять его с ICE и ALE."
       ],
-      "content_state": "localized",
+      "content_state": "published",
       "title_i18n": {
         "ru": "PDP — Partial Dependence Plot",
         "en": "PDP — Partial Dependence Plot",

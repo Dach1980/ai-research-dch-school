@@ -30,8 +30,8 @@ class CatalogV3Tests(unittest.TestCase):
         self.assertEqual(module["number"], 1)
         self.assertEqual(lesson["code"], "8.1.1")
         self.assertEqual(lesson["module_uid"], module["uid"])
-        self.assertEqual(lesson["status"], "review")
-        self.assertEqual(lesson["content_state"], "localized")
+        self.assertEqual(lesson["status"], "published")
+        self.assertEqual(lesson["content_state"], "published")
 
     def test_uid_is_separate_from_display_code(self):
         rows = self.catalog["tracks"] + self.catalog["themes"] + self.catalog["modules"] + self.catalog["lessons"]

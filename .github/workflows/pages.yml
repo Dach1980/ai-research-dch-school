@@ -36,6 +36,10 @@ jobs:
         run: python -m unittest discover -s tests -p 'test_lesson_712_contract.py' -v
       - name: Test complete lesson 7.1.3 in RU, EN and Chinese
         run: python -m unittest discover -s tests -p 'test_lesson_713_contract.py' -v
+      - name: Test lesson 7.2.3 faithfulness, localization, SVG and Python lab
+        run: python -m unittest discover -s tests -p 'test_lesson_723_faithfulness.py' -v
+      - name: Check lesson 7.2.3 JavaScript syntax
+        run: node --check lessons/data/xai-06-faithfulness.js && node --check scripts/xai-faithfulness-lesson.js
       - name: Check lesson 7.1.2 JavaScript syntax
         run: node --check scripts/main.js && node --check lessons/data/xai-02-local-global.js && node --check scripts/xai-local-global-lesson.js
       - name: Check lesson 7.1.3 JavaScript syntax

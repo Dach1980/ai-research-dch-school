@@ -56,13 +56,13 @@ class Lesson723FaithfulnessTests(unittest.TestCase):
         self.assertIn('type:"faithfulness-"+kind', self.renderer)
         self.assertIn("DCHLessonSVG.render", self.renderer)
         self.assertIn("renderGlossary", self.renderer)
-        self.assertEqual(self.data.count('id:"plausibility"'), 1)
-        self.assertEqual(self.data.count('id:"definitions"'), 1)
-        self.assertEqual(self.data.count('id:"tests"'), 1)
-        self.assertEqual(self.data.count('id:"pfi"'), 1)
-        self.assertEqual(self.data.count('id:"limits"'), 1)
-        self.assertEqual(self.data.count('id:"protocol"'), 1)
-        self.assertEqual(self.data.count('id:"summary"'), 1)
+        self.assertEqual(self.data.count('id:"plausibility"'), 3)
+        self.assertEqual(self.data.count('id:"definitions"'), 3)
+        self.assertEqual(self.data.count('id:"tests"'), 3)
+        self.assertEqual(self.data.count('id:"pfi"'), 3)
+        self.assertEqual(self.data.count('id:"limits"'), 3)
+        self.assertEqual(self.data.count('id:"protocol"'), 3)
+        self.assertEqual(self.data.count('id:"summary"'), 3)
         self.assertGreaterEqual(self.data.count('q:"'), 36)
         self.assertGreaterEqual(self.data.count('["'), 36)
 
@@ -76,7 +76,7 @@ class Lesson723FaithfulnessTests(unittest.TestCase):
 
     def test_python_lab_is_reproducible_and_syntactically_valid(self):
         ast.parse(self.python)
-        for token in ("random_state=RANDOM_STATE", "n_repeats=30", "permutation_importance(", "deletion_auc", "insertion_auc", "Randomization", "not a causal effect"):
+        for token in ("random_state=RANDOM_STATE", "n_repeats=30", "permutation_importance(", "deletion_auc", "insertion_auc", "Randomization", "not causal interventions"):
             self.assertIn(token.lower(), self.python.lower())
 
     def test_renderer_uses_shared_svg_and_glossary_components(self):

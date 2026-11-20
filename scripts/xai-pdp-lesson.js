@@ -16,8 +16,6 @@ document.title="8.1.1 — "+data.title+" — AI Research DCH School";
 const h=(tag,cls,txt)=>{const n=document.createElement(tag);if(cls)n.className=cls;if(txt!==undefined)n.textContent=txt;return n;};
 const outcomes=el("lesson-outcomes");outcomes.append(h("h2","",labels.outcomes));const list=h("ul");
 data.outcomes.forEach(x=>list.append(h("li","",x)));outcomes.append(list);
-const NS="http://www.w3.org/2000/svg";
-function se(tag,attrs,text){const n=document.createElementNS(NS,tag);Object.entries(attrs||{}).forEach(([k,v])=>n.setAttribute(k,String(v)));if(text!==undefined)n.textContent=text;return n;}
 function figure(kind){
  if(!window.DCHLessonSVG||typeof window.DCHLessonSVG.render!=="function")throw new Error("Shared SVG renderer is not loaded");
  const ru=locale==="ru",zh=locale==="zh";

@@ -16,9 +16,22 @@ class CatalogV3Tests(unittest.TestCase):
 
     def test_track_a_has_approved_hierarchy(self):
         a_themes = [x for x in self.catalog["themes"] if x["track_uid"] == "trk-a"]
-        self.assertEqual(len(a_themes), 7)
-        self.assertEqual(len(self.catalog["modules"]), 36)
-        self.assertEqual([sum(x["theme_uid"] == t["uid"] for x in self.catalog["modules"]) for t in a_themes], [5, 8, 2, 8, 9, 2, 2])
+        self.assertEqual(len(a_themes), 8)
+        self.assertEqual(len(self.catalog["modules"]), 37)
+        self.assertEqual([sum(x["theme_uid"] == t["uid"] for x in self.catalog["modules"]) for t in a_themes], [5, 8, 2, 8, 9, 2, 2, 1])
+
+
+    def test_track_a_theme_eight_pdp_module_is_registered(self):
+        theme = next(x for x in self.catalog["themes"] if x["uid"] == "thm-a-08")
+        module = next(x for x in self.catalog["modules"] if x["uid"] == "mod-a-08-01")
+        lesson = next(x for x in self.catalog["lessons"] if x["uid"] == "les-a-0174")
+        self.assertEqual(theme["number"], 8)
+        self.assertEqual(module["theme_uid"], theme["uid"])
+        self.assertEqual(module["number"], 1)
+        self.assertEqual(lesson["code"], "8.1.1")
+        self.assertEqual(lesson["module_uid"], module["uid"])
+        self.assertEqual(lesson["status"], "review")
+        self.assertEqual(lesson["content_state"], "localized")
 
     def test_uid_is_separate_from_display_code(self):
         rows = self.catalog["tracks"] + self.catalog["themes"] + self.catalog["modules"] + self.catalog["lessons"]

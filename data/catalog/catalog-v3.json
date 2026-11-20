@@ -1,7 +1,7 @@
 {
   "schema_version": 3,
   "catalog_id": "dch-school-curriculum",
-  "catalog_version": "3.2.10-lesson-7-2-3-published",
+  "catalog_version": "3.2.11-lesson-8-1-1-review",
   "status": "migration_staging",
   "tracks": [
     {
@@ -128,6 +128,19 @@
         "ru": "Основы XAI и важность признаков",
         "en": "XAI Fundamentals and Feature Importance",
         "zh": "XAI基础与特征重要性"
+      }
+    },
+    {
+      "uid": "thm-a-08",
+      "track_uid": "trk-a",
+      "number": 8,
+      "code": "8",
+      "title": "Анализ зависимости модели от признаков",
+      "status": "active",
+      "title_i18n": {
+        "ru": "Анализ зависимости модели от признаков",
+        "en": "Analyzing Model Dependence on Features",
+        "zh": "模型对特征的依赖分析"
       }
     }
   ],
@@ -452,6 +465,18 @@
         "ru": "Компромисс между точностью и интерпретируемостью",
         "en": "The Trade-off Between Predictive Performance and Interpretability",
         "zh": "预测性能与可解释性之间的权衡"
+      }
+    },
+    {
+      "uid": "mod-a-08-01",
+      "theme_uid": "thm-a-08",
+      "number": 1,
+      "title": "Методы анализа зависимости предсказаний от признаков",
+      "status": "active",
+      "title_i18n": {
+        "ru": "Методы анализа зависимости предсказаний от признаков",
+        "en": "Methods for Analyzing Prediction Dependence on Features",
+        "zh": "预测对特征依赖关系的分析方法"
       }
     }
   ],
@@ -3892,6 +3917,37 @@
         "ru": "lessons/a-7-2-3-les-a-0173.html",
         "en": "lessons/a-7-2-3-les-a-0173-en.html",
         "zh": "lessons/a-7-2-3-les-a-0173-zh.html"
+      }
+    },
+    {
+      "uid": "les-a-0174",
+      "track_uid": "trk-a",
+      "theme_uid": "thm-a-08",
+      "module_uid": "mod-a-08-01",
+      "code": "8.1.1",
+      "title": "PDP — Partial Dependence Plot",
+      "status": "review",
+      "access": "open",
+      "level": "intermediate",
+      "prerequisite_uids": [
+        "les-a-0173"
+      ],
+      "learning_outcomes": [
+        "Объяснять величину, оцениваемую PDP, и отличать средний отклик модели от индивидуального предсказания.",
+        "Вычислять и интерпретировать одномерную и двумерную частичную зависимость.",
+        "Оценивать влияние опорной выборки, сетки значений и зависимости признаков на интерпретацию.",
+        "Строить PDP с помощью scikit-learn и сопоставлять его с ICE и ALE."
+      ],
+      "content_state": "localized",
+      "title_i18n": {
+        "ru": "PDP — Partial Dependence Plot",
+        "en": "PDP — Partial Dependence Plot",
+        "zh": "PDP — 部分依赖图"
+      },
+      "url_i18n": {
+        "ru": "lessons/a-8-1-1-les-a-0174.html",
+        "en": "lessons/a-8-1-1-les-a-0174-en.html",
+        "zh": "lessons/a-8-1-1-les-a-0174-zh.html"
       }
     }
   ],

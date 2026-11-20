@@ -24,7 +24,7 @@ ru: {
  "<strong>Plausibility (правдоподобие)</strong> — насколько объяснение выглядит разумным и убедительным для человека. Правдоподобие оценивается восприятием; оно не доказывает соответствие модели.",
  "<strong>Interpretability (интерпретируемость)</strong> — насколько человек способен понять модель или её поведение. <strong>Explanation Quality</strong> — более широкая оценка, которая может включать faithfulness, понятность, устойчивость, полезность, полноту и соответствие аудитории.",
  "Например, объяснение «модель учла доход и долговую нагрузку» может быть понятным и правдоподобным. Если после контролируемого изменения этих признаков предсказание почти не меняется, а изменение скрытого proxy-признака существенно меняет результат, исходное объяснение имеет низкую faithfulness относительно проверенной области."
- ],formula:"f(x) — предсказание фиксированной модели для объекта x. Если x′ получен контролируемым изменением входа, то Δf = f(x) − f(x′) показывает изменение выхода модели в этом эксперименте. Значение зависит от способа изменения x и само по себе не является причинным эффектом."},
+ ],formula:"Δf = f(x) − f(x′)",formulaNote:"f(x) — предсказание фиксированной модели для объекта x. Если x′ получен контролируемым изменением входа, Δf показывает изменение выхода в этом эксперименте. Значение зависит от способа изменения x и само по себе не является причинным эффектом."},
  {id:"tests",title:"3. Как проверяют Faithfulness",paragraphs:[
  "<strong>Perturbation-based evaluation</strong> меняет вход или часть входа по заранее заданному правилу и проверяет, как меняется выход модели. Важно описать правило perturbation: замена нулём, медианой, baseline, маскирование или выбор реалистичного условного значения отвечают на разные вопросы.",
  "<strong>Feature Removal / Deletion</strong> последовательно удаляет признаки в порядке, заданном объяснением. Если действительно важные для модели признаки удаляются первыми, выбранная метрика обычно должна ухудшаться быстрее, чем при случайном порядке. Но замена признака может создать нереалистичный объект.",
@@ -125,7 +125,7 @@ en: {
  "<strong>Faithfulness</strong> is the degree to which an explanation accurately reflects the behaviour of the model being explained under explicitly stated conditions: the selected instance, input region, metric, and evaluation procedure. It is not an absolute property of a text outside its context.",
  "<strong>Plausibility</strong> describes how reasonable and convincing an explanation appears to a person. It is a human judgement, not proof of model correspondence. <strong>Interpretability</strong> is the extent to which a person can understand a model or its behaviour.",
  "<strong>Explanation Quality</strong> is broader and may include faithfulness, comprehensibility, stability, usefulness, completeness, and audience fit. For example, “the model considered income and debt” may be clear and plausible. If controlled changes to those features barely affect predictions while a hidden proxy changes them substantially, the explanation has low faithfulness in the tested region."
- ],formula:"f(x) is the output of a fixed model for input x. If x′ is obtained by a controlled input change, Δf = f(x) − f(x′) measures the output change in that experiment. Its meaning depends on how x′ was constructed; it is not, by itself, a causal effect."},
+ ],formula:"Δf = f(x) − f(x′)",formulaNote:"f(x) is the output of a fixed model for input x. If x′ is obtained by a controlled input change, Δf measures the output change in that experiment. Its meaning depends on how x′ was constructed; it is not, by itself, a causal effect."},
  {id:"tests",title:"3. How faithfulness is evaluated",paragraphs:[
  "<strong>Perturbation-based evaluation</strong> changes an input or part of it according to a specified rule and measures the model response. The rule matters: replacing a value with zero, a median, a baseline, a mask, or a realistic conditional value answers different questions.",
  "<strong>Feature Removal / Deletion</strong> removes or replaces features in the order proposed by an explanation. If the first features are genuinely important to the model, the chosen metric should usually deteriorate faster than under a random order. However, replacement can create unrealistic inputs.",
@@ -226,7 +226,7 @@ zh: {
  "<strong>Faithfulness（解释忠实性）</strong>是指解释在明确条件下准确反映被解释模型行为的程度。这些条件包括选定样本、输入区域、评价指标和评估流程。脱离上下文，忠实性并不是解释文本的绝对属性。",
  "<strong>Plausibility（合理性）</strong>描述解释在人看来是否合理、可信。它属于人的判断，并不能证明解释与模型一致。<strong>Interpretability（可解释性）</strong>是人理解模型或其行为的程度。",
  "<strong>Explanation Quality（解释质量）</strong>是更广泛的概念，可能包括忠实性、可理解性、稳定性、实用性、完整性和受众适配。例如，“模型考虑了收入和负债”可能清晰且合理。如果对这些特征进行受控修改几乎不改变预测，而修改某个隐藏代理特征却显著改变预测，那么在被测试区域内，该解释的忠实性就较低。"
- ],formula:"f(x) 表示固定模型对输入 x 的输出。如果 x′ 是通过受控修改输入得到的，那么 Δf = f(x) − f(x′) 表示该实验中的模型输出变化。其含义取决于 x′ 的构造方式；它本身并不是因果效应。"},
+ ],formula:"Δf = f(x) − f(x′)",formulaNote:"f(x) 表示固定模型对输入 x 的输出。如果 x′ 是通过受控修改输入得到的，Δf 表示该实验中的模型输出变化。其含义取决于 x′ 的构造方式；它本身并不是因果效应。"},
  {id:"tests",title:"3. 如何评估解释忠实性",paragraphs:[
  "<strong>基于扰动的评估</strong>按照预先定义的规则修改输入或其中一部分，并测量模型响应。规则很重要：替换为零、中位数、基线值、掩码或合理的条件值，回答的是不同问题。",
  "<strong>特征删除</strong>按照解释给出的顺序逐步删除或替换特征。如果最先删除的特征确实对模型重要，那么所选指标通常应比随机顺序下降得更快。但替换操作可能产生不真实的输入。",

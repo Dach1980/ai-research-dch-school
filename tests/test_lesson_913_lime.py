@@ -12,9 +12,9 @@ class Lesson913LIMETests(unittest.TestCase):
   cls.renderer=(ROOT/"scripts/xai-lime-913-lesson.js").read_text(encoding="utf-8")
   cls.shared=(ROOT/"scripts/lesson-svg-renderer.js").read_text(encoding="utf-8")
   cls.practice=(ROOT/"lessons/practice/a-9-1-3-lime-tabular.py").read_text(encoding="utf-8")
- def test_catalog_sequence_identity_and_review(self):
+ def test_catalog_sequence_identity_and_explicit_acceptance(self):
   self.assertIsNotNone(self.lesson)
-  self.assertEqual((self.lesson["code"],self.lesson["status"],self.lesson["content_state"]),("9.1.3","review","localized"))
+  self.assertEqual((self.lesson["code"],self.lesson["status"],self.lesson["content_state"]),("9.1.3","published","published"))
   ids=[x["uid"] for x in self.catalog["lessons"]]
   self.assertEqual(len(ids),len(set(ids)))
   seq=[x["code"] for x in self.catalog["lessons"] if x["uid"] in {"les-a-0177","les-a-0178","les-a-0179"}]

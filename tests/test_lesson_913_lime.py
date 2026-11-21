@@ -94,14 +94,14 @@ class Lesson913LIMETests(unittest.TestCase):
                 "fit": ("z′ᵢ", "f(zᵢ)", "wᵢ", "не является дополнительным признаком"),
                 "select": ("класс 1", "0,78", "+0,18", "−0,11", "+0,07", "не причинн"),
                 "walkthrough": ("0,78", "0,980", "0,546", "0,74", "+0,18", "−0,11", "+0,07", "практическая работа ниже"),
-                "practice-interpret": ("Breast Cancer Wisconsin", "exp.local_pred", "exp.score", "exp.as_list"),
+                "practice-interpret": ("exp.local_pred", "exp.score", "exp.as_list"),
             },
             "en": {
                 "instance": ("42", "85,000", "age > 40", "income > 72,000", "annual"),
                 "perturb": ("z₁", "z₂", "z₃", "z₄", "synthetic variants", "sampler"),
-                "blackbox": ("f(zᵢ)", "class probabilities", "true labels y", "class 1"),
+                "blackbox": ("f(zᵢ)", "class probabilities", "ground-truth labels y", "class 1"),
                 "weights": ("d(x₀,zᵢ)", "wᵢ", "σ", "0.980", "0.546"),
-                "fit": ("z′ᵢ", "f(zᵢ)", "wᵢ", "not an additional customer feature"),
+                "fit": ("z′ᵢ", "f(zᵢ)", "wᵢ", "weight is not another customer feature"),
                 "select": ("class 1", "0.78", "+0.18", "−0.11", "+0.07", "causal"),
                 "walkthrough": ("0.78", "0.980", "0.546", "0.74", "+0.18", "−0.11", "+0.07", "practical lab below"),
                 "practice-interpret": ("Breast Cancer Wisconsin", "exp.local_pred", "exp.score", "exp.as_list"),
@@ -111,7 +111,7 @@ class Lesson913LIMETests(unittest.TestCase):
                 "perturb": ("z₁", "z₂", "z₃", "z₄", "合成变体", "sampler"),
                 "blackbox": ("f(zᵢ)", "类别概率", "真实标签 y", "类别 1"),
                 "weights": ("d(x₀,zᵢ)", "wᵢ", "σ", "0.980", "0.546"),
-                "fit": ("z′ᵢ", "f(zᵢ)", "wᵢ", "不是客户的额外特征"),
+                "fit": ("z′ᵢ", "f(zᵢ)", "wᵢ", "权重不是客户的另一项特征"),
                 "select": ("类别 1", "0.78", "+0.18", "−0.11", "+0.07", "因果"),
                 "walkthrough": ("0.78", "0.980", "0.546", "0.74", "+0.18", "−0.11", "+0.07", "实践任务"),
                 "practice-interpret": ("Breast Cancer Wisconsin", "exp.local_pred", "exp.score", "exp.as_list"),
@@ -149,7 +149,7 @@ class Lesson913LIMETests(unittest.TestCase):
                 self.assertIn("0,78" if locale == "ru" else "0.78", walkthrough)
                 self.assertIn("0,74" if locale == "ru" else "0.74", walkthrough)
                 self.assertIn("conditional" if locale == "en" else ("условн" if locale == "ru" else "示意"), walkthrough)
-                self.assertIn("breast cancer wisconsin", practice)
+                self.assertIn("breast cancer wisconsin", content[locale]["practice"]["intro"].lower())
                 self.assertTrue(any(x in practice for x in ("другой набор данных", "different dataset", "不同的数据集")))
 
     def test_diagram_labels_are_explained_and_no_placeholder_labels_remain(self):
@@ -161,11 +161,21 @@ class Lesson913LIMETests(unittest.TestCase):
         self.assertIn("selected-class", self.renderer.lower())
         self.assertIn("Условные учебные значения", self.renderer)
         self.assertIn("Hypothetical teaching values", self.renderer)
-        self.assertIn("示意教学数值", self.renderer)
+        self.assertIn("虚构教学数值", self.renderer)
 
     def test_grid_diagrams_have_no_automatic_connectors_by_default(self):
         self.assertIn('if(spec.layout==="grid"&&spec.connectSequence===true)', self.shared)
         self.assertIn("connectSequence:false", self.renderer)
         self.assertIn('data-role":"workflow-arrow"', self.shared)
+
+
+    def test_customer_tables_use_explicit_feature_columns(self):
+        self.assertIn('columns:en?["Feature","Original x₀","Interpretable x′"]', self.renderer)
+        self.assertIn('columns:en?["Instance","Age","Annual income","Contract"]', self.renderer)
+        self.assertIn('["Объект","Возраст","Годовой доход","Договор"]', self.renderer)
+        self.assertIn("const count=Math.max(1,columns.length)", self.shared)
+        self.assertIn("row.forEach((value,j)", self.shared)
+        self.assertNotIn('Age | income | contract', self.renderer)
+        self.assertNotIn('Возраст | доход | договор', self.renderer)
 
 if __name__=="__main__":unittest.main()

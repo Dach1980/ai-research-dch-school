@@ -13,7 +13,7 @@ class Lesson911LIMETests(unittest.TestCase):
   cls.svg_renderer=(ROOT/"scripts/lesson-svg-renderer.js").read_text(encoding="utf-8")
   cls.practice=(ROOT/"lessons/practice/a-9-1-1-local-explanation.py").read_text(encoding="utf-8")
  def test_catalog_uid_routes_and_review(self):
-  self.assertIsNotNone(self.lesson);self.assertEqual(self.lesson["code"],"9.1.1");self.assertEqual(self.lesson["status"],"review");self.assertEqual(self.lesson["content_state"],"localized")
+  self.assertIsNotNone(self.lesson);self.assertEqual(self.lesson["code"],"9.1.1");self.assertEqual(self.lesson["status"],"published");self.assertEqual(self.lesson["content_state"],"published")
   self.assertEqual(self.lesson["theme_uid"],"thm-a-09");self.assertEqual(self.lesson["module_uid"],"mod-a-09-01");self.assertEqual(self.lesson["prerequisite_uids"],["les-a-0176"])
   ids=[x["uid"] for x in self.catalog["lessons"]];self.assertEqual(len(ids),len(set(ids)));self.assertEqual(max(int(re.search(r"([0-9]+)$",x).group(1)) for x in ids),179)
   for locale,path in ROUTES.items():self.assertEqual(self.lesson["url_i18n"][locale],path);self.assertTrue((ROOT/path).is_file())
@@ -32,7 +32,7 @@ class Lesson911LIMETests(unittest.TestCase):
  def test_python_practice_syntax_and_scope(self):
   ast.parse(self.practice)
   for token in ("make_moons","RandomForestClassifier","DecisionTreeRegressor","local_mse","global_mse","SEED = 42","NOT an implementation of LIME"):self.assertIn(token,self.practice)
- def test_review_lesson_not_added_to_planets(self):
+ def test_published_lesson_not_added_to_planets(self):
   self.assertEqual(self.lesson["status"],"review");self.assertEqual(self.lesson["content_state"],"localized")
   self.assertNotIn(UID,[x.get("lesson_id") for x in self.catalog.get("planets",[])])
  def test_russian_table_headers_are_localized(self):

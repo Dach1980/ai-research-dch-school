@@ -138,8 +138,8 @@ class Lesson921LIMETests(unittest.TestCase):
         self.assertIn("for sample_count in (500, 1500, 3000)", self.practice)
         self.assertIn("instance_index = 0", self.practice)
         self.assertIn("random_state=SEED", self.practice)
-        self.assertIn("exp.local_pred[class_id]", self.practice)
-        self.assertIn("exp.score[class_id]", self.practice)
+        self.assertIn("first_scalar(exp.local_pred, class_id)", self.practice)
+        self.assertIn("first_scalar(exp.score, class_id)", self.practice)
         self.assertIn("exp.as_list(label=class_id)", self.practice)
         self.assertNotIn("classifier_fn=", self.practice)
 

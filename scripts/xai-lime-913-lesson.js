@@ -16,7 +16,7 @@ const labels=L[locale],en=locale==="en",zh=locale==="zh";
 const common={id:diagramId,scrollLabel:labels[kind]?.[0]||data.title};
 const node=(id,title,detail,tone)=>({id,title,detail,tone:tone||"surface"});
 const nodeSpec=(type,title,description,items,caption)=>window.DCHLessonSVG.render({...common,type,layout:"grid",sequence:true,serpentine:true,title,description,caption,connectSequence:true,nodes:items.map((x,i)=>node(type+"-"+i,x[0],x[1],i===0?"accent":"surface"))});
-if(kind==="flow"){
+if(kind==="workflow"){
 const a=labels.flow;
 return nodeSpec("lime-913-workflow",en?"LIME algorithm — six stages":zh?"LIME 算法：六个阶段":"Алгоритм LIME — шесть этапов","Six stages from the explained instance to a local explanation",[[a[0],a[1]],[a[2],a[3]],[a[4],a[5]],[a[6],a[7]],[a[8],a[9]],[a[10],a[11]]],en?"Read the numbered path in a serpentine sequence.":zh?"按蛇形顺序阅读编号流程。":"Шесть этапов; переходы идут змейкой слева направо и справа налево.");
 }

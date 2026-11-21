@@ -73,18 +73,21 @@ function renderBars(spec){
  return chartFigure(root,spec);
 }
 function renderTable(spec){
- const width=760,rowH=48,top=82,height=top+rowH*(spec.rows.length+1)+30,left=28,col1=430,col2=width-left-col1;
+ const width=760,rowH=48,top=82,left=20,right=width-20,available=right-left;
+ const columns=Array.isArray(spec.columns)?spec.columns:[];
+ const count=Math.max(1,columns.length),cellW=available/count;
+ const height=top+rowH*(spec.rows.length+1)+30;
  const colors={surface:"var(--lds-surface)",line:"var(--lds-line)",ink:"var(--lds-ink)",muted:"var(--lds-muted)",accent:"var(--lds-accent)"};
  const root=svgEl("svg",{viewBox:"0 0 "+width+" "+height,role:"img","aria-labelledby":spec.id+"-title "+spec.id+"-desc",width:width+"px",height:height+"px","data-diagram-type":spec.type,"data-diagram-renderer":"shared-v1"});
  root.append(svgEl("title",{id:spec.id+"-title"},spec.title),svgEl("desc",{id:spec.id+"-desc"},spec.description));
- root.append(svgEl("rect",{x:left,y:top,width:col1+col2,height:rowH,rx:8,fill:colors.accent,opacity:.13}));
- spec.columns.forEach((v,i)=>root.append(svgEl("text",{x:left+16+(i?col1:0),y:top+30,"font-size":15,"font-weight":700,fill:colors.ink},v)));
- spec.rows.forEach((r,i)=>{
+ root.append(svgEl("rect",{x:left,y:top,width:available,height:rowH,rx:8,fill:colors.accent,opacity:.13}));
+ columns.forEach((value,i)=>root.append(svgEl("text",{x:left+i*cellW+10,y:top+30,"font-size":count>3?13:15,"font-weight":700,fill:colors.ink},value)));
+ spec.rows.forEach((row,i)=>{
   const y=top+rowH*(i+1);
-  root.append(svgEl("path",{d:"M "+left+" "+y+" H "+(left+col1+col2),stroke:colors.line}));
-  root.append(svgEl("text",{x:left+16,y:y+30,"font-size":15,fill:colors.ink},r[0]));
-  root.append(svgEl("text",{x:left+col1+16,y:y+30,"font-size":15,"font-weight":700,fill:colors.ink},r[1]));
+  root.append(svgEl("path",{d:"M "+left+" "+y+" H "+right,stroke:colors.line}));
+  row.forEach((value,j)=>root.append(svgEl("text",{x:left+j*cellW+10,y:y+30,"font-size":count>3?13:15,"font-weight":j===0?400:600,fill:colors.ink},String(value))));
  });
+ for(let i=1;i<count;i++)root.append(svgEl("path",{d:"M "+(left+i*cellW)+" "+top+" V "+(top+rowH*(spec.rows.length+1)),stroke:colors.line,opacity:.55}));
  return chartFigure(root,spec);
 }
 function chartFigure(root,spec){

@@ -177,7 +177,7 @@ function compose(spec,nodes,positions,width,height){
  const root=svgEl("svg",{viewBox:`0 0 ${Math.ceil(width)} ${Math.ceil(height)}`,role:"img","aria-labelledby":spec.id+"-title "+spec.id+"-desc",width:String(Math.ceil(width))+"px",height:Math.ceil(height)+"px","data-diagram-type":spec.type,"data-diagram-renderer":"shared-v1"});
  root.append(svgEl("title",{id:spec.id+"-title"},spec.title),svgEl("desc",{id:spec.id+"-desc"},spec.description));
  const colors={surface:"var(--lds-surface)",line:"var(--lds-line)",ink:"var(--lds-ink)",muted:"var(--lds-muted)",accent:"var(--lds-accent)",good:"var(--lds-good)",bad:"var(--lds-bad)"};
- if(spec.layout==="grid"&&spec.connectSequence!==false){
+ if(spec.layout==="grid"&&spec.connectSequence===true){
   positions.slice(0,-1).forEach((pos,i)=>{
    const next=positions[i+1],sameRow=Math.abs(pos.y-next.y)<1;
    let d;

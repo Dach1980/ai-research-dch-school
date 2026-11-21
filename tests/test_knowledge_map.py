@@ -15,7 +15,7 @@ class KnowledgeMapTests(unittest.TestCase):
   js=(ROOT/"scripts/planet-map-catalog.js").read_text(encoding="utf-8")
   c=json.loads((ROOT/"data/catalog/catalog-v3.json").read_text(encoding="utf-8"))
   lessons=[x for x in c["lessons"] if x.get("track_uid")=="trk-a" and x.get("status")=="published" and x.get("content_state")=="published"]
-  self.assertEqual(len(lessons),45)
+  self.assertEqual(len(lessons),47)
   self.assertIn("les-a-0018", {lesson["uid"] for lesson in lessons})
   self.assertIn("les-a-0173", {lesson["uid"] for lesson in lessons})
   self.assertIn("les-a-0147", {lesson["uid"] for lesson in lessons})

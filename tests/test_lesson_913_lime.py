@@ -104,7 +104,7 @@ class Lesson913LIMETests(unittest.TestCase):
                 "fit": ("z′ᵢ", "f(zᵢ)", "wᵢ", "weight is not another customer feature"),
                 "select": ("class 1", "0.78", "+0.18", "−0.11", "+0.07", "causal"),
                 "walkthrough": ("0.78", "0.980", "0.546", "0.74", "+0.18", "−0.11", "+0.07", "practical lab below"),
-                "practice-interpret": ("Breast Cancer Wisconsin", "exp.local_pred", "exp.score", "exp.as_list"),
+                "practice-interpret": ("exp.local_pred", "exp.score", "exp.as_list"),
             },
             "zh": {
                 "instance": ("42", "85,000", "年龄 > 40", "收入 > 72,000", "年度"),
@@ -148,9 +148,9 @@ class Lesson913LIMETests(unittest.TestCase):
                 practice = " ".join(content[locale]["sections"][8][2]).lower()
                 self.assertIn("0,78" if locale == "ru" else "0.78", walkthrough)
                 self.assertIn("0,74" if locale == "ru" else "0.74", walkthrough)
-                self.assertIn("conditional" if locale == "en" else ("условн" if locale == "ru" else "示意"), walkthrough)
+                self.assertIn("illustrative" if locale == "en" else ("условн" if locale == "ru" else "示意"), walkthrough)
+                self.assertTrue(any(x in walkthrough for x in ("другой набор данных", "different dataset", "另一数据集")))
                 self.assertIn("breast cancer wisconsin", content[locale]["practice"]["intro"].lower())
-                self.assertTrue(any(x in practice for x in ("другой набор данных", "different dataset", "不同的数据集")))
 
     def test_diagram_labels_are_explained_and_no_placeholder_labels_remain(self):
         for forbidden in ("Признак 1 (схема)", "Признак 2 (схема)", "Feature 1 (schematic)", "Feature 2 (schematic)"):

@@ -1,7 +1,7 @@
 {
   "schema_version": 3,
   "catalog_id": "dch-school-curriculum",
-  "catalog_version": "3.2.12-lesson-8-1-2-ice-review",
+  "catalog_version": "3.2.13-lesson-8-1-3-ale-published",
   "status": "migration_staging",
   "tracks": [
     {
@@ -3994,7 +3994,7 @@
       "module_uid": "mod-a-08-01",
       "code": "8.1.3",
       "title": "ALE — Accumulated Local Effects",
-      "status": "review",
+      "status": "published",
       "access": "open",
       "level": "intermediate",
       "prerequisite_uids": [
@@ -4014,7 +4014,7 @@
         "Выявлять ограничения ALE при корреляциях, малой выборке и взаимодействиях.",
         "Выбирать PDP, ICE или ALE под конкретный аналитический вопрос."
       ],
-      "content_state": "localized",
+      "content_state": "published",
       "url_i18n": {
         "ru": "lessons/a-8-1-3-les-a-0176.html",
         "en": "lessons/a-8-1-3-les-a-0176-en.html",

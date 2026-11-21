@@ -64,7 +64,7 @@ def report(label, kernel_width, num_samples):
     exp = explain(kernel_width, num_samples)
     local_prediction = float(np.asarray(exp.local_pred[class_id]).reshape(-1)[0])
     local_score = float(exp.score[class_id])
-    print(f"\\n{label}")
+    print(f"\n{label}")
     print(f"  kernel_width: {kernel_width:.3f}")
     print(f"  num_samples:  {num_samples}")
     print(f"  f(x0), class {class_id}: {proba[class_id]:.4f}")
@@ -82,15 +82,15 @@ print("Model classes:", model.classes_.tolist())
 print("Original probabilities:", np.round(proba, 4).tolist())
 print("Default-width reference:", round(default_width, 3))
 
-print("\\n=== Compare kernel_width; keep num_samples fixed ===")
+print("\n=== Compare kernel_width; keep num_samples fixed ===")
 for width in (2.0, default_width, 7.0):
     report("Kernel-width comparison", width, 3000)
 
-print("\\n=== Compare num_samples; keep kernel_width fixed ===")
+print("\n=== Compare num_samples; keep kernel_width fixed ===")
 for sample_count in (500, 1500, 3000):
     report("Sample-count comparison", default_width, sample_count)
 
-print("\\nInterpretation checklist:")
+print("\nInterpretation checklist:")
 print("- f(x0) is the original classifier probability for the selected class.")
 print("- g(x0) is the local surrogate prediction at the same instance.")
 print("- local score is a weighted local fit measure, not test accuracy.")

@@ -25,8 +25,15 @@ class Lesson813ALETests(unittest.TestCase):
   for locale in ("ru","en","zh"):
    d=self.data[locale];self.assertEqual(len(d["outcomes"]),12);self.assertEqual(len(d["sections"]),8);self.assertEqual(len(d["glossary"]),12);self.assertEqual(len(d["quiz"]),12);self.assertEqual(len(d["sources"]),5)
   self.assertEqual([x[0] for x in self.data["ru"]["sections"]],[x[0] for x in self.data["en"]["sections"]]);self.assertEqual([x[0] for x in self.data["en"]["sections"]],[x[0] for x in self.data["zh"]["sections"]])
- def test_ale_math_and_renderer(self):
-  self.assertIn("Δ̂ⱼₖ",self.source);self.assertIn("DCHLessonSVG.render",self.renderer);self.assertIn('type:"ale-"+kind',self.renderer);self.assertIn('s[0]==="motivation"',self.renderer)
+ def test_ale_math_and_scientific_diagrams(self):
+  self.assertIn("Δ̂ⱼₖ",self.source)
+  self.assertIn("∫₍z₀₎ᶻ",self.renderer)
+  self.assertIn("ale-scientific-v2",self.renderer)
+  self.assertIn('kind==="dependence"',self.renderer)
+  self.assertIn('kind==="algorithm"',self.renderer)
+  self.assertIn('kind==="comparison"',self.renderer)
+  for locale in ("ru","en","zh"):
+   self.assertIn("4/3",self.data[locale]["sections"][3][2][2])
  def test_practice_python_syntax_and_core_algorithm(self):
   ast.parse(self.python)
   for token in ("accumulated_local_effects","np.quantile","np.cumsum","RandomForestRegressor","PartialDependenceDisplay","SEED = 42"):self.assertIn(token,self.python)

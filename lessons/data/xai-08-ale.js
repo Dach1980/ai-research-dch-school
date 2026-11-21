@@ -55,8 +55,8 @@ const content={
         "4. Численный пример с ручным расчётом",
         [
           "Пусть признак X имеет границы 0, 1, 2, 3. В каждом интервале две строки. Для первой строки интервала локальные разности предсказания равны 2 и 4; для второго — 1 и 3; для третьего — −2 и 0. Средние локальные эффекты: Δ̂₁=3, Δ̂₂=2, Δ̂₃=−1.",
-          "Накопленные значения на верхних границах: при 1 — 3; при 2 — 5; при 3 — 4. Для прозрачного центрирования предположим, что эмпирическая масса трёх интервалов одинакова и представим ступенчатую оценку значениями 0, 3, 5 на интервалах 1, 2, 3 соответственно. Среднее C=(0+3+5)/3=8/3.",
-          "Центрированные значения: −8/3, 1/3, 7/3. Их среднее равно нулю. В реальном расчёте веса определяются числом наблюдений в соответствующих интервалах, а соглашение о значении функции внутри/на границах интервалов должно быть указано. Пример показывает модельные локальные изменения, а не причинный эффект."
+          "Накопленные значения на границах: A(0)=0, A(1)=3, A(2)=5, A(3)=4. Для центрирования используем ступенчатую функцию: внутри интервалов (0,1], (1,2], (2,3] она принимает значения 0, 3 и 5 соответственно. Поскольку в каждом интервале по две строки, веса равны: C=(2·0+2·3+2·5)/6=8/3.",
+          "Центрированные значения ступенчатой функции внутри трёх интервалов равны −8/3, 1/3 и 7/3; их среднее по шести наблюдениям равно нулю. На границах центрированная накопленная функция имеет значения −8/3, 1/3, 7/3 и 4/3 в точках 0, 1, 2 и 3. Не смешивайте значения на границах с постоянными значениями внутри интервалов. В реальном расчёте веса определяются числом наблюдений в каждом интервале. Пример показывает модельные локальные изменения, а не причинный эффект."
         ],
         "worked"
       ],
@@ -367,8 +367,8 @@ const content={
         "4. Worked numerical example",
         [
           "Let X have boundaries 0, 1, 2, 3, with two rows in each interval. The local prediction differences in the first interval are 2 and 4; in the second, 1 and 3; in the third, −2 and 0. The mean local effects are Δ̂₁=3, Δ̂₂=2 and Δ̂₃=−1.",
-          "The accumulated values at the upper boundaries are 3 at 1, 5 at 2 and 4 at 3. For transparent centering, suppose the three intervals have equal empirical mass and represent the step estimate by values 0, 3 and 5 on intervals 1, 2 and 3. The mean is C=(0+3+5)/3=8/3.",
-          "The centered values are −8/3, 1/3 and 7/3, whose mean is zero. In a real calculation, weights are determined by the number of observations in each interval, and the convention for values inside/on interval boundaries must be stated. This example illustrates model changes, not causal effects."
+          "The accumulated boundary values are A(0)=0, A(1)=3, A(2)=5 and A(3)=4. For centering, use the step function: within (0,1], (1,2] and (2,3] it takes values 0, 3 and 5, respectively. Since each interval contains two rows, the weights are equal and C=(2·0+2·3+2·5)/6=8/3.",
+          "The centered step-function values inside the three intervals are −8/3, 1/3 and 7/3; their mean over the six observations is zero. At the boundaries, the centered accumulated function has values −8/3, 1/3, 7/3 and 4/3 at X=0, 1, 2 and 3. Do not confuse boundary values with the constant values inside bins. In real calculations, weights are determined by the number of observations in each bin. This example illustrates model changes, not causal effects."
         ],
         "worked"
       ],
@@ -679,8 +679,8 @@ const content={
         "4. 手工数值示例",
         [
           "设 X 的边界为 0、1、2、3，每个区间有两行样本。第一个区间的局部预测差为 2 和 4；第二个区间为 1 和 3；第三个区间为 −2 和 0。三个区间的平均局部效应分别为 Δ̂₁=3、Δ̂₂=2、Δ̂₃=−1。",
-          "上边界处的累积值分别为：X=1 时 3，X=2 时 5，X=3 时 4。为清楚展示中心化，假设三个区间的经验质量相同，并用 0、3、5 表示区间 1、2、3 上的阶梯估计。均值 C=(0+3+5)/3=8/3。",
-          "中心化结果为 −8/3、1/3、7/3，平均值为零。实际计算中的权重由各区间的样本数决定，并且必须说明区间内部和边界处函数值的约定。此例说明模型变化，而非因果效应。"
+          "边界处的累积值为 A(0)=0、A(1)=3、A(2)=5、A(3)=4。中心化时使用阶梯函数：在 (0,1]、(1,2]、(2,3] 三个区间内，其值分别为 0、3、5。由于每个区间都有两行样本，权重相同，因此 C=(2·0+2·3+2·5)/6=8/3。",
+          "三个区间内部的中心化阶梯函数值为 −8/3、1/3、7/3；按六个样本计算，其平均值为零。在边界 X=0、1、2、3 处，中心化累积函数的值分别为 −8/3、1/3、7/3、4/3。不要混淆边界值与区间内部的常数值。实际计算中，权重由每个区间的样本数决定。此例说明模型输出的变化，而非因果效应。"
         ],
         "worked"
       ],

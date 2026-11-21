@@ -1,7 +1,7 @@
 {
   "schema_version": 3,
   "catalog_id": "dch-school-curriculum",
-  "catalog_version": "3.2.17-lesson-9-1-3-published",
+  "catalog_version": "3.2.18-lesson-9-2-1-review",
   "status": "migration_staging",
   "tracks": [
     {
@@ -502,6 +502,18 @@
         "ru": "Принципы и устройство LIME",
         "en": "LIME Principles and Architecture",
         "zh": "LIME 原理与结构"
+      }
+    },
+    {
+      "uid": "mod-a-09-02",
+      "theme_uid": "thm-a-09",
+      "number": 2,
+      "title": "Практическое применение и ограничения LIME",
+      "status": "active",
+      "title_i18n": {
+        "ru": "Практическое применение и ограничения LIME",
+        "en": "Practical Use and Limitations of LIME",
+        "zh": "LIME 的实践应用与局限"
       }
     }
   ],
@@ -4159,6 +4171,40 @@
         "ru": "Как работает LIME",
         "en": "How LIME Works",
         "zh": "LIME 的工作原理"
+      },
+      "level": "intermediate"
+    },
+    {
+      "uid": "les-a-0180",
+      "track_uid": "trk-a",
+      "theme_uid": "thm-a-09",
+      "module_uid": "mod-a-09-02",
+      "code": "9.2.1",
+      "title": "Выбор окрестности и интерпретация результатов",
+      "status": "review",
+      "access": "open",
+      "prerequisite_uids": [
+        "les-a-0179"
+      ],
+      "learning_outcomes": [
+        "Объяснять, как формируется локальная окрестность и почему она зависит от представления признаков и метрики.",
+        "Сравнивать узкую, умеренную и широкую настройку kernel_width.",
+        "Различать влияние kernel_width и num_samples на локальное объяснение.",
+        "Объяснять преобразование расстояния в вес близости.",
+        "Интерпретировать веса строк и коэффициенты локальной модели без причинных выводов.",
+        "Сопоставлять f(x₀), g(x₀), local_pred и score.",
+        "Проводить контролируемое сравнение настроек LIME на одном объекте."
+      ],
+      "content_state": "localized",
+      "url_i18n": {
+        "ru": "lessons/a-9-2-1-les-a-0180.html",
+        "en": "lessons/a-9-2-1-les-a-0180-en.html",
+        "zh": "lessons/a-9-2-1-les-a-0180-zh.html"
+      },
+      "title_i18n": {
+        "ru": "Выбор окрестности и интерпретация результатов",
+        "en": "Choosing the Neighbourhood and Interpreting Results",
+        "zh": "邻域选择与结果解读"
       },
       "level": "intermediate"
     }

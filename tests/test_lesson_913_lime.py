@@ -57,7 +57,9 @@ class Lesson913LIMETests(unittest.TestCase):
   for kind in expected:
    self.assertIn('kind==="'+kind+'"',self.renderer)
   self.assertIn("Unknown LIME lesson diagram type",self.renderer)
-  self.assertIn('"weighted-scatter"',self.renderer)
+  self.assertIn('layout:"plot"',self.renderer)
+  self.assertIn('xLabel:"d(x₀, zᵢ)"',self.renderer)
+  self.assertIn('yLabel:"πₓ₀(zᵢ)"',self.renderer)
   self.assertIn('"bars"',self.renderer)
   self.assertIn('"table"',self.renderer)
   self.assertIn('spec.sequence&&spec.serpentine',self.shared)
@@ -69,6 +71,8 @@ class Lesson913LIMETests(unittest.TestCase):
   self.assertNotIn("Larger marker",self.shared)
   self.assertIn("Marker size is illustrative",self.renderer)
   self.assertIn("renderWeightedScatter(spec)",self.shared)
+  for token in ("z₂","z₃","z₄"):
+   self.assertIn(token,self.renderer)
   self.assertIn("renderBars(spec)",self.shared)
   self.assertIn("renderTable(spec)",self.shared)
   self.assertIn("perturbed-sample",self.shared)
@@ -88,32 +92,32 @@ class Lesson913LIMETests(unittest.TestCase):
      anchors = {
          "ru": {
              "instance": ("42", "85 000", "возраст > 40", "доход > 72 000", "годовой"),
-             "perturb": ("z₁", "z₂", "z₃", "z₄", "синтетические варианты", "sampler"),
+             "perturb": ("z₁", "zₙ", "синтетические варианты", "sampler"),
              "blackbox": ("f(zᵢ)", "вероятности классов", "истинные метки y", "класс 1"),
              "weights": ("d(x₀,zᵢ)", "wᵢ", "σ", "0,980", "0,546"),
              "fit": ("z′ᵢ", "f(zᵢ)", "wᵢ", "не является дополнительным признаком"),
-             "select": ("класс 1", "0,78", "+0,18", "−0,11", "+0,07", "не причинн"),
-             "walkthrough": ("0,78", "0,980", "0,546", "0,74", "+0,18", "−0,11", "+0,07", "практическая работа ниже"),
+             "select": ("класса 1", "0,78", "+0,18", "−0,11", "+0,07", "не причинн"),
+             "walkthrough": ("0,78", "0,980", "0,546", "0,74", "+0,18", "−0,11", "+0,07", "другой набор данных"),
              "practice-interpret": ("exp.local_pred", "exp.score", "exp.as_list"),
          },
          "en": {
              "instance": ("42", "85,000", "age > 40", "income > 72,000", "annual"),
-             "perturb": ("z₁", "z₂", "z₃", "z₄", "synthetic variants", "sampler"),
+             "perturb": ("z₁", "zₙ", "synthetic variants", "sampler"),
              "blackbox": ("f(zᵢ)", "class probabilities", "ground-truth labels y", "class 1"),
              "weights": ("d(x₀,zᵢ)", "wᵢ", "σ", "0.980", "0.546"),
              "fit": ("z′ᵢ", "f(zᵢ)", "wᵢ", "weight is not another customer feature"),
              "select": ("class 1", "0.78", "+0.18", "−0.11", "+0.07", "causal"),
-             "walkthrough": ("0.78", "0.980", "0.546", "0.74", "+0.18", "−0.11", "+0.07", "practical lab below"),
+             "walkthrough": ("0.78", "0.980", "0.546", "0.74", "+0.18", "−0.11", "+0.07", "lab below"),
              "practice-interpret": ("exp.local_pred", "exp.score", "exp.as_list"),
          },
          "zh": {
              "instance": ("42", "85,000", "年龄 > 40", "收入 > 72,000", "年度"),
-             "perturb": ("z₁", "z₂", "z₃", "z₄", "合成变体", "sampler"),
+             "perturb": ("z₁", "zₙ", "合成变体", "采样器"),
              "blackbox": ("f(zᵢ)", "类别概率", "真实标签 y", "类别 1"),
              "weights": ("d(x₀,zᵢ)", "wᵢ", "σ", "0.980", "0.546"),
              "fit": ("z′ᵢ", "f(zᵢ)", "wᵢ", "权重不是客户的另一项特征"),
              "select": ("类别 1", "0.78", "+0.18", "−0.11", "+0.07", "因果"),
-             "walkthrough": ("0.78", "0.980", "0.546", "0.74", "+0.18", "−0.11", "+0.07", "实践任务"),
+             "walkthrough": ("0.78", "0.980", "0.546", "0.74", "+0.18", "−0.11", "+0.07", "下方实践"),
              "practice-interpret": ("exp.local_pred", "exp.score", "exp.as_list"),
          },
      }
@@ -128,7 +132,7 @@ class Lesson913LIMETests(unittest.TestCase):
  def test_section_seven_explains_every_feature_coefficient_before_figure(self):
      content = self._lesson_content()
      expected = {
-         "ru": ("банк", "класс 1", "надёжный клиент", "0,78", "стаж", "высок", "договор", "+0,18", "−0,11", "+0,07", "не процентные пункты", "причин"),
+         "ru": ("банк", "класса 1", "надёжный клиент", "0,78", "стаж", "высок", "договор", "+0,18", "−0,11", "+0,07", "не процентные пункты", "причин"),
          "en": ("bank", "class 1", "reliable customer", "0.78", "tenure", "debt", "contract", "+0.18", "−0.11", "+0.07", "percentage-point", "causal"),
          "zh": ("银行", "类别 1", "可靠客户", "0.78", "工作年限", "债务", "合同", "+0.18", "−0.11", "+0.07", "百分点", "因果"),
      }

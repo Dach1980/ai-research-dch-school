@@ -18,7 +18,7 @@ const node=(id,title,detail,tone)=>({id,title,detail,tone:tone||"surface"});
 const nodeSpec=(type,title,description,items,caption)=>window.DCHLessonSVG.render({...common,type,layout:"grid",sequence:true,serpentine:true,title,description,caption,connectSequence:true,nodes:items.map((x,i)=>node(type+"-"+i,x[0],x[1],i===0?"accent":"surface"))});
 if(kind==="workflow"){
 const a=labels.flow;
-return nodeSpec("lime-913-workflow",en?"LIME algorithm — six stages":zh?"LIME 算法：六个阶段":"Алгоритм LIME — шесть этапов","Six stages from the explained instance to a local explanation",[[a[0],a[1]],[a[2],a[3]],[a[4],a[5]],[a[6],a[7]],[a[8],a[9]],[a[10],a[11]]],en?"Read the numbered path in a serpentine sequence.":zh?"按蛇形顺序阅读编号流程。":"Шесть этапов; переходы идут змейкой слева направо и справа налево.");
+return nodeSpec("lime-913-workflow",en?"LIME algorithm — six stages":zh?"LIME 算法：六个阶段":"Алгоритм LIME — шесть этапов","Six stages from the explained instance to a local explanation",[[a[0],a[1]],[a[2],a[3]],[a[4],a[5]],[a[6],a[7]],[a[8],a[9]],[a[10],a[11]]],en?"Read the numbered cards from left to right, top to bottom.":zh?"按从左到右、从上到下的编号阅读卡片。":"Читайте пронумерованные блоки слева направо, сверху вниз; стрелки не используются.");
 }
 if(kind==="represent"){
 const a=labels.represent;return nodeSpec("lime-913-representations",en?"Two linked representations":zh?"两个相关联的表示":"Два связанных представления","One instance is mapped from model-input space to interpretable space",[[a[0],a[1]],[a[2],a[3]],[a[4],a[5]],[a[6],a[7]]],en?"The model receives x; the explainer may fit g using x′.":zh?"模型接收 x；解释模型可使用 x′ 进行拟合。":"Модель получает x; объясняющая модель может обучаться на x′.");

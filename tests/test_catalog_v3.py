@@ -16,9 +16,9 @@ class CatalogV3Tests(unittest.TestCase):
 
     def test_track_a_has_approved_hierarchy(self):
         a_themes = [x for x in self.catalog["themes"] if x["track_uid"] == "trk-a"]
-        self.assertEqual(len(a_themes), 8)
-        self.assertEqual(len(self.catalog["modules"]), 37)
-        self.assertEqual([sum(x["theme_uid"] == t["uid"] for x in self.catalog["modules"]) for t in a_themes], [5, 8, 2, 8, 9, 2, 2, 1])
+        self.assertEqual(len(a_themes), 9)
+        self.assertEqual(len(self.catalog["modules"]), 38)
+        self.assertEqual([sum(x["theme_uid"] == t["uid"] for x in self.catalog["modules"]) for t in a_themes], [5, 8, 2, 8, 9, 2, 2, 1, 1])
 
 
     def test_track_a_theme_eight_pdp_module_is_registered(self):

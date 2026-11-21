@@ -31,7 +31,7 @@ class Lesson813ALETests(unittest.TestCase):
   self.assertIn("ale-scientific-v2",self.renderer)
   self.assertIn('kind==="dependence"',self.renderer)
   self.assertIn('kind==="algorithm"',self.renderer)
-  self.assertIn('kind==="comparison"',self.renderer)
+  self.assertIn('s[0]==="choices"?"comparison":"algorithm"',self.renderer)
   for locale in ("ru","en","zh"):
    self.assertIn("4/3",self.data[locale]["sections"][3][2][2])
  def test_practice_python_syntax_and_core_algorithm(self):

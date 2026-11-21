@@ -110,6 +110,15 @@ function compose(spec,nodes,positions,width,height){
  const root=svgEl("svg",{viewBox:`0 0 ${Math.ceil(width)} ${Math.ceil(height)}`,role:"img","aria-labelledby":spec.id+"-title "+spec.id+"-desc",width:String(Math.ceil(width))+"px",height:Math.ceil(height)+"px","data-diagram-type":spec.type,"data-diagram-renderer":"shared-v1"});
  root.append(svgEl("title",{id:spec.id+"-title"},spec.title),svgEl("desc",{id:spec.id+"-desc"},spec.description));
  const colors={surface:"var(--lds-surface)",line:"var(--lds-line)",ink:"var(--lds-ink)",muted:"var(--lds-muted)",accent:"var(--lds-accent)",good:"var(--lds-good)",bad:"var(--lds-bad)"};
+ if(spec.layout==="grid"&&spec.connectSequence!==false){
+  positions.slice(0,-1).forEach((pos,i)=>{
+   const next=positions[i+1],sameRow=Math.abs(pos.y-next.y)<1;
+   let d;
+   if(sameRow){const y=pos.y+pos.node.height/2;d=`M ${pos.x+pos.node.width+3} ${y} H ${next.x-9} m -7 -6 l 7 6 -7 6`;}
+   else{const sx=pos.x+pos.node.width/2,sy=pos.y+pos.node.height+2,ex=next.x+next.node.width/2,ey=next.y-7;d=`M ${sx} ${sy} C ${sx} ${sy+18}, ${ex} ${ey-18}, ${ex} ${ey} m -6 -7 l 6 7 -6 7`;}
+   root.append(svgEl("path",{d,fill:"none",stroke:colors.accent,"stroke-width":2,"stroke-linecap":"round","stroke-linejoin":"round","data-role":"workflow-arrow"}));
+  });
+ }
  positions.forEach(({x,y,node},i)=>{
   const group=svgEl("g",{"data-node-id":node.id,"data-node-bounds":`${x},${y},${node.width},${node.height}`,"data-tone":node.tone||"surface"});
   group.append(svgEl("rect",{x,y,width:node.width,height:node.height,rx:12,fill:node.tone==="bad"?colors.bad:node.tone==="accent"?colors.accent:colors.surface,stroke:colors.line,"stroke-width":1.5}));

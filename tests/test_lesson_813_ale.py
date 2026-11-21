@@ -16,7 +16,7 @@ class Lesson813ALETests(unittest.TestCase):
   cls.python=json.loads(p.group(1)) if p else ""
   cls.renderer=(ROOT/"scripts/xai-ale-lesson.js").read_text(encoding="utf-8")
  def test_catalog_review_and_uid(self):
-  self.assertEqual(self.lesson["code"],"8.1.3");self.assertEqual(self.lesson["status"],"review");self.assertEqual(self.lesson["content_state"],"localized");self.assertEqual(self.lesson["prerequisite_uids"],["les-a-0175"])
+  self.assertEqual(self.lesson["code"],"8.1.3");self.assertEqual(self.lesson["status"],"published");self.assertEqual(self.lesson["content_state"],"published");self.assertEqual(self.lesson["prerequisite_uids"],["les-a-0175"])
   self.assertEqual(len({x["uid"] for x in self.catalog["lessons"]}),len(self.catalog["lessons"]))
  def test_routes_dom_and_shared_scripts(self):
   for locale,route in ROUTES.items():

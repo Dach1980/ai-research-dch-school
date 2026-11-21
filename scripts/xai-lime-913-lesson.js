@@ -18,7 +18,7 @@ const node=(id,title,detail,tone)=>({id,title,detail,tone:tone||"surface"});
 const nodeSpec=(type,title,description,items,caption)=>window.DCHLessonSVG.render({...common,type,layout:"grid",title,description,caption,sequence:false,serpentine:false,connectSequence:false,nodes:items.map((x,i)=>node(type+"-"+i,(i+1)+". "+x[0],x[1],i===0?"accent":"surface"))});
 if(kind==="workflow"){
 const a=labels.flow;
-return nodeSpec("lime-913-workflow",en?"LIME algorithm — six stages":zh?"LIME 算法：六个阶段":"Алгоритм LIME — шесть этапов","Six stages from the explained instance to a local explanation",[[a[0],a[1]],[a[2],a[3]],[a[4],a[5]],[a[6],a[7]],[a[8],a[9]],[a[10],a[11]]],en?"Read the numbered cards from left to right, top to bottom.":zh?"按从左到右、从上到下的编号阅读卡片。":"Читайте пронумерованные блоки слева направо, сверху вниз; стрелки не используются.");
+return nodeSpec("lime-913-workflow",en?"LIME algorithm — six stages":zh?"LIME 算法：六个阶段":"Алгоритм LIME — шесть этапов","Six stages from the explained instance to a local explanation",[[a[0],a[1]],[a[2],a[3]],[a[4],a[5]],[a[6],a[7]],[a[8],a[9]],[a[10],a[11]]],en?"":zh?"":"");
 }
 if(kind==="represent"){
 const rows=en?[["Age","42 → x′: age > 40"],["Income","85,000 → x′: income > 72,000"],["Contract","Annual → x′: annual = yes"]]:zh?[["年龄","42 → x′：年龄 > 40"],["收入","85,000 → x′：收入 > 72,000"],["合同","年度 → x′：年度 = 是"]]:[["Возраст","42 → x′: возраст > 40"],["Доход","85 000 → x′: доход > 72 000"],["Договор","Годовой → x′: годовой = да"]];

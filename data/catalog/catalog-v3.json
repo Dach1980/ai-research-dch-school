@@ -1,7 +1,7 @@
 {
   "schema_version": 3,
   "catalog_id": "dch-school-curriculum",
-  "catalog_version": "3.2.13-lesson-8-1-3-ale-published",
+  "catalog_version": "3.2.14-lesson-9-1-2-local-surrogates-review",
   "status": "migration_staging",
   "tracks": [
     {
@@ -4086,6 +4086,41 @@
         "ru": "lessons/a-9-1-1-les-a-0177.html",
         "en": "lessons/a-9-1-1-les-a-0177-en.html",
         "zh": "lessons/a-9-1-1-les-a-0177-zh.html"
+      }
+    },
+    {
+      "uid": "les-a-0178",
+      "track_uid": "trk-a",
+      "theme_uid": "thm-a-09",
+      "module_uid": "mod-a-09-01",
+      "code": "9.1.2",
+      "title": "Локальные суррогатные модели",
+      "status": "review",
+      "access": "open",
+      "level": "intermediate",
+      "prerequisite_uids": [
+        "les-a-0177"
+      ],
+      "learning_outcomes": [
+        "Определять суррогатную модель и отличать её от исходной модели и production-замены.",
+        "Различать глобальный и локальный суррогат и ограничивать область вывода.",
+        "Объяснять обучение суррогата на прогнозах исходной модели.",
+        "Разграничивать accuracy исходной модели и fidelity суррогата.",
+        "Объяснять компромисс fidelity, сложности и понятности.",
+        "Читать общую постановку взвешенного суррогатного обучения.",
+        "Сравнивать линейную модель, дерево и правила как суррогаты.",
+        "Оценивать ограничения представления признаков, локальности и устойчивости."
+      ],
+      "content_state": "review",
+      "title_i18n": {
+        "ru": "Локальные суррогатные модели",
+        "en": "Local Surrogate Models",
+        "zh": "局部代理模型"
+      },
+      "url_i18n": {
+        "ru": "lessons/a-9-1-2-les-a-0178.html",
+        "en": "lessons/a-9-1-2-les-a-0178-en.html",
+        "zh": "lessons/a-9-1-2-les-a-0178-zh.html"
       }
     }
   ],

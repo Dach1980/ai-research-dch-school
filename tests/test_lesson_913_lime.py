@@ -31,6 +31,14 @@ class Lesson913LIMETests(unittest.TestCase):
    self.assertEqual(positions,sorted(positions))
    for script in ("lesson-glossary.js","lesson-svg-renderer.js","xai-09-lime-913.js","xai-lime-913-lesson.js","lesson-layout.js"):self.assertIn(script,page)
  def test_localized_content_parity_and_shared_components(self):
+  payload=self.data.split("content:",1)[1].split(",practiceCode:",1)[0]
+  content=json.loads(payload)
+  for locale in ("ru","en","zh"):
+   self.assertEqual(len(content[locale]["outcomes"]),12)
+   self.assertEqual(len(content[locale]["sections"]),9)
+   self.assertEqual(len(content[locale]["glossary"]),15)
+   self.assertEqual(len(content[locale]["quiz"]),12)
+   self.assertGreaterEqual(sum(1 for section in content[locale]["sections"] if len(section)>3 and section[3]),3)
   for token in ('"ru"','"en"','"zh"','"outcomes"','"sections"','"glossary"','"quiz"'):
    self.assertIn(token,self.data)
   for heading in ("Словарь терминов","Key terms","术语词典"):self.assertIn(heading,self.renderer)

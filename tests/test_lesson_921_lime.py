@@ -150,6 +150,8 @@ class Lesson921LIMETests(unittest.TestCase):
         self.assertIn("data.diagrams[diagramKey]", self.renderer)
         self.assertIn('make("div","xai-canonical-section-content")', self.renderer)
         self.assertIn("pre.dataset.language=language", self.renderer)
+        self.assertIn('codeBlock("bash",data.practice.install)', self.renderer)
+        self.assertIn('codeBlock("bash",data.practice.run)', self.renderer)
         self.assertIn('codeBlock("python",lesson.practiceCode)', self.renderer)
         self.assertNotIn("createElementNS", self.renderer)
         self.assertNotIn("lesson-nav", self.renderer)

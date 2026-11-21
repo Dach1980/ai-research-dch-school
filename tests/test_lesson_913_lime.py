@@ -78,4 +78,94 @@ class Lesson913LIMETests(unittest.TestCase):
   for token in ("LimeTabularExplainer","classifier_fn=model.predict_proba","num_samples=3000","random_state=SEED","explanation.as_list","explanation.local_pred","explanation.score"):
    self.assertIn(token,self.practice)
   self.assertNotIn("predict_fn=",self.practice)
+
+    def _lesson_content(self):
+        payload = self.data.split("content:", 1)[1].split(",practiceCode:", 1)[0]
+        return json.loads(payload)
+
+    def test_text_and_diagrams_share_one_explained_customer_scenario(self):
+        content = self._lesson_content()
+        anchors = {
+            "ru": {
+                "instance": ("42", "85 000", "возраст > 40", "доход > 72 000", "годовой"),
+                "perturb": ("z₁", "z₂", "z₃", "z₄", "синтетические варианты", "sampler"),
+                "blackbox": ("f(zᵢ)", "вероятности классов", "истинные метки y", "класс 1"),
+                "weights": ("d(x₀,zᵢ)", "wᵢ", "σ", "0,980", "0,546"),
+                "fit": ("z′ᵢ", "f(zᵢ)", "wᵢ", "не является дополнительным признаком"),
+                "select": ("класс 1", "0,78", "+0,18", "−0,11", "+0,07", "не причинн"),
+                "walkthrough": ("0,78", "0,980", "0,546", "0,74", "+0,18", "−0,11", "+0,07", "практическая работа ниже"),
+                "practice-interpret": ("Breast Cancer Wisconsin", "exp.local_pred", "exp.score", "exp.as_list"),
+            },
+            "en": {
+                "instance": ("42", "85,000", "age > 40", "income > 72,000", "annual"),
+                "perturb": ("z₁", "z₂", "z₃", "z₄", "synthetic variants", "sampler"),
+                "blackbox": ("f(zᵢ)", "class probabilities", "true labels y", "class 1"),
+                "weights": ("d(x₀,zᵢ)", "wᵢ", "σ", "0.980", "0.546"),
+                "fit": ("z′ᵢ", "f(zᵢ)", "wᵢ", "not an additional customer feature"),
+                "select": ("class 1", "0.78", "+0.18", "−0.11", "+0.07", "causal"),
+                "walkthrough": ("0.78", "0.980", "0.546", "0.74", "+0.18", "−0.11", "+0.07", "practical lab below"),
+                "practice-interpret": ("Breast Cancer Wisconsin", "exp.local_pred", "exp.score", "exp.as_list"),
+            },
+            "zh": {
+                "instance": ("42", "85,000", "年龄 > 40", "收入 > 72,000", "年度"),
+                "perturb": ("z₁", "z₂", "z₃", "z₄", "合成变体", "sampler"),
+                "blackbox": ("f(zᵢ)", "类别概率", "真实标签 y", "类别 1"),
+                "weights": ("d(x₀,zᵢ)", "wᵢ", "σ", "0.980", "0.546"),
+                "fit": ("z′ᵢ", "f(zᵢ)", "wᵢ", "不是客户的额外特征"),
+                "select": ("类别 1", "0.78", "+0.18", "−0.11", "+0.07", "因果"),
+                "walkthrough": ("0.78", "0.980", "0.546", "0.74", "+0.18", "−0.11", "+0.07", "实践任务"),
+                "practice-interpret": ("Breast Cancer Wisconsin", "exp.local_pred", "exp.score", "exp.as_list"),
+            },
+        }
+        for locale, sections in content.items():
+            by_id = {section[0]: section for section in sections["sections"]}
+            for section_id, required in anchors[locale].items():
+                text = " ".join(by_id[section_id][2]).lower()
+                for token in required:
+                    with self.subTest(locale=locale, section=section_id, token=token):
+                        self.assertIn(token.lower(), text)
+
+    def test_section_seven_explains_every_feature_coefficient_before_figure(self):
+        content = self._lesson_content()
+        expected = {
+            "ru": ("банк", "класс 1", "надёжный клиент", "0,78", "стаж", "высок", "договор", "+0,18", "−0,11", "+0,07", "не процентные пункты", "причин"),
+            "en": ("bank", "class 1", "reliable customer", "0.78", "tenure", "debt", "contract", "+0.18", "−0.11", "+0.07", "percentage points", "causal"),
+            "zh": ("银行", "类别 1", "可靠客户", "0.78", "工作年限", "债务", "合同", "+0.18", "−0.11", "+0.07", "百分点", "因果"),
+        }
+        for locale, tokens in expected.items():
+            section = content[locale]["sections"][6]
+            narrative = " ".join(section[2]).lower()
+            for token in tokens:
+                with self.subTest(locale=locale, token=token):
+                    self.assertIn(token.lower(), narrative)
+            self.assertEqual(section[3], "select")
+
+    def test_hypothetical_customer_example_is_separate_from_runtime_lab(self):
+        content = self._lesson_content()
+        for locale in ("ru", "en", "zh"):
+            with self.subTest(locale=locale):
+                walkthrough = " ".join(content[locale]["sections"][7][2]).lower()
+                practice = " ".join(content[locale]["sections"][8][2]).lower()
+                self.assertIn("0,78" if locale == "ru" else "0.78", walkthrough)
+                self.assertIn("0,74" if locale == "ru" else "0.74", walkthrough)
+                self.assertIn("conditional" if locale == "en" else ("условн" if locale == "ru" else "示意"), walkthrough)
+                self.assertIn("breast cancer wisconsin", practice)
+                self.assertTrue(any(x in practice for x in ("другой набор данных", "different dataset", "不同的数据集")))
+
+    def test_diagram_labels_are_explained_and_no_placeholder_labels_remain(self):
+        for forbidden in ("Признак 1 (схема)", "Признак 2 (схема)", "Feature 1 (schematic)", "Feature 2 (schematic)"):
+            self.assertNotIn(forbidden, self.renderer)
+        self.assertIn("0,18", self.data)
+        self.assertIn("0,11", self.data)
+        self.assertIn("0,07", self.data)
+        self.assertIn("selected-class", self.renderer.lower())
+        self.assertIn("Условные учебные значения", self.renderer)
+        self.assertIn("Hypothetical teaching values", self.renderer)
+        self.assertIn("示意教学数值", self.renderer)
+
+    def test_grid_diagrams_have_no_automatic_connectors_by_default(self):
+        self.assertIn('if(spec.layout==="grid"&&spec.connectSequence===true)', self.shared)
+        self.assertIn("connectSequence:false", self.renderer)
+        self.assertIn('data-role":"workflow-arrow"', self.shared)
+
 if __name__=="__main__":unittest.main()

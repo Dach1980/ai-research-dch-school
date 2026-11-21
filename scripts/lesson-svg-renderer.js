@@ -119,13 +119,22 @@ function renderChart(spec){
    (n.nearby||[]).forEach(p=>root.append(svgEl("circle",{cx:left+p[0]*(right-left),cy:bottom-p[1]*(bottom-top),r:6.5,fill:colors.good,opacity:.9,"data-role":"nearby-point"})));
    root.append(svgEl("circle",{cx,cy,r:11,fill:colors.accent,stroke:colors.surface,"stroke-width":3,"data-role":"explained-instance"}));
    root.append(svgEl("text",{x:cx+15,y:cy-13,"font-size":17,"font-weight":700,fill:colors.accent,"data-role":"instance-label"},"x₀"));
+  }else if(Array.isArray(spec.points)&&spec.center){
+   const cx=left+spec.center[0]*(right-left),cy=bottom-spec.center[1]*(bottom-top),radius=spec.neighborhoodRadius||.34;
+   root.append(svgEl("ellipse",{cx,cy,rx:radius*(right-left),ry:radius*(bottom-top),fill:colors.accent,opacity:.09,stroke:colors.accent,"stroke-width":2,"stroke-dasharray":"8 7","data-role":"perturbation-region"}));
+   spec.points.forEach(p=>root.append(svgEl("circle",{cx:left+p[0]*(right-left),cy:bottom-p[1]*(bottom-top),r:6.5,fill:colors.good,opacity:.85,"data-role":"perturbed-sample"})));
+   root.append(svgEl("circle",{cx,cy,r:11,fill:colors.accent,stroke:colors.surface,"stroke-width":3,"data-role":"explained-instance"}));
+   root.append(svgEl("text",{x:cx+14,y:cy-12,"font-size":17,"font-weight":700,fill:colors.accent,"data-role":"instance-label"},"x₀"));
+   const legendY=46;
+   root.append(svgEl("circle",{cx:150,cy:legendY,r:6,fill:colors.accent}),svgEl("text",{x:165,y:legendY+5,"font-size":15,fill:colors.ink},spec.centerLabel||"Explained instance"));
+   root.append(svgEl("circle",{cx:420,cy:legendY,r:6,fill:colors.good}),svgEl("text",{x:435,y:legendY+5,"font-size":15,fill:colors.ink},spec.pointsLabel||"Perturbed samples"));
   }else{
    (spec.observed||[]).forEach(p=>root.append(svgEl("circle",{cx:left+p[0]*(right-left),cy:bottom-p[1]*(bottom-top),r:5.5,fill:colors.good,opacity:.78})));
    (spec.synthetic||[]).forEach(p=>root.append(svgEl("circle",{cx:left+p[0]*(right-left),cy:bottom-p[1]*(bottom-top),r:6,fill:colors.bad,opacity:.9})));
+   const legendY=46;
+   root.append(svgEl("circle",{cx:130,cy:legendY,r:6,fill:colors.good}),svgEl("text",{x:145,y:legendY+5,"font-size":15,fill:colors.ink},spec.observedLabel||"Observed"));
+   root.append(svgEl("circle",{cx:390,cy:legendY,r:6,fill:colors.bad}),svgEl("text",{x:405,y:legendY+5,"font-size":15,fill:colors.ink},spec.syntheticLabel||"Synthetic"));
   }
-  const legendY=46;
-  root.append(svgEl("circle",{cx:130,cy:legendY,r:6,fill:colors.good}),svgEl("text",{x:145,y:legendY+5,"font-size":15,fill:colors.ink},spec.observedLabel||"Observed"));
-  root.append(svgEl("circle",{cx:390,cy:legendY,r:6,fill:colors.bad}),svgEl("text",{x:405,y:legendY+5,"font-size":15,fill:colors.ink},spec.syntheticLabel||"Synthetic"));
  }
  root.append(svgEl("text",{x:(left+right)/2,y:382,"text-anchor":"middle","font-size":17,fill:colors.ink},spec.xLabel||"Feature value"));
  root.append(svgEl("text",{x:26,y:(top+bottom)/2,transform:"rotate(-90 26 "+((top+bottom)/2)+")","text-anchor":"middle","font-size":17,fill:colors.ink},spec.yLabel||"Model response"));

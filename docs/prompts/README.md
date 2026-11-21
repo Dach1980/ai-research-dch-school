@@ -29,6 +29,7 @@ Each prompt should declare its own version and status near the top. A lesson's c
 | Track | Lesson | Prompt | Version | Status |
 |---|---|---|---:|---|
 | A | 8.1.1 — PDP — Partial Dependence Plot | [8.1.1-partial-dependence-plots.md](./lessons/track-a/8.1.1-partial-dependence-plots.md) | 1.0 | draft |
+| A | 9.2.2 — Ограничения и устойчивость LIME | [9.2.2-lime-limitations-and-stability.md](./lessons/track-a/9.2.2-lime-limitations-and-stability.md) | 1.0 | draft |
 
 ## Governance
 

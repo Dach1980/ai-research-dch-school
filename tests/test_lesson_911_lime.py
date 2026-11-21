@@ -40,7 +40,7 @@ class Lesson911LIMETests(unittest.TestCase):
   self.assertIsNotNone(match,"Russian example table must exist")
   headers=re.findall(r'"([^"]+)"',match.group(1))
   self.assertEqual(headers,["Вариант входа","Исходная модель f","Локальное приближение gₓ₀"])
-  self.assertFalse(re.search(r"[\\u4e00-\\u9fff]",match.group(1)),"Chinese characters must not appear in RU table headers")
+  self.assertFalse(re.search(r"[\u4e00-\u9fff]",match.group(1)),"Chinese characters must not appear in RU table headers")
  def test_neighborhood_diagram_contains_actual_points_and_boundary(self):
   self.assertIn('layout:"scatter"',self.renderer)
   self.assertIn('neighborhood:{center:',self.renderer)

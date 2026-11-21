@@ -64,6 +64,9 @@ class Lesson913LIMETests(unittest.TestCase):
   self.assertIn('data-role":"workflow-arrow"',self.shared)
   self.assertIn('V ${ey}',self.shared)
   self.assertNotIn('annotations:[{',self.renderer)
+  self.assertIn("d(x₀, zᵢ)",self.renderer)
+  self.assertIn("πₓ₀(zᵢ)",self.renderer)
+  self.assertIn("Larger marker",self.shared)
  def test_practice_api_and_python_syntax(self):
   ast.parse(self.practice)
   for token in ("LimeTabularExplainer","classifier_fn=model.predict_proba","num_samples=3000","random_state=SEED","explanation.as_list","explanation.local_pred","explanation.score"):

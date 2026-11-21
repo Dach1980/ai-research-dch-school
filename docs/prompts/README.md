@@ -29,7 +29,7 @@ Each prompt should declare its own version and status near the top. A lesson's c
 | Track | Lesson | Prompt | Version | Status |
 |---|---|---|---:|---|
 | A | 8.1.1 — PDP — Partial Dependence Plot | [8.1.1-partial-dependence-plots.md](./lessons/track-a/8.1.1-partial-dependence-plots.md) | 1.0 | draft |
-| A | 9.1.2 — Local Surrogate Models | [9.1.2-local-surrogate-models.md](./lessons/track-a/9.1.2-local-surrogate-models.md) | 1.0 | approved; lesson created as review |
+| A | 9.1.2 — Local Surrogate Models | [9.1.2-local-surrogate-models.md](./lessons/track-a/9.1.2-local-surrogate-models.md) | 1.0 | approved; lesson accepted and published |\n| A | 9.1.3 — Как работает LIME | [9.1.3-how-lime-works.md](./lessons/track-a/9.1.3-how-lime-works.md) | 1.0 | draft — prepared, awaiting user approval |
 | A | 9.2.2 — Ограничения и устойчивость LIME | [9.2.2-lime-limitations-and-stability.md](./lessons/track-a/9.2.2-lime-limitations-and-stability.md) | 1.0 | draft — future lesson; do not execute before 9.1.2, 9.1.3 and 9.2.1 |
 
 ## Governance

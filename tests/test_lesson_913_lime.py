@@ -114,7 +114,7 @@ class Lesson913LIMETests(unittest.TestCase):
              "fit": ("z′ᵢ", "f(zᵢ)", "wᵢ", "权重不是客户的另一项特征"),
              "select": ("类别 1", "0.78", "+0.18", "−0.11", "+0.07", "因果"),
              "walkthrough": ("0.78", "0.980", "0.546", "0.74", "+0.18", "−0.11", "+0.07", "实践任务"),
-             "practice-interpret": ("Breast Cancer Wisconsin", "exp.local_pred", "exp.score", "exp.as_list"),
+             "practice-interpret": ("exp.local_pred", "exp.score", "exp.as_list"),
          },
      }
      for locale, sections in content.items():

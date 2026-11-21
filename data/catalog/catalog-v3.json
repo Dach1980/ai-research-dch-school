@@ -4132,7 +4132,6 @@
       "title": "Как работает LIME",
       "status": "review",
       "access": "open",
-      "level": "intermediate",
       "prerequisite_uids": [
         "les-a-0178"
       ],

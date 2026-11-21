@@ -54,7 +54,7 @@ def explain(kernel_width, num_samples):
     explainer = build_explainer(kernel_width)
     return explainer.explain_instance(
         data_row=x0,
-        classifier_fn=model.predict_proba,
+        predict_fn=model.predict_proba,
         labels=(class_id,),
         num_features=5,
         num_samples=int(num_samples),

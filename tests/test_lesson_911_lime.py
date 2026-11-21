@@ -33,7 +33,7 @@ class Lesson911LIMETests(unittest.TestCase):
   ast.parse(self.practice)
   for token in ("make_moons","RandomForestClassifier","DecisionTreeRegressor","local_mse","global_mse","SEED = 42","NOT an implementation of LIME"):self.assertIn(token,self.practice)
  def test_published_lesson_not_added_to_planets(self):
-  self.assertEqual(self.lesson["status"],"review");self.assertEqual(self.lesson["content_state"],"localized")
+  self.assertEqual(self.lesson["status"],"published");self.assertEqual(self.lesson["content_state"],"published")
   self.assertNotIn(UID,[x.get("lesson_id") for x in self.catalog.get("planets",[])])
  def test_russian_table_headers_are_localized(self):
   match=re.search(r'"ru": \{.*?"headers": \[(.*?)\]',self.data,re.S)

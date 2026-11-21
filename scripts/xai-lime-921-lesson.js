@@ -26,11 +26,11 @@ outcomes.append(outcomeList);
 const sectionsRoot=el("lesson-sections");
 data.sections.forEach((section,index)=>{
  const [key,title,paragraphs,diagramKey]=section;
- const article=make("article","xai-canonical-section");
- article.dataset.sectionId=key;
+ const article=make("section","xai-canonical-section");
+ article.id="lime-921-"+key;
  const heading=make("h2","xai-canonical-section-title",title);
- article.append(heading);
- paragraphs.forEach(text=>article.append(make("p","xai-lesson-paragraph",text)));
+ const body=make("div","xai-canonical-section-content");
+ paragraphs.forEach(text=>body.append(make("p","",text)));
  const spec=data.diagrams[diagramKey];
  if(!spec)throw new Error("Missing semantic diagram: "+diagramKey);
  const figure=window.DCHLessonSVG.render({
@@ -45,7 +45,8 @@ data.sections.forEach((section,index)=>{
   rows:spec.rows
  });
  figure.dataset.diagramKind=diagramKey;
- article.append(figure);
+ body.append(figure);
+ article.append(heading,body);
  sectionsRoot.append(article);
 });
 const practice=el("lesson-practice");
@@ -58,12 +59,15 @@ practice.append(make("h3","",labels.steps));
 const steps=make("ol");
 data.practice.steps.forEach(item=>steps.append(make("li","",item)));
 practice.append(steps);
-practice.append(make("h3","",labels.install));
-const install=make("pre","code-block");install.append(make("code","",data.practice.install));practice.append(install);
-practice.append(make("h3","",labels.run));
-const run=make("pre","code-block");run.append(make("code","",data.practice.run));practice.append(run);
-practice.append(make("h3","",labels.code));
-const code=make("pre","code-block");code.append(make("code","language-python",lesson.practiceCode));practice.append(code);
+const codeBlock=(language,source)=>{
+ const pre=make("pre","language-"+language);
+ pre.dataset.language=language;
+ pre.append(make("code","",source));
+ return pre;
+};
+practice.append(make("h3","",labels.install),codeBlock("bash",data.practice.install));
+practice.append(make("h3","",labels.run),codeBlock("bash",data.practice.run));
+practice.append(make("h3","",labels.code),codeBlock("python",lesson.practiceCode));
 const codeLink=make("p","practice-source-link");
 const link=make("a","",locale==="ru"?"Открыть файл практики в репозитории":locale==="en"?"Open the lab file in the repository":"在仓库中打开实践文件");
 link.href="practice/a-9-2-1-lime-neighborhood.py";link.target="_blank";link.rel="noopener noreferrer";

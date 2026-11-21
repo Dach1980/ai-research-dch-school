@@ -84,6 +84,25 @@ jobs:
         run: python scripts/validate-multilingual-lessons.py
       - name: Validate A.6 lesson and shared illustrations
         run: python scripts/validate-a6.py
+      - name: Enforce canonical public domain and lesson URLs
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import re
+          domain = "https://dchai.ru"
+          assert Path("CNAME").read_text(encoding="utf-8").strip() == "dchai.ru", "CNAME must remain dchai.ru"
+          lessons = {
+              "lessons/a-9-1-2-les-a-0178.html": "a-9-1-2-les-a-0178.html",
+              "lessons/a-9-1-2-les-a-0178-en.html": "a-9-1-2-les-a-0178-en.html",
+              "lessons/a-9-1-2-les-a-0178-zh.html": "a-9-1-2-les-a-0178-zh.html",
+          }
+          for path, filename in lessons.items():
+              html = Path(path).read_text(encoding="utf-8")
+              expected = f'{domain}/lessons/{filename}'
+              assert f'<link rel="canonical" href="{expected}">' in html, f"Wrong canonical URL in {path}"
+              assert "vercel.app" not in html.lower(), f"Vercel URL leaked into {path}"
+          print("Canonical domain and RU/EN/ZH lesson URLs verified.")
+          PY
   validate-supabase-migrations:
     runs-on: ubuntu-latest
     services:
@@ -141,3 +160,44 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+      - name: Smoke-test the public canonical domain
+        env:
+          SITE_URL: https://dchai.ru
+        run: |
+          python - <<'PY'
+          import time
+          import urllib.error
+          import urllib.request
+          import os
+
+          base = os.environ["SITE_URL"].rstrip("/")
+          checks = {
+              "/": "AI Research DCH School",
+              "/lessons/a-9-1-2-les-a-0178.html": "Локальные суррогатные модели",
+              "/lessons/a-9-1-2-les-a-0178-en.html": "Local Surrogate Models",
+              "/lessons/a-9-1-2-les-a-0178-zh.html": "局部代理模型",
+          }
+          for path, marker in checks.items():
+              last_error = None
+              for attempt in range(12):
+                  try:
+                      request = urllib.request.Request(
+                          base + path,
+                          headers={"User-Agent": "DCH-School-Public-Release-Smoke-Test/1.0"},
+                      )
+                      with urllib.request.urlopen(request, timeout=20) as response:
+                          body = response.read().decode("utf-8", errors="replace")
+                          if response.status != 200:
+                              raise RuntimeError(f"HTTP {response.status}")
+                          if marker not in body:
+                              raise RuntimeError(f"Expected page marker not found: {marker}")
+                          if "vercel.app" in body.lower():
+                              raise RuntimeError("Vercel URL found in canonical public page")
+                      print(f"OK {base + path}")
+                      break
+                  except Exception as exc:
+                      last_error = exc
+                      if attempt == 11:
+                          raise RuntimeError(f"Public release smoke test failed for {path}: {last_error}")
+                      time.sleep(10)
+          PY

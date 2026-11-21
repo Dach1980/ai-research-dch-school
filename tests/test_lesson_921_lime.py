@@ -128,7 +128,7 @@ class Lesson921LIMETests(unittest.TestCase):
         self.assertIn("load_breast_cancer()", self.practice)
         self.assertIn("RandomForestClassifier", self.practice)
         self.assertIn("random_state=SEED", self.practice)
-        self.assertIn("classifier_fn=model.predict_proba", self.practice)
+        self.assertIn("predict_fn=model.predict_proba", self.practice)
 
     def test_practice_code_is_valid_and_compares_one_parameter_at_a_time(self):
         ast.parse(self.practice)
@@ -141,7 +141,7 @@ class Lesson921LIMETests(unittest.TestCase):
         self.assertIn("exp.local_pred[class_id]", self.practice)
         self.assertIn("exp.score[class_id]", self.practice)
         self.assertIn("exp.as_list(label=class_id)", self.practice)
-        self.assertNotIn("predict_fn=", self.practice)
+        self.assertNotIn("classifier_fn=", self.practice)
 
     def test_renderer_uses_shared_svg_and_glossary_components(self):
         self.assertIn("DCHLessonSVG.render", self.renderer)

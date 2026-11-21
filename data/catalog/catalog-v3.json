@@ -142,6 +142,19 @@
         "en": "Analyzing Model Dependence on Features",
         "zh": "模型对特征的依赖分析"
       }
+    },
+    {
+      "uid": "thm-a-09",
+      "track_uid": "trk-a",
+      "number": 9,
+      "code": "9",
+      "title": "LIME",
+      "status": "active",
+      "title_i18n": {
+        "ru": "LIME",
+        "en": "LIME",
+        "zh": "LIME"
+      }
     }
   ],
   "modules": [
@@ -477,6 +490,18 @@
         "ru": "Методы анализа зависимости предсказаний от признаков",
         "en": "Methods for Analyzing Prediction Dependence on Features",
         "zh": "预测对特征依赖关系的分析方法"
+      }
+    },
+    {
+      "uid": "mod-a-09-01",
+      "theme_uid": "thm-a-09",
+      "number": 1,
+      "title": "Принципы и устройство LIME",
+      "status": "active",
+      "title_i18n": {
+        "ru": "Принципы и устройство LIME",
+        "en": "LIME Principles and Architecture",
+        "zh": "LIME 原理与结构"
       }
     }
   ],

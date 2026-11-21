@@ -2,7 +2,7 @@
 
 Version: 1.0  
 Status: active  
-Last updated: 2026-11-21
+Last updated: 2026-11-22
 
 This directory is the canonical home for prompts used to create and revise lessons in AI Research DCH School.
 
@@ -12,7 +12,7 @@ This directory is the canonical home for prompts used to create and revise lesso
 2. Open the lesson-specific prompt linked in the registry below.
 3. Ask the assistant to execute that exact repository prompt, for example:
 
-   `Создай урок по промпту docs/prompts/lessons/track-a/8.1.1-partial-dependence-plots.md. Сначала проверь актуальное состояние main и стандарты проекта.`
+   `Создай урок по промпту docs/prompts/lessons/track-a/9.2.1-lime-neighborhood-selection-and-interpretation.md. Сначала проверь актуальное состояние main и стандарты проекта.`
 
 4. The assistant must inspect the current repository before editing. The prompt is an instruction specification, not permission to bypass review, CI, or publication approval.
 
@@ -29,8 +29,10 @@ Each prompt should declare its own version and status near the top. A lesson's c
 | Track | Lesson | Prompt | Version | Status |
 |---|---|---|---:|---|
 | A | 8.1.1 — PDP — Partial Dependence Plot | [8.1.1-partial-dependence-plots.md](./lessons/track-a/8.1.1-partial-dependence-plots.md) | 1.0 | draft |
-| A | 9.1.2 — Local Surrogate Models | [9.1.2-local-surrogate-models.md](./lessons/track-a/9.1.2-local-surrogate-models.md) | 1.0 | approved; lesson accepted and published |\n| A | 9.1.3 — Как работает LIME | [9.1.3-how-lime-works.md](./lessons/track-a/9.1.3-how-lime-works.md) | 1.0 | approved; lesson in review |
-| A | 9.2.2 — Ограничения и устойчивость LIME | [9.2.2-lime-limitations-and-stability.md](./lessons/track-a/9.2.2-lime-limitations-and-stability.md) | 1.0 | draft — future lesson; do not execute before 9.1.2, 9.1.3 and 9.2.1 |
+| A | 9.1.2 — Local Surrogate Models | [9.1.2-local-surrogate-models.md](./lessons/track-a/9.1.2-local-surrogate-models.md) | 1.0 | approved; lesson accepted and published |
+| A | 9.1.3 — Как работает LIME | [9.1.3-how-lime-works.md](./lessons/track-a/9.1.3-how-lime-works.md) | 1.0 | approved; lesson accepted and published |
+| A | 9.2.1 — Выбор окрестности и интерпретация результатов | [9.2.1-lime-neighborhood-selection-and-interpretation.md](./lessons/track-a/9.2.1-lime-neighborhood-selection-and-interpretation.md) | 1.0 | draft — prepared; awaiting prompt approval |
+| A | 9.2.2 — Ограничения и устойчивость LIME | [9.2.2-lime-limitations-and-stability.md](./lessons/track-a/9.2.2-lime-limitations-and-stability.md) | 1.0 | draft — do not execute before 9.2.1 is completed and explicitly accepted |
 
 ## Governance
 
@@ -41,6 +43,6 @@ Each prompt should declare its own version and status near the top. A lesson's c
 - Do not mark a lesson `published` merely because its implementation and tests pass. Publication requires explicit user acceptance.
 - Record prompt changes in Git history. Update the version and registry when a prompt materially changes.
 
-## Scope of the initial library
+## Scope
 
-The initial entry is the prepared prompt for Track A lesson 8.1.1. Historical prompts for already completed lessons have not been reconstructed or backfilled. They may be added later when a reliable source version is available.
+The prompt library contains lesson-specific execution specifications for selected lessons. Historical prompts for completed lessons are not reconstructed unless a reliable source version is available. Prompt status and lesson publication status are tracked independently.

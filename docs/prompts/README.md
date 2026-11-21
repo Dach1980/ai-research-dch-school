@@ -2,7 +2,7 @@
 
 Version: 1.0  
 Status: active  
-Last updated: 2026-11-20
+Last updated: 2026-11-21
 
 This directory is the canonical home for prompts used to create and revise lessons in AI Research DCH School.
 
@@ -29,7 +29,7 @@ Each prompt should declare its own version and status near the top. A lesson's c
 | Track | Lesson | Prompt | Version | Status |
 |---|---|---|---:|---|
 | A | 8.1.1 — PDP — Partial Dependence Plot | [8.1.1-partial-dependence-plots.md](./lessons/track-a/8.1.1-partial-dependence-plots.md) | 1.0 | draft |
-| A | 9.1.2 — Local Surrogate Models | [9.1.2-local-surrogate-models.md](./lessons/track-a/9.1.2-local-surrogate-models.md) | 1.0 | draft |
+| A | 9.1.2 — Local Surrogate Models | [9.1.2-local-surrogate-models.md](./lessons/track-a/9.1.2-local-surrogate-models.md) | 1.0 | approved; lesson created as review |
 | A | 9.2.2 — Ограничения и устойчивость LIME | [9.2.2-lime-limitations-and-stability.md](./lessons/track-a/9.2.2-lime-limitations-and-stability.md) | 1.0 | draft — future lesson; do not execute before 9.1.2, 9.1.3 and 9.2.1 |
 
 ## Governance

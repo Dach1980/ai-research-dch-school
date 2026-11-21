@@ -10,6 +10,7 @@ class Lesson913LIMETests(unittest.TestCase):
   cls.lesson=next((x for x in cls.catalog["lessons"] if x["uid"]==UID),None)
   cls.data=(ROOT/"lessons/data/xai-09-lime-913.js").read_text(encoding="utf-8")
   cls.renderer=(ROOT/"scripts/xai-lime-913-lesson.js").read_text(encoding="utf-8")
+  cls.shared=(ROOT/"scripts/lesson-svg-renderer.js").read_text(encoding="utf-8")
   cls.practice=(ROOT/"lessons/practice/a-9-1-3-lime-tabular.py").read_text(encoding="utf-8")
  def test_catalog_sequence_identity_and_review(self):
   self.assertIsNotNone(self.lesson)
@@ -47,6 +48,22 @@ class Lesson913LIMETests(unittest.TestCase):
   self.assertIn("DCHLessonComponents.renderGlossary",self.renderer)
   self.assertEqual(self.data.count('"bridge"'),3)
   self.assertEqual(self.data.count('"practice-interpret"'),3)
+ def test_each_section_uses_its_own_semantic_diagram(self):
+  payload=self.data.split("content:",1)[1].split(",practiceCode:",1)[0]
+  content=json.loads(payload)
+  expected=["workflow","represent","perturb","blackbox","weights","fit","select","walkthrough","practice"]
+  for locale in ("ru","en","zh"):
+   self.assertEqual([section[3] for section in content[locale]["sections"]],expected)
+  for kind in expected:
+   self.assertIn('kind==="'+kind+'"',self.renderer)
+  self.assertIn("Unknown LIME lesson diagram type",self.renderer)
+  self.assertIn('"weighted-scatter"',self.renderer)
+  self.assertIn('"bars"',self.renderer)
+  self.assertIn('"table"',self.renderer)
+  self.assertIn('spec.sequence&&spec.serpentine',self.shared)
+  self.assertIn('data-role":"workflow-arrow"',self.shared)
+  self.assertIn('V ${ey}',self.shared)
+  self.assertNotIn('annotations:[{',self.renderer)
  def test_practice_api_and_python_syntax(self):
   ast.parse(self.practice)
   for token in ("LimeTabularExplainer","classifier_fn=model.predict_proba","num_samples=3000","random_state=SEED","explanation.as_list","explanation.local_pred","explanation.score"):

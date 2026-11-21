@@ -15,7 +15,7 @@ const normalized=compat.normalizeV3(catalog);
 assert.equal(normalized.schema_version,3);
 assert.equal(normalized.source_schema_version,3);
 assert.equal(normalized.themes.filter(x=>x.track_uid==="trk-a").length,9);
-assert.equal(normalized.modules.length,38);
+assert.equal(normalized.modules.length,39);
 assert.ok(normalized.themes.some(x=>x.uid==="thm-a-08"));
 assert.ok(normalized.themes.some(x=>x.uid==="thm-a-09"));
 assert.ok(normalized.modules.some(x=>x.uid==="mod-a-08-01"));

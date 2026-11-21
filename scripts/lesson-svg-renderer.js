@@ -55,7 +55,6 @@ function renderWeightedScatter(spec){
  const line=points.map((p,i)=>(i?"L ":"M ")+(left+p[0]*(right-left))+" "+(bottom-p[1]*(bottom-top))).join(" ");
  root.append(svgEl("path",{d:line,fill:"none",stroke:colors.accent,"stroke-width":3,"stroke-dasharray":"8 6","stroke-linecap":"round"}));
  points.forEach(p=>root.append(svgEl("circle",{cx:left+p[0]*(right-left),cy:bottom-p[1]*(bottom-top),r:4+Math.max(0,Math.min(1,p[2]||0))*9,fill:colors.good,opacity:.78,stroke:colors.surface,"stroke-width":1.5,"data-weight":p[2]})));
- root.append(svgEl("text",{x:left+8,y:top+20,"font-size":14,fill:colors.muted},spec.pointNote||"Larger marker = greater weight"));
  return chartFigure(root,spec);
 }
 function renderBars(spec){

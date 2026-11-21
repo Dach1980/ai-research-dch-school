@@ -32,6 +32,7 @@ on:
       - "scripts/code-blocks.js"
       - "scripts/lesson-layout.js"
       - "scripts/xai-ale-lesson.js"
+      - "scripts/xai-lime-913-lesson.js"
       - "scripts/xai-feature-importance-lesson.js"
       - "lessons/data/xai-04-feature-importance.js"
       - "styles/lesson-standard.css"

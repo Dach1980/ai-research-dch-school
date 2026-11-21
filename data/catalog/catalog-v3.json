@@ -1,7 +1,7 @@
 {
   "schema_version": 3,
   "catalog_id": "dch-school-curriculum",
-  "catalog_version": "3.2.14-lesson-9-1-2-local-surrogates-review",
+  "catalog_version": "3.2.15-lesson-9-1-2-published",
   "status": "migration_staging",
   "tracks": [
     {
@@ -4095,7 +4095,7 @@
       "module_uid": "mod-a-09-01",
       "code": "9.1.2",
       "title": "Локальные суррогатные модели",
-      "status": "review",
+      "status": "published",
       "access": "open",
       "level": "intermediate",
       "prerequisite_uids": [
@@ -4111,7 +4111,7 @@
         "Сравнивать линейную модель, дерево и правила как суррогаты.",
         "Оценивать ограничения представления признаков, локальности и устойчивости."
       ],
-      "content_state": "review",
+      "content_state": "published",
       "title_i18n": {
         "ru": "Локальные суррогатные модели",
         "en": "Local Surrogate Models",

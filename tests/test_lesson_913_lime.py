@@ -129,7 +129,7 @@ class Lesson913LIMETests(unittest.TestCase):
         content = self._lesson_content()
         expected = {
             "ru": ("банк", "класс 1", "надёжный клиент", "0,78", "стаж", "высок", "договор", "+0,18", "−0,11", "+0,07", "не процентные пункты", "причин"),
-            "en": ("bank", "class 1", "reliable customer", "0.78", "tenure", "debt", "contract", "+0.18", "−0.11", "+0.07", "percentage points", "causal"),
+            "en": ("bank", "class 1", "reliable customer", "0.78", "tenure", "debt", "contract", "+0.18", "−0.11", "+0.07", "percentage-point", "causal"),
             "zh": ("银行", "类别 1", "可靠客户", "0.78", "工作年限", "债务", "合同", "+0.18", "−0.11", "+0.07", "百分点", "因果"),
         }
         for locale, tokens in expected.items():

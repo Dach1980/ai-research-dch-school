@@ -10,6 +10,7 @@ class Lesson911LIMETests(unittest.TestCase):
   cls.lesson=next((x for x in cls.catalog["lessons"] if x["uid"]==UID),None)
   cls.data=(ROOT/"lessons/data/xai-09-lime.js").read_text(encoding="utf-8")
   cls.renderer=(ROOT/"scripts/xai-lime-lesson.js").read_text(encoding="utf-8")
+  cls.svg_renderer=(ROOT/"scripts/lesson-svg-renderer.js").read_text(encoding="utf-8")
   cls.practice=(ROOT/"lessons/practice/a-9-1-1-local-explanation.py").read_text(encoding="utf-8")
  def test_catalog_uid_routes_and_review(self):
   self.assertIsNotNone(self.lesson);self.assertEqual(self.lesson["code"],"9.1.1");self.assertEqual(self.lesson["status"],"review");self.assertEqual(self.lesson["content_state"],"localized")
@@ -34,4 +35,17 @@ class Lesson911LIMETests(unittest.TestCase):
  def test_review_lesson_not_added_to_planets(self):
   self.assertEqual(self.lesson["status"],"review");self.assertEqual(self.lesson["content_state"],"localized")
   self.assertNotIn(UID,[x.get("lesson_id") for x in self.catalog.get("planets",[])])
+ def test_russian_table_headers_are_localized(self):
+  match=re.search(r'"ru": \{.*?"headers": \[(.*?)\]',self.data,re.S)
+  self.assertIsNotNone(match,"Russian example table must exist")
+  headers=re.findall(r'"([^"]+)"',match.group(1))
+  self.assertEqual(headers,["Вариант входа","Исходная модель f","Локальное приближение gₓ₀"])
+  self.assertFalse(re.search(r"[\\u4e00-\\u9fff]",match.group(1)),"Chinese characters must not appear in RU table headers")
+ def test_neighborhood_diagram_contains_actual_points_and_boundary(self):
+  self.assertIn('layout:"scatter"',self.renderer)
+  self.assertIn('neighborhood:{center:',self.renderer)
+  for token in ('data-role":"neighborhood-boundary"','data-role":"nearby-point"','data-role":"distant-point"','data-role":"explained-instance"','data-role":"instance-label"'):
+   self.assertIn(token,self.svg_renderer)
+  self.assertIn('n.nearby||[]',self.svg_renderer)
+  self.assertIn('n.distant||[]',self.svg_renderer)
 if __name__=="__main__":unittest.main()

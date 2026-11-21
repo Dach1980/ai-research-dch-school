@@ -60,10 +60,20 @@ def explain(kernel_width, num_samples):
         num_samples=int(num_samples),
     )
 
+def first_scalar(value, label_index):
+    """Read a scalar from LIME's selected-label output across API shapes."""
+    if isinstance(value, dict):
+        value = value[label_index]
+    values = np.asarray(value).reshape(-1)
+    if values.size == 0:
+        raise ValueError("LIME returned an empty local result")
+    return float(values[0])
+
+
 def report(label, kernel_width, num_samples):
     exp = explain(kernel_width, num_samples)
-    local_prediction = float(np.asarray(exp.local_pred[class_id]).reshape(-1)[0])
-    local_score = float(exp.score[class_id])
+    local_prediction = first_scalar(exp.local_pred, class_id)
+    local_score = first_scalar(exp.score, class_id)
     print(f"\n{label}")
     print(f"  kernel_width: {kernel_width:.3f}")
     print(f"  num_samples:  {num_samples}")

@@ -6,7 +6,9 @@ const labels={ru:["Результаты обучения","Практическ�
 const el=id=>document.getElementById(id),make=(tag,cls,txt)=>{const n=document.createElement(tag);if(cls)n.className=cls;if(txt!==undefined)n.textContent=txt;return n;};
 document.title="9.1.3 — "+data.title+" — AI Research DCH School";el("lesson-title").textContent=data.title;el("lesson-lead").textContent=data.lead;
 const out=el("lesson-outcomes");out.append(make("h2","",labels[0]));const ul=make("ul");data.outcomes.forEach(x=>ul.append(make("li","",x)));out.append(ul);
+let diagramCounter=0;
 function diagram(kind){
+const diagramId="lime-913-"+locale+"-"+kind+"-"+(++diagramCounter);
 if(!window.DCHLessonSVG||typeof window.DCHLessonSVG.render!=="function")throw new Error("Shared SVG renderer missing");
 const en=locale==="en",zh=locale==="zh";let nodes,title,description;
 if(kind==="flow"){
@@ -20,9 +22,9 @@ nodes=zh?[["原始输入 x","数值、类别及模型所需格式"],["映射与�
 }else{
 title=zh?"距离与权重":en?"Distance and proximity weights":"Расстояние и веса близости";
 description=zh?"距离越近，局部拟合中的权重通常越大":en?"Closer perturbations usually receive greater influence in local fitting":"Близкие возмущения обычно сильнее влияют на локальное обучение";
-return window.DCHLessonSVG.render({type:"lime-913-weights",layout:"plot",id:"lime-913-"+locale+"-weights",title,description,caption:description,scrollLabel:description,xLabel:zh?"与 x₀ 的距离":en?"Distance from x₀":"Расстояние от x₀",yLabel:zh?"邻近权重":en?"Proximity weight":"Вес близости",points:[[0.03,.98],[.12,.91],[.21,.77],[.3,.62],[.4,.46],[.5,.32],[.6,.2],[.7,.12],[.8,.07],[.9,.035],[.98,.015]],annotations:[{x:.17,y:.18,text:zh?"较近：权重较高":en?"Near: higher weight":"Близко: вес выше"},{x:.72,y:.78,text:zh?"较远：权重较低":en?"Far: lower weight":"Далеко: вес ниже"}]});
+return window.DCHLessonSVG.render({type:"lime-913-weights",layout:"plot",id:diagramId,title,description,caption:description,scrollLabel:description,xLabel:zh?"与 x₀ 的距离":en?"Distance from x₀":"Расстояние от x₀",yLabel:zh?"邻近权重":en?"Proximity weight":"Вес близости",points:[[0.03,.98],[.12,.91],[.21,.77],[.3,.62],[.4,.46],[.5,.32],[.6,.2],[.7,.12],[.8,.07],[.9,.035],[.98,.015]],annotations:[{x:.17,y:.18,text:zh?"较近：权重较高":en?"Near: higher weight":"Близко: вес выше"},{x:.72,y:.78,text:zh?"较远：权重较低":en?"Far: lower weight":"Далеко: вес ниже"}]});
 }
-return window.DCHLessonSVG.render({type:"lime-913-"+kind,layout:"grid",id:"lime-913-"+locale+"-"+kind,title,description,caption:description,scrollLabel:description,nodes:nodes.map((n,i)=>({id:kind+"-"+i,title:n[0],detail:n[1],tone:i===0?"accent":"surface"}))});
+return window.DCHLessonSVG.render({type:"lime-913-"+kind,layout:"grid",id:diagramId,title,description,caption:description,scrollLabel:description,nodes:nodes.map((n,i)=>({id:kind+"-"+i,title:n[0],detail:n[1],tone:i===0?"accent":"surface"}))});
 }
 const root=el("lesson-sections");data.sections.forEach(s=>{const section=make("section","xai-canonical-section");section.id="lime-913-"+s[0];section.append(make("h2","xai-canonical-section-title",s[1]));const body=make("div","xai-canonical-section-content");s[2].forEach(p=>body.append(make("p","",p)));if(s[3])body.append(diagram(s[3]));if(s[0]==="fit"){const f=make("div","formula");f.append(make("div","formula-expression","ξ(x₀) = argmin₍g∈G₎ Σᵢ wᵢ · L(f(zᵢ), g(z′ᵢ)) + Ω(g)"));f.append(make("p","formula-note",locale==="ru"?"Все обозначения определены в тексте; формула задаёт общую схему локального обучения.":locale==="zh"?"所有符号均已在正文定义；该公式表示局部学习的一般形式。":"All symbols are defined in the text; the expression gives the general local-fitting objective."));body.append(f);}section.append(body);root.append(section);});
 const p=data.practice,pr=el("lesson-practice");pr.append(make("h2","",labels[1]),make("h3","",p.title),make("p","",p.intro),make("h3","",labels[12]),make("p","",p.task),make("p","",labels[8]+": python -m pip install \"lime>=0.2.0.1\" scikit-learn numpy"));const pre=make("pre","language-python"),code=make("code","",lesson.practiceCode);pre.dataset.language="python";pre.append(code);pr.append(pre,make("p","",labels[9]+": python lessons/practice/a-9-1-3-lime-tabular.py"),make("h3","",labels[10]),make("p","",p.expected));

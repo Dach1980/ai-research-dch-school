@@ -136,7 +136,10 @@ function renderChart(spec){
 }
 function render(spec){
  if(!spec||!["flow","grid","plot","scatter","weighted-scatter","bars","table"].includes(spec.layout))throw new TypeError("Invalid typed SVG diagram specification");
- if(spec.layout==="weighted-scatter")return renderWeightedScatter(spec);\n if(spec.layout==="bars")return renderBars(spec);\n if(spec.layout==="table")return renderTable(spec);\n if(spec.layout==="plot"||spec.layout==="scatter")return renderChart(spec);
+ if(spec.layout==="weighted-scatter")return renderWeightedScatter(spec);
+ if(spec.layout==="bars")return renderBars(spec);
+ if(spec.layout==="table")return renderTable(spec);
+ if(spec.layout==="plot"||spec.layout==="scatter")return renderChart(spec);
  if(!Array.isArray(spec.nodes)||!spec.nodes.length)throw new TypeError("Node-based SVG diagrams require nodes");
  const ctx=measureContext();
  const nodeWidth=spec.layout==="flow"?142:300;

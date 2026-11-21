@@ -69,7 +69,7 @@ class Lesson913LIMETests(unittest.TestCase):
   self.assertIn("d(x₀, zᵢ)",self.renderer)
   self.assertIn("πₓ₀(zᵢ)",self.renderer)
   self.assertNotIn("Larger marker",self.shared)
-  self.assertIn("Marker size is illustrative",self.renderer)
+  self.assertIn("Schematic curve",self.renderer)
   self.assertIn("renderWeightedScatter(spec)",self.shared)
   for token in ("z₂","z₃","z₄"):
    self.assertIn(token,self.renderer)

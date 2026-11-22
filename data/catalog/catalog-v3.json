@@ -1,7 +1,7 @@
 {
   "schema_version": 3,
   "catalog_id": "dch-school-curriculum",
-  "catalog_version": "3.2.19-lesson-9-2-1-published",
+  "catalog_version": "3.2.20-lesson-9-2-2-review",
   "status": "migration_staging",
   "tracks": [
     {
@@ -4205,6 +4205,40 @@
         "ru": "Выбор окрестности и интерпретация результатов",
         "en": "Choosing the Neighbourhood and Interpreting Results",
         "zh": "邻域选择与结果解读"
+      },
+      "level": "intermediate"
+    },
+    {
+      "uid": "les-a-0181",
+      "track_uid": "trk-a",
+      "theme_uid": "thm-a-09",
+      "module_uid": "mod-a-09-02",
+      "code": "9.2.2",
+      "title": "Ограничения и устойчивость LIME",
+      "status": "review",
+      "access": "open",
+      "prerequisite_uids": [
+        "les-a-0180"
+      ],
+      "learning_outcomes": [
+        "Различать локальную верность, устойчивость и воспроизводимость объяснения.",
+        "Объяснять источники вариативности LIME и отделять их от изменений исходной модели.",
+        "Оценивать влияние коррелирующих признаков и нереалистичных возмущений.",
+        "Сравнивать наборы top-k с помощью Jaccard и ранги признаков с помощью Spearman.",
+        "Анализировать знаки, величины и разброс локальных коэффициентов.",
+        "Проводить повторные запуски и контролируемый анализ чувствительности.",
+        "Формулировать ограничения и документировать условия эксперимента."
+      ],
+      "content_state": "review",
+      "url_i18n": {
+        "ru": "lessons/a-9-2-2-les-a-0181.html",
+        "en": "lessons/a-9-2-2-les-a-0181-en.html",
+        "zh": "lessons/a-9-2-2-les-a-0181-zh.html"
+      },
+      "title_i18n": {
+        "ru": "Ограничения и устойчивость LIME",
+        "en": "LIME Limitations and Stability",
+        "zh": "LIME 的局限性与稳定性"
       },
       "level": "intermediate"
     }

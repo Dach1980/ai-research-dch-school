@@ -12,7 +12,7 @@ This directory is the canonical home for prompts used to create and revise lesso
 2. Open the lesson-specific prompt linked in the registry below.
 3. Ask the assistant to execute that exact repository prompt, for example:
 
-   `Создай урок по промпту docs/prompts/lessons/track-a/9.2.1-lime-neighborhood-selection-and-interpretation.md. Сначала проверь актуальное состояние main и стандарты проекта.`
+   `Создай урок по промпту docs/prompts/lessons/track-a/9.2.2-lime-limitations-and-stability.md. Сначала проверь актуальное состояние main и стандарты проекта.`
 
 4. The assistant must inspect the current repository before editing. The prompt is an instruction specification, not permission to bypass review, CI, or publication approval.
 

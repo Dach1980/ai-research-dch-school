@@ -29,15 +29,15 @@ class Lesson921LIMETests(unittest.TestCase):
         practice_payload = cls.data.split("practiceCode:", 1)[1].rsplit("};})();", 1)[0]
         cls.embedded_practice = json.loads(practice_payload)
 
-    def test_catalog_identity_sequence_prerequisite_and_review_state(self):
+    def test_catalog_identity_sequence_prerequisite_and_published_state(self):
         self.assertIsNotNone(self.lesson)
         self.assertEqual(self.lesson["code"], "9.2.1")
-        self.assertEqual(self.lesson["status"], "review")
-        self.assertEqual(self.lesson["content_state"], "localized")
+        self.assertEqual(self.lesson["status"], "published")
+        self.assertEqual(self.lesson["content_state"], "published")
         self.assertEqual(self.lesson["prerequisite_uids"], ["les-a-0179"])
         self.assertEqual(self.lesson["module_uid"], "mod-a-09-02")
         self.assertEqual(self.lesson["theme_uid"], "thm-a-09")
-        self.assertEqual(self.catalog["catalog_version"], "3.2.18-lesson-9-2-1-review")
+        self.assertEqual(self.catalog["catalog_version"], "3.2.19-lesson-9-2-1-published")
         self.assertEqual(self.embedded_practice, self.practice)
         self.assertFalse(any(item["code"] == "9.2.2" and item.get("status") == "review" for item in self.catalog["lessons"]))
 

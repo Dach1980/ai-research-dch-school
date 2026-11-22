@@ -145,9 +145,39 @@ function renderChart(spec){
  const viewport=document.createElement("div");viewport.className="pfi-diagram-viewport";viewport.setAttribute("role","region");viewport.setAttribute("aria-label",spec.scrollLabel||spec.title);viewport.tabIndex=0;viewport.append(root);figure.append(viewport);
  const caption=document.createElement("figcaption");caption.textContent=spec.caption;figure.append(caption);return figure;
 }
+function renderCards(spec){
+ if(!Array.isArray(spec.nodes)||spec.nodes.length<2)throw new TypeError("Card diagrams require at least two nodes");
+ const ctx=measureContext(),nodeWidth=310,nodes=spec.nodes.map(n=>prepareNode(ctx,n,nodeWidth));
+ const margin=24,colGap=28,rowGap=22,rows=[];
+ for(let i=0;i<nodes.length;i+=2)rows.push(Math.max(...nodes.slice(i,i+2).map(n=>n.height)));
+ const positions=nodes.map((node,i)=>({x:margin+(i%2)*(nodeWidth+colGap),y:margin+rows.slice(0,Math.floor(i/2)).reduce((a,b)=>a+b+rowGap,0),node}));
+ const width=margin*2+nodeWidth*2+colGap,height=margin*2+rows.reduce((a,b)=>a+b,0)+Math.max(0,rows.length-1)*rowGap;
+ const root=composeRoot(spec,positions,width,height);
+ const figure=document.createElement("figure");figure.className="pfi-figure pfi-figure--shared";
+ const viewport=document.createElement("div");viewport.className="pfi-diagram-viewport";viewport.setAttribute("role","region");viewport.setAttribute("aria-label",spec.scrollLabel||spec.title);viewport.tabIndex=0;viewport.append(root);figure.append(viewport);
+ const caption=document.createElement("figcaption");caption.textContent=spec.caption;figure.append(caption);return figure;
+}
+function composeRoot(spec,positions,width,height){
+ const root=svgEl("svg",{viewBox:"0 0 "+Math.ceil(width)+" "+Math.ceil(height),role:"img","aria-labelledby":spec.id+"-title "+spec.id+"-desc",width:Math.ceil(width)+"px",height:Math.ceil(height)+"px","data-diagram-type":spec.type,"data-diagram-renderer":"shared-v1"});
+ root.append(svgEl("title",{id:spec.id+"-title"},spec.title),svgEl("desc",{id:spec.id+"-desc"},spec.description));
+ const colors={surface:"var(--lds-surface)",line:"var(--lds-line)",ink:"var(--lds-ink)",muted:"var(--lds-muted)"};
+ positions.forEach(({x,y,node})=>{
+  const group=svgEl("g",{"data-node-id":node.id,"data-node-bounds":x+","+y+","+node.width+","+node.height});
+  const fill=node.tone==="bad"?"var(--lds-bad)":node.tone==="accent"?"var(--lds-accent)":colors.surface;
+  const ink=node.tone==="accent"?"var(--lds-accent-ink)":colors.ink;
+  group.append(svgEl("rect",{x,y,width:node.width,height:node.height,rx:12,fill,stroke:colors.line,"stroke-width":1.5}));
+  const block=node.titleLines.length*LINE+(node.bodyLines.length?8+node.bodyLines.length*19:0);
+  const start=y+(node.height-block)/2+16;
+  addTextLines(group,node.titleLines,x+PAD_X,start,15,700,ink,LINE);
+  if(node.bodyLines.length)addTextLines(group,node.bodyLines,x+PAD_X,start+node.titleLines.length*LINE+8,14,400,ink,19);
+  root.append(group);
+ });
+ return root;
+}
 function render(spec){
- if(!spec||!["flow","grid","plot","scatter","weighted-scatter","bars","table"].includes(spec.layout))throw new TypeError("Invalid typed SVG diagram specification");
+ if(!spec||!["flow","grid","plot","scatter","weighted-scatter","bars","table","cards","matrix"].includes(spec.layout))throw new TypeError("Invalid typed SVG diagram specification");
  if(spec.layout==="weighted-scatter")return renderWeightedScatter(spec);
+ if(spec.layout==="cards"||spec.layout==="matrix")return renderCards(spec);
  if(spec.layout==="bars")return renderBars(spec);
  if(spec.layout==="table")return renderTable(spec);
  if(spec.layout==="plot"||spec.layout==="scatter")return renderChart(spec);

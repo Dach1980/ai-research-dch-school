@@ -11,7 +11,7 @@ ROUTES = {
     "en": "lessons/a-9-2-2-les-a-0181-en.html",
     "zh": "lessons/a-9-2-2-les-a-0181-zh.html",
 }
-DIAGRAMS = ("matrix", "sources", "metrics")
+DIAGRAMS = ("matrix", "sources", "metrics", "runs")
 
 
 class Lesson922LIMETests(unittest.TestCase):
@@ -55,9 +55,10 @@ class Lesson922LIMETests(unittest.TestCase):
                     self.assertTrue(diagram["title"])
                     self.assertTrue(diagram["description"])
                     self.assertTrue(diagram["caption"])
-                    self.assertGreaterEqual(len(diagram["columns"]), 2)
-                    self.assertGreaterEqual(len(diagram["rows"]), 2)
-                    self.assertTrue(all(len(row) == len(diagram["columns"]) for row in diagram["rows"]))
+                    self.assertEqual(diagram["layout"], "matrix" if key == "matrix" else "cards")
+                    self.assertGreaterEqual(len(diagram["nodes"]), 2)
+                    self.assertTrue(all(node.get("title") and node.get("detail") for node in diagram["nodes"]))
+                    self.assertEqual(len({node["id"] for node in diagram["nodes"]}), len(diagram["nodes"]))
                 structure = (
                     [x[0] for x in content["sections"]],
                     [x[3] for x in content["sections"]],
@@ -111,7 +112,10 @@ class Lesson922LIMETests(unittest.TestCase):
     def test_renderer_uses_shared_components_and_no_local_shell_ownership(self):
         self.assertIn("DCHLessonSVG.render", self.renderer)
         self.assertIn("DCHLessonComponents.renderGlossary", self.renderer)
-        self.assertIn('layout:"table"', self.renderer)
+        self.assertIn('layout:diagramKey==="matrix"?"matrix":"cards"', self.renderer)
+        shared = (ROOT / "scripts/lesson-svg-renderer.js").read_text(encoding="utf-8")
+        self.assertIn("function renderCards", shared)
+        self.assertIn("function composeRoot", shared)
         self.assertIn('codeBlock("bash",data.practice.install)', self.renderer)
         self.assertIn('codeBlock("bash",data.practice.run)', self.renderer)
         self.assertIn('codeBlock("python",lesson.practiceCode)', self.renderer)

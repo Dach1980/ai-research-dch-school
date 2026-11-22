@@ -31,8 +31,8 @@ Each prompt should declare its own version and status near the top. A lesson's c
 | A | 8.1.1 — PDP — Partial Dependence Plot | [8.1.1-partial-dependence-plots.md](./lessons/track-a/8.1.1-partial-dependence-plots.md) | 1.0 | draft |
 | A | 9.1.2 — Local Surrogate Models | [9.1.2-local-surrogate-models.md](./lessons/track-a/9.1.2-local-surrogate-models.md) | 1.0 | approved; lesson accepted and published |
 | A | 9.1.3 — Как работает LIME | [9.1.3-how-lime-works.md](./lessons/track-a/9.1.3-how-lime-works.md) | 1.0 | approved; lesson accepted and published |
-| A | 9.2.1 — Выбор окрестности и интерпретация результатов | [9.2.1-lime-neighborhood-selection-and-interpretation.md](./lessons/track-a/9.2.1-lime-neighborhood-selection-and-interpretation.md) | 1.0 | draft — prepared; awaiting prompt approval |
-| A | 9.2.2 — Ограничения и устойчивость LIME | [9.2.2-lime-limitations-and-stability.md](./lessons/track-a/9.2.2-lime-limitations-and-stability.md) | 1.0 | draft — do not execute before 9.2.1 is completed and explicitly accepted |
+| A | 9.2.1 — Выбор окрестности и интерпретация результатов | [9.2.1-lime-neighborhood-selection-and-interpretation.md](./lessons/track-a/9.2.1-lime-neighborhood-selection-and-interpretation.md) | 1.0 | lesson accepted and published 2026-11-22; prompt retained as historical draft |
+| A | 9.2.2 — Ограничения и устойчивость LIME | [9.2.2-lime-limitations-and-stability.md](./lessons/track-a/9.2.2-lime-limitations-and-stability.md) | 1.1 | draft — prepared; 9.2.1 prerequisite accepted; execute only on explicit user request |
 
 ## Governance
 

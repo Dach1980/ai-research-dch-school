@@ -35,7 +35,8 @@ class Lesson922LIMETests(unittest.TestCase):
         self.assertEqual(self.lesson["theme_uid"], "thm-a-09")
         self.assertEqual(self.catalog["catalog_version"], "3.2.20-lesson-9-2-2-review")
         self.assertEqual(len({x["uid"] for x in self.catalog["lessons"]}), len(self.catalog["lessons"]))
-        module_codes = [x["code"] for x in self.catalog["lessons"] if x["module_uid"] == self.lesson["module_uid"]]\n        self.assertEqual(len(module_codes), len(set(module_codes)))
+        module_codes = [x["code"] for x in self.catalog["lessons"] if x["module_uid"] == self.lesson["module_uid"]]
+        self.assertEqual(len(module_codes), len(set(module_codes)))
 
     def test_three_locales_have_equivalent_structure(self):
         self.assertEqual(set(self.data["content"]), {"ru", "en", "zh"})

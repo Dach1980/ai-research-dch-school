@@ -57,7 +57,6 @@ def explain(training, names, classes, model, instance, class_id, width, seed):
         "weights": weights,
         "top": top.tolist(),
         "score": float(np.asarray(exp.score).reshape(-1)[0]),
-        "local_pred": float(np.asarray(exp.local_pred).reshape(-1)[class_id]),
     }
 
 

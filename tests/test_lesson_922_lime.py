@@ -29,7 +29,7 @@ class Lesson922LIMETests(unittest.TestCase):
         self.assertIsNotNone(self.lesson)
         self.assertEqual(self.lesson["code"], "9.2.2")
         self.assertEqual(self.lesson["status"], "review")
-        self.assertEqual(self.lesson["content_state"], "review")
+        self.assertEqual(self.lesson["content_state"], "localized")
         self.assertEqual(self.lesson["prerequisite_uids"], ["les-a-0180"])
         self.assertEqual(self.lesson["module_uid"], "mod-a-09-02")
         self.assertEqual(self.lesson["theme_uid"], "thm-a-09")

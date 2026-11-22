@@ -40,6 +40,7 @@ class Lesson922LIMETests(unittest.TestCase):
         self.assertEqual(len(module_codes), len(set(module_codes)))
 
     def test_three_locales_have_equivalent_structure(self):
+        self.assertEqual(self.data["illustration_schema_version"], 2)
         self.assertEqual(set(self.data["content"]), {"ru", "en", "zh"})
         reference = None
         for locale, content in self.data["content"].items():

@@ -1,251 +1,42 @@
 (function(global){
 "use strict";
 const NS="http://www.w3.org/2000/svg";
-const MIN_FONT=14, LINE=21, PAD_X=12, PAD_Y=14, GAP=24, MARGIN=24;
-function svgEl(name,attrs={},text){
- const el=document.createElementNS(NS,name);
- Object.entries(attrs).forEach(([k,v])=>el.setAttribute(k,String(v)));
- if(text!==undefined)el.textContent=text;
- return el;
+const W=720, PAD=24, LINE=22;
+function el(tag,attrs={},text){const n=document.createElementNS(NS,tag);Object.entries(attrs).forEach(([k,v])=>n.setAttribute(k,String(v)));if(text!==undefined)n.textContent=text;return n;}
+function wrap(text,max,font="16px system-ui, sans-serif"){
+ const c=document.createElement("canvas"),ctx=c.getContext("2d");ctx.font=font;
+ const words=String(text).split(/\s+/);const lines=[];let line="";
+ for(const word of words){let candidate=line?line+" "+word:word;if(line&&ctx.measureText(candidate).width>max){lines.push(line);line=word;}else line=candidate;}
+ if(line)lines.push(line);return lines;
 }
-function measureContext(){
- const canvas=document.createElement("canvas");
- const ctx=canvas.getContext("2d");
- if(!ctx)throw new Error("SVG renderer requires Canvas text measurement");
- return ctx;
-}
-function wrap(ctx,text,maxWidth,font){
- ctx.font=font;
- const words=String(text).split(/\s+/).flatMap(word=>{ if(ctx.measureText(word).width<=maxWidth)return [word]; const chars=Array.from(word),parts=[];let part=""; for(const char of chars){const next=part+char;if(part&&ctx.measureText(next).width>maxWidth){parts.push(part);part=char;}else part=next;} if(part)parts.push(part);return parts; });
- const lines=[];let line="";
- for(const word of words){
-  const candidate=line?line+" "+word:word;
-  if(line&&ctx.measureText(candidate).width>maxWidth){lines.push(line);line=word;}
-  else line=candidate;
- }
- if(line)lines.push(line);
- return lines.length?lines:[""];
-}
-function prepareNode(ctx,node,width){
- const titleFont="700 15px system-ui, sans-serif";
- const bodyFont="14px system-ui, sans-serif";
- const title=wrap(ctx,node.title,width-PAD_X*2,titleFont);
- const body=node.detail?wrap(ctx,node.detail,width-PAD_X*2,bodyFont):[];
- const height=PAD_Y*2+title.length*LINE+ (body.length?8+body.length*19:0);
- return {...node,width,height,titleLines:title,bodyLines:body};
-}
-function addTextLines(group,lines,x,y,fontSize,weight,color,lineHeight){
- const accent=String(color).includes("--lds-accent-ink");
- lines.forEach((line,i)=>group.append(svgEl("text",{x,y:y+i*lineHeight,"font-size":fontSize,"font-weight":weight,style:`fill:${color}${accent?" !important":""}`,"data-role":"node-text"},line)));
-}
-function chartFrame(spec){
- const width=760,height=430,left=112,right=710,top=74,bottom=326;
- const colors={surface:"var(--lds-surface)",line:"var(--lds-line)",ink:"var(--lds-ink)",muted:"var(--lds-muted)",accent:"var(--lds-accent)",good:"var(--lds-good)",bad:"var(--lds-bad)"};
- const root=svgEl("svg",{viewBox:"0 0 "+width+" "+height,role:"img","aria-labelledby":spec.id+"-title "+spec.id+"-desc",width:width+"px",height:height+"px","data-diagram-type":spec.type,"data-diagram-renderer":"shared-v1"});
- root.append(svgEl("title",{id:spec.id+"-title"},spec.title),svgEl("desc",{id:spec.id+"-desc"},spec.description));
- root.append(svgEl("path",{d:"M "+left+" "+top+" V "+bottom+" H "+right,fill:"none",stroke:colors.ink,"stroke-width":2}));
- [top+63,top+126,top+189].forEach(y=>root.append(svgEl("path",{d:"M "+left+" "+y+" H "+right,fill:"none",stroke:colors.line,"stroke-dasharray":"5 7"})));
- root.append(svgEl("text",{x:(left+right)/2,y:382,"text-anchor":"middle","font-size":17,fill:colors.ink},spec.xLabel||"x"));
- root.append(svgEl("text",{x:30,y:(top+bottom)/2,transform:"rotate(-90 30 "+((top+bottom)/2)+")","text-anchor":"middle","font-size":17,fill:colors.ink},spec.yLabel||"y"));
- return {root,width,height,left,right,top,bottom,colors};
-}
-function renderWeightedScatter(spec){
- const f=chartFrame(spec),{root,left,right,top,bottom,colors}=f;
- const points=Array.isArray(spec.points)?spec.points:[];
- const line=points.map((p,i)=>(i?"L ":"M ")+(left+p[0]*(right-left))+" "+(bottom-p[1]*(bottom-top))).join(" ");
- root.append(svgEl("path",{d:line,fill:"none",stroke:colors.accent,"stroke-width":3,"stroke-dasharray":"8 6","stroke-linecap":"round"}));
- points.forEach(p=>root.append(svgEl("circle",{cx:left+p[0]*(right-left),cy:bottom-p[1]*(bottom-top),r:4+Math.max(0,Math.min(1,p[2]||0))*9,fill:colors.good,opacity:.78,stroke:colors.surface,"stroke-width":1.5,"data-weight":p[2]})));
- return chartFigure(root,spec);
-}
-function renderBars(spec){
- const width=760,height=390,left=260,right=690,top=82,row=76,zero=left+(right-left)/2;
- const colors={surface:"var(--lds-surface)",line:"var(--lds-line)",ink:"var(--lds-ink)",muted:"var(--lds-muted)",accent:"var(--lds-accent)",good:"var(--lds-good)",bad:"var(--lds-bad)"};
- const root=svgEl("svg",{viewBox:"0 0 "+width+" "+height,role:"img","aria-labelledby":spec.id+"-title "+spec.id+"-desc",width:width+"px",height:height+"px","data-diagram-type":spec.type,"data-diagram-renderer":"shared-v1"});
- root.append(svgEl("title",{id:spec.id+"-title"},spec.title),svgEl("desc",{id:spec.id+"-desc"},spec.description));
- root.append(svgEl("path",{d:"M "+zero+" "+(top-22)+" V "+(top+row*spec.bars.length-12),stroke:colors.ink,"stroke-width":2}));
- spec.bars.forEach((b,i)=>{
-  const y=top+i*row,w=Math.abs(b.value)*850,x=b.value>=0?zero:zero-w;
-  root.append(svgEl("text",{x:left-14,y:y+19,"text-anchor":"end","font-size":16,fill:colors.ink},b.label));
-  root.append(svgEl("rect",{x,y:y,width:w,height:30,rx:5,fill:b.value>=0?colors.good:colors.bad,opacity:.9}));
-  root.append(svgEl("text",{x:b.value>=0?x+w+8:x-8,y:y+21,"text-anchor":b.value>=0?"start":"end","font-size":15,"font-weight":700,fill:colors.ink},(b.value>0?"+":"")+b.value.toFixed(2)));
- });
- root.append(svgEl("text",{x:zero,y:height-25,"text-anchor":"middle","font-size":14,fill:colors.muted},spec.zeroLabel||"0"));
- return chartFigure(root,spec);
-}
-function renderTable(spec){
- const width=760,rowH=48,top=82,left=20,right=width-20,available=right-left;
- const columns=Array.isArray(spec.columns)?spec.columns:[];
- const count=Math.max(1,columns.length),cellW=available/count;
- const height=top+rowH*(spec.rows.length+1)+30;
- const colors={surface:"var(--lds-surface)",line:"var(--lds-line)",ink:"var(--lds-ink)",muted:"var(--lds-muted)",accent:"var(--lds-accent)"};
- const root=svgEl("svg",{viewBox:"0 0 "+width+" "+height,role:"img","aria-labelledby":spec.id+"-title "+spec.id+"-desc",width:width+"px",height:height+"px","data-diagram-type":spec.type,"data-diagram-renderer":"shared-v1"});
- root.append(svgEl("title",{id:spec.id+"-title"},spec.title),svgEl("desc",{id:spec.id+"-desc"},spec.description));
- root.append(svgEl("rect",{x:left,y:top,width:available,height:rowH,rx:8,fill:colors.accent,opacity:.13}));
- columns.forEach((value,i)=>root.append(svgEl("text",{x:left+i*cellW+10,y:top+30,"font-size":count>3?13:15,"font-weight":700,fill:colors.ink},value)));
- spec.rows.forEach((row,i)=>{
-  const y=top+rowH*(i+1);
-  root.append(svgEl("path",{d:"M "+left+" "+y+" H "+right,stroke:colors.line}));
-  row.forEach((value,j)=>root.append(svgEl("text",{x:left+j*cellW+10,y:y+30,"font-size":count>3?13:15,"font-weight":j===0?400:600,fill:colors.ink},String(value))));
- });
- for(let i=1;i<count;i++)root.append(svgEl("path",{d:"M "+(left+i*cellW)+" "+top+" V "+(top+rowH*(spec.rows.length+1)),stroke:colors.line,opacity:.55}));
- return chartFigure(root,spec);
-}
-function chartFigure(root,spec){
- const figure=document.createElement("figure");figure.className="pfi-figure pfi-figure--shared";
- const viewport=document.createElement("div");viewport.className="pfi-diagram-viewport";viewport.setAttribute("role","region");viewport.setAttribute("aria-label",spec.scrollLabel||spec.title);viewport.tabIndex=0;viewport.append(root);figure.append(viewport);
- const caption=document.createElement("figcaption");caption.textContent=spec.caption;figure.append(caption);return figure;
-}
-function renderChart(spec){
- const width=760,height=430,left=96,right=700,top=82,bottom=326;
- const colors={surface:"var(--lds-surface)",line:"var(--lds-line)",ink:"var(--lds-ink)",muted:"var(--lds-muted)",accent:"var(--lds-accent)",good:"var(--lds-good)",bad:"var(--lds-bad)"};
- const root=svgEl("svg",{viewBox:"0 0 "+width+" "+height,role:"img","aria-labelledby":spec.id+"-title "+spec.id+"-desc",width:width+"px",height:height+"px","data-diagram-type":spec.type,"data-diagram-renderer":"shared-v1"});
- root.append(svgEl("title",{id:spec.id+"-title"},spec.title),svgEl("desc",{id:spec.id+"-desc"},spec.description));
- root.append(svgEl("path",{d:"M "+left+" "+top+" V "+bottom+" H "+right,fill:"none",stroke:colors.ink,"stroke-width":2}));
- [top+62,top+124,top+186].forEach(y=>root.append(svgEl("path",{d:"M "+left+" "+y+" H "+right,fill:"none",stroke:colors.line,"stroke-dasharray":"5 7"})));
- if(spec.layout==="plot"){
-  const points=Array.isArray(spec.points)?spec.points:[];
-  const path=points.map((p,i)=>(i?"L ":"M ")+(left+p[0]*(right-left))+" "+(bottom-p[1]*(bottom-top))).join(" ");
-  root.append(svgEl("path",{d:path,fill:"none",stroke:colors.accent,"stroke-width":5,"stroke-linecap":"round","stroke-linejoin":"round"}));
-  points.filter((_,i)=>i===2||i===5).forEach(p=>root.append(svgEl("circle",{cx:left+p[0]*(right-left),cy:bottom-p[1]*(bottom-top),r:7,fill:colors.good})));
-  (spec.annotations||[]).forEach(a=>{
-   const x=Math.max(left,Math.min(right-210,left+a.x*(right-left))),y=Math.max(48,Math.min(bottom-24,bottom-a.y*(bottom-top)-20));
-   root.append(svgEl("rect",{x,y,width:205,height:36,rx:8,fill:colors.surface,stroke:colors.line}));
-   root.append(svgEl("text",{x:x+102,y:y+23,"text-anchor":"middle","font-size":14,fill:colors.ink},a.text));
-  });
-  if(spec.sparseLabel)root.append(svgEl("text",{x:right-120,y:bottom-18,"font-size":14,fill:colors.muted},spec.sparseLabel));
- }else{
-  if(spec.neighborhood){
-   const n=spec.neighborhood,cx=left+n.center[0]*(right-left),cy=bottom-n.center[1]*(bottom-top);
-   root.append(svgEl("ellipse",{cx,cy,rx:n.radius*(right-left),ry:n.radius*(bottom-top),fill:colors.accent,opacity:.12,stroke:colors.accent,"stroke-width":3,"stroke-dasharray":"9 6","data-role":"neighborhood-boundary"}));
-   root.append(svgEl("text",{x:cx+8,y:cy-n.radius*(bottom-top)+22,"font-size":15,"font-weight":700,fill:colors.accent,"data-role":"neighborhood-label"},n.label||"Neighborhood"));
-   (n.distant||[]).forEach(p=>root.append(svgEl("circle",{cx:left+p[0]*(right-left),cy:bottom-p[1]*(bottom-top),r:6,fill:colors.bad,opacity:.9,"data-role":"distant-point"})));
-   (n.nearby||[]).forEach(p=>root.append(svgEl("circle",{cx:left+p[0]*(right-left),cy:bottom-p[1]*(bottom-top),r:6.5,fill:colors.good,opacity:.9,"data-role":"nearby-point"})));
-   root.append(svgEl("circle",{cx,cy,r:11,fill:colors.accent,stroke:colors.surface,"stroke-width":3,"data-role":"explained-instance"}));
-   root.append(svgEl("text",{x:cx+15,y:cy-13,"font-size":17,"font-weight":700,fill:colors.accent,"data-role":"instance-label"},"x₀"));
-  }else if(Array.isArray(spec.points)&&spec.center){
-   const cx=left+spec.center[0]*(right-left),cy=bottom-spec.center[1]*(bottom-top),radius=spec.neighborhoodRadius||.34;
-   root.append(svgEl("ellipse",{cx,cy,rx:radius*(right-left),ry:radius*(bottom-top),fill:colors.accent,opacity:.09,stroke:colors.accent,"stroke-width":2,"stroke-dasharray":"8 7","data-role":"perturbation-region"}));
-   spec.points.forEach(p=>root.append(svgEl("circle",{cx:left+p[0]*(right-left),cy:bottom-p[1]*(bottom-top),r:6.5,fill:colors.good,opacity:.85,"data-role":"perturbed-sample"})));
-   root.append(svgEl("circle",{cx,cy,r:11,fill:colors.accent,stroke:colors.surface,"stroke-width":3,"data-role":"explained-instance"}));
-   root.append(svgEl("text",{x:cx+14,y:cy-12,"font-size":17,"font-weight":700,fill:colors.accent,"data-role":"instance-label"},"x₀"));
-   const legendY=46;
-   root.append(svgEl("circle",{cx:150,cy:legendY,r:6,fill:colors.accent}),svgEl("text",{x:165,y:legendY+5,"font-size":15,fill:colors.ink},spec.centerLabel||"Explained instance"));
-   root.append(svgEl("circle",{cx:420,cy:legendY,r:6,fill:colors.good}),svgEl("text",{x:435,y:legendY+5,"font-size":15,fill:colors.ink},spec.pointsLabel||"Perturbed samples"));
-  }else{
-   (spec.observed||[]).forEach(p=>root.append(svgEl("circle",{cx:left+p[0]*(right-left),cy:bottom-p[1]*(bottom-top),r:5.5,fill:colors.good,opacity:.78})));
-   (spec.synthetic||[]).forEach(p=>root.append(svgEl("circle",{cx:left+p[0]*(right-left),cy:bottom-p[1]*(bottom-top),r:6,fill:colors.bad,opacity:.9})));
-   const legendY=46;
-   root.append(svgEl("circle",{cx:130,cy:legendY,r:6,fill:colors.good}),svgEl("text",{x:145,y:legendY+5,"font-size":15,fill:colors.ink},spec.observedLabel||"Observed"));
-   root.append(svgEl("circle",{cx:390,cy:legendY,r:6,fill:colors.bad}),svgEl("text",{x:405,y:legendY+5,"font-size":15,fill:colors.ink},spec.syntheticLabel||"Synthetic"));
-  }
- }
- root.append(svgEl("text",{x:(left+right)/2,y:382,"text-anchor":"middle","font-size":17,fill:colors.ink},spec.xLabel||"Feature value"));
- root.append(svgEl("text",{x:26,y:(top+bottom)/2,transform:"rotate(-90 26 "+((top+bottom)/2)+")","text-anchor":"middle","font-size":17,fill:colors.ink},spec.yLabel||"Model response"));
- const figure=document.createElement("figure");figure.className="pfi-figure pfi-figure--shared";
- const viewport=document.createElement("div");viewport.className="pfi-diagram-viewport";viewport.setAttribute("role","region");viewport.setAttribute("aria-label",spec.scrollLabel||spec.title);viewport.tabIndex=0;viewport.append(root);figure.append(viewport);
- const caption=document.createElement("figcaption");caption.textContent=spec.caption;figure.append(caption);return figure;
-}
-function renderCards(spec){
- if(!Array.isArray(spec.nodes)||spec.nodes.length<2)throw new TypeError("Card diagrams require at least two nodes");
- const ctx=measureContext(),nodeWidth=310,nodes=spec.nodes.map(n=>prepareNode(ctx,n,nodeWidth));
- const margin=24,colGap=28,rowGap=22,rows=[];
- for(let i=0;i<nodes.length;i+=2)rows.push(Math.max(...nodes.slice(i,i+2).map(n=>n.height)));
- const positions=nodes.map((node,i)=>({x:margin+(i%2)*(nodeWidth+colGap),y:margin+rows.slice(0,Math.floor(i/2)).reduce((a,b)=>a+b+rowGap,0),node}));
- const width=margin*2+nodeWidth*2+colGap,height=margin*2+rows.reduce((a,b)=>a+b,0)+Math.max(0,rows.length-1)*rowGap;
- const root=composeRoot(spec,positions,width,height);
- const figure=document.createElement("figure");figure.className="pfi-figure pfi-figure--shared";
- const viewport=document.createElement("div");viewport.className="pfi-diagram-viewport";viewport.setAttribute("role","region");viewport.setAttribute("aria-label",spec.scrollLabel||spec.title);viewport.tabIndex=0;viewport.append(root);figure.append(viewport);
- const caption=document.createElement("figcaption");caption.textContent=spec.caption;figure.append(caption);return figure;
-}
-function composeRoot(spec,positions,width,height){
- const root=svgEl("svg",{viewBox:"0 0 "+Math.ceil(width)+" "+Math.ceil(height),role:"img","aria-labelledby":spec.id+"-title "+spec.id+"-desc",width:Math.ceil(width)+"px",height:Math.ceil(height)+"px","data-diagram-type":spec.type,"data-diagram-renderer":"shared-v1"});
- root.append(svgEl("title",{id:spec.id+"-title"},spec.title),svgEl("desc",{id:spec.id+"-desc"},spec.description));
- const colors={surface:"var(--lds-surface)",line:"var(--lds-line)",ink:"var(--lds-ink)",muted:"var(--lds-muted)"};
- positions.forEach(({x,y,node})=>{
-  const group=svgEl("g",{"data-node-id":node.id,"data-node-bounds":x+","+y+","+node.width+","+node.height});
-  const fill=node.tone==="bad"?"var(--lds-bad)":node.tone==="accent"?"var(--lds-accent)":colors.surface;
-  const ink=node.tone==="accent"?"var(--lds-accent-ink)":colors.ink;
-  group.append(svgEl("rect",{x,y,width:node.width,height:node.height,rx:12,fill,stroke:colors.line,"stroke-width":1.5}));
-  const block=node.titleLines.length*LINE+(node.bodyLines.length?8+node.bodyLines.length*19:0);
-  const start=y+(node.height-block)/2+16;
-  addTextLines(group,node.titleLines,x+PAD_X,start,15,700,ink,LINE);
-  if(node.bodyLines.length)addTextLines(group,node.bodyLines,x+PAD_X,start+node.titleLines.length*LINE+8,14,400,ink,19);
-  root.append(group);
- });
- return root;
-}
-function render(spec){
- if(!spec||!["flow","grid","plot","scatter","weighted-scatter","bars","table","cards","matrix"].includes(spec.layout))throw new TypeError("Invalid typed SVG diagram specification");
- if(spec.layout==="weighted-scatter")return renderWeightedScatter(spec);
- if(spec.layout==="cards"||spec.layout==="matrix")return renderCards(spec);
- if(spec.layout==="bars")return renderBars(spec);
- if(spec.layout==="table")return renderTable(spec);
- if(spec.layout==="plot"||spec.layout==="scatter")return renderChart(spec);
- if(!Array.isArray(spec.nodes)||!spec.nodes.length)throw new TypeError("Node-based SVG diagrams require nodes");
- const ctx=measureContext();
- const nodeWidth=spec.layout==="flow"?142:300;
- const nodes=spec.nodes.map(n=>prepareNode(ctx,n,nodeWidth));
- let positions=[];
- if(spec.layout==="flow"){
-  let x=MARGIN;const maxH=Math.max(...nodes.map(n=>n.height));
-  nodes.forEach(n=>{positions.push({x,y:MARGIN,node:{...n,height:maxH}});x+=nodeWidth+GAP;});
-  const width=x-GAP+MARGIN,height=maxH+MARGIN*2;
-  return compose(spec,nodes,positions,width,height,ctx);
- }
- const colGap=32,rowGap=24,cols=2;
- const colWidths=[nodeWidth,nodeWidth],rowHeights=[];
- for(let i=0;i<nodes.length;i+=cols)rowHeights.push(Math.max(...nodes.slice(i,i+cols).map(n=>n.height)));
- let y=MARGIN;
- nodes.forEach((n,i)=>{
-  const row=Math.floor(i/cols),col=i%cols;
-  const rowY=MARGIN+rowHeights.slice(0,row).reduce((a,b)=>a+b+rowGap,0);
-  const visualCol=spec.sequence&&spec.serpentine&&row%2===1?1-col:col;
-  positions.push({x:MARGIN+visualCol*(nodeWidth+colGap),y:rowY,node:n});
- });
- const width=MARGIN*2+nodeWidth*2+colGap;
- const height=MARGIN*2+rowHeights.reduce((a,b)=>a+b,0)+Math.max(0,rowHeights.length-1)*rowGap;
- return compose(spec,nodes,positions,width,height,ctx);
-}
-function compose(spec,nodes,positions,width,height){
- const root=svgEl("svg",{viewBox:`0 0 ${Math.ceil(width)} ${Math.ceil(height)}`,role:"img","aria-labelledby":spec.id+"-title "+spec.id+"-desc",width:String(Math.ceil(width))+"px",height:Math.ceil(height)+"px","data-diagram-type":spec.type,"data-diagram-renderer":"shared-v1"});
- root.append(svgEl("title",{id:spec.id+"-title"},spec.title),svgEl("desc",{id:spec.id+"-desc"},spec.description));
- const colors={surface:"var(--lds-surface)",line:"var(--lds-line)",ink:"var(--lds-ink)",muted:"var(--lds-muted)",accent:"var(--lds-accent)",good:"var(--lds-good)",bad:"var(--lds-bad)"};
- if(spec.layout==="grid"&&spec.connectSequence===true){
-  positions.slice(0,-1).forEach((pos,i)=>{
-   const next=positions[i+1],sameRow=Math.abs(pos.y-next.y)<1;
-   let d;
-   if(sameRow){
-    const forward=next.x>pos.x,y=pos.y+pos.node.height/2;
-    const sx=forward?pos.x+pos.node.width+3:pos.x-3,ex=forward?next.x-10:next.x+next.node.width+10;
-    d=`M ${sx} ${y} H ${ex} m ${forward?-7:7} -6 l ${forward?7:-7} 6 ${forward?-7:7} 6`;
-   }else{
-    const sx=pos.x+pos.node.width/2,sy=pos.y+pos.node.height+3,ex=next.x+next.node.width/2,ey=next.y-9;
-    d=`M ${sx} ${sy} V ${ey} m -6 -7 l 6 7 -6 7`;
-   }
-   root.append(svgEl("path",{d,fill:"none",stroke:colors.accent,"stroke-width":2.5,"stroke-linecap":"square","stroke-linejoin":"miter","data-role":"workflow-arrow"}));
-  });
- }
- positions.forEach(({x,y,node},i)=>{
-  const group=svgEl("g",{"data-node-id":node.id,"data-node-bounds":`${x},${y},${node.width},${node.height}`,"data-tone":node.tone||"surface"});
-  group.append(svgEl("rect",{x,y,width:node.width,height:node.height,rx:12,fill:node.tone==="bad"?colors.bad:node.tone==="accent"?colors.accent:colors.surface,stroke:colors.line,"stroke-width":1.5}));
-  const titleBlock=node.titleLines.length*LINE,bodyBlock=node.bodyLines.length?8+node.bodyLines.length*19:0;
-  const contentHeight=titleBlock+bodyBlock;
-  const titleY=y+(node.height-contentHeight)/2+16;
-  const textInk=node.tone==="accent"?"var(--lds-accent-ink)":colors.ink;
-  const textMuted=node.tone==="accent"?"var(--lds-accent-ink)":colors.muted;
-  addTextLines(group,node.titleLines,x+PAD_X,titleY,15,700,textInk,LINE);
-  if(node.bodyLines.length)addTextLines(group,node.bodyLines,x+PAD_X,titleY+titleBlock+8,14,400,textMuted,19);
-  root.append(group);
-  if(spec.layout==="flow"&&i<positions.length-1){
-   const next=positions[i+1],midY=MARGIN+node.height/2;
-   root.append(svgEl("path",{d:`M ${x+node.width+5} ${midY} H ${next.x-8} m -8 -7 l 8 7 -8 7`,fill:"none",stroke:colors.accent,"stroke-width":2,"stroke-linecap":"round","stroke-linejoin":"round"}));
-  }
- });
- const figure=document.createElement("figure");figure.className="pfi-figure pfi-figure--shared";
- const viewport=document.createElement("div");viewport.className="pfi-diagram-viewport";viewport.setAttribute("role","region");viewport.setAttribute("aria-label",spec.scrollLabel||spec.title);viewport.tabIndex=0;
- viewport.append(root);figure.append(viewport);
- const caption=document.createElement("figcaption");caption.textContent=spec.caption;figure.append(caption);
- return figure;
-}
-global.DCHLessonSVG={version:"1.0.0",render};
-})(window);
+function text(g,str,x,y,max,opts={}){const size=opts.size||16,weight=opts.weight||400,color=opts.color||"var(--lds-ink)",lh=opts.line||21;const lines=wrap(str,max,weight+" "+size+"px system-ui, sans-serif");lines.forEach((s,i)=>g.append(el("text",{x,y:y+i*lh,"font-size":size,"font-weight":weight,fill:color},s)));return lines.length*lh;}
+function rect(g,x,y,w,h,fill="var(--lds-surface)",stroke="var(--lds-line)",r=12){g.append(el("rect",{x,y,width:w,height:h,rx:r,fill,stroke,"stroke-width":1.5}));}
+function line(g,x1,y1,x2,y2,color="var(--lds-line)",width=2){g.append(el("path",{d:"M "+x1+" "+y1+" L "+x2+" "+y2,fill:"none",stroke:color,"stroke-width":width,"stroke-linecap":"round"}));}
+function arrow(g,x1,y1,x2,y2){line(g,x1,y1,x2,y2,"var(--lds-accent)",2);g.append(el("path",{d:"M "+(x2-7)+" "+(y2-5)+" L "+x2+" "+y2+" L "+(x2-7)+" "+(y2+5),fill:"none",stroke:"var(--lds-accent)","stroke-width":2}));}
+function base(spec,height){const root=el("svg",{viewBox:"0 0 "+W+" "+height,width:W+"px",height:height+"px",role:"img","aria-labelledby":spec.id+"-title "+spec.id+"-desc","data-diagram-type":spec.type,"data-diagram-renderer":"shared-v2"});root.append(el("title",{id:spec.id+"-title"},spec.title),el("desc",{id:spec.id+"-desc"},spec.description));return root;}
+function figure(root,spec){const f=document.createElement("figure");f.className="pfi-figure pfi-figure--shared";const v=document.createElement("div");v.className="pfi-diagram-viewport";v.setAttribute("role","region");v.setAttribute("aria-label",spec.scrollLabel||spec.title);v.tabIndex=0;v.append(root);f.append(v);const cap=document.createElement("figcaption");cap.textContent=spec.caption;f.append(cap);return f;}
+function matrix(s){const root=base(s,560),d=s.diagramData;const x0=116,y0=104,cw=270,ch=170,gap=18;
+ text(root,d.y,22,300,500,{size:15,weight:700});
+ text(root,d.x,250,548,460,{size:15,weight:700});
+ const fills=["var(--lds-good)","var(--lds-accent)","var(--lds-bad)","var(--lds-surface)"];
+ d.cells.forEach((c,i)=>{const col=i%2,row=Math.floor(i/2),x=x0+col*(cw+gap),y=y0+row*(ch+gap);rect(root,x,y,cw,ch,fills[i], "var(--lds-line)");let yy=y+30;yy+=text(root,c.title,x+15,yy,cw-30,{size:16,weight:700,color:i===1?"var(--lds-accent-ink)":"var(--lds-ink)"});yy+=10;text(root,c.detail,x+15,yy,cw-30,{size:15,color:i===1?"var(--lds-accent-ink)":"var(--lds-ink)",line:20});});
+ text(root,d.yHigh,62,112,70,{size:13,weight:700});text(root,d.yLow,62,472,70,{size:13,weight:700});text(root,d.xLow,116,520,160,{size:13});text(root,d.xHigh,545,520,160,{size:13});
+ line(root,100,455,100,125,"var(--lds-ink)",2);arrow(root,100,125,100,113);line(root,116,500,680,500,"var(--lds-ink)",2);arrow(root,680,500,692,500);
+ return figure(root,s);}
+function causal(s){const d=s.diagramData,root=base(s,700),cols=[24,250,492],widths=[202,220,204],rowH=91,start=92;
+ d.headers.forEach((h,i)=>{rect(root,cols[i],30,widths[i],42,"var(--lds-accent)","var(--lds-accent)",8);text(root,h,cols[i]+10,57,widths[i]-20,{size:15,weight:700,color:"var(--lds-accent-ink)"});});
+ d.rows.forEach((r,i)=>{const y=start+i*rowH;rect(root,cols[0],y,widths[0],70);text(root,r[0],cols[0]+12,y+27,widths[0]-24,{size:15,weight:700});rect(root,cols[1],y,widths[1],70,"var(--lds-surface-secondary)");text(root,r[1],cols[1]+12,y+23,widths[1]-24,{size:14,line:18});rect(root,cols[2],y,widths[2],70);text(root,r[2],cols[2]+12,y+23,widths[2]-24,{size:14,line:18});arrow(root,cols[0]+widths[0]+5,y+35,cols[1]-7,y+35);arrow(root,cols[1]+widths[1]+5,y+35,cols[2]-7,y+35);});
+ return figure(root,s);}
+function comparison(s){const d=s.diagramData,root=base(s,790);text(root,d.tableTitle,24,34,670,{size:17,weight:700});const x=[24,300,465],w=[276,165,165],top=58,rh=38;
+ d.columns.forEach((v,i)=>{rect(root,x[i],top,w[i],rh,"var(--lds-accent)","var(--lds-accent)",6);text(root,v,x[i]+9,top+25,w[i]-18,{size:14,weight:700,color:"var(--lds-accent-ink)"});});
+ d.rows.forEach((r,i)=>{const y=top+rh*(i+1);r.forEach((v,j)=>{rect(root,x[j],y,w[j],rh,"var(--lds-surface)","var(--lds-line)",3);text(root,v,x[j]+9,y+25,w[j]-18,{size:14,weight:j?600:400});});});
+ const cards=[["jaccard",24,290],["spearman",368,290],["coeff",24,480],["fidelity",368,480]];
+ cards.forEach(([key,x0,y])=>{rect(root,x0,y,328,170);text(root,d[key],x0+13,y+27,300,{size:16,weight:700});const body=d[key+"Text"]||d[key+"Formula"];text(root,body,x0+13,y+55,300,{size:14,line:19});if(key==="jaccard")text(root,d.jaccardFormula,x0+13,y+135,300,{size:14,weight:700,color:"var(--lds-accent)"});});
+ return figure(root,s);}
+function experiment(s){const d=s.diagramData,root=base(s,650);rect(root,140,24,440,82,"var(--lds-accent)","var(--lds-accent)");text(root,d.object,160,55,400,{size:17,weight:700,color:"var(--lds-accent-ink)"});text(root,d.prediction,160,82,400,{size:14,color:"var(--lds-accent-ink)"});
+ const x=[24,368];[d.runA,d.runB].forEach((label,i)=>{const xx=x[i];arrow(root,360,108,360,132);rect(root,xx,140,328,192);text(root,label,xx+14,169,300,{size:17,weight:700});text(root,i===0?d.sampleA:d.sampleB,xx+14,202,300,{size:14});rect(root,xx+14,220,300,91,"var(--lds-surface-secondary)");text(root,i===0?d.featuresA:d.featuresB,xx+26,252,276,{size:16,weight:700});text(root,i===0?d.rankA:d.rankB,xx+26,280,276,{size:14});});
+ rect(root,24,365,672,110);text(root,d.compare,42,395,630,{size:17,weight:700});text(root,d.compareText,42,428,630,{size:15,line:21});
+ rect(root,24,500,672,120,"var(--lds-surface-secondary)");text(root,d.conclusion,42,532,630,{size:17,weight:700});text(root,d.conclusionText,42,565,630,{size:15,line:21});
+ return figure(root,s);}
+function render(spec){if(!spec||!spec.layout)throw new TypeError("Missing diagram layout");if(spec.layout==="matrix")return matrix(spec);if(spec.layout==="causal-flow")return causal(spec);if(spec.layout==="comparison-table")return comparison(spec);if(spec.layout==="experiment-flow")return experiment(spec);throw new TypeError("Unsupported SVG layout: "+spec.layout);}
+global.DCHLessonSVG={version:"2.0.0",render};})(window);

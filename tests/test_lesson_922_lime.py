@@ -12,6 +12,7 @@ ROUTES = {
     "zh": "lessons/a-9-2-2-les-a-0181-zh.html",
 }
 DIAGRAMS = ("matrix", "sources", "metrics", "runs")
+LAYOUTS = {"matrix": "matrix", "sources": "causal-flow", "metrics": "comparison-table", "runs": "experiment-flow"}
 
 
 class Lesson922LIMETests(unittest.TestCase):
@@ -55,10 +56,20 @@ class Lesson922LIMETests(unittest.TestCase):
                     self.assertTrue(diagram["title"])
                     self.assertTrue(diagram["description"])
                     self.assertTrue(diagram["caption"])
-                    self.assertEqual(diagram["layout"], "matrix" if key == "matrix" else "cards")
-                    self.assertGreaterEqual(len(diagram["nodes"]), 2)
-                    self.assertTrue(all(node.get("title") and node.get("detail") for node in diagram["nodes"]))
-                    self.assertEqual(len({node["id"] for node in diagram["nodes"]}), len(diagram["nodes"]))
+                    self.assertEqual(diagram["layout"], LAYOUTS[key])
+                    if key == "matrix":
+                        self.assertEqual(len(diagram["cells"]), 4)
+                        self.assertTrue(diagram.get("x") and diagram.get("y"))
+                    elif key == "sources":
+                        self.assertEqual(len(diagram["rows"]), 6)
+                        self.assertEqual(len(diagram["headers"]), 3)
+                    elif key == "metrics":
+                        self.assertEqual(len(diagram["rows"]), 5)
+                        self.assertIn("J = 4/6", diagram["jaccardFormula"])
+                        self.assertTrue(all(diagram.get(k) for k in ("jaccard", "spearman", "coeff", "fidelity")))
+                    elif key == "runs":
+                        self.assertTrue(all(diagram.get(k) for k in ("object", "prediction", "runA", "runB", "compare", "conclusion")))
+                        self.assertNotEqual(diagram["featuresA"], diagram["featuresB"])
                 structure = (
                     [x[0] for x in content["sections"]],
                     [x[3] for x in content["sections"]],
@@ -112,10 +123,14 @@ class Lesson922LIMETests(unittest.TestCase):
     def test_renderer_uses_shared_components_and_no_local_shell_ownership(self):
         self.assertIn("DCHLessonSVG.render", self.renderer)
         self.assertIn("DCHLessonComponents.renderGlossary", self.renderer)
-        self.assertIn('layout:diagramKey==="matrix"?"matrix":"cards"', self.renderer)
+        self.assertIn("layout:spec.layout", self.renderer)
+        self.assertIn("diagramData:spec", self.renderer)
         shared = (ROOT / "scripts/lesson-svg-renderer.js").read_text(encoding="utf-8")
-        self.assertIn("function renderCards", shared)
-        self.assertIn("function composeRoot", shared)
+        for layout in ("matrix", "causal-flow", "comparison-table", "experiment-flow"):
+            self.assertIn(layout, shared)
+        self.assertIn("function causal", shared)
+        self.assertIn("function comparison", shared)
+        self.assertIn("function experiment", shared)
         self.assertIn('codeBlock("bash",data.practice.install)', self.renderer)
         self.assertIn('codeBlock("bash",data.practice.run)', self.renderer)
         self.assertIn('codeBlock("python",lesson.practiceCode)', self.renderer)

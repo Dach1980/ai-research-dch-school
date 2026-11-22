@@ -178,6 +178,10 @@ jobs:
         run: python -m unittest discover -s tests -p 'test_lesson_922_lime.py' -v
       - name: Check lesson 9.2.2 JavaScript syntax
         run: node --check lessons/data/xai-09-lime-922.js && node --check scripts/xai-lime-922-lesson.js
+      - name: Execute lesson 9.2.2 Python lab with pinned LIME version
+        run: |
+          python -m pip install "lime==0.2.0.1" scikit-learn numpy scipy
+          python lessons/practice/a-9-2-2-lime-stability.py
       - name: Test lesson 9.2.1 LIME neighbourhood, localization and Python lab
         run: python -m unittest discover -s tests -p 'test_lesson_921_lime.py' -v
       - name: Check lesson 9.2.1 JavaScript syntax

@@ -1,7 +1,7 @@
 {
   "schema_version": 3,
   "catalog_id": "dch-school-curriculum",
-  "catalog_version": "3.2.18-lesson-9-2-1-review",
+  "catalog_version": "3.2.19-lesson-9-2-1-published",
   "status": "migration_staging",
   "tracks": [
     {
@@ -4181,7 +4181,7 @@
       "module_uid": "mod-a-09-02",
       "code": "9.2.1",
       "title": "Выбор окрестности и интерпретация результатов",
-      "status": "review",
+      "status": "published",
       "access": "open",
       "prerequisite_uids": [
         "les-a-0179"
@@ -4195,7 +4195,7 @@
         "Сопоставлять f(x₀), g(x₀), local_pred и score.",
         "Проводить контролируемое сравнение настроек LIME на одном объекте."
       ],
-      "content_state": "localized",
+      "content_state": "published",
       "url_i18n": {
         "ru": "lessons/a-9-2-1-les-a-0180.html",
         "en": "lessons/a-9-2-1-les-a-0180-en.html",

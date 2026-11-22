@@ -66,10 +66,11 @@ class Lesson922LIMETests(unittest.TestCase):
                         self.assertEqual(len(diagram["headers"]), 3)
                     elif key == "metrics":
                         self.assertEqual(len(diagram["rows"]), 5)
+                        self.assertTrue(diagram.get("tableTitle"))
                         self.assertIn("J = 4/6", diagram["jaccardFormula"])
                         self.assertTrue(all(diagram.get(k) for k in ("jaccard", "spearman", "coeff", "fidelity")))
                     elif key == "runs":
-                        self.assertTrue(all(diagram.get(k) for k in ("object", "prediction", "runA", "runB", "compare", "conclusion")))
+                        self.assertTrue(all(diagram.get(k) for k in ("object", "prediction", "runA", "runB", "rankA", "rankB", "compare", "conclusion")))
                         self.assertNotEqual(diagram["featuresA"], diagram["featuresB"])
                 structure = (
                     [x[0] for x in content["sections"]],

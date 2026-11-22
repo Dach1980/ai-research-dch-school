@@ -18,8 +18,8 @@ function figure(root,spec){const f=document.createElement("figure");f.className=
 function matrix(s){const root=base(s,560),d=s.diagramData;const x0=116,y0=104,cw=270,ch=170,gap=18;
  root.append(el("text",{x:34,y:300,transform:"rotate(-90 34 300)","font-size":15,"font-weight":700,fill:"var(--lds-ink)","text-anchor":"middle"},d.y));
  text(root,d.x,250,548,460,{size:15,weight:700});
- const fills=["var(--lds-good)","var(--lds-accent)","var(--lds-bad)","var(--lds-surface)"];
- d.cells.forEach((c,i)=>{const col=i%2,row=Math.floor(i/2),x=x0+col*(cw+gap),y=y0+row*(ch+gap);rect(root,x,y,cw,ch,fills[i], "var(--lds-line)");let yy=y+30;yy+=text(root,c.title,x+15,yy,cw-30,{size:16,weight:700,color:i===1?"var(--lds-accent-ink)":"var(--lds-ink)"});yy+=10;text(root,c.detail,x+15,yy,cw-30,{size:15,color:i===1?"var(--lds-accent-ink)":"var(--lds-ink)",line:20});});
+ const fills=["var(--lds-accent)","var(--lds-good)","var(--lds-bad)","var(--lds-bad)"];
+ d.cells.forEach((c,i)=>{const col=i%2,row=Math.floor(i/2),x=x0+col*(cw+gap),y=y0+row*(ch+gap);rect(root,x,y,cw,ch,fills[i], "var(--lds-line)");let yy=y+30;yy+=text(root,c.title,x+15,yy,cw-30,{size:16,weight:700,color:i===0?"var(--lds-accent-ink)":"var(--lds-ink)"});yy+=10;text(root,c.detail,x+15,yy,cw-30,{size:15,color:i===1?"var(--lds-accent-ink)":"var(--lds-ink)",line:20});});
  text(root,d.yHigh,62,112,70,{size:13,weight:700});text(root,d.yLow,62,472,70,{size:13,weight:700});text(root,d.xLow,116,520,160,{size:13});text(root,d.xHigh,545,520,160,{size:13});
  line(root,100,455,100,125,"var(--lds-ink)",2);arrow(root,100,125,100,113);line(root,116,500,680,500,"var(--lds-ink)",2);arrow(root,680,500,692,500);
  return figure(root,s);}

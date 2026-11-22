@@ -59,7 +59,8 @@ class Lesson922LIMETests(unittest.TestCase):
                     self.assertEqual(diagram["layout"], LAYOUTS[key])
                     if key == "matrix":
                         self.assertEqual(len(diagram["cells"]), 4)
-                        self.assertTrue(diagram.get("x") and diagram.get("y"))
+                        self.assertTrue(all(diagram.get(k) for k in ("x", "y", "yHigh", "yLow", "xLow", "xHigh")))
+                        self.assertIn("High" if locale == "en" else ("高" if locale == "zh" else "Высокая"), diagram["cells"][0]["title"])
                     elif key == "sources":
                         self.assertEqual(len(diagram["rows"]), 6)
                         self.assertEqual(len(diagram["headers"]), 3)

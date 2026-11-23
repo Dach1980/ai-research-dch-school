@@ -275,28 +275,38 @@ if(main){
  });
  var existingHero=main.querySelector(":scope > .track-hero");
  if(main.classList.contains("lesson")){
-  var eyebrow=main.querySelector(":scope > .eyebrow");
-  var h1=main.querySelector(":scope > h1");
-  var lead=main.querySelector(":scope > .lead");
-  var outcomes=main.querySelector(":scope > .outcomes, :scope > .panel");
+  var intro=main.querySelector(":scope > .lesson-intro");
+  var eyebrow=intro?intro.querySelector(":scope > .eyebrow"):main.querySelector(":scope > .eyebrow");
+  var h1=intro?intro.querySelector(":scope > h1"):main.querySelector(":scope > h1");
+  var lead=intro?intro.querySelector(":scope > .lead"):main.querySelector(":scope > .lead");
+  var metadata=intro&&intro.querySelector(":scope > .lesson-meta");
+  var outcomes=main.querySelector(":scope > .outcomes, :scope > .panel, :scope > #lesson-outcomes");
   if(eyebrow&&h1&&lead&&!existingHero){
    var hero=document.createElement("section");hero.className="track-hero article-hero lesson-standard-hero";
    [eyebrow,h1,lead].forEach(function(node){hero.appendChild(node);});
+   if(metadata)hero.appendChild(metadata);
    if(outcomes)hero.appendChild(outcomes);
+   if(intro)intro.remove();
    var code=(eyebrow.textContent.match(/\b\d+\.\d+\.\d+\b/)||[])[0]||"AI";
    var planet=document.createElement("div");planet.className="lesson-planet-banner";
    var copy=document.createElement("div");var label=document.createElement("span");label.className="planet-label";label.textContent=labels.lesson+" "+code;
    var p=document.createElement("p");p.textContent=lead.textContent;copy.append(label,p);
    var art=document.createElement("div");art.className="lesson-planet-art";
    var sphere=document.createElement("div");sphere.className="lesson-planet-sphere";sphere.setAttribute("aria-hidden","true");sphere.textContent=code;
-   art.appendChild(sphere);planet.append(copy,art);hero.appendChild(planet);
+   art.appendChild(sphere);planet.append(copy,art);
    var article=document.createElement("article");article.className="article-body lesson-standard-article";
    while(main.firstChild){article.appendChild(main.firstChild);}
-   main.append(hero,article);
+   main.append(hero,planet,article);
   }
   main.classList.add("lesson-standard-page");
   var articleBody=main.querySelector(":scope > .article-body");
   if(articleBody)articleBody.classList.add("lesson-standard-article");
+  var practiceRoot=main.querySelector("#lesson-practice");
+  var sourcesRoot=main.querySelector("#lesson-sources");
+  var quizRoot=main.querySelector("#lesson-quiz");
+  if(practiceRoot)practiceRoot.classList.add("lesson-practice");
+  if(sourcesRoot)sourcesRoot.classList.add("lesson-sources");
+  if(quizRoot)quizRoot.classList.add("lesson-check");
   normalizePlanet(main,(main.querySelector(".eyebrow")?.textContent.match(/\b\d+\.\d+\.\d+\b/)||[])[0],main.querySelector(".lead"));
  }else{
   var hero=main.querySelector(":scope > .track-hero");

@@ -72,7 +72,7 @@ class Lesson1011ShapleyTests(unittest.TestCase):
             self.assertIn("xai-10-shap-1011.js", page)
             self.assertIn("xai-shap-1011-lesson.js", page)
             self.assertNotIn("locale-links", page)
-            self.assertNotIn("language-switcher", page)
+            self.assertIn('<script src="../scripts/language-switcher.js">', page)
 
     def test_practice_has_two_independent_algorithms_and_axiom_checks(self):
         ast.parse(self.practice)

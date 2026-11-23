@@ -66,7 +66,7 @@ def main():
     assert abs(sum(by_coalitions.values()) - gain) < 1e-12
     assert abs(sum(by_orders.values()) - gain) < 1e-12
 
-    # Symmetry: two players with identical marginal contributions.
+    # Efficiency: the allocated values must equal the gain over v(empty).\n    # Symmetry: two players with identical marginal contributions.
     symmetric = {frozenset(): 0, frozenset({"X"}): 2,
                  frozenset({"Y"}): 2, frozenset({"X", "Y"}): 5}
     sx = shapley_by_coalitions(("X", "Y"), lambda s: symmetric[frozenset(s)])

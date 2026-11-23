@@ -43,6 +43,9 @@ class Lesson911LIMETests(unittest.TestCase):
   self.assertFalse(re.search(r"[\u4e00-\u9fff]",match.group(1)),"Chinese characters must not appear in RU table headers")
  def test_neighborhood_diagram_contains_actual_points_and_boundary(self):
   self.assertIn('layout:"scatter"',self.renderer)
+  self.assertIn('if(spec.layout==="grid")return grid(spec)',self.svg_renderer)
+  self.assertIn('if(spec.layout==="scatter")return renderWeightedScatter(spec)',self.svg_renderer)
+  self.assertIn('if(spec.layout==="plot")return plot(spec)',self.svg_renderer)
   self.assertIn('neighborhood:{center:',self.renderer)
   for token in ('data-role":"neighborhood-boundary"','data-role":"nearby-point"','data-role":"distant-point"','data-role":"explained-instance"','data-role":"instance-label"'):
    self.assertIn(token,self.svg_renderer)

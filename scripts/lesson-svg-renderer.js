@@ -59,6 +59,20 @@ function grid(s){
  });
  return figure(root,spec);
 }
+function flow(s){
+ const nodes=s.nodes||[],count=Math.max(1,nodes.length),gap=10,cardW=Math.min(128,(W-PAD*2-gap*(count-1))/count),cardH=188;
+ const total=count*cardW+(count-1)*gap,startX=(W-total)/2,root=base(s,300);
+ text(root,s.title||"",PAD,38,W-PAD*2,{size:19,weight:750});
+ nodes.forEach((node,i)=>{
+  const x=startX+i*(cardW+gap),y=86;
+  rect(root,x,y,cardW,cardH,"var(--lds-surface)","var(--lds-line)",10);
+  rect(root,x,y,cardW,44,"var(--lds-accent)","var(--lds-accent)",8);
+  text(root,node.title,x+8,y+28,cardW-16,{size:13,weight:750,color:"var(--lds-accent-ink)"});
+  text(root,node.detail,x+10,y+72,cardW-20,{size:12,line:17,color:"var(--lds-ink)"});
+  if(i<nodes.length-1)arrow(root,x+cardW+1,y+cardH/2,x+cardW+gap-2,y+cardH/2);
+ });
+ return figure(root,s);
+}
 function renderWeightedScatter(s){
  const n=s.neighborhood||{},root=base(s,610),x0=100,y0=74,w=540,h=440;
  rect(root,x0,y0,w,h,"var(--lds-surface-secondary)","var(--lds-line)",8);
@@ -151,21 +165,23 @@ function shapleyMappingFigure(s){
  return figure(root,s);
 }
 function shapleyDistinctionFigure(s){
- const d=s.diagramData,root=base(s,560),x=[24,368],w=328,top=92,headerH=52,rowH=106;
+ const d=s.diagramData,root=base(s,560),x=[24,248,472],widths=[200,200,224],top=92,headerH=52,rowH=106;
  text(root,d.title,24,38,672,{size:19,weight:750});
- d.columns.forEach((name,i)=>{
-  rect(root,x[i],top,w,headerH,"var(--lds-accent)","var(--lds-accent)",9);
-  text(root,name,x[i]+14,top+32,w-28,{size:17,weight:750,color:"var(--lds-accent-ink)"});
+ const headers=[d.aspectLabel||"Aspect",...(d.columns||[])];
+ headers.forEach((name,i)=>{
+  rect(root,x[i],top,widths[i],headerH,"var(--lds-accent)","var(--lds-accent)",9);
+  text(root,name,x[i]+10,top+32,widths[i]-20,{size:15,weight:750,color:"var(--lds-accent-ink)"});
  });
  (d.rows||[]).forEach((row,i)=>{
   const y=top+headerH+12+i*(rowH+10);
   row.forEach((value,j)=>{
-   rect(root,x[j],y,w,rowH,"var(--lds-surface)","var(--lds-line)",8);
-   text(root,value,x[j]+12,y+24,w-24,{size:13,line:19,color:"var(--lds-ink)"});
+   rect(root,x[j],y,widths[j],rowH,"var(--lds-surface)","var(--lds-line)",8);
+   text(root,value,x[j]+10,y+24,widths[j]-20,{size:12,line:18,color:"var(--lds-ink)"});
   });
  });
- rect(root,24,top+headerH+12+(d.rows||[]).length*(rowH+10),672,34,"var(--lds-math-bg)","var(--lds-math-border)",7);
- text(root,d.caption,36,top+headerH+12+(d.rows||[]).length*(rowH+10)+22,648,{size:12,weight:650,color:"var(--lds-math-ink)"});
+ const noteY=top+headerH+12+(d.rows||[]).length*(rowH+10);
+ rect(root,24,noteY,672,34,"var(--lds-math-bg)","var(--lds-math-border)",7);
+ text(root,d.caption,36,noteY+22,648,{size:12,weight:650,color:"var(--lds-math-ink)"});
  return figure(root,s);
 }
 function axiomsFigure(s){
@@ -174,5 +190,5 @@ function axiomsFigure(s){
  d.cards.forEach((c,i)=>{const xx=x[i%2],yy=y[Math.floor(i/2)];rect(root,xx,yy,w,h,"var(--lds-surface)","var(--lds-line)",12);rect(root,xx,yy,w,42,"var(--lds-accent)","var(--lds-accent)",10);text(root,c[0],xx+14,yy+27,w-28,{size:16,weight:750,color:"var(--lds-accent-ink)"});text(root,c[1],xx+14,yy+72,w-28,{size:14,line:19});rect(root,xx+12,yy+112,w-24,42,"var(--lds-math-bg)","var(--lds-math-border)",7);text(root,c[2],xx+22,yy+139,w-44,{size:15,weight:750,color:"var(--lds-math-ink)"});text(root,c[3],xx+14,yy+184,w-28,{size:13,line:17,color:"var(--lds-muted)"});});
  return figure(root,s);
 }
-function render(spec){if(!spec||!spec.layout)throw new TypeError("Missing diagram layout");if(spec.layout==="matrix")return matrix(spec);if(spec.layout==="causal-flow")return causal(spec);if(spec.layout==="comparison-table")return comparison(spec);if(spec.layout==="experiment-flow")return experiment(spec);if(spec.layout==="grid"&&spec.connectSequence===true)return grid(spec);if(spec.layout==="grid")return grid(spec);if(spec.layout==="table")return renderTable(spec);if(spec.layout==="bars")return renderBars(spec);if(spec.layout==="scatter")return renderWeightedScatter(spec);if(spec.layout==="plot")return plot(spec);if(spec.layout==="shapley-coalition-table"||spec.layout==="shapley-marginal-table"||spec.layout==="shapley-permutations"||spec.layout==="shapley-weights")return tableFigure(spec,spec.layout);if(spec.layout==="shapley-mapping")return shapleyMappingFigure(spec);if(spec.layout==="shapley-distinction")return shapleyDistinctionFigure(spec);if(spec.layout==="shapley-axioms")return axiomsFigure(spec);throw new TypeError("Unsupported SVG layout: "+spec.layout);}
-global.DCHLessonSVG={version:"2.4.0",render};})(window);
+function render(spec){if(!spec||!spec.layout)throw new TypeError("Missing diagram layout");if(spec.layout==="matrix")return matrix(spec);if(spec.layout==="causal-flow")return causal(spec);if(spec.layout==="comparison-table")return comparison(spec);if(spec.layout==="experiment-flow")return experiment(spec);if(spec.layout==="flow")return flow(spec);if(spec.layout==="grid"&&spec.connectSequence===true)return grid(spec);if(spec.layout==="grid")return grid(spec);if(spec.layout==="table")return renderTable(spec);if(spec.layout==="bars")return renderBars(spec);if(spec.layout==="scatter")return renderWeightedScatter(spec);if(spec.layout==="plot")return plot(spec);if(spec.layout==="shapley-coalition-table"||spec.layout==="shapley-marginal-table"||spec.layout==="shapley-permutations"||spec.layout==="shapley-weights")return tableFigure(spec,spec.layout);if(spec.layout==="shapley-mapping")return shapleyMappingFigure(spec);if(spec.layout==="shapley-distinction")return shapleyDistinctionFigure(spec);if(spec.layout==="shapley-axioms")return axiomsFigure(spec);throw new TypeError("Unsupported SVG layout: "+spec.layout);}
+global.DCHLessonSVG={version:"2.5.0",render};})(window);

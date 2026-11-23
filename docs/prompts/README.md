@@ -2,7 +2,7 @@
 
 Version: 1.0  
 Status: active  
-Last updated: 2026-11-22
+Last updated: 2026-11-23
 
 This directory is the canonical home for prompts used to create and revise lessons in AI Research DCH School.
 
@@ -32,7 +32,8 @@ Each prompt should declare its own version and status near the top. A lesson's c
 | A | 9.1.2 — Local Surrogate Models | [9.1.2-local-surrogate-models.md](./lessons/track-a/9.1.2-local-surrogate-models.md) | 1.0 | approved; lesson accepted and published |
 | A | 9.1.3 — Как работает LIME | [9.1.3-how-lime-works.md](./lessons/track-a/9.1.3-how-lime-works.md) | 1.0 | approved; lesson accepted and published |
 | A | 9.2.1 — Выбор окрестности и интерпретация результатов | [9.2.1-lime-neighborhood-selection-and-interpretation.md](./lessons/track-a/9.2.1-lime-neighborhood-selection-and-interpretation.md) | 1.0 | lesson accepted and published 2026-11-22; prompt retained as historical draft |
-| A | 9.2.2 — Ограничения и устойчивость LIME | [9.2.2-lime-limitations-and-stability.md](./lessons/track-a/9.2.2-lime-limitations-and-stability.md) | 1.1 | draft prompt; lesson implementation created and registered as `review` on 2026-11-22 |
+| A | 9.2.2 — Ограничения и устойчивость LIME | [9.2.2-lime-limitations-and-stability.md](./lessons/track-a/9.2.2-lime-limitations-and-stability.md) | 1.1 | lesson accepted and published 2026-11-23; prompt retained as historical draft |
+| A | 10.1.1 — Теория игр и Shapley Values | [10.1.1-shapley-values-game-theory.md](./lessons/track-a/10.1.1-shapley-values-game-theory.md) | 1.0 | draft — prepared 2026-11-23; awaiting execution approval |
 
 ## Governance
 

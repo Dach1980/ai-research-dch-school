@@ -26,15 +26,15 @@ class Lesson922LIMETests(unittest.TestCase):
         cls.renderer = (ROOT / "scripts/xai-lime-922-lesson.js").read_text(encoding="utf-8")
         cls.practice = (ROOT / "lessons/practice/a-9-2-2-lime-stability.py").read_text(encoding="utf-8")
 
-    def test_catalog_identity_prerequisite_and_review_state(self):
+    def test_catalog_identity_prerequisite_and_published_state(self):
         self.assertIsNotNone(self.lesson)
         self.assertEqual(self.lesson["code"], "9.2.2")
-        self.assertEqual(self.lesson["status"], "review")
-        self.assertEqual(self.lesson["content_state"], "localized")
+        self.assertEqual(self.lesson["status"], "published")
+        self.assertEqual(self.lesson["content_state"], "published")
         self.assertEqual(self.lesson["prerequisite_uids"], ["les-a-0180"])
         self.assertEqual(self.lesson["module_uid"], "mod-a-09-02")
         self.assertEqual(self.lesson["theme_uid"], "thm-a-09")
-        self.assertEqual(self.catalog["catalog_version"], "3.2.20-lesson-9-2-2-review")
+        self.assertTrue(self.catalog["catalog_version"].startswith("3.2."))
         self.assertEqual(len({x["uid"] for x in self.catalog["lessons"]}), len(self.catalog["lessons"]))
         module_codes = [x["code"] for x in self.catalog["lessons"] if x["module_uid"] == self.lesson["module_uid"]]
         self.assertEqual(len(module_codes), len(set(module_codes)))

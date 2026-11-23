@@ -11,7 +11,7 @@ ROUTES = {
     "en": "lessons/a-10-1-1-les-a-0182-en.html",
     "zh": "lessons/a-10-1-1-les-a-0182-zh.html",
 }
-DIAGRAMS = ("coalitions", "marginal", "permutations", "weights", "axioms")
+DIAGRAMS = ("coalitions", "marginal", "permutations", "weights", "axioms", "mapping", "distinction")
 
 
 class Lesson1011ShapleyTests(unittest.TestCase):
@@ -51,12 +51,14 @@ class Lesson1011ShapleyTests(unittest.TestCase):
                 for key in DIAGRAMS:
                     spec = content["diagrams"][key]
                     self.assertTrue(spec["title"] and spec["description"] and spec["caption"])
-                    self.assertIn(spec["layout"], {"shapley-coalition-table", "shapley-marginal-table", "shapley-permutations", "shapley-weights", "shapley-axioms"})
+                    self.assertIn(spec["layout"], {"shapley-coalition-table", "shapley-marginal-table", "shapley-permutations", "shapley-weights", "shapley-axioms", "shapley-mapping", "shapley-distinction"})
                 self.assertEqual(len(content["diagrams"]["coalitions"]["rows"]), 8)
                 self.assertEqual(len(content["diagrams"]["marginal"]["rows"]), 4)
                 self.assertEqual(len(content["diagrams"]["permutations"]["rows"]), 6)
                 self.assertEqual(len(content["diagrams"]["weights"]["rows"]), 3)
                 self.assertEqual(len(content["diagrams"]["axioms"]["cards"]), 4)
+                self.assertEqual(len(content["diagrams"]["mapping"]["cards"]), 3)
+                self.assertEqual(len(content["diagrams"]["distinction"]["rows"]), 3)
                 self.assertTrue(all(len(row) == 5 for row in content["diagrams"]["permutations"]["rows"]))
                 self.assertIn("lessons/practice/", content["practice"]["run"])
                 shape = (len(content["outcomes"]), len(content["sections"]), len(content["sources"]),
@@ -93,7 +95,7 @@ class Lesson1011ShapleyTests(unittest.TestCase):
 
     def test_renderer_uses_shared_typed_svg_and_glossary(self):
         self.assertIn("DCHLessonSVG.render", self.renderer)
-        for layout in ("shapley-coalition-table", "shapley-marginal-table", "shapley-permutations", "shapley-weights", "shapley-axioms"):
+        for layout in ("shapley-coalition-table", "shapley-marginal-table", "shapley-permutations", "shapley-weights", "shapley-axioms", "shapley-mapping", "shapley-distinction"):
             self.assertIn(layout, (ROOT / "scripts/lesson-svg-renderer.js").read_text(encoding="utf-8"))
         self.assertIn("DCHLessonComponents.renderGlossary", self.renderer)
         self.assertNotIn("lesson-navigation", self.renderer)

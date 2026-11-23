@@ -228,6 +228,7 @@ class CanonicalLessonBrowserAcceptanceTests(unittest.TestCase):
                     practiceHasLab: !!document.querySelector("#lesson-practice h2"),
                     sourcesHasHeading: !!document.querySelector("#lesson-sources h3"),
                     glossaryCards: document.querySelectorAll("#lesson-glossary .glossary-entry").length,
+                        glossaryRootClass: document.querySelector("#lesson-glossary").classList.contains("lesson-glossary--grouped"),
                     quizForms: document.querySelectorAll("#lesson-quiz form.knowledge-check").length
                   };
                 }""", selectors)
@@ -313,6 +314,7 @@ class CanonicalLessonBrowserAcceptanceTests(unittest.TestCase):
                     self.assertTrue(result["sourcesClass"], result)
                     self.assertTrue(result["quizClass"], result)
                     self.assertEqual(result["glossaryCards"], 14, result)
+                    self.assertTrue(result["glossaryRootClass"], result)
                     self.assertEqual(result["glossaryLayout"], "grid", result)
                     self.assertEqual(result["glossaryColumns"], 1 if width == 375 else 2, result)
                     self.assertEqual(result["questions"], 10, result)

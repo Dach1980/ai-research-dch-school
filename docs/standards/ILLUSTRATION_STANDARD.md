@@ -1,9 +1,13 @@
 # Illustration and Diagram Standard
 
 ## Purpose
-Illustrations must teach a concept and remain readable in both site themes and on mobile screens.
+Illustrations must teach a concept and remain readable in both site themes and on mobile screens. They are a core instructional component, not decoration. Every figure requires an explicit teaching purpose, a suitable visual form, and individual pedagogical review against the adjacent lesson text.
 
 ## Required properties
+- Choose the visual representation for the concept: do not default to generic cards or grids. Use tables, plots, matrices, annotated examples or flows when they express the relationship more precisely.
+- Make the reading order, direction, and relationship between elements explicit. Every arrow, axis, value, symbol, colour and connection must have a clear meaning.
+- Review each illustration individually: a technically valid or correctly sized SVG is not necessarily a clear teaching illustration.
+- Verify actual computed foreground/background contrast for all text in both themes, including accent and secondary surfaces; every referenced CSS token must be defined in both themes.
 - Every meaningful illustration has a title or caption explaining its teaching purpose.
 - SVG text, labels, arrows, axes, legends and node outlines use theme-safe colors.
 - A dark image on a dark surface must be placed on a contrasting canvas; a light image on a light surface must receive a contrasting frame or surface.

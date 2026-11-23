@@ -1,7 +1,7 @@
 {
   "schema_version": 3,
   "catalog_id": "dch-school-curriculum",
-  "catalog_version": "3.2.20-lesson-9-2-2-review",
+  "catalog_version": "3.2.21-lesson-9-2-2-published",
   "status": "migration_staging",
   "tracks": [
     {
@@ -4215,7 +4215,7 @@
       "module_uid": "mod-a-09-02",
       "code": "9.2.2",
       "title": "Ограничения и устойчивость LIME",
-      "status": "review",
+      "status": "published",
       "access": "open",
       "prerequisite_uids": [
         "les-a-0180"
@@ -4229,7 +4229,7 @@
         "Проводить повторные запуски и контролируемый анализ чувствительности.",
         "Формулировать ограничения и документировать условия эксперимента."
       ],
-      "content_state": "localized",
+      "content_state": "published",
       "url_i18n": {
         "ru": "lessons/a-9-2-2-les-a-0181.html",
         "en": "lessons/a-9-2-2-les-a-0181-en.html",

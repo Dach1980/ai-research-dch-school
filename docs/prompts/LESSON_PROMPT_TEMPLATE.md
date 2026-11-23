@@ -1,6 +1,6 @@
 # Canonical Lesson Creation Prompt Template
 
-Version: 1.0  
+Version: 1.1  
 Status: active  
 Applies to: all tracks and all lesson localizations
 
@@ -104,6 +104,32 @@ For SVG figures:
 
 Do not treat the mere existence of an SVG file as proof of visual completeness. Validate SVG structure and inspect rendered output at the required viewport sizes.
 
+
+
+### Illustration-first quality gate — mandatory, high priority
+
+Illustrations are a core teaching component, not decoration or a final formatting task. Give them the same level of methodological review as the lesson text and practical exercise. Do not postpone visual design until after the lesson has been written.
+
+Before implementing a figure:
+- Write its single teaching purpose and the exact learner question it should answer.
+- Identify the concept, process, comparison, data, or decision the learner must understand after viewing it.
+- Choose the representation that explains that idea most directly: a properly labelled plot, comparison matrix, data table, annotated model, causal/process flow, timeline, or other domain-appropriate form.
+- Define the reading order and the relationship between every visual element. Use cards only when the content is genuinely a set of independent items; do not turn every diagram into a generic grid of boxes.
+- Specify the input, transformation/relationship, output and conclusion. Label axes, units, categories, symbols, examples and hypothetical values.
+- Map each visible claim and value to the adjacent lesson text, a shown calculation, an explicitly stated assumption, or a real practice output.
+
+During implementation and review:
+- Review every figure individually against the section immediately preceding it. The figure must clarify that section, not merely repeat its heading or decorate it.
+- Check whether a learner unfamiliar with the topic can correctly explain what each shape, arrow, colour, value, axis and connection means. If not, redesign or add explicit explanation.
+- Prefer concrete data and meaningful relationships over abstract boxes. Avoid ambiguous arrows, unexplained coordinates, ornamental connectors, arbitrary coefficients, unexplained parentheses, dense labels and pseudo-technical decoration.
+- Make the visual hierarchy and reading direction unmistakable. Keep independent comparisons visually separate; show sequence or causality only with explicit, unambiguous relationships.
+- Verify contrast for every text/background pair in both themes using computed styles, including accent and secondary surfaces. Never rely on an undefined CSS variable or an assumed browser fallback.
+- Inspect the actual rendered SVGs in RU, EN and ZH at 375, 768 and 1440 px in light and dark themes. Check text fit, clipping, overlaps, arrows, viewBox bounds, readability and page overflow.
+- Compare all locales side by side: same conceptual structure, examples, values, relationships and emphasis, not merely the same number of SVGs.
+- If a figure fails any of these checks, revise its instructional design; do not accept a technically valid SVG as a successful illustration.
+
+For each figure, record in the lesson-specific prompt or audit: **teaching purpose → visual form → text/data dependencies → expected learner interpretation → validation evidence**. A count of figures or a passing SVG syntax test is not evidence of pedagogical quality.
+
 ## 8. Responsive and visual validation
 
 Validate all three localizations in both light and dark themes at:
@@ -160,7 +186,10 @@ The lesson-specific prompt must set concrete minimum counts for sections, glossa
 - [ ] Canonical page structure and DOM order verified.
 - [ ] Technical correctness and sources reviewed.
 - [ ] Practice is complete and reproducible.
-- [ ] Figures are complete, localized, responsive, and visually inspected.
+- [ ] Every figure has a documented teaching purpose and appropriate visual form.
+- [ ] Every figure has been individually checked against its preceding lesson text for semantic and numerical consistency.
+- [ ] Every figure is pedagogically clear: reading order, axes, arrows, symbols, values and conclusions are unambiguous.
+- [ ] Every figure has been visually inspected in all locales, both themes and all required viewport sizes; computed contrast and text fit are verified.
 - [ ] 375/768/1440 px checks passed in light and dark themes.
 - [ ] Accessibility and responsive overflow checks passed.
 - [ ] Catalog, navigation, and knowledge map updated correctly.

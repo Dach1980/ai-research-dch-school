@@ -293,10 +293,12 @@ class CanonicalLessonBrowserAcceptanceTests(unittest.TestCase):
                         metadata: document.querySelectorAll(".lesson-standard-hero .lesson-meta span").length,
                         outcomes: document.querySelectorAll(".lesson-standard-hero #lesson-outcomes li").length,
                         sections: document.querySelectorAll("#lesson-sections > .xai-canonical-section").length,
+                        figures: document.querySelectorAll("#lesson-sections figure svg").length,
                         practiceClass: document.querySelector("#lesson-practice").classList.contains("lesson-practice"),
                         sourcesClass: document.querySelector("#lesson-sources").classList.contains("lesson-sources"),
                         quizClass: document.querySelector("#lesson-quiz").classList.contains("lesson-check"),
                         glossaryCards: document.querySelectorAll("#lesson-glossary .glossary-entry").length,
+                        glossaryRootClass: document.querySelector("#lesson-glossary").classList.contains("lesson-glossary--grouped"),
                         glossaryLayout: grid ? getComputedStyle(grid).display : null,
                         glossaryColumns: grid ? getComputedStyle(grid).gridTemplateColumns.split(" ").length : 0,
                         questions: document.querySelectorAll("#lesson-quiz .lesson-check-question").length,
@@ -310,6 +312,7 @@ class CanonicalLessonBrowserAcceptanceTests(unittest.TestCase):
                     self.assertEqual(result["metadata"], 2, result)
                     self.assertEqual(result["outcomes"], 7, result)
                     self.assertEqual(result["sections"], 9, result)
+                    self.assertEqual(result["figures"], 7, result)
                     self.assertTrue(result["practiceClass"], result)
                     self.assertTrue(result["sourcesClass"], result)
                     self.assertTrue(result["quizClass"], result)

@@ -159,14 +159,14 @@ class CanonicalLessonBrowserAcceptanceTests(unittest.TestCase):
 
     def test_canonical_lesson_block_order_all_locales_including_review(self):
         selectors = [
-            "main.lesson > .lesson-intro",
-            "main.lesson > #lesson-outcomes",
-            "main.lesson > #lesson-sections",
-            "main.lesson > #lesson-practice",
-            "main.lesson > #lesson-sources",
-            "main.lesson > #lesson-navigation",
-            "main.lesson > #lesson-glossary",
-            "main.lesson > #lesson-quiz",
+            "main.lesson > .lesson-standard-hero",
+            "main.lesson > .lesson-standard-hero #lesson-outcomes",
+            "main.lesson > .lesson-standard-article > #lesson-sections",
+            "main.lesson > .lesson-standard-article > #lesson-practice",
+            "main.lesson > .lesson-standard-article > #lesson-sources",
+            "main.lesson > .lesson-standard-article > #lesson-navigation",
+            "main.lesson > .lesson-standard-article > #lesson-glossary",
+            "main.lesson > .lesson-standard-article > #lesson-quiz",
             "footer.footer",
         ]
         for lesson in CANONICAL_LESSONS:
@@ -243,14 +243,14 @@ class CanonicalLessonBrowserAcceptanceTests(unittest.TestCase):
 
     def test_published_canonical_lesson_block_order(self):
         selectors = [
-            "main.lesson > .lesson-intro",
-            "main.lesson > #lesson-outcomes",
-            "main.lesson > #lesson-sections",
-            "main.lesson > #lesson-practice",
-            "main.lesson > #lesson-sources",
-            "main.lesson > #lesson-navigation",
-            "main.lesson > #lesson-glossary",
-            "main.lesson > #lesson-quiz",
+            "main.lesson > .lesson-standard-hero",
+            "main.lesson > .lesson-standard-hero #lesson-outcomes",
+            "main.lesson > .lesson-standard-article > #lesson-sections",
+            "main.lesson > .lesson-standard-article > #lesson-practice",
+            "main.lesson > .lesson-standard-article > #lesson-sources",
+            "main.lesson > .lesson-standard-article > #lesson-navigation",
+            "main.lesson > .lesson-standard-article > #lesson-glossary",
+            "main.lesson > .lesson-standard-article > #lesson-quiz",
             "footer.footer",
         ]
         for lesson in PUBLISHED_LESSONS:
@@ -274,6 +274,50 @@ class CanonicalLessonBrowserAcceptanceTests(unittest.TestCase):
                     self.assertTrue(result["ordered"], f"{lesson['uid']} / {locale}: incorrect DOM block order")
                     self.assertTrue(result["inMain"], f"{lesson['uid']} / {locale}: lesson blocks must be inside main.lesson")
                     self.assertTrue(result["footerAfterMain"], f"{lesson['uid']} / {locale}: footer must follow lesson content")
+                    page.close()
+
+    def test_shapley_lesson_uses_canonical_shell_components_all_locales(self):
+        lesson = next((item for item in CANONICAL_LESSONS if item.get("uid") == "les-a-0182"), None)
+        self.assertIsNotNone(lesson, "Shapley 10.1.1 must be included in canonical browser acceptance")
+        for locale in ("ru", "en", "zh"):
+            for width in (375, 768, 1440):
+                with self.subTest(locale=locale, width=width):
+                    page = self.open_page(lesson, locale, width=width)
+                    result = page.evaluate("""() => {
+                      const grid = document.querySelector("#lesson-glossary .glossary-grid");
+                      return {
+                        hero: !!document.querySelector("main.lesson > .lesson-standard-hero"),
+                        article: !!document.querySelector("main.lesson > .lesson-standard-article"),
+                        planet: !!document.querySelector("main.lesson > .lesson-planet-banner"),
+                        metadata: document.querySelectorAll(".lesson-standard-hero .lesson-meta span").length,
+                        outcomes: document.querySelectorAll(".lesson-standard-hero #lesson-outcomes li").length,
+                        sections: document.querySelectorAll("#lesson-sections > .xai-canonical-section").length,
+                        practiceClass: document.querySelector("#lesson-practice").classList.contains("lesson-practice"),
+                        sourcesClass: document.querySelector("#lesson-sources").classList.contains("lesson-sources"),
+                        quizClass: document.querySelector("#lesson-quiz").classList.contains("lesson-check"),
+                        glossaryCards: document.querySelectorAll("#lesson-glossary .glossary-entry").length,
+                        glossaryLayout: grid ? getComputedStyle(grid).display : null,
+                        glossaryColumns: grid ? getComputedStyle(grid).gridTemplateColumns.split(" ").length : 0,
+                        questions: document.querySelectorAll("#lesson-quiz .lesson-check-question").length,
+                        options: document.querySelectorAll("#lesson-quiz .lesson-check-option").length,
+                        codeBlocks: document.querySelectorAll("#lesson-practice .lesson-code-block").length
+                      };
+                    }""")
+                    self.assertTrue(result["hero"], result)
+                    self.assertTrue(result["article"], result)
+                    self.assertTrue(result["planet"], result)
+                    self.assertEqual(result["metadata"], 2, result)
+                    self.assertEqual(result["outcomes"], 7, result)
+                    self.assertEqual(result["sections"], 9, result)
+                    self.assertTrue(result["practiceClass"], result)
+                    self.assertTrue(result["sourcesClass"], result)
+                    self.assertTrue(result["quizClass"], result)
+                    self.assertEqual(result["glossaryCards"], 14, result)
+                    self.assertEqual(result["glossaryLayout"], "grid", result)
+                    self.assertEqual(result["glossaryColumns"], 1 if width == 375 else 2, result)
+                    self.assertEqual(result["questions"], 10, result)
+                    self.assertEqual(result["options"], 40, result)
+                    self.assertEqual(result["codeBlocks"], 3, result)
                     page.close()
 
     def test_faithfulness_display_math_wraps_without_horizontal_page_scroll(self):

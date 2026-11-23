@@ -40,7 +40,8 @@ class Lesson921LIMETests(unittest.TestCase):
         self.assertTrue(self.catalog["catalog_version"].startswith("3.2."))
         self.assertEqual(self.embedded_practice, self.practice)
         next_lesson = next(item for item in self.catalog["lessons"] if item["code"] == "9.2.2")
-        self.assertEqual(next_lesson["status"], "review")
+        self.assertEqual(next_lesson["status"], "published")
+        self.assertEqual(next_lesson["content_state"], "published")
         self.assertEqual(next_lesson["prerequisite_uids"], [UID])
 
     def test_module_and_canonical_localized_routes(self):

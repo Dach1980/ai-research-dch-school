@@ -1,7 +1,7 @@
 /* DCH School Lesson Design System — shared component layer */
 :root{--lds-surface-secondary:#f1f5fb;--lds-ink:#17233d;--lds-muted:#52627d;--lds-surface:#fff;--lds-line:#d5deeb;--lds-accent:#246bd6;--lds-accent-ink:#ffffff;--lds-good:#168447;--lds-bad:#c63737;--lds-code:#f2f5fa;--lds-math-bg:#f1f6ff;--lds-math-bg-end:#ffffff;--lds-math-border:#c8d8ee;--lds-math-ink:#17233d;--lds-math-accent:#246bd6;--lds-math-label-bg:#e4efff;--lds-math-label-ink:#20599c;--lds-math-shadow:rgba(28,61,110,.08)}
 html:not([data-theme="light"]){--lds-surface-secondary:#1b2b45;--lds-ink:#edf3ff;--lds-muted:#b7c5dc;--lds-surface:#111d33;--lds-line:#30415d;--lds-accent:#79b5ff;--lds-accent-ink:#10233d;--lds-good:#5ee09b;--lds-bad:#ff8585;--lds-code:#0b1424;--lds-math-bg:#101d34;--lds-math-bg-end:#142440;--lds-math-border:#3c5678;--lds-math-ink:#edf3ff;--lds-math-accent:#8fc5ff;--lds-math-label-bg:rgba(121,181,255,.13);--lds-math-label-ink:#a9ceff;--lds-math-shadow:rgba(0,0,0,.18)}
-.lesson-glossary{display:block;min-width:0;margin:18px 0 34px}
+.lesson-glossary{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:18px 0 34px}
 .glossary-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;min-width:0}
 .glossary-entry{position:relative;display:grid;grid-template-columns:34px minmax(0,1fr);column-gap:10px;padding:16px 17px;border:1px solid var(--lds-line);border-radius:14px;background:var(--lds-surface);color:var(--lds-ink);overflow:hidden}
 .glossary-entry:before{content:"";position:absolute;inset:0 auto 0 0;width:3px;background:linear-gradient(180deg,var(--lds-accent),#8b72e8)}
@@ -167,6 +167,7 @@ html:not([data-theme="light"]) .lesson-figure-supervised{
 }
 
 /* Glossary cards live in their own responsive grid below the full-width heading. */
+.lesson-glossary.lesson-glossary--grouped{display:block;min-width:0}
 .lesson-glossary > h2{margin-top:0}
 .lesson-glossary > .glossary-grid{grid-column:1/-1;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;min-width:0}
 @media(max-width:650px){.lesson-glossary > .glossary-grid{grid-template-columns:1fr}}

@@ -38,5 +38,22 @@ function experiment(s){const d=s.diagramData,root=base(s,650);rect(root,140,24,4
  rect(root,24,365,672,110);text(root,d.compare,42,395,630,{size:17,weight:700});text(root,d.compareText,42,428,630,{size:15,line:21});
  rect(root,24,500,672,120,"var(--lds-surface-secondary)");text(root,d.conclusion,42,532,630,{size:17,weight:700});text(root,d.conclusionText,42,565,630,{size:15,line:21});
  return figure(root,s);}
-function render(spec){if(!spec||!spec.layout)throw new TypeError("Missing diagram layout");if(spec.layout==="matrix")return matrix(spec);if(spec.layout==="causal-flow")return causal(spec);if(spec.layout==="comparison-table")return comparison(spec);if(spec.layout==="experiment-flow")return experiment(spec);throw new TypeError("Unsupported SVG layout: "+spec.layout);}
-global.DCHLessonSVG={version:"2.0.0",render};})(window);
+
+function tableFigure(s,kind){
+ const d=s.diagramData,cols=d.columns,rows=d.rows;const widths=kind==="shapley-coalition-table"?[190,250,210]:kind==="shapley-marginal-table"?[132,78,150,112,90]:kind==="shapley-permutations"?[190,100,100,100,100]:[112,170,90,190,128];
+ const x=[24];for(let i=1;i<widths.length;i++)x.push(x[i-1]+widths[i-1]);const headerY=82,headH=48,rowH=kind==="shapley-coalition-table"?42:kind==="shapley-permutations"?48:58;
+ const noteLines=wrap(d.note,650,"15px system-ui, sans-serif"),height=headerY+headH+rows.length*rowH+34+noteLines.length*23+30,root=base(s,height);
+ text(root,d.tableTitle||d.title,24,38,670,{size:19,weight:750});
+ cols.forEach((v,i)=>{rect(root,x[i],headerY,widths[i]-4,headH,"var(--lds-accent)","var(--lds-accent)",7);text(root,v,x[i]+9,headerY+29,widths[i]-22,{size:14,weight:700,color:"var(--lds-accent-ink)",line:17});});
+ rows.forEach((row,ri)=>{const y=headerY+headH+ri*rowH;row.forEach((v,ci)=>{const fill=kind==="shapley-coalition-table"&&ri===7?"var(--lds-math-bg)":kind==="shapley-coalition-table"&&ri===0?"var(--lds-surface-secondary)":kind==="shapley-permutations"&&ci>0&&ci<4?"var(--lds-surface-secondary)":"var(--lds-surface)";rect(root,x[ci],y,widths[ci]-4,rowH-3,fill,"var(--lds-line)",5);text(root,v,x[ci]+8,y+Math.min(27,rowH/2+5),widths[ci]-20,{size:ci===0?14:15,weight:ci===0||ci===widths.length-1?650:450,line:18});});});
+ let yy=headerY+headH+rows.length*rowH+24;rect(root,24,yy,672,noteLines.length*23+24,"var(--lds-math-bg)","var(--lds-math-border)",9);text(root,d.note,40,yy+29,640,{size:15,weight:650,color:"var(--lds-math-ink)",line:22});
+ return figure(root,s);
+}
+function axiomsFigure(s){
+ const d=s.diagramData,root=base(s,650);text(root,d.title,24,38,670,{size:19,weight:750});
+ const x=[24,368],y=[76,330],w=328,h=236;
+ d.cards.forEach((c,i)=>{const xx=x[i%2],yy=y[Math.floor(i/2)];rect(root,xx,yy,w,h,"var(--lds-surface)","var(--lds-line)",12);rect(root,xx,yy,w,42,"var(--lds-accent)","var(--lds-accent)",10);text(root,c[0],xx+14,yy+27,w-28,{size:16,weight:750,color:"var(--lds-accent-ink)"});text(root,c[1],xx+14,yy+72,w-28,{size:14,line:19});rect(root,xx+12,yy+112,w-24,42,"var(--lds-math-bg)","var(--lds-math-border)",7);text(root,c[2],xx+22,yy+139,w-44,{size:15,weight:750,color:"var(--lds-math-ink)"});text(root,c[3],xx+14,yy+184,w-28,{size:13,line:17,color:"var(--lds-muted)"});});
+ return figure(root,s);
+}
+\nfunction render(spec){if(!spec||!spec.layout)throw new TypeError("Missing diagram layout");if(spec.layout==="matrix")return matrix(spec);if(spec.layout==="causal-flow")return causal(spec);if(spec.layout==="comparison-table")return comparison(spec);if(spec.layout==="experiment-flow")return experiment(spec);if(spec.layout==="shapley-coalition-table"||spec.layout==="shapley-marginal-table"||spec.layout==="shapley-permutations"||spec.layout==="shapley-weights")return tableFigure(spec,spec.layout);if(spec.layout==="shapley-axioms")return axiomsFigure(spec);throw new TypeError("Unsupported SVG layout: "+spec.layout);}
+global.DCHLessonSVG={version:"2.1.0",render};})(window);

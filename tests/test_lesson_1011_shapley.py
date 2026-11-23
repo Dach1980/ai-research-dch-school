@@ -51,8 +51,8 @@ class Lesson1011ShapleyTests(unittest.TestCase):
                 for key in DIAGRAMS:
                     spec = content["diagrams"][key]
                     self.assertTrue(spec["title"] and spec["description"] and spec["caption"])
-                    self.assertIn(spec["layout"], {"causal-flow", "comparison-table", "experiment-flow"})
-                shape = (len(content["outcomes"]), len(content["sections"]), len(content["sources"]),
+                    self.assertIn(spec["layout"], {"shapley-coalition-table", "shapley-marginal-table", "shapley-permutations", "shapley-weights", "shapley-axioms"})
+                self.assertEqual(len(content["diagrams"]["coalitions"]["rows"]), 8)\n                self.assertEqual(len(content["diagrams"]["marginal"]["rows"]), 4)\n                self.assertEqual(len(content["diagrams"]["permutations"]["rows"]), 6)\n                self.assertEqual(len(content["diagrams"]["weights"]["rows"]), 3)\n                self.assertEqual(len(content["diagrams"]["axioms"]["cards"]), 4)\n                self.assertTrue(all(len(row) == 5 for row in content["diagrams"]["permutations"]["rows"]))\n                self.assertIn("lessons/practice/", content["practice"]["run"])\n                shape = (len(content["outcomes"]), len(content["sections"]), len(content["sources"]),
                          len(content["glossary"]), len(content["quiz"]), active)
                 if expected is None:
                     expected = shape
@@ -85,7 +85,7 @@ class Lesson1011ShapleyTests(unittest.TestCase):
         self.assertIn("Dummy", self.practice)
 
     def test_renderer_uses_shared_typed_svg_and_glossary(self):
-        self.assertIn("DCHLessonSVG.render", self.renderer)
+        self.assertIn("DCHLessonSVG.render", self.renderer)\n        for layout in ("shapley-coalition-table", "shapley-marginal-table", "shapley-permutations", "shapley-weights", "shapley-axioms"):\n            self.assertIn(layout, (ROOT / "scripts/lesson-svg-renderer.js").read_text(encoding="utf-8"))
         self.assertIn("DCHLessonComponents.renderGlossary", self.renderer)
         self.assertNotIn("lesson-navigation", self.renderer)
         self.assertNotIn("innerHTML", self.renderer)

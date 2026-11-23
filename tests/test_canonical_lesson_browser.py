@@ -203,14 +203,14 @@ class CanonicalLessonBrowserAcceptanceTests(unittest.TestCase):
             },
         }
         selectors = [
-            "main.lesson > .lesson-intro",
-            "main.lesson > #lesson-outcomes",
-            "main.lesson > #lesson-sections",
-            "main.lesson > #lesson-practice",
-            "main.lesson > #lesson-sources",
-            "main.lesson > #lesson-navigation",
-            "main.lesson > #lesson-glossary",
-            "main.lesson > #lesson-quiz",
+            "main.lesson > .lesson-standard-hero",
+            "main.lesson > .lesson-standard-hero #lesson-outcomes",
+            "main.lesson > .lesson-standard-article > #lesson-sections",
+            "main.lesson > .lesson-standard-article > #lesson-practice",
+            "main.lesson > .lesson-standard-article > #lesson-sources",
+            "main.lesson > .lesson-standard-article > #lesson-navigation",
+            "main.lesson > .lesson-standard-article > #lesson-glossary",
+            "main.lesson > .lesson-standard-article > #lesson-quiz",
             "footer.footer",
         ]
         for locale in ("ru", "en", "zh"):

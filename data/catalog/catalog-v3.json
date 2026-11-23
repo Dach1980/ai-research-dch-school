@@ -1,7 +1,7 @@
 {
   "schema_version": 3,
   "catalog_id": "dch-school-curriculum",
-  "catalog_version": "3.2.21-lesson-9-2-2-published",
+  "catalog_version": "3.2.22-lesson-10-1-1-review",
   "status": "migration_staging",
   "tracks": [
     {
@@ -154,6 +154,19 @@
         "ru": "LIME",
         "en": "LIME",
         "zh": "LIME"
+      }
+    },
+    {
+      "uid": "thm-a-10",
+      "track_uid": "trk-a",
+      "number": 10,
+      "code": "10",
+      "title": "SHAP",
+      "status": "active",
+      "title_i18n": {
+        "ru": "SHAP",
+        "en": "SHAP",
+        "zh": "SHAP"
       }
     }
   ],
@@ -514,6 +527,18 @@
         "ru": "Практическое применение и ограничения LIME",
         "en": "Practical Use and Limitations of LIME",
         "zh": "LIME 的实践应用与局限"
+      }
+    },
+    {
+      "uid": "mod-a-10-01",
+      "theme_uid": "thm-a-10",
+      "number": 1,
+      "title": "Теоретические основы и локальные объяснения SHAP",
+      "status": "active",
+      "title_i18n": {
+        "ru": "Теоретические основы и локальные объяснения SHAP",
+        "en": "SHAP Theory and Local Explanations",
+        "zh": "SHAP 理论基础与局部解释"
       }
     }
   ],
@@ -4241,6 +4266,40 @@
         "zh": "LIME 的局限性与稳定性"
       },
       "level": "intermediate"
+    },
+    {
+      "uid": "les-a-0182",
+      "track_uid": "trk-a",
+      "theme_uid": "thm-a-10",
+      "module_uid": "mod-a-10-01",
+      "code": "10.1.1",
+      "title": "Теория игр и Shapley Values",
+      "status": "review",
+      "content_state": "localized",
+      "access": "open",
+      "level": "intermediate",
+      "prerequisite_uids": [
+        "les-a-0181"
+      ],
+      "learning_outcomes": [
+        "Определять игроков, коалиции и функцию ценности кооперативной игры.",
+        "Объяснять предельный вклад участника в заданную коалицию.",
+        "Обосновывать усреднение вклада по всем порядкам присоединения.",
+        "Вычислять Shapley Value по коалициям и перестановкам.",
+        "Интерпретировать комбинаторные веса и четыре аксиомы.",
+        "Сопоставлять элементы игры с признаками модели и объяснять роль функции ценности.",
+        "Различать Shapley Value, SHAP и причинное влияние."
+      ],
+      "title_i18n": {
+        "ru": "Теория игр и Shapley Values",
+        "en": "Game Theory and Shapley Values",
+        "zh": "博弈论与 Shapley 值"
+      },
+      "url_i18n": {
+        "ru": "lessons/a-10-1-1-les-a-0182.html",
+        "en": "lessons/a-10-1-1-les-a-0182-en.html",
+        "zh": "lessons/a-10-1-1-les-a-0182-zh.html"
+      }
     }
   ],
   "resources": [],

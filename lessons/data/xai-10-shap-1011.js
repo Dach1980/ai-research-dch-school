@@ -128,179 +128,227 @@ window.DCH_SHAP_1011={
           ]
         },
         "coalitions": {
-          "title": "Все значения учебной коалиционной игры",
-          "description": "Восемь подмножеств трёх игроков и заданная для каждого ценность.",
-          "caption": "Учебные значения; пустая коалиция имеет базовый уровень 10.",
-          "layout": "comparison-table",
-          "tableTitle": "Коалиции и функция ценности v(S)",
+          "title": "Все восемь коалиций",
+          "description": "Каждая строка связывает одну коалицию с её значением функции ценности.",
+          "caption": "Пустая коалиция задаёт базовый уровень 10; полная коалиция даёт 20.",
+          "layout": "shapley-coalition-table",
           "columns": [
-            "Коалиция",
-            "Обозначение",
-            "v(S)"
+            "Коалиция S",
+            "Состав",
+            "Ценность v(S)"
           ],
           "rows": [
             [
-              "∅, {A}",
-              "10, 14",
-              "База и A отдельно"
+              "∅",
+              "никого",
+              "10"
             ],
             [
-              "{B}, {C}",
-              "13, 11",
-              "B и C отдельно"
+              "{A}",
+              "A",
+              "14"
             ],
             [
-              "{A,B}, {A,C}",
-              "18, 16",
-              "Пары с A"
+              "{B}",
+              "B",
+              "13"
             ],
             [
-              "{B,C}, N",
-              "15, 20",
-              "Пара без A; полная команда"
+              "{C}",
+              "C",
+              "11"
+            ],
+            [
+              "{A,B}",
+              "A и B",
+              "18"
+            ],
+            [
+              "{A,C}",
+              "A и C",
+              "16"
+            ],
+            [
+              "{B,C}",
+              "B и C",
+              "15"
+            ],
+            [
+              "{A,B,C}=N",
+              "A, B и C",
+              "20"
             ]
           ],
-          "jaccard": "Предельный вклад A",
-          "jaccardText": "Сравниваем значение до и после добавления A.",
-          "jaccardFormula": "ΔA(S)=v(S∪{A})−v(S)",
-          "spearman": "Базовый уровень",
-          "spearmanText": "Пустая коалиция задаёт исходный уровень игры.",
-          "coeff": "Общий результат",
-          "coeffText": "Полная коалиция объединяет всех игроков.",
-          "fidelity": "Распределяемый прирост",
-          "fidelityText": "Shapley Values распределяют v(N)−v(∅)=10."
+          "note": "Распределяемый прирост: v(N) − v(∅) = 20 − 10 = 10."
         },
         "marginal": {
-          "title": "Предельный вклад A в разных контекстах",
-          "description": "Четыре контекста дают четыре изменения ценности при добавлении A.",
-          "caption": "Вклад A зависит от состава коалиции, к которой он присоединяется.",
-          "layout": "comparison-table",
-          "tableTitle": "Расчёт ΔA(S)",
+          "title": "Как меняется вклад A",
+          "description": "Сравнение значения коалиции до и после присоединения A.",
+          "caption": "Один участник может иметь разные предельные вклады в разных коалициях.",
+          "layout": "shapley-marginal-table",
           "columns": [
-            "До добавления",
-            "После добавления A",
+            "Коалиция до",
+            "v(S)",
+            "Коалиция после A",
+            "v(S∪{A})",
             "ΔA(S)"
           ],
           "rows": [
             [
-              "∅: 10",
-              "{A}: 14",
+              "∅",
+              "10",
+              "{A}",
+              "14",
               "4"
             ],
             [
-              "{B}: 13",
-              "{A,B}: 18",
+              "{B}",
+              "13",
+              "{A,B}",
+              "18",
               "5"
             ],
             [
-              "{C}: 11",
-              "{A,C}: 16",
+              "{C}",
+              "11",
+              "{A,C}",
+              "16",
               "5"
             ],
             [
-              "{B,C}: 15",
-              "{A,B,C}: 20",
+              "{B,C}",
+              "15",
+              "{A,B,C}",
+              "20",
               "5"
             ]
           ],
-          "jaccard": "Интерпретация",
-          "jaccardText": "Первый контекст даёт 4; остальные контексты — 5.",
-          "jaccardFormula": "Разность = новое значение − прежнее",
-          "spearman": "Не постоянный параметр",
-          "spearmanText": "Это вклад при фиксированном составе S.",
-          "coeff": "Контекст важен",
-          "coeffText": "Другие участники уже входят в коалицию.",
-          "fidelity": "Не причинность",
-          "fidelityText": "Разность относится к заданной функции v."
+          "note": "ΔA(S) = v(S ∪ {A}) − v(S). В трёх из четырёх контекстов вклад A равен 5."
         },
         "permutations": {
-          "title": "Шесть порядков и вклады игроков",
-          "description": "Каждая строка — один порядок присоединения; значения в столбцах A, B и C — предельные вклады соответствующих игроков.",
-          "caption": "Во всех шести порядках сумма вкладов равна 10.",
-          "layout": "comparison-table",
-          "tableTitle": "Вклады по перестановкам (столбцы — игроки)",
+          "title": "Шесть порядков — шесть расчётов",
+          "description": "В каждой строке показан порядок присоединения и предельный вклад каждого игрока.",
+          "caption": "Каждая последовательность распределяет один и тот же прирост 10; Shapley Value — среднее по шести строкам.",
+          "layout": "shapley-permutations",
           "columns": [
-            "Первый игрок",
-            "Порядок 1",
-            "Порядок 2"
+            "Порядок",
+            "Вклад A",
+            "Вклад B",
+            "Вклад C",
+            "Сумма"
           ],
           "rows": [
             [
-              "Первым A",
-              "A→B→C (4,4,2)",
-              "A→C→B (4,4,2)"
+              "A → B → C",
+              "4",
+              "4",
+              "2",
+              "10"
             ],
             [
-              "Первым B",
-              "B→A→C (5,3,2)",
-              "B→C→A (5,3,2)"
+              "A → C → B",
+              "4",
+              "4",
+              "2",
+              "10"
             ],
             [
-              "Первым C",
-              "C→A→B (5,4,1)",
-              "C→B→A (5,4,1)"
+              "B → A → C",
+              "5",
+              "3",
+              "2",
+              "10"
+            ],
+            [
+              "B → C → A",
+              "5",
+              "3",
+              "2",
+              "10"
+            ],
+            [
+              "C → A → B",
+              "5",
+              "4",
+              "1",
+              "10"
+            ],
+            [
+              "C → B → A",
+              "5",
+              "4",
+              "1",
+              "10"
             ]
           ],
-          "jaccard": "Игрок C",
-          "jaccardText": "Вклады C по строкам: 2, 2, 2, 2, 1, 1.",
-          "jaccardFormula": "Среднее C = 10/6 = 5/3",
-          "spearman": "Игрок A",
-          "spearmanText": "Вклады A: 4, 4, 5, 5, 5, 5.",
-          "coeff": "Игрок B",
-          "coeffText": "Вклады B: 4, 4, 3, 3, 4, 4.",
-          "fidelity": "Проверка суммы",
-          "fidelityText": "Каждая строка даёт 10 = v(N)−v(∅)."
+          "note": "Средние: φA = 28/6 = 14/3; φB = 22/6 = 11/3; φC = 10/6 = 5/3."
         },
         "weights": {
-          "title": "Откуда берутся веса при n=3",
-          "description": "Вес зависит от числа игроков в коалиции S и количества перестановок с таким расположением.",
-          "caption": "Для одного игрока суммарный вес всех допустимых коалиций равен единице.",
-          "layout": "experiment-flow",
-          "object": "Все перестановки трёх игроков: 3! = 6",
-          "prediction": "Фиксируем игрока i и считаем, кто стоит перед ним",
-          "runA": "|S| = 0 или 2",
-          "sampleA": "Одна коалиция каждого размера",
-          "featuresA": "0!·2!/3! = 1/3",
-          "rankA": "2!·0!/3! = 1/3",
-          "runB": "|S| = 1",
-          "sampleB": "Две коалиции размера 1",
-          "featuresB": "1!·1!/3! = 1/6 для каждой",
-          "rankB": "2 × 1/6 = 1/3",
-          "compare": "Сумма весов",
-          "compareText": "1/3 + 1/6 + 1/6 + 1/3 = 1. Вес — доля перестановок, соответствующих данной коалиции перед i.",
-          "conclusion": "Среднее по перестановкам",
-          "conclusionText": "Взвешенная сумма по коалициям эквивалентна среднему предельному вкладу по всем 6 порядкам."
-        },
-        "axioms": {
-          "title": "Четыре свойства распределения",
-          "description": "Каждая аксиома ограничивает поведение правила распределения в отдельном случае.",
-          "caption": "Аксиомы описывают математическое правило, но не выбирают за исследователя саму функцию ценности.",
-          "layout": "causal-flow",
-          "headers": [
-            "Аксиома",
-            "Условие",
-            "Следствие"
+          "title": "Почему веса равны 1/3 и 1/6",
+          "description": "Для фиксированного игрока i считаем, сколько перестановок имеют заданную коалицию S перед ним.",
+          "caption": "Вес каждой коалиции — доля перестановок, в которых ровно участники S стоят перед i.",
+          "layout": "shapley-weights",
+          "columns": [
+            "Размер |S|",
+            "Коалиции S",
+            "Число S",
+            "Вес одной S",
+            "Вклад в сумму"
           ],
           "rows": [
             [
+              "0",
+              "∅",
+              "1",
+              "0!·2!/3! = 1/3",
+              "1/3"
+            ],
+            [
+              "1",
+              "{A}, {B}",
+              "2",
+              "1!·1!/3! = 1/6",
+              "2 × 1/6 = 1/3"
+            ],
+            [
+              "2",
+              "{A,B}",
+              "1",
+              "2!·0!/3! = 1/3",
+              "1/3"
+            ]
+          ],
+          "note": "Сумма весов: 1/3 + 1/6 + 1/6 + 1/3 = 1. Всего для трёх игроков существует 3! = 6 перестановок."
+        },
+        "axioms": {
+          "title": "Четыре аксиомы Shapley Value",
+          "description": "Каждая карточка показывает точное условие аксиомы и её следствие для распределения.",
+          "caption": "Аксиомы характеризуют правило распределения, но не доказывают причинность и не выбирают функцию ценности.",
+          "layout": "shapley-axioms",
+          "cards": [
+            [
               "Эффективность",
-              "Сумма φᵢ",
-              "v(N)−v(∅)"
+              "Сумма значений всех игроков равна общему приросту игры.",
+              "Σ φᵢ = v(N) − v(∅)",
+              "В примере: 14/3 + 11/3 + 5/3 = 10."
             ],
             [
               "Симметрия",
-              "Одинаковые Δ",
-              "Одинаковые φ"
+              "Если два игрока имеют одинаковые предельные вклады во всех коалициях, их значения равны.",
+              "φᵢ = φⱼ",
+              "Одинаковые возможности в любой коалиции означают равное распределение."
             ],
             [
               "Фиктивный игрок",
-              "Всегда Δ=0",
-              "φ=0"
+              "Если добавление игрока не меняет ценность ни одной коалиции, его вклад равен нулю.",
+              "Δᵢ(S) = 0 ⇒ φᵢ = 0",
+              "Игрок, который ничего не добавляет ни в одном контексте, получает ноль."
             ],
             [
               "Аддитивность",
-              "Игра v+w",
-              "φ(v+w)=φ(v)+φ(w)"
+              "Если ценность игры складывается из двух игр, распределение также складывается.",
+              "φᵢ(v + w) = φᵢ(v) + φᵢ(w)",
+              "Распределение суммы двух независимых компонентов равно сумме распределений."
             ]
           ]
         }
@@ -317,7 +365,7 @@ window.DCH_SHAP_1011={
           "Проверьте, что сумма равна v(N)−v(∅), а симметричные и фиктивные игроки ведут себя корректно."
         ],
         "install": "python --version",
-        "run": "python lessons/practice/a-10-1-1-shapley-values.py",
+        "run": "python a-10-1-1-shapley-values.py",
         "expected": "Оба независимых метода должны вернуть A=4.666667, B=3.666667, C=1.666667; сумма равна 10."
       },
       "sources": [
@@ -638,7 +686,7 @@ window.DCH_SHAP_1011={
           "Check that the sum equals v(N)−v(∅), and verify symmetric and dummy players."
         ],
         "install": "python --version",
-        "run": "python lessons/practice/a-10-1-1-shapley-values.py",
+        "run": "python a-10-1-1-shapley-values.py",
         "expected": "Both independent methods should return A=4.666667, B=3.666667, C=1.666667; the sum is 10."
       },
       "sources": [
@@ -889,159 +937,228 @@ window.DCH_SHAP_1011={
           ]
         },
         "coalitions": {
-          "title": "All values in the worked game",
-          "description": "Eight subsets of three players and their assigned values.",
-          "caption": "Illustrative values; the empty coalition baseline is 10.",
-          "layout": "comparison-table",
-          "tableTitle": "Coalitions and value function v(S)",
+          "title": "All eight coalitions",
+          "description": "Each row maps one coalition to its value under the value function.",
+          "caption": "The empty coalition sets the baseline at 10; the grand coalition has value 20.",
+          "layout": "shapley-coalition-table",
           "columns": [
-            "Coalition",
-            "Notation",
-            "v(S)"
+            "Coalition S",
+            "Members",
+            "Value v(S)"
           ],
           "rows": [
             [
-              "∅, {A}",
-              "10, 14",
-              "Baseline and A alone"
+              "∅",
+              "none",
+              "10"
             ],
             [
-              "{B}, {C}",
-              "13, 11",
-              "B and C alone"
+              "{A}",
+              "A",
+              "14"
             ],
             [
-              "{A,B}, {A,C}",
-              "18, 16",
-              "Pairs containing A"
+              "{B}",
+              "B",
+              "13"
             ],
             [
-              "{B,C}, N",
-              "15, 20",
-              "Pair without A; full team"
+              "{C}",
+              "C",
+              "11"
+            ],
+            [
+              "{A,B}",
+              "A and B",
+              "18"
+            ],
+            [
+              "{A,C}",
+              "A and C",
+              "16"
+            ],
+            [
+              "{B,C}",
+              "B and C",
+              "15"
+            ],
+            [
+              "{A,B,C}=N",
+              "A, B and C",
+              "20"
             ]
           ],
-          "jaccard": "Предельный вклад A",
-          "jaccardText": "Сравниваем значение до и после добавления A.",
-          "jaccardFormula": "ΔA(S)=v(S∪{A})−v(S)",
-          "spearman": "Базовый уровень",
-          "spearmanText": "Пустая коалиция задаёт исходный уровень игры.",
-          "coeff": "Общий результат",
-          "coeffText": "Полная коалиция объединяет всех игроков.",
-          "fidelity": "Распределяемый прирост",
-          "fidelityText": "Shapley Values распределяют v(N)−v(∅)=10."
+          "note": "Allocated gain: v(N) − v(∅) = 20 − 10 = 10."
         },
         "marginal": {
-          "title": "A's marginal contribution in different contexts",
-          "description": "Four contexts produce different changes when A joins.",
-          "caption": "A's contribution depends on the coalition it joins.",
-          "layout": "comparison-table",
-          "tableTitle": "Calculating ΔA(S)",
+          "title": "How A's contribution changes",
+          "description": "Compare coalition value before and after A joins.",
+          "caption": "The same player can have different marginal contributions in different coalitions.",
+          "layout": "shapley-marginal-table",
           "columns": [
-            "Before A joins",
+            "Coalition before",
+            "v(S)",
             "After A joins",
+            "v(S∪{A})",
             "ΔA(S)"
           ],
           "rows": [
             [
-              "∅: 10",
-              "{A}: 14",
+              "∅",
+              "10",
+              "{A}",
+              "14",
               "4"
             ],
             [
-              "{B}: 13",
-              "{A,B}: 18",
+              "{B}",
+              "13",
+              "{A,B}",
+              "18",
               "5"
             ],
             [
-              "{C}: 11",
-              "{A,C}: 16",
+              "{C}",
+              "11",
+              "{A,C}",
+              "16",
               "5"
             ],
             [
-              "{B,C}: 15",
-              "{A,B,C}: 20",
+              "{B,C}",
+              "15",
+              "{A,B,C}",
+              "20",
               "5"
             ]
           ],
-          "jaccard": "Интерпретация",
-          "jaccardText": "Первый контекст даёт 4; остальные контексты — 5.",
-          "jaccardFormula": "Разность = новое значение − прежнее",
-          "spearman": "Не постоянный параметр",
-          "spearmanText": "Это вклад при фиксированном составе S.",
-          "coeff": "Контекст важен",
-          "coeffText": "Другие участники уже входят в коалицию.",
-          "fidelity": "Не причинность",
-          "fidelityText": "Разность относится к заданной функции v."
+          "note": "ΔA(S) = v(S ∪ {A}) − v(S). A's contribution is 5 in three of the four contexts."
         },
         "permutations": {
-          "title": "Six joining orders and player contributions",
-          "description": "Each row is an order; the middle column lists all three players' marginal contributions.",
-          "caption": "Contributions in every order sum to 10.",
-          "layout": "comparison-table",
-          "tableTitle": "Contributions by permutation",
+          "title": "Six orders, six calculations",
+          "description": "Each row shows a joining order and each player's marginal contribution.",
+          "caption": "Every sequence allocates the same gain of 10; the Shapley Value is the average across all six rows.",
+          "layout": "shapley-permutations",
           "columns": [
-            "First player",
-            "Order 1",
-            "Order 2"
+            "Joining order",
+            "A's share",
+            "B's share",
+            "C's share",
+            "Total"
           ],
           "rows": [
             [
-              "A joins first",
-              "A→B→C (4,4,2)",
-              "A→C→B (4,4,2)"
+              "A → B → C",
+              "4",
+              "4",
+              "2",
+              "10"
             ],
             [
-              "B joins first",
-              "B→A→C (5,3,2)",
-              "B→C→A (5,3,2)"
+              "A → C → B",
+              "4",
+              "4",
+              "2",
+              "10"
             ],
             [
-              "C joins first",
-              "C→A→B (5,4,1)",
-              "C→B→A (5,4,1)"
+              "B → A → C",
+              "5",
+              "3",
+              "2",
+              "10"
+            ],
+            [
+              "B → C → A",
+              "5",
+              "3",
+              "2",
+              "10"
+            ],
+            [
+              "C → A → B",
+              "5",
+              "4",
+              "1",
+              "10"
+            ],
+            [
+              "C → B → A",
+              "5",
+              "4",
+              "1",
+              "10"
             ]
           ],
-          "jaccard": "Игрок C",
-          "jaccardText": "Вклады C по строкам: 2, 2, 2, 2, 1, 1.",
-          "jaccardFormula": "Среднее C = 10/6 = 5/3",
-          "spearman": "Игрок A",
-          "spearmanText": "Вклады A: 4, 4, 5, 5, 5, 5.",
-          "coeff": "Игрок B",
-          "coeffText": "Вклады B: 4, 4, 3, 3, 4, 4.",
-          "fidelity": "Проверка суммы",
-          "fidelityText": "Каждая строка даёт 10 = v(N)−v(∅)."
+          "note": "Averages: φA = 28/6 = 14/3; φB = 22/6 = 11/3; φC = 10/6 = 5/3."
         },
         "weights": {
-          "title": "Откуда берутся веса при n=3",
-          "description": "Вес зависит от числа игроков в коалиции S и количества перестановок с таким расположением.",
-          "caption": "Для одного игрока суммарный вес всех допустимых коалиций равен единице.",
-          "layout": "experiment-flow",
-          "object": "Все перестановки трёх игроков: 3! = 6",
-          "prediction": "Фиксируем игрока i и считаем, кто стоит перед ним",
-          "runA": "|S| = 0 или 2",
-          "sampleA": "Одна коалиция каждого размера",
-          "featuresA": "0!·2!/3! = 1/3",
-          "rankA": "2!·0!/3! = 1/3",
-          "runB": "|S| = 1",
-          "sampleB": "Две коалиции размера 1",
-          "featuresB": "1!·1!/3! = 1/6 для каждой",
-          "rankB": "2 × 1/6 = 1/3",
-          "compare": "Сумма весов",
-          "compareText": "1/3 + 1/6 + 1/6 + 1/3 = 1. Вес — доля перестановок, соответствующих данной коалиции перед i.",
-          "conclusion": "Среднее по перестановкам",
-          "conclusionText": "Взвешенная сумма по коалициям эквивалентна среднему предельному вкладу по всем 6 порядкам."
+          "title": "Why the weights are 1/3 and 1/6",
+          "description": "For a fixed player i, count permutations in which exactly coalition S appears before i.",
+          "caption": "A coalition's weight is the fraction of permutations in which exactly its members precede i.",
+          "layout": "shapley-weights",
+          "columns": [
+            "Size |S|",
+            "Coalitions S",
+            "Count",
+            "Weight per S",
+            "Subtotal"
+          ],
+          "rows": [
+            [
+              "0",
+              "∅",
+              "1",
+              "0!·2!/3! = 1/3",
+              "1/3"
+            ],
+            [
+              "1",
+              "{A}, {B}",
+              "2",
+              "1!·1!/3! = 1/6",
+              "2 × 1/6 = 1/3"
+            ],
+            [
+              "2",
+              "{A,B}",
+              "1",
+              "2!·0!/3! = 1/3",
+              "1/3"
+            ]
+          ],
+          "note": "Total weight: 1/3 + 1/6 + 1/6 + 1/3 = 1. Three players have 3! = 6 possible permutations."
         },
         "axioms": {
-          "title": "Four properties of the allocation",
-          "description": "Each axiom constrains the rule in a different case.",
-          "caption": "Axioms describe the rule; they do not choose the value function.",
-          "layout": "causal-flow",
-          "headers": "Axiom, condition, consequence",
-          "rows": [
-            "Axiom",
-            "Condition",
-            "Consequence"
+          "title": "The four Shapley axioms",
+          "description": "Each card states an axiom's precise condition and its consequence for the allocation.",
+          "caption": "Axioms characterize the allocation rule; they do not establish causality or choose the value function.",
+          "layout": "shapley-axioms",
+          "cards": [
+            [
+              "Efficiency",
+              "The sum of all players' values equals the game's total gain.",
+              "Σ φᵢ = v(N) − v(∅)",
+              "In this example: 14/3 + 11/3 + 5/3 = 10."
+            ],
+            [
+              "Symmetry",
+              "If two players have identical marginal contributions in every coalition, their values are equal.",
+              "φᵢ = φⱼ",
+              "Equal contributions in every context imply equal allocation."
+            ],
+            [
+              "Dummy player",
+              "If adding a player never changes any coalition's value, that player's value is zero.",
+              "Δᵢ(S) = 0 ⇒ φᵢ = 0",
+              "A player who adds nothing in every context receives zero."
+            ],
+            [
+              "Additivity",
+              "If a game is the sum of two games, the allocation is the sum of their allocations.",
+              "φᵢ(v + w) = φᵢ(v) + φᵢ(w)",
+              "The allocation of two combined components equals the sum of their separate allocations."
+            ]
           ]
         }
       }
@@ -1145,7 +1262,7 @@ window.DCH_SHAP_1011={
           "检查总和是否等于 v(N)−v(∅)，并验证对称参与者和虚拟参与者。"
         ],
         "install": "python --version",
-        "run": "python lessons/practice/a-10-1-1-shapley-values.py",
+        "run": "python a-10-1-1-shapley-values.py",
         "expected": "两种独立方法均应得到 A=4.666667、B=3.666667、C=1.666667；总和为 10。"
       },
       "sources": [
@@ -1396,159 +1513,228 @@ window.DCH_SHAP_1011={
           ]
         },
         "coalitions": {
-          "title": "示例合作博弈的全部价值",
-          "description": "三个参与者的八个子集及其对应价值。",
-          "caption": "教学示例数值；空联盟的基准值为 10。",
-          "layout": "comparison-table",
-          "tableTitle": "联盟与价值函数 v(S)",
+          "title": "合作博弈的八个联盟",
+          "description": "每一行将一个联盟与价值函数为它指定的数值对应起来。",
+          "caption": "空联盟的基准值为 10；大联盟的价值为 20。",
+          "layout": "shapley-coalition-table",
           "columns": [
-            "联盟",
-            "表示",
-            "v(S)"
+            "联盟 S",
+            "参与者",
+            "价值 v(S)"
           ],
           "rows": [
             [
-              "∅、{A}",
-              "10、14",
-              "基准与 A 单独加入"
+              "∅",
+              "无",
+              "10"
             ],
             [
-              "{B}、{C}",
-              "13、11",
-              "B 与 C 单独加入"
+              "{A}",
+              "A",
+              "14"
             ],
             [
-              "{A,B}、{A,C}",
-              "18、16",
-              "包含 A 的联盟"
+              "{B}",
+              "B",
+              "13"
             ],
             [
-              "{B,C}、N",
-              "15、20",
-              "不含 A 的联盟；完整团队"
+              "{C}",
+              "C",
+              "11"
+            ],
+            [
+              "{A,B}",
+              "A 和 B",
+              "18"
+            ],
+            [
+              "{A,C}",
+              "A 和 C",
+              "16"
+            ],
+            [
+              "{B,C}",
+              "B 和 C",
+              "15"
+            ],
+            [
+              "{A,B,C}=N",
+              "A、B 和 C",
+              "20"
             ]
           ],
-          "jaccard": "Предельный вклад A",
-          "jaccardText": "Сравниваем значение до и после добавления A.",
-          "jaccardFormula": "ΔA(S)=v(S∪{A})−v(S)",
-          "spearman": "Базовый уровень",
-          "spearmanText": "Пустая коалиция задаёт исходный уровень игры.",
-          "coeff": "Общий результат",
-          "coeffText": "Полная коалиция объединяет всех игроков.",
-          "fidelity": "Распределяемый прирост",
-          "fidelityText": "Shapley Values распределяют v(N)−v(∅)=10."
+          "note": "分配的增量：v(N) − v(∅) = 20 − 10 = 10。"
         },
         "marginal": {
-          "title": "A 在不同情境中的边际贡献",
-          "description": "四种情境下，A 加入后产生不同的价值变化。",
-          "caption": "A 的贡献取决于其加入的联盟。",
-          "layout": "comparison-table",
-          "tableTitle": "ΔA(S) 的计算",
+          "title": "A 的边际贡献如何变化",
+          "description": "比较 A 加入前后联盟价值的变化。",
+          "caption": "同一参与者在不同联盟中的边际贡献可能不同。",
+          "layout": "shapley-marginal-table",
           "columns": [
-            "加入前",
-            "A 加入后",
+            "加入前的联盟",
+            "v(S)",
+            "A 加入后的联盟",
+            "v(S∪{A})",
             "ΔA(S)"
           ],
           "rows": [
             [
-              "∅: 10",
-              "{A}: 14",
+              "∅",
+              "10",
+              "{A}",
+              "14",
               "4"
             ],
             [
-              "{B}: 13",
-              "{A,B}: 18",
+              "{B}",
+              "13",
+              "{A,B}",
+              "18",
               "5"
             ],
             [
-              "{C}: 11",
-              "{A,C}: 16",
+              "{C}",
+              "11",
+              "{A,C}",
+              "16",
               "5"
             ],
             [
-              "{B,C}: 15",
-              "{A,B,C}: 20",
+              "{B,C}",
+              "15",
+              "{A,B,C}",
+              "20",
               "5"
             ]
           ],
-          "jaccard": "Интерпретация",
-          "jaccardText": "Первый контекст даёт 4; остальные контексты — 5.",
-          "jaccardFormula": "Разность = новое значение − прежнее",
-          "spearman": "Не постоянный параметр",
-          "spearmanText": "Это вклад при фиксированном составе S.",
-          "coeff": "Контекст важен",
-          "coeffText": "Другие участники уже входят в коалицию.",
-          "fidelity": "Не причинность",
-          "fidelityText": "Разность относится к заданной функции v."
+          "note": "ΔA(S) = v(S ∪ {A}) − v(S)。在四种情境中，有三种的贡献为 5。"
         },
         "permutations": {
-          "title": "六种加入顺序与参与者贡献",
-          "description": "每行表示一种顺序；中间列列出三位参与者的边际贡献。",
-          "caption": "每种顺序的贡献总和均为 10。",
-          "layout": "comparison-table",
-          "tableTitle": "按排列计算贡献",
+          "title": "六种顺序与六次计算",
+          "description": "每一行展示一种加入顺序，以及每位参与者的边际贡献。",
+          "caption": "每种顺序分配的增量均为 10；Shapley 值是六行结果的平均值。",
+          "layout": "shapley-permutations",
           "columns": [
-            "首先加入者",
-            "顺序 1",
-            "顺序 2"
+            "加入顺序",
+            "A 的贡献",
+            "B 的贡献",
+            "C 的贡献",
+            "合计"
           ],
           "rows": [
             [
-              "A 首先加入",
-              "A→B→C (4,4,2)",
-              "A→C→B (4,4,2)"
+              "A → B → C",
+              "4",
+              "4",
+              "2",
+              "10"
             ],
             [
-              "B 首先加入",
-              "B→A→C (5,3,2)",
-              "B→C→A (5,3,2)"
+              "A → C → B",
+              "4",
+              "4",
+              "2",
+              "10"
             ],
             [
-              "C 首先加入",
-              "C→A→B (5,4,1)",
-              "C→B→A (5,4,1)"
+              "B → A → C",
+              "5",
+              "3",
+              "2",
+              "10"
+            ],
+            [
+              "B → C → A",
+              "5",
+              "3",
+              "2",
+              "10"
+            ],
+            [
+              "C → A → B",
+              "5",
+              "4",
+              "1",
+              "10"
+            ],
+            [
+              "C → B → A",
+              "5",
+              "4",
+              "1",
+              "10"
             ]
           ],
-          "jaccard": "Игрок C",
-          "jaccardText": "Вклады C по строкам: 2, 2, 2, 2, 1, 1.",
-          "jaccardFormula": "Среднее C = 10/6 = 5/3",
-          "spearman": "Игрок A",
-          "spearmanText": "Вклады A: 4, 4, 5, 5, 5, 5.",
-          "coeff": "Игрок B",
-          "coeffText": "Вклады B: 4, 4, 3, 3, 4, 4.",
-          "fidelity": "Проверка суммы",
-          "fidelityText": "Каждая строка даёт 10 = v(N)−v(∅)."
+          "note": "平均值：φA = 28/6 = 14/3；φB = 22/6 = 11/3；φC = 10/6 = 5/3。"
         },
         "weights": {
-          "title": "Откуда берутся веса при n=3",
-          "description": "Вес зависит от числа игроков в коалиции S и количества перестановок с таким расположением.",
-          "caption": "Для одного игрока суммарный вес всех допустимых коалиций равен единице.",
-          "layout": "experiment-flow",
-          "object": "Все перестановки трёх игроков: 3! = 6",
-          "prediction": "Фиксируем игрока i и считаем, кто стоит перед ним",
-          "runA": "|S| = 0 или 2",
-          "sampleA": "Одна коалиция каждого размера",
-          "featuresA": "0!·2!/3! = 1/3",
-          "rankA": "2!·0!/3! = 1/3",
-          "runB": "|S| = 1",
-          "sampleB": "Две коалиции размера 1",
-          "featuresB": "1!·1!/3! = 1/6 для каждой",
-          "rankB": "2 × 1/6 = 1/3",
-          "compare": "Сумма весов",
-          "compareText": "1/3 + 1/6 + 1/6 + 1/3 = 1. Вес — доля перестановок, соответствующих данной коалиции перед i.",
-          "conclusion": "Среднее по перестановкам",
-          "conclusionText": "Взвешенная сумма по коалициям эквивалентна среднему предельному вкладу по всем 6 порядкам."
+          "title": "为什么权重是 1/3 和 1/6",
+          "description": "固定参与者 i，统计恰好由联盟 S 中成员排在 i 前面的排列数量。",
+          "caption": "联盟权重表示在多少比例的排列中，恰好由 S 中的参与者排在 i 之前。",
+          "layout": "shapley-weights",
+          "columns": [
+            "|S| 的大小",
+            "联盟 S",
+            "数量",
+            "每个联盟的权重",
+            "小计"
+          ],
+          "rows": [
+            [
+              "0",
+              "∅",
+              "1",
+              "0!·2!/3! = 1/3",
+              "1/3"
+            ],
+            [
+              "1",
+              "{A}, {B}",
+              "2",
+              "1!·1!/3! = 1/6",
+              "2 × 1/6 = 1/3"
+            ],
+            [
+              "2",
+              "{A,B}",
+              "1",
+              "2!·0!/3! = 1/3",
+              "1/3"
+            ]
+          ],
+          "note": "权重总和：1/3 + 1/6 + 1/6 + 1/3 = 1。三位参与者共有 3! = 6 种排列。"
         },
         "axioms": {
-          "title": "分配规则的四项性质",
-          "description": "每条公理从不同角度约束分配规则。",
-          "caption": "公理描述数学规则，但不会替研究者选择价值函数。",
-          "layout": "causal-flow",
-          "headers": "公理、条件与结果",
-          "rows": [
-            "公理",
-            "条件",
-            "结果"
+          "title": "Shapley 值的四条公理",
+          "description": "每张卡片说明一条公理的精确条件及其对分配结果的含义。",
+          "caption": "公理刻画分配规则，但不能证明因果关系，也不会替研究者选择价值函数。",
+          "layout": "shapley-axioms",
+          "cards": [
+            [
+              "效率性",
+              "所有参与者的 Shapley 值之和等于博弈的总增量。",
+              "Σ φᵢ = v(N) − v(∅)",
+              "本例中：14/3 + 11/3 + 5/3 = 10。"
+            ],
+            [
+              "对称性",
+              "如果两位参与者在所有联盟中的边际贡献都相同，则其 Shapley 值相同。",
+              "φᵢ = φⱼ",
+              "在所有情境中贡献相同，分配结果也相同。"
+            ],
+            [
+              "虚拟参与者",
+              "如果加入某参与者不会改变任何联盟的价值，则该参与者的值为零。",
+              "Δᵢ(S) = 0 ⇒ φᵢ = 0",
+              "在所有情境中都没有增量的参与者得到零。"
+            ],
+            [
+              "可加性",
+              "如果一个博弈是两个博弈之和，其分配结果也等于两个分配结果之和。",
+              "φᵢ(v + w) = φᵢ(v) + φᵢ(w)",
+              "两个组成部分合并后的分配等于分别分配后相加。"
+            ]
           ]
         }
       }

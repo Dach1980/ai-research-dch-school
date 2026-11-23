@@ -123,6 +123,13 @@ class Lesson922LIMETests(unittest.TestCase):
                 self.assertIn("lesson-layout.js", page)
                 self.assertIn("https://dchai.ru/" + route, page)
 
+    def test_svg_secondary_surface_has_theme_tokens(self):
+        css = (ROOT / "styles/lesson-design-system.css").read_text(encoding="utf-8")
+        renderer = (ROOT / "scripts/lesson-svg-renderer.js").read_text(encoding="utf-8")
+        self.assertIn("--lds-surface-secondary:#f1f5fb", css)
+        self.assertIn("--lds-surface-secondary:#1b2b45", css)
+        self.assertIn("var(--lds-surface-secondary)", renderer)
+
     def test_renderer_uses_shared_components_and_no_local_shell_ownership(self):
         self.assertIn("DCHLessonSVG.render", self.renderer)
         self.assertIn("DCHLessonComponents.renderGlossary", self.renderer)

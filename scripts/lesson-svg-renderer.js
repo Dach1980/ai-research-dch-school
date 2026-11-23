@@ -39,6 +39,52 @@ function experiment(s){const d=s.diagramData,root=base(s,650);rect(root,140,24,4
  rect(root,24,500,672,120,"var(--lds-surface-secondary)");text(root,d.conclusion,42,532,630,{size:17,weight:700});text(root,d.conclusionText,42,565,630,{size:15,line:21});
  return figure(root,s);}
 
+
+function grid(s){
+ const nodes=s.nodes||[],cols=2,cardW=(W-PAD*2-16)/2,cardH=154,gap=16;
+ const rows=Math.ceil(nodes.length/cols),height=74+rows*(cardH+gap)+24,root=base(s,height);
+ nodes.forEach((node,i)=>{
+  const col=i%cols,row=Math.floor(i/cols),x=PAD+col*(cardW+gap),y=68+row*(cardH+gap);
+  rect(root,x,y,cardW,cardH,"var(--lds-surface)","var(--lds-line)",12);
+  text(root,node.title,x+16,y+32,cardW-32,{size:17,weight:750});
+  text(root,node.detail,x+16,y+66,cardW-32,{size:14,line:20,color:"var(--lds-muted)"});
+ });
+ return figure(root,s);
+}
+function scatter(s){
+ const n=s.neighborhood||{},root=base(s,610),x0=100,y0=74,w=540,h=440;
+ rect(root,x0,y0,w,h,"var(--lds-surface-secondary)","var(--lds-line)",8);
+ const point=p=>[x0+p[0]*w,y0+(1-p[1])*h],center=point(n.center||[.5,.5]),radius=(n.radius||.25)*Math.min(w,h);
+ root.append(el("circle",{"data-role":"neighborhood-boundary",cx:center[0],cy:center[1],r:radius,fill:"var(--lds-accent)","fill-opacity":".10",stroke:"var(--lds-accent)","stroke-width":2,"stroke-dasharray":"8 6"}));
+ (n.distant||[]).forEach(p=>{const q=point(p);root.append(el("circle",{"data-role":"distant-point",cx:q[0],cy:q[1],r:6,fill:"var(--lds-muted)",stroke:"var(--lds-surface)","stroke-width":2}));});
+ (n.nearby||[]).forEach(p=>{const q=point(p);root.append(el("circle",{"data-role":"nearby-point",cx:q[0],cy:q[1],r:7,fill:"var(--lds-good)",stroke:"var(--lds-surface)","stroke-width":2}));});
+ root.append(el("circle",{"data-role":"explained-instance",cx:center[0],cy:center[1],r:10,fill:"var(--lds-bad)",stroke:"var(--lds-surface)","stroke-width":3}));
+ text(root,n.label||"",Math.min(center[0]+16,x0+w-170),Math.max(y0+20,center[1]-16),160,{size:13,weight:750,color:"var(--lds-ink)"});
+ root.append(el("text",{"data-role":"instance-label",x:center[0]+13,y:center[1]+28,"font-size":13,"font-weight":750,fill:"var(--lds-ink)"}, "x₀"));
+ line(root,x0,y0+h,x0+w,y0+h,"var(--lds-ink)",2);arrow(root,x0+w,y0+h,x0+w+10,y0+h);
+ line(root,x0,y0+h,x0,y0-10,"var(--lds-ink)",2);arrow(root,x0,y0-10,x0,y0-20);
+ text(root,s.xLabel||"",x0+w/2,y0+h+44,220,{size:13,weight:700});
+ root.append(el("text",{x:35,y:y0+h/2,transform:"rotate(-90 35 "+(y0+h/2)+")","font-size":13,"font-weight":700,fill:"var(--lds-ink)","text-anchor":"middle"},s.yLabel||""));
+ const legendY=568;
+ root.append(el("circle",{cx:130,cy:legendY-4,r:6,fill:"var(--lds-good)"}));text(root,s.observedLabel||"",144,legendY,170,{size:12});
+ root.append(el("circle",{cx:370,cy:legendY-4,r:6,fill:"var(--lds-muted)"}));text(root,s.syntheticLabel||"",384,legendY,210,{size:12});
+ return figure(root,s);
+}
+function plot(s){
+ const root=base(s,560),x0=80,y0=72,w=590,h=390,pts=s.points||[];
+ rect(root,x0,y0,w,h,"var(--lds-surface)","var(--lds-line)",8);
+ line(root,x0,y0+h,x0+w,y0+h,"var(--lds-ink)",2);arrow(root,x0+w,y0+h,x0+w+10,y0+h);
+ line(root,x0,y0+h,x0,y0-10,"var(--lds-ink)",2);arrow(root,x0,y0-10,x0,y0-20);
+ const point=p=>[x0+p[0]*w,y0+(1-p[1])*h];
+ if(pts.length>1){const d=pts.map((p,i)=>{const q=point(p);return (i?"L ":"M ")+q[0]+" "+q[1];}).join(" ");root.append(el("path",{d,fill:"none",stroke:"var(--lds-accent)","stroke-width":2.5,"stroke-linecap":"round","stroke-linejoin":"round"}));}
+ pts.forEach(p=>{const q=point(p);root.append(el("circle",{cx:q[0],cy:q[1],r:5,fill:"var(--lds-good)",stroke:"var(--lds-surface)","stroke-width":1.5}));});
+ (s.annotations||[]).forEach(a=>{const q=point([a.x,a.y]);const x=Math.min(Math.max(q[0]-72,x0+4),x0+w-148),y=Math.min(Math.max(q[1]-32,y0+4),y0+h-58);rect(root,x,y,144,48,"var(--lds-math-bg)","var(--lds-math-border)",7);text(root,a.text,x+8,y+27,128,{size:12,weight:650,color:"var(--lds-math-ink)"});});
+ text(root,s.xLabel||"",x0+w/2,y0+h+42,220,{size:13,weight:700});
+ root.append(el("text",{x:28,y:y0+h/2,transform:"rotate(-90 28 "+(y0+h/2)+")","font-size":13,"font-weight":700,fill:"var(--lds-ink)","text-anchor":"middle"},s.yLabel||""));
+ if(s.sparseLabel)text(root,s.sparseLabel,x0+12,y0+24,w-24,{size:12,weight:650,color:"var(--lds-muted)"});
+ return figure(root,s);
+}
+
 function tableFigure(s,kind){
  const d=s.diagramData,cols=d.columns,rows=d.rows;const widths=kind==="shapley-coalition-table"?[190,250,210]:kind==="shapley-marginal-table"?[132,78,150,112,90]:kind==="shapley-permutations"?[190,100,100,100,100]:[112,170,90,190,128];
  const x=[24];for(let i=1;i<widths.length;i++)x.push(x[i-1]+widths[i-1]);const headerY=82,headH=48,rowH=kind==="shapley-coalition-table"?42:kind==="shapley-permutations"?48:58;
@@ -55,5 +101,5 @@ function axiomsFigure(s){
  d.cards.forEach((c,i)=>{const xx=x[i%2],yy=y[Math.floor(i/2)];rect(root,xx,yy,w,h,"var(--lds-surface)","var(--lds-line)",12);rect(root,xx,yy,w,42,"var(--lds-accent)","var(--lds-accent)",10);text(root,c[0],xx+14,yy+27,w-28,{size:16,weight:750,color:"var(--lds-accent-ink)"});text(root,c[1],xx+14,yy+72,w-28,{size:14,line:19});rect(root,xx+12,yy+112,w-24,42,"var(--lds-math-bg)","var(--lds-math-border)",7);text(root,c[2],xx+22,yy+139,w-44,{size:15,weight:750,color:"var(--lds-math-ink)"});text(root,c[3],xx+14,yy+184,w-28,{size:13,line:17,color:"var(--lds-muted)"});});
  return figure(root,s);
 }
-function render(spec){if(!spec||!spec.layout)throw new TypeError("Missing diagram layout");if(spec.layout==="matrix")return matrix(spec);if(spec.layout==="causal-flow")return causal(spec);if(spec.layout==="comparison-table")return comparison(spec);if(spec.layout==="experiment-flow")return experiment(spec);if(spec.layout==="shapley-coalition-table"||spec.layout==="shapley-marginal-table"||spec.layout==="shapley-permutations"||spec.layout==="shapley-weights")return tableFigure(spec,spec.layout);if(spec.layout==="shapley-axioms")return axiomsFigure(spec);throw new TypeError("Unsupported SVG layout: "+spec.layout);}
-global.DCHLessonSVG={version:"2.1.0",render};})(window);
+function render(spec){if(!spec||!spec.layout)throw new TypeError("Missing diagram layout");if(spec.layout==="matrix")return matrix(spec);if(spec.layout==="causal-flow")return causal(spec);if(spec.layout==="comparison-table")return comparison(spec);if(spec.layout==="experiment-flow")return experiment(spec);if(spec.layout==="grid")return grid(spec);if(spec.layout==="scatter")return scatter(spec);if(spec.layout==="plot")return plot(spec);if(spec.layout==="shapley-coalition-table"||spec.layout==="shapley-marginal-table"||spec.layout==="shapley-permutations"||spec.layout==="shapley-weights")return tableFigure(spec,spec.layout);if(spec.layout==="shapley-axioms")return axiomsFigure(spec);throw new TypeError("Unsupported SVG layout: "+spec.layout);}
+global.DCHLessonSVG={version:"2.2.0",render};})(window);

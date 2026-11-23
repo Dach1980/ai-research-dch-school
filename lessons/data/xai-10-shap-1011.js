@@ -397,7 +397,8 @@ window.DCH_SHAP_1011={
               "Значение φᵢ для каждого игрока.",
               "Атрибуции признаков, обычно вместе с базовым значением и объясняемым прогнозом."
             ]
-          ]
+          ],
+          "aspectLabel": "Критерий"
         }
       },
       "practice": {
@@ -1261,7 +1262,8 @@ window.DCH_SHAP_1011={
               "A value φᵢ for each player.",
               "Feature attributions, commonly alongside a baseline and the explained prediction."
             ]
-          ]
+          ],
+          "aspectLabel": "Aspect"
         }
       }
     },
@@ -1892,7 +1894,8 @@ window.DCH_SHAP_1011={
               "每位参与者对应一个 φᵢ 值。",
               "特征归因，通常同时给出基准值和待解释预测。"
             ]
-          ]
+          ],
+          "aspectLabel": "维度"
         }
       }
     }

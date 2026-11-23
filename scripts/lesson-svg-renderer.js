@@ -136,11 +136,43 @@ function tableFigure(s,kind){
  let yy=headerY+headH+rows.length*rowH+24;rect(root,24,yy,672,noteLines.length*23+24,"var(--lds-math-bg)","var(--lds-math-border)",9);text(root,d.note,40,yy+29,640,{size:15,weight:650,color:"var(--lds-math-ink)",line:22});
  return figure(root,s);
 }
+function shapleyMappingFigure(s){
+ const d=s.diagramData,cards=d.cards||[],root=base(s,430),xs=[24,253,482],w=214,y=92,h=278;
+ text(root,d.title,24,38,672,{size:19,weight:750});
+ cards.forEach((card,i)=>{
+  const x=xs[i];rect(root,x,y,w,h,"var(--lds-surface)","var(--lds-line)",12);
+  rect(root,x,y,w,52,"var(--lds-accent)","var(--lds-accent)",10);
+  text(root,card[0],x+12,y+31,w-24,{size:15,weight:750,color:"var(--lds-accent-ink)"});
+  text(root,card[1],x+14,y+82,w-28,{size:14,line:21,color:"var(--lds-ink)"});
+  if(i<cards.length-1)arrow(root,x+w+3,y+h/2,xs[i+1]-8,y+h/2);
+ });
+ rect(root,24,390,672,28,"var(--lds-math-bg)","var(--lds-math-border)",7);
+ text(root,d.caption,36,410,648,{size:12,weight:650,color:"var(--lds-math-ink)"});
+ return figure(root,s);
+}
+function shapleyDistinctionFigure(s){
+ const d=s.diagramData,root=base(s,520),x=[24,368],w=328,top=92,headerH=52,rowH=106;
+ text(root,d.title,24,38,672,{size:19,weight:750});
+ d.columns.forEach((name,i)=>{
+  rect(root,x[i],top,w,headerH,"var(--lds-accent)","var(--lds-accent)",9);
+  text(root,name,x[i]+14,top+32,w-28,{size:17,weight:750,color:"var(--lds-accent-ink)"});
+ });
+ (d.rows||[]).forEach((row,i)=>{
+  const y=top+headerH+12+i*(rowH+10);
+  row.forEach((value,j)=>{
+   rect(root,x[j],y,w,rowH,"var(--lds-surface)","var(--lds-line)",8);
+   text(root,value,x[j]+12,y+24,w-24,{size:13,line:19,color:"var(--lds-ink)"});
+  });
+ });
+ rect(root,24,top+headerH+12+(d.rows||[]).length*(rowH+10),672,34,"var(--lds-math-bg)","var(--lds-math-border)",7);
+ text(root,d.caption,36,top+headerH+12+(d.rows||[]).length*(rowH+10)+22,648,{size:12,weight:650,color:"var(--lds-math-ink)"});
+ return figure(root,s);
+}
 function axiomsFigure(s){
  const d=s.diagramData,root=base(s,650);text(root,d.title,24,38,670,{size:19,weight:750});
  const x=[24,368],y=[76,330],w=328,h=236;
  d.cards.forEach((c,i)=>{const xx=x[i%2],yy=y[Math.floor(i/2)];rect(root,xx,yy,w,h,"var(--lds-surface)","var(--lds-line)",12);rect(root,xx,yy,w,42,"var(--lds-accent)","var(--lds-accent)",10);text(root,c[0],xx+14,yy+27,w-28,{size:16,weight:750,color:"var(--lds-accent-ink)"});text(root,c[1],xx+14,yy+72,w-28,{size:14,line:19});rect(root,xx+12,yy+112,w-24,42,"var(--lds-math-bg)","var(--lds-math-border)",7);text(root,c[2],xx+22,yy+139,w-44,{size:15,weight:750,color:"var(--lds-math-ink)"});text(root,c[3],xx+14,yy+184,w-28,{size:13,line:17,color:"var(--lds-muted)"});});
  return figure(root,s);
 }
-function render(spec){if(!spec||!spec.layout)throw new TypeError("Missing diagram layout");if(spec.layout==="matrix")return matrix(spec);if(spec.layout==="causal-flow")return causal(spec);if(spec.layout==="comparison-table")return comparison(spec);if(spec.layout==="experiment-flow")return experiment(spec);if(spec.layout==="grid"&&spec.connectSequence===true)return grid(spec);if(spec.layout==="grid")return grid(spec);if(spec.layout==="table")return renderTable(spec);if(spec.layout==="bars")return renderBars(spec);if(spec.layout==="scatter")return renderWeightedScatter(spec);if(spec.layout==="plot")return plot(spec);if(spec.layout==="shapley-coalition-table"||spec.layout==="shapley-marginal-table"||spec.layout==="shapley-permutations"||spec.layout==="shapley-weights")return tableFigure(spec,spec.layout);if(spec.layout==="shapley-axioms")return axiomsFigure(spec);throw new TypeError("Unsupported SVG layout: "+spec.layout);}
-global.DCHLessonSVG={version:"2.3.0",render};})(window);
+function render(spec){if(!spec||!spec.layout)throw new TypeError("Missing diagram layout");if(spec.layout==="matrix")return matrix(spec);if(spec.layout==="causal-flow")return causal(spec);if(spec.layout==="comparison-table")return comparison(spec);if(spec.layout==="experiment-flow")return experiment(spec);if(spec.layout==="grid"&&spec.connectSequence===true)return grid(spec);if(spec.layout==="grid")return grid(spec);if(spec.layout==="table")return renderTable(spec);if(spec.layout==="bars")return renderBars(spec);if(spec.layout==="scatter")return renderWeightedScatter(spec);if(spec.layout==="plot")return plot(spec);if(spec.layout==="shapley-coalition-table"||spec.layout==="shapley-marginal-table"||spec.layout==="shapley-permutations"||spec.layout==="shapley-weights")return tableFigure(spec,spec.layout);if(spec.layout==="shapley-mapping")return shapleyMappingFigure(spec);if(spec.layout==="shapley-distinction")return shapleyDistinctionFigure(spec);if(spec.layout==="shapley-axioms")return axiomsFigure(spec);throw new TypeError("Unsupported SVG layout: "+spec.layout);}
+global.DCHLessonSVG={version:"2.4.0",render};})(window);

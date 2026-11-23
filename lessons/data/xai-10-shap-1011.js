@@ -365,7 +365,7 @@ window.DCH_SHAP_1011={
           "Проверьте, что сумма равна v(N)−v(∅), а симметричные и фиктивные игроки ведут себя корректно."
         ],
         "install": "python --version",
-        "run": "python a-10-1-1-shapley-values.py",
+        "run": "python lessons/practice/a-10-1-1-shapley-values.py",
         "expected": "Оба независимых метода должны вернуть A=4.666667, B=3.666667, C=1.666667; сумма равна 10."
       },
       "sources": [
@@ -686,7 +686,7 @@ window.DCH_SHAP_1011={
           "Check that the sum equals v(N)−v(∅), and verify symmetric and dummy players."
         ],
         "install": "python --version",
-        "run": "python a-10-1-1-shapley-values.py",
+        "run": "python lessons/practice/a-10-1-1-shapley-values.py",
         "expected": "Both independent methods should return A=4.666667, B=3.666667, C=1.666667; the sum is 10."
       },
       "sources": [
@@ -1262,7 +1262,7 @@ window.DCH_SHAP_1011={
           "检查总和是否等于 v(N)−v(∅)，并验证对称参与者和虚拟参与者。"
         ],
         "install": "python --version",
-        "run": "python a-10-1-1-shapley-values.py",
+        "run": "python lessons/practice/a-10-1-1-shapley-values.py",
         "expected": "两种独立方法均应得到 A=4.666667、B=3.666667、C=1.666667；总和为 10。"
       },
       "sources": [

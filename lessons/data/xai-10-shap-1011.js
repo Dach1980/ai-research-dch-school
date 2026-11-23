@@ -351,6 +351,53 @@ window.DCH_SHAP_1011={
               "Распределение суммы двух независимых компонентов равно сумме распределений."
             ]
           ]
+        },
+        "mapping": {
+          "layout": "shapley-mapping",
+          "title": "От кооперативной игры к объяснению модели",
+          "description": "Игроки и коалиции игры сопоставляются признакам и подмножествам признаков модели.",
+          "caption": "Функция ценности v_x задаёт выход модели или выбранную характеристику для каждой коалиции признаков.",
+          "cards": [
+            [
+              "Кооперативная игра",
+              "Игроки A, B и C образуют коалиции S; функция v(S) задаёт ценность каждой коалиции."
+            ],
+            [
+              "Модель машинного обучения",
+              "Игроками становятся признаки; коалиция S — выбранное подмножество признаков для объясняемого объекта x."
+            ],
+            [
+              "Распределение вклада",
+              "Значения Шепли φᵢ усредняют предельный вклад признака по всем возможным контекстам."
+            ]
+          ]
+        },
+        "distinction": {
+          "layout": "shapley-distinction",
+          "title": "Shapley Value и SHAP: связь, но не тождество",
+          "description": "Shapley Value — правило распределения в кооперативной игре; SHAP применяет эту идею для объяснения предсказаний моделей.",
+          "caption": "SHAP использует значения Шепли как теоретическую основу, но включает постановку задачи объяснения, выбор фона и способ вычисления.",
+          "columns": [
+            "Shapley Value",
+            "SHAP"
+          ],
+          "rows": [
+            [
+              "Объект",
+              "Общее правило распределения ценности между игроками.",
+              "Подход к объяснению вклада признаков в предсказание модели."
+            ],
+            [
+              "Функция ценности",
+              "Задаётся кооперативной игрой v(S).",
+              "Задаётся моделью, объясняемым объектом и способом представить отсутствующие признаки."
+            ],
+            [
+              "Результат",
+              "Значение φᵢ для каждого игрока.",
+              "Атрибуции признаков, обычно вместе с базовым значением и объясняемым прогнозом."
+            ]
+          ]
         }
       },
       "practice": {
@@ -615,7 +662,8 @@ window.DCH_SHAP_1011={
           [
             "A cooperative game is defined by a set of players N and a value function v(S), which assigns an outcome to every coalition S ⊆ N. Let n=|N|. The empty coalition ∅ also has a value v(∅); it need not be zero unless the game is normalized that way.",
             "In our worked example, v(∅)=10 and v({A,B,C})=20. The amount to allocate is the gain 20−10=10, not the level 20. The table lists all eight coalition values; these numbers are illustrative and belong only to this example."
-          ]
+          ],
+          "coalitions"
         ],
         [
           "marginal",
@@ -623,7 +671,8 @@ window.DCH_SHAP_1011={
           [
             "For player i and a coalition S that does not contain i, the marginal contribution is Δᵢ(S)=v(S∪{i})−v(S). It is the change in value when i joins S, not a fixed property of the player.",
             "For A, joining the empty coalition adds 14−10=4; joining {B} adds 18−13=5; joining {C} adds 16−11=5; joining {B,C} adds 20−15=5. The same player has different marginal contributions in different team contexts."
-          ]
+          ],
+          "marginal"
         ],
         [
           "permutations",
@@ -631,7 +680,8 @@ window.DCH_SHAP_1011={
           [
             "With three players there are 3!=6 possible orders. In each order, a player receives the increase in value at the moment they join. The table columns A, B, and C show each player's contribution regardless of their position; every row sums to the total gain of 10.",
             "Averaging over the six orders gives φA=28/6=14/3≈4.667, φB=22/6=11/3≈3.667, and φC=10/6=5/3≈1.667. This is a mathematical way to account for every context, not a claim that features are literally added one by one in practice."
-          ]
+          ],
+          "permutations"
         ],
         [
           "formula",
@@ -639,7 +689,8 @@ window.DCH_SHAP_1011={
           [
             "The Shapley Value of player i is a weighted sum of marginal contributions over all coalitions that do not contain i: φᵢ(v)=Σ₍S⊆N\\{i}₎ [|S|!(n−|S|−1)!/n!]·[v(S∪{i})−v(S)]. The first factor is the coalition's weight; the second is i's marginal contribution in that coalition.",
             "For n=3, the weight for a coalition of size 0 is 0!·2!/3!=1/3; for each coalition of size 1 it is 1!·1!/3!=1/6; and for a coalition of size 2 it is 2!·0!/3!=1/3. For a fixed S, this is the fraction of permutations where exactly S appears before i and all remaining players appear after i. The weights for one player sum to 1."
-          ]
+          ],
+          "weights"
         ],
         [
           "axioms",
@@ -647,7 +698,8 @@ window.DCH_SHAP_1011={
           [
             "Efficiency: the Shapley Values sum to v(N)−v(∅). Symmetry: players with identical marginal contributions in every coalition receive equal values. Dummy player: a player whose addition never changes a coalition's value receives zero.",
             "Additivity: for the sum of two games, a player's value equals the sum of their values in each game. These axioms characterize the Shapley Value rule for the specified class of cooperative games. They do not prove causality, absence of bias, or universal fairness of the chosen problem formulation."
-          ]
+          ],
+          "axioms"
         ],
         [
           "ml",
@@ -655,7 +707,8 @@ window.DCH_SHAP_1011={
           [
             "For model explanation, features become players and a coalition is a subset of features. But defining v(S) requires deciding what it means for the remaining features to be absent and how to obtain a model output with only a subset of inputs. Different definitions use conditional or marginal expectations and different background distributions.",
             "With dependent features, independently removing features can create unrealistic combinations. The background data, treatment of missing features, model output, and output scale therefore change the game itself and its Shapley Values. The allocation is relative to the chosen value function; it is not proof of a feature's causal effect."
-          ]
+          ],
+          "mapping"
         ],
         [
           "shap",
@@ -663,7 +716,8 @@ window.DCH_SHAP_1011={
           [
             "Shapley Value is a mathematical rule for allocating a gain in a cooperative game. SHAP is a family of model-explanation approaches that use Shapley Values together with particular ways of defining or estimating the value function.",
             "Shapley Value is not a library or a single algorithm. Nor should we assume every SHAP implementation always computes exact values for every model and feature count. Computation methods and their trade-offs are the subject of lesson 10.1.2."
-          ]
+          ],
+          "distinction"
         ],
         [
           "summary",
@@ -671,7 +725,8 @@ window.DCH_SHAP_1011={
           [
             "The chain is: a cooperative game defines players and a value function; a coalition defines the context; marginal contribution measures the change when a player joins; averaging over all orders leads to the Shapley Value; in ML, the result depends on how the value function is defined for feature subsets.",
             "Before interpreting an explanation, state the explained object, model output, background data, and treatment of absent features. The next lesson examines how the SHAP family constructs and estimates such explanations in practice."
-          ]
+          ],
+          null
         ]
       ],
       "practice": {
@@ -1160,6 +1215,53 @@ window.DCH_SHAP_1011={
               "The allocation of two combined components equals the sum of their separate allocations."
             ]
           ]
+        },
+        "mapping": {
+          "layout": "shapley-mapping",
+          "title": "From a cooperative game to a model explanation",
+          "description": "Players and coalitions in the game correspond to model features and feature subsets.",
+          "caption": "The value function vₓ assigns a model output or selected quantity to each feature coalition.",
+          "cards": [
+            [
+              "Cooperative game",
+              "Players A, B, and C form coalitions S; v(S) assigns a value to every coalition."
+            ],
+            [
+              "Machine-learning model",
+              "Features become players; coalition S is a selected subset of features for the instance x."
+            ],
+            [
+              "Contribution allocation",
+              "Shapley values φᵢ average each feature's marginal contribution across all possible contexts."
+            ]
+          ]
+        },
+        "distinction": {
+          "layout": "shapley-distinction",
+          "title": "Shapley Value and SHAP: related, not identical",
+          "description": "The Shapley Value is an allocation rule for cooperative games; SHAP applies this idea to explain model predictions.",
+          "caption": "SHAP uses Shapley values as its theoretical foundation, while also specifying an explanation setup, a background distribution, and computation methods.",
+          "columns": [
+            "Shapley Value",
+            "SHAP"
+          ],
+          "rows": [
+            [
+              "Object",
+              "A general rule for allocating value among game players.",
+              "A framework for attributing a model prediction to its features."
+            ],
+            [
+              "Value function",
+              "Defined by the cooperative game v(S).",
+              "Defined through the model, explained instance, and treatment of missing features."
+            ],
+            [
+              "Output",
+              "A value φᵢ for each player.",
+              "Feature attributions, commonly alongside a baseline and the explained prediction."
+            ]
+          ]
         }
       }
     },
@@ -1191,7 +1293,8 @@ window.DCH_SHAP_1011={
           [
             "合作博弈由参与者集合 N 和价值函数 v(S) 定义，后者为每个联盟 S ⊆ N 指定一个结果。令 n=|N|。空联盟 ∅ 也有价值 v(∅)；除非对博弈进行相应归一化，否则它不一定为零。",
             "本例中 v(∅)=10，v({A,B,C})=20。需要分配的是增量 20−10=10，而不是总水平 20。表格列出八个联盟的价值；这些数字仅为本例中的教学数据。"
-          ]
+          ],
+          "coalitions"
         ],
         [
           "marginal",
@@ -1199,7 +1302,8 @@ window.DCH_SHAP_1011={
           [
             "对于不包含 i 的联盟 S，参与者 i 的边际贡献为 Δᵢ(S)=v(S∪{i})−v(S)。它表示 i 加入 S 后价值的变化，并不是参与者固定不变的属性。",
             "对于 A，加入空联盟带来 14−10=4；加入 {B} 带来 18−13=5；加入 {C} 带来 16−11=5；加入 {B,C} 带来 20−15=5。同一参与者在不同团队情境中的边际贡献可能不同。"
-          ]
+          ],
+          "marginal"
         ],
         [
           "permutations",
@@ -1207,7 +1311,8 @@ window.DCH_SHAP_1011={
           [
             "三位参与者共有 3!=6 种加入顺序。在每种顺序中，参与者获得其加入时价值的增量。表格中的 A、B、C 列分别表示各参与者的贡献，与其在顺序中的位置无关；每行总和均为 10。",
             "对六种顺序取平均：φA=28/6=14/3≈4.667；φB=22/6=11/3≈3.667；φC=10/6=5/3≈1.667。这是对所有情境进行数学上的对称处理，并不表示实际特征必须逐个加入。"
-          ]
+          ],
+          "permutations"
         ],
         [
           "formula",
@@ -1215,7 +1320,8 @@ window.DCH_SHAP_1011={
           [
             "参与者 i 的 Shapley 值，是对所有不包含 i 的联盟的边际贡献进行加权求和：φᵢ(v)=Σ₍S⊆N\\{i}₎ [|S|!(n−|S|−1)!/n!]·[v(S∪{i})−v(S)]。第一个因子是联盟 S 的权重，第二个因子是 i 在该联盟中的边际贡献。",
             "当 n=3 时，大小为 0 的联盟权重为 0!·2!/3!=1/3；大小为 1 的每个联盟权重为 1!·1!/3!=1/6；大小为 2 的联盟权重为 2!·0!/3!=1/3。对于固定的 S，这表示在多少比例的排列中，恰好 S 位于 i 之前，其余参与者位于 i 之后。一个参与者的所有权重之和为 1。"
-          ]
+          ],
+          "weights"
         ],
         [
           "axioms",
@@ -1223,7 +1329,8 @@ window.DCH_SHAP_1011={
           [
             "效率性：Shapley 值之和等于 v(N)−v(∅)。对称性：如果两个参与者在所有联盟中的边际贡献都相同，则它们获得相同的值。虚拟参与者：如果某参与者的加入从不改变联盟价值，则其值为零。",
             "可加性：两个博弈之和中某参与者的值，等于其在两个博弈中的值之和。这些公理在指定的合作博弈类别中刻画了 Shapley 值规则。它们并不能证明因果关系、无偏性，也不能保证所选问题定义在任何场景下都绝对公平。"
-          ]
+          ],
+          "axioms"
         ],
         [
           "ml",
@@ -1231,7 +1338,8 @@ window.DCH_SHAP_1011={
           [
             "在模型解释中，特征对应参与者，联盟对应特征子集。但定义 v(S) 时，必须决定其余特征缺失意味着什么，以及如何在只有部分输入时获得模型输出。不同定义可能使用条件期望或边际期望，以及不同的背景分布。",
             "当特征存在依赖关系时，独立移除特征可能产生不现实的组合。因此，背景数据、缺失特征处理方式、模型输出和输出尺度都会改变博弈本身及其 Shapley 值。该分配只相对于所选价值函数成立，并不能证明特征的因果效应。"
-          ]
+          ],
+          "mapping"
         ],
         [
           "shap",
@@ -1239,7 +1347,8 @@ window.DCH_SHAP_1011={
           [
             "Shapley 值是合作博弈中分配价值增量的数学规则。SHAP 是一类模型解释方法，它们使用 Shapley 值，并采用特定方式定义或估计价值函数。",
             "Shapley 值不是一个软件库，也不是单一算法。也不能假设任何 SHAP 实现都能对任意模型和任意特征数量始终精确计算。计算方法及其权衡将在下一课 10.1.2 中讨论。"
-          ]
+          ],
+          "distinction"
         ],
         [
           "summary",
@@ -1247,7 +1356,8 @@ window.DCH_SHAP_1011={
           [
             "逻辑链条是：合作博弈定义参与者和价值函数；联盟定义情境；边际贡献衡量参与者加入后的变化；对所有顺序取平均得到 Shapley 值；在机器学习中，结果取决于如何为特征子集定义价值函数。",
             "解释结果前，应说明解释对象、模型输出、背景数据以及缺失特征的处理方式。下一课将讨论 SHAP 家族如何在实践中构建和估计这些解释。"
-          ]
+          ],
+          null
         ]
       ],
       "practice": {
@@ -1734,6 +1844,53 @@ window.DCH_SHAP_1011={
               "如果一个博弈是两个博弈之和，其分配结果也等于两个分配结果之和。",
               "φᵢ(v + w) = φᵢ(v) + φᵢ(w)",
               "两个组成部分合并后的分配等于分别分配后相加。"
+            ]
+          ]
+        },
+        "mapping": {
+          "layout": "shapley-mapping",
+          "title": "从合作博弈到模型解释",
+          "description": "博弈中的参与者与联盟对应于模型特征及其子集。",
+          "caption": "价值函数 vₓ 为每个特征联盟指定模型输出或选定的目标量。",
+          "cards": [
+            [
+              "合作博弈",
+              "参与者 A、B、C 组成联盟 S；函数 v(S) 为每个联盟指定价值。"
+            ],
+            [
+              "机器学习模型",
+              "特征成为参与者；联盟 S 是针对样本 x 选取的特征子集。"
+            ],
+            [
+              "贡献分配",
+              "Shapley 值 φᵢ 对所有可能情境下的特征边际贡献取平均。"
+            ]
+          ]
+        },
+        "distinction": {
+          "layout": "shapley-distinction",
+          "title": "Shapley 值与 SHAP：相关但不相同",
+          "description": "Shapley 值是合作博弈中的分配规则；SHAP 将这一思想用于解释模型预测。",
+          "caption": "SHAP 以 Shapley 值为理论基础，同时还规定了解释任务、背景分布和计算方法。",
+          "columns": [
+            "Shapley 值",
+            "SHAP"
+          ],
+          "rows": [
+            [
+              "研究对象",
+              "在博弈参与者之间分配价值的一般规则。",
+              "将模型预测归因于各个特征的解释框架。"
+            ],
+            [
+              "价值函数",
+              "由合作博弈 v(S) 定义。",
+              "结合模型、待解释样本以及缺失特征的处理方式定义。"
+            ],
+            [
+              "结果",
+              "每位参与者对应一个 φᵢ 值。",
+              "特征归因，通常同时给出基准值和待解释预测。"
             ]
           ]
         }

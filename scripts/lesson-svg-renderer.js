@@ -151,7 +151,7 @@ function shapleyMappingFigure(s){
  return figure(root,s);
 }
 function shapleyDistinctionFigure(s){
- const d=s.diagramData,root=base(s,520),x=[24,368],w=328,top=92,headerH=52,rowH=106;
+ const d=s.diagramData,root=base(s,560),x=[24,368],w=328,top=92,headerH=52,rowH=106;
  text(root,d.title,24,38,672,{size:19,weight:750});
  d.columns.forEach((name,i)=>{
   rect(root,x[i],top,w,headerH,"var(--lds-accent)","var(--lds-accent)",9);

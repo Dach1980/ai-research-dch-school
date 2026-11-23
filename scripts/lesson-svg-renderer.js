@@ -41,17 +41,25 @@ function experiment(s){const d=s.diagramData,root=base(s,650);rect(root,140,24,4
 
 
 function grid(s){
- const nodes=s.nodes||[],cols=2,cardW=(W-PAD*2-16)/2,cardH=154,gap=16;
- const rows=Math.ceil(nodes.length/cols),height=74+rows*(cardH+gap)+24,root=base(s,height);
- nodes.forEach((node,i)=>{
-  const col=i%cols,row=Math.floor(i/cols),x=PAD+col*(cardW+gap),y=68+row*(cardH+gap);
+ const spec=s,nodes=spec.nodes||[],cols=2,cardW=(W-PAD*2-16)/2,cardH=154,gap=16;
+ const rows=Math.ceil(nodes.length/cols),height=74+rows*(cardH+gap)+24,root=base(spec,height);
+ const positions=nodes.map((node,i)=>({node,x:PAD+(i%cols)*(cardW+gap),y:68+Math.floor(i/cols)*(cardH+gap)}));
+ if(spec.sequence&&spec.serpentine){positions.forEach((p,i)=>{if(Math.floor(i/cols)%2===1)p.x=PAD+(cols-1-(i%cols))*(cardW+gap);});}
+ if(spec.connectSequence===true){
+  positions.slice(0,-1).forEach((p,i)=>{
+   const q=positions[i+1],sx=p.x+cardW/2,sy=p.y+cardH,ex=q.x+cardW/2,ey=q.y;
+   const d=`M ${sx} ${sy} V ${ey} H ${ex}`;
+   root.append(el("path",{"data-role":"workflow-arrow",d,fill:"none",stroke:"var(--lds-accent)","stroke-width":2.2,"stroke-linecap":"round"}));
+  });
+ }
+ positions.forEach(({node,x,y})=>{
   rect(root,x,y,cardW,cardH,"var(--lds-surface)","var(--lds-line)",12);
   text(root,node.title,x+16,y+32,cardW-32,{size:17,weight:750});
   text(root,node.detail,x+16,y+66,cardW-32,{size:14,line:20,color:"var(--lds-muted)"});
  });
- return figure(root,s);
+ return figure(root,spec);
 }
-function scatter(s){
+function renderWeightedScatter(s){
  const n=s.neighborhood||{},root=base(s,610),x0=100,y0=74,w=540,h=440;
  rect(root,x0,y0,w,h,"var(--lds-surface-secondary)","var(--lds-line)",8);
  const point=p=>[x0+p[0]*w,y0+(1-p[1])*h],center=point(n.center||[.5,.5]),radius=(n.radius||.25)*Math.min(w,h);
@@ -69,6 +77,39 @@ function scatter(s){
  root.append(el("circle",{cx:130,cy:legendY-4,r:6,fill:"var(--lds-good)"}));text(root,s.observedLabel||"",144,legendY,170,{size:12});
  root.append(el("circle",{cx:370,cy:legendY-4,r:6,fill:"var(--lds-muted)"}));text(root,s.syntheticLabel||"",384,legendY,210,{size:12});
  return figure(root,s);
+}
+function renderTable(spec){
+ const columns=spec.columns||[],rows=spec.rows||[];
+ const count=Math.max(1,columns.length),left=PAD,width=(W-PAD*2)/count,headerY=78,headH=48,rowH=48;
+ const height=headerY+headH+rows.length*rowH+34,root=base(spec,height),isPerturbed=spec.type==="lime-913-perturbations";
+ text(root,spec.title||"",PAD,38,W-PAD*2,{size:19,weight:750});
+ columns.forEach((value,i)=>{
+  const x=left+i*width;rect(root,x,headerY,width-4,headH,"var(--lds-accent)","var(--lds-accent)",7);
+  text(root,value,x+8,headerY+29,width-20,{size:14,weight:700,color:"var(--lds-accent-ink)"});
+ });
+ rows.forEach((row,ri)=>{
+  const y=headerY+headH+ri*rowH;
+  row.forEach((value,ci)=>{
+   const x=left+ci*width,attrs={x,y,width:width-4,height:rowH-3,rx:5,fill:ri%2?"var(--lds-surface-secondary)":"var(--lds-surface)",stroke:"var(--lds-line)","stroke-width":1.2};
+   if(isPerturbed&&ci===0)attrs["data-role"]="perturbed-sample";
+   root.append(el("rect",attrs));
+   text(root,value,x+8,y+Math.min(27,rowH/2+5),width-20,{size:14,weight:ci===0?650:450,line:18});
+  });
+ });
+ if(isPerturbed)root.append(el("rect",{"data-role":"perturbation-region",x:left-1,y:headerY-2,width:W-PAD*2+2,height:headH+rows.length*rowH+1,rx:8,fill:"none",stroke:"var(--lds-accent)","stroke-dasharray":"4 5","stroke-width":1.2}));
+ return figure(root,spec);
+}
+function renderBars(spec){
+ const bars=spec.bars||[],root=base(spec,100+bars.length*78+36),center=360,max=Math.max(.01,...bars.map(b=>Math.abs(Number(b.value)||0)));
+ text(root,spec.title||"",PAD,38,W-PAD*2,{size:19,weight:750});
+ bars.forEach((bar,i)=>{
+  const y=82+i*78,width=Math.abs(Number(bar.value)||0)/max*230,x=Number(bar.value)>=0?center:center-width;
+  text(root,bar.label,24,y+18,260,{size:14,weight:650});
+  line(root,center,y-2,center,y+35,"var(--lds-ink)",1.5);
+  rect(root,x,y,width,28,Number(bar.value)>=0?"var(--lds-good)":"var(--lds-bad)","var(--lds-line)",5);
+  text(root,(Number(bar.value)>0?"+":"")+String(bar.value),Math.min(Math.max(x+width+8,center+8),650),y+19,65,{size:13,weight:750});
+ });
+ return figure(root,spec);
 }
 function plot(s){
  const root=base(s,560),x0=80,y0=72,w=590,h=390,pts=s.points||[];
@@ -101,5 +142,5 @@ function axiomsFigure(s){
  d.cards.forEach((c,i)=>{const xx=x[i%2],yy=y[Math.floor(i/2)];rect(root,xx,yy,w,h,"var(--lds-surface)","var(--lds-line)",12);rect(root,xx,yy,w,42,"var(--lds-accent)","var(--lds-accent)",10);text(root,c[0],xx+14,yy+27,w-28,{size:16,weight:750,color:"var(--lds-accent-ink)"});text(root,c[1],xx+14,yy+72,w-28,{size:14,line:19});rect(root,xx+12,yy+112,w-24,42,"var(--lds-math-bg)","var(--lds-math-border)",7);text(root,c[2],xx+22,yy+139,w-44,{size:15,weight:750,color:"var(--lds-math-ink)"});text(root,c[3],xx+14,yy+184,w-28,{size:13,line:17,color:"var(--lds-muted)"});});
  return figure(root,s);
 }
-function render(spec){if(!spec||!spec.layout)throw new TypeError("Missing diagram layout");if(spec.layout==="matrix")return matrix(spec);if(spec.layout==="causal-flow")return causal(spec);if(spec.layout==="comparison-table")return comparison(spec);if(spec.layout==="experiment-flow")return experiment(spec);if(spec.layout==="grid")return grid(spec);if(spec.layout==="scatter")return scatter(spec);if(spec.layout==="plot")return plot(spec);if(spec.layout==="shapley-coalition-table"||spec.layout==="shapley-marginal-table"||spec.layout==="shapley-permutations"||spec.layout==="shapley-weights")return tableFigure(spec,spec.layout);if(spec.layout==="shapley-axioms")return axiomsFigure(spec);throw new TypeError("Unsupported SVG layout: "+spec.layout);}
-global.DCHLessonSVG={version:"2.2.0",render};})(window);
+function render(spec){if(!spec||!spec.layout)throw new TypeError("Missing diagram layout");if(spec.layout==="matrix")return matrix(spec);if(spec.layout==="causal-flow")return causal(spec);if(spec.layout==="comparison-table")return comparison(spec);if(spec.layout==="experiment-flow")return experiment(spec);if(spec.layout==="grid"&&spec.connectSequence===true)return grid(spec);if(spec.layout==="grid")return grid(spec);if(spec.layout==="table")return renderTable(spec);if(spec.layout==="bars")return renderBars(spec);if(spec.layout==="scatter")return renderWeightedScatter(spec);if(spec.layout==="plot")return plot(spec);if(spec.layout==="shapley-coalition-table"||spec.layout==="shapley-marginal-table"||spec.layout==="shapley-permutations"||spec.layout==="shapley-weights")return tableFigure(spec,spec.layout);if(spec.layout==="shapley-axioms")return axiomsFigure(spec);throw new TypeError("Unsupported SVG layout: "+spec.layout);}
+global.DCHLessonSVG={version:"2.3.0",render};})(window);

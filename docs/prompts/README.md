@@ -24,6 +24,16 @@ This directory is the canonical home for prompts used to create and revise lesso
 
 Each prompt should declare its own version and status near the top. A lesson's content status is independent of its prompt status: using an approved prompt does not automatically approve or publish the resulting lesson.
 
+## Site audit prompts
+
+These prompts are separate from lesson-authoring prompts. They must preserve the site's architecture and educational content.
+
+| Scope | Prompt | Version | Status |
+|---|---|---:|---|
+| Whole website — independent UX/UI, architecture, accessibility, performance, SEO, security and admin audit | [Claude Code read-only site audit](./site-audit/CLAUDE_CODE_SITE_AUDIT.md) | 1.0 | approved for read-only audit; no implementation permission |
+
+The Claude Code site-audit prompt is strictly read-only. Its output is an audit report and prioritized recommendations only. Any implementation requires a separate explicit owner approval.
+
 ## Prompt registry
 
 | Track | Lesson | Prompt | Version | Status |

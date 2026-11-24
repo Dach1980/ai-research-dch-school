@@ -1,7 +1,7 @@
 {
   "schema_version": 3,
   "catalog_id": "dch-school-curriculum",
-  "catalog_version": "3.2.22-lesson-10-1-1-review",
+  "catalog_version": "3.2.23-lesson-10-1-1-published",
   "status": "migration_staging",
   "tracks": [
     {
@@ -4274,8 +4274,8 @@
       "module_uid": "mod-a-10-01",
       "code": "10.1.1",
       "title": "Теория игр и Shapley Values",
-      "status": "review",
-      "content_state": "localized",
+      "status": "published",
+      "content_state": "published",
       "access": "open",
       "level": "intermediate",
       "prerequisite_uids": [

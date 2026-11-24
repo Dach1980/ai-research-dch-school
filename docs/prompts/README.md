@@ -34,6 +34,7 @@ Each prompt should declare its own version and status near the top. A lesson's c
 | A | 9.2.1 — Выбор окрестности и интерпретация результатов | [9.2.1-lime-neighborhood-selection-and-interpretation.md](./lessons/track-a/9.2.1-lime-neighborhood-selection-and-interpretation.md) | 1.0 | lesson accepted and published 2026-11-22; prompt retained as historical draft |
 | A | 9.2.2 — Ограничения и устойчивость LIME | [9.2.2-lime-limitations-and-stability.md](./lessons/track-a/9.2.2-lime-limitations-and-stability.md) | 1.1 | lesson accepted and published 2026-11-23; prompt retained as historical draft |
 | A | 10.1.1 — Теория игр и Shapley Values | [10.1.1-shapley-values-game-theory.md](./lessons/track-a/10.1.1-shapley-values-game-theory.md) | 1.0 | draft — prepared 2026-11-23; awaiting execution approval |
+| A | 10.1.2 — Как работает SHAP | [10.1.2-how-shap-works.md](./lessons/track-a/10.1.2-how-shap-works.md) | 1.0 | draft — prepared 2026-11-24; awaiting execution approval |
 
 ## Governance
 

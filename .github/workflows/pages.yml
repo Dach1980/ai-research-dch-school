@@ -2,15 +2,16 @@ name: Deploy static website to GitHub Pages
 on:
   push:
     branches: ["main"]
+  pull_request:
   workflow_dispatch:
 permissions:
   contents: read
-  pages: write
-  id-token: write
 concurrency:
-  group: "dch-school-pages-publish"
-  cancel-in-progress: true
+  group: dch-school-pages-${{ github.event_name == 'pull_request' && github.ref || 'production' }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 jobs:
+  validate-catalog:
+    uses: ./.github/workflows/validate-catalog.yml
   validate:
     runs-on: ubuntu-latest
     steps:
@@ -158,7 +159,12 @@ jobs:
           PGPASSWORD: postgres
         run: psql -h 127.0.0.1 -U postgres -d dch_school_test -v ON_ERROR_STOP=1 -f supabase/tests/ci_assertions.sql
   deploy:
-    needs: [validate, validate-supabase-migrations]
+    if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+    needs: [validate, validate-supabase-migrations, validate-catalog]
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
@@ -168,8 +174,6 @@ jobs:
         uses: actions/checkout@v4
       - name: Configure Pages
         uses: actions/configure-pages@v5
-        with:
-          enablement: true
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
@@ -200,6 +204,13 @@ jobs:
               "/lessons/a-9-2-1-les-a-0180-en.html": "Choosing the Neighbourhood and Interpreting Results",
               "/lessons/a-9-2-1-les-a-0180-zh.html": "邻域选择与结果解读",
           }
+          import json
+          from pathlib import Path
+          catalog = json.loads(Path("data/catalog/catalog-v3.json").read_text(encoding="utf-8"))
+          for lesson in catalog["lessons"]:
+              if lesson["status"] == lesson.get("content_state") == "published":
+                  for locale, route in lesson["url_i18n"].items():
+                      checks.setdefault("/" + route, None)
           for path, marker in checks.items():
               last_error = None
               for attempt in range(12):
@@ -212,8 +223,10 @@ jobs:
                           body = response.read().decode("utf-8", errors="replace")
                           if response.status != 200:
                               raise RuntimeError(f"HTTP {response.status}")
-                          if marker not in body:
+                          if marker is not None and marker not in body:
                               raise RuntimeError(f"Expected page marker not found: {marker}")
+                          if path.startswith("/lessons/") and "<h1" not in body.lower():
+                              raise RuntimeError("Lesson heading missing")
                           if "vercel.app" in body.lower():
                               raise RuntimeError("Vercel URL found in canonical public page")
                       print(f"OK {base + path}")

@@ -1624,6 +1624,21 @@
         "Получено согласование владельца; дата и URL опубликованного поста зафиксированы"
       ],
       "source": "docs/management/PROJECT_HANDOVER_2026-11-25.md"
+    },
+    {
+      "id": "RM-DESIGN-V2-2026-11-25",
+      "date": "2026-11-25",
+      "title": "Внедрение согласованного DCH Lesson Design System 2.0",
+      "status": "in_progress",
+      "priority": "high",
+      "decision": "Владелец согласовал новый дизайн. Пилот 10.1.2 в трёх локалях, opt-in; затем 10.1.3 и постепенная миграция. Не менять учебное содержание, UID, URL, аккаунты и прогресс.",
+      "acceptance": [
+        "18 браузерных конфигураций, полный CI и визуальная проверка.",
+        "Анимация, pause/reduced motion, оглавление и доступность.",
+        "Сохранение старого шаблона вне пилота.",
+        "Управляемая публикация только после успешных проверок."
+      ],
+      "source": "docs/design/LESSON_DESIGN_SYSTEM_V2_PILOT_2026-11-25.md"
     }
   ],
   "audit_log": [
@@ -3512,6 +3527,34 @@
       ],
       "limitations": [
         "Публичный HTTP smoke и production release нового SHA ещё не подтверждены; визуальная проверка владельцем не заявлена."
+      ]
+    },
+    {
+      "id": "AUD-DESIGN-V2-PILOT-2026-11-25",
+      "date": "2026-11-25",
+      "type": "design_pilot",
+      "title": "Владелец согласовал DCH Lesson Design System 2.0",
+      "result": "Production 10.1.2 подтверждён (157 HTTP checks). Создан opt-in пилот общего дизайна только на 10.1.2 RU/EN/ZH; анимация, новый hero, оглавление и раскрытие результатов без изменения контента.",
+      "evidence": [
+        "docs/design/LESSON_DESIGN_SYSTEM_V2_PILOT_2026-11-25.md",
+        "https://github.com/Dach1980/ai-research-dch-school/actions/runs/45601899563"
+      ],
+      "limitations": [
+        "CI и визуальная приёмка пилота пока не подтверждены. Старые CSS не удаляются до миграции."
+      ]
+    },
+    {
+      "id": "AUD-DESIGN-V2-WIDTH-2026-11-25",
+      "date": "2026-11-25",
+      "type": "visual_review",
+      "title": "Исправление ширины hero после первого CI v2",
+      "result": "81 этап CI успешно, 18 снимков просмотрены; desktop hero наследовал max-width 900px. Scoped width fix и новый browser assertion.",
+      "evidence": [
+        "https://github.com/Dach1980/ai-research-dch-school/actions/runs/45605269602",
+        "docs/design/LESSON_DESIGN_SYSTEM_V2_PILOT_2026-11-25.md"
+      ],
+      "limitations": [
+        "Повторный CI, визуальная проверка и production ещё не подтверждены."
       ]
     }
   ],

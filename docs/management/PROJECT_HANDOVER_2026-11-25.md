@@ -514,3 +514,7 @@ Claude (Anthropic) использовать для независимого ан
 - [Design system](../design/DESIGN_SYSTEM.md), [Reader UI](../design/LESSON_READER_UI_SPEC.md), [Track visual standard](TRACK_CATALOG_VISUAL_STANDARD_2026-11-17.md)
 - [Community feedback MVP](COMMUNITY_FEEDBACK_MVP_2026-11-13.md), [Russia data localization](../legal/RUSSIA_DATA_LOCALIZATION_REVIEW_2026-11-13.md)
 - [README](../../README.md), [Actions](https://github.com/Dach1980/ai-research-dch-school/actions)
+
+## Дополнение от 25.11.2026: редакция новостей DCH
+
+AI Interpretability School — не только учебный ориентир, но и источник новостных тем через указанный владельцем Telegram-канал. Точный рабочий адрес и редакционный конвейер хранятся в приватном репозитории (`telegram/NEWS_EDITORIAL_WORKFLOW.md`). Публиковать самостоятельные научно-популярные разборы: проверять первичные статьи и официальные репозитории, отделять факты от гипотез, добавлять объяснения, собственные примеры и иллюстрации, указывать источники и связь с уроками DCH. Не копировать чужие посты и графику; не утверждать партнёрство с AIS. Черновики и источники в private, после ручного согласования — новости DCH в Telegram и при отдельном согласовании на сайте. Содержимое указанной Telegram-ссылки и публичный @username не проверены; автоматический мониторинг и публикация не настроены.

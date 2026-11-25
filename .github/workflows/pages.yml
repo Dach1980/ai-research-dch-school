@@ -163,6 +163,7 @@ jobs:
     needs: [validate, validate-supabase-migrations, validate-catalog]
     permissions:
       contents: read
+      actions: read
       pages: write
       id-token: write
     environment:
@@ -178,6 +179,21 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         with:
           path: .
+      - name: Confirm Pages artifact is visible to REST API
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          for attempt in $(seq 1 24); do
+            if gh api "repos/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID/artifacts?name=github-pages" --jq '.artifacts[] | select(.name == "github-pages" and .expired == false) | .id' > /tmp/pages-artifact-id && test -s /tmp/pages-artifact-id; then
+              echo "Pages artifact is visible: $(cat /tmp/pages-artifact-id)"
+              exit 0
+            fi
+            echo "Waiting for Pages artifact metadata ($attempt/24)"
+            sleep 5
+          done
+          echo "::error::Pages artifact metadata not visible; deployment blocked."
+          exit 1
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4

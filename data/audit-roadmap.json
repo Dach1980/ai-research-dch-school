@@ -3434,6 +3434,21 @@
       "limitations": [
         "CI нового кандидата ещё не подтверждён; настройки Pages требуют проверки владельцем."
       ]
+    },
+    {
+      "id": "AUD-P0-PAGES-ARTIFACT-2026-11-25",
+      "date": "2026-11-25",
+      "type": "deployment_diagnosis",
+      "title": "Выявлена ошибка доступности артефакта Pages перед деплоем",
+      "result": "Run 45594158123: validation и Supabase success; github-pages artifact 15011774625 успешно загружен, deploy не нашёл метаданные. Последующий API подтверждает наличие артефакта. Добавлена ограниченная проверка видимости REST с actions: read. Причина не доказана, решение требует нового deploy.",
+      "evidence": [
+        "https://github.com/Dach1980/ai-research-dch-school/actions/runs/45594158123",
+        "https://github.com/Dach1980/ai-research-dch-school/actions/runs/45594158106",
+        "docs/management/P0_PUBLICATION_GATE_2026-11-25.md"
+      ],
+      "limitations": [
+        "Production deployment не подтверждён; live smoke пропущен; настройки Pages требуют проверки."
+      ]
     }
   ],
   "notes": [

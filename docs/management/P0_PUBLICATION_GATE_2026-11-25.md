@@ -13,3 +13,6 @@ GitHub repository Settings → Pages → Build and deployment → Source: GitHub
 
 ## Remaining
 CI and deployment of this candidate pending; inspect smoke logs, verify source setting, then confirm public URLs. Artifact allowlist remains P1. Lesson 10.1.2 remains subject to separate review and release gates.
+
+## Additional verified deployment blocker — 25.11.2026
+Main catalog run 45594158106 succeeded. Managed Pages run 45594158123: validate and Supabase migrations succeeded; upload finalized artifact github-pages ID 15011774625, 3429634 bytes, at 10:25:13 UTC; immediately afterwards deploy-pages failed to fetch artifact metadata and reported no artifacts. Subsequent connector REST lookup confirms that this exact artifact exists and is not expired. Root cause not conclusively established; metadata availability race or API permissions are plausible. Candidate adds explicit actions: read and bounded REST visibility check before deployment (fail closed if absent). No unconditional retry of actual deployment, no fabricated deployment success. Verify actual Pages source in Settings separately. Live smoke was skipped in failed run.

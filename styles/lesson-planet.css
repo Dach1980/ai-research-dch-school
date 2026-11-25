@@ -1,0 +1,10 @@
+/* Lesson v2 opt-in only. No global overrides of legacy planet rules. */
+main.lesson[data-lesson-design="v2"] .dch-v2-planet{display:grid;justify-items:center;align-content:center;gap:4px;min-width:0;color:var(--lds-ink)}
+main.lesson[data-lesson-design="v2"] .dch-v2-planet svg{display:block;width:min(100%,240px);height:auto;overflow:visible}
+.dch-v2-satellite-a{offset-path:path("M 223 102 A 103 40 0 1 1 17 102 A 103 40 0 1 1 223 102");animation:dch-v2-orbit 12s linear infinite}
+.dch-v2-satellite-b{offset-path:path("M 208 102 A 88 34 0 1 1 32 102 A 88 34 0 1 1 208 102");animation:dch-v2-orbit 18s linear infinite reverse;animation-delay:-5s}
+.dch-v2-halo{transform-origin:120px 102px;animation:dch-v2-glow 7s ease-in-out infinite}
+@keyframes dch-v2-orbit{from{offset-distance:0%}to{offset-distance:100%}}
+@keyframes dch-v2-glow{0%,100%{opacity:.7;transform:scale(.92)}50%{opacity:1;transform:scale(1.03)}}
+.dch-v2-planet[data-paused="true"] .dch-v2-satellite,.dch-v2-planet[data-paused="true"] .dch-v2-halo{animation-play-state:paused}
+@media(prefers-reduced-motion:reduce){.dch-v2-satellite,.dch-v2-halo{animation:none!important}.dch-v2-satellite-b{offset-distance:35%}}

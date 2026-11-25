@@ -1,0 +1,28 @@
+/* Pilot design, scoped to the explicit opt-in. Keep canonical article children intact. */
+main.lesson[data-lesson-design="v2"][data-design-ready="true"]{display:grid;grid-template-columns:235px minmax(0,1fr);gap:24px;width:min(1320px,calc(100% - 48px));max-width:1320px;margin:24px auto 72px;padding:0;align-items:start}
+main.lesson[data-lesson-design="v2"] > .lesson-standard-hero{grid-column:1/-1;margin:0;padding:0;min-width:0}
+main.lesson[data-lesson-design="v2"] .dch-v2-intro{display:grid;grid-template-columns:minmax(0,1fr) 240px;gap:24px;align-items:center;padding:clamp(18px,3vw,36px);border:1px solid var(--lds-line);border-radius:20px;background:var(--lds-surface);color:var(--lds-ink);min-width:0}
+main.lesson[data-lesson-design="v2"] .dch-v2-copy{min-width:0}
+main.lesson[data-lesson-design="v2"] .dch-v2-intro h1{margin:.45rem 0 .65rem;font-size:clamp(1.9rem,3.3vw,3rem);line-height:1.15;color:var(--lds-ink);overflow-wrap:anywhere}
+main.lesson[data-lesson-design="v2"] .dch-v2-intro .lead{color:var(--lds-ink);line-height:1.65;margin:0;max-width:74ch}
+main.lesson[data-lesson-design="v2"] .dch-v2-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+main.lesson[data-lesson-design="v2"] .dch-v2-actions a,main.lesson[data-lesson-design="v2"] .dch-v2-motion,main.lesson[data-lesson-design="v2"] .dch-v2-outcomes-toggle{display:inline-flex;justify-content:center;align-items:center;padding:8px 13px;min-height:44px;border:1px solid var(--lds-line);border-radius:9px;background:var(--lds-surface);color:var(--lds-ink);font:600 .9rem/1.4 inherit;cursor:pointer;overflow-wrap:anywhere}
+main.lesson[data-lesson-design="v2"] .dch-v2-actions .dch-v2-primary{background:#235fbd;border-color:#235fbd;color:#fff}
+main.lesson[data-lesson-design="v2"] :is(.dch-v2-actions a,.dch-v2-motion,.dch-v2-outcomes-toggle,.dch-v2-toc-link,.dch-v2-toc summary):focus-visible{outline:3px solid var(--lds-accent,#438de9);outline-offset:3px}
+main.lesson[data-lesson-design="v2"] .dch-v2-motion:disabled{cursor:default}
+main.lesson[data-lesson-design="v2"] #lesson-outcomes{margin:14px 0 0;padding:14px 18px}
+main.lesson[data-lesson-design="v2"] #lesson-outcomes h2{margin:0 0 6px}
+main.lesson[data-lesson-design="v2"] #lesson-outcomes > ul[hidden],main.lesson[data-lesson-design="v2"] #lesson-outcomes > ol[hidden]{display:none!important}
+main.lesson[data-lesson-design="v2"] .dch-v2-outcomes-toggle{margin:0 0 10px}
+main.lesson[data-lesson-design="v2"] > .lesson-standard-article{grid-column:2;width:100%;max-width:100%;min-width:0;margin:0;padding:0 0 3rem}
+main.lesson[data-lesson-design="v2"] .dch-v2-sidebar{grid-column:1;position:sticky;top:16px;max-height:calc(100vh - 32px);overflow:auto;min-width:0;align-self:start;border:1px solid var(--lds-line);background:var(--lds-surface);border-radius:14px;padding:14px;color:var(--lds-ink)}
+main.lesson[data-lesson-design="v2"] .dch-v2-toc summary{font-weight:750;cursor:pointer;overflow-wrap:anywhere}
+main.lesson[data-lesson-design="v2"] .dch-v2-progress-label{font-size:.8rem;margin:12px 0 2px}
+main.lesson[data-lesson-design="v2"] .dch-v2-progress{width:100%;height:9px;accent-color:var(--lds-accent,#235fbd)}
+main.lesson[data-lesson-design="v2"] .dch-v2-toc-nav{display:grid;gap:4px;margin-top:10px}
+main.lesson[data-lesson-design="v2"] .dch-v2-toc-link{display:block;padding:7px 9px;border-left:3px solid transparent;border-radius:5px;font-size:.85rem;line-height:1.45;overflow-wrap:anywhere}
+main.lesson[data-lesson-design="v2"] .dch-v2-toc-link[aria-current="location"]{border-left-color:var(--lds-accent,#235fbd);font-weight:750;background:var(--lds-definition-surface)}
+main.lesson[data-lesson-design="v2"] :is(#lesson-sections > section,#lesson-practice,#lesson-sources,#lesson-glossary,#lesson-quiz){scroll-margin-top:20px}
+@media(max-width:1049px){main.lesson[data-lesson-design="v2"][data-design-ready="true"]{grid-template-columns:minmax(0,1fr);gap:14px}main.lesson[data-lesson-design="v2"] > .lesson-standard-article{grid-column:1}main.lesson[data-lesson-design="v2"] .dch-v2-sidebar{position:static;max-height:none}}
+@media(max-width:650px){main.lesson[data-lesson-design="v2"][data-design-ready="true"]{width:calc(100% - 24px);margin-top:12px}main.lesson[data-lesson-design="v2"] .dch-v2-intro{grid-template-columns:minmax(0,1fr);gap:8px;padding:16px}main.lesson[data-lesson-design="v2"] .dch-v2-planet svg{width:140px}main.lesson[data-lesson-design="v2"] #lesson-outcomes{padding:12px}}
+@media(prefers-reduced-motion:reduce){html:has(main[data-lesson-design="v2"]){scroll-behavior:auto}}

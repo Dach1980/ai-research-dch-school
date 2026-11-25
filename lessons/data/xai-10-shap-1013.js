@@ -295,86 +295,70 @@ window.DCH_SHAP_1013={
         }
       },
       "glossary": [
-        {
-          "term": "Локальное объяснение",
-          "en": "Local explanation",
-          "definition": "Объяснение выбранного выхода для одного объекта."
-        },
-        {
-          "term": "Атрибуция признака",
-          "en": "Feature attribution",
-          "definition": "Подписанный вклад в разность с базой в заданной игре."
-        },
-        {
-          "term": "Базовое значение",
-          "en": "Base value",
-          "definition": "Значение отсчёта конкретного объяснения."
-        },
-        {
-          "term": "Фоновые данные",
-          "en": "Background data",
-          "definition": "Данные, относительно которых определены отсутствующие признаки и база."
-        },
-        {
-          "term": "Шкала выхода",
-          "en": "Output scale",
-          "definition": "Единицы величины, которую объясняет SHAP."
-        },
-        {
-          "term": "Исходный выход",
-          "en": "Raw output",
-          "definition": "Непреобразованный выход в семантике данной модели."
-        },
-        {
-          "term": "Логарифм шансов",
-          "en": "Log-odds",
-          "definition": "ln(p/(1−p)) для 0<p<1."
-        },
-        {
-          "term": "Вероятность",
-          "en": "Probability",
-          "definition": "Число от 0 до 1 для выбранного события/класса."
-        },
-        {
-          "term": "Локальная аддитивность",
-          "en": "Local additivity",
-          "definition": "База плюс сумма вкладов реконструирует выбранный выход."
-        },
-        {
-          "term": "Остаток",
-          "en": "Residual",
-          "definition": "Разность между выходом и восстановленной суммой."
-        },
-        {
-          "term": "Waterfall Plot",
-          "en": "Waterfall plot",
-          "definition": "Накопительная диаграмма подписанных вкладов."
-        },
-        {
-          "term": "Force Plot",
-          "en": "Force plot",
-          "definition": "Представление противоположно направленных аддитивных вкладов."
-        },
-        {
-          "term": "Explanation",
-          "en": "Explanation",
-          "definition": "Контейнер SHAP со значениями, базой, данными и метаданными."
-        },
-        {
-          "term": "Индекс выхода",
-          "en": "Output index",
-          "definition": "Позиция выбранного выхода после проверки формы массива."
-        },
-        {
-          "term": "Отображение признаков",
-          "en": "Feature mapping",
-          "definition": "Явная связь преобразованных признаков с исходными полями."
-        },
-        {
-          "term": "Группировка вкладов",
-          "en": "Contribution grouping",
-          "definition": "Суммирование подписанных атрибуций отображаемой группы."
-        }
+        [
+          "Локальное объяснение",
+          "Объяснение выбранного выхода для одного объекта."
+        ],
+        [
+          "Атрибуция признака",
+          "Подписанный вклад в разность с базой в заданной игре."
+        ],
+        [
+          "Базовое значение",
+          "Значение отсчёта конкретного объяснения."
+        ],
+        [
+          "Фоновые данные",
+          "Данные, относительно которых определены отсутствующие признаки и база."
+        ],
+        [
+          "Шкала выхода",
+          "Единицы величины, которую объясняет SHAP."
+        ],
+        [
+          "Исходный выход",
+          "Непреобразованный выход в семантике данной модели."
+        ],
+        [
+          "Логарифм шансов",
+          "ln(p/(1−p)) для 0<p<1."
+        ],
+        [
+          "Вероятность",
+          "Число от 0 до 1 для выбранного события/класса."
+        ],
+        [
+          "Локальная аддитивность",
+          "База плюс сумма вкладов реконструирует выбранный выход."
+        ],
+        [
+          "Остаток",
+          "Разность между выходом и восстановленной суммой."
+        ],
+        [
+          "Waterfall Plot",
+          "Накопительная диаграмма подписанных вкладов."
+        ],
+        [
+          "Force Plot",
+          "Представление противоположно направленных аддитивных вкладов."
+        ],
+        [
+          "Explanation",
+          "Контейнер SHAP со значениями, базой, данными и метаданными."
+        ],
+        [
+          "Индекс выхода",
+          "Позиция выбранного выхода после проверки формы массива."
+        ],
+        [
+          "Отображение признаков",
+          "Явная связь преобразованных признаков с исходными полями."
+        ],
+        [
+          "Группировка вкладов",
+          "Суммирование подписанных атрибуций отображаемой группы."
+        ]
       ],
       "quiz": [
         [
@@ -843,86 +827,70 @@ window.DCH_SHAP_1013={
         }
       },
       "glossary": [
-        {
-          "term": "Local explanation",
-          "en": "Local explanation",
-          "definition": "Explanation of a selected output for one instance."
-        },
-        {
-          "term": "Feature attribution",
-          "en": "Feature attribution",
-          "definition": "Signed allocation of the difference from the base in a specified game."
-        },
-        {
-          "term": "Base value",
-          "en": "Base value",
-          "definition": "Reference output for a particular explanation."
-        },
-        {
-          "term": "Background data",
-          "en": "Background data",
-          "definition": "Reference data used to define missing features and the base."
-        },
-        {
-          "term": "Output scale",
-          "en": "Output scale",
-          "definition": "Units of the quantity explained by SHAP."
-        },
-        {
-          "term": "Raw output",
-          "en": "Raw output",
-          "definition": "Untransformed output as defined by the model."
-        },
-        {
-          "term": "Log-odds",
-          "en": "Log-odds",
-          "definition": "ln(p/(1−p)) for 0<p<1."
-        },
-        {
-          "term": "Probability",
-          "en": "Probability",
-          "definition": "Number from 0 to 1 for the chosen event/class."
-        },
-        {
-          "term": "Local additivity",
-          "en": "Local additivity",
-          "definition": "Base plus the sum of contributions reconstructs the selected output."
-        },
-        {
-          "term": "Residual",
-          "en": "Residual",
-          "definition": "Difference between output and reconstructed sum."
-        },
-        {
-          "term": "Waterfall plot",
-          "en": "Waterfall plot",
-          "definition": "Cumulative chart of signed contributions."
-        },
-        {
-          "term": "Force plot",
-          "en": "Force plot",
-          "definition": "Visual representation of opposing additive contributions."
-        },
-        {
-          "term": "Explanation",
-          "en": "Explanation",
-          "definition": "SHAP container for values, base, data and metadata."
-        },
-        {
-          "term": "Output index",
-          "en": "Output index",
-          "definition": "Position of the selected output after checking array shape."
-        },
-        {
-          "term": "Feature mapping",
-          "en": "Feature mapping",
-          "definition": "Explicit correspondence between transformed features and original fields."
-        },
-        {
-          "term": "Contribution grouping",
-          "en": "Contribution grouping",
-          "definition": "Sum of signed attributions in a displayed group."
-        }
+        [
+          "Local explanation",
+          "Explanation of a selected output for one instance."
+        ],
+        [
+          "Feature attribution",
+          "Signed allocation of the difference from the base in a specified game."
+        ],
+        [
+          "Base value",
+          "Reference output for a particular explanation."
+        ],
+        [
+          "Background data",
+          "Reference data used to define missing features and the base."
+        ],
+        [
+          "Output scale",
+          "Units of the quantity explained by SHAP."
+        ],
+        [
+          "Raw output",
+          "Untransformed output as defined by the model."
+        ],
+        [
+          "Log-odds",
+          "ln(p/(1−p)) for 0<p<1."
+        ],
+        [
+          "Probability",
+          "Number from 0 to 1 for the chosen event/class."
+        ],
+        [
+          "Local additivity",
+          "Base plus the sum of contributions reconstructs the selected output."
+        ],
+        [
+          "Residual",
+          "Difference between output and reconstructed sum."
+        ],
+        [
+          "Waterfall plot",
+          "Cumulative chart of signed contributions."
+        ],
+        [
+          "Force plot",
+          "Visual representation of opposing additive contributions."
+        ],
+        [
+          "Explanation",
+          "SHAP container for values, base, data and metadata."
+        ],
+        [
+          "Output index",
+          "Position of the selected output after checking array shape."
+        ],
+        [
+          "Feature mapping",
+          "Explicit correspondence between transformed features and original fields."
+        ],
+        [
+          "Contribution grouping",
+          "Sum of signed attributions in a displayed group."
+        ]
       ],
       "quiz": [
         [
@@ -1391,86 +1359,70 @@ window.DCH_SHAP_1013={
         }
       },
       "glossary": [
-        {
-          "term": "局部解释",
-          "en": "Local explanation",
-          "definition": "对一个样本所选输出的解释。"
-        },
-        {
-          "term": "特征归因",
-          "en": "Feature attribution",
-          "definition": "指定博弈中相对基线差值的有符号分配。"
-        },
-        {
-          "term": "基值",
-          "en": "Base value",
-          "definition": "特定解释的参照输出。"
-        },
-        {
-          "term": "背景数据",
-          "en": "Background data",
-          "definition": "用于定义缺失特征与基线的参照数据。"
-        },
-        {
-          "term": "输出尺度",
-          "en": "Output scale",
-          "definition": "SHAP 所解释量的单位。"
-        },
-        {
-          "term": "原始输出",
-          "en": "Raw output",
-          "definition": "由模型定义的未转换输出。"
-        },
-        {
-          "term": "对数几率",
-          "en": "Log-odds",
-          "definition": "0<p<1 时的 ln(p/(1−p))。"
-        },
-        {
-          "term": "概率",
-          "en": "Probability",
-          "definition": "选定事件或类别的 0 至 1 数值。"
-        },
-        {
-          "term": "局部可加性",
-          "en": "Local additivity",
-          "definition": "基值加贡献之和重构所选输出。"
-        },
-        {
-          "term": "残差",
-          "en": "Residual",
-          "definition": "输出与重构和的差。"
-        },
-        {
-          "term": "瀑布图",
-          "en": "Waterfall plot",
-          "definition": "有符号贡献的累积图。"
-        },
-        {
-          "term": "力图",
-          "en": "Force plot",
-          "definition": "相反方向的加性贡献表示。"
-        },
-        {
-          "term": "Explanation 对象",
-          "en": "Explanation",
-          "definition": "包含归因、基值、数据和元数据的 SHAP 容器。"
-        },
-        {
-          "term": "输出索引",
-          "en": "Output index",
-          "definition": "核对数组形状后选定输出的位置。"
-        },
-        {
-          "term": "特征映射",
-          "en": "Feature mapping",
-          "definition": "变换特征与原始字段之间的明确对应。"
-        },
-        {
-          "term": "贡献分组",
-          "en": "Contribution grouping",
-          "definition": "显示分组内有符号归因的求和。"
-        }
+        [
+          "局部解释",
+          "对一个样本所选输出的解释。"
+        ],
+        [
+          "特征归因",
+          "指定博弈中相对基线差值的有符号分配。"
+        ],
+        [
+          "基值",
+          "特定解释的参照输出。"
+        ],
+        [
+          "背景数据",
+          "用于定义缺失特征与基线的参照数据。"
+        ],
+        [
+          "输出尺度",
+          "SHAP 所解释量的单位。"
+        ],
+        [
+          "原始输出",
+          "由模型定义的未转换输出。"
+        ],
+        [
+          "对数几率",
+          "0<p<1 时的 ln(p/(1−p))。"
+        ],
+        [
+          "概率",
+          "选定事件或类别的 0 至 1 数值。"
+        ],
+        [
+          "局部可加性",
+          "基值加贡献之和重构所选输出。"
+        ],
+        [
+          "残差",
+          "输出与重构和的差。"
+        ],
+        [
+          "瀑布图",
+          "有符号贡献的累积图。"
+        ],
+        [
+          "力图",
+          "相反方向的加性贡献表示。"
+        ],
+        [
+          "Explanation 对象",
+          "包含归因、基值、数据和元数据的 SHAP 容器。"
+        ],
+        [
+          "输出索引",
+          "核对数组形状后选定输出的位置。"
+        ],
+        [
+          "特征映射",
+          "变换特征与原始字段之间的明确对应。"
+        ],
+        [
+          "贡献分组",
+          "显示分组内有符号归因的求和。"
+        ]
       ],
       "quiz": [
         [

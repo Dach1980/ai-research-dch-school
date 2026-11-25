@@ -1,7 +1,7 @@
 {
   "schema_version": 3,
   "catalog_id": "dch-school-curriculum",
-  "catalog_version": "3.2.24-lesson-10-1-2-published",
+  "catalog_version": "3.2.25-lesson-10-1-3-review",
   "status": "migration_staging",
   "tracks": [
     {
@@ -4335,6 +4335,42 @@
         "ru": "lessons/a-10-1-2-les-a-0183.html",
         "en": "lessons/a-10-1-2-les-a-0183-en.html",
         "zh": "lessons/a-10-1-2-les-a-0183-zh.html"
+      }
+    },
+    {
+      "uid": "les-a-0184",
+      "track_uid": "trk-a",
+      "theme_uid": "thm-a-10",
+      "module_uid": "mod-a-10-01",
+      "code": "10.1.3",
+      "title": "Локальные объяснения SHAP",
+      "status": "review",
+      "content_state": "localized",
+      "access": "open",
+      "level": "intermediate",
+      "prerequisite_uids": [
+        "les-a-0183"
+      ],
+      "learning_outcomes": [
+        "Определять модель, объект, выход, фон и baseline.",
+        "Проверять локальную аддитивность в одной шкале.",
+        "Различать значение признака, знак и модуль атрибуции.",
+        "Читать waterfall и проверять сумму скрытых вкладов.",
+        "Читать force plot и сравнивать его с waterfall.",
+        "Объяснять зависимость результата от фона и выбранного выхода.",
+        "Преобразовывать полный logit в вероятность без ложной аддитивности.",
+        "Проверять shape, имена признаков, base_values и values в Explanation.",
+        "Формулировать проверяемый локальный вывод без причинных обещаний."
+      ],
+      "title_i18n": {
+        "ru": "Локальные объяснения SHAP",
+        "en": "Local SHAP Explanations",
+        "zh": "SHAP 局部解释"
+      },
+      "url_i18n": {
+        "ru": "lessons/a-10-1-3-les-a-0184.html",
+        "en": "lessons/a-10-1-3-les-a-0184-en.html",
+        "zh": "lessons/a-10-1-3-les-a-0184-zh.html"
       }
     }
   ],

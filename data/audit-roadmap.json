@@ -3556,6 +3556,20 @@
       "limitations": [
         "Повторный CI, визуальная проверка и production ещё не подтверждены."
       ]
+    },
+    {
+      "id": "AUD-LESSON-1013-REVIEW-2026-11-25",
+      "date": "2026-11-25",
+      "type": "lesson_review_candidate",
+      "title": "Урок 10.1.3 «Локальные объяснения SHAP»: подготовлен кандидат",
+      "result": "9 разделов и результатов, 5 учебных SVG, 16 терминов, 12 вопросов, 9 источников, Python-лаборатория с двумя фонами. Три локали, UID les-a-0184; review/localized в изолированной ветке на базе пилота v2.",
+      "evidence": [
+        "docs/reports/LESSON_1013_SHAP_LOCAL_2026-11-25.md",
+        "docs/prompts/lessons/track-a/10.1.3-shap-local-explanations.md"
+      ],
+      "limitations": [
+        "CI и визуальная приёмка нового урока, реальные результаты практики и production v2 ещё не подтверждены. Не публиковать до выполнения release gates."
+      ]
     }
   ],
   "notes": [

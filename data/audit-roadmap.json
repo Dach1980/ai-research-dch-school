@@ -3360,13 +3360,15 @@
       "date": "2026-11-25",
       "type": "project_handover",
       "title": "Паспорт проекта: утверждённая программа, аудит и план beta-запуска",
-      "result": "Зафиксирован срез main 3910355: 4 трека/31 тема/57 модулей/167 целевых уроков; v3 — 182 записи, 51 published (A), 131 planned. Следующий 10.1.2 имеет сохранённый промпт, реализация не обнаружена. Последний управляемый Pages workflow: browser acceptance failure, deploy skipped. Добавлены пять этапов запуска и полный перечень уроков; даты beta 7–14 декабря условны.",
+      "result": "Зафиксирован срез main 3910355: 4 трека/31 тема/57 модулей/167 целевых уроков; v3 — 182 записи, 51 published (A), 131 planned. Следующий 10.1.2 имеет сохранённый промпт, реализация не обнаружена. Последний управляемый Pages workflow: browser acceptance failure, deploy skipped. Добавлены пять этапов запуска и полный перечень уроков; даты beta 7–14 декабря условны. Подтверждены два репозитория школы: публичный production и приватная рабочая база; внешняя методическая опора A/B — AI Interpretability School. Политика авторской переработки и ограничения переноса закрытых материалов зафиксированы в паспортах.",
       "evidence": [
         "docs/management/PROJECT_HANDOVER_2026-11-25.md",
         "data/catalog/curriculum-canonical-v1.json",
         "data/catalog/catalog-v3.json",
         "docs/management/SITE_AUDIT_2026-11-24.md",
-        "https://github.com/Dach1980/ai-research-dch-school/actions/runs/45326328728"
+        "https://github.com/Dach1980/ai-research-dch-school/actions/runs/45326328728",
+        "docs/education/AIS_SOURCE_INTEGRATION_POLICY.md",
+        "docs/education/AUTHOR_PUBLIC_COURSE_TO_DCH_LESSON_CROSSWALK_2026-11-11.md"
       ],
       "limitations": [
         "Сводка, не полный архив чатов; незаменимые вложения сохранить отдельно.",

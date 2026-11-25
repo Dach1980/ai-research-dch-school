@@ -17,7 +17,8 @@
   const isLesson = /^lessons\/a-[a-z0-9.-]+\.html$/i.test(relativePage);
   const isFeedback = relativePage === "feedback/index.html";
   const isAuthor = /^about\/author\.html$/.test(relativePage);
-  const isKnownPage = isHome || isLessonsIndex || isMapIndex || isTrack || isLesson || isFeedback || isAuthor;
+  const isNews = /^news\/(index|001-school-launch|002-open-beta)\.html$/.test(relativePage);
+  const isKnownPage = isHome || isLessonsIndex || isMapIndex || isTrack || isLesson || isFeedback || isAuthor || isNews;
   const target = locale => {
     const suffix = locale === "ru" ? "" : "-" + locale;
     if (!isKnownPage) return projectRoot + "index" + suffix + ".html";

@@ -3599,6 +3599,35 @@
       "limitations": [
         "Новый release SHA, production и публичная доступность 10.1.3 пока не проверены. Просмотр contact sheets не равен независимой пользовательской приёмке всех изображений."
       ]
+    },
+    {
+      "id": "AUD-LESSON-1013-PRODUCTION-2026-11-26",
+      "date": "2026-11-26",
+      "type": "production_verified",
+      "title": "10.1.3 опубликован на dchai.ru",
+      "result": "PR #8 merged b2aca995e32ce07c6bc60310e81e283928602214. Первый controlled deploy 45715154747 failed: artifact visible to REST but deploy-pages metadata lookup failed. Re-run failed jobs successful (deploy job 139564411334); 162 HTTP smoke checks passed, including all 3 localized pages and both practical assets. 53/60 Track A, 53/167 total.",
+      "evidence": [
+        "https://github.com/Dach1980/ai-research-dch-school/actions/runs/45715154747"
+      ],
+      "limitations": [
+        "Artifact metadata failure is intermittent; retry resolves this run but root cause not proven."
+      ]
+    },
+    {
+      "id": "AUD-NEWS-OPEN-BETA-2026-11-26",
+      "date": "2026-11-26",
+      "type": "news_release_candidate",
+      "title": "Открытая бета DCH School: объявление и обновление журнала",
+      "result": "Согласованная владельцем публичная новость: на 26.11.2026 опубликованы 53 урока, план 167 по 4 трекам; бесплатный доступ на данный момент, активная доработка, сотрудничество, запрос предложений по российскому хостингу, itprof80@gmail.com. RU/EN/ZH, новый journal CSS, SVG cover, ссылки с главных, сохранение архивного оригинала RU и переводы, локальный переключатель, новые тесты и smoke markers.",
+      "evidence": [
+        "news/002-open-beta.html",
+        "news/002-open-beta-en.html",
+        "news/002-open-beta-zh.html",
+        "tests/test_news_journal.py"
+      ],
+      "limitations": [
+        "Новый PR и production новостей ещё должны пройти CI и smoke; пост в Telegram/MAX не отправлялся."
+      ]
     }
   ],
   "notes": [

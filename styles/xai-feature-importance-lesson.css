@@ -68,3 +68,20 @@ main.lesson > #lesson-outcomes.outcomes li{
 @media(max-width:560px){
   main.lesson > #lesson-outcomes.outcomes{padding:12px 15px}
 }
+
+/* Canonical layout moves outcomes inside the hero. Match the rendered DOM;
+   preserve theme-aware foreground/background and shared responsive cards. */
+main.lesson > .lesson-standard-hero > #lesson-outcomes.outcomes {
+  background: var(--lds-surface); color: var(--lds-ink);
+  border: 1px solid var(--lds-line); border-radius: 16px;
+  padding: 14px 20px;
+}
+main.lesson > .lesson-standard-hero > #lesson-outcomes.outcomes > h2 {
+  color: var(--lds-ink); margin-top: 0;
+}
+main.lesson > .lesson-standard-hero > #lesson-outcomes.outcomes > ul > li {
+  background: var(--lds-surface); color: var(--lds-ink);
+}
+@media (max-width: 560px) {
+  main.lesson > .lesson-standard-hero > #lesson-outcomes.outcomes { padding: 12px 15px; }
+}

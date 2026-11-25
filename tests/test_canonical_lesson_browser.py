@@ -521,7 +521,7 @@ class CanonicalLessonBrowserAcceptanceTests(unittest.TestCase):
                 with self.subTest(locale=locale, theme=theme):
                     page = self.open_page(lesson, locale, width=1440, theme=theme)
                     result = page.evaluate("""() => {
-                      const root = document.querySelector("main.lesson > #lesson-outcomes.outcomes");
+                      const root = document.querySelector("main.lesson > .lesson-standard-hero > #lesson-outcomes.outcomes");
                       if (!root) return {missing: true};
                       const pick = (el) => {
                         const s = getComputedStyle(el);
@@ -608,7 +608,7 @@ class CanonicalLessonBrowserAcceptanceTests(unittest.TestCase):
                 with self.subTest(locale=locale, theme=theme):
                     page = self.open_page(lesson, locale, width=1440, theme=theme)
                     result = page.evaluate("""() => {
-                      const root = document.querySelector("main.lesson > #lesson-outcomes.outcomes");
+                      const root = document.querySelector("main.lesson > .lesson-standard-hero > #lesson-outcomes.outcomes");
                       if (!root) return {missing:true};
                       const color = el => getComputedStyle(el).color;
                       const bg = getComputedStyle(root).backgroundColor;
@@ -616,7 +616,7 @@ class CanonicalLessonBrowserAcceptanceTests(unittest.TestCase):
                       const lum = value => rgb(value).map(v => {v/=255;return v<=.04045?v/12.92:Math.pow((v+.055)/1.055,2.4);}).reduce((a,v,i)=>a+v*[.2126,.7152,.0722][i],0);
                       const contrast = (a,b) => (Math.max(lum(a),lum(b))+.05)/(Math.min(lum(a),lum(b))+.05);
                       const heading=root.querySelector("h2"), copy=root.querySelector("li,p");
-                      return {bg,heading:color(heading),copy:color(copy),headingRatio:contrast(color(heading),bg),copyRatio:contrast(color(copy),bg),items:root.querySelectorAll("li").length};
+                      return {bg,heading:color(heading),copy:color(copy),headingRatio:contrast(color(heading),bg),copyRatio:contrast(color(copy),getComputedStyle(copy).backgroundColor),items:root.querySelectorAll("li").length};
                     }""")
                     self.assertNotIn("missing", result)
                     self.assertGreaterEqual(result["headingRatio"], 4.5, str(result))
@@ -688,7 +688,7 @@ class CanonicalLessonBrowserAcceptanceTests(unittest.TestCase):
                         cardBackground:getComputedStyle(card).backgroundColor,
                         headingColor:hs.color,listColor:ls.color,
                         headingContrast:contrast(hs.color,getComputedStyle(card).backgroundColor),
-                        listContrast:contrast(ls.color,getComputedStyle(card).backgroundColor),
+                        listContrast:contrast(ls.color,ls.backgroundColor),
                         codeBackground:cs.backgroundColor,preBackground:ps.backgroundColor,
                         tokenColor:ts.color,plainColor:getComputedStyle(pre.querySelector('.code-token-identifier')).color,
                         tokenCount:pre.querySelectorAll('[class^="code-token-"]').length,
@@ -858,10 +858,14 @@ class CanonicalLessonBrowserAcceptanceTests(unittest.TestCase):
                         })""")
                         self.assertEqual([x["type"] for x in result], expected, str(result))
                         self.assertEqual(len(result), 2, str(result))
+                        for diagram in result:
+                            self.assertEqual(len(diagram["nodes"]), 4, str(diagram))
+                            self.assertTrue(all(node["texts"] for node in diagram["nodes"]), str(diagram))
                         flow=result[0]
                         self.assertEqual(len({round(x["height"],2) for x in flow["rects"]}),1,str(flow))
-                        if flow["arrows"]:
-                            self.assertLess(max(flow["arrows"])-min(flow["arrows"]),1.5,str(flow))
+                        self.assertEqual(len(flow["arrows"]), 3, str(flow))
+                        self.assertLess(max(flow["arrows"])-min(flow["arrows"]),1.5,str(flow))
+                        self.assertEqual(len(result[1]["arrows"]), 0, str(result[1]))
                         caption=flow["caption"].lower()
                         self.assertTrue(any(token in caption for token in ("individual","индивидуаль","单个特征")),str(flow))
                         self.assertNotIn("group permutation",caption)

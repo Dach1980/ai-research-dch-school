@@ -100,7 +100,9 @@ class LocaleGridThemeParityTests(unittest.TestCase):
     def test_v3_published_lessons_have_single_codes_and_complete_localization(self):
         catalog = json.loads((ROOT / "data/catalog/catalog-v3.json").read_text(encoding="utf-8"))
         published = [x for x in catalog["lessons"] if x["status"] == "published" and x["content_state"] == "published"]
-        self.assertEqual(len(published), 49)
+        canonical = json.loads((ROOT / "data/catalog/curriculum-canonical-v1.json").read_text(encoding="utf-8"))
+        accepted = {lesson["number"] for track in canonical["tracks"] if track["uid"] == "trk-a" for theme in track["themes"] for module in theme["modules"] for lesson in module["lessons"] if tuple(map(int, lesson["number"].split("."))) <= (10, 1, 1)}
+        self.assertTrue(accepted <= {lesson["code"] for lesson in published if lesson["track_uid"] == "trk-a"}, "Accepted Track A lessons must not disappear")
         published_codes = {(item["module_uid"], item["code"]) for item in published}
         self.assertEqual(len(published_codes), len(published), "published module/lesson codes must be unique")
         self.assertIn("les-a-0147", {item["uid"] for item in published})

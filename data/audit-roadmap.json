@@ -3404,6 +3404,22 @@
         "Содержимое Telegram Web и публичный @username не подтверждены. Мониторинг и автопубликация не настроены.",
         "Попытка чтения публичной ленты не удалась; соответствие внутреннему ID не проверено."
       ]
+    },
+    {
+      "id": "AUD-P0-BROWSER-2026-11-25",
+      "date": "2026-11-25",
+      "type": "ci_diagnosis_and_candidate_fix",
+      "title": "Диагностика P0 browser acceptance и подготовка исправления",
+      "result": "Подтверждены 36 падений в четырёх группах; подготовлен кандидат исправления селекторов, контраста, PFI и счётчиков. CI и production не подтверждены.",
+      "evidence": [
+        "docs/management/P0_BROWSER_ACCEPTANCE_2026-11-25.md",
+        "https://github.com/Dach1980/ai-research-dch-school/actions/runs/45591548759",
+        "https://github.com/Dach1980/ai-research-dch-school/actions/runs/45591548551",
+        "https://github.com/Dach1980/ai-research-dch-school/actions/runs/45591548294"
+      ],
+      "limitations": [
+        "Изменения в отдельной ветке; обязательный CI ещё не подтверждён. Настройка Pages и live smoke остаются P0."
+      ]
     }
   ],
   "notes": [

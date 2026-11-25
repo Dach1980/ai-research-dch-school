@@ -39,11 +39,23 @@ class Lesson1012BrowserTests(unittest.TestCase):
                                     self.assertEqual(page.locator("#lesson-glossary .glossary-entry").count(),15)
                                     self.assertEqual(page.locator("#lesson-quiz fieldset").count(),10)
                                     self.assertEqual(errors,[])
+                                    page.wait_for_function("Array.from(document.querySelectorAll('.shap-compute-figure')).every(f=>f.dataset.scrollable===String(f.querySelector('.pfi-diagram-viewport').scrollWidth>f.querySelector('.pfi-diagram-viewport').clientWidth+1))")
                                     issues=page.evaluate("""() => {
                                       const errors=[];
                                       const lum=s=>s.match(/[0-9.]+/g).slice(0,3).map(Number).map(v=>{v/=255;return v<=.04045?v/12.92:((v+.055)/1.055)**2.4}).reduce((a,v,i)=>a+v*[.2126,.7152,.0722][i],0);
                                       for(const svg of document.querySelectorAll('.shap-compute-figure svg')){
-                                        const vb=svg.viewBox.baseVal;
+                                        const vb=svg.viewBox.baseVal, viewport=svg.parentElement, fig=viewport.parentElement;
+                                        if(viewport.scrollWidth>viewport.clientWidth+1){
+                                          if(getComputedStyle(viewport).overflowX!=='auto' && getComputedStyle(viewport).overflowX!=='scroll')errors.push('unscrollable SVG');
+                                          if(getComputedStyle(fig.querySelector('.shap-scroll-hint')).display==='none')errors.push('missing scroll hint');
+                                          const initial=viewport.scrollLeft;viewport.scrollLeft=viewport.scrollWidth;
+                                          if(viewport.scrollLeft<=0)errors.push('horizontal scrolling failed');
+                                          viewport.scrollLeft=initial;
+                                        }
+                                        if(fig.dataset.diagramKind==='growth'){
+                                          const cell=svg.querySelector('[data-node-id="row-4-col-2"]');
+                                          if(!cell||cell.querySelectorAll('text').length!==1)errors.push('factorial wraps');
+                                        }
                                         for(const group of svg.querySelectorAll('[data-node-id]')){
                                           const rect=group.querySelector('rect'),r=rect.getBBox();
                                           for(const t of group.querySelectorAll('text')){
@@ -51,7 +63,8 @@ class Lesson1012BrowserTests(unittest.TestCase):
                                             const ratio=(Math.max(lum(f),lum(bg))+.05)/(Math.min(lum(f),lum(bg))+.05);
                                             if(b.x<r.x+5||b.y<r.y||b.x+b.width>r.x+r.width-5||b.y+b.height>r.y+r.height-5)errors.push('node clipping '+t.textContent);
                                             if(ratio<4.5)errors.push('contrast '+ratio+' '+t.textContent);
-                                            if(parseFloat(getComputedStyle(t).fontSize)<14)errors.push('font '+t.textContent);
+                                            const ctm=t.getScreenCTM(),scale=Math.min(Math.hypot(ctm.a,ctm.b),Math.hypot(ctm.c,ctm.d));
+                                            if(parseFloat(getComputedStyle(t).fontSize)*scale<14)errors.push('rendered font '+t.textContent);
                                           }
                                         }
                                         for(const node of svg.querySelectorAll('rect,text,path')){
@@ -68,6 +81,11 @@ class Lesson1012BrowserTests(unittest.TestCase):
                                         page.screenshot(path=str(evidence / f"{prefix}-page.png"),animations="disabled")
                                         for i,figure in enumerate(page.locator(".shap-compute-figure").all(),1):
                                             figure.screenshot(path=str(evidence / f"{prefix}-figure-{i}.png"),animations="disabled")
+                                            viewport=figure.locator(".pfi-diagram-viewport")
+                                            if viewport.evaluate("v => v.scrollWidth>v.clientWidth+1"):
+                                                viewport.evaluate("v => {v.scrollLeft=v.scrollWidth}")
+                                                figure.screenshot(path=str(evidence / f"{prefix}-right-{i}.png"),animations="disabled")
+                                                viewport.evaluate("v => {v.scrollLeft=0}")
                                 finally: page.close()
                 browser.close()
                 if evidence:

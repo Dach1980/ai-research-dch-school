@@ -3482,6 +3482,21 @@
       "limitations": [
         "Статус review/localized; интеграционный CI, скриншоты и production deployment пока не подтверждены."
       ]
+    },
+    {
+      "id": "AUD-LESSON-1012-VISUAL-2026-11-25",
+      "date": "2026-11-25",
+      "type": "visual_review",
+      "title": "Production PASS; выявлено уменьшение шрифта мобильных SVG урока 10.1.2",
+      "result": "Managed deploy 45597227298 и 154 HTTP smoke checks success; integrated CI success. Архив 15013822877: 108 PNG. При визуальном просмотре обнаружено чрезмерное масштабирование SVG и разрыв 20!. Исправлены scoped CSS, ширина столбца и тест фактического экранного шрифта, прокрутки и числа.",
+      "evidence": [
+        "https://github.com/Dach1980/ai-research-dch-school/actions/runs/45597227298",
+        "https://github.com/Dach1980/ai-research-dch-school/actions/runs/45597390885/artifacts/15013822877",
+        "docs/reports/LESSON_1012_SHAP_COMPUTATION_2026-11-25.md"
+      ],
+      "limitations": [
+        "Повторный CI и ручная визуальная проверка после исправления не подтверждены; lesson review/localized."
+      ]
     }
   ],
   "notes": [

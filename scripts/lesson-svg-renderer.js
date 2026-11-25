@@ -314,9 +314,9 @@ function shapDown(root,x,from,to){root.append(el("path",{d:"M "+x+" "+from+" V "
 function shapCompute(s){
  let root;
  if(s.layout==="shap-compute-table"){
-  const col=s.columns.length,w=(W-48)/col,rows=[s.columns,...s.rows],heights=rows.map(r=>Math.max(...r.map(v=>shapCellHeight(w-6,v,""))));
+  const col=s.columns.length,widths=s.type==="shap-1012-growth"?[96,220,W-48-316]:Array(col).fill((W-48)/col),rows=[s.columns,...s.rows],heights=rows.map(r=>Math.max(...r.map((v,ci)=>shapCellHeight(widths[ci]-6,v,""))));
   root=base(s,48+heights.reduce((a,b)=>a+b+6,0));let y=24;
-  rows.forEach((r,ri)=>{r.forEach((v,ci)=>shapCell(root,"row-"+ri+"-col-"+ci,24+ci*w,y,w-6,heights[ri],v,"",ri===0));y+=heights[ri]+6;});
+  rows.forEach((r,ri)=>{let x=24;r.forEach((v,ci)=>{shapCell(root,"row-"+ri+"-col-"+ci,x,y,widths[ci]-6,heights[ri],v,"",ri===0);x+=widths[ci];});y+=heights[ri]+6;});
  }else if(s.layout==="shap-compute-pipeline"){
   const w=560,x=(W-w)/2,hs=s.nodes.map(n=>shapCellHeight(w,n.title,n.detail)),gap=30;
   root=base(s,48+hs.reduce((a,b)=>a+b,0)+gap*(hs.length-1));

@@ -222,3 +222,7 @@ jobs:
           path: artifacts/lesson-1013-lab/
           if-no-files-found: warn
           retention-days: 30
+      - name: Check localized DCH news journal and responsive UI
+        run: |
+          node --check scripts/language-switcher.js
+          python -m unittest discover -s tests -p 'test_news_journal.py' -v

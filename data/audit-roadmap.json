@@ -3497,6 +3497,22 @@
       "limitations": [
         "Повторный CI и ручная визуальная проверка после исправления не подтверждены; lesson review/localized."
       ]
+    },
+    {
+      "id": "AUD-LESSON-1012-RELEASE-2026-11-25",
+      "date": "2026-11-25",
+      "type": "release_candidate",
+      "title": "Выпуск полноценного урока 10.1.2 «Как работает SHAP»",
+      "result": "Владелец неоднократно поручил опубликовать новый урок и уточнил, что ему нужен сам урок, а не скриншоты. Принято как распоряжение о выпуске, а не утверждение, что владелец просмотрел все изображения. CI 45599526833 (78/78), 45599526781 и 45599526821 success. 18 автоматических браузерных конфигураций и выборочный визуальный просмотр подтверждены. В каталоге опубликован les-a-0183; A 52/60, общий план 52/167 (метаданные).",
+      "evidence": [
+        "https://github.com/Dach1980/ai-research-dch-school/actions/runs/45599526833",
+        "https://github.com/Dach1980/ai-research-dch-school/actions/runs/45599526781",
+        "https://github.com/Dach1980/ai-research-dch-school/actions/runs/45599526821",
+        "docs/reports/LESSON_1012_SHAP_COMPUTATION_2026-11-25.md"
+      ],
+      "limitations": [
+        "Публичный HTTP smoke и production release нового SHA ещё не подтверждены; визуальная проверка владельцем не заявлена."
+      ]
     }
   ],
   "notes": [

@@ -15,7 +15,12 @@ class KnowledgeMapTests(unittest.TestCase):
   js=(ROOT/"scripts/planet-map-catalog.js").read_text(encoding="utf-8")
   c=json.loads((ROOT/"data/catalog/catalog-v3.json").read_text(encoding="utf-8"))
   lessons=[x for x in c["lessons"] if x.get("track_uid")=="trk-a" and x.get("status")=="published" and x.get("content_state")=="published"]
-  self.assertEqual(len(lessons),49)
+  canonical=json.loads((ROOT/"data/catalog/curriculum-canonical-v1.json").read_text(encoding="utf-8"))
+  accepted={lesson["number"] for track in canonical["tracks"] if track["uid"]=="trk-a" for theme in track["themes"] for module in theme["modules"] for lesson in module["lessons"] if tuple(map(int,lesson["number"].split(".")))<=(10,1,1)}
+  self.assertTrue(accepted <= {lesson["code"] for lesson in lessons}, "Accepted Track A lessons must not disappear")
+  self.assertEqual(len({lesson["uid"] for lesson in lessons}),len(lessons))
+  for lesson in lessons:
+   for route in lesson["url_i18n"].values(): self.assertTrue((ROOT/route).is_file(),route)
   self.assertIn("les-a-0018", {lesson["uid"] for lesson in lessons})
   self.assertIn("les-a-0173", {lesson["uid"] for lesson in lessons})
   self.assertIn("les-a-0147", {lesson["uid"] for lesson in lessons})

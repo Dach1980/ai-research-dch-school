@@ -3422,6 +3422,35 @@
       ]
     },
     {
+      "id": "AUD-P0-PUBLICATION-2026-11-25",
+      "date": "2026-11-25",
+      "type": "ci_gate_candidate",
+      "title": "PR #4 принят CI; подготовлен единый управляемый конвейер публикации",
+      "result": "73 этапа PR #4 успешны; merge 0b74f346ff93e36c825f4b65a66291339844e02a. Кандидат единого gate, smoke всех опубликованных локалей и read-only мигратора.",
+      "evidence": [
+        "docs/management/P0_PUBLICATION_GATE_2026-11-25.md",
+        "https://github.com/Dach1980/ai-research-dch-school/actions/runs/45592653872"
+      ],
+      "limitations": [
+        "CI нового кандидата ещё не подтверждён; настройки Pages требуют проверки владельцем."
+      ]
+    },
+    {
+      "id": "AUD-P0-PAGES-ARTIFACT-2026-11-25",
+      "date": "2026-11-25",
+      "type": "deployment_diagnosis",
+      "title": "Выявлена ошибка доступности артефакта Pages перед деплоем",
+      "result": "Run 45594158123: validation и Supabase success; github-pages artifact 15011774625 успешно загружен, deploy не нашёл метаданные. Последующий API подтверждает наличие артефакта. Добавлена ограниченная проверка видимости REST с actions: read. Причина не доказана, решение требует нового deploy.",
+      "evidence": [
+        "https://github.com/Dach1980/ai-research-dch-school/actions/runs/45594158123",
+        "https://github.com/Dach1980/ai-research-dch-school/actions/runs/45594158106",
+        "docs/management/P0_PUBLICATION_GATE_2026-11-25.md"
+      ],
+      "limitations": [
+        "Production deployment не подтверждён; live smoke пропущен; настройки Pages требуют проверки."
+      ]
+    },
+    {
       "id": "AUD-LESSON-1012-2026-11-25",
       "date": "2026-11-25",
       "type": "lesson_review_candidate",
@@ -3436,6 +3465,22 @@
       ],
       "limitations": [
         "Изолированная ветка; CI и live deployment не подтверждены; ручная визуальная приёмка не выполнена."
+      ]
+    },
+    {
+      "id": "AUD-LESSON-1012-INTEGRATION-2026-11-25",
+      "date": "2026-11-25",
+      "type": "integration_candidate",
+      "title": "Урок 10.1.2: подтверждён CI, интеграция P0",
+      "result": "Run 45595236877: 77 этапов success, Python lab и 18 браузерных конфигураций success. SVG audit 45595236847 success. PR #5 merged 32e1a632. Добавлены скриншоты 18 конфигураций и пяти иллюстраций для ручной приёмки.",
+      "evidence": [
+        "https://github.com/Dach1980/ai-research-dch-school/actions/runs/45595236877",
+        "https://github.com/Dach1980/ai-research-dch-school/actions/runs/45595236847",
+        "https://github.com/Dach1980/ai-research-dch-school/actions/runs/45597227298",
+        "docs/reports/LESSON_1012_SHAP_COMPUTATION_2026-11-25.md"
+      ],
+      "limitations": [
+        "Статус review/localized; интеграционный CI, скриншоты и production deployment пока не подтверждены."
       ]
     }
   ],

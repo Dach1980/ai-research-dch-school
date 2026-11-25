@@ -1,4 +1,5 @@
 import json
+import os
 import threading
 import unittest
 from pathlib import Path
@@ -10,6 +11,10 @@ class Lesson1012BrowserTests(unittest.TestCase):
     def test_geometry_locales_themes(self):
         catalog=json.loads((ROOT/"data/catalog/catalog-v3.json").read_text(encoding="utf-8"))
         lesson=next(x for x in catalog["lessons"] if x["uid"]=="les-a-0183")
+        evidence=os.environ.get("DCH_VISUAL_EVIDENCE")
+        if evidence:
+            evidence=Path(evidence)
+            evidence.mkdir(parents=True,exist_ok=True)
         server=ThreadingHTTPServer(("127.0.0.1",0),QuietHandler)
         thread=threading.Thread(target=server.serve_forever,daemon=True);thread.start()
         try:
@@ -28,6 +33,7 @@ class Lesson1012BrowserTests(unittest.TestCase):
                                     response=page.goto(f"http://127.0.0.1:{server.server_port}/"+route,wait_until="domcontentloaded")
                                     self.assertEqual(response.status,200)
                                     page.locator(".shap-compute-figure svg").last.wait_for()
+                                    self.assertEqual(page.locator("html").get_attribute("data-theme"),theme)
                                     self.assertEqual(page.locator(".shap-compute-figure svg").count(),5)
                                     self.assertEqual(page.locator("#lesson-sections > section").count(),9)
                                     self.assertEqual(page.locator("#lesson-glossary .glossary-entry").count(),15)
@@ -57,7 +63,15 @@ class Lesson1012BrowserTests(unittest.TestCase):
                                       return errors;
                                     }""")
                                     self.assertEqual(issues,[])
+                                    if evidence:
+                                        prefix=f"{locale}-{theme}-{width}"
+                                        page.screenshot(path=str(evidence / f"{prefix}-page.png"),animations="disabled")
+                                        for i,figure in enumerate(page.locator(".shap-compute-figure").all(),1):
+                                            figure.screenshot(path=str(evidence / f"{prefix}-figure-{i}.png"),animations="disabled")
                                 finally: page.close()
                 browser.close()
+                if evidence:
+                    self.assertEqual(len(list(evidence.glob("*-page.png"))),18)
+                    self.assertEqual(len(list(evidence.glob("*-figure-*.png"))),90)
         finally:
             server.shutdown();server.server_close();thread.join(timeout=2)

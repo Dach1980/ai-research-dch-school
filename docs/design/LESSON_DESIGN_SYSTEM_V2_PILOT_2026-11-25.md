@@ -6,3 +6,6 @@ Opt-in only on existing full lesson 10.1.2 (les-a-0183) in RU/EN/ZH, on review b
 
 ## Verification and rollout
 New browser test targets 18 combinations, existing lesson content counts, real motion/pause, reduced-motion, anchors, overflow, legacy 10.1.1 unaffected. Full existing CI retained and screenshots saved internally. Pending actual CI and visual review. Next: fix any failures, inspect pilot, merge only when verified; then use v2 for 10.1.3 and migrate other lessons in small batches. Do not claim pilot deployed before production smoke. Design approval is not evidence of technical acceptance.
+
+## First pilot result and visual correction
+PR 7 head 9282250fb4b81e23f5a7fc294fbebbe2a3dd94ce: CI 45605269602 (81 steps), SVG audit 45605269603, managed PR 45605269553 all succeeded. Inspected contact sheet of all 18 real viewport captures, artifact 15016929895. On desktop legacy .article-hero max-width:900px leaves unintentional empty right area; scope width:100%;max-width:none to v2 hero and add rendered width assertion. Re-run CI/visual review before merge. Existing non-v2 styles unchanged. 10.1.3 prompt merged in main at 8d2c0f45d57304866b7be496e51af531672ef0d4; preserve it in integrated candidate.

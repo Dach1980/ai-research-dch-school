@@ -3542,6 +3542,20 @@
       "limitations": [
         "CI и визуальная приёмка пилота пока не подтверждены. Старые CSS не удаляются до миграции."
       ]
+    },
+    {
+      "id": "AUD-DESIGN-V2-WIDTH-2026-11-25",
+      "date": "2026-11-25",
+      "type": "visual_review",
+      "title": "Исправление ширины hero после первого CI v2",
+      "result": "81 этап CI успешно, 18 снимков просмотрены; desktop hero наследовал max-width 900px. Scoped width fix и новый browser assertion.",
+      "evidence": [
+        "https://github.com/Dach1980/ai-research-dch-school/actions/runs/45605269602",
+        "docs/design/LESSON_DESIGN_SYSTEM_V2_PILOT_2026-11-25.md"
+      ],
+      "limitations": [
+        "Повторный CI, визуальная проверка и production ещё не подтверждены."
+      ]
     }
   ],
   "notes": [

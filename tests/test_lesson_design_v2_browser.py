@@ -48,6 +48,7 @@ class LessonDesignV2Tests(unittest.TestCase):
                                     self.assertEqual(page.locator(".dch-v2-toc-link").count(), 13)
                                     self.assertEqual(page.evaluate("Array.from(document.querySelectorAll('.dch-v2-toc-link')).every(a=>document.getElementById(a.hash.slice(1)))"), True)
                                     self.assertLessEqual(page.evaluate("document.documentElement.scrollWidth-innerWidth"), 1)
+                                    self.assertLessEqual(page.evaluate("Math.abs(document.querySelector(\"main.lesson\").getBoundingClientRect().width-document.querySelector(\".lesson-standard-hero\").getBoundingClientRect().width)"), 2)
                                     if evidence:
                                         page.screenshot(path=str(evidence / f"{locale}-{theme}-{width}-page.png"), animations="allow")
                                     toggle = page.locator(".dch-v2-outcomes-toggle")

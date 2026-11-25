@@ -1,6 +1,6 @@
 /* Pilot design, scoped to the explicit opt-in. Keep canonical article children intact. */
 main.lesson[data-lesson-design="v2"][data-design-ready="true"]{display:grid;grid-template-columns:235px minmax(0,1fr);gap:24px;width:min(1320px,calc(100% - 48px));max-width:1320px;margin:24px auto 72px;padding:0;align-items:start}
-main.lesson[data-lesson-design="v2"] > .lesson-standard-hero{grid-column:1/-1;margin:0;padding:0;min-width:0}
+main.lesson[data-lesson-design="v2"] > .lesson-standard-hero{grid-column:1/-1;margin:0;padding:0;min-width:0;width:100%;max-width:none}
 main.lesson[data-lesson-design="v2"] .dch-v2-intro{display:grid;grid-template-columns:minmax(0,1fr) 240px;gap:24px;align-items:center;padding:clamp(18px,3vw,36px);border:1px solid var(--lds-line);border-radius:20px;background:var(--lds-surface);color:var(--lds-ink);min-width:0}
 main.lesson[data-lesson-design="v2"] .dch-v2-copy{min-width:0}
 main.lesson[data-lesson-design="v2"] .dch-v2-intro h1{margin:.45rem 0 .65rem;font-size:clamp(1.9rem,3.3vw,3rem);line-height:1.15;color:var(--lds-ink);overflow-wrap:anywhere}

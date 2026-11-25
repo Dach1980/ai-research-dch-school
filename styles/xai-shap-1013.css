@@ -13,3 +13,6 @@ main.lesson[data-lesson-design="v2"] > .lesson-standard-hero > #lesson-outcomes.
 @media(max-width:560px){main.lesson[data-lesson-design="v2"] > .lesson-standard-hero > #lesson-outcomes.outcomes{padding:12px 15px}}
 
 main.lesson[data-lesson-design="v2"] .formula-expression{font-family:ui-monospace,monospace;overflow-wrap:anywhere}
+
+.shap-local-result-table{width:100%;max-width:100%;border-collapse:collapse;overflow-wrap:anywhere;font-variant-numeric:tabular-nums}.shap-local-result-table th,.shap-local-result-table td{padding:.5rem;border:1px solid var(--lds-line);text-align:start;color:var(--lds-ink)}.shap-local-result-table th{background:var(--lds-surface-secondary)}.shap-local-lab-results{min-width:0}.shap-local-lab-results a{overflow-wrap:anywhere}
+@media(max-width:650px){.shap-local-result-table th,.shap-local-result-table td{padding:.25rem;font-size:.8rem}}

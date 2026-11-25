@@ -9,3 +9,6 @@ New browser test targets 18 combinations, existing lesson content counts, real m
 
 ## First pilot result and visual correction
 PR 7 head 9282250fb4b81e23f5a7fc294fbebbe2a3dd94ce: CI 45605269602 (81 steps), SVG audit 45605269603, managed PR 45605269553 all succeeded. Inspected contact sheet of all 18 real viewport captures, artifact 15016929895. On desktop legacy .article-hero max-width:900px leaves unintentional empty right area; scope width:100%;max-width:none to v2 hero and add rendered width assertion. Re-run CI/visual review before merge. Existing non-v2 styles unchanged. 10.1.3 prompt merged in main at 8d2c0f45d57304866b7be496e51af531672ef0d4; preserve it in integrated candidate.
+
+## Accepted pilot — 2026-11-26
+Corrected pilot CI 45606688211 and integrated 45606688409 passed; merged PR #7 at d3823c03be8ca7539da9d592c32aa7ed4f0267aa. Managed production run 45607690021 passed, including 157 public HTTP checks. 10.1.3 candidate reuses these shared components. Gradual migration remains pending.

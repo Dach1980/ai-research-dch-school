@@ -69,3 +69,18 @@ class Lesson1013Tests(unittest.TestCase):
         self.assertEqual(source,self.payload["practiceCode"])
         for marker in ("TreeExplainer","interventional","all_train","small_train","assert_allclose","shap.plots.waterfall","shap.plots.force"):
             self.assertIn(marker,source)
+
+    def test_verified_lab(self):
+        report=json.loads((ROOT/"lessons/practice/a-10-1-3-shap-local-results.json").read_text(encoding="utf-8"))
+        self.assertEqual(report,self.payload["labEvidence"])
+        self.assertEqual(report["versions"]["shap"],"0.54.1")
+        a,b=(report["backgrounds"][k] for k in ("all_train","small_train"))
+        self.assertEqual(a["prediction"],b["prediction"])
+        for x in (a,b):
+            self.assertEqual(x["background_rows"],64)
+            self.assertTrue(math.isclose(x["prediction"],x["base"]+sum(v["phi_million_rub"] for v in x["features"]),rel_tol=report["rtol"],abs_tol=report["atol"]))
+        self.assertLess(a["features"][0]["phi_million_rub"],0)
+        self.assertGreater(b["features"][0]["phi_million_rub"],0)
+        js=(ROOT/"scripts/xai-shap-1013-lesson.js").read_text(encoding="utf-8")
+        self.assertIn("practice/a-10-1-3-shap-local-explanations.py",js)
+        self.assertIn("practice/a-10-1-3-shap-local-results.json",js)

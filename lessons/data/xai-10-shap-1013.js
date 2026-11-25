@@ -530,7 +530,7 @@ window.DCH_SHAP_1013={
           "Открыть PNG и results.json в shap-local-results; сгруппировать два оставшихся признака.",
           "Сменить объект и фон; объяснить разницу. Найти ошибку сравнения logit с probability."
         ],
-        "install": "python -m pip install numpy==2.5.5 shap==0.54.1 scikit-learn==1.9.1 matplotlib pandas",
+        "install": "python -m pip install numpy==2.5.5 shap==0.54.1 scikit-learn==1.9.1 matplotlib==3.11.2 pandas==3.1.1",
         "run": "python a-10-1-3-shap-local-explanations.py"
       }
     },
@@ -1062,7 +1062,7 @@ window.DCH_SHAP_1013={
           "Inspect PNG and results.json in shap-local-results; group the two remaining features.",
           "Change instance and background; explain the difference. Identify the logit/probability scale error."
         ],
-        "install": "python -m pip install numpy==2.5.5 shap==0.54.1 scikit-learn==1.9.1 matplotlib pandas",
+        "install": "python -m pip install numpy==2.5.5 shap==0.54.1 scikit-learn==1.9.1 matplotlib==3.11.2 pandas==3.1.1",
         "run": "python a-10-1-3-shap-local-explanations.py"
       }
     },
@@ -1594,11 +1594,99 @@ window.DCH_SHAP_1013={
           "查看 shap-local-results 中的 PNG 与 results.json，合并其余两个特征。",
           "改变样本与背景，解释差异；识别 logit 与概率的尺度错误。"
         ],
-        "install": "python -m pip install numpy==2.5.5 shap==0.54.1 scikit-learn==1.9.1 matplotlib pandas",
+        "install": "python -m pip install numpy==2.5.5 shap==0.54.1 scikit-learn==1.9.1 matplotlib==3.11.2 pandas==3.1.1",
         "run": "python a-10-1-3-shap-local-explanations.py"
       }
     }
   },
-  "practiceCode": "\"\"\"DCH School 10.1.3 — local SHAP. Synthetic housing data, not an appraisal.\"\"\"\nimport json\nimport math\nimport os\nfrom pathlib import Path\n\nimport matplotlib\nmatplotlib.use(\"Agg\")\nimport matplotlib.pyplot as plt\nimport numpy as np\nimport pandas as pd\nimport shap\nimport sklearn\nfrom sklearn.ensemble import RandomForestRegressor\nfrom sklearn.model_selection import train_test_split\n\nSEED = 42\nOUT = Path(os.environ.get(\"DCH_LAB_OUTPUT\", \"shap-local-results\"))\nOUT.mkdir(parents=True, exist_ok=True)\nrng = np.random.default_rng(SEED)\nn = 600\nX = pd.DataFrame({\n    \"area_m2\": rng.uniform(25, 120, n),\n    \"location_score\": rng.integers(1, 11, n),\n    \"age_years\": rng.integers(0, 61, n),\n    \"floor\": rng.integers(1, 17, n),\n})\ny = (1.6 + 0.065 * X.area_m2 + 0.21 * X.location_score\n     - 0.026 * X.age_years + 0.02 * X.floor\n     + 0.001 * X.area_m2 * X.location_score\n     + rng.normal(0, 0.18, n))\ntrain, test, y_train, _ = train_test_split(X, y, test_size=0.25, random_state=SEED)\nmodel = RandomForestRegressor(n_estimators=32, max_depth=6, random_state=SEED, n_jobs=1)\nmodel.fit(train, y_train)\nx = test.iloc[[0]]\nprediction = float(model.predict(x)[0])\nbackgrounds = {\n    \"all_train\": train.sample(64, random_state=SEED),\n    \"small_train\": train.nsmallest(120, \"area_m2\").sample(64, random_state=SEED),\n}\nATOL, RTOL = 2e-5, 1e-6  # million RUB; allow tree implementation roundoff\nnames = list(x.columns)\nresults = {}\nfor name, bg in backgrounds.items():\n    assert set(bg.index).issubset(set(train.index))\n    explainer = shap.TreeExplainer(model, data=bg,\n        feature_perturbation=\"interventional\", model_output=\"raw\")\n    batch = explainer(x)\n    print(name, \"batch shape\", batch.shape, \"output names\", batch.output_names)\n    assert batch.values.shape == (1, len(names))\n    e = batch[0]\n    phi = np.asarray(e.values, dtype=float)\n    base = float(np.asarray(e.base_values).item())\n    assert phi.shape == (len(names),)\n    assert list(e.feature_names) == names\n    np.testing.assert_allclose(np.asarray(e.data, dtype=float), x.iloc[0].to_numpy(dtype=float))\n    assert np.isfinite(phi).all() and math.isfinite(base)\n    reconstruction = base + float(phi.sum())\n    np.testing.assert_allclose(reconstruction, prediction, atol=ATOL, rtol=RTOL)\n    np.testing.assert_allclose(base, model.predict(bg).mean(), atol=ATOL, rtol=RTOL)\n    order = np.argsort(-np.abs(phi), kind=\"stable\")\n    table = [{\"feature\": names[i], \"value\": float(x.iloc[0, i]),\n              \"phi_million_rub\": float(phi[i])} for i in order]\n    grouped = float(phi[order[2:]].sum())\n    np.testing.assert_allclose(base + float(phi[order[:2]].sum()) + grouped,\n                               prediction, atol=ATOL, rtol=RTOL)\n    results[name] = {\"background_rows\": len(bg), \"base\": base,\n                     \"prediction\": prediction, \"reconstructed\": reconstruction,\n                     \"residual\": prediction - reconstruction, \"grouped_other\": grouped,\n                     \"features\": table}\n    print(name, json.dumps(results[name], indent=2))\n    shap.plots.waterfall(e, max_display=3, show=False)\n    plt.savefig(OUT / f\"waterfall-{name}.png\", dpi=160, bbox_inches=\"tight\")\n    plt.close(\"all\")\n    if name == \"all_train\":\n        shap.plots.force(e, matplotlib=True, show=False)\n        plt.savefig(OUT / \"force-all_train.png\", dpi=160, bbox_inches=\"tight\")\n        plt.close(\"all\")\n\nassert math.isclose(results[\"all_train\"][\"prediction\"], results[\"small_train\"][\"prediction\"])\nsigmoid = lambda z: 1 / (1 + math.exp(-z))\nz0, z = -0.4, -0.4 + 1.0 - 0.3\nprint(\"Teaching logits:\", z0, z, \"probabilities:\", sigmoid(z0), sigmoid(z))\nassert math.isclose(sigmoid(z), 0.574442516811659)\nreport = {\"seed\": SEED, \"versions\": {\"numpy\": np.__version__, \"shap\": shap.__version__,\n           \"sklearn\": sklearn.__version__, \"pandas\": pd.__version__,\n           \"matplotlib\": matplotlib.__version__}, \"units\": \"million RUB\",\n          \"object_index\": int(x.index[0]), \"object\": {k: float(v) for k,v in x.iloc[0].items()},\n          \"mode\": \"interventional\", \"output\": \"raw regression\", \"atol\": ATOL, \"rtol\": RTOL,\n          \"backgrounds\": results}\n(OUT / \"results.json\").write_text(json.dumps(report, indent=2) + \"\\n\", encoding=\"utf-8\")\nprint(\"PASS: identity, baseline, additivity, grouping, fixed prediction and sigmoid\")\n"
+  "practiceCode": "\"\"\"DCH School 10.1.3 — local SHAP. Synthetic housing data, not an appraisal.\"\"\"\nimport json\nimport math\nimport os\nfrom pathlib import Path\n\nimport matplotlib\nmatplotlib.use(\"Agg\")\nimport matplotlib.pyplot as plt\nimport numpy as np\nimport pandas as pd\nimport shap\nimport sklearn\nfrom sklearn.ensemble import RandomForestRegressor\nfrom sklearn.model_selection import train_test_split\n\nSEED = 42\nOUT = Path(os.environ.get(\"DCH_LAB_OUTPUT\", \"shap-local-results\"))\nOUT.mkdir(parents=True, exist_ok=True)\nrng = np.random.default_rng(SEED)\nn = 600\nX = pd.DataFrame({\n    \"area_m2\": rng.uniform(25, 120, n),\n    \"location_score\": rng.integers(1, 11, n),\n    \"age_years\": rng.integers(0, 61, n),\n    \"floor\": rng.integers(1, 17, n),\n})\ny = (1.6 + 0.065 * X.area_m2 + 0.21 * X.location_score\n     - 0.026 * X.age_years + 0.02 * X.floor\n     + 0.001 * X.area_m2 * X.location_score\n     + rng.normal(0, 0.18, n))\ntrain, test, y_train, _ = train_test_split(X, y, test_size=0.25, random_state=SEED)\nmodel = RandomForestRegressor(n_estimators=32, max_depth=6, random_state=SEED, n_jobs=1)\nmodel.fit(train, y_train)\nx = test.iloc[[0]]\nprediction = float(model.predict(x)[0])\nbackgrounds = {\n    \"all_train\": train.sample(64, random_state=SEED),\n    \"small_train\": train.nsmallest(120, \"area_m2\").sample(64, random_state=SEED),\n}\nATOL, RTOL = 2e-5, 1e-6  # million RUB; allow tree implementation roundoff\nnames = list(x.columns)\nresults = {}\nfor name, bg in backgrounds.items():\n    assert set(bg.index).issubset(set(train.index))\n    explainer = shap.TreeExplainer(model, data=bg,\n        feature_perturbation=\"interventional\", model_output=\"raw\")\n    batch = explainer(x)\n    print(name, \"batch shape\", batch.shape, \"output names\", batch.output_names)\n    assert batch.values.shape == (1, len(names))\n    e = batch[0]\n    phi = np.asarray(e.values, dtype=float)\n    base = float(np.asarray(e.base_values).item())\n    assert phi.shape == (len(names),)\n    assert list(e.feature_names) == names\n    np.testing.assert_allclose(np.asarray(e.data, dtype=float), x.iloc[0].to_numpy(dtype=float))\n    assert np.isfinite(phi).all() and math.isfinite(base)\n    reconstruction = base + float(phi.sum())\n    np.testing.assert_allclose(reconstruction, prediction, atol=ATOL, rtol=RTOL)\n    np.testing.assert_allclose(base, model.predict(bg).mean(), atol=ATOL, rtol=RTOL)\n    order = np.argsort(-np.abs(phi), kind=\"stable\")\n    table = [{\"feature\": names[i], \"value\": float(x.iloc[0, i]),\n              \"phi_million_rub\": float(phi[i])} for i in order]\n    grouped = float(phi[order[2:]].sum())\n    np.testing.assert_allclose(base + float(phi[order[:2]].sum()) + grouped,\n                               prediction, atol=ATOL, rtol=RTOL)\n    results[name] = {\"background_rows\": len(bg), \"base\": base,\n                     \"prediction\": prediction, \"reconstructed\": reconstruction,\n                     \"residual\": prediction - reconstruction, \"grouped_other\": grouped,\n                     \"features\": table}\n    print(name, json.dumps(results[name], indent=2))\n    shap.plots.waterfall(e, max_display=3, show=False)\n    plt.savefig(OUT / f\"waterfall-{name}.png\", dpi=160, bbox_inches=\"tight\")\n    plt.close(\"all\")\n    if name == \"all_train\":\n        shap.plots.force(e, matplotlib=True, show=False)\n        plt.savefig(OUT / \"force-all_train.png\", dpi=160, bbox_inches=\"tight\")\n        plt.close(\"all\")\n\nassert math.isclose(results[\"all_train\"][\"prediction\"], results[\"small_train\"][\"prediction\"])\nsigmoid = lambda z: 1 / (1 + math.exp(-z))\nz0, z = -0.4, -0.4 + 1.0 - 0.3\nprint(\"Teaching logits:\", z0, z, \"probabilities:\", sigmoid(z0), sigmoid(z))\nassert math.isclose(sigmoid(z), 0.574442516811659)\nreport = {\"seed\": SEED, \"versions\": {\"numpy\": np.__version__, \"shap\": shap.__version__,\n           \"sklearn\": sklearn.__version__, \"pandas\": pd.__version__,\n           \"matplotlib\": matplotlib.__version__}, \"units\": \"million RUB\",\n          \"object_index\": int(x.index[0]), \"object\": {k: float(v) for k,v in x.iloc[0].items()},\n          \"mode\": \"interventional\", \"output\": \"raw regression\", \"atol\": ATOL, \"rtol\": RTOL,\n          \"backgrounds\": results}\n(OUT / \"results.json\").write_text(json.dumps(report, indent=2) + \"\\n\", encoding=\"utf-8\")\nprint(\"PASS: identity, baseline, additivity, grouping, fixed prediction and sigmoid\")\n",
+  "labEvidence": {
+    "runId": "45607417163",
+    "sourceSha": "6b3cb5e8bec8585dde8e2955ef031df82dc1846c",
+    "artifactId": "15018917765",
+    "date": "2026-11-25",
+    "seed": 42,
+    "versions": {
+      "numpy": "2.5.5",
+      "shap": "0.54.1",
+      "sklearn": "1.9.1",
+      "pandas": "3.1.1",
+      "matplotlib": "3.11.2"
+    },
+    "units": "million RUB",
+    "object_index": 110,
+    "object": {
+      "area_m2": 68.29874753419305,
+      "location_score": 6,
+      "age_years": 4,
+      "floor": 4
+    },
+    "mode": "interventional",
+    "output": "raw regression",
+    "atol": 0.00002,
+    "rtol": 0.000001,
+    "backgrounds": {
+      "all_train": {
+        "background_rows": 64,
+        "base": 7.311478392239719,
+        "prediction": 7.265259185981909,
+        "reconstructed": 7.265259144453507,
+        "residual": 4.152840205051689e-8,
+        "grouped_other": 0.023262988150236197,
+        "features": [
+          {
+            "feature": "area_m2",
+            "value": 68.29874753419305,
+            "phi_million_rub": -0.372998697537696
+          },
+          {
+            "feature": "age_years",
+            "value": 4,
+            "phi_million_rub": 0.303516461601248
+          },
+          {
+            "feature": "location_score",
+            "value": 6,
+            "phi_million_rub": 0.028865640590083785
+          },
+          {
+            "feature": "floor",
+            "value": 4,
+            "phi_million_rub": -0.0056026524398475885
+          }
+        ]
+      },
+      "small_train": {
+        "background_rows": 64,
+        "base": 4.783118374286053,
+        "prediction": 7.265259185981909,
+        "reconstructed": 7.265259195152387,
+        "residual": -9.170477710540581e-9,
+        "grouped_other": 0.21820703163393773,
+        "features": [
+          {
+            "feature": "area_m2",
+            "value": 68.29874753419305,
+            "phi_million_rub": 1.9296549779246561
+          },
+          {
+            "feature": "age_years",
+            "value": 4,
+            "phi_million_rub": 0.3342788113077404
+          },
+          {
+            "feature": "location_score",
+            "value": 6,
+            "phi_million_rub": 0.22723146466887556
+          },
+          {
+            "feature": "floor",
+            "value": 4,
+            "phi_million_rub": -0.009024433034937829
+          }
+        ]
+      }
+    }
+  }
 };
 })();

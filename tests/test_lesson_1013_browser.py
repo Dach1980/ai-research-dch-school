@@ -44,6 +44,12 @@ class Lesson1013BrowserTests(unittest.TestCase):
                                     self.assertEqual(page.locator(".shap-local-figure svg").count(),5)
                                     self.assertEqual(page.locator("#lesson-glossary .glossary-entry").count(),16)
                                     self.assertEqual(page.locator("#lesson-quiz fieldset").count(),12)
+                                    self.assertEqual(page.locator("#shap-local-lab-results tbody tr").count(),9)
+                                    self.assertEqual(page.locator("#shap-local-lab-results tbody tr").nth(1).locator("td").all_text_contents(),["7.265259","7.265259"])
+                                    for href in ("practice/a-10-1-3-shap-local-explanations.py","practice/a-10-1-3-shap-local-results.json"):
+                                        link=page.locator(f'a[href="{href}"]')
+                                        self.assertEqual(link.count(),1)
+                                        self.assertEqual(page.request.get(link.evaluate("el=>el.href")).status,200)
                                     self.assertEqual(page.locator("header .language-switcher").count(),1)
                                     self.assertEqual(page.locator("header [data-dch-theme-control]").count(),1)
                                     page.wait_for_function("Array.from(document.querySelectorAll('.shap-local-figure')).every(f=>f.dataset.scrollable===String(f.querySelector('.pfi-diagram-viewport').scrollWidth>f.querySelector('.pfi-diagram-viewport').clientWidth+1))")

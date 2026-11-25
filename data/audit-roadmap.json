@@ -3449,6 +3449,70 @@
       "limitations": [
         "Production deployment не подтверждён; live smoke пропущен; настройки Pages требуют проверки."
       ]
+    },
+    {
+      "id": "AUD-LESSON-1012-2026-11-25",
+      "date": "2026-11-25",
+      "type": "lesson_review_candidate",
+      "title": "Подготовлен урок 10.1.2 «Как работает SHAP»",
+      "result": "RU/EN/ZH, девять разделов, пять типизированных SVG, практика с независимым эталоном, 15 терминов, десять вопросов. Статус review/localized, тесты и приёмка ещё не подтверждены.",
+      "evidence": [
+        "docs/reports/LESSON_1012_SHAP_COMPUTATION_2026-11-25.md",
+        "docs/prompts/lessons/track-a/10.1.2-how-shap-works.md",
+        "lessons/a-10-1-2-les-a-0183.html",
+        "lessons/a-10-1-2-les-a-0183-en.html",
+        "lessons/a-10-1-2-les-a-0183-zh.html"
+      ],
+      "limitations": [
+        "Изолированная ветка; CI и live deployment не подтверждены; ручная визуальная приёмка не выполнена."
+      ]
+    },
+    {
+      "id": "AUD-LESSON-1012-INTEGRATION-2026-11-25",
+      "date": "2026-11-25",
+      "type": "integration_candidate",
+      "title": "Урок 10.1.2: подтверждён CI, интеграция P0",
+      "result": "Run 45595236877: 77 этапов success, Python lab и 18 браузерных конфигураций success. SVG audit 45595236847 success. PR #5 merged 32e1a632. Добавлены скриншоты 18 конфигураций и пяти иллюстраций для ручной приёмки.",
+      "evidence": [
+        "https://github.com/Dach1980/ai-research-dch-school/actions/runs/45595236877",
+        "https://github.com/Dach1980/ai-research-dch-school/actions/runs/45595236847",
+        "https://github.com/Dach1980/ai-research-dch-school/actions/runs/45597227298",
+        "docs/reports/LESSON_1012_SHAP_COMPUTATION_2026-11-25.md"
+      ],
+      "limitations": [
+        "Статус review/localized; интеграционный CI, скриншоты и production deployment пока не подтверждены."
+      ]
+    },
+    {
+      "id": "AUD-LESSON-1012-VISUAL-2026-11-25",
+      "date": "2026-11-25",
+      "type": "visual_review",
+      "title": "Production PASS; выявлено уменьшение шрифта мобильных SVG урока 10.1.2",
+      "result": "Managed deploy 45597227298 и 154 HTTP smoke checks success; integrated CI success. Архив 15013822877: 108 PNG. При визуальном просмотре обнаружено чрезмерное масштабирование SVG и разрыв 20!. Исправлены scoped CSS, ширина столбца и тест фактического экранного шрифта, прокрутки и числа.",
+      "evidence": [
+        "https://github.com/Dach1980/ai-research-dch-school/actions/runs/45597227298",
+        "https://github.com/Dach1980/ai-research-dch-school/actions/runs/45597390885/artifacts/15013822877",
+        "docs/reports/LESSON_1012_SHAP_COMPUTATION_2026-11-25.md"
+      ],
+      "limitations": [
+        "Повторный CI и ручная визуальная проверка после исправления не подтверждены; lesson review/localized."
+      ]
+    },
+    {
+      "id": "AUD-LESSON-1012-RELEASE-2026-11-25",
+      "date": "2026-11-25",
+      "type": "release_candidate",
+      "title": "Выпуск полноценного урока 10.1.2 «Как работает SHAP»",
+      "result": "Владелец неоднократно поручил опубликовать новый урок и уточнил, что ему нужен сам урок, а не скриншоты. Принято как распоряжение о выпуске, а не утверждение, что владелец просмотрел все изображения. CI 45599526833 (78/78), 45599526781 и 45599526821 success. 18 автоматических браузерных конфигураций и выборочный визуальный просмотр подтверждены. В каталоге опубликован les-a-0183; A 52/60, общий план 52/167 (метаданные).",
+      "evidence": [
+        "https://github.com/Dach1980/ai-research-dch-school/actions/runs/45599526833",
+        "https://github.com/Dach1980/ai-research-dch-school/actions/runs/45599526781",
+        "https://github.com/Dach1980/ai-research-dch-school/actions/runs/45599526821",
+        "docs/reports/LESSON_1012_SHAP_COMPUTATION_2026-11-25.md"
+      ],
+      "limitations": [
+        "Публичный HTTP smoke и production release нового SHA ещё не подтверждены; визуальная проверка владельцем не заявлена."
+      ]
     }
   ],
   "notes": [

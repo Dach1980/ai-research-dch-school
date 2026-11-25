@@ -219,6 +219,9 @@ jobs:
               "/lessons/a-9-2-1-les-a-0180.html": "Выбор окрестности и интерпретация результатов",
               "/lessons/a-9-2-1-les-a-0180-en.html": "Choosing the Neighbourhood and Interpreting Results",
               "/lessons/a-9-2-1-les-a-0180-zh.html": "邻域选择与结果解读",
+              "/lessons/a-10-1-2-les-a-0183.html": "Как работает SHAP",
+              "/lessons/a-10-1-2-les-a-0183-en.html": "How SHAP Works",
+              "/lessons/a-10-1-2-les-a-0183-zh.html": "SHAP 的工作原理",
           }
           import json
           from pathlib import Path

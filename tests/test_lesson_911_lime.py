@@ -15,7 +15,7 @@ class Lesson911LIMETests(unittest.TestCase):
  def test_catalog_uid_routes_and_review(self):
   self.assertIsNotNone(self.lesson);self.assertEqual(self.lesson["code"],"9.1.1");self.assertEqual(self.lesson["status"],"published");self.assertEqual(self.lesson["content_state"],"published")
   self.assertEqual(self.lesson["theme_uid"],"thm-a-09");self.assertEqual(self.lesson["module_uid"],"mod-a-09-01");self.assertEqual(self.lesson["prerequisite_uids"],["les-a-0176"])
-  ids=[x["uid"] for x in self.catalog["lessons"]];self.assertEqual(len(ids),len(set(ids)));self.assertEqual(max(int(re.search(r"([0-9]+)$",x).group(1)) for x in ids),182)
+  ids=[x["uid"] for x in self.catalog["lessons"]];self.assertEqual(len(ids),len(set(ids)));self.assertIn("les-a-0182", ids);self.assertTrue(all(re.fullmatch(r"les-[a-d]-[0-9]+", uid) for uid in ids))
   for locale,path in ROUTES.items():self.assertEqual(self.lesson["url_i18n"][locale],path);self.assertTrue((ROOT/path).is_file())
  def test_locales_dom_and_shared_scripts(self):
   for locale,path in ROUTES.items():

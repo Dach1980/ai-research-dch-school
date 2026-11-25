@@ -285,5 +285,56 @@ function compose(spec,nodes,positions,width,height){
 return render;
 })();
 
-function render(spec){if(spec && ["pfi-workflow","pfi-correlation"].includes(spec.type))return renderPFI(spec);if(!spec||!spec.layout)throw new TypeError("Missing diagram layout");if(spec.layout==="matrix")return matrix(spec);if(spec.layout==="causal-flow")return causal(spec);if(spec.layout==="comparison-table")return comparison(spec);if(spec.layout==="experiment-flow")return experiment(spec);if(spec.layout==="flow")return flow(spec);if(spec.layout==="grid"&&spec.connectSequence===true)return grid(spec);if(spec.layout==="grid")return grid(spec);if(spec.layout==="table")return renderTable(spec);if(spec.layout==="bars")return renderBars(spec);if(spec.layout==="scatter")return renderWeightedScatter(spec);if(spec.layout==="plot")return plot(spec);if(spec.layout==="shapley-coalition-table"||spec.layout==="shapley-marginal-table"||spec.layout==="shapley-permutations"||spec.layout==="shapley-weights")return tableFigure(spec,spec.layout);if(spec.layout==="shapley-mapping")return shapleyMappingFigure(spec);if(spec.layout==="shapley-distinction")return shapleyDistinctionFigure(spec);if(spec.layout==="shapley-axioms")return axiomsFigure(spec);throw new TypeError("Unsupported SVG layout: "+spec.layout);}
+
+/* SHAP 10.1.2 typed, measured diagrams. The existing renderer dispatch remains unchanged for earlier lessons. */
+function shapMeasuredLines(value,width,size,weight){
+ const ctx=document.createElement("canvas").getContext("2d");
+ ctx.font=weight+" "+size+"px system-ui, sans-serif";
+ const lines=[];let current="";
+ for(const word of String(value).split(/\s+/)){
+   if(ctx.measureText(word).width>width){
+     if(current){lines.push(current);current="";}
+     for(const ch of Array.from(word)){if(current&&ctx.measureText(current+ch).width>width){lines.push(current);current=ch;}else current+=ch;}
+   }else{const next=current?current+" "+word:word;if(current&&ctx.measureText(next).width>width){lines.push(current);current=word;}else current=next;}
+ }
+ if(current)lines.push(current);return lines.length?lines:[""];
+}
+function shapCell(root,id,x,y,w,h,title,detail,accent=false){
+ const group=el("g",{"data-node-id":id,"data-tone":accent?"accent":"surface"});
+ group.append(el("rect",{x,y,width:w,height:h,rx:9,fill:accent?"var(--lds-accent)":"var(--lds-surface)",stroke:"var(--lds-line)","stroke-width":1.5,"data-text-box":id,"data-node-bounds":[x,y,w,h].join(",")}));
+ const font=15,step=22,pad=12;
+ let cursor=y+pad+font;
+ const draw=(value,weight)=>{const lines=shapMeasuredLines(value,w-2*pad-4,font,weight);for(const line of lines){group.append(el("text",{x:x+pad,y:cursor,"font-size":font,"font-weight":weight,"data-text-for":id,"data-role":"node-text",style:"font-family:system-ui,sans-serif!important;font-size:15px!important;font-weight:"+weight+"!important;fill:"+(accent?"var(--lds-accent-ink)":"var(--lds-ink)")+"!important"},line));cursor+=step;}};
+ draw(title,700);if(detail){cursor+=4;draw(detail,400);}root.append(group);
+}
+function shapCellHeight(w,title,detail){
+ return 28+22*shapMeasuredLines(title,w-28,15,700).length+(detail?4+22*shapMeasuredLines(detail,w-28,15,400).length:0);
+}
+function shapDown(root,x,from,to){root.append(el("path",{d:"M "+x+" "+from+" V "+to+" m -5 -7 l 5 7 5 -7",fill:"none",stroke:"var(--lds-accent)","stroke-width":2,"data-role":"workflow-arrow"}));}
+function shapCompute(s){
+ let root;
+ if(s.layout==="shap-compute-table"){
+  const col=s.columns.length,widths=s.type==="shap-1012-growth"?[96,220,W-48-316]:Array(col).fill((W-48)/col),rows=[s.columns,...s.rows],heights=rows.map(r=>Math.max(...r.map((v,ci)=>shapCellHeight(widths[ci]-6,v,""))));
+  root=base(s,48+heights.reduce((a,b)=>a+b+6,0));let y=24;
+  rows.forEach((r,ri)=>{let x=24;r.forEach((v,ci)=>{shapCell(root,"row-"+ri+"-col-"+ci,x,y,widths[ci]-6,heights[ri],v,"",ri===0);x+=widths[ci];});y+=heights[ri]+6;});
+ }else if(s.layout==="shap-compute-pipeline"){
+  const w=560,x=(W-w)/2,hs=s.nodes.map(n=>shapCellHeight(w,n.title,n.detail)),gap=30;
+  root=base(s,48+hs.reduce((a,b)=>a+b,0)+gap*(hs.length-1));
+  let y=24;s.nodes.forEach((n,i)=>{shapCell(root,n.id,x,y,w,hs[i],n.title,n.detail,i===0||i===s.nodes.length-1);if(i<hs.length-1)shapDown(root,W/2,y+hs[i]+3,y+hs[i]+gap-3);y+=hs[i]+gap;});
+ }else if(s.layout==="shap-compute-choice"){
+  const w=310,topW=560,topX=80,leftX=24,rightX=386,n=s.nodes,topH=shapCellHeight(topW,n[0].title,n[0].detail),midY=24+topH+50,midH=Math.max(shapCellHeight(w,n[1].title,n[1].detail),shapCellHeight(w,n[2].title,n[2].detail)),bottomY=midY+midH+50,bottomH=shapCellHeight(topW,n[3].title,n[3].detail);
+  root=base(s,bottomY+bottomH+24);
+  const branchY=24+topH+25,joinY=midY+midH+25,l=leftX+w/2,r=rightX+w/2;
+  root.append(el("path",{d:`M 360 ${24+topH} V ${branchY} H ${l} M 360 ${branchY} H ${r}`,fill:"none",stroke:"var(--lds-accent)","stroke-width":2}));
+  shapDown(root,l,branchY,midY-3);shapDown(root,r,branchY,midY-3);
+  root.append(el("path",{d:`M ${l} ${midY+midH} V ${joinY} H ${r} V ${midY+midH}`,fill:"none",stroke:"var(--lds-accent)","stroke-width":2}));shapDown(root,360,joinY,bottomY-3);
+  shapCell(root,n[0].id,topX,24,topW,topH,n[0].title,n[0].detail,true);
+  shapCell(root,n[1].id,leftX,midY,w,midH,n[1].title,n[1].detail);
+  shapCell(root,n[2].id,rightX,midY,w,midH,n[2].title,n[2].detail);
+  shapCell(root,n[3].id,topX,bottomY,topW,bottomH,n[3].title,n[3].detail,true);
+ }else throw new TypeError("Unknown SHAP computation layout");
+ const result=figure(root,s);result.classList.add("shap-compute-figure");return result;
+}
+
+function render(spec){if(spec && ['shap-compute-pipeline','shap-compute-table','shap-compute-choice'].includes(spec.layout))return shapCompute(spec);if(spec && ["pfi-workflow","pfi-correlation"].includes(spec.type))return renderPFI(spec);if(!spec||!spec.layout)throw new TypeError("Missing diagram layout");if(spec.layout==="matrix")return matrix(spec);if(spec.layout==="causal-flow")return causal(spec);if(spec.layout==="comparison-table")return comparison(spec);if(spec.layout==="experiment-flow")return experiment(spec);if(spec.layout==="flow")return flow(spec);if(spec.layout==="grid"&&spec.connectSequence===true)return grid(spec);if(spec.layout==="grid")return grid(spec);if(spec.layout==="table")return renderTable(spec);if(spec.layout==="bars")return renderBars(spec);if(spec.layout==="scatter")return renderWeightedScatter(spec);if(spec.layout==="plot")return plot(spec);if(spec.layout==="shapley-coalition-table"||spec.layout==="shapley-marginal-table"||spec.layout==="shapley-permutations"||spec.layout==="shapley-weights")return tableFigure(spec,spec.layout);if(spec.layout==="shapley-mapping")return shapleyMappingFigure(spec);if(spec.layout==="shapley-distinction")return shapleyDistinctionFigure(spec);if(spec.layout==="shapley-axioms")return axiomsFigure(spec);throw new TypeError("Unsupported SVG layout: "+spec.layout);}
 global.DCHLessonSVG={version:"2.5.0",render};})(window);

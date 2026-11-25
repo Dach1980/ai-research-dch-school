@@ -27,13 +27,13 @@ class Lesson1011ShapleyTests(unittest.TestCase):
     def test_catalog_identity_and_review_state(self):
         lesson = next(x for x in self.catalog["lessons"] if x["uid"] == UID)
         self.assertEqual(lesson["code"], "10.1.1")
-        self.assertEqual(lesson["status"], "review")
-        self.assertEqual(lesson["content_state"], "localized")
+        self.assertEqual(lesson["status"], "published")
+        self.assertEqual(lesson["content_state"], "published")
         self.assertEqual(lesson["prerequisite_uids"], ["les-a-0181"])
         self.assertEqual(lesson["module_uid"], "mod-a-10-01")
         self.assertEqual(lesson["theme_uid"], "thm-a-10")
         self.assertEqual(len({x["uid"] for x in self.catalog["lessons"]}), len(self.catalog["lessons"]))
-        self.assertEqual(len([x for x in self.catalog["lessons"] if x["module_uid"] == "mod-a-10-01"]), 1)
+        self.assertEqual(len([x for x in self.catalog["lessons"] if x["module_uid"] == "mod-a-10-01" and x["code"] == "10.1.1"]), 1)
 
     def test_three_locales_are_equivalent(self):
         self.assertEqual(set(self.data["content"]), {"ru", "en", "zh"})

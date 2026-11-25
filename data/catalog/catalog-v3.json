@@ -1,7 +1,7 @@
 {
   "schema_version": 3,
   "catalog_id": "dch-school-curriculum",
-  "catalog_version": "3.2.23-lesson-10-1-1-published",
+  "catalog_version": "3.2.24-lesson-10-1-2-published",
   "status": "migration_staging",
   "tracks": [
     {
@@ -4299,6 +4299,42 @@
         "ru": "lessons/a-10-1-1-les-a-0182.html",
         "en": "lessons/a-10-1-1-les-a-0182-en.html",
         "zh": "lessons/a-10-1-1-les-a-0182-zh.html"
+      }
+    },
+    {
+      "uid": "les-a-0183",
+      "track_uid": "trk-a",
+      "theme_uid": "thm-a-10",
+      "module_uid": "mod-a-10-01",
+      "code": "10.1.2",
+      "title": "Как работает SHAP",
+      "status": "published",
+      "content_state": "published",
+      "access": "open",
+      "level": "intermediate",
+      "prerequisite_uids": [
+        "les-a-0182"
+      ],
+      "learning_outcomes": [
+        "Определять скалярный выход модели, объект, коалицию и функцию ценности.",
+        "Объяснять роль background data, baseline и правил маскирования.",
+        "Различать условное и маргинальное усреднение и их последствия.",
+        "Вычислять число коалиций и перестановок и оценивать бюджет.",
+        "Объяснять маски, регрессию, ядро и ограничения KernelSHAP.",
+        "Объяснять TreeSHAP и различать режимы обработки зависимостей.",
+        "Выбирать объяснитель с учётом структуры модели и вычислительных затрат.",
+        "Сверять baseline и аддитивность с одним выходом модели.",
+        "Оценивать точность относительно фиксированной игры и чувствительность к бюджету."
+      ],
+      "title_i18n": {
+        "ru": "Как работает SHAP",
+        "en": "How SHAP Works",
+        "zh": "SHAP 的工作原理"
+      },
+      "url_i18n": {
+        "ru": "lessons/a-10-1-2-les-a-0183.html",
+        "en": "lessons/a-10-1-2-les-a-0183-en.html",
+        "zh": "lessons/a-10-1-2-les-a-0183-zh.html"
       }
     }
   ],

@@ -248,3 +248,13 @@ jobs:
         run: python -m unittest discover -s tests -p 'test_knowledge_map.py' -v
       - name: Validate multilingual lesson pages and diagrams
         run: python scripts/validate-multilingual-lessons.py
+      - name: Test lesson 10.1.2 content and mathematics
+        run: python -m unittest discover -s tests -p 'test_lesson_1012_shap_computation.py' -v
+      - name: Check SHAP computation JavaScript syntax
+        run: node --check scripts/xai-shap-1012-lesson.js && node --check lessons/data/xai-11-shap-1012.js && node --check scripts/lesson-svg-renderer.js
+      - name: Test lesson 10.1.2 diagrams in all locales and themes
+        run: python -m unittest discover -s tests -p 'test_lesson_1012_browser.py' -v
+      - name: Execute lesson 10.1.2 Python lab with pinned SHAP and scikit-learn
+        run: |
+          python -m pip install shap==0.54.1 scikit-learn==1.9.1
+          python lessons/practice/a-10-1-2-shap-computation.py

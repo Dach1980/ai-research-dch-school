@@ -1,0 +1,10 @@
+/* Scoped to the computation lesson; use existing theme tokens. */
+main.lesson > .lesson-standard-hero > #lesson-outcomes.outcomes{background:var(--lds-surface);color:var(--lds-ink);border:1px solid var(--lds-line);border-radius:16px;padding:14px 20px}
+main.lesson > .lesson-standard-hero > #lesson-outcomes.outcomes > h2{color:var(--lds-ink);margin-top:0}
+main.lesson > .lesson-standard-hero > #lesson-outcomes.outcomes > ul > li{background:var(--lds-surface);color:var(--lds-ink)}
+.shap-compute-figure{width:100%;max-width:100%;margin:1.4rem auto}
+.shap-compute-figure .pfi-diagram-viewport{max-width:100%;overflow:auto;overscroll-behavior-x:contain}
+.shap-compute-figure svg{display:block;width:720px;max-width:none;height:auto}
+.shap-compute-figure figcaption{color:var(--lds-muted)}
+.shap-compute-figure .pfi-diagram-viewport:focus-visible{outline:2px solid var(--lds-accent)}
+@media(max-width:560px){main.lesson > .lesson-standard-hero > #lesson-outcomes.outcomes{padding:12px 15px}}

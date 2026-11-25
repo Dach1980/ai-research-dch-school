@@ -3420,6 +3420,23 @@
       "limitations": [
         "Изменения в отдельной ветке; обязательный CI ещё не подтверждён. Настройка Pages и live smoke остаются P0."
       ]
+    },
+    {
+      "id": "AUD-LESSON-1012-2026-11-25",
+      "date": "2026-11-25",
+      "type": "lesson_review_candidate",
+      "title": "Подготовлен урок 10.1.2 «Как работает SHAP»",
+      "result": "RU/EN/ZH, девять разделов, пять типизированных SVG, практика с независимым эталоном, 15 терминов, десять вопросов. Статус review/localized, тесты и приёмка ещё не подтверждены.",
+      "evidence": [
+        "docs/reports/LESSON_1012_SHAP_COMPUTATION_2026-11-25.md",
+        "docs/prompts/lessons/track-a/10.1.2-how-shap-works.md",
+        "lessons/a-10-1-2-les-a-0183.html",
+        "lessons/a-10-1-2-les-a-0183-en.html",
+        "lessons/a-10-1-2-les-a-0183-zh.html"
+      ],
+      "limitations": [
+        "Изолированная ветка; CI и live deployment не подтверждены; ручная визуальная приёмка не выполнена."
+      ]
     }
   ],
   "notes": [

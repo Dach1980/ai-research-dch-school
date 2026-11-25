@@ -1,0 +1,88 @@
+{
+  "runId": "45607417163",
+  "sourceSha": "6b3cb5e8bec8585dde8e2955ef031df82dc1846c",
+  "artifactId": "15018917765",
+  "date": "2026-11-25",
+  "seed": 42,
+  "versions": {
+    "numpy": "2.5.5",
+    "shap": "0.54.1",
+    "sklearn": "1.9.1",
+    "pandas": "3.1.1",
+    "matplotlib": "3.11.2"
+  },
+  "units": "million RUB",
+  "object_index": 110,
+  "object": {
+    "area_m2": 68.29874753419305,
+    "location_score": 6,
+    "age_years": 4,
+    "floor": 4
+  },
+  "mode": "interventional",
+  "output": "raw regression",
+  "atol": 0.00002,
+  "rtol": 0.000001,
+  "backgrounds": {
+    "all_train": {
+      "background_rows": 64,
+      "base": 7.311478392239719,
+      "prediction": 7.265259185981909,
+      "reconstructed": 7.265259144453507,
+      "residual": 4.152840205051689e-8,
+      "grouped_other": 0.023262988150236197,
+      "features": [
+        {
+          "feature": "area_m2",
+          "value": 68.29874753419305,
+          "phi_million_rub": -0.372998697537696
+        },
+        {
+          "feature": "age_years",
+          "value": 4,
+          "phi_million_rub": 0.303516461601248
+        },
+        {
+          "feature": "location_score",
+          "value": 6,
+          "phi_million_rub": 0.028865640590083785
+        },
+        {
+          "feature": "floor",
+          "value": 4,
+          "phi_million_rub": -0.0056026524398475885
+        }
+      ]
+    },
+    "small_train": {
+      "background_rows": 64,
+      "base": 4.783118374286053,
+      "prediction": 7.265259185981909,
+      "reconstructed": 7.265259195152387,
+      "residual": -9.170477710540581e-9,
+      "grouped_other": 0.21820703163393773,
+      "features": [
+        {
+          "feature": "area_m2",
+          "value": 68.29874753419305,
+          "phi_million_rub": 1.9296549779246561
+        },
+        {
+          "feature": "age_years",
+          "value": 4,
+          "phi_million_rub": 0.3342788113077404
+        },
+        {
+          "feature": "location_score",
+          "value": 6,
+          "phi_million_rub": 0.22723146466887556
+        },
+        {
+          "feature": "floor",
+          "value": 4,
+          "phi_million_rub": -0.009024433034937829
+        }
+      ]
+    }
+  }
+}

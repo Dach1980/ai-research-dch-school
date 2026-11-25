@@ -336,5 +336,89 @@ function shapCompute(s){
  const result=figure(root,s);result.classList.add("shap-compute-figure");return result;
 }
 
-function render(spec){if(spec && ['shap-compute-pipeline','shap-compute-table','shap-compute-choice'].includes(spec.layout))return shapCompute(spec);if(spec && ["pfi-workflow","pfi-correlation"].includes(spec.type))return renderPFI(spec);if(!spec||!spec.layout)throw new TypeError("Missing diagram layout");if(spec.layout==="matrix")return matrix(spec);if(spec.layout==="causal-flow")return causal(spec);if(spec.layout==="comparison-table")return comparison(spec);if(spec.layout==="experiment-flow")return experiment(spec);if(spec.layout==="flow")return flow(spec);if(spec.layout==="grid"&&spec.connectSequence===true)return grid(spec);if(spec.layout==="grid")return grid(spec);if(spec.layout==="table")return renderTable(spec);if(spec.layout==="bars")return renderBars(spec);if(spec.layout==="scatter")return renderWeightedScatter(spec);if(spec.layout==="plot")return plot(spec);if(spec.layout==="shapley-coalition-table"||spec.layout==="shapley-marginal-table"||spec.layout==="shapley-permutations"||spec.layout==="shapley-weights")return tableFigure(spec,spec.layout);if(spec.layout==="shapley-mapping")return shapleyMappingFigure(spec);if(spec.layout==="shapley-distinction")return shapleyDistinctionFigure(spec);if(spec.layout==="shapley-axioms")return axiomsFigure(spec);throw new TypeError("Unsupported SVG layout: "+spec.layout);}
+/* Local SHAP plots: numeric coordinates are derived from the typed teaching values.
+ * The diagnostic layout reuses the measured, accessible SHAP pipeline.
+ */
+function localSHAP(s){
+ const d=s.labels||{},ink="var(--lds-ink)",surface="var(--lds-surface)",positive="var(--lds-good)",negative="var(--lds-bad)",accent="var(--lds-accent)";
+ let root;
+ function label(str,x,y,align="start",weight=500,size=15){
+   root.append(el("text",{x,y,"text-anchor":align,"data-role":"plot-label",style:"font-family:system-ui,sans-serif!important;font-size:"+size+"px!important;font-weight:"+weight+"!important;fill:"+ink+"!important"},str));
+ }
+ function plottedLine(x1,y1,x2,y2,color=ink,width=1.5,extra={}){root.append(el("path",{d:"M "+x1+" "+y1+" L "+x2+" "+y2,stroke:color,"stroke-width":width,fill:"none",...extra}));}
+ function signed(v){return (v<0?"−":"+")+Math.abs(v).toFixed(1);}
+ function segment(a,b,y,map,kind,i){
+   const x1=map(a),x2=map(b),sign=b>=a?positive:negative;
+   plottedLine(x1,y,x2,y,sign,9,{"stroke-linecap":"round","data-segment":kind,"data-index":i,"data-start":a,"data-end":b});
+   const direction=x2>=x1?1:-1;
+   root.append(el("path",{d:"M "+(x2-direction*8)+" "+(y-7)+" L "+x2+" "+y+" L "+(x2-direction*8)+" "+(y+7),stroke:sign,"stroke-width":2.5,fill:"none"}));
+ }
+ function axis(xmin,xmax,y,map,ticks,unit){plottedLine(map(xmin),y,map(xmax),y);ticks.forEach(v=>{plottedLine(map(v),y,map(v),y+6);label(Number.isInteger(v)?String(v):v.toFixed(1),map(v),y+25,"middle");});label(unit,map(xmax),y+50,"end",600);}
+ if(s.layout==="shap-local-diagnostic"){
+   const result=shapCompute({...s,layout:"shap-compute-pipeline"});result.classList.remove("shap-compute-figure");result.classList.add("shap-local-figure");return result;
+ }
+ if(s.layout==="shap-local-decomposition"){
+   root=base(s,320);const map=v=>72+(v-5.5)*166;
+   const p=s.features.reduce((a,f)=>a+Math.max(f.value,0),0),n=s.features.reduce((a,f)=>a+Math.min(f.value,0),0);
+   const peak=s.baseline+p,final=s.baseline+p+n;
+   label(d.baseline+" "+s.baseline.toFixed(1),map(s.baseline),34,"middle",700);
+   label(d.prediction+" "+final.toFixed(1),map(final),34,"middle",700);
+   plottedLine(map(s.baseline),44,map(s.baseline),244,ink,1,{"stroke-dasharray":"5 5"});
+   plottedLine(map(final),44,map(final),244,ink,1,{"stroke-dasharray":"5 5"});
+   segment(s.baseline,peak,90,map,"positive",0);
+   label(d.positive,(map(s.baseline)+map(peak))/2,72,"middle",650);
+   segment(peak,final,150,map,"negative",0);
+   label(d.negative,Math.min(map(peak),670),132,"end",650);
+   plottedLine(map(s.baseline),210,map(final),210,accent,5,{"data-net":(p+n).toFixed(1)});
+   label(d.net,(map(s.baseline)+map(final))/2,194,"middle",700);
+   axis(5.5,9,244,map,[6,7,8,9],d.unit);
+ }else if(s.layout==="shap-local-waterfall"){
+   root=base(s,455);const map=v=>238+(v-5.5)*126;
+   label(d.baseline+" "+s.baseline.toFixed(1),map(s.baseline),31,"middle",700);
+   let last=s.baseline;
+   s.features.forEach((feature,i)=>{
+     const next=Math.round((last+feature.value)*10)/10,y=78+i*72;
+     const lines=shapMeasuredLines(feature.label,204,15,600);
+     lines.forEach((v,j)=>label(v,24,y-7+j*18,"start",600));
+     label(signed(feature.value),24,y+lines.length*18+2,"start",700);
+     segment(last,next,y,map,"waterfall",i);
+     label(last.toFixed(1),map(last),y-15,"middle");
+     label(next.toFixed(1),map(next),y+27,"middle");
+     if(i<s.features.length-1)plottedLine(map(next),y+33,map(next),y+56,ink,1.3,{"stroke-dasharray":"4 4"});
+     last=next;
+   });
+   label(d.prediction+" "+last.toFixed(1),map(last),386,"middle",700);
+   axis(5.5,9,394,map,[6,7,8,9],d.unit);
+ }else if(s.layout==="shap-local-force"){
+   root=base(s,340);const p=s.features.reduce((a,f)=>a+Math.max(f.value,0),0),n=s.features.reduce((a,f)=>a+Math.min(f.value,0),0),net=p+n,map=v=>252+v*147;
+   label(d.positive,24,35,"start",700);label(d.negative,24,105,"start",700);
+   segment(0,p,65,map,"force-positive",0);segment(0,n,135,map,"force-negative",0);
+   plottedLine(map(0),45,map(0),170,ink,1.3,{"stroke-dasharray":"5 4"});
+   axis(-1,3,170,map,[-1,0,1,2,3],d.unit);
+   const mapOutput=v=>80+(v-5.5)*160;
+   segment(s.baseline,s.baseline+net,258,mapOutput,"force-net",0);
+   label(d.baseline+" "+s.baseline.toFixed(1),mapOutput(s.baseline),240,"middle",700);
+   label(d.prediction+" "+(s.baseline+net).toFixed(1),mapOutput(s.baseline+net),240,"middle",700);
+   label(d.net,(mapOutput(s.baseline)+mapOutput(s.baseline+net))/2,292,"middle",700);
+ }else if(s.layout==="shap-local-sigmoid"){
+   root=base(s,392);const sig=z=>1/(1+Math.exp(-z)),mx=z=>72+(z+4)*75,my=p=>282-p*240;
+   label(d.probability,72,22,"start",700);
+   for(const p of [0,.25,.5,.75,1]){plottedLine(72,my(p),672,my(p),"var(--lds-line)",1);label(p.toFixed(2),62,my(p)+5,"end");}
+   plottedLine(72,42,72,282);plottedLine(72,282,672,282);
+   for(const z of [-4,-2,0,2,4]){plottedLine(mx(z),282,mx(z),288);label(String(z),mx(z),306,"middle");}
+   label("logit z",672,329,"end",600);
+   const points=Array.from({length:161},(_,i)=>-4+i*.05);
+   root.append(el("path",{d:points.map((z,i)=>(i?"L ":"M ")+mx(z).toFixed(2)+" "+my(sig(z)).toFixed(2)).join(" "),stroke:accent,"stroke-width":3,fill:"none","data-role":"sigmoid-curve"}));
+   [[-.4,110,190,"start"],[.3,630,105,"end"]].forEach(([z,tx,ty,align])=>{
+     const p=sig(z),cx=mx(z),cy=my(p);plottedLine(cx,cy,cx,282,ink,1,{"stroke-dasharray":"3 4"});
+     plottedLine(cx,cy,align==="start"?tx+140:tx-145,ty-4,ink,1);
+     root.append(el("circle",{cx,cy,r:5,fill:accent,stroke:ink,"stroke-width":1,"data-z":z,"data-p":p}));
+     label("σ("+z.toFixed(1)+") = "+p.toFixed(6),tx,ty,align,700);
+   });
+   label("−0.4 + 1.0 − 0.3 = 0.3",360,361,"middle",700);
+ }else throw new TypeError("Unknown local SHAP layout: "+s.layout);
+ const fig=figure(root,s);fig.classList.add("shap-local-figure");return fig;
+}
+
+function render(spec){if(spec && ['shap-local-decomposition','shap-local-waterfall','shap-local-force','shap-local-sigmoid','shap-local-diagnostic'].includes(spec.layout))return localSHAP(spec);if(spec && ['shap-compute-pipeline','shap-compute-table','shap-compute-choice'].includes(spec.layout))return shapCompute(spec);if(spec && ["pfi-workflow","pfi-correlation"].includes(spec.type))return renderPFI(spec);if(!spec||!spec.layout)throw new TypeError("Missing diagram layout");if(spec.layout==="matrix")return matrix(spec);if(spec.layout==="causal-flow")return causal(spec);if(spec.layout==="comparison-table")return comparison(spec);if(spec.layout==="experiment-flow")return experiment(spec);if(spec.layout==="flow")return flow(spec);if(spec.layout==="grid"&&spec.connectSequence===true)return grid(spec);if(spec.layout==="grid")return grid(spec);if(spec.layout==="table")return renderTable(spec);if(spec.layout==="bars")return renderBars(spec);if(spec.layout==="scatter")return renderWeightedScatter(spec);if(spec.layout==="plot")return plot(spec);if(spec.layout==="shapley-coalition-table"||spec.layout==="shapley-marginal-table"||spec.layout==="shapley-permutations"||spec.layout==="shapley-weights")return tableFigure(spec,spec.layout);if(spec.layout==="shapley-mapping")return shapleyMappingFigure(spec);if(spec.layout==="shapley-distinction")return shapleyDistinctionFigure(spec);if(spec.layout==="shapley-axioms")return axiomsFigure(spec);throw new TypeError("Unsupported SVG layout: "+spec.layout);}
 global.DCHLessonSVG={version:"2.5.0",render};})(window);

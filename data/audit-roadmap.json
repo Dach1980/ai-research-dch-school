@@ -3556,6 +3556,49 @@
       "limitations": [
         "Повторный CI, визуальная проверка и production ещё не подтверждены."
       ]
+    },
+    {
+      "id": "AUD-LESSON-1013-REVIEW-2026-11-25",
+      "date": "2026-11-25",
+      "type": "lesson_review_candidate",
+      "title": "Урок 10.1.3 «Локальные объяснения SHAP»: подготовлен кандидат",
+      "result": "9 разделов и результатов, 5 учебных SVG, 16 терминов, 12 вопросов, 9 источников, Python-лаборатория с двумя фонами. Три локали, UID les-a-0184; review/localized в изолированной ветке на базе пилота v2.",
+      "evidence": [
+        "docs/reports/LESSON_1013_SHAP_LOCAL_2026-11-25.md",
+        "docs/prompts/lessons/track-a/10.1.3-shap-local-explanations.md"
+      ],
+      "limitations": [
+        "CI и визуальная приёмка нового урока, реальные результаты практики и production v2 ещё не подтверждены. Не публиковать до выполнения release gates."
+      ]
+    },
+    {
+      "id": "AUD-DESIGN-V2-PRODUCTION-2026-11-26",
+      "date": "2026-11-26",
+      "type": "production_verified",
+      "title": "Новый дизайн 2.0 развёрнут на 10.1.2",
+      "result": "PR #7 merged d3823c03be8ca7539da9d592c32aa7ed4f0267aa; managed production 45607690021 success, 157 public route checks. Оптическая проверка 18 исправленных изображений и CI подтверждены.",
+      "evidence": [
+        "https://github.com/Dach1980/ai-research-dch-school/actions/runs/45607690021",
+        "docs/design/LESSON_DESIGN_SYSTEM_V2_PILOT_2026-11-25.md"
+      ],
+      "limitations": [
+        "Массовая миграция не выполнена; старые уроки сохранены."
+      ]
+    },
+    {
+      "id": "AUD-LESSON-1013-RELEASE-2026-11-26",
+      "date": "2026-11-26",
+      "type": "release_candidate",
+      "title": "10.1.3: CI и реальная лаборатория подтверждены; выпуск по поручению владельца",
+      "result": "CI 45607417163 (87/87), managed PR 45607417179 и SVG audit 45607417277 success. 18 конфигураций, 138 captures; contact sheets просмотрены. SHAP 0.54.1, фиксированный прогноз 7.265259185981909; фон all_train baseline 7.311478392239719, small_train 4.783118374286053; residual 4.152840205051689e-8 и -9.170477710540581e-9. Исправлена ссылка .py, добавлены реальные результаты в три локали, JSON и smoke markers. Статус published в release-ветке по прямому поручению владельца; ожидается новый CI точного SHA до merge.",
+      "evidence": [
+        "https://github.com/Dach1980/ai-research-dch-school/actions/runs/45607417163",
+        "docs/reports/LESSON_1013_SHAP_LOCAL_2026-11-25.md",
+        "lessons/practice/a-10-1-3-shap-local-results.json"
+      ],
+      "limitations": [
+        "Новый release SHA, production и публичная доступность 10.1.3 пока не проверены. Просмотр contact sheets не равен независимой пользовательской приёмке всех изображений."
+      ]
     }
   ],
   "notes": [

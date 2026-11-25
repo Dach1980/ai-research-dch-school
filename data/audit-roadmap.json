@@ -3420,6 +3420,35 @@
       "limitations": [
         "Изменения в отдельной ветке; обязательный CI ещё не подтверждён. Настройка Pages и live smoke остаются P0."
       ]
+    },
+    {
+      "id": "AUD-P0-PUBLICATION-2026-11-25",
+      "date": "2026-11-25",
+      "type": "ci_gate_candidate",
+      "title": "PR #4 принят CI; подготовлен единый управляемый конвейер публикации",
+      "result": "73 этапа PR #4 успешны; merge 0b74f346ff93e36c825f4b65a66291339844e02a. Кандидат единого gate, smoke всех опубликованных локалей и read-only мигратора.",
+      "evidence": [
+        "docs/management/P0_PUBLICATION_GATE_2026-11-25.md",
+        "https://github.com/Dach1980/ai-research-dch-school/actions/runs/45592653872"
+      ],
+      "limitations": [
+        "CI нового кандидата ещё не подтверждён; настройки Pages требуют проверки владельцем."
+      ]
+    },
+    {
+      "id": "AUD-P0-PAGES-ARTIFACT-2026-11-25",
+      "date": "2026-11-25",
+      "type": "deployment_diagnosis",
+      "title": "Выявлена ошибка доступности артефакта Pages перед деплоем",
+      "result": "Run 45594158123: validation и Supabase success; github-pages artifact 15011774625 успешно загружен, deploy не нашёл метаданные. Последующий API подтверждает наличие артефакта. Добавлена ограниченная проверка видимости REST с actions: read. Причина не доказана, решение требует нового deploy.",
+      "evidence": [
+        "https://github.com/Dach1980/ai-research-dch-school/actions/runs/45594158123",
+        "https://github.com/Dach1980/ai-research-dch-school/actions/runs/45594158106",
+        "docs/management/P0_PUBLICATION_GATE_2026-11-25.md"
+      ],
+      "limitations": [
+        "Production deployment не подтверждён; live smoke пропущен; настройки Pages требуют проверки."
+      ]
     }
   ],
   "notes": [

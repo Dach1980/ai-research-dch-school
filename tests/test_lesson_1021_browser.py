@@ -102,6 +102,15 @@ class Lesson1021BrowserTests(unittest.TestCase):
                                       return errors;
                                     }""")
                                     self.assertEqual(issues,[])
+                                    lab=page.locator("#shap-global-lab-results")
+                                    self.assertEqual(lab.locator("tbody tr").count(),5)
+                                    self.assertIn("1.4965",lab.inner_text())
+                                    self.assertIn("0.9604",lab.inner_text())
+                                    self.assertEqual(lab.locator("thead th").count(),7)
+                                    self.assertTrue(lab.locator("a").get_attribute("href").endswith("/45752198236"))
+                                    self.assertTrue(lab.locator(".pfi-diagram-viewport").evaluate("v=>v.scrollWidth<=v.clientWidth+1||['auto','scroll'].includes(getComputedStyle(v).overflowX)"))
+                                    if evidence:
+                                        lab.screenshot(path=str(evidence/f"{locale}-{theme}-{width}-lab.png"))
                                     toggle=page.locator(".dch-v2-outcomes-toggle")
                                     toggle.click()
                                     self.assertFalse(page.locator("#lesson-outcomes > ul").is_visible())

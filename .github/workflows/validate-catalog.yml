@@ -231,3 +231,33 @@ jobs:
           node --check scripts/admin-ais-reference.js
           node --check scripts/lesson-design-v2.js
           python -m unittest discover -s tests -p 'test_ais_professional_backlog.py' -v
+      - name: Test global SHAP lesson content and syntax
+        run: |
+          node --check scripts/xai-shap-1021-lesson.js
+          node --check lessons/data/xai-10-shap-1021.js
+          node --check scripts/lesson-svg-renderer.js
+          python -m unittest discover -s tests -p 'test_lesson_1021_shap_global.py' -v
+      - name: Execute global SHAP lab
+        env:
+          DCH_LAB_OUTPUT: artifacts/lesson-1021-lab
+        run: |
+          python -m pip install numpy==2.5.5 shap==0.54.1 scikit-learn==1.9.1 matplotlib==3.11.2 pandas==3.1.1
+          python lessons/practice/a-10-2-1-shap-global-importance.py
+      - name: Upload global SHAP lab evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: lesson-1021-lab
+          path: artifacts/lesson-1021-lab/
+          if-no-files-found: warn
+      - name: Test global SHAP lesson in 18 browser configurations
+        env:
+          DCH_1021_EVIDENCE: artifacts/lesson-1021
+        run: python -m unittest discover -s tests -p 'test_lesson_1021_browser.py' -v
+      - name: Upload global SHAP visual evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: lesson-1021-visual-evidence
+          path: artifacts/lesson-1021/
+          if-no-files-found: warn

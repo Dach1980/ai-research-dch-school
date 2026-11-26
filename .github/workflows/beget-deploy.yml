@@ -1,0 +1,39 @@
+name: Beget preview artifact (no deployment)
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'scripts/deploy/**'
+      - '.github/workflows/beget-deploy.yml'
+permissions:
+  contents: read
+jobs:
+  package:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Export and validate staged files
+        run: |
+          python scripts/deploy/build-release.py "$RUNNER_TEMP/beget-artifact"
+          python scripts/deploy/verify-release.py "$RUNNER_TEMP/beget-artifact"
+      - name: Verify local HTTP delivery
+        run: |
+          set -euo pipefail
+          python -m http.server 8080 --bind 127.0.0.1 --directory "$RUNNER_TEMP/beget-artifact/public" > "$RUNNER_TEMP/beget-http.log" 2>&1 &
+          PID=$!
+          trap 'kill "$PID" || true' EXIT
+          for i in $(seq 1 20); do
+            if curl -fsS http://127.0.0.1:8080/ >/dev/null; then break; fi
+            sleep 1
+          done
+          python scripts/deploy/verify-release.py "$RUNNER_TEMP/beget-artifact" --http
+      - uses: actions/upload-artifact@v4
+        with:
+          name: beget-preview
+          path: ${{ runner.temp }}/beget-artifact
+          retention-days: 7

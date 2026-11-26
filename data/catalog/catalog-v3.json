@@ -4392,8 +4392,8 @@
       "module_uid": "mod-a-10-02",
       "code": "10.2.1",
       "title": "Глобальная важность признаков",
-      "status": "review",
-      "content_state": "localized",
+      "status": "published",
+      "content_state": "published",
       "access": "open",
       "level": "intermediate",
       "prerequisite_uids": [

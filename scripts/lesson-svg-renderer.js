@@ -232,35 +232,6 @@ function addTextLines(group,lines,x,y,fontSize,weight,color,lineHeight){
  lines.forEach((line,i)=>group.append(svgEl("text",{x,y:y+i*lineHeight,"font-size":fontSize,"font-weight":weight,style:`fill:${color}${accent?" !important":""}`,"data-role":"node-text"},line)));
 }
 
-function globalSHAP(s){
- const ink="var(--lds-ink)",accent="var(--lds-accent)",good="var(--lds-good)",bad="var(--lds-bad)",muted="var(--lds-line)",d=s.labels;
- let r;
- function label(t,x,y,align="start",bold=500){r.append(el("text",{x,y,"text-anchor":align,"data-role":"plot-label",style:"font-family:system-ui,sans-serif!important;font-size:16px!important;font-weight:"+bold+"!important;fill:"+ink+"!important"},t));}
- function stroke(x1,y1,x2,y2,color=muted,w=1.5){line(r,x1,y1,x2,y2,color,w);}
- function bar(x1,x2,y,color,v,k){r.append(el("rect",{x:Math.min(x1,x2),y:y-8,width:Math.abs(x2-x1),height:16,rx:3,fill:color,"data-value":v,"data-key":k}));if(x1===x2)r.append(el("circle",{cx:x1,cy:y,r:4,fill:color}));}
- if(s.layout==="shap-global-matrix"){
-  r=base(s,345);const xs=[72,260,420,610];[d.row,"A","B",d.prediction].forEach((v,i)=>label(v,xs[i],34,"middle",700));
-  s.values.forEach((row,i)=>{const y=72+i*43;stroke(24,y+13,696,y+13);label(String(i+1),xs[0],y,"middle");row.forEach((v,j)=>label((v>0?"+":"")+v,xs[j+1],y,"middle",650));label(String(5+row.reduce((a,b)=>a+b,0)),xs[3],y,"middle");});
-  ["I","D"].forEach((k,i)=>{const y=267+i*39;label(k,xs[0],y,"middle",700);[0,1].forEach(j=>label(String(s.values.reduce((a,row)=>a+(i===0?Math.abs(row[j]):row[j]),0)/s.values.length),xs[j+1],y,"middle",700));});
- }else if(s.layout==="shap-global-bars"){
-  r=base(s,310);const map=v=>150+v*200;label("I = mean |φ|",24,35,"start",700);label("D = mean φ",24,152,"start",700);
-  [[2,1],[0,1]].forEach((vals,g)=>vals.forEach((v,i)=>{const y=65+g*118+i*36;label(["A","B"][i],34,y+5,"start",700);bar(map(0),map(v),y,g===0?accent:good,v,g+"-"+i);label(String(v),map(v)+13,y+5,"start",700);}));
-  stroke(map(0),250,map(2.5),250,ink);[0,1,2].forEach(v=>{stroke(map(v),250,map(v),256,ink);label(String(v),map(v),278,"middle");});label(d.unit,675,302,"end");
- }else if(s.layout==="shap-global-cohorts"){
-  r=base(s,395);const map=v=>160+v*155,all=s.cohorts.reduce((a,g)=>a+g.n,0),overall=[0,1].map(j=>s.cohorts.reduce((a,g)=>a+g.n*g.values[j],0)/all);const groups=[...s.cohorts,{n:all,values:overall}];
-  groups.forEach((g,i)=>{const y=35+i*102;label((i<2?"G"+(i+1):d.overall)+" · n="+g.n,24,y,"start",700);g.values.forEach((v,j)=>{let yy=y+28+j*32;label(["A","B"][j],65,yy+5,"start",650);bar(map(0),map(v),yy,j===0?accent:good,v,i+"-"+j);label(String(v),map(v)+12,yy+5,"start",650);});});
-  stroke(map(0),343,map(3.25),343,ink);[0,1,2,3].forEach(v=>{stroke(map(v),343,map(v),349,ink);label(String(v),map(v),372,"middle");});label(d.unit,694,390,"end");
- }else if(s.layout==="shap-global-methods"){
-  r=base(s,420);const xx=[24,145,388,574],ww=[110,232,175,122];s.headers.forEach((h,i)=>{shapMeasuredLines(h,ww[i]-10,16,700).forEach((v,k)=>label(v,xx[i]+5,35+k*20,"start",700));});
-  s.methodRows.forEach((row,i)=>{const y=91+i*105;row.forEach((v,j)=>{rect(r,xx[j],y,ww[j],88,"var(--lds-surface)","var(--lds-line)",5);shapMeasuredLines(v,ww[j]-16,16,550).forEach((l,k)=>label(l,xx[j]+8,y+25+k*20));});});
- }else if(s.layout==="shap-global-interval"){
-  r=base(s,325);const hist=Array(13).fill(0);for(let a=0;a<4;a++)for(let b=0;b<4;b++)for(let c=0;c<4;c++)for(let d=0;d<4;d++)hist[a+b+c+d]++;
-  const mx=v=>64+v*196,my=n=>215-n*175/Math.max(...hist);label(d.count,24,25,"start",700);hist.forEach((n,i)=>r.append(el("rect",{x:mx(i/4)-12,y:my(n),width:24,height:215-my(n),fill:accent,"data-count":n,"data-mean":i/4})));
-  stroke(mx(0),215,mx(3),215,ink);[0,.5,1,1.5,2,2.5,3].forEach(v=>label(String(v),mx(v),238,"middle"));stroke(mx(.5),270,mx(2.5),270,good,4);[.5,2.5].forEach(v=>stroke(mx(v),260,mx(v),280,good,2));r.append(el("circle",{cx:mx(1.5),cy:270,r:5,fill:ink}));label("2.5%: 0.5",mx(.5),299,"middle");label(d.mean+": 1.5",mx(1.5),299,"middle",700);label("97.5%: 2.5",mx(2.5),299,"middle");
- }else throw new TypeError("Unknown global SHAP layout");
- const f=figure(r,s);f.classList.add("shap-global-figure");return f;
-}
-
 function renderLegacyTyped(spec){
  if(!spec||!["flow","grid"].includes(spec.layout)||!Array.isArray(spec.nodes)||!spec.nodes.length)throw new TypeError("Invalid typed SVG diagram specification");
  const ctx=measureContext();
@@ -312,8 +283,39 @@ function compose(spec,nodes,positions,width,height){
  const caption=document.createElement("figcaption");caption.textContent=spec.caption;figure.append(caption);
  return figure;
 }
-return render;
+return renderLegacyTyped;
 })();
+
+function globalSHAP(s){
+ const ink="var(--lds-ink)",accent="var(--lds-accent)",good="var(--lds-good)",bad="var(--lds-bad)",muted="var(--lds-line)",d=s.labels;
+ let r;
+ function label(t,x,y,align="start",bold=500){r.append(el("text",{x,y,"text-anchor":align,"data-role":"plot-label",style:"font-family:system-ui,sans-serif!important;font-size:16px!important;font-weight:"+bold+"!important;fill:"+ink+"!important"},t));}
+ function stroke(x1,y1,x2,y2,color=muted,w=1.5){line(r,x1,y1,x2,y2,color,w);}
+ function bar(x1,x2,y,color,v,k){r.append(el("rect",{x:Math.min(x1,x2),y:y-8,width:Math.abs(x2-x1),height:16,rx:3,fill:color,"data-value":v,"data-key":k}));if(x1===x2)r.append(el("circle",{cx:x1,cy:y,r:4,fill:color}));}
+ if(s.layout==="shap-global-matrix"){
+  r=base(s,345);const xs=[72,260,420,610];[d.row,"A","B",d.prediction].forEach((v,i)=>label(v,xs[i],34,"middle",700));
+  s.values.forEach((row,i)=>{const y=72+i*43;stroke(24,y+13,696,y+13);label(String(i+1),xs[0],y,"middle");row.forEach((v,j)=>label((v>0?"+":"")+v,xs[j+1],y,"middle",650));label(String(5+row.reduce((a,b)=>a+b,0)),xs[3],y,"middle");});
+  ["I","D"].forEach((k,i)=>{const y=267+i*39;label(k,xs[0],y,"middle",700);[0,1].forEach(j=>label(String(s.values.reduce((a,row)=>a+(i===0?Math.abs(row[j]):row[j]),0)/s.values.length),xs[j+1],y,"middle",700));});
+ }else if(s.layout==="shap-global-bars"){
+  r=base(s,310);const map=v=>150+v*200;label("I = mean |φ|",24,35,"start",700);label("D = mean φ",24,152,"start",700);
+  [[2,1],[0,1]].forEach((vals,g)=>vals.forEach((v,i)=>{const y=65+g*118+i*36;label(["A","B"][i],34,y+5,"start",700);bar(map(0),map(v),y,g===0?accent:good,v,g+"-"+i);label(String(v),map(v)+13,y+5,"start",700);}));
+  stroke(map(0),250,map(2.5),250,ink);[0,1,2].forEach(v=>{stroke(map(v),250,map(v),256,ink);label(String(v),map(v),278,"middle");});label(d.unit,675,302,"end");
+ }else if(s.layout==="shap-global-cohorts"){
+  r=base(s,395);const map=v=>160+v*155,all=s.cohorts.reduce((a,g)=>a+g.n,0),overall=[0,1].map(j=>s.cohorts.reduce((a,g)=>a+g.n*g.values[j],0)/all);const groups=[...s.cohorts,{n:all,values:overall}];
+  groups.forEach((g,i)=>{const y=35+i*102;label((i<2?"G"+(i+1):d.overall)+" · n="+g.n,24,y,"start",700);g.values.forEach((v,j)=>{let yy=y+28+j*32;label(["A","B"][j],65,yy+5,"start",650);bar(map(0),map(v),yy,j===0?accent:good,v,i+"-"+j);label(String(v),map(v)+12,yy+5,"start",650);});});
+  stroke(map(0),343,map(3.25),343,ink);[0,1,2,3].forEach(v=>{stroke(map(v),343,map(v),349,ink);label(String(v),map(v),372,"middle");});label(d.unit,694,390,"end");
+ }else if(s.layout==="shap-global-methods"){
+  r=base(s,420);const xx=[24,145,388,574],ww=[110,232,175,122];s.headers.forEach((h,i)=>{shapMeasuredLines(h,ww[i]-10,16,700).forEach((v,k)=>label(v,xx[i]+5,35+k*20,"start",700));});
+  s.methodRows.forEach((row,i)=>{const y=91+i*105;row.forEach((v,j)=>{rect(r,xx[j],y,ww[j],88,"var(--lds-surface)","var(--lds-line)",5);shapMeasuredLines(v,ww[j]-16,16,550).forEach((l,k)=>label(l,xx[j]+8,y+25+k*20));});});
+ }else if(s.layout==="shap-global-interval"){
+  r=base(s,325);const hist=Array(13).fill(0);for(let a=0;a<4;a++)for(let b=0;b<4;b++)for(let c=0;c<4;c++)for(let d=0;d<4;d++)hist[a+b+c+d]++;
+  const mx=v=>64+v*196,my=n=>215-n*175/Math.max(...hist);label(d.count,24,25,"start",700);hist.forEach((n,i)=>r.append(el("rect",{x:mx(i/4)-12,y:my(n),width:24,height:215-my(n),fill:accent,"data-count":n,"data-mean":i/4})));
+  stroke(mx(0),215,mx(3),215,ink);[0,.5,1,1.5,2,2.5,3].forEach(v=>label(String(v),mx(v),238,"middle"));stroke(mx(.5),270,mx(2.5),270,good,4);[.5,2.5].forEach(v=>stroke(mx(v),260,mx(v),280,good,2));r.append(el("circle",{cx:mx(1.5),cy:270,r:5,fill:ink}));label("2.5%: 0.5",mx(.5),299,"middle");label(d.mean+": 1.5",mx(1.5),299,"middle",700);label("97.5%: 2.5",mx(2.5),299,"middle");
+ }else throw new TypeError("Unknown global SHAP layout");
+ const f=figure(r,s);f.classList.add("shap-global-figure");return f;
+}
+
+
 
 
 /* SHAP 10.1.2 typed, measured diagrams. The existing renderer dispatch remains unchanged for earlier lessons. */

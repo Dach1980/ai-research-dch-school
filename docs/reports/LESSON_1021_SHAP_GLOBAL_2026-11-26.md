@@ -3,3 +3,5 @@
 
 ## Review candidate
 Created 3 canonical v2 pages and module mod-a-10-02, UID les-a-0185 review/localized, 9 sections, 9 outcomes, 5 typed SVGs, 15 glossary terms, 12 quiz questions, 9 checked sources, passport, interactive microcheck and complete lab. Added 18 browser configurations and numeric/static tests, exact pinned lab workflow. Teaching bootstrap diagram enumerates all 256 resamples; actual experiment will be separately recorded. CI, evidence and visual review pending; no production publication. Need add verified lab results to all 3 locales before release. Notebook optional pending. No TinyFish.
+
+First candidate CI 45739183656 failed at the native v3 compatibility test due to the previously fixed module count of 40. The new canonical module 10.2 legitimately makes 41; updated exact count and per-theme hierarchy assertions, added explicit module identity test. Old routes, aliases and relationship checks remain. Histogram scale corrected using maximum frequency, lab report includes shape. Re-run required.

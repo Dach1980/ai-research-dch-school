@@ -196,3 +196,7 @@ The lesson-specific prompt must set concrete minimum counts for sections, glossa
 - [ ] Focused tests and full relevant tests passed.
 - [ ] CI completed successfully.
 - [ ] Lesson remains in review pending explicit user acceptance.
+
+
+## Professional pedagogy and source-audit workflow (2026-11-26)
+Apply docs/standards/PROFESSIONAL_LESSON_PEDAGOGY_V1.md within the existing canonical regions. Before every new lesson, check docs/management/AIS_FIVE_MODULES_ACTION_PLAN_2026-11-26.md, exact relevant source pages (when available), and data/ais-reference-checklist.json. Preserve unresolved gaps; record what was inspected and what is unverified. Include method passport, original micro-check, three learning depths and measurable practical evaluation as appropriate. Existing pages migrate incrementally, not all at once. Keep parallel improvement changes isolated and tested; the owner authorized parallel improvements on 26.11.2026. Each working chat must conclude with a checklist, evidence, blockers and next action; update the admin data, not merely chat history. Do not use TinyFish.

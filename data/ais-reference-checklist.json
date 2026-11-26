@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-11",
+  "updated_at": "2026-11-26",
   "reference": {
     "name": "AI Interpretability School (AIS)",
     "authors": [
@@ -77,6 +77,22 @@
     {
       "title": "Предложение архитектуры Track A",
       "url": "../docs/management/TRACK_A_ARCHITECTURE_PROPOSAL.md"
+    },
+    {
+      "title": "Полный аудит пяти PDF (приватный репозиторий)",
+      "url": "https://github.com/Dach1980/ai-interpretability-course/blob/main/docs/sources/AIS_FIVE_MODULES_COVERAGE_AUDIT_2026-11-26.md"
+    },
+    {
+      "title": "Матрица покрытия и постоянный backlog 26.11",
+      "url": "../docs/management/AIS_FIVE_MODULES_ACTION_PLAN_2026-11-26.md"
+    },
+    {
+      "title": "Профессиональный педагогический стандарт (пилот)",
+      "url": "../docs/standards/PROFESSIONAL_LESSON_PEDAGOGY_V1.md"
+    },
+    {
+      "title": "Промпт 10.2.1",
+      "url": "../docs/prompts/lessons/track-a/10.2.1-shap-global-feature-importance.md"
     }
   ],
   "checklist": [
@@ -220,6 +236,246 @@
       "title": "Аудиты и roadmap фиксируют доказательства и ограничения",
       "status": "done",
       "evidence": "RM-02, RM-12, data/audit-roadmap.json"
+    },
+    {
+      "id": "AUDIT-00-01",
+      "group": "Аудит 26.11 · 00 · Входная диагностика",
+      "title": "Входной тест ML/Python/математики и рекомендации по пробелам",
+      "status": "planned",
+      "evidence": "Темы 1–5; 2.2.1, 3.1.1–2, 4.1.3, 5.2.2; docs/management/AIS_FIVE_MODULES_ACTION_PLAN_2026-11-26.md",
+      "note": "Собственный диагностический набор, связь с уроками, без порога допуска."
+    },
+    {
+      "id": "AUDIT-01-01",
+      "group": "Аудит 26.11 · 01 · Основы XAI",
+      "title": "Паспорт метода, формат результата и аудитория",
+      "status": "in_progress",
+      "evidence": "6.1.1–2, 7.1.1–3; пилот 10.1.2–3; docs/management/AIS_FIVE_MODULES_ACTION_PLAN_2026-11-26.md",
+      "note": "Пилот паспорта и микро-проверки; затем миграция с проверкой."
+    },
+    {
+      "id": "AUDIT-01-02",
+      "group": "Аудит 26.11 · 01 · Основы XAI",
+      "title": "Нормативные требования и границы объяснимости",
+      "status": "planned",
+      "evidence": "7.1.1; docs/management/AIS_FIVE_MODULES_ACTION_PLAN_2026-11-26.md",
+      "note": "Проверка первичных нормативных источников по юрисдикциям, без обещаний compliance."
+    },
+    {
+      "id": "AUDIT-02-01",
+      "group": "Аудит 26.11 · 02 · Линейные модели",
+      "title": "МНК/ММП, допущения, устойчивость коэффициентов и интервалы",
+      "status": "planned",
+      "evidence": "6.1.3, 5.2.2; docs/management/AIS_FIVE_MODULES_ACTION_PLAN_2026-11-26.md",
+      "note": "Различать SD/SE/MAD; лаборатория повторного обучения."
+    },
+    {
+      "id": "AUDIT-02-02",
+      "group": "Аудит 26.11 · 02 · Линейные модели",
+      "title": "Смысл функции потерь и прогноза: mean/median/quantile/Huber/log-cosh/focal",
+      "status": "planned",
+      "evidence": "4.1.2, 5.2.3–4; docs/management/AIS_FIVE_MODULES_ACTION_PLAN_2026-11-26.md",
+      "note": "Авторские вычисления условного риска; proper scoring и калибровка."
+    },
+    {
+      "id": "AUDIT-02-03",
+      "group": "Аудит 26.11 · 02 · Линейные модели",
+      "title": "VIF, condition number, L0/L1/L2/Elastic Net",
+      "status": "planned",
+      "evidence": "2.2.3, 4.1.3, 6.1.3; docs/management/AIS_FIVE_MODULES_ACTION_PLAN_2026-11-26.md",
+      "note": "Сравнить стабильность коэффициентов, пути регуляризации и выбор alpha."
+    },
+    {
+      "id": "AUDIT-02-04",
+      "group": "Аудит 26.11 · 02 · Линейные модели",
+      "title": "Logistic odds ratio, GLM/link, Poisson/Gamma, GAM/EBM, GAMI-Net",
+      "status": "planned",
+      "evidence": "5.2.4, 6.2.3; docs/management/AIS_FIVE_MODULES_ACTION_PLAN_2026-11-26.md",
+      "note": "Не смешивать GLM и GAM; сравнение функций связи и формы."
+    },
+    {
+      "id": "AUDIT-02-05",
+      "group": "Аудит 26.11 · 02 · Линейные модели",
+      "title": "RuleFit, BRL, CORELS и правила по построению",
+      "status": "planned",
+      "evidence": "6.2.2, будущий 11.1.1; docs/management/AIS_FIVE_MODULES_ACTION_PLAN_2026-11-26.md",
+      "note": "Концептуальное различие в 11.1.1, отдельная лаборатория после утверждения."
+    },
+    {
+      "id": "AUDIT-02-06",
+      "group": "Аудит 26.11 · 02 · Линейные модели",
+      "title": "Комплексный практикум коэффициентов, остатков и GLM/GAM",
+      "status": "planned",
+      "evidence": "6.1.3, 6.2.3; docs/management/AIS_FIVE_MODULES_ACTION_PLAN_2026-11-26.md",
+      "note": "Воспроизводимый .py/.ipynb и критерии оценки."
+    },
+    {
+      "id": "AUDIT-04-01",
+      "group": "Аудит 26.11 · 04 · Нелинейные модели",
+      "title": "KNN, Parzen, ikNN, SVM/kernel/KKT",
+      "status": "planned",
+      "evidence": "3.2.2, 6.2.2; docs/management/AIS_FIVE_MODULES_ACTION_PLAN_2026-11-26.md",
+      "note": "Собственный эксперимент масштаба/метрики/параметров."
+    },
+    {
+      "id": "AUDIT-04-02",
+      "group": "Аудит 26.11 · 04 · Нелинейные модели",
+      "title": "DBSCAN, HDBSCAN/MST, Naive Bayes",
+      "status": "planned",
+      "evidence": "3.1.2, 3.2.2; docs/management/AIS_FIVE_MODULES_ACTION_PLAN_2026-11-26.md",
+      "note": "Формализация core/border/noise, сравнение кластеров, вероятностное объяснение."
+    },
+    {
+      "id": "AUDIT-04-03",
+      "group": "Аудит 26.11 · 04 · Нелинейные модели",
+      "title": "Decision Tree, Random Forest, bias–variance, MDI bias",
+      "status": "planned",
+      "evidence": "6.1.4, 7.2.1; docs/management/AIS_FIVE_MODULES_ACTION_PLAN_2026-11-26.md",
+      "note": "Ручная проверка split importance и повторный эксперимент."
+    },
+    {
+      "id": "AUDIT-04-04",
+      "group": "Аудит 26.11 · 04 · Нелинейные модели",
+      "title": "CatBoost PVC/LFC/Prediction Difference; XGBoost/LightGBM gain/split/cover",
+      "status": "planned",
+      "evidence": "7.2.1–2, 10.1.2; docs/management/AIS_FIVE_MODULES_ACTION_PLAN_2026-11-26.md",
+      "note": "Единый датасет, одинаковые метрики, не смешивать шкалы."
+    },
+    {
+      "id": "AUDIT-04-05",
+      "group": "Аудит 26.11 · 04 · Нелинейные модели",
+      "title": "Linear/Neural Trees, MoE, ProtoPNet, границы интерпретируемости",
+      "status": "planned",
+      "evidence": "6.2.2–3, будущие B/C; docs/management/AIS_FIVE_MODULES_ACTION_PLAN_2026-11-26.md",
+      "note": "Сверить программы треков; углубления без дублирования."
+    },
+    {
+      "id": "AUDIT-04-06",
+      "group": "Аудит 26.11 · 04 · Нелинейные модели",
+      "title": "Итоговый практикум выбора модели",
+      "status": "planned",
+      "evidence": "6.2.1; docs/management/AIS_FIVE_MODULES_ACTION_PLAN_2026-11-26.md",
+      "note": "Сопоставимые данные, модельные ограничения, обоснованный выбор."
+    },
+    {
+      "id": "AUDIT-07-01",
+      "group": "Аудит 26.11 · 07 · Классические методы",
+      "title": "PFI: LOCO/PIMP/MCR/Rashomon, парная оценка, неопределённость",
+      "status": "planned",
+      "evidence": "7.2.2; docs/management/AIS_FIVE_MODULES_ACTION_PLAN_2026-11-26.md",
+      "note": "Различать разброс перестановок и выборочную неопределённость."
+    },
+    {
+      "id": "AUDIT-07-02",
+      "group": "Аудит 26.11 · 07 · Классические методы",
+      "title": "Глобальный SHAP, SAGE и различие игр",
+      "status": "in_progress",
+      "evidence": "10.2.1; docs/management/AIS_FIVE_MODULES_ACTION_PLAN_2026-11-26.md",
+      "note": "Промпт готовится в этом PR; отдельный SAGE advanced lab остаётся в backlog."
+    },
+    {
+      "id": "AUDIT-07-03",
+      "group": "Аудит 26.11 · 07 · Классические методы",
+      "title": "Bar/beeswarm/dependence/waterfall, подгруппы и шум",
+      "status": "planned",
+      "evidence": "10.2.2; docs/management/AIS_FIVE_MODULES_ACTION_PLAN_2026-11-26.md",
+      "note": "Оси, знак, цвет, выборка, гипотеза взаимодействия; не выводить причинность."
+    },
+    {
+      "id": "AUDIT-07-04",
+      "group": "Аудит 26.11 · 07 · Классические методы",
+      "title": "SHAP: фон, зависимость, маскирование, аксиомы и стабильность",
+      "status": "planned",
+      "evidence": "10.2.3; docs/management/AIS_FIVE_MODULES_ACTION_PLAN_2026-11-26.md",
+      "note": "Контроль модели/выхода/игры; неопределённость и shift."
+    },
+    {
+      "id": "AUDIT-07-05",
+      "group": "Аудит 26.11 · 07 · Классические методы",
+      "title": "SP-LIME/G-LIME и варианты LIME",
+      "status": "planned",
+      "evidence": "9.1–9.2; docs/management/AIS_FIVE_MODULES_ACTION_PLAN_2026-11-26.md",
+      "note": "Сравнительная лаборатория после завершения Track A."
+    },
+    {
+      "id": "AUDIT-07-06",
+      "group": "Аудит 26.11 · 07 · Классические методы",
+      "title": "Rule-based explanations и Anchors",
+      "status": "planned",
+      "evidence": "11.1.1–2; docs/management/AIS_FIVE_MODULES_ACTION_PLAN_2026-11-26.md",
+      "note": "Precision/coverage, распределение, sampling, неопределённость."
+    },
+    {
+      "id": "AUDIT-07-07",
+      "group": "Аудит 26.11 · 07 · Классические методы",
+      "title": "Counterfactuals, DiCE, validity/proximity/diversity",
+      "status": "planned",
+      "evidence": "11.2.1; docs/management/AIS_FIVE_MODULES_ACTION_PLAN_2026-11-26.md",
+      "note": "Собственная генерация и проверка кандидатов."
+    },
+    {
+      "id": "AUDIT-07-08",
+      "group": "Аудит 26.11 · 07 · Классические методы",
+      "title": "Feasibility/plausibility/actionability/robustness, causal recourse, capstone",
+      "status": "planned",
+      "evidence": "11.2.2; docs/management/AIS_FIVE_MODULES_ACTION_PLAN_2026-11-26.md",
+      "note": "Сравнить методы на одном кейсе; причинные гарантии не обещать."
+    },
+    {
+      "id": "AUDIT-PRO-01",
+      "group": "Аудит 26.11 · Профессиональный стандарт",
+      "title": "Уровни Understanding / Practitioner / Researcher и микро-задания",
+      "status": "in_progress",
+      "evidence": "10.1.2–3 пилот, 10.2.1 следующий; docs/management/AIS_FIVE_MODULES_ACTION_PLAN_2026-11-26.md",
+      "note": "Паспорт, мини-проверка с объяснением; затем полный профессиональный шаблон."
+    },
+    {
+      "id": "AUDIT-PRO-02",
+      "group": "Аудит 26.11 · Профессиональный стандарт",
+      "title": "Исполняемые лаборатории .py/.ipynb, версии, seed, реальные результаты, рубрики",
+      "status": "planned",
+      "evidence": "Трек A; docs/management/AIS_FIVE_MODULES_ACTION_PLAN_2026-11-26.md",
+      "note": "Автоматическая оценка/ноутбуки пока не реализованы."
+    },
+    {
+      "id": "AUDIT-PRO-03",
+      "group": "Аудит 26.11 · Профессиональный стандарт",
+      "title": "Модульные проекты, портфолио, обратная связь, итоговая оценка",
+      "status": "planned",
+      "evidence": "Все треки; docs/management/AIS_FIVE_MODULES_ACTION_PLAN_2026-11-26.md",
+      "note": "Не обещать официальное удостоверение; коммерческая и правовая модель отдельно."
+    },
+    {
+      "id": "AUDIT-SRC-01",
+      "group": "Аудит 26.11 · Источники",
+      "title": "Пять PDF: 470 страниц, 53 исходных урока, реестр и полный аудит",
+      "status": "done",
+      "evidence": "Приватный репозиторий; docs/management/AIS_FIVE_MODULES_ACTION_PLAN_2026-11-26.md",
+      "note": "Аудит тематический, выборочный. Оригиналы не размещены в GitHub; лицензии не проверены."
+    },
+    {
+      "id": "AUDIT-SRC-02",
+      "group": "Аудит 26.11 · Источники",
+      "title": "Хранение разрешённых оригиналов и контроль SHA-256",
+      "status": "planned",
+      "evidence": "Приватный репозиторий; docs/management/AIS_FIVE_MODULES_ACTION_PLAN_2026-11-26.md",
+      "note": "Нужен подтверждённый способ передачи бинарных PDF и допустимость хранения."
+    },
+    {
+      "id": "AUDIT-UI-01",
+      "group": "Аудит 26.11 · Интерфейс",
+      "title": "Постепенная миграция v2 и визуальная приёмка",
+      "status": "in_progress",
+      "evidence": "10.1.2–3; затем остальные; docs/management/AIS_FIVE_MODULES_ACTION_PLAN_2026-11-26.md",
+      "note": "Без изменения UID, URL, счётчиков и структуры; 18 проверок на урок."
+    },
+    {
+      "id": "AUDIT-GOV-01",
+      "group": "Аудит 26.11 · Управление",
+      "title": "Чек-лист каждого рабочего чата и запись решений/проверок в админку",
+      "status": "in_progress",
+      "evidence": "Roadmap / AIS reference; docs/management/AIS_FIVE_MODULES_ACTION_PLAN_2026-11-26.md",
+      "note": "Обновлять после каждого этапа; done только по проверяемым доказательствам."
     }
   ],
   "crosswalk_json": "../data/ais-dch-crosswalk.json"

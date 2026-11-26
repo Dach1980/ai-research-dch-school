@@ -3702,6 +3702,21 @@
       "limitations": [
         "Не утверждать, на каких именно внешних каналах опубликована новость."
       ]
+    },
+    {
+      "id": "AUD-1021-CANDIDATE-2026-11-26",
+      "date": "2026-11-26",
+      "type": "lesson_review_candidate",
+      "title": "10.2.1 — кандидат глобального SHAP",
+      "result": "PR #10 CI 89/89 merged. На основе повторно прочитанных страниц AIS 07 и первоисточников создан review/localized кандидат les-a-0185: 9 разделов/outcomes, 5 SVG, 15 терминов, 12 вопросов, 9 источников, метод-паспорт, микро-проверка, Python с 200 test и 1000 bootstrap. Модуль 10.2 зарегистрирован. Production PR10 и CI кандидата проверяются.",
+      "evidence": [
+        "docs/reports/LESSON_1021_SHAP_GLOBAL_2026-11-26.md",
+        "docs/prompts/lessons/track-a/10.2.1-shap-global-feature-importance.md",
+        "https://github.com/Dach1980/ai-research-dch-school/actions/runs/45736437129"
+      ],
+      "limitations": [
+        "Результаты Python и визуальная приёмка нового урока ещё не подтверждены; не выставлять published. Отдельный SAGE lab и notebook остаются в backlog."
+      ]
     }
   ],
   "notes": [

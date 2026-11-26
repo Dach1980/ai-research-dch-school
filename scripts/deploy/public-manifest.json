@@ -1,0 +1,54 @@
+{
+  "directories": [
+    "about",
+    "account",
+    "admin",
+    "assets",
+    "auth",
+    "data",
+    "feedback",
+    "learning-map",
+    "legal",
+    "lessons",
+    "news",
+    "styles",
+    "tracks"
+  ],
+  "script_extensions": [
+    ".js"
+  ],
+  "extensions": [
+    ".html",
+    ".js",
+    ".css",
+    ".json",
+    ".svg",
+    ".png",
+    ".jpg",
+    ".jpeg",
+    ".webp",
+    ".py",
+    ".md",
+    ".csv",
+    ".woff",
+    ".woff2",
+    ".ico"
+  ],
+  "files": [
+    "index.html",
+    "index-en.html",
+    "index-zh.html",
+    "docs/architecture/SITE_FOUNDATION_V1.md",
+    "docs/education/DCH_LAB_AND_ASSESSMENT_MATRIX_2026-11-11.md",
+    "docs/education/LESSON_AUTHORING_TEMPLATE.md",
+    "docs/education/LESSON_DESIGN_SYSTEM.md",
+    "docs/education/TRACK_A_B_PREREQUISITES_AND_DIAGNOSTIC_ROUTES_2026-11-11.md",
+    "docs/education/TRACK_C_PRIMARY_SOURCE_AUDIT_2026-11-11.md",
+    "docs/legal/PRIVACY_POLICY_DRAFT.md",
+    "docs/legal/TERMS_DRAFT.md",
+    "docs/management/DCH_CANONICAL_CURRICULUM_AND_COVERAGE_AUDIT_2026-11-11.md",
+    "docs/management/DCH_CANONICAL_CURRICULUM_DECISION_2026-11-11.md",
+    "templates/lesson-page-template.html",
+    "preview/lessons/b-1-1-1-ru.html"
+  ]
+}

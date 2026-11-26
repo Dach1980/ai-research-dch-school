@@ -77,7 +77,7 @@ report = {"seed": SEED, "versions": {"numpy": np.__version__, "shap": shap.__ver
           "sklearn": sklearn.__version__, "pandas": pd.__version__,
           "matplotlib": matplotlib.__version__},
           "units": "million RUB", "n_train": len(train), "n_test": len(test),
-          "background_rows": len(bg), "mode": "interventional", "output": "raw regression",
+          "background_rows": len(bg), "shape": list(phi.shape), "mode": "interventional", "output": "raw regression",
           "cohort_young_n": int(young.sum()), "cohort_older_n": int((~young).sum()),
           "bootstrap_repeats": 1000, "pfi_repeats": 20,
           "max_abs_residual": float(np.max(np.abs(pred-base-phi.sum(axis=1)))),

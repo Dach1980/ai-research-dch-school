@@ -255,7 +255,7 @@ function globalSHAP(s){
   s.methodRows.forEach((row,i)=>{const y=91+i*105;row.forEach((v,j)=>{rect(r,xx[j],y,ww[j],88,"var(--lds-surface)","var(--lds-line)",5);shapMeasuredLines(v,ww[j]-16,16,550).forEach((l,k)=>label(l,xx[j]+8,y+25+k*20));});});
  }else if(s.layout==="shap-global-interval"){
   r=base(s,325);const hist=Array(13).fill(0);for(let a=0;a<4;a++)for(let b=0;b<4;b++)for(let c=0;c<4;c++)for(let d=0;d<4;d++)hist[a+b+c+d]++;
-  const mx=v=>64+v*196,my=n=>215-n*6;label(d.count,24,25,"start",700);hist.forEach((n,i)=>r.append(el("rect",{x:mx(i/4)-12,y:my(n),width:24,height:215-my(n),fill:accent,"data-count":n,"data-mean":i/4})));
+  const mx=v=>64+v*196,my=n=>215-n*175/Math.max(...hist);label(d.count,24,25,"start",700);hist.forEach((n,i)=>r.append(el("rect",{x:mx(i/4)-12,y:my(n),width:24,height:215-my(n),fill:accent,"data-count":n,"data-mean":i/4})));
   stroke(mx(0),215,mx(3),215,ink);[0,.5,1,1.5,2,2.5,3].forEach(v=>label(String(v),mx(v),238,"middle"));stroke(mx(.5),270,mx(2.5),270,good,4);[.5,2.5].forEach(v=>stroke(mx(v),260,mx(v),280,good,2));r.append(el("circle",{cx:mx(1.5),cy:270,r:5,fill:ink}));label("2.5%: 0.5",mx(.5),299,"middle");label(d.mean+": 1.5",mx(1.5),299,"middle",700);label("97.5%: 2.5",mx(2.5),299,"middle");
  }else throw new TypeError("Unknown global SHAP layout");
  const f=figure(r,s);f.classList.add("shap-global-figure");return f;

@@ -37,3 +37,13 @@ class GlobalSHAPTests(unittest.TestCase):
             a=p*(len(z)-1);i=math.floor(a)
             return z[i]+(a-i)*(z[min(i+1,len(z)-1)]-z[i])
         self.assertEqual((quantile(.025),quantile(.975)),(.5,2.5))
+    def test_global_svg_dispatch_and_canonical_download(self):
+        renderer=(ROOT/"scripts/lesson-svg-renderer.js").read_text(encoding="utf-8")
+        self.assertEqual(renderer.count("function render(spec)"),1)
+        dispatch=renderer.split("function render(spec)",1)[1]
+        for kind in ("matrix","bars","cohorts","methods","interval"):
+            self.assertIn("shap-global-"+kind,dispatch)
+        self.assertIn("return globalSHAP(spec)",dispatch)
+        script=(ROOT/"scripts/xai-shap-1021-lesson.js").read_text(encoding="utf-8")
+        self.assertIn('labLink.href="practice/a-10-2-1-shap-global-importance.py"',script)
+        self.assertNotIn('labLink.href="practice/a-10-1-3-shap-global-explanations.py"',script)

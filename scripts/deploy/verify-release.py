@@ -3,6 +3,8 @@ import argparse
 import hashlib
 from html.parser import HTMLParser
 import json
+import stat
+import re
 from pathlib import Path
 from urllib.parse import quote, unquote, urlsplit
 from urllib.request import urlopen
@@ -20,9 +22,34 @@ def main():
     p.add_argument("--http", action="store_true")
     p.add_argument("--public-root", type=Path)
     args = p.parse_args()
-    root = (args.public_root or (args.artifact / "public")).resolve()
-    expected = json.loads((args.artifact / "release.json").read_text())["files"]
-    actual = {f.relative_to(root).as_posix(): f for f in root.rglob("*") if f.is_file()}
+    public = args.public_root or (args.artifact / "public")
+    manifest = args.artifact / "release.json"
+    if public.is_symlink() or not public.is_dir() or manifest.is_symlink() or not manifest.is_file():
+        raise SystemExit("Unsafe artifact root or manifest")
+    if manifest.stat().st_size > 4 * 1024 * 1024:
+        raise SystemExit("Manifest too large")
+    root = public.resolve()
+    metadata = json.loads(manifest.read_text())
+    if not re.fullmatch(r"[0-9a-f]{40}", metadata["commit"]):
+        raise SystemExit("Invalid commit")
+    expected = metadata["files"]
+    actual = {}
+    total = 0
+    for f in root.rglob("*"):
+        name = f.relative_to(root).as_posix()
+        mode = f.lstat().st_mode
+        if any(x.startswith(".") for x in Path(name).parts) or not f.resolve().is_relative_to(root):
+            raise SystemExit(f"Unsafe path: {name}")
+        if stat.S_ISDIR(mode):
+            continue
+        if not stat.S_ISREG(mode) or f.stat().st_nlink != 1:
+            raise SystemExit(f"Unsafe object: {name}")
+        total += f.stat().st_size
+        actual[name] = f
+        if len(actual) > 10000 or total > 100 * 1024 * 1024 or f.stat().st_size > 20 * 1024 * 1024:
+            raise SystemExit("Artifact size or count limit exceeded")
+    if "index.html" not in expected:
+        raise SystemExit("Missing index.html")
     if set(expected) != set(actual) or not expected:
         raise SystemExit("Manifest mismatch")
     for name, f in actual.items():

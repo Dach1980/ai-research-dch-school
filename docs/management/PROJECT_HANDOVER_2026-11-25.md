@@ -523,3 +523,7 @@ AI Interpretability School — не только учебный ориентир
 ### Уточнение источника 25.11.2026
 
 Владелец предоставил публичный адрес канала: https://t.me/jdata_blog (@jdata_blog); лента для просмотра: https://t.me/s/jdata_blog. Сохранён как основной новостной источник AIS по указанию владельца. Попытка чтения через web не удалась; содержание, соответствие внутреннему ID и доступность сообщений ещё не подтверждены. Для редакционного обзора при необходимости использовать экспорт или ссылки на отдельные сообщения. Автомониторинг не настроен.
+
+
+## 26.11.2026 — актуальное продолжение
+Production: 53/60 Track A, lesson 10.1.3, открытая бета 172 HTTP checks 45718330367. Владелец сообщил о публикации новости. Повторно получены AIS 00/01/02/04/07, 470 страниц; полный закрытый аудит: https://github.com/Dach1980/ai-interpretability-course/blob/main/docs/sources/AIS_FIVE_MODULES_COVERAGE_AUDIT_2026-11-26.md. Публичный план docs/management/AIS_FIVE_MODULES_ACTION_PLAN_2026-11-26.md; действующий backlog data/ais-reference-checklist.json и data/audit-roadmap.json. Промпт docs/prompts/lessons/track-a/10.2.1-shap-global-feature-importance.md; профессиональный пилот docs/standards/PROFESSIONAL_LESSON_PEDAGOGY_V1.md. Работать параллельно по двум потокам, сохранять нумерацию, вести чек-лист каждого чата, фиксировать CI/production отдельно. Оригиналы PDF не в GitHub; не копировать их в публичный репозиторий. Следующий новый урок 10.2.1, ещё не создан. TinyFish запрещён.

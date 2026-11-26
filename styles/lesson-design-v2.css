@@ -26,3 +26,19 @@ main.lesson[data-lesson-design="v2"] :is(#lesson-sections > section,#lesson-prac
 @media(max-width:1049px){main.lesson[data-lesson-design="v2"][data-design-ready="true"]{grid-template-columns:minmax(0,1fr);gap:14px}main.lesson[data-lesson-design="v2"] > .lesson-standard-article{grid-column:1}main.lesson[data-lesson-design="v2"] .dch-v2-sidebar{position:static;max-height:none}}
 @media(max-width:650px){main.lesson[data-lesson-design="v2"][data-design-ready="true"]{width:calc(100% - 24px);margin-top:12px}main.lesson[data-lesson-design="v2"] .dch-v2-intro{grid-template-columns:minmax(0,1fr);gap:8px;padding:16px}main.lesson[data-lesson-design="v2"] .dch-v2-planet svg{width:140px}main.lesson[data-lesson-design="v2"] #lesson-outcomes{padding:12px}}
 @media(prefers-reduced-motion:reduce){html:has(main[data-lesson-design="v2"]){scroll-behavior:auto}}
+
+/* Professional pedagogy pilot; only v2 lessons with explicit method data. */
+main.lesson[data-lesson-design="v2"] .dch-method-passport{grid-column:1/-1;margin:0;padding:14px 18px;border:1px solid var(--lds-line);border-radius:12px;color:var(--lds-ink);background:var(--lds-surface);min-width:0;overflow-wrap:anywhere}
+main.lesson[data-lesson-design="v2"] .dch-method-passport summary{font-weight:750;cursor:pointer;min-height:44px;align-content:center}
+main.lesson[data-lesson-design="v2"] .dch-method-fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:8px 0 14px}
+main.lesson[data-lesson-design="v2"] .dch-method-fields>div{padding:10px;border:1px solid var(--lds-line);border-radius:8px;min-width:0}
+main.lesson[data-lesson-design="v2"] .dch-method-fields dt{font-weight:700;margin-bottom:5px}
+main.lesson[data-lesson-design="v2"] .dch-method-fields dd{margin:0;line-height:1.55}
+main.lesson[data-lesson-design="v2"] .dch-method-check{min-width:0;margin:0;border:1px solid var(--lds-line);border-radius:8px;padding:12px;color:var(--lds-ink)}
+main.lesson[data-lesson-design="v2"] .dch-method-check legend{font-weight:650;max-width:100%;overflow-wrap:anywhere}
+main.lesson[data-lesson-design="v2"] .dch-method-choices{display:flex;flex-wrap:wrap;gap:8px}
+main.lesson[data-lesson-design="v2"] .dch-method-choices button{min-height:44px;padding:8px 14px;background:var(--lds-surface);color:var(--lds-ink);border:1px solid var(--lds-line);border-radius:8px;cursor:pointer;font:inherit}
+main.lesson[data-lesson-design="v2"] .dch-method-choices button[aria-pressed="true"]{border:2px solid var(--lds-accent,#235fbd);font-weight:700}
+main.lesson[data-lesson-design="v2"] .dch-method-passport :is(summary,button):focus-visible{outline:3px solid var(--lds-accent,#438de9);outline-offset:3px}
+main.lesson[data-lesson-design="v2"] .dch-method-feedback{margin:8px 0 0;color:var(--lds-ink);line-height:1.55}
+@media(max-width:650px){main.lesson[data-lesson-design="v2"] .dch-method-fields{grid-template-columns:minmax(0,1fr)}main.lesson[data-lesson-design="v2"] .dch-method-passport{padding:12px}}

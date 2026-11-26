@@ -60,8 +60,8 @@
       const summary = governance.coverage_summary;
       root.insertAdjacentHTML("beforeend",
         '<section class="admin-panel"><div class="roadmap-item-head"><span class="roadmap-id">DCH CURRICULUM GOVERNANCE</span><span class="roadmap-date">Обновлено: ' +
-        escapeHtml(governance.updated_at) + '</span></div><h2>Каноническая программа DCH и аудит покрытия</h2>' +
-        '<p>Канонический Track A: 16 модулей 11–26. Track B: ядро 27–39 с диагностическим входом. Track C: отдельная программа C0–C12.</p>' +
+        escapeHtml(governance.updated_at) + '</span></div><h2>Исторический аудит программы от 11 ноября</h2>' +
+        '<p>Архивная модель программы от 11.11.2026; не использовать как действующую структуру. Актуальный план: 4 трека, 167 уроков, Track A — 60. На 26.11.2026 опубликованы 53/60; текущий backlog приведён выше.</p>' +
         '<div class="admin-grid roadmap-stats"><div class="admin-stat"><strong>' + summary.macro_modules +
         '</strong><span>Макромодулей A/B</span></div><div class="admin-stat"><strong>' + summary.catalog_lessons +
         '</strong><span>Lesson UID в каталоге</span></div><div class="admin-stat"><strong>' + summary.published +

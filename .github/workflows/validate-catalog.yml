@@ -226,3 +226,8 @@ jobs:
         run: |
           node --check scripts/language-switcher.js
           python -m unittest discover -s tests -p 'test_news_journal.py' -v
+      - name: Validate AIS audit backlog and professional pilot
+        run: |
+          node --check scripts/admin-ais-reference.js
+          node --check scripts/lesson-design-v2.js
+          python -m unittest discover -s tests -p 'test_ais_professional_backlog.py' -v

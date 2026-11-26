@@ -18,8 +18,9 @@ def main():
     p = argparse.ArgumentParser()
     p.add_argument("artifact", type=Path)
     p.add_argument("--http", action="store_true")
+    p.add_argument("--public-root", type=Path)
     args = p.parse_args()
-    root = (args.artifact / "public").resolve()
+    root = (args.public_root or (args.artifact / "public")).resolve()
     expected = json.loads((args.artifact / "release.json").read_text())["files"]
     actual = {f.relative_to(root).as_posix(): f for f in root.rglob("*") if f.is_file()}
     if set(expected) != set(actual) or not expected:

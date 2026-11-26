@@ -7,13 +7,15 @@ PID=""
 cleanup() { if [[ -n "$PID" ]]; then kill "$PID" 2>/dev/null || true; wait "$PID" 2>/dev/null || true; fi; rm -rf -- "$TMP"; }
 trap cleanup EXIT
 ROOT="$TMP/site"
-mkdir -p "$ROOT/releases/old-public"
+mkdir -p "$ROOT/releases/old-public" "$ROOT/manifests"
 echo old > "$ROOT/releases/old-public/index.html"
 ln -s "$ROOT/releases/old-public" "$ROOT/current"
 python3 - "$TMP" <<'PY'
 import hashlib,json,sys
 from pathlib import Path
 root=Path(sys.argv[1])
+old=root/"site/releases/old-public/index.html"
+(root/"site/manifests/old-public.json").write_text(json.dumps({"commit":"c"*40,"files":{"index.html":hashlib.sha256(old.read_bytes()).hexdigest()}}))
 for name,sha in [("good","a"*40),("bad","b"*40)]:
     p=root/name
     (p/"public").mkdir(parents=True)
@@ -54,4 +56,9 @@ fi
 bash "$HERE/rollback-release.sh" "$ROOT" old-public
 [[ "$(realpath "$ROOT/current")" = "$ROOT/releases/old-public" ]]
 [[ "$(curl -fsS http://127.0.0.1:8080/index.html)" = old ]]
-echo "PASS: activation, HTTP failure rollback, explicit rollback"
+ln -s /tmp "$TMP/good/public/unsafe-dir"
+if python3 "$HERE/verify-release.py" "$TMP/good"; then echo "Unsafe symlink accepted"; exit 1; fi
+rm "$TMP/good/public/unsafe-dir"
+mkfifo "$TMP/good/public/unsafe-fifo"
+if python3 "$HERE/verify-release.py" "$TMP/good"; then echo "Unsafe FIFO accepted"; exit 1; fi
+echo "PASS: activation, HTTP failure rollback, explicit rollback, unsafe objects rejected"

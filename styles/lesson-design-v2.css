@@ -28,7 +28,7 @@ main.lesson[data-lesson-design="v2"] :is(#lesson-sections > section,#lesson-prac
 @media(prefers-reduced-motion:reduce){html:has(main[data-lesson-design="v2"]){scroll-behavior:auto}}
 
 /* Professional pedagogy pilot; only v2 lessons with explicit method data. */
-main.lesson[data-lesson-design="v2"] .dch-method-passport{margin:14px 0 0;padding:14px 18px;border:1px solid var(--lds-line);border-radius:12px;color:var(--lds-ink);background:var(--lds-surface);min-width:0;overflow-wrap:anywhere}
+main.lesson[data-lesson-design="v2"] .dch-method-passport{grid-column:1/-1;margin:0;padding:14px 18px;border:1px solid var(--lds-line);border-radius:12px;color:var(--lds-ink);background:var(--lds-surface);min-width:0;overflow-wrap:anywhere}
 main.lesson[data-lesson-design="v2"] .dch-method-passport summary{font-weight:750;cursor:pointer;min-height:44px;align-content:center}
 main.lesson[data-lesson-design="v2"] .dch-method-fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:8px 0 14px}
 main.lesson[data-lesson-design="v2"] .dch-method-fields>div{padding:10px;border:1px solid var(--lds-line);border-radius:8px;min-width:0}

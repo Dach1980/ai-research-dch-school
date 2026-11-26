@@ -42,7 +42,7 @@ if(professional){
  const check=make("fieldset","dch-method-check");check.append(make("legend","",professional.question));
  const choices=make("div","dch-method-choices"),feedback=make("p","dch-method-feedback");feedback.setAttribute("role","status");
  [professional.yes,professional.no].forEach((label,i)=>{const b=make("button","",label);b.type="button";b.setAttribute("aria-pressed","false");b.addEventListener("click",()=>{Array.from(choices.children).forEach(x=>x.setAttribute("aria-pressed",String(x===b)));feedback.textContent=i===1?professional.right:professional.wrong;feedback.dataset.correct=String(i===1);});choices.append(b);});
- check.append(choices,feedback);p.append(check);hero.insertBefore(p,outcomes);
+ check.append(choices,feedback);p.append(check);intro.append(p);
 }
 
 const list=outcomes.querySelector(":scope > ul, :scope > ol"),heading=outcomes.querySelector(":scope > h2");

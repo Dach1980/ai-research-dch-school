@@ -36,7 +36,7 @@ test('201 sends only expected fields and clears message after acceptance', async
     assert.equal(opts.credentials, 'omit');
     assert.equal(opts.redirect, 'error');
     assert.equal(opts.headers['Content-Type'], 'application/json');
-    assert.deepEqual(JSON.parse(opts.body), {kind:'suggestion',name:'Test',replyEmail:'',pageUrl:'https://dchai.ru/about/author.html',message:'Test message 123',website:'',consent:true,consentVersion:'feedback-2026-11-27-draft'});
+    assert.deepEqual(JSON.parse(opts.body), {kind:'suggestion',name:'Test',replyEmail:'',pageUrl:'https://dchai.ru/about/author.html',message:'Test message 123',website:'',consent:true,consentVersion:'feedback-2026-11-27-v1'});
     return accepted();
   });
   assert.equal(s.button.disabled, false);

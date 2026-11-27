@@ -14,7 +14,7 @@ EXPECTED = {
 }
 
 class FeedbackPageTests(unittest.TestCase):
-    def test_localized_pages_and_mailto_only_delivery(self):
+    def test_localized_pages_and_api_delivery(self):
         for lang, path in PAGES.items():
             self.assertTrue(path.exists(), path)
             source = path.read_text(encoding="utf-8")
@@ -23,13 +23,34 @@ class FeedbackPageTests(unittest.TestCase):
                 self.assertIn(token, source)
             self.assertIn('id="feedback-form"', source)
             self.assertIn('../scripts/language-switcher.js', source)
-            self.assertIn('mailto:itprof80@gmail.com', source)
+            self.assertNotIn('mailto:', source)
+            self.assertNotIn('itprof80@gmail.com', source)
+            self.assertIn('method="post" action="/api/feedback"', source)
+            self.assertIn('../scripts/feedback-api.js', source)
+            self.assertIn('name="website" hidden', source)
+            self.assertIn('type="submit" disabled', source)
+            self.assertIn('../legal/privacy.html', source)
+            for key in ('busy', 'success', 'rate', 'error'):
+                self.assertIn(f'data-{key}="', source)
+            for field in ('kind', 'name', 'replyEmail', 'pageUrl', 'message'):
+                self.assertIn(f'name="{field}"', source)
             self.assertIn('aria-live="polite"', source)
             self.assertIn('maxlength="3000"', source)
             self.assertNotIn("supabase.from(", source)
             self.assertNotIn("fetch(", source)
             self.assertNotIn("formsubmit", source.lower())
-            self.assertIn("не сохраняет" if lang == "ru" else "does not store" if lang == "en" else "不会保存", source)
+            self.assertIn("Mail.ru", source)
+            self.assertIn("сохраняются" if lang == "ru" else "stored" if lang == "en" else "保存在", source)
+
+    def test_client_contract(self):
+        source = (ROOT / "scripts/feedback-api.js").read_text(encoding="utf-8")
+        for token in ("fetch('/api/feedback'", "method: 'POST'", "credentials: 'omit'",
+                      "application/json", "response.status === 429", "response.status !== 201",
+                      "result.status !== 'accepted'", "textContent", "AbortController"):
+            self.assertIn(token, source)
+        self.assertNotIn("innerHTML", source)
+        self.assertNotIn("mailto:", source)
+        self.assertNotIn("localStorage", source)
 
     def test_shared_navigation_injects_feedback_link(self):
         source = (ROOT / "scripts/main.js").read_text(encoding="utf-8")

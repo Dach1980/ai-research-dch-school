@@ -80,6 +80,7 @@ class FeedbackBrowserTests(unittest.TestCase):
                             expect(form.locator("[name=website]")).to_be_hidden()
                             form.locator("[name=kind]").select_option("suggestion")
                             message.fill(MESSAGE)
+                            form.locator('[name=consent]').check()
                             button.click()
                             expect(notice).to_be_visible()
                             expect(button).to_be_enabled()
@@ -89,7 +90,8 @@ class FeedbackBrowserTests(unittest.TestCase):
                             self.assertEqual(content_type, "application/json")
                             self.assertEqual(data, {"kind": "suggestion", "name": "", "replyEmail": "",
                                                    "pageUrl": self.origin + "/about/author.html",
-                                                   "message": MESSAGE, "website": ""})
+                                                   "message": MESSAGE, "website": "", "consent": True,
+                                                   "consentVersion": "feedback-2026-11-27-draft"})
                             if status == 201:
                                 expect(notice).to_have_text(form.get_attribute("data-success") + REFERENCE)
                                 expect(message).to_have_value("")
@@ -124,6 +126,9 @@ class FeedbackBrowserTests(unittest.TestCase):
                     self.assertFalse(page.locator("#feedback-form").evaluate("(f) => f.checkValidity()"))
                     self.assertEqual(requests, [])
                     page.locator("[name=message]").fill(MESSAGE)
+                    button.click()
+                    self.assertEqual(requests, [])
+                    page.locator("[name=consent]").check()
                     page.locator("#feedback-form").evaluate("(f) => { f.requestSubmit(); f.requestSubmit(); }")
                     expect(page.locator("#feedback-notice")).to_contain_text(REFERENCE)
                     self.assertEqual(requests, ["POST"])

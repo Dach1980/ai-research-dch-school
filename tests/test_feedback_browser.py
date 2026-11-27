@@ -91,7 +91,7 @@ class FeedbackBrowserTests(unittest.TestCase):
                             self.assertEqual(data, {"kind": "suggestion", "name": "", "replyEmail": "",
                                                    "pageUrl": self.origin + "/about/author.html",
                                                    "message": MESSAGE, "website": "", "consent": True,
-                                                   "consentVersion": "feedback-2026-11-27-v1"})
+                                                   "consentVersion": "feedback-2026-11-27-v2"})
                             if status == 201:
                                 expect(notice).to_have_text(form.get_attribute("data-success") + REFERENCE)
                                 expect(message).to_have_value("")

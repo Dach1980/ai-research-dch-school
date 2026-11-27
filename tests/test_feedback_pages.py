@@ -28,6 +28,8 @@ class FeedbackPageTests(unittest.TestCase):
             self.assertIn('method="post" action="/api/feedback"', source)
             self.assertIn('../scripts/feedback-api.js', source)
             self.assertIn('name="website" hidden', source)
+            self.assertIn('name="consent" value="yes" required', source)
+            self.assertIn('../legal/feedback-consent.html', source)
             self.assertIn('type="submit" disabled', source)
             self.assertIn('../legal/privacy.html', source)
             for key in ('busy', 'success', 'rate', 'error'):

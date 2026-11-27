@@ -27,7 +27,7 @@
     const input = new FormData(form);
     const data = Object.fromEntries(fields.map(key => [key, String(input.get(key) || '')]));
     data.consent = input.get('consent') === 'yes';
-    data.consentVersion = 'feedback-2026-11-27-v1';
+    data.consentVersion = 'feedback-2026-11-27-v2';
     const controller = new AbortController();
     const timer = setTimeout(() => controller.abort(), 25000);
     try {

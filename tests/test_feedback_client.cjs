@@ -9,7 +9,7 @@ function setup(fetch, from = 'https://dchai.ru/about/author.html?token=secret#pa
   const page = { value: '' };
   const button = { disabled: true, textContent: 'Send' };
   const notice = { hidden: true, textContent: '' };
-  const values = { kind: 'suggestion', name: 'Test', replyEmail: '', message: 'Test message 123', website: '' };
+  const values = { kind: 'suggestion', name: 'Test', replyEmail: '', message: 'Test message 123', website: '', consent: 'yes' };
   let submit, resets = 0, calls = 0;
   const form = {
     dataset: { busy: 'Sending', success: 'Saved: ', rate: 'Rate limit', error: 'Unconfirmed' },
@@ -36,7 +36,7 @@ test('201 sends only expected fields and clears message after acceptance', async
     assert.equal(opts.credentials, 'omit');
     assert.equal(opts.redirect, 'error');
     assert.equal(opts.headers['Content-Type'], 'application/json');
-    assert.deepEqual(JSON.parse(opts.body), {kind:'suggestion',name:'Test',replyEmail:'',pageUrl:'https://dchai.ru/about/author.html',message:'Test message 123',website:''});
+    assert.deepEqual(JSON.parse(opts.body), {kind:'suggestion',name:'Test',replyEmail:'',pageUrl:'https://dchai.ru/about/author.html',message:'Test message 123',website:'',consent:true,consentVersion:'feedback-2026-11-27-draft'});
     return accepted();
   });
   assert.equal(s.button.disabled, false);

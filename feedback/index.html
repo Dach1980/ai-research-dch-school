@@ -26,6 +26,7 @@
 <label>Email для ответа (необязательно)<input name="replyEmail" type="email" maxlength="254" autocomplete="email"></label>
 <label>Страница, к которой относится сообщение (необязательно)<input name="pageUrl" id="feedback-page-url" type="url" maxlength="1000" placeholder="https://dchai.ru/..."></label>
 <label>Сообщение<textarea name="message" required minlength="10" maxlength="3000"></textarea><span class="hint">Не указывайте пароли, платёжные данные или другую конфиденциальную информацию.</span></label>
+<label class="feedback-consent"><span><input type="checkbox" name="consent" value="yes" required style="width:auto"> Я добровольно соглашаюсь на обработку данных моего обращения согласно отдельному согласию.</span> <a href="../legal/feedback-consent.html">Текст согласия</a></label>
 <div class="feedback-actions"><button class="feedback-submit" type="submit" disabled>Отправить</button></div>
 <p class="feedback-notice" id="feedback-notice" role="status" aria-live="polite" hidden></p>
 </form>

@@ -1,0 +1,7 @@
+User-agent: *
+Disallow: /drafts/
+Disallow: /preview/
+Disallow: /archive/
+Disallow: /docs/
+Disallow: /templates/
+Sitemap: https://dchai.ru/sitemap.xml

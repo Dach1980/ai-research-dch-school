@@ -21,6 +21,8 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: "3.12"
+      - name: Verify published sitemap
+        run: python scripts/generate-sitemap.py --check
       - name: Validate internal HTML links
         run: python scripts/validate-internal-links.py
       - name: Install validator dependencies

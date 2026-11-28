@@ -1,0 +1,5 @@
+# Local release trust contract
+
+The operator obtains the expected 40-character commit SHA and SHA-256 of release.json from a separately trusted CI provenance record, not from an untrusted artifact download or its contents alone. Before deployment verify the exact protected workflow/run/head, success of required gates, artifact identity and digest through an independent trusted channel. A manifest hash is not a signature or provenance attestation. Do not accept an arbitrary caller-supplied digest in an automated production integration.
+
+`deploy-release.sh ROOT ARTIFACT EXPECTED_COMMIT EXPECTED_MANIFEST_SHA256` refuses mismatches and validates the staged bytes. Both activation and rollback require a verified baseline manifest. Failed activated releases retain manifest for audit; never automatically retry or delete them. Verify exact directory/user ownership, fixed production root and fixed local HTTP vhost (the scripts currently use port 8080 for disposable tests), lock semantics and backups before privileged installation. Do not run as root; run only from an operator-approved trusted script checkout. No production deployment authority is granted here.

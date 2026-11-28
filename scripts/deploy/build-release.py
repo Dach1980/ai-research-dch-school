@@ -41,7 +41,9 @@ def main():
         target = public / p
         target.parent.mkdir(parents=True, exist_ok=True)
         shutil.copyfile(ROOT / p, target)
-        hashes[p.as_posix()] = hashlib.sha256(target.read_bytes()).hexdigest()
+    subprocess.run(["python3", str(ROOT / "scripts/apply-release-seo.py"), "--root", str(public)], check=True)
+    for p in sorted(selected):
+        hashes[p.as_posix()] = hashlib.sha256((public / p).read_bytes()).hexdigest()
     commit = subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=ROOT, text=True).strip()
     (out / "release.json").write_text(json.dumps({"commit": commit, "files": hashes}, indent=2) + "\n")
     print(f"Exported {len(hashes)} files from {commit}")

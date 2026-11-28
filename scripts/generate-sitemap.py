@@ -34,6 +34,10 @@ def groups():
     result = [["index.html", "index-en.html", "index-zh.html"]]
     result += [[f"news/{name}{suffix}.html" for suffix in SUFFIXES]
                for name in ("index", "001-school-launch", "002-open-beta")]
+    result += [[item["url_i18n"][lang] for lang in ("ru", "en", "zh")]
+               for item in catalog["tracks"] if item.get("status") == "active"]
+    # Track D has only a real Russian landing page; no invented translations.
+    result.append(["tracks/mathematical-research-foundations.html"])
     for item in catalog["lessons"]:
         if item.get("status") == "published" and item.get("access") == "open":
             result.append([item["url_i18n"][lang] for lang in ("ru", "en", "zh")])
@@ -59,8 +63,9 @@ def render():
             if h.canonicals != [loc(path)]:
                 warnings.append(f"{path}: canonical {h.canonicals!r}")
             lines += ["  <url>", f"    <loc>{loc(path)}</loc>"]
-            lines += [f'    <xhtml:link rel="alternate" hreflang="{lang}" href="{loc(other)}"/>'
-                      for lang, other in zip(LANGS, group)]
+            if len(group) > 1:
+                lines += [f'    <xhtml:link rel="alternate" hreflang="{lang}" href="{loc(other)}"/>'
+                          for lang, other in zip(LANGS, group)]
             lines.append("  </url>")
     lines.append("</urlset>")
     return "\n".join(lines) + "\n", len(seen), warnings

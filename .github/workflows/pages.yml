@@ -23,6 +23,8 @@ jobs:
           python-version: "3.12"
       - name: Verify published sitemap
         run: python scripts/generate-sitemap.py --check
+      - name: Validate release SEO for all open lessons and tracks
+        run: python scripts/apply-release-seo.py --root . --check-only
       - name: Validate internal HTML links
         run: python scripts/validate-internal-links.py
       - name: Install validator dependencies
@@ -177,6 +179,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+      - name: Apply validated SEO to public HTML
+        run: python scripts/apply-release-seo.py --root .
       - name: Configure Pages
         uses: actions/configure-pages@v5
       - name: Upload artifact
@@ -214,6 +218,8 @@ jobs:
           base = os.environ["SITE_URL"].rstrip("/")
           checks = {
               "/": "AI Research DCH School",
+              "/robots.txt": "Sitemap: https://dchai.ru/sitemap.xml",
+              "/sitemap.xml": "https://dchai.ru/tracks/mathematical-research-foundations.html",
               "/lessons/a-9-1-2-les-a-0178.html": "Локальные суррогатные модели",
               "/lessons/a-9-1-2-les-a-0178-en.html": "Local Surrogate Models",
               "/lessons/a-9-1-2-les-a-0178-zh.html": "局部代理模型",

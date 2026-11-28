@@ -37,3 +37,7 @@ jobs:
           name: beget-preview
           path: ${{ runner.temp }}/beget-artifact
           retention-days: 7
+      - name: Test local activation and failure rollback
+        run: |
+          bash -n scripts/deploy/deploy-release.sh scripts/deploy/rollback-release.sh scripts/deploy/test-activation.sh
+          bash scripts/deploy/test-activation.sh

@@ -1,0 +1,3 @@
+# Pages deployment incident — 2026-11-28
+
+Run 46093658839 on main 94d75608: all validation jobs passed, upload succeeded (artifact ID 15243035585); REST name-filtered query saw the artifact, but deploy-pages reported six artifacts and no github-pages. Root cause not proven; not a lesson/SEO failure. PR16 synchronized with merged PR14; proposed unique artifact name per run/attempt, paginated unfiltered exact-name metadata gate and exact SHA-256 live checks for the sitemap URLs and robots.txt. This is a candidate mitigation, not a proven production fix. No DNS or hosting migration. A green PR does not execute the Pages deploy step. Verify actual origin and release before claiming publication.

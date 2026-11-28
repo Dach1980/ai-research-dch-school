@@ -49,6 +49,8 @@
     "docs/management/DCH_CANONICAL_CURRICULUM_AND_COVERAGE_AUDIT_2026-11-11.md",
     "docs/management/DCH_CANONICAL_CURRICULUM_DECISION_2026-11-11.md",
     "templates/lesson-page-template.html",
-    "preview/lessons/b-1-1-1-ru.html"
+    "preview/lessons/b-1-1-1-ru.html",
+    "robots.txt",
+    "sitemap.xml"
   ]
 }

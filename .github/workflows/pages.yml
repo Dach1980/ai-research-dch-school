@@ -21,6 +21,10 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: "3.12"
+      - name: Verify published sitemap
+        run: python scripts/generate-sitemap.py --check
+      - name: Validate release SEO for all open lessons and tracks
+        run: python scripts/apply-release-seo.py --root . --check-only
       - name: Validate internal HTML links
         run: python scripts/validate-internal-links.py
       - name: Install validator dependencies
@@ -168,6 +172,8 @@ jobs:
       actions: read
       pages: write
       id-token: write
+    env:
+      PAGES_ARTIFACT_NAME: github-pages-${{ github.run_id }}-${{ github.run_attempt }}
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
@@ -175,19 +181,22 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+      - name: Apply validated SEO to public HTML
+        run: python scripts/apply-release-seo.py --root .
       - name: Configure Pages
         uses: actions/configure-pages@v5
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: .
+          name: ${{ env.PAGES_ARTIFACT_NAME }}
       - name: Confirm Pages artifact is visible to REST API
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
           set -euo pipefail
           for attempt in $(seq 1 24); do
-            if gh api "repos/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID/artifacts?name=github-pages" --jq '.artifacts[] | select(.name == "github-pages" and .expired == false) | .id' > /tmp/pages-artifact-id && test -s /tmp/pages-artifact-id; then
+            if gh api --paginate "repos/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID/artifacts?per_page=100" --jq '.artifacts[] | select(.expired == false) | [.name, (.id|tostring)] | @tsv' > /tmp/pages-artifacts && awk -F '\t' -v name="$PAGES_ARTIFACT_NAME" '$1 == name {print $2}' /tmp/pages-artifacts > /tmp/pages-artifact-id && test "$(wc -l < /tmp/pages-artifact-id)" -eq 1; then
               echo "Pages artifact is visible: $(cat /tmp/pages-artifact-id)"
               exit 0
             fi
@@ -199,6 +208,8 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+        with:
+          artifact_name: ${{ env.PAGES_ARTIFACT_NAME }}
       - name: Smoke-test the public canonical domain
         env:
           SITE_URL: https://dchai.ru
@@ -212,6 +223,8 @@ jobs:
           base = os.environ["SITE_URL"].rstrip("/")
           checks = {
               "/": "AI Research DCH School",
+              "/robots.txt": "Sitemap: https://dchai.ru/sitemap.xml",
+              "/sitemap.xml": "https://dchai.ru/tracks/mathematical-research-foundations.html",
               "/lessons/a-9-1-2-les-a-0178.html": "Локальные суррогатные модели",
               "/lessons/a-9-1-2-les-a-0178-en.html": "Local Surrogate Models",
               "/lessons/a-9-1-2-les-a-0178-zh.html": "局部代理模型",
@@ -241,7 +254,19 @@ jobs:
               "/news/images/002-open-beta.svg": "AI Research DCH School",
           }
           import json
+          import hashlib
           from pathlib import Path
+          # Verify the exact deployed SEO artifact rather than old page titles alone.
+          expected_hashes = {"/robots.txt": hashlib.sha256(Path("robots.txt").read_bytes()).hexdigest(),
+                             "/sitemap.xml": hashlib.sha256(Path("sitemap.xml").read_bytes()).hexdigest()}
+          import xml.etree.ElementTree as ET
+          for node in ET.parse("sitemap.xml").findall("{http://www.sitemaps.org/schemas/sitemap/0.9}url"):
+              url = node.findtext("{http://www.sitemaps.org/schemas/sitemap/0.9}loc")
+              assert url.startswith(base + "/"), url
+              route = url[len(base):]
+              local = Path(route.lstrip("/") or "index.html")
+              expected_hashes[route] = hashlib.sha256(local.read_bytes()).hexdigest()
+              checks.setdefault(route, None)
           catalog = json.loads(Path("data/catalog/catalog-v3.json").read_text(encoding="utf-8"))
           for lesson in catalog["lessons"]:
               if lesson["status"] == lesson.get("content_state") == "published":
@@ -256,7 +281,10 @@ jobs:
                           headers={"User-Agent": "DCH-School-Public-Release-Smoke-Test/1.0"},
                       )
                       with urllib.request.urlopen(request, timeout=20) as response:
-                          body = response.read().decode("utf-8", errors="replace")
+                          raw = response.read()
+                          body = raw.decode("utf-8", errors="replace")
+                          if path in expected_hashes and hashlib.sha256(raw).hexdigest() != expected_hashes[path]:
+                              raise RuntimeError("Live bytes differ from this SEO release")
                           if response.status != 200:
                               raise RuntimeError(f"HTTP {response.status}")
                           if marker is not None and marker not in body:

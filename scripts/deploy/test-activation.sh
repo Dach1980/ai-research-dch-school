@@ -45,14 +45,22 @@ for i in $(seq 1 20); do
     sleep 1
 done
 curl -fsS http://127.0.0.1:8080/index.html >/dev/null
-bash "$HERE/deploy-release.sh" "$ROOT" "$TMP/good"
+GOOD_SHA=$(printf 'a%.0s' {1..40})
+BAD_SHA=$(printf 'b%.0s' {1..40})
+GOOD_DIGEST=$(sha256sum "$TMP/good/release.json" | cut -d " " -f 1)
+BAD_DIGEST=$(sha256sum "$TMP/bad/release.json" | cut -d " " -f 1)
+if bash "$HERE/deploy-release.sh" "$ROOT" "$TMP/good" "$BAD_SHA" "$GOOD_DIGEST"; then echo "Wrong trusted commit accepted"; exit 1; fi
+if bash "$HERE/deploy-release.sh" "$ROOT" "$TMP/good" "$GOOD_SHA" "$BAD_DIGEST"; then echo "Wrong trusted digest accepted"; exit 1; fi
+[[ "$(realpath "$ROOT/current")" = "$ROOT/releases/old-public" ]]
+bash "$HERE/deploy-release.sh" "$ROOT" "$TMP/good" "$GOOD_SHA" "$GOOD_DIGEST"
 GOOD="$ROOT/releases/$(printf 'a%.0s' {1..40})-public"
 [[ "$(realpath "$ROOT/current")" = "$GOOD" ]]
-if bash "$HERE/deploy-release.sh" "$ROOT" "$TMP/bad"; then
+if bash "$HERE/deploy-release.sh" "$ROOT" "$TMP/bad" "$BAD_SHA" "$BAD_DIGEST"; then
     echo "Expected HTTP failure" >&2; exit 1
 fi
 [[ "$(realpath "$ROOT/current")" = "$GOOD" ]]
 [[ "$(curl -fsS http://127.0.0.1:8080/index.html)" = good ]]
+[[ -f "$ROOT/manifests/$BAD_SHA-public.json" ]]
 bash "$HERE/rollback-release.sh" "$ROOT" old-public
 [[ "$(realpath "$ROOT/current")" = "$ROOT/releases/old-public" ]]
 [[ "$(curl -fsS http://127.0.0.1:8080/index.html)" = old ]]
@@ -61,4 +69,4 @@ if python3 "$HERE/verify-release.py" "$TMP/good"; then echo "Unsafe symlink acce
 rm "$TMP/good/public/unsafe-dir"
 mkfifo "$TMP/good/public/unsafe-fifo"
 if python3 "$HERE/verify-release.py" "$TMP/good"; then echo "Unsafe FIFO accepted"; exit 1; fi
-echo "PASS: activation, HTTP failure rollback, explicit rollback, unsafe objects rejected"
+echo "PASS: trusted commit/digest, activation, full HTTP rollback, explicit rollback, unsafe objects rejected"
